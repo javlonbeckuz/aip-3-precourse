@@ -140,7 +140,7 @@ Abuse limits of the endpoint: 10 failed keys per 10 minutes per client (then 429
 
 `content/lessons/{n}/lesson.{uz,ru,en}.json` (n = 0..7). A missing language falls back to `uz`. Edits are picked up without a restart.
 
-The `ru` and `en` files hold only `n`, `title`, `subtitle`, `summary`, `topics` (and `prep` for lesson 0). Everything else is read from the `uz` file, whatever the language. Lessons 1 and 3-7 ship with titles only, so they show "materials soon" until a part is added. Lesson 2 (Kirish) is the 2.0 lesson converted to blocks: slides (78), amaliyot (guide + 7 exercises, each a group with files and prompts) and vazifa (sources, guide, two prompt groups). Its files are the 2.0 `.placeholder` stand-ins.
+The `ru` and `en` files hold only `n`, `title`, `subtitle`, `summary`, `topics` (and `prep` for lesson 0). Everything else is read from the `uz` file, whatever the language. Lessons 1 and 3-7 ship with amaliyot and vazifa blocks (Uzbek only, no files yet, prompts with a `target`), no slides and no kit. A lesson with no part at all shows "materials soon". Lesson 2 (Kirish) is the 2.0 lesson converted to blocks: slides (78), amaliyot (guide + 7 exercises, each a group with files and prompts) and vazifa (sources, guide, two prompt groups). Its files are the 2.0 `.placeholder` stand-ins.
 
 Example (shortened) `lesson.uz.json` of a lesson with all parts:
 

@@ -387,9 +387,10 @@ const I18N = {uz: {
   'prep.3.foot': 'Oʻrnatish chiqmasa, xatoning skrinshotini mentoringizga yuboring. 01-dars oxirida mentorlar yordam beradi.',
   'prep.btn': 'Birinchi darsgacha', 'prep.btn_aria': 'Birinchi darsgacha',
   'pre.label': 'Kursgacha materiallar',
-  'pre.sub': 'Infratuzilma va HEAD platformalari',
-  'pre.lede': 'Kurs boshlanishidan oldin kerak boʻladigan materiallar va HEADʼning boshqa oʻquv platformalariga havolalar.',
+  'pre.sub': 'Infratuzilma va foydali platformalar',
+  'pre.lede': 'Kurs boshlanishidan oldin kerak boʻladigan materiallar va foydali oʻquv platformalariga havolalar.',
   'setup.title': 'Oʻrnatish va tayyorgarlik',
+  'pre.open': 'Ochish',
 }, ru: /*RU*/{
   "common.close": "Закрыть",
   "common.back": "Назад",
@@ -841,12 +842,13 @@ const I18N = {uz: {
   "prep.btn": "До первого урока",
   "prep.btn_aria": "До первого урока",
   "pre.label": "Материалы до курса",
-  "pre.sub": "Инфраструктура и платформы HEAD",
-  "pre.lede": "Материалы, которые нужны до начала курса, и ссылки на другие учебные платформы HEAD.",
+  "pre.sub": "Инфраструктура и полезные платформы",
+  "pre.lede": "Материалы, которые нужны до начала курса, и ссылки на полезные учебные платформы.",
   "setup.title": "Установка и подготовка",
   "pre.code_copy": "Скопировать промокод",
   "toast.code_copied": "Промокод скопирован",
-  "pre.code": "Промокод"
+  "pre.code": "Промокод",
+  "pre.open": "Открыть"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1294,12 +1296,13 @@ const I18N = {uz: {
   "prep.btn": "Before the first lesson",
   "prep.btn_aria": "Before the first lesson",
   "pre.label": "Materials before the course",
-  "pre.sub": "Infrastructure and HEAD platforms",
-  "pre.lede": "Materials you need before the course starts, and links to the other HEAD learning platforms.",
+  "pre.sub": "Infrastructure and useful platforms",
+  "pre.lede": "Materials you need before the course starts, and links to useful learning platforms.",
   "setup.title": "Setup and preparation",
   "pre.code_copy": "Copy the promo code",
   "toast.code_copied": "Promo code copied",
-  "pre.code": "Promo code"
+  "pre.code": "Promo code",
+  "pre.open": "Open"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive

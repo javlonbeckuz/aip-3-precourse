@@ -15,7 +15,204 @@
   ],
   "slideCount": 0,
   "slideKind": "image",
-  "amaliyot": null,
+  "amaliyot": {
+    "text": "Bu amaliyotda Claude Code bilan kompaniya papkasini yaratasiz, Kit 2 bilan pilot jarayonni tanlaysiz va uning birinchi rejasini yozasiz.\n\nClaude Code dasturlash vositasi emas. U kompyuteringizdagi fayllar bilan ishlaydi va oʻzbekcha yozilgan vazifani bajaradi.\n\nOʻz noutbukingizda, oʻz kompaniyangiz fayllari bilan ishlang. Mijozlarning shaxsiy maʼlumotlarini chatga yozmang.\n\nEsc ishni toʻxtatib turadi, bekor qilmaydi. Qiynalsangiz: xatoning skrinshotini oling va Claudeʼdan soʻrang.",
+    "groups": [
+      {
+        "title": "01 Birinchi topshiriq",
+        "note": "ASOSIY. 1) Warpʼni oching va Claude Codeʼni ishga tushiring. 2) Downloads yoki Desktop papkasini tartibga keltirishni oddiy oʻzbek tilida soʻrang. 3) Natijani papkada tekshiring. Tayyor, agar: fayllar papkalarga ajratilgan, hech narsa oʻchirilmagan.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "01P1",
+            "title": "Papkani tartibga keltirish",
+            "target": "Claude Code",
+            "text": "Desktop papkamni tartibga keltiring.\nFayllarni turiga qarab papkalarga ajrating: hujjatlar, rasmlar, jadvallar, arxivlar, boshqa.\nHech bir faylni oʻchirmang. Avval rejani koʻrsating, men rozi boʻlsam koʻchiring.\nOxirida qaysi fayl qayerga ketganini roʻyxat qiling."
+          }
+        ]
+      },
+      {
+        "title": "02 Kompaniya papkasi",
+        "note": "ASOSIY. CLAUDE.md: loyihaning qoidalar kitobi va xotirasi, Claude uni har sessiyada oʻqiydi. /init: Claude papkani oʻqib, birinchi CLAUDE.md ni yozadi. 1) kompaniya papkasini yarating va Kit 1 .md fayllarini unga koʻchiring. 2) Claude Codeʼni shu papkada oching va /init ni ishga tushiring. 3) CLAUDE.md ga kompaniya nomi, mahsulotlar, boʻlimlar va ishlatiladigan tizimlarni yozing. Tayyor, agar: Claude kompaniyangiz haqidagi savolga CLAUDE.md asosida toʻgʻri javob beradi.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "02P1",
+            "title": "Papka tuzilmasi",
+            "target": "Claude Code",
+            "text": "Shu kompaniya papkasida quyidagi papkalarni yarating: kit1-interviews, kit2-scoring, kit3-agent, kit4-people, kit5-pilot, app.\nKit 1 .md fayllarini kit1-interviews papkasiga koʻchiring. Hech narsani oʻchirmang.\nOxirida papka tuzilmasini koʻrsating."
+          },
+          {
+            "id": "02P2",
+            "title": "CLAUDE.md ni toʻldirish",
+            "target": "Claude Code",
+            "text": "CLAUDE.md faylini kompaniyamiz maʼlumotlari bilan toʻldiring:\nKompaniya: [nomi], [nima bilan shugʻullanadi], [shahar]\nMahsulotlar yoki xizmatlar: [roʻyxat]\nBoʻlimlar: [boʻlimlar va har biridagi xodimlar soni]\nTizimlar: [Excel, Google Sheets, 1C, Telegram guruhlar va boshqalar]\nJavoblar oʻzbek lotin yozuvida boʻlsin.\nFaylni 15 qator atrofida tuting. Men bermagan maʼlumot qoʻshmang."
+          },
+          {
+            "id": "02P3",
+            "title": "CLAUDE.md ni tekshirish",
+            "target": "Claude Code",
+            "text": "CLAUDE.md asosida javob bering: bizda qaysi boʻlimlar bor va qaysi tizimlarda ishlaymiz.\nJavobni CLAUDE.md ning qaysi qatoridan olganingizni koʻrsating."
+          }
+        ]
+      },
+      {
+        "title": "03 Global koʻrsatmalar",
+        "note": "ASOSIY. Global koʻrsatmalar har bir chatga qoʻllanadi. 1) Claude ilovasida Settings boʻlimini oching. 2) Quyidagi matnni umumiy koʻrsatmalar maydoniga qoʻying va saqlang. Tayyor, agar: sozlamalar saqlangan.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "03P1",
+            "title": "Global koʻrsatmalar matni",
+            "target": "Claude → Settings",
+            "text": "Uzun tire belgisini ishlatmang.\nOrtiqcha soʻz va maqtovsiz, qisqa yozing.\nMen notoʻgʻri boʻlsam, ochiq ayting va sababini tushuntiring.\nHozir 2026-yil. Yangi maʼlumot qidirganda shuni hisobga oling."
+          }
+        ]
+      },
+      {
+        "title": "04 Kit 2 baholash",
+        "note": "ASOSIY. Kit 2 \"Qaysi jarayondan boshlaymiz\": jarayonlarni baholab, pilot uchun bittasini tanlaydi. Kit 2 shakli (Kit tabida). 1) /model bilan Haiku yoki Sonnetʼni tanlang. 2) Claude Codeʼdan Kit 1 fayllaridan 8 tagacha jarayon ajratishni va ularni A.2-A.7 boʻyicha baholashni soʻrang. 3) Rozi boʻlmagan har bahoni tuzating. 4) Value (qiymat) va Ease (osonlik) ni hisoblatib oling. Tayyor, agar: baholash jadvali kit2-scoring papkasida saqlangan.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "04P1",
+            "title": "Jarayonlarni baholash",
+            "target": "Claude Code",
+            "text": "kit1-interviews papkasidagi barcha B shakllarini oʻqing. Ulardan 8 tagacha jarayonni ajrating.\nHar jarayonni Kit 2 A shaklidagi A.2-A.7 mezonlari boʻyicha baholang: [Kit 2 shakli fayli].\nHar baho yonida qaysi fayl va qatorga tayanganingizni yozing. Maʼlumot yetmasa, bahoni [?] bilan belgilang.\nValue va Ease ni shakldagi qoida boʻyicha hisoblang.\nJadvalni kit2-scoring/scoring.md ga saqlang."
+          },
+          {
+            "id": "04P2",
+            "title": "Bahoni tuzatish",
+            "target": "Claude Code",
+            "text": "[Jarayon raqami] jarayonida [mezon] bahosini [yangi baho] ga oʻzgartiring.\nSabab: [sababingiz].\nValue va Ease ni qayta hisoblang va kit2-scoring/scoring.md ni saqlang."
+          }
+        ]
+      },
+      {
+        "title": "05 Kit 2 matritsasi",
+        "note": "ASOSIY. 1) Claude Codeʼdan Value/Ease matritsasini HTML sahifa qilib yasashni soʻrang. 2) Sahifani brauzerda oching. Tayyor, agar: matritsada har jarayon raqamli nuqta boʻlib turibdi.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "05P1",
+            "title": "Value/Ease matritsasi",
+            "target": "Claude Code",
+            "text": "kit2-scoring/scoring.md asosida Value/Ease matritsasini bitta HTML sahifa qilib yasang.\nGorizontal oʻq: Ease. Vertikal oʻq: Value.\nHar jarayon raqamli nuqta boʻlsin, matritsa ostida raqam va jarayon nomi roʻyxati.\nSahifani kit2-scoring/matrix.html ga saqlang va brauzerda oching."
+          }
+        ]
+      },
+      {
+        "title": "06 Model almashtirish",
+        "note": "ASOSIY. Arzon model saralash uchun, Opus rejalash va qaror uchun. 1) 4-mashqni Haiku yoki Sonnetʼda bajaring. 2) /model bilan Opusʼga oʻting va pilot tanlovini soʻrang. 3) /usage bilan sarfni tekshiring. Tayyor, agar: qaysi modelni qayerda va nega ishlatganingizni ayta olasiz.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "06P1",
+            "title": "Pilot tanlovi",
+            "target": "Claude Code, Opus",
+            "text": "kit2-scoring papkasidagi jadval va matritsani oʻqing. Birinchi pilot uchun bitta jarayonni tavsiya qiling.\nJavob uch qismdan iborat boʻlsin: B.1 tanlangan jarayon; B.2 nega aynan shu; B.3 hozir nimani qilmaymiz.\nMaʼlumot tartibsizligi xavfini alohida yozing.\nTavsiyani qaysi baholarga tayanib berganingizni koʻrsating."
+          }
+        ]
+      },
+      {
+        "title": "07 Birinchi PRD",
+        "note": "ASOSIY. Plan mode: Claude reja tuzadi va savol beradi, lekin hali hech narsa yozmaydi. PRD (mahsulot talablari hujjati): nima quriladi, kim uchun, chegaralar va hajm. 1) Shift+Tab bilan plan mode rejimiga oʻting. 2) Ehtimoliy pilotingizni tasvirlang va Claudeʼning savollariga javob bering. 3) PRD va junior dasturchi tushunadigan vazifalar roʻyxatini oling. Tayyor, agar: papkada prd.md va tasks.md bor.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "07P1",
+            "title": "Plan mode: PRD",
+            "target": "Claude Code, plan mode",
+            "text": "Pilot uchun vosita rejalashtirmoqchiman.\nJarayon: [tanlangan jarayon]\nKim ishlatadi: [xodim yoki boʻlim]\nHozir qanday bajariladi: [qisqa tavsif]\nQaysi tizimlarga tegadi: [tizimlar]\n\nAvval bu ishni AI boʻlmasa kimlar qilishini ayting, masalan biznes tahlilchi va dasturchi. Shu rollar nomidan menga savollar bering.\nJavoblarimdan keyin PRD yozing: maqsad, foydalanuvchilar, nima qiladi, nima qilmaydi, chegaralar, hajm.\nRejani tasdiqlaganimdan keyin prd.md ga saqlang."
+          },
+          {
+            "id": "07P2",
+            "title": "Vazifalar roʻyxati",
+            "target": "Claude Code",
+            "text": "prd.md ni junior dasturchi tushunadigan kichik vazifalarga boʻling.\nHar vazifada nima qilinishi va qachon tayyor hisoblanishi yozilsin.\nTartibni koʻrsating: nimadan boshlanadi, nima keyin keladi.\ntasks.md ga saqlang."
+          }
+        ]
+      },
+      {
+        "title": "08 Birinchi skill",
+        "note": "ASOSIY. Skill: Claude kerak boʻlganda yuklaydigan, saqlangan koʻrsatma fayli. 1) Claude Codeʼdan Kit 1 promptini skill qilishni soʻrang. 2) Uni yangi transkriptda /kit1 bilan ishga tushiring. 3) Vaqt qolsa, Kit 2 promptidan /kit2 yasang. Boshqalar yozgan skillni oʻrnatishdan oldin tekshiring: ayrimlari kalitlarni oʻgʻirlaydi yoki buyruq bajaradi. Tayyor, agar: skill / menyusida koʻrinadi.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "08P1",
+            "title": "/kit1 skill",
+            "target": "Claude Code",
+            "text": "Kit 1 promptidan kit1 nomli skill yarating.\nSkill intervyu matnini olib, Kit 1 B shakli jadvalini tuzsin va natijani kit1-interviews papkasiga xodim ismi bilan .md fayl qilib saqlasin.\nSkill qachon ishlatilishini tepadagi tavsifda aniq yozing.\n\nKit 1 prompti:\n[Kit 1 prompti matni]"
+          },
+          {
+            "id": "08P2",
+            "title": "/kit2 skill",
+            "target": "Claude Code",
+            "text": "Kit 2 baholash promptidan kit2 nomli skill yarating.\nSkill kit1-interviews papkasini oʻqisin, baholash jadvalini va Value/Ease matritsasini kit2-scoring papkasiga saqlasin.\nSkill qachon ishlatilishini tepadagi tavsifda aniq yozing."
+          }
+        ]
+      }
+    ]
+  },
   "kit": null,
-  "vazifa": null
+  "vazifa": {
+    "text": "Bu vazifada pilot jarayonni boʻlim boshligʻi bilan kelishasiz va uning hozirgi raqamlarini yozib olasiz. Baseline, yaʼni agentgacha boʻlgan raqamlar boʻlmasa, demo kunida natijani koʻrsatib boʻlmaydi.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: Kit 2 B.1-B.3 toʻldirilgan va boʻlim boshligʻi bilan kelishilgan; baseline raqamlari bor, tarixdan yoki kamida 3 kun jonli yozilgan; bot tokeni va xarajat limiti qoʻyilgan OpenRouter akkaunti tayyor; CLAUDE.md kompaniyani va tanlangan jarayonni tasvirlaydi.",
+    "groups": [
+      {
+        "title": "1. Kit 2 ni boʻlim boshligʻi bilan koʻrib chiqing",
+        "note": "Baholarni boʻlim boshligʻi bilan koʻrib chiqing: egalar odatda maʼlumot qanchalik tartibsizligini kam baholaydi. B.1 tanlangan jarayon, B.2 nega aynan shu, B.3 hozir nimani qilmaymiz bandlarini toʻldiring va saqlang. Tanlangan jarayonni CLAUDE.md ga ham yozing.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "V1P1",
+            "title": "CLAUDE.md ga pilot jarayon",
+            "target": "Claude Code",
+            "text": "CLAUDE.md ga \"Pilot jarayon\" boʻlimini qoʻshing.\nUnda boʻlsin: B.1 tanlangan jarayon; B.2 nega aynan shu; B.3 hozir nimani qilmaymiz; jarayonni kim bajaradi; qaysi tizimlarda ishlaydi.\nMaʼlumot: [boʻlim boshligʻi bilan kelishilgan javoblar].\nBoʻlim 10 qatordan oshmasin."
+          }
+        ]
+      },
+      {
+        "title": "2. Baseline ni boshlang",
+        "note": "Tanlangan jarayon boʻyicha toʻrt raqamni yozing: murojaatlar soni, oʻrtacha daqiqa, xatolar, takroriy murojaatlar. Bular Kit 5 B ning \"Agentgacha\" ustuni boʻladi. Tarix bor joyda (Telegram chat eksporti, Excel, CRM) oxirgi 2-4 haftani Claude Code bilan oling. Tarixi yoʻq raqamlarni 5 ish kuni jonli yozing.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "V2P1",
+            "title": "Tarixdan baseline",
+            "target": "Claude Code",
+            "text": "[Fayl nomi] faylida [jarayon nomi] boʻyicha oxirgi 2-4 haftaning maʼlumoti bor. Bu [Telegram chat eksporti, Excel yoki CRM eksporti].\nUndan shu raqamlarni hisoblang: nechta murojaat bajarilgan; bittasiga oʻrtacha necha daqiqa ketgan; nechta xato boʻlgan; nechta takroriy murojaat boʻlgan.\nHar raqam qanday hisoblanganini va qaysi maʼlumotga tayanganini koʻrsating. Hisoblab boʻlmaydiganini \"tarixda yoʻq\" deb belgilang.\nNatijani kit5-pilot/baseline.md ga \"Agentgacha\" ustuni sifatida saqlang."
+          },
+          {
+            "id": "V2P2",
+            "title": "Jonli yozish jadvali",
+            "target": "Claude Code",
+            "text": "kit5-pilot/baseline-live.md faylida 5 ish kuni uchun jadval tayyorlang.\nUstunlar: sana va faqat tarixda yoʻq raqamlar: [qaysi raqamlar, masalan: umumiy daqiqa, xatolar].\nHar kun oxirida men toʻldiraman. 5-kun tugagach, oʻrtachani hisoblab baseline.md ga qoʻshing."
+          }
+        ]
+      },
+      {
+        "title": "3. Telegram bot yarating",
+        "note": "BotFather orqali Telegram bot yarating. Token: botning paroli. Uni hech kimga bermang va chatga yozmang.",
+        "files": []
+      },
+      {
+        "title": "4. OpenRouter akkaunti",
+        "note": "OpenRouter: bitta kalit va bitta hisob orqali yuzlab modelga kirish. Akkaunt oching va 10-20 dollarlik xarajat limitini qoʻying.",
+        "files": []
+      },
+      {
+        "title": "5. Pilot tegadigan tizimlar",
+        "note": "Pilotingiz tegadigan tizimlarni roʻyxat qiling: Excel, Google Sheets, Telegram guruhlar, 1C, Bitrix, amoCRM, Click, Payme va boshqalar. API: dasturning boshqa dasturlar undan soʻrashi mumkin boʻlgan rasmiy menyusi. Har tizimda API bor-yoʻqligini aniqlang.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "V5P1",
+            "title": "Tizimlarda API bormi",
+            "target": "Claude",
+            "text": "Pilotim quyidagi tizimlarga tegadi: [tizimlar roʻyxati].\nHar biri uchun aniqlang: API bormi, rasmiy hujjati qayerda, ulash uchun mendan nima kerak.\nWebda tekshiring va har javobga manba havolasini bering. Topilmasa, \"topilmadi\" deb yozing.\nJadval: tizim, API bor yoki yoʻq, nima kerak, manba."
+          }
+        ]
+      }
+    ]
+  }
 }

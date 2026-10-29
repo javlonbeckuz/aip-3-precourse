@@ -105,7 +105,7 @@ function applyLessons(ls, lsUz, lang){
     pr.items.forEach((it, i) => { D[`prep.${i}.title`] = it.title; D[`prep.${i}.note`] = it.note; it.steps.forEach((s, j) => { D[`prep.${i}.s${j}`] = s; }); acts(it).forEach((a, j) => { D[`prep.${i}.a${j}`] = a.label; }); if (it.footnote) D[`prep.${i}.foot`] = it.footnote; });
   }
   const mo = pr && pr.more, ml = mo && Array.isArray(mo.links) ? mo.links.filter(x => x && /^https:\/\//.test(x.url)) : [];   // external learning platforms: links only, never counted as prep
-  PREP.more = ml.length ? {links: ml.map(x => ({url: x.url, code: typeof x.code === 'string' && /^[A-Za-z0-9_-]{1,32}$/.test(x.code) ? x.code : null}))} : null;   // code = an optional promo code shown with a copy button
+  PREP.more = ml.length ? {links: ml.map(x => ({url: x.url, code: typeof x.code === 'string' && /^[A-Za-z0-9_-]{1,32}$/.test(x.code) ? x.code : null, visual: x.visual === true}))} : null;   // code = an optional promo code shown with a copy button
   if (PREP.more) {
     const dflt = (I18N[lang] || I18N.uz)['prep.more.dflt'] || I18N.uz['prep.more.dflt'];   // the payload's language, not the UI's: never a blank heading or pill
     D['prep.more.title'] = mo.title || dflt; D['prep.more.note'] = mo.note || '';

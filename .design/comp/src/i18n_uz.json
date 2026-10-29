@@ -2210,17 +2210,22 @@
   "note": "UI text"
  },
  "pre.sub": {
-  "uz": "Infratuzilma va HEAD platformalari",
+  "uz": "Infratuzilma va foydali platformalar",
   "translate": true,
   "note": "UI text"
  },
  "pre.lede": {
-  "uz": "Kurs boshlanishidan oldin kerak boʻladigan materiallar va HEADʼning boshqa oʻquv platformalariga havolalar.",
+  "uz": "Kurs boshlanishidan oldin kerak boʻladigan materiallar va foydali oʻquv platformalariga havolalar.",
   "translate": true,
   "note": "UI text"
  },
  "setup.title": {
   "uz": "Oʻrnatish va tayyorgarlik",
+  "translate": true,
+  "note": "UI text"
+ },
+ "pre.open": {
+  "uz": "Ochish",
   "translate": true,
   "note": "UI text"
  },

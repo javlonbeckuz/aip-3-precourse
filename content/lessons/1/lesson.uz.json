@@ -16,7 +16,160 @@
   ],
   "slideCount": 0,
   "slideKind": "image",
-  "amaliyot": null,
+  "amaliyot": {
+    "text": "Bu amaliyotda oʻz biznesingiz uchun birinchi ishlaydigan vositani yasaysiz, modellarni solishtirasiz va Kit 1 intervyusini sinab koʻrasiz.\n\nOʻz noutbukingizda, oʻz biznesingiz maʼlumotlari bilan ishlang.\n\nMijozlarning shaxsiy maʼlumotlarini chatga yozmang. Chatga yozilgan matn provayderning data markaziga ketadi, odatda AQSh yoki Yevropaga.\n\nQiynalsangiz: xatoning skrinshotini oling va Claudeʼdan soʻrang. Hal boʻlmasa, mentorni chaqiring.",
+    "groups": [
+      {
+        "title": "01 Birinchi artifakt",
+        "note": "ASOSIY. 1) Claude ilovasida yangi chat oching. 2) Oʻz mahsulotlaringiz uchun narx kalkulyatori yoki bir sahifalik taklif soʻrang. 3) Natijada bitta narsani chat orqali oʻzgartiring. Tayyor, agar: kalkulyator haqiqiy mahsulotlaringiz bilan ishlaydi.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "01P1",
+            "title": "Narx kalkulyatori",
+            "target": "Claude",
+            "text": "Mening biznesim: [kompaniya nomi], [nima bilan shugʻullanadi].\nMahsulotlar va narxlar (soʻmda):\n[mahsulotlar roʻyxati va narxlari]\n\nShu mahsulotlar uchun narx kalkulyatorini artifakt qilib yasang. Mijoz mahsulot va miqdorni tanlasin, jami summa soʻmda chiqsin. [Chegirma yoki yetkazish sharti boʻlsa, shu yerga yozing.]\nInterfeys oʻzbek tilida boʻlsin. Roʻyxatda yoʻq mahsulot yoki narx qoʻshmang."
+          },
+          {
+            "id": "01P2",
+            "title": "Bir sahifalik taklif",
+            "target": "Claude",
+            "text": "Mening biznesim: [kompaniya nomi], [nima bilan shugʻullanadi].\nMijozlarim: [kimlar].\nAsosiy mahsulotlar va narxlar: [mahsulotlar roʻyxati va narxlari].\n\nMijozga yuboriladigan bir sahifalik taklifni artifakt qilib yasang. Unda nima taklif qilinishi, narxlar, shartlar va bogʻlanish uchun [telefon yoki Telegram] boʻlsin.\nOʻzbek tilida, qisqa yozing. Men bermagan raqam, kafolat yoki natija qoʻshmang."
+          },
+          {
+            "id": "01P3",
+            "title": "Bitta oʻzgartirish",
+            "target": "Claude",
+            "text": "Artifaktga shu oʻzgartirishni kiriting: [nima oʻzgarsin, masalan: 10 donadan ortiq xaridga chegirma qatorini qoʻshing].\nQolgan qismini oʻzgartirmang. Nima oʻzgarganini ikki gapda yozing."
+          }
+        ]
+      },
+      {
+        "title": "02 Token tajribasi",
+        "note": "ASOSIY. Token: matn boʻlinadigan va pul toʻlanadigan birlik. 1) Darsda koʻrsatilgan tokenizerni oching. 2) Biznesingizga oid bitta gapni oʻzbekcha qoʻying va tokenlar sonini yozib oling. 3) Xuddi shu gapni inglizcha qoʻying va solishtiring. Tayyor, agar: tokenlar farqini ayta olasiz.",
+        "files": []
+      },
+      {
+        "title": "03 Modellarni solishtirish",
+        "note": "ASOSIY. Claude modellari: Haiku arzon va tez, Sonnet oʻrta, Opus murakkab ish uchun. Open-weight model: fayli ochiq eʼlon qilingan, uni istalgan kishi oʻz serverida ishlata oladi (DeepSeek, Qwen). 1) Maxfiy boʻlmagan ikkita vazifa tanlang. 2) Har birini Claudeʼning ikki darajasida, keyin bepul open-weight chatda (DeepSeek yoki Qwen) bajaring. 3) Sifat va tezlikni yozib boring. DeepSeek saytida ishlasangiz ham, matn DeepSeek serveriga ketadi. Tayyor, agar: ikki vazifaning har biriga model tanladingiz va sababini ayta olasiz.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "03P1",
+            "title": "Matn yozish vazifasi",
+            "target": "Claude, DeepSeek yoki Qwen",
+            "text": "Biz [kompaniya nomi], [nima bilan shugʻullanadi].\n[Mahsulot yoki xizmat] haqida Telegram kanal uchun 3 ta qisqa post yozing. Har biri 60 soʻzdan oshmasin.\nOʻzbek lotin yozuvida, sodda tilda yozing. Narx yoki chegirma oʻylab topmang."
+          },
+          {
+            "id": "03P2",
+            "title": "Saralash vazifasi",
+            "target": "Claude, DeepSeek yoki Qwen",
+            "text": "Quyidagi mijoz xabarlarini toifalarga ajrating: buyurtma, narx soʻrash, shikoyat, boshqa.\nJadvalda har xabar, uning toifasi va bir gaplik sabab boʻlsin.\n\n[10-20 ta xabar, ism va telefon raqamlarisiz]"
+          }
+        ]
+      },
+      {
+        "title": "04 Kompaniya bilim bazasi",
+        "note": "ASOSIY. NotebookLM faqat siz yuklagan hujjatlardan javob beradi va manbani koʻrsatadi. 1) Yangi notebook oching va 3-5 ta hujjat yuklang: narxlar roʻyxati, ichki qoidalar, shartnoma namunasi. 2) 3 ta savol bering. 3) Hujjatlar orasidagi ziddiyatlarni topishni soʻrang. 4) Audio overview yoki quiz yarating. Tayyor, agar: manba iqtiboslari bilan 3 ta javob bor.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "04P1",
+            "title": "Hujjatdan savol",
+            "target": "NotebookLM → Chat",
+            "text": "Faqat yuklangan hujjatlarga tayanib javob bering: [savol, masalan: ulgurji mijozga qanday chegirma beriladi].\nHar javobga manba nomi va iqtibos keltiring. Hujjatda javob boʻlmasa, \"hujjatda yoʻq\" deb yozing, taxmin qilmang.\nOʻzbek lotin yozuvida yozing."
+          },
+          {
+            "id": "04P2",
+            "title": "Ziddiyatlarni topish",
+            "target": "NotebookLM → Chat",
+            "text": "Yuklangan hujjatlarni solishtiring va bir-biriga zid joylarni toping: narx, muddat, masʼul shaxs, shartlar.\nJadvalda har ziddiyat, ikkala manbadan iqtibos va kimdan aniqlashtirish kerakligi boʻlsin.\nZiddiyat topilmasa, shuni yozing. Oʻzbek lotin yozuvida yozing."
+          },
+          {
+            "id": "04P3",
+            "title": "Xodim uchun test",
+            "target": "NotebookLM → Studio → Quiz",
+            "text": "Yangi xodim uchun shu hujjatlar asosida 5 ta savollik test yarating.\nSavollar ish vaziyatlariga oid boʻlsin: narx, ichki qoidalar, shartnoma shartlari. Har javob izohida manba boʻlsin.\nOʻzbek lotin yozuvida yozing."
+          }
+        ]
+      },
+      {
+        "title": "05 Kit 1 mashqi",
+        "note": "ASOSIY. Kit 1 \"Ish qayerga ketadi\": xodim vaqti qaysi vazifalarga ketishini xaritaga tushiradi. Kit 1 shakli (Kit tabida). 1) Yoningizdagi hamkasb bilan juft boʻling va rozilik matnini ovoz chiqarib oʻqing. 2) A.1-A.7 savollari bilan 5 daqiqalik intervyu oʻtkazing va yozib oling. 3) Yozuvni Geminiʼda matnga aylantiring. 4) Matnga Kit 1 promptini qoʻllang va B shakli jadvalini oling. 5) Har raqamni yozuv bilan solishtiring: transkripsiya oʻzbekcha raqamlarda adashadi, \"bir uch-toʻrt yuz ming\" 1 300 000 boʻlib qoladi. Tayyor, agar: B shakli jadvali bor va kamida bitta raqam qoʻlda tuzatilgan.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "05P1",
+            "title": "Transkripsiya",
+            "target": "Gemini",
+            "text": "Ilova qilingan audio yozuvni oʻzbek tilida soʻzma-soʻz matnga aylantiring.\nSuhbatdoshlarni \"Soʻrovchi\" va \"Xodim\" deb ajrating.\nHar raqam, summa va vaqtni eshitilganidek soʻz bilan ham yozing, masalan: 300 000 (\"uch yuz ming\").\nTushunarsiz joyni [?] bilan belgilang, oʻzingizdan toʻldirmang."
+          },
+          {
+            "id": "05P2",
+            "title": "Kit 1 prompti: B shakli",
+            "target": "Claude",
+            "text": "Quyida xodim bilan intervyu matni va Kit 1 B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [shakl matni]\nIntervyu: [intervyu matni]"
+          }
+        ]
+      }
+    ]
+  },
   "kit": null,
-  "vazifa": null
+  "vazifa": {
+    "text": "Bu vazifada Kit 1 ni oʻz xodimlaringiz bilan oʻtkazasiz. Ikkinchi darsda Claude Code shu fayllar bilan ishlaydi.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: kamida 2 ta B shakli .md faylda saqlangan; daqiqa va chastotani xodimning oʻzi tuzatgan, [?] belgilari qolmagan; har vazifada B.9 toʻldirilgan; Claude Code Warpʼda ochiladi.",
+    "groups": [
+      {
+        "title": "1. Jamoaga sababini ayting",
+        "note": "Birinchi intervyudan oldin jamoaga bitta xabar yozing yoki qisqa yigʻilish qiling. Maqsad: ishni xaritaga tushirish, odamlarni almashtirish emas. Har intervyu boshida buni yana ayting.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "V1P1",
+            "title": "Jamoaga xabar",
+            "target": "Claude",
+            "text": "Men [kompaniya nomi] rahbariman. [Boʻlim nomi] xodimlari bilan 20-30 daqiqalik suhbat oʻtkazmoqchiman.\nMaqsad: kim qaysi ishga qancha vaqt sarflashini bilish va takrorlanadigan ishni AI bilan yengillashtirish. Maqsad odamlarni almashtirish emas.\nJamoaga Telegramda yuboriladigan xabar yozing: suhbat nima uchun, qancha vaqt oladi, yozib olinishi va yozuvni kim koʻrishi: [kim koʻradi].\nOddiy tilda, 80 soʻzdan oshmasin."
+          }
+        ]
+      },
+      {
+        "title": "2. 2-3 xodim bilan intervyu",
+        "note": "Bitta boʻlimdan 2-3 xodim bilan 20-30 daqiqalik Kit 1 A intervyusini oʻtkazing. Yozib olishdan oldin rozilik matnini oʻqing. Yakka ishlaydigan egalar va jamoasi yoʻq rahbarlar oʻzini yoki boʻlim boshligʻini intervyu qiladi. Kit 1 shakli (Kit tabida).",
+        "files": []
+      },
+      {
+        "title": "3. Matnga aylantiring va Kit 1 promptini ishlating",
+        "note": "Har intervyuni Geminiʼda matnga aylantiring, keyin Kit 1 promptini qoʻllang. Jadvaldagi har raqamni audio bilan tekshiring.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "V3P1",
+            "title": "Transkripsiya",
+            "target": "Gemini",
+            "text": "Ilova qilingan audio yozuvni oʻzbek tilida soʻzma-soʻz matnga aylantiring.\nSuhbatdoshlarni \"Soʻrovchi\" va \"[xodim ismi]\" deb ajrating.\nHar raqam, summa va vaqtni eshitilganidek soʻz bilan ham yozing, masalan: 300 000 (\"uch yuz ming\").\nTushunarsiz joyni [?] bilan belgilang, oʻzingizdan toʻldirmang."
+          },
+          {
+            "id": "V3P2",
+            "title": "Kit 1 prompti: B shakli",
+            "target": "Claude",
+            "text": "Quyida [xodim ismi], [lavozimi] bilan intervyu matni va Kit 1 B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [shakl matni]\nIntervyu: [intervyu matni]"
+          }
+        ]
+      },
+      {
+        "title": "4. Xodim bilan tekshiring",
+        "note": "Har B shaklini xodimning oʻziga koʻrsating. Daqiqa va chastotani u tuzatsin, [?] belgilari qolmasin. Haftalik soatlarni jamlang va har vazifaga B.9 belgisini qoʻying.",
+        "files": []
+      },
+      {
+        "title": "5. .md fayl qilib saqlang",
+        "note": "Har B shaklini alohida .md faylga saqlang, masalan kit1-dilnoza.md. Fayllarni ikkinchi darsga olib keling.",
+        "files": []
+      },
+      {
+        "title": "6. Warp va Claude Codeʼni tekshiring",
+        "note": "Noutbukingizda Warp va Claude Code ochilishini tekshiring. Ochilmasa, xatoning skrinshotini oling va Claudeʼdan soʻrang. Hal boʻlmasa, guruh chatiga yozing.",
+        "files": []
+      }
+    ]
+  }
 }

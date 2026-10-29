@@ -263,6 +263,20 @@ test('shipped lesson 0 names lessons in the padded form (01-dars, Lesson 01), ne
   }
 });
 
+test('shipped content: lessons 1 and 3-7 have amaliyot and vazifa (no slides, no kit), clean Uzbek, unique prompt ids', () => {
+  const c = createContent({ dir: REAL_CONTENT, now: () => 0 });
+  for (const n of [1, 3, 4, 5, 6, 7]) {
+    const L = c.lesson(n);
+    assert.deepEqual(c.has(n), { slides: false, amaliyot: true, kit: false, vazifa: true, prep: false }, `lesson ${n}`);
+    const txt = fs.readFileSync(path.join(REAL_CONTENT, 'lessons', String(n), 'lesson.uz.json'), 'utf8');
+    assert.ok(!txt.includes('—'), `${n}: em-dash`);
+    assert.doesNotMatch(txt, /[A-Za-zʻʼ]'[A-Za-zʻʼ]/, `${n}: straight apostrophe in a word`);
+    const ids = [...L.amaliyot.groups, ...L.vazifa.groups].flatMap((g) => (g.prompts ?? []).map((p) => p.id));
+    assert.equal(new Set(ids).size, ids.length, `${n}: prompt ids`);
+    for (const lg of ['ru', 'en']) assert.deepEqual(Object.keys(c.lesson(n, lg)).sort(), ['n', 'subtitle', 'summary', 'title', 'topics'], `${n} ${lg} stays meta-only`);
+  }
+});
+
 test('num: 1..6 over numbered lessons in order, null for lesson 0 and Kirish; summary counts numbered lessons only', (t) => {
   const c = createContent({ dir: tmpCopy(t), now: () => Date.parse('2026-10-30T10:00:00+05:00') }); // every fixture date has passed
   assert.deepEqual([0, 1, 2, 3, 4, 5, 6, 7].map((n) => c.lessonView(n, 'uz', 'shanba').num), [null, 1, null, 2, 3, 4, 5, 6]);

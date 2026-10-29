@@ -15,7 +15,161 @@
   ],
   "slideCount": 0,
   "slideKind": "image",
-  "amaliyot": null,
+  "amaliyot": {
+    "text": "Bu amaliyotda agentni noutbukdan 24/7 ishlaydigan serverga koʻchirasiz, pilot rejasini yozasiz va xodimlar bilan suhbatga tayyorlanasiz.\n\nKalitlar faqat .env faylida turadi: noutbukda ham, serverda ham. Ularni chatga va GitHubga yozmang.\n\nServer buyruqlarini oʻrganish shart emas. Claude Code serverga SSH orqali kiradi va ishni oʻzi bajaradi.\n\nQiynalsangiz: xatoning skrinshotini oling va Claudeʼdan soʻrang.",
+    "groups": [
+      {
+        "title": "01 GitHub zaxirasi",
+        "note": "ASOSIY. Git: kodning saqlash nuqtalari. Commit: bitta saqlash nuqtasi. Push: uni GitHubga yuborish. Private repozitoriyni faqat siz koʻrasiz. 1) Claude Codeʼdan private repozitoriy yaratishni va pilot kodini push qilishni soʻrang. 2) GitHubda fayllarni koʻrib chiqing. Tayyor, agar: kod private repozitoriyda koʻrinadi va unda kalit yoʻq.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "01P1",
+            "title": "Private repozitoriy",
+            "target": "Claude Code",
+            "text": "Shu loyiha uchun GitHubda private repozitoriy yarating va pilot kodini push qiling.\nPush qilishdan oldin .env va kalit bor boshqa fayllar repozitoriyga tushmasligini tekshiring.\nOxirida repozitoriy havolasini va unga kirgan fayllar roʻyxatini koʻrsating."
+          }
+        ]
+      },
+      {
+        "title": "02 Deploy",
+        "note": "ASOSIY. Server: doim ishlaydigan, boshqa joydagi kompyuter. Noutbukni yopsangiz, noutbukdagi bot toʻxtaydi. 1) VPS maʼlumotlari .env da ekanini tekshiring. 2) Claude Codeʼdan agentni deploy qilishni va avtomatik qayta ishga tushishni yoqishni soʻrang. 3) Noutbukni yoping va agentga telefondan yozing. Tayyor, agar: noutbuk yopiq holda agent telefoningizga javob beradi.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "02P1",
+            "title": "Agentni serverga chiqarish",
+            "target": "Claude Code",
+            "text": "VPS maʼlumotlari .env faylida. Shu agentni VPSga deploy qiling va [bot nomi] botini ulang.\nKalitlarni serverdagi .env ga koʻchiring, GitHubga emas.\nAgent ishdan chiqsa, avtomatik qayta ishga tushsin.\nHar qadamni oddiy soʻzlar bilan tushuntiring. Oxirida qanday tekshirishimni ayting."
+          }
+        ]
+      },
+      {
+        "title": "03 Domen yoki bot",
+        "note": "ASOSIY. Domen: serverning odamlar eslaydigan nomi. DNS: nom va IP manzilni bogʻlaydigan telefon kitobi. HTTPS: brauzerdagi qulf belgisi, trafik shifrlangan. 1) Agentingiz veb-sahifa boʻlsa, subdomenni VPSga ulang va HTTPS sozlang. 2) Telegram bot boʻlsa, u serverdan ishlayotganini tasdiqlang. Tayyor, agar: ochiq manzil yoki bot ishlaydi.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "03P1",
+            "title": "Subdomen va HTTPS",
+            "target": "Claude Code",
+            "text": "[Subdomen, masalan: bot.kompaniya.uz] ni VPSga ulamoqchiman. Domen [domen sotib olingan sayt] da.\nDNS da qaysi yozuvni qoʻshishim kerakligini aniq yozing.\nYozuv ishlagach, serverda HTTPS sozlang va manzil qulf belgisi bilan ochilishini tekshiring."
+          },
+          {
+            "id": "03P2",
+            "title": "Bot serverdan ishlayaptimi",
+            "target": "Claude Code",
+            "text": "Telegram bot noutbukdan emas, serverdan ishlayotganini tekshiring.\nServerdagi jarayon holatini va oxirgi xabarlar logini koʻrsating.\nNoutbukda ham bot nusxasi ishlayotgan boʻlsa, uni toʻxtating."
+          }
+        ]
+      },
+      {
+        "title": "04 Loglar",
+        "note": "ASOSIY. Log: server nima boʻlganini yozib boradigan kundalik. Biror narsa buzilsa, birinchi logga qaraladi. 1) Claudeʼdan oxirgi 20 qator logni koʻrsatishni va tushuntirishni soʻrang. Tayyor, agar: agent oxirgi marta nima qilganini ayta olasiz.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "04P1",
+            "title": "Oxirgi 20 qator",
+            "target": "Claude Code",
+            "text": "Serverdagi agent logining oxirgi 20 qatorini koʻrsating.\nHar qatorni oddiy soʻzlar bilan tushuntiring: qachon, nima boʻldi, xato bormi.\nOxirida agent oxirgi marta nima qilganini bir gapda yozing."
+          }
+        ]
+      },
+      {
+        "title": "05 Kit 5 A: pilot rejasi",
+        "note": "ASOSIY. Pilot: cheklangan, muddati belgilangan haqiqiy sinov. Toʻxtash sharti: sinovni darhol toʻxtatadigan holat. Kit 5 shakli (Kit tabida). 1) Mentor bilan A.1-A.9 ni toʻldiring. 2) Maqsad bitta raqam boʻlsin, masalan \"kuniga 60 daqiqadan 10 daqiqaga\". Tayyor, agar: reja kit5-pilot/plan.md da saqlangan.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "05P1",
+            "title": "Pilot rejasi qoralamasi",
+            "target": "Claude Code",
+            "text": "kit3-agent/instructions.md va kit5-pilot/baseline.md ni oʻqing.\nKit 5 A shakli (A.1-A.9) boʻyicha pilot rejasi qoralamasini tuzing: [Kit 5 shakli fayli].\nRejada boʻlsin: bitta raqamli maqsad; boshlanish va tugash sanasi; qamrov; agent nima qila oladi va nima qila olmaydi; muvaffaqiyat mezoni; toʻxtash sharti; kim tekshiradi; haftalik koʻrib chiqish vaqti.\nMaqsad baseline raqamidan kelib chiqsin. Bilmagan joyni toʻldirmang, menga savol bering.\nkit5-pilot/plan.md ga saqlang."
+          }
+        ]
+      },
+      {
+        "title": "06 Kit 4 A: koʻnikmalar xaritasi",
+        "note": "ASOSIY. Kit 4 \"Yangi rollar\": agent ishga tushgach xodimlar nima bilan band boʻlishini belgilaydi. Kit 4 shakli (Kit tabida). 1) Pilot taʼsir qiladigan har xodimni yozing. 2) Har biriga: eng kuchli koʻnikmasi va uning haqiqiy misoli, bugungi ishi, yangi roli, yangi tekshirish vazifasi, kerakli oʻqish. Tayyor, agar: koʻnikmalar xaritasi saqlangan.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "06P1",
+            "title": "Koʻnikmalar xaritasi",
+            "target": "Claude Code",
+            "text": "kit1-interviews va kit3-agent fayllarini oʻqing.\nPilot taʼsir qiladigan xodimlar uchun Kit 4 A jadvalini tuzing: ism, eng kuchli koʻnikma va haqiqiy misol, bugungi ishi, yangi roli, yangi tekshirish vazifasi, kerakli oʻqish.\nKoʻnikma va misolni oʻzingiz toʻqimang. Har xodim uchun menga savol bering va javobimni yozing.\nkit4-people/skills-map.md ga saqlang."
+          }
+        ]
+      },
+      {
+        "title": "07 Kit 4 B: oʻquv vazifasi",
+        "note": "ASOSIY. 1) Har xodimga 3 ta yaxshi va 3 ta yomon namuna asosida bitta oʻquv vazifasi tuzing. 2) Kit 4 promptini ishga tushiring. Tayyor, agar: mezonlari va 2 haftalik oʻlchovi bor oʻquv vazifasi tayyor.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "07P1",
+            "title": "Oʻquv vazifasi",
+            "target": "Claude Code",
+            "text": "kit4-people/skills-map.md va 3 ta yaxshi, 3 ta yomon namunani oʻqing: [namuna fayllari].\n[Xodim ismi] uchun Kit 4 B boʻyicha bitta oʻquv vazifasi tuzing.\nUnda boʻlsin: xodim nimani tekshirishni oʻrganadi; qaysi namuna yaxshi, qaysi yomon va nega; baholash mezonlari; 2 haftadan keyin nima bilan oʻlchanadi.\nkit4-people/[xodim ismi]-training.md ga saqlang."
+          }
+        ]
+      },
+      {
+        "title": "08 Rol oʻyini",
+        "note": "ASOSIY. Maqsad xodimni almashtirish emas, uning ishini yuqoriroq darajaga koʻtarish. 1) Juft boʻling: biri rahbar, biri xavotirdagi xodim. 2) 15 daqiqalik suhbatni mashq qiling: nima oʻzgaradi, nima qoladi, xodim endi nimani tekshiradi. 3) Rollarni almashtiring. Tayyor, agar: har sherik bitta xavotirni eshitgan va unga javob bergan.",
+        "files": []
+      }
+    ]
+  },
   "kit": null,
-  "vazifa": null
+  "vazifa": {
+    "text": "Bu hafta pilot ishga tushadi. Tartib: avval Kit 4 suhbati, keyin agent yoqiladi. Hech qachon aksincha emas.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: agent noutbukda emas, VPSda ishlaydi; kod private repozitoriyda, kalitlarsiz; Kit 5 A kelishilgan; Kit 4 suhbatlari ishga tushirishdan oldin oʻtkazilgan; pilot kamida 4 ish kuni ishlagan va xatolar jurnalida yozuvlar bor; Kit 5 B ning 1-hafta ustuni toʻldirilgan.",
+    "groups": [
+      {
+        "title": "1. Kit 4 suhbati",
+        "note": "Pilot taʼsir qiladigan har xodim bilan 15 daqiqalik suhbat oʻtkazing. Xavotirlarini B.8 ga, kelishuvni B.9 ga yozing. Koʻnikmalar xaritasini boʻlim boshligʻi bilan tekshiring.",
+        "files": []
+      },
+      {
+        "title": "2. Cheklangan ruxsatlar bilan ishga tushiring",
+        "note": "Ishga tushirishdan oldin Kit 5 A ni boʻlim boshligʻi bilan kelishing. Agent faqat qoralama tayyorlaydi, har natijani inson tasdiqlaydi. Agent pul oʻtkazmaydi, mijozga yozmaydi, maʼlumot oʻchirmaydi.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "V2P1",
+            "title": "Faqat qoralama rejimi",
+            "target": "Claude Code",
+            "text": "Agentni cheklangan rejimga oʻtkazing: u faqat qoralama tayyorlaydi va [masʼul xodim] ga Telegramda tasdiqlash uchun yuboradi.\nTasdiqsiz hech narsa joʻnatmasin, toʻlov qilmasin, maʼlumot oʻchirmasin.\nOʻzgarishni sinab koʻring, keyin serverga qayta deploy qiling."
+          }
+        ]
+      },
+      {
+        "title": "3. Xatolar jurnali",
+        "note": "Agentning har xatosini Kit 5 B.13 ga yozing: sana, nima boʻldi, kim topdi, nimani oʻzgartirdik.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "V3P1",
+            "title": "Jurnal fayli",
+            "target": "Claude Code",
+            "text": "kit5-pilot/errors.md faylini yarating.\nJadval ustunlari: sana, nima boʻldi, kim topdi, nimani oʻzgartirdik.\nMen yangi xatoni aytsam, uni shu jadvalga qoʻshing."
+          }
+        ]
+      },
+      {
+        "title": "4. 1-hafta ustuni",
+        "note": "Kit 5 B ning 1-hafta ustunini baseline bilan bir xil raqamlar boʻyicha toʻldiring.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "V4P1",
+            "title": "1-hafta raqamlari",
+            "target": "Claude Code",
+            "text": "Serverdagi agent loglari va [boshqa manba] dan pilotning birinchi haftasi raqamlarini hisoblang: murojaatlar soni, oʻrtacha daqiqa, xatolar, takroriy murojaatlar.\nkit5-pilot/baseline.md bilan bir xil usulda hisoblang va yonma-yon jadvalda koʻrsating.\nHar raqam qayerdan olinganini yozing."
+          }
+        ]
+      }
+    ]
+  }
 }
