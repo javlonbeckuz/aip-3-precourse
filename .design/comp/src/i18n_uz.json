@@ -2179,6 +2179,16 @@
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
+ "course.label_k": {
+  "uz": "Kurs",
+  "translate": true,
+  "note": "UI text"
+ },
+ "course.locked": {
+  "uz": "{k} ta dars yopiq",
+  "translate": true,
+  "note": "UI text · keep {params} as they are"
+ },
  "c.p.1.am.text": {
   "uz": "Namuna matn. Amaliyot darsda bajariladi: yoʻriqnomani oching, fayllarni yuklab oling va oʻz biznesingiz uchun birinchi vositani yasang.\n\nTayyor boʻlgach, pastdagi belgini bosing.",
   "translate": false,

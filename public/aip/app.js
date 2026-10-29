@@ -609,6 +609,8 @@ const I18N = {uz: {
   
   
   
+  'course.label_k': 'Kurs',
+  'course.locked': '{k} ta dars yopiq',
 }, ru: /*RU*/{
   "common.close": "Закрыть",
   "common.back": "Назад",
@@ -939,6 +941,8 @@ const I18N = {uz: {
   "course.label": "Курс · {n} уроков",
   "course.title": "Все уроки",
   "course.sheet_t": "Курс: {n} уроков",
+  "course.label_k": "Курс",
+  "course.locked": "закрыто уроков: {k}"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1265,6 +1269,8 @@ const I18N = {uz: {
   "course.label": "Course · {n} lessons",
   "course.title": "All lessons",
   "course.sheet_t": "Course: {n} lessons",
+  "course.label_k": "Course",
+  "course.locked": "{k} lessons locked"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
@@ -1585,8 +1591,10 @@ const nextBlock = (href, key, params) => `<a class="play on-light" href="${href}
 function homePage(){
   const [rd, rt] = ring(), ns = nextStep(), live = liveLesson(), pre = !courseStarted(), k = prepCount();
   const fxH = cls => `<span class="fx ${cls}" aria-hidden="true"><i></i><i></i><i></i></span>`;   // the back panel of the 3D folder: its tab and three paper sheets (they only move on hover, focus and press)
-  const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><span class="f-top"><span class="f-label">${T('course.label', {n: RN().length, pl: RN().length})}</span></span>
-        <span class="f-row"><span class="f-title">${T('course.title')}</span><span class="f-note">${I('lock', 14)}${T(LESSONS[1].d ? 'date.opens' : 'date.tba', {date: lessonDate(1)})}</span></span></button>${fxH('c-course')}</li>`;
+  const lockedLs = () => LN().filter(isLocked);   // every lesson that is still shut (Kirish included) lives in ONE normal-size locked folder
+  const courseCard = () => { const ks = lockedLs(), nx = ks.find(n => LESSONS[n].d);
+    return `<li class="g-course fo"><button class="folder c-course" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><span class="f-top"><span class="f-label">${pre ? T('course.label', {n: RN().length, pl: RN().length}) : T('course.label_k')}</span></span>
+        <span class="f-row"><span class="f-title">${pre ? T('course.title') : T('course.locked', {k: ks.length, pl: ks.length})}</span><span class="f-note">${I('lock', 14)}${T(nx ? 'date.opens' : 'date.tba', {date: nx ? lessonDate(nx) : ''})}</span></span></button>${fxH('c-course')}</li>`; };
   const cardHTML = n => {
     const tab = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`, arrow = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
     const label = n === 0 ? T('lesson.label0') : lessonLabel(n);
@@ -1604,9 +1612,6 @@ function homePage(){
     }
     return `<li class="g-${LCOL[n]} fo"><a class="folder ${colCls(n)}" href="${href}">${tab}<span class="f-top"><span class="f-label">${label}</span>${arrow}</span><span class="f-row"><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-note">${note}</span></span></a>${fxH(colCls(n))}</li>`;
   };
-  // after the start: the same big course folder, open (no tilt), with the lesson folders inside it as a grid; Tayyorgarlik stays outside, after it
-  const bigFolder = () => `<li class="kurs"><div class="folder c-course kfolder" role="group" aria-label="${esc(t('course.label', {n: RN().length, pl: RN().length}))}"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
-        <span class="f-top"><span class="f-label">${T('course.label', {n: RN().length, pl: RN().length})}</span></span><ul class="grid3 kin">${LN().map(cardHTML).join('')}</ul></div></li>`;
   let ringPrev = null; try { ringPrev = sessionStorage.getItem('aip3.ring'); sessionStorage.setItem('aip3.ring', rd); } catch (e) {}
   const ringUp = ringPrev !== null && rd > +ringPrev, ringFrom = ringUp ? +ringPrev / rt * 100 : 0;   // animate only a rise, from where it was
   const arrowH = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
@@ -1637,7 +1642,7 @@ function homePage(){
       ${hero}${cta}
     </div>
     <h2 class="sr-only">${T('home.lessons')}</h2>
-    <ul class="grid3 lessons${pre ? ' pre' : ' started'}">${pre ? cardHTML(0) + courseCard() : bigFolder() + cardHTML(0)}</ul>`};
+    <ul class="grid3 lessons${pre ? ' pre' : ''}">${pre ? cardHTML(0) + courseCard() : LN().filter(n => !isLocked(n)).map(cardHTML).join('') + (lockedLs().length ? courseCard() : '') + cardHTML(0)}</ul>`};
 }
 
 // ---- lesson 0: prep checklist
@@ -1869,9 +1874,10 @@ function refreshCounts(){ document.querySelectorAll('[data-cnt]').forEach(el => 
 function lockSheet(n){
   const sh = document.getElementById('lock-sheet'), ti = sh.querySelector('#ls-t'), de = sh.querySelector('.sheet-d'), ls = sh.querySelector('#ls-list');
   ls.hidden = true; de.hidden = false;
-  if (n === 'course') {   // the one course folder: every lesson with its label, title and date ("Sana keyinroq" while it has none)
-    ti.dataset.i18n = 'course.sheet_t'; ti.dataset.i18nP = JSON.stringify({n: RN().length, pl: RN().length}); de.hidden = true; ls.hidden = false;
-    ls.innerHTML = LN().map(k => `<li><span class="sl-n">${lnum(k) == null ? '' : lnH(k)}</span><span class="sl-t">${esc(ltitle(k))}</span><span class="sl-d">${LESSONS[k].d ? esc(lessonDate(k)) : T('date.tba')}</span></li>`).join('');
+  if (n === 'course') {   // the one locked folder: only the shut lessons, each with its label, title and date ("Sana keyinroq" while it has none)
+    const ks = LN().filter(isLocked);
+    ti.dataset.i18n = courseStarted() ? 'course.locked' : 'course.sheet_t'; ti.dataset.i18nP = JSON.stringify({k: ks.length, n: RN().length, pl: courseStarted() ? ks.length : RN().length}); de.hidden = true; ls.hidden = false;
+    ls.innerHTML = ks.map(k => `<li><span class="sl-n">${lnH(k)}</span>${lnum(k) == null ? '' : `<span class="sl-t">${esc(ltitle(k))}</span>`}<span class="sl-d">${LESSONS[k].d ? esc(lessonDate(k)) : T('date.tba')}</span></li>`).join('');
     applyStatic(sh); okina(sh); return sh;
   }
   ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n: lnT(n), date: lessonDate(n)}); de.dataset.i18n = 'lock.desc_n';

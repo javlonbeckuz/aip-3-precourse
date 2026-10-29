@@ -449,5 +449,7 @@
  "prep.3.s4": "If Claude Code answers your greeting, you are ready.",
  "prep.3.a0": "Download Warp",
  "prep.3.a1": "Claude Code guide",
- "prep.3.foot": "If the install fails, send a screenshot of the error to your mentor. Mentors help at the end of Lesson 01."
+ "prep.3.foot": "If the install fails, send a screenshot of the error to your mentor. Mentors help at the end of Lesson 01.",
+ "course.label_k": "Course",
+ "course.locked": "{k} lessons locked"
 }

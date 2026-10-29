@@ -820,14 +820,7 @@ html.hid .bgp path{animation-play-state:paused}
 .sl-n{grid-row:span 2;font:500 13px/1.5 var(--font-body);text-transform:uppercase;color:var(--text-2);min-width:5.2em}
 .sl-t{font:500 16px/1.3 var(--font-body)}
 .sl-d{font:400 14px/1.3 var(--font-body);color:var(--text-2)}
-.kfolder{justify-content:flex-start;gap:18px;min-height:0;padding:22px 16px 26px}
-.kfolder>.f-top{padding:0 6px}
-.grid3.kin{padding:0;gap:12px}
-.kfolder .folder.c-grey{outline:1px solid #BDBDBD;outline-offset:-1px}
-@container (min-width:900px){.grid3 .kfolder{min-height:0;padding:calc(31 * var(--u)) calc(27 * var(--u)) calc(34 * var(--u));gap:calc(24 * var(--u))}
-.grid3.kin{padding:0;gap:calc(28 * var(--u)) calc(16 * var(--u))}
-.grid3.started>li.kurs{grid-column:1/-1}
-.grid3.started>li:not(.kurs){grid-column:span 6}}
+.sl-t+.sl-d,.sl-n+.sl-d{grid-column:2}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}
@@ -1675,6 +1668,8 @@ const I18N = {uz: {
   'prep.3.a0': 'Warpʼni yuklab olish',
   'prep.3.a1': 'Claude Code qoʻllanmasi',
   'prep.3.foot': 'Oʻrnatish chiqmasa, xatoning skrinshotini mentoringizga yuboring. 01-dars oxirida mentorlar yordam beradi.',
+  'course.label_k': 'Kurs',
+  'course.locked': '{k} ta dars yopiq',
 }, ru: /*RU*/{
   "common.close": "Закрыть",
   "common.back": "Назад",
@@ -2122,7 +2117,9 @@ const I18N = {uz: {
   "prep.3.s4": "Если Claude Code ответил на приветствие, всё готово.",
   "prep.3.a0": "Скачать Warp",
   "prep.3.a1": "Руководство по Claude Code",
-  "prep.3.foot": "Если установка не получилась, отправьте скриншот ошибки своему ментору. В конце урока 01 менторы помогут."
+  "prep.3.foot": "Если установка не получилась, отправьте скриншот ошибки своему ментору. В конце урока 01 менторы помогут.",
+  "course.label_k": "Курс",
+  "course.locked": "закрыто уроков: {k}"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -2566,7 +2563,9 @@ const I18N = {uz: {
   "prep.3.s4": "If Claude Code answers your greeting, you are ready.",
   "prep.3.a0": "Download Warp",
   "prep.3.a1": "Claude Code guide",
-  "prep.3.foot": "If the install fails, send a screenshot of the error to your mentor. Mentors help at the end of Lesson 01."
+  "prep.3.foot": "If the install fails, send a screenshot of the error to your mentor. Mentors help at the end of Lesson 01.",
+  "course.label_k": "Course",
+  "course.locked": "{k} lessons locked"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
@@ -2889,8 +2888,10 @@ const nextBlock = (href, key, params) => `<a class="play on-light" href="${href}
 function homePage(){
   const [rd, rt] = ring(), ns = nextStep(), live = liveLesson(), pre = !courseStarted(), k = prepCount();
   const fxH = cls => `<span class="fx ${cls}" aria-hidden="true"><i></i><i></i><i></i></span>`;   // the back panel of the 3D folder: its tab and three paper sheets (they only move on hover, focus and press)
-  const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><span class="f-top"><span class="f-label">${T('course.label', {n: RN().length, pl: RN().length})}</span></span>
-        <span class="f-row"><span class="f-title">${T('course.title')}</span><span class="f-note">${I('lock', 14)}${T(LESSONS[1].d ? 'date.opens' : 'date.tba', {date: lessonDate(1)})}</span></span></button>${fxH('c-course')}</li>`;
+  const lockedLs = () => LN().filter(isLocked);   // every lesson that is still shut (Kirish included) lives in ONE normal-size locked folder
+  const courseCard = () => { const ks = lockedLs(), nx = ks.find(n => LESSONS[n].d);
+    return `<li class="g-course fo"><button class="folder c-course" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><span class="f-top"><span class="f-label">${pre ? T('course.label', {n: RN().length, pl: RN().length}) : T('course.label_k')}</span></span>
+        <span class="f-row"><span class="f-title">${pre ? T('course.title') : T('course.locked', {k: ks.length, pl: ks.length})}</span><span class="f-note">${I('lock', 14)}${T(nx ? 'date.opens' : 'date.tba', {date: nx ? lessonDate(nx) : ''})}</span></span></button>${fxH('c-course')}</li>`; };
   const cardHTML = n => {
     const tab = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`, arrow = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
     const label = n === 0 ? T('lesson.label0') : lessonLabel(n);
@@ -2908,9 +2909,6 @@ function homePage(){
     }
     return `<li class="g-${LCOL[n]} fo"><a class="folder ${colCls(n)}" href="${href}">${tab}<span class="f-top"><span class="f-label">${label}</span>${arrow}</span><span class="f-row"><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-note">${note}</span></span></a>${fxH(colCls(n))}</li>`;
   };
-  // after the start: the same big course folder, open (no tilt), with the lesson folders inside it as a grid; Tayyorgarlik stays outside, after it
-  const bigFolder = () => `<li class="kurs"><div class="folder c-course kfolder" role="group" aria-label="${esc(t('course.label', {n: RN().length, pl: RN().length}))}"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
-        <span class="f-top"><span class="f-label">${T('course.label', {n: RN().length, pl: RN().length})}</span></span><ul class="grid3 kin">${LN().map(cardHTML).join('')}</ul></div></li>`;
   let ringPrev = null; try { ringPrev = sessionStorage.getItem('aip3.ring'); sessionStorage.setItem('aip3.ring', rd); } catch (e) {}
   const ringUp = ringPrev !== null && rd > +ringPrev, ringFrom = ringUp ? +ringPrev / rt * 100 : 0;   // animate only a rise, from where it was
   const arrowH = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
@@ -2941,7 +2939,7 @@ function homePage(){
       ${hero}${cta}
     </div>
     <h2 class="sr-only">${T('home.lessons')}</h2>
-    <ul class="grid3 lessons${pre ? ' pre' : ' started'}">${pre ? cardHTML(0) + courseCard() : bigFolder() + cardHTML(0)}</ul>`};
+    <ul class="grid3 lessons${pre ? ' pre' : ''}">${pre ? cardHTML(0) + courseCard() : LN().filter(n => !isLocked(n)).map(cardHTML).join('') + (lockedLs().length ? courseCard() : '') + cardHTML(0)}</ul>`};
 }
 
 // ---- lesson 0: prep checklist
@@ -3208,9 +3206,10 @@ function refreshCounts(){ document.querySelectorAll('[data-cnt]').forEach(el => 
 function lockSheet(n){
   const sh = document.getElementById('lock-sheet'), ti = sh.querySelector('#ls-t'), de = sh.querySelector('.sheet-d'), ls = sh.querySelector('#ls-list');
   ls.hidden = true; de.hidden = false;
-  if (n === 'course') {   // the one course folder: every lesson with its label, title and date ("Sana keyinroq" while it has none)
-    ti.dataset.i18n = 'course.sheet_t'; ti.dataset.i18nP = JSON.stringify({n: RN().length, pl: RN().length}); de.hidden = true; ls.hidden = false;
-    ls.innerHTML = LN().map(k => `<li><span class="sl-n">${lnum(k) == null ? '' : lnH(k)}</span><span class="sl-t">${esc(ltitle(k))}</span><span class="sl-d">${LESSONS[k].d ? esc(lessonDate(k)) : T('date.tba')}</span></li>`).join('');
+  if (n === 'course') {   // the one locked folder: only the shut lessons, each with its label, title and date ("Sana keyinroq" while it has none)
+    const ks = LN().filter(isLocked);
+    ti.dataset.i18n = courseStarted() ? 'course.locked' : 'course.sheet_t'; ti.dataset.i18nP = JSON.stringify({k: ks.length, n: RN().length, pl: courseStarted() ? ks.length : RN().length}); de.hidden = true; ls.hidden = false;
+    ls.innerHTML = ks.map(k => `<li><span class="sl-n">${lnH(k)}</span>${lnum(k) == null ? '' : `<span class="sl-t">${esc(ltitle(k))}</span>`}<span class="sl-d">${LESSONS[k].d ? esc(lessonDate(k)) : T('date.tba')}</span></li>`).join('');
     applyStatic(sh); okina(sh); return sh;
   }
   ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n: lnT(n), date: lessonDate(n)}); de.dataset.i18n = 'lock.desc_n';
