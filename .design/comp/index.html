@@ -842,6 +842,8 @@ html.hid .bgp path{animation-play-state:paused}
 @container (min-width:900px){.f-start{width:calc(100 * var(--u))}
 .folder:has(>.f-start) .f-note{max-width:calc(100% - 122px)}}
 .fx.c-cream{--p1:#fff;--p2:#EDE8C9;--p3:#DAD4AD}
+.f-biglock{position:absolute;right:24px;top:50%;width:64px;height:64px;transform:translateY(-50%);pointer-events:none}
+@container (min-width:900px){.f-biglock{right:calc(48 * var(--u));width:calc(120 * var(--u));height:calc(120 * var(--u))}}
 .ex-wrap .prep-more{margin:24px 0 0}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
@@ -2925,7 +2927,7 @@ const nextBlock = (href, key, params) => `<a class="play on-light" href="${href}
 function homePage(){
   const [rd, rt] = ring(), ns = nextStep(), live = liveLesson(), pre = !courseStarted(), k = prepCount();
   const fxH = cls => `<span class="fx ${cls}" aria-hidden="true"><i></i><i></i><i></i></span>`;   // the back panel of the 3D folder: its tab and three paper sheets (they only move on hover, focus and press)
-  const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><span class="f-top"><span class="f-label">${T('course.label', {n: RN().length, pl: RN().length})}</span></span>
+  const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><svg class="f-biglock" viewBox="0 0 64 64" aria-hidden="true"><path d="M21 29V20a11 11 0 0 1 22 0v9" fill="none" stroke="#000" stroke-width="6"/><rect x="12" y="27" width="40" height="31" rx="6" fill="#000"/><circle cx="32" cy="40" r="4" fill="#002EFF"/><rect x="30" y="41" width="4" height="9" rx="2" fill="#002EFF"/></svg><span class="f-top"><span class="f-label">${T('course.label', {n: RN().length, pl: RN().length})}</span></span>
         <span class="f-row"><span class="f-title">${T('course.title')}</span><span class="f-note">${I('lock', 14)}${T(LESSONS[1].d ? 'date.opens' : 'date.tba', {date: lessonDate(1)})}</span></span></button>${fxH('c-course')}</li>`;
   const flagH = n => LCOL[n] === 'cream' ? '<svg class="f-flag" aria-hidden="true"><use href="#i-flag"/></svg>'   // the finish flag of the last lesson: decorative, bottom right, in every state
     : lnum(n) === 1 ? '<svg class="f-flag f-start" viewBox="0 0 100 34" aria-hidden="true"><use href="#i-start"/><text x="50" y="15.5" text-anchor="middle">START</text></svg>' : '';   // its twin on lesson 01: two flags with START between

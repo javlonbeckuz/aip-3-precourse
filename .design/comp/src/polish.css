@@ -266,4 +266,7 @@ html.hid .bgp path{animation-play-state:paused}
 .folder:has(>.f-start) .f-note{max-width:calc(100% - 100px)}
 @container (min-width:900px){.f-start{width:calc(100 * var(--u))}.folder:has(>.f-start) .f-note{max-width:calc(100% - 122px)}}
 .fx.c-cream{--p1:#fff;--p2:#EDE8C9;--p3:#DAD4AD}
+/* big black lock on the locked course folder (user, 2026-10-29): right side, centred, decorative */
+.f-biglock{position:absolute;right:24px;top:50%;width:64px;height:64px;transform:translateY(-50%);pointer-events:none}
+@container (min-width:900px){.f-biglock{right:calc(48 * var(--u));width:calc(120 * var(--u));height:calc(120 * var(--u))}}
 .ex-wrap .prep-more{margin:24px 0 0}
