@@ -55,7 +55,7 @@ function units(n){
 const lProg = n => { const u = units(n); return [u.filter(x => x.done).length, u.length]; };
 const lDone = n => { if (LESSONS[n].lock && Object.keys(LESSONS[n].lock).length) return false; const [d, tt] = lProg(n); return tt > 0 && d === tt; };   // a lesson with a part still locked is not finished
 const allDone = () => LN().every(n => !isLocked(n) && (lDone(n) || lProg(n)[1] === 0)) && LN().some(n => lProg(n)[1] > 0);   // every lesson is open and finished; an open lesson with nothing to count (soon, or Kit only) does not hold it back
-const ring = () => [LN().filter(n => !isLocked(n) && (lDone(n) || (allDone() && lProg(n)[1] === 0))).length, LN().length];   // always done/N; only when the course is all done do empty open lessons count as done, so "6/6" stands next to "all done"
+const ring = () => [LN().filter(n => !isLocked(n) && (lDone(n) || (allDone() && lProg(n)[1] === 0))).length, LN().length];   // always done/N; only when the course is all done do empty open lessons count as done, so "7/7" stands next to "all done"
 // first unfinished item of a lesson, with a precise label and target ("Keyingi qadam"); `what` is the label without the lesson prefix
 function nextOf(n){
   const u = units(n).find(x => !x.done); if (!u) return null;
@@ -113,14 +113,17 @@ const nextBlock = (href, key, params) => `<a class="play on-light" href="${href}
 // ---------------- screens ----------------
 function homePage(){
   const [rd, rt] = ring(), ns = nextStep(), live = liveLesson(), pre = !courseStarted(), k = prepCount();
+  const fxH = cls => `<span class="fx ${cls}" aria-hidden="true"><i></i><i></i><i></i></span>`;   // the back panel of the 3D folder: its tab and three paper sheets (they only move on hover, focus and press)
+  const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><span class="f-top"><span class="f-label">${T('course.label', {n: LN().length})}</span></span>
+        <span class="f-row"><span class="f-title">${T('course.title')}</span><span class="f-note">${I('lock', 14)}${T(LESSONS[1].d ? 'date.opens' : 'date.tba', {date: lessonDate(1)})}</span></span></button>${fxH('c-course')}</li>`;
   const cardHTML = n => {
     const tab = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`, arrow = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
     const label = n === 0 ? T('lesson.label0') : T('lesson.label', {n: num2(n), date: lessonDate(n)});
     let note, href = `#/dars/${n}`;
     if (n === 0) { note = k === 4 ? `${I('check', 14)}${T('note.done', {d: 4, t: 4, pl: 4})}` : courseStarted() ? T('note.open', {d: k, t: 4, pl: 4}) : !LESSONS[0].d ? T('prep.cnt', {d: k, pl: 4}) : T('note.prep_todo', {until: t('date.until', {date: lessonDate(0)}), d: k, pl: 4}); }
     else if (isLocked(n)) {   // before its date: the lesson keeps its own colour, with a lock and the date (once, in the note)
-      return `<li class="g-${LCOL[n]}"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${T('lesson.n', {n: num2(n)})}</span></span>
-        <span class="f-row"><span><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-sub">${T(`lesson.${n}.sub`)}</span></span><span class="f-note">${I('lock', 14)}${T(LESSONS[n].d ? 'date.opens' : 'date.tba', {date: lessonDate(n)})}</span></span></button></li>`;
+      return `<li class="g-${LCOL[n]} fo"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${T('lesson.n', {n: num2(n)})}</span></span>
+        <span class="f-row"><span><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-sub">${T(`lesson.${n}.sub`)}</span></span><span class="f-note">${I('lock', 14)}${T(LESSONS[n].d ? 'date.opens' : 'date.tba', {date: lessonDate(n)})}</span></span></button>${fxH('c-' + LCOL[n])}</li>`;
     } else {
       const [d, tt] = lProg(n);
       if (tt === 0) note = T('note.soon');   // an open lesson whose materials are not in yet
@@ -128,7 +131,7 @@ function homePage(){
       else if (n === live) note = `<span class="dot" aria-hidden="true"></span><span>${T('note.live_a')}<span class="nw2">${T('note.live_b')}</span>${T('note.live_c', {d, t: tt, pl: tt})}</span>`;
       else note = T('note.open', {d, t: tt, pl: tt});
     }
-    return `<li class="g-${LCOL[n]}"><a class="folder ${colCls(n)}" href="${href}">${tab}<span class="f-top"><span class="f-label">${label}</span>${arrow}</span><span class="f-row"><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-note">${note}</span></span></a></li>`;
+    return `<li class="g-${LCOL[n]} fo"><a class="folder ${colCls(n)}" href="${href}">${tab}<span class="f-top"><span class="f-label">${label}</span>${arrow}</span><span class="f-row"><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-note">${note}</span></span></a>${fxH(colCls(n))}</li>`;
   };
   let ringPrev = null; try { ringPrev = sessionStorage.getItem('aip3.ring'); sessionStorage.setItem('aip3.ring', rd); } catch (e) {}
   const ringUp = ringPrev !== null && rd > +ringPrev, ringFrom = ringUp ? +ringPrev / rt * 100 : 0;   // animate only a rise, from where it was
@@ -160,7 +163,7 @@ function homePage(){
       ${hero}${cta}
     </div>
     <h2 class="sr-only">${T('home.lessons')}</h2>
-    <ul class="grid3 lessons">${[0, ...LN()].map(cardHTML).join('')}</ul>`};
+    <ul class="grid3 lessons${pre ? ' pre' : ''}">${pre ? cardHTML(0) + courseCard() : [...LN(), 0].map(cardHTML).join('')}</ul>`};
 }
 
 // ---- lesson 0: prep checklist
@@ -425,12 +428,18 @@ function refreshCounts(){ document.querySelectorAll('[data-cnt]').forEach(el => 
 
 // the locked-lesson sheet (static markup in the page): its title and text depend on which lesson was tapped; applyStatic re-renders them with these parameters on a language switch
 function lockSheet(n){
-  const sh = document.getElementById('lock-sheet'), ti = sh.querySelector('#ls-t'), de = sh.querySelector('.sheet-d');
+  const sh = document.getElementById('lock-sheet'), ti = sh.querySelector('#ls-t'), de = sh.querySelector('.sheet-d'), ls = sh.querySelector('#ls-list');
+  ls.hidden = true; de.hidden = false;
+  if (n === 'course') {   // the one course folder: every lesson with its label, title and date ("Sana keyinroq" while it has none)
+    ti.dataset.i18n = 'course.sheet_t'; ti.dataset.i18nP = JSON.stringify({n: LN().length, pl: LN().length}); de.hidden = true; ls.hidden = false;
+    ls.innerHTML = LN().map(k => `<li><span class="sl-n">${T('lesson.n', {n: num2(k)})}</span><span class="sl-t">${esc(ltitle(k))}</span><span class="sl-d">${LESSONS[k].d ? esc(lessonDate(k)) : T('date.tba')}</span></li>`).join('');
+    applyStatic(sh); okina(sh); return sh;
+  }
   ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n: num2(n), date: lessonDate(n)}); de.dataset.i18n = 'lock.desc_n';
   applyStatic(sh); okina(sh); return sh;
 }
 const openLockSheet = n => lockSheet(n).showModal();
-document.addEventListener('click', e => { const b = e.target.closest('[data-lock]'); if (b) lockSheet(+b.dataset.lock); }, true);   // the card's own handler opens it: set the text first
+document.addEventListener('click', e => { const b = e.target.closest('[data-lock]'); if (b) lockSheet(b.dataset.lock === 'course' ? 'course' : +b.dataset.lock); }, true);   // the card's own handler opens it: set the text first
 //#PROTO:begin reviewbar
 // review bar: the demo date (?today=...) changes every lesson state at once
 function setToday(key){

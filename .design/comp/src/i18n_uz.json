@@ -229,20 +229,10 @@
   "translate": true,
   "note": "small label on the new-lesson popup, ≤ 24 chars"
  },
- "popup.title": {
-  "uz": "3-dars · Skill va agentlar",
-  "translate": true,
-  "note": "popup title, 17px UPPERCASE wide font, ≤ 32 chars"
- },
  "popup.open": {
   "uz": "Darsni ochish",
   "translate": true,
   "note": "black pill button on the popup, ≤ 16 chars"
- },
- "popup.live": {
-  "uz": "Yangi dars ochildi: 3-dars, Skill va agentlar.",
-  "translate": true,
-  "note": "screen-reader announcement when the popup appears"
  },
  "toast.done": {
   "uz": "{no} bajarildi",
@@ -620,7 +610,7 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.2.note": {
-  "uz": "Praktikumning asosiy vositasi. Kamida Pro tarifi kerak, 2-darsdan Max tavsiya etiladi.",
+  "uz": "Praktikumning asosiy vositasi. Kamida Pro tarifi kerak, 03-darsdan Max tavsiya etiladi.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
@@ -878,26 +868,6 @@
   "uz": "Nusxa olinmadi. Matnni bosib turing va «Nusxalash»ni tanlang.",
   "translate": true,
   "note": "undo toast at the bottom; ≤ 28 chars"
- },
- "back.am1": {
-  "uz": "1-dars · Amaliyot",
-  "translate": true,
-  "note": "UI text"
- },
- "back.vz1": {
-  "uz": "1-dars · Vazifa",
-  "translate": true,
-  "note": "UI text"
- },
- "back.lib": {
-  "uz": "2-dars · Kutubxona",
-  "translate": true,
-  "note": "UI text"
- },
- "back.h": {
-  "uz": "4-dars · Hermes kartalari",
-  "translate": true,
-  "note": "UI text"
  },
  "end.aria_ex": {
   "uz": "Mashq bajarildi deb belgilash",
@@ -1754,126 +1724,6 @@
   "translate": true,
   "note": "the lesson title on the home card, \\n = line break, ≤ 14 chars per line (UPPERCASE, wide font) · \\n = line break"
  },
- "prep.0.s0": {
-  "uz": "Darsga oʻz noutbukingiz bilan keling. Praktikum boshdan-oxir amaliy.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.0.s1": {
-  "uz": "Administrator huquqi borligini tekshiring: dastur oʻrnata olishingiz kerak. Ish kompyuteri boʻlsa, IT boʻlimidan soʻrang.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.0.s2": {
-  "uz": "Diskda kamida 5 GB boʻsh joy qoldiring.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.0.s3": {
-  "uz": "Quvvat adapterini ham oling.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.1.s0": {
-  "uz": "accounts.google.com/signup sahifasini oching.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.1.s1": {
-  "uz": "Ism, familiya va yangi pochta manzilini kiriting.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.1.s2": {
-  "uz": "Telefon raqamni tasdiqlang. SMS kod keladi.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.1.s3": {
-  "uz": "Parolni yozib qoʻying: darsda kerak boʻladi.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.1.a0": {
-  "uz": "Google akkaunt ochish",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.2.s0": {
-  "uz": "claude.ai ga kiring va «Continue with Google» orqali roʻyxatdan oʻting.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.2.s1": {
-  "uz": "Settings → Billing boʻlimida Pro tarifini tanlang. Narxi oyiga $20.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.2.s2": {
-  "uz": "Toʻlov xalqaro Visa yoki Mastercard bilan. Kartada dollar hisobi va onlayn toʻlov yoqilgan boʻlsin. Uzcard va Humo ishlamaydi.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.2.s3": {
-  "uz": "claude.ai/download sahifasidan Claude dasturini oʻrnating va oʻsha akkaunt bilan kiring.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.2.a0": {
-  "uz": "Claude dasturini yuklash",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.2.a1": {
-  "uz": "claude.ai da hisob ochish",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.2.foot": {
-  "uz": "2-darsdan Claude Code koʻp ishlatiladi va Pro limiti tez tugashi mumkin. Shunda Max tarifiga oʻting (oyiga $100 dan).",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.3.s0": {
-  "uz": "warp.dev saytidan Warpʼni yuklab oling va oʻrnating.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.3.s1": {
-  "uz": "Mac: Warpʼni oching va kiriting:",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.3.s2": {
-  "uz": "Windows: Warpʼni oching va kiriting:",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.3.s3": {
-  "uz": "claude deb yozing va Enter bosing. Brauzer ochiladi: Claude akkauntingiz bilan kiring.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.3.s4": {
-  "uz": "Claude Code salomingizga javob bersa, hammasi tayyor.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.3.a0": {
-  "uz": "Warpʼni yuklab olish",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.3.a1": {
-  "uz": "Claude Code qoʻllanmasi",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.3.foot": {
-  "uz": "Oʻrnatish chiqmasa, xatoning skrinshotini mentoringizga yuboring. 1-dars oxirida mentorlar yordam beradi.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
  "lesson.soon": {
   "uz": "Materiallar tez orada shu yerda chiqadi.",
   "translate": true,
@@ -2193,6 +2043,141 @@
   "uz": "Demo",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "course.label": {
+  "uz": "Kurs · {n} dars",
+  "translate": true,
+  "note": "UI text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "course.title": {
+  "uz": "Barcha darslar",
+  "translate": true,
+  "note": "UI text"
+ },
+ "course.sheet_t": {
+  "uz": "Kurs: {n} ta dars",
+  "translate": true,
+  "note": "UI text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "prep.0.s0": {
+  "uz": "Darsga oʻz noutbukingiz bilan keling. Praktikum boshdan-oxir amaliy.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.0.s1": {
+  "uz": "Administrator huquqi borligini tekshiring: dastur oʻrnata olishingiz kerak. Ish kompyuteri boʻlsa, IT boʻlimidan soʻrang.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.0.s2": {
+  "uz": "Diskda kamida 5 GB boʻsh joy qoldiring.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.0.s3": {
+  "uz": "Quvvat adapterini ham oling.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.1.s0": {
+  "uz": "accounts.google.com/signup sahifasini oching.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.1.s1": {
+  "uz": "Ism, familiya va yangi pochta manzilini kiriting.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.1.s2": {
+  "uz": "Telefon raqamni tasdiqlang. SMS kod keladi.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.1.s3": {
+  "uz": "Parolni yozib qoʻying: darsda kerak boʻladi.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.1.a0": {
+  "uz": "Google akkaunt ochish",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.s0": {
+  "uz": "claude.ai ga kiring va «Continue with Google» orqali roʻyxatdan oʻting.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.s1": {
+  "uz": "Settings → Billing boʻlimida Pro tarifini tanlang. Narxi oyiga $20.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.s2": {
+  "uz": "Toʻlov xalqaro Visa yoki Mastercard bilan. Kartada dollar hisobi va onlayn toʻlov yoqilgan boʻlsin. Uzcard va Humo ishlamaydi.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.s3": {
+  "uz": "claude.ai/download sahifasidan Claude dasturini oʻrnating va oʻsha akkaunt bilan kiring.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.a0": {
+  "uz": "Claude dasturini yuklash",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.a1": {
+  "uz": "claude.ai da hisob ochish",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.foot": {
+  "uz": "03-darsdan Claude Code koʻp ishlatiladi va Pro limiti tez tugashi mumkin. Shunda Max tarifiga oʻting (oyiga $100 dan).",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.3.s0": {
+  "uz": "warp.dev saytidan Warpʼni yuklab oling va oʻrnating.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.3.s1": {
+  "uz": "Mac: Warpʼni oching va kiriting:",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.3.s2": {
+  "uz": "Windows: Warpʼni oching va kiriting:",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.3.s3": {
+  "uz": "claude deb yozing va Enter bosing. Brauzer ochiladi: Claude akkauntingiz bilan kiring.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.3.s4": {
+  "uz": "Claude Code salomingizga javob bersa, hammasi tayyor.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.3.a0": {
+  "uz": "Warpʼni yuklab olish",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.3.a1": {
+  "uz": "Claude Code qoʻllanmasi",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.3.foot": {
+  "uz": "Oʻrnatish chiqmasa, xatoning skrinshotini mentoringizga yuboring. 01-dars oxirida mentorlar yordam beradi.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "c.p.1.am.text": {
   "uz": "Namuna matn. Amaliyot darsda bajariladi: yoʻriqnomani oching, fayllarni yuklab oling va oʻz biznesingiz uchun birinchi vositani yasang.\n\nTayyor boʻlgach, pastdagi belgini bosing.",

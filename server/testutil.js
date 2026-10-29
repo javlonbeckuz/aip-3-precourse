@@ -10,7 +10,7 @@ export const at = (s) => parseTime(s);
 
 export const FIXTURES = path.resolve(import.meta.dirname, 'fixtures');
 
-// a temp copy of the content (or an empty temp dir); removed after the test. The shipped lessons 1-6 are empty ('soon'), so a copy of the real
+// a temp copy of the content (or an empty temp dir); removed after the test. The shipped lessons 1 and 3-7 are empty ('soon'); lesson 2 (Kirish) has content. A copy of the real
 // content gets server/fixtures laid over it (lesson 1 with all parts and files, lesson 3 with 40 slides); { fixtures: false } skips that.
 export function tmpCopy(t, dir = REAL_CONTENT, { fixtures = true } = {}) {
   const d = fs.mkdtempSync(path.join(os.tmpdir(), 'aip-'));

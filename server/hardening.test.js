@@ -255,6 +255,14 @@ test('shipped lesson 0: Warp steps 1 and 2 end with ":" (the SPA adds the instal
   }
 });
 
+test('shipped lesson 0 names lessons in the padded form (01-dars, Lesson 01), never 1-dars', () => {
+  for (const lg of ['uz', 'ru', 'en']) {
+    const txt = fs.readFileSync(path.join(REAL_CONTENT, 'lessons/0', `lesson.${lg}.json`), 'utf8');
+    assert.doesNotMatch(txt, /\b[1-7]-dars/, lg);
+    assert.doesNotMatch(txt, /\b[1-7]-го занятия|\b[Ll]esson [1-7]\b|занятия/, lg);
+  }
+});
+
 test('content: a null entry makes the date of one lesson TBA; the dated ones must still increase', () => {
   const T = ['2026-09-13T10:00', null, '2026-09-27T10:00', '2026-10-04T10:00', '2026-10-11T10:00', '2026-10-18T10:00', '2026-10-25T10:00'];
   const base = { timezone: 'Asia/Tashkent', groups: { shanba: T, yakshanba: null } };
@@ -263,6 +271,7 @@ test('content: a null entry makes the date of one lesson TBA; the dated ones mus
   const swap = [...T]; swap[0] = '2026-10-30T10:00'; // dated entries out of order around the gap
   assert.throws(() => parseSchedule({ ...base, groups: { shanba: swap, yakshanba: null } }), /increasing/);
   assert.throws(() => parseSchedule({ ...base, groups: { shanba: [...T.slice(0, 1), 'soon', ...T.slice(2)], yakshanba: null } }), /bad time/);
+  assert.throws(() => parseSchedule({ ...base, groups: { shanba: [null, ...T.slice(1)], yakshanba: null } }), /lesson 1 needs a date; set the whole group to null instead/);
   assert.doesNotThrow(() => parseSchedule({ ...base, liveOverride: 3 }));
   assert.throws(() => parseSchedule({ ...base, liveOverride: 2 }), /date is to follow/); // a TBA lesson cannot be pinned live
 });

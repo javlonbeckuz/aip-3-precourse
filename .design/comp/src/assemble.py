@@ -83,7 +83,7 @@ s=s[:a]+'''<nav class="comp-bar" aria-label="Komp ekranlari">
   <strong>AI Praktikum · komp</strong>
   <button type="button" data-go="gate" aria-pressed="true">Kirish</button>
   <button type="button" data-go="dastur" aria-pressed="false">Asosiy</button>
-  <button type="button" data-go="dars" aria-pressed="false">1-dars</button>
+  <button type="button" data-go="dars" aria-pressed="false">01-dars</button>
   <button type="button" data-go="ex" aria-pressed="false">Boʻsh dars</button>
   <button type="button" data-go="type" aria-pressed="false">Shrift</button>
   <button type="button" data-go="all" aria-pressed="false">Hammasi</button>

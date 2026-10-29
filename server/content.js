@@ -35,6 +35,7 @@ export function parseSchedule(raw) {
     const a = raw.groups?.[g];
     if (a === null) { groups[g] = null; continue; } // dates to follow
     if (!Array.isArray(a) || a.length !== LESSON_COUNT) bad(`groups.${g} needs ${LESSON_COUNT} lesson start times or null`);
+    if (a[0] === null) bad(`groups.${g}: lesson 1 needs a date; set the whole group to null instead`); // lesson 0 (prep) hangs off lesson 1
     // an entry may be null: that one lesson's date is to follow (NaN here, fail-closed everywhere)
     groups[g] = a.map((s) => { if (s === null) return NaN; const t = parseTime(s); if (Number.isNaN(t)) bad(`groups.${g}: bad time "${s}"`); return t; });
     const dated = groups[g].filter(Number.isFinite);

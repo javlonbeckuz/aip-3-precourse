@@ -45,7 +45,7 @@ def post(s):
     rep('<nav class="gate-lang" aria-label="Til">', '<nav class="gate-lang" aria-label="Til" data-i18n-attr="aria-label:lang.label">')
     rep('<nav class="nm-lang" aria-label="Til">', '<nav class="nm-lang" aria-label="Til" data-i18n-attr="aria-label:lang.label">')
     rep('<aside class="nl" id="nl" aria-label="Yangi dars" hidden>', '<aside class="nl" id="nl" aria-label="Yangi dars" data-i18n-attr="aria-label:popup.label" hidden>')
-    rep('<p class="nl-k">Yangi dars ochildi</p><p class="nl-t">3-dars · Skill va agentlar</p>', '<p class="nl-k" data-i18n="popup.k">Yangi dars ochildi</p><p class="nl-t" data-i18n="popup.title">3-dars · Skill va agentlar</p>')
+    rep('<p class="nl-k">Yangi dars ochildi</p><p class="nl-t">03-dars · Claude Code</p>', '<p class="nl-k" data-i18n="popup.k">Yangi dars ochildi</p><p class="nl-t" id="nl-t"></p>')
     rep('<a class="nl-go" href="#/dars/3">Darsni ochish<svg', '<a class="nl-go" href="#/dars/3"><span data-i18n="popup.open">Darsni ochish</span><svg')
     rep('<button class="nl-x" type="button">Yopish</button>', '<button class="nl-x" type="button" data-i18n="common.close">Yopish</button>')
     rep('<div class="nmenu" id="nmenu" role="dialog" aria-label="Menyu" tabindex="-1" hidden>', '<div class="nmenu" id="nmenu" role="dialog" aria-label="Menyu" data-i18n-attr="aria-label:menu.label" tabindex="-1" hidden>')
@@ -55,8 +55,8 @@ def post(s):
     rep('<div><dt>Kurs</dt><dd>4 dars · 12 sen – 3 okt</dd></div>', '<div><dt data-i18n="menu.course">Kurs</dt><dd data-i18n="menu.course_value">4 dars · 12 sen – 3 okt</dd></div>')
     rep('<a class="nm-out" href="#/kirish">Chiqish</a>', '<a class="nm-out" href="#/kirish" data-i18n="menu.logout">Chiqish</a>')
     rep('<button type="button" id="toast-undo">Bekor qilish</button>', '<button type="button" id="toast-undo" data-i18n="toast.undo">Bekor qilish</button>')
-    rep('<p class="sheet-t" id="ls-t">4-dars 3-oktabr kuni ochiladi.</p>', '<p class="sheet-t" id="ls-t" data-i18n="lock.title">4-dars 3-oktabr kuni ochiladi.</p>')
-    rep('<p class="sheet-d">Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.</p>', '<p class="sheet-d" data-i18n="lock.desc_n">Slaydlar, amaliyot, kit va vazifa dars kuni shu yerda chiqadi.</p>')
+    rep('<p class="sheet-t" id="ls-t"></p>', '<p class="sheet-t" id="ls-t" data-i18n="lock.title"></p>')
+    rep('<p class="sheet-d">Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.</p>', '<p class="sheet-d" data-i18n="lock.desc_n">Slaydlar, amaliyot, kit va vazifa dars kuni shu yerda chiqadi.</p><ul class="sheet-l" id="ls-list" hidden></ul>')
     rep('<form method="dialog"><button class="sheet-x">Yopish</button></form>\n</dialog>', '<form method="dialog"><button class="sheet-x" data-i18n="common.close">Yopish</button></form>\n</dialog>')
     rep('<div class="type-grid">', '<h1 class="sr-only" data-i18n="title.type">Shrift</h1>\n    <div class="type-grid">')
     # ---------- script: strings that were hard-coded in the pre-prototype code
@@ -109,7 +109,7 @@ function openMenu(t){
     rep("b.querySelector('.cpl').textContent = 'Nusxalandi';", "b.querySelector('.cpl').textContent = t('common.copied');")
     rep("live.textContent = `Nusxalandi: ${li.querySelector('.tt').textContent.trim()}.` + (fresh ? ' Bajarildi. Bekor qilish: «Bajarildi» tugmasi.' : ' Bajarildi.');", "live.textContent = t(fresh ? 'live.copied_new' : 'live.copied', {title: li.dataset.t || li.querySelector('.tt').textContent.trim()});")
     rep("b.querySelector('.cpl').textContent = 'Nusxalash'; }, 2000);", "b.querySelector('.cpl').textContent = t('common.copy'); }, 2000);")
-    rep("nl.hidden = false; live.textContent = 'Yangi dars ochildi: 3-dars, Skill va agentlar.';", "nl.hidden = false; live.textContent = t('popup.live');")
+    rep("nl.hidden = false; live.textContent = 'Yangi dars ochildi: 03-dars, Claude Code.';", "const nt = t('lesson.n', {n: num2(3)}) + ' · ' + t('lesson.3.title'); document.getElementById('nl-t').textContent = nt; nl.hidden = false; live.textContent = t('popup.k') + ': ' + nt;")
     rep("if (b.id === 'rst') { S.reset(); try { localStorage.removeItem(NL_KEY); } catch {} return render(); }", "if (b.id === 'rst') { S.reset(); try { localStorage.removeItem(NL_KEY); } catch {} history.replaceState(null, '', '#/dastur'); return render(); }")
     # ---------- boot: language, cold entry, lock-sheet focus
     a = s.rindex('(function boot(){'); b2 = s.index('})();', a) + 5

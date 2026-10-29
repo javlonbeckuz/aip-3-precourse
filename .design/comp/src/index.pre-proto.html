@@ -156,6 +156,7 @@ a.folder:hover{filter:brightness(1.07)}
 .c-dark{--f-bg:var(--state-locked);--f-ink:var(--text-2)}/* lesson 4 while locked: lock + date */
 .c-night{--f-bg:var(--state-locked);--f-ink:var(--white)}/* lesson 4 once unlocked: same dark identity, normal ink */
 .c-orange{--f-bg:var(--orange);--f-ink:var(--black)}/* lesson 5: identity colour, black ink */
+.c-course{--f-bg:var(--white);--f-ink:var(--black)}/* the one locked course folder: white is no lesson's colour, so it reads as "all lessons, together" */
 .c-cyan{--f-bg:var(--cyan);--f-ink:var(--black)}/* lesson 07: identity colour, black ink (10.87:1) */
 .c-emerald{--f-bg:var(--emerald);--f-ink:var(--white)}/* lesson 6: identity colour, white ink at full opacity (subtitle and note too); never a success colour */
 .f-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
@@ -226,7 +227,7 @@ button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
   .page-head{grid-template-columns:1fr auto;align-items:end;padding:calc(62 * var(--u)) calc(61 * var(--u)) calc(20 * var(--u)) calc(66 * var(--u))}
   .grid3{grid-template-columns:repeat(12,1fr);gap:calc(28 * var(--u)) calc(16 * var(--u));padding:calc(40 * var(--u)) calc(61 * var(--u)) calc(64 * var(--u)) calc(66 * var(--u))}
   .grid3 .folder{min-height:calc(260 * var(--u))}
-  .grid3>li{grid-column:span 3}/* 4 + 4: the prep card and lessons 01-03 on the first row, 04-07 on the second, so the grid is always full */
+  .grid3>li{grid-column:span 3}.grid3.pre>li{grid-column:span 6}/* 4 + 4: the prep card and lessons 01-03 on the first row, 04-07 on the second, so the grid is always full */
 }
 /* course progress ring: thin track, thick flat arc from 12 o'clock, round caps; draws itself in on first show (no motion: final value) */
 .prog{display:flex;align-items:center;gap:16px;justify-self:start}
@@ -570,7 +571,7 @@ a.ef-row:hover .ef-dl{background:var(--white);color:var(--black)}
       </a></li>
       <li><a class="folder c-lilac" href="#s-dars">
         <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
-        <span class="f-top"><span class="f-label">1-dars · 12-sentabr</span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span>
+        <span class="f-top"><span class="f-label">01-dars · 21-noyabr</span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span>
         <span class="f-row"><span class="f-title">Kirish</span><span class="f-note">Ochiq · 3/6 qadam</span></span>
       </a></li>
       <li><a class="folder c-grey" href="#">
@@ -604,7 +605,7 @@ a.ef-row:hover .ef-dl{background:var(--white);color:var(--black)}
     <div class="hero">
       <div class="hero-l">
         <div class="dl-h"><a class="eyebrow" href="#s-dastur"><svg width="16" height="16" aria-hidden="true"><use href="#i-back"/></svg>Dastur</a><p class="dl-m">1-dars · 12-sentabr · 3/6 qadam</p></div>
-        <h1 class="headline"><span class="ln">1-dars</span><span class="ln">Kirish</span></h1>
+        <h1 class="headline"><span class="ln">01-dars</span><span class="ln">AI qanday ishlaydi</span></h1>
         <p class="lede">AI, modellar, Context, RAG va NotebookLM. Kompaniya hujjatlarini NotebookLMʼga yuklab, ulardan javob olishni oʻrganamiz.</p>
         <a class="pill-cta" href="#s-ex"><span>Amaliyotni davom ettirish</span><span class="pill-circ"><svg width="20" height="20" aria-hidden="true"><use href="#i-next"/></svg></span></a>
         <a class="play" href="#"><span class="play-circ ol"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span><span>Promptlar varaqasi<br>P1–P8, Q1–Q5 · PDF</span></a>
@@ -660,7 +661,7 @@ a.ef-row:hover .ef-dl{background:var(--white);color:var(--black)}
       <div class="nav-r"><button class="nav-name" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu">Student</button><button class="menu-btn" type="button" aria-label="Menyu" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu"><svg width="20" height="20" aria-hidden="true"><use href="#i-menu"/></svg></button></div>
     </header>
     <div class="ex-wrap">
-      <a class="eyebrow" href="#s-dars"><svg width="16" height="16" aria-hidden="true"><use href="#i-back"/></svg>1-dars · Amaliyot · 06 · Qoʻshimcha</a>
+      <a class="eyebrow" href="#s-dars"><svg width="16" height="16" aria-hidden="true"><use href="#i-back"/></svg>01-dars · Amaliyot</a>
       <h1 class="headline ex-h">Rahbar yoʻlda ham tushunsin</h1>
       <p class="lede">Avval fayllarni yuklab olib, NotebookLMʼga qoʻshing. Keyin promptlardan nusxa oling: nusxa olingan prompt bajarildi deb belgilanadi.</p>
       <div class="ex-files">
@@ -713,7 +714,7 @@ a.ef-row:hover .ef-dl{background:var(--white);color:var(--black)}
 </div>
 
 <aside class="nl" id="nl" aria-label="Yangi dars" hidden>
-  <div><p class="nl-k">Yangi dars ochildi</p><p class="nl-t">3-dars · Skill va agentlar</p></div>
+  <div><p class="nl-k">Yangi dars ochildi</p><p class="nl-t">03-dars · Claude Code</p></div>
   <div class="nl-a"><a class="nl-go" href="#s-dars">Darsni ochish<svg width="18" height="18" aria-hidden="true"><use href="#i-next"/></svg></a><button class="nl-x" type="button">Yopish</button></div>
 </aside>
 <div class="nmenu" id="nmenu" role="dialog" aria-label="Menyu" tabindex="-1" hidden>
@@ -728,7 +729,7 @@ a.ef-row:hover .ef-dl{background:var(--white);color:var(--black)}
 </div>
 <div class="toast" id="toast" hidden><span id="toast-t"></span><button type="button" id="toast-undo">Bekor qilish</button></div>
 <dialog class="sheet" id="lock-sheet" aria-labelledby="ls-t">
-  <p class="sheet-t" id="ls-t">4-dars 3-oktabr kuni ochiladi.</p>
+  <p class="sheet-t" id="ls-t"></p>
   <p class="sheet-d">Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.</p>
   <form method="dialog"><button class="sheet-x">Yopish</button></form>
 </dialog>
@@ -900,7 +901,7 @@ const nl = document.getElementById('nl'), NL_KEY = 'aip3.nl.seen', NL_LESSON = '
 const nlSeen = () => { try { const v = JSON.parse(localStorage.getItem(NL_KEY)); return Array.isArray(v) ? v : []; } catch { return []; } };
 function showNewLesson(force){
   if (!force && nlSeen().includes(NL_LESSON)) return;
-  nl.hidden = false; live.textContent = 'Yangi dars ochildi: 3-dars, Skill va agentlar.';
+  nl.hidden = false; live.textContent = 'Yangi dars ochildi: 03-dars, Claude Code.';
 }
 function hideNewLesson(){
   nl.hidden = true;
