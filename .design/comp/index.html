@@ -2969,7 +2969,7 @@ function homePage(){
       ${hero}${cta}
     </div>
     <h2 class="sr-only">${T('home.lessons')}</h2>
-    <ul class="grid3 lessons${pre ? ' pre' : ''}">${pre ? cardHTML(0) + courseCard() : [...LN(), 0].map(cardHTML).join('')}</ul>`};
+    <ul class="grid3 lessons${pre ? ' pre' : ''}">${pre ? cardHTML(0) + courseCard() : [0, ...LN()].map(cardHTML).join('')}</ul>`};
 }
 
 // ---- lesson 0: prep checklist
