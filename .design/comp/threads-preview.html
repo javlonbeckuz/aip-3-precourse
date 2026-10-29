@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Threads test</title>
+<style>
+:root{color-scheme:dark}
+body{margin:0;background:#050505;color:#9a9a9a;font:500 12px/1.3 ui-monospace,Consolas,monospace}
+.bar{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 16px;background:#050505;border-bottom:1px solid #222}
+.bar strong{color:#fff;font-weight:500;margin-right:8px}
+.bar button{height:32px;padding:0 12px;border:1px solid #2a2a2a;border-radius:999px;background:none;color:#9a9a9a;font:inherit;cursor:pointer}
+.bar button[aria-pressed="true"]{color:#fff;border-color:#666;background:#1a1a1a}
+.sep{width:1px;height:20px;background:#2a2a2a;margin:0 4px}
+.stage{display:flex;justify-content:center}
+iframe{display:block;width:100%;height:calc(100vh - 53px);border:0;background:#000}
+.w390 .stage{padding:16px}.w390 iframe{width:390px;height:844px;border:1px solid #333}
+</style>
+</head>
+<body>
+<div class="bar">
+  <strong>Threads test</strong>
+  <button type="button" data-v="dastur" aria-pressed="true">Dastur</button>
+  <button type="button" data-v="dars" aria-pressed="false">Dars</button>
+  <button type="button" data-v="ex" aria-pressed="false">Amaliyot</button>
+  <span class="sep"></span>
+  <button type="button" data-w="desk" aria-pressed="true">Desktop</button>
+  <button type="button" data-w="390" aria-pressed="false">Phone 390</button>
+  <span class="sep"></span>
+  <button type="button" id="th" aria-pressed="true">Threads: on</button>
+</div>
+<div class="stage"><iframe id="f" title="Comp"></iframe></div>
+<script>
+// Test harness only: loads the real comp (same origin) and mounts threads.js into it from outside,
+// so index.html stays untouched. Login is never touched; dastur, dars and ex swap the grid/glow for the threads.
+const f = document.getElementById('f'), th = document.getElementById('th');
+let view = 'dastur', on = true;
+const OPTS = { color: '#ffffff', lineCount: 90, thickness: 0.6, softness: 1.3, amplitude: 1.7, distance: 0.4, waves: 1.05,
+  speed: 0.2, split: 0.04, fray: 0.5, angle: 25, taper: 0.85, brightness: 1.4, parting: 0, enableMouseInteraction: false,
+  fade: 0, opacity: 1, seed: 0 };
+const load = () => { f.src = `index.html?solo&view=${view}`; };
+f.addEventListener('load', () => {
+  const d = f.contentDocument, w = f.contentWindow;
+  // ?solo drops the comp's 1440px frame cap, so on wide screens --u (100cqi/1440) blew everything up; restore the real cap
+  const cap = d.createElement('style'); cap.textContent = '.solo .frame{max-width:1440px;margin-inline:auto}'; d.head.append(cap);
+  if (!on) return;
+  const css = d.createElement('style');
+  css.textContent = `:is([data-screen="dastur"],[data-screen="dars"],[data-screen="ex"]) .site{background:#000!important;position:relative;isolation:isolate}
+    .threads-container{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}.threads-canvas{display:block;width:100%;height:100%}`;
+  d.head.append(css);
+  const s = d.createElement('script'); s.src = 'threads.js';
+  s.onload = () => d.querySelectorAll(':is([data-screen="dastur"],[data-screen="dars"],[data-screen="ex"]) .site')
+    .forEach(site => w.mountThreads(site, OPTS));
+  d.body.append(s);
+});
+document.querySelector('.bar').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.v) { view = b.dataset.v; document.querySelectorAll('[data-v]').forEach(x => x.setAttribute('aria-pressed', x === b)); }
+  if (b.dataset.w) { document.body.classList.toggle('w390', b.dataset.w === '390'); document.querySelectorAll('[data-w]').forEach(x => x.setAttribute('aria-pressed', x === b)); }
+  if (b === th) { on = !on; th.setAttribute('aria-pressed', on); th.textContent = `Threads: ${on ? 'on' : 'off'}`; }
+  load();
+});
+load();
+</script>
+</body>
+</html>

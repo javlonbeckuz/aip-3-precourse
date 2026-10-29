@@ -1,0 +1,26 @@
+{
+  "n": 3,
+  "title": "Skill va agentlar",
+  "subtitle": "Skill, Plugin, Connector, Plan, agentlar jamoasi, here.now",
+  "summary": "Claude imkoniyatlarini kengaytiramiz: skill, plugin, connector va agentlar jamoasi. Amaliyot: build va deployment.",
+  "topics": [
+    "Skill",
+    "Plugin",
+    "Connector",
+    "Plan",
+    "Agentlar jamoasi",
+    "here.now",
+    "Build",
+    "Deployment"
+  ],
+  "slideCount": 40,
+  "slideKind": "video",
+  "hasBook": false,
+  "bookNote": "",
+  "bookVariants": [],
+  "homework": "Erkin ijod: darsda oʻrganganlaringizdan foydalanib, oʻz biznesingiz uchun biror narsa yarating. Nima qilishni oʻzingiz tanlaysiz — muhimi, u biznesingizga haqiqatan kerak boʻlsin.",
+  "materials": [],
+  "prompts": null,
+  "praktikum": null,
+  "prep": null
+}

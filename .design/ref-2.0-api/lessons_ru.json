@@ -1,0 +1,1430 @@
+{
+ "ok": true,
+ "lang": "ru",
+ "lessons": [
+  {
+   "n": 0,
+   "title": "Подготовка",
+   "subtitle": "Этап установки и подготовки",
+   "summary": "Установим нужные программы, заведём аккаунты и подготовим среду, в которой будем работать весь практикум.",
+   "topics": [
+    "Set up",
+    "Cod",
+    "Requirements"
+   ],
+   "published": false,
+   "slideCount": 0,
+   "slideKind": "image",
+   "hasBook": false,
+   "bookNote": "",
+   "bookVariants": [],
+   "homework": "",
+   "materials": [],
+   "prompts": null,
+   "praktikum": null,
+   "prep": {
+    "intro": "Первое занятие {sana}. Подготовьте этот список до него — всё займёт около 30 минут, а на занятии мы сразу приступим к работе.",
+    "items": [
+     {
+      "brand": "device",
+      "title": "Компьютер",
+      "note": "Рекомендуем MacBook, подойдёт и Windows. Телефона или планшета недостаточно.",
+      "steps": [
+       "Приходите на занятие со своим ноутбуком — практикум от начала до конца практический.",
+       "Возьмите и зарядное устройство.",
+       "Оставьте на диске не менее 5 ГБ свободного места."
+      ],
+      "actions": []
+     },
+     {
+      "brand": "google",
+      "title": "Аккаунт Google",
+      "note": "Claude, NotebookLM и Gemini открываются через этот аккаунт. Если аккаунт уже есть, новый не нужен.",
+      "steps": [
+       "Откройте страницу accounts.google.com/signup.",
+       "Введите имя, фамилию и новый адрес почты.",
+       "Подтвердите номер телефона — придёт SMS-код.",
+       "Запишите пароль: он понадобится на занятии."
+      ],
+      "actions": [
+       {
+        "label": "Создать аккаунт Google",
+        "url": "https://accounts.google.com/signup"
+       }
+      ]
+     },
+     {
+      "brand": "claude",
+      "title": "Claude",
+      "note": "Главный инструмент практикума. Сначала заведите учётную запись на claude.ai, затем установите программу.",
+      "steps": [
+       "Зайдите на claude.ai и зарегистрируйтесь через «Continue with Google».",
+       "Скачайте программу со страницы claude.ai/download.",
+       "Mac: откройте файл .dmg и перетащите значок Claude в Applications.",
+       "Windows: запустите файл .exe и подтвердите установку.",
+       "Войдите в программу с тем же аккаунтом Google."
+      ],
+      "actions": [
+       {
+        "label": "Скачать программу Claude",
+        "url": "https://claude.ai/download"
+       },
+       {
+        "label": "Создать учётную запись на claude.ai",
+        "url": "https://claude.ai/",
+        "quiet": true
+       }
+      ]
+     },
+     {
+      "brand": "visa",
+      "title": "Карта Visa",
+      "note": "Понадобится для подписки Claude Pro. На первом занятии хватит и бесплатного тарифа.",
+      "steps": [
+       "Откройте в банке международную Visa или Mastercard — Uzcard и Humo здесь не работают.",
+       "На карте должен быть долларовый счёт и включены онлайн-платежи.",
+       "Подписка Pro — $20 в месяц. Не обязательна, но заметно облегчает работу."
+      ],
+      "actions": [],
+      "footnote": "Понадобится на следующих занятиях."
+     }
+    ],
+    "html": "<div class=\"pdoc-head\"><div><h2 class=\"pdoc-title\">До первого занятия</h2><p class=\"pdoc-lede\">Первое занятие 12 сентября. Подготовьте этот список до него — всё займёт около 30 минут, а на занятии мы сразу приступим к работе.</p></div><a class=\"cta quiet\" href=\"/aip/asset/prep-ru.pdf?v=4f3dcd65\" download>Скачать PDF</a></div><div class=\"pdoc-list\"><section class=\"pp\"><div class=\"pp-art\"><img src=\"/aip/asset/prep-macbook.webp?v=4f3dcd65\" width=\"900\" height=\"652\" alt=\"\" decoding=\"async\"></div><div class=\"pp-body\"><div class=\"pp-hd\"><span class=\"pp-num\">01</span><h3 class=\"pp-t\">Компьютер</h3></div><p class=\"pp-note\">Рекомендуем MacBook, подойдёт и Windows. Телефона или планшета недостаточно.</p><ol class=\"pp-steps\" role=\"list\"><li>Приходите на занятие со своим ноутбуком — практикум от начала до конца практический.</li><li>Возьмите и зарядное устройство.</li><li>Оставьте на диске не менее 5 ГБ свободного места.</li></ol></div></section><section class=\"pp\"><div class=\"pp-art\"><img src=\"/aip/asset/prep-google.webp?v=4f3dcd65\" width=\"817\" height=\"900\" alt=\"\" decoding=\"async\"></div><div class=\"pp-body\"><div class=\"pp-hd\"><span class=\"pp-num\">02</span><h3 class=\"pp-t\">Аккаунт Google</h3></div><p class=\"pp-note\">Claude, NotebookLM и Gemini открываются через этот аккаунт. Если аккаунт уже есть, новый не нужен.</p><ol class=\"pp-steps\" role=\"list\"><li>Откройте страницу accounts.google.com/signup.</li><li>Введите имя, фамилию и новый адрес почты.</li><li>Подтвердите номер телефона — придёт SMS-код.</li><li>Запишите пароль: он понадобится на занятии.</li></ol><div class=\"pp-do\"><a class=\"cta bbtn bbtn-google\" href=\"https://accounts.google.com/signup\" target=\"_blank\" rel=\"noopener noreferrer\">Создать аккаунт Google</a></div></div></section><section class=\"pp\"><div class=\"pp-art\"><img src=\"/aip/asset/prep-claude.webp?v=4f3dcd65\" width=\"819\" height=\"900\" alt=\"\" decoding=\"async\"></div><div class=\"pp-body\"><div class=\"pp-hd\"><span class=\"pp-num\">03</span><h3 class=\"pp-t\">Claude</h3></div><p class=\"pp-note\">Главный инструмент практикума. Сначала заведите учётную запись на claude.ai, затем установите программу.</p><ol class=\"pp-steps\" role=\"list\"><li>Зайдите на claude.ai и зарегистрируйтесь через «Continue with Google».</li><li>Скачайте программу со страницы claude.ai/download.</li><li>Mac: откройте файл .dmg и перетащите значок Claude в Applications.</li><li>Windows: запустите файл .exe и подтвердите установку.</li><li>Войдите в программу с тем же аккаунтом Google.</li></ol><div class=\"pp-do\"><a class=\"cta bbtn bbtn-claude\" href=\"https://claude.ai/download\" target=\"_blank\" rel=\"noopener noreferrer\">Скачать программу Claude</a><a class=\"cta quiet\" href=\"https://claude.ai/\" target=\"_blank\" rel=\"noopener noreferrer\">Создать учётную запись на claude.ai</a></div></div></section><section class=\"pp\"><div class=\"pp-art\"><img src=\"/aip/asset/prep-visa.webp?v=4f3dcd65\" width=\"900\" height=\"607\" alt=\"\" decoding=\"async\"></div><div class=\"pp-body\"><div class=\"pp-hd\"><span class=\"pp-num\">04</span><h3 class=\"pp-t\">Карта Visa</h3></div><p class=\"pp-note\">Понадобится для подписки Claude Pro. На первом занятии хватит и бесплатного тарифа.</p><ol class=\"pp-steps\" role=\"list\"><li>Откройте в банке международную Visa или Mastercard — Uzcard и Humo здесь не работают.</li><li>На карте должен быть долларовый счёт и включены онлайн-платежи.</li><li>Подписка Pro — $20 в месяц. Не обязательна, но заметно облегчает работу.</li></ol><p class=\"pp-foot\">Понадобится на следующих занятиях.</p></div></section></div>"
+   },
+   "date": null
+  },
+  {
+   "n": 1,
+   "title": "Введение",
+   "subtitle": "Что такое AI, модели, Context, RAG, NotebookLM",
+   "summary": "Разберём, что такое AI на самом деле, как работают модели и почему контекст решает всё. Практика: NotebookLM.",
+   "topics": [
+    "Что такое AI",
+    "Модели",
+    "Context",
+    "RAG",
+    "NotebookLM"
+   ],
+   "published": true,
+   "slideCount": 78,
+   "slideKind": "video",
+   "hasBook": false,
+   "bookNote": "",
+   "bookVariants": [],
+   "homework": "",
+   "materials": [
+    {
+     "art": "sources",
+     "title": "Источники",
+     "note": "Семь файлов — документы вымышленной компании. Загрузите в NotebookLM как источники именно их и ничего больше.",
+     "files": [
+      {
+       "slug": "hw-kompaniya",
+       "name": "01_Kompaniya.pdf",
+       "file": "Vazifa/01_Kompaniya.pdf",
+       "size": 21620
+      },
+      {
+       "slug": "hw-narxlar",
+       "name": "02_Amaldagi_narxlar.csv",
+       "file": "Vazifa/02_Amaldagi_narxlar.csv",
+       "size": 1222
+      },
+      {
+       "slug": "hw-yetkazish",
+       "name": "03_Yetkazish_qoidalari.pdf",
+       "file": "Vazifa/03_Yetkazish_qoidalari.pdf",
+       "size": 21493
+      },
+      {
+       "slug": "hw-reklama",
+       "name": "04_Reklama_qoralamasi.pdf",
+       "file": "Vazifa/04_Reklama_qoralamasi.pdf",
+       "size": 21270
+      },
+      {
+       "slug": "hw-eski-narxlar",
+       "name": "05_Eski_narxlar.csv",
+       "file": "Vazifa/05_Eski_narxlar.csv",
+       "size": 934
+      },
+      {
+       "slug": "hw-buyurtmalar",
+       "name": "06_Buyurtmalar.csv",
+       "file": "Vazifa/06_Buyurtmalar.csv",
+       "size": 3329
+      },
+      {
+       "slug": "hw-yigilish",
+       "name": "07_Yigilish_qaydi.txt",
+       "file": "Vazifa/07_Yigilish_qaydi.txt",
+       "size": 1652
+      }
+     ],
+     "bundle": {
+      "slug": "hw-manbaalar",
+      "name": "Manbaalar.zip",
+      "file": "Vazifa/Manbaalar.zip",
+      "size": 60748,
+      "label": "Скачать всё"
+     },
+     "footnote": "Не меняйте имена файлов — промпты обращаются к ним по имени."
+    },
+    {
+     "art": "prompts",
+     "title": "Промпты",
+     "note": "Тринадцать промптов упражнения. Рядом с каждым есть кнопка копирования — вставляете прямо в NotebookLM.",
+     "files": [],
+     "opens": "notebooklm",
+     "cta": "Открыть промпты",
+     "count": "13 промптов"
+    },
+    {
+     "art": "book",
+     "title": "Руководство студента",
+     "note": "Письменное руководство к заданию: порядок упражнения и на что обращать внимание.",
+     "files": [
+      {
+       "slug": "hw-qollanma",
+       "name": "Talaba_qollanmasi.pdf",
+       "file": "Vazifa/Talaba_qollanmasi.pdf",
+       "size": 26309
+      }
+     ],
+     "cta": "Скачать руководство"
+    }
+   ],
+   "prompts": {
+    "slug": "notebooklm",
+    "title": "Промпты",
+    "subtitle": "Упражнение NotebookLM — Ravon Uy",
+    "lede": "Копируйте каждый промпт и вставляйте в NotebookLM. Идите по порядку: каждый опирается на ответ предыдущего.",
+    "rules": [
+     "Загрузите в NotebookLM как источники только 7 файлов из папки Manbaalar.",
+     "Не загружайте эти промпты как источники — это вопросы, а не источники.",
+     "Перед каждым промптом отмечайте только нужные источники, остальные снимайте."
+    ],
+    "footnote": "Все данные компании вымышлены — написаны для упражнения. Учебная дата: 12.09.2026.",
+    "groups": [
+     {
+      "title": "Основное упражнение",
+      "note": "Восемь промптов, один за другим.",
+      "items": [
+       {
+        "id": "P1",
+        "title": "Ответ по одному источнику",
+        "sources": [
+         "03_Yetkazish_qoidalari"
+        ],
+        "text": "Используйте только источник 03_Yetkazish_qoidalari. Каков стандартный срок доставки товара, имеющегося на складе, в Ташкентскую область? Ответьте одним предложением с цитатой соответствующего пункта."
+       },
+       {
+        "id": "P2",
+        "title": "Проверка цены",
+        "sources": [
+         "02_Amaldagi_narxlar",
+         "04_Reklama_qoralamasi"
+        ],
+        "text": "Сравните строку K1 из таблицы 02_Amaldagi_narxlar.csv с ценой в документе 04_Reklama_qoralamasi. Столбцы таблицы: утверждение из рекламы, действующее правило, цитата из обоих источников, исправление. Учтите столбцы mahsulot_kodi, holat и amal_boshlanishi в CSV, а также статус согласования рекламы."
+       },
+       {
+        "id": "P3",
+        "title": "Обещание и процесс",
+        "sources": [
+         "03_Yetkazish_qoidalari",
+         "04_Reklama_qoralamasi"
+        ],
+        "text": "Сравните документы 03_Yetkazish_qoidalari и 04_Reklama_qoralamasi. Каким условиям не соответствует обещание «все заказы за 24 часа»? Приведите цитаты из обоих источников. Отделите настоящее противоречие от разрешённого исключения."
+       },
+       {
+        "id": "P4",
+        "title": "Проверка исключения",
+        "sources": [
+         "03_Yetkazish_qoidalari",
+         "06_Buyurtmalar"
+        ],
+        "text": "Выберите источники 03_Yetkazish_qoidalari и 06_Buyurtmalar. Заказ RU-001 доставлен за 18 часов. Это противоречит стандартному сроку или это разрешённая срочная услуга? Проверьте регион, наличие на складе, время подтверждения и согласование руководителя. Если каких-то данных не хватает, скажите об этом."
+       },
+       {
+        "id": "P5",
+        "title": "Недостающие данные",
+        "sources": [
+         "07_Yigilish_qaydi"
+        ],
+        "text": "Опираясь только на источник 07_Yigilish_qaydi, определите, сколько дополнительный курьер берёт за одну доставку. Если данных нет, не угадывайте сумму. Напишите, у кого и какой документ нужно запросить."
+       },
+       {
+        "id": "P6",
+        "title": "Проверка решения",
+        "sources": [],
+        "text": "В учебной ситуации сегодня 12.09.2026. Оцените предложение запустить 14 сентября кампанию «доставим все заказы за 24 часа». Таблица: довод за, довод против, неизвестное, источник. Без доказательств не выдумывайте ни возражений, ни похвалы. В конце обоснуйте вариант: оставить как есть, изменить условия или подождать."
+       },
+       {
+        "id": "P7",
+        "title": "Одна страница для руководителя",
+        "sources": [],
+        "text": "Подготовьте для руководителя Ravon Uy бриф решения объёмом до 300 слов. Структура: вопрос решения; рекомендация; 3 находки со ссылкой на источник; нерешённый вопрос; дальнейшие действия с указанием ответственного, срока и критерия проверки. Разделяйте факт, предложение и допущение. Используйте только выбранные исходные документы."
+       },
+       {
+        "id": "P8",
+        "title": "FAQ для клиента",
+        "sources": [
+         "02_Amaldagi_narxlar",
+         "03_Yetkazish_qoidalari"
+        ],
+        "text": "Используйте только таблицу 02_Amaldagi_narxlar.csv и документ 03_Yetkazish_qoidalari. Напишите 5 коротких вопросов-ответов для клиентов: цена K1, срок по городу, срок по области, все условия услуги за 24 часа, плата за доставку. Для проверки добавьте к каждому ответу цитату источника. В готовом для клиента тексте не указывайте имён внутренних сотрудников."
+       }
+      ]
+     },
+     {
+      "title": "Дополнительно",
+      "note": "Если останется время или для работы дома.",
+      "items": [
+       {
+        "id": "Q1",
+        "title": "Скрытое допущение",
+        "sources": [
+         "07_Yigilish_qaydi"
+        ],
+        "text": "Проверьте допущение о 30 заказах в день из документа 07_Yigilish_qaydi. Какие доказательства есть, каких не хватает? Какие последствия, если допущение неверно? Предложите способ его проверить. Не пишите необоснованных вероятностей или процентов."
+       },
+       {
+        "id": "Q2",
+        "title": "Сроки и полномочия",
+        "sources": [
+         "02_Amaldagi_narxlar",
+         "04_Reklama_qoralamasi",
+         "05_Eski_narxlar"
+        ],
+        "text": "По 02_Amaldagi_narxlar.csv, 04_Reklama_qoralamasi и 05_Eski_narxlar.csv составьте историю цены K1. Укажите дату записи, период действия, статус согласования и документ, который её заменил. Не определяйте сегодняшнюю цену по дате самого свежего файла."
+       },
+       {
+        "id": "Q3",
+        "title": "Взгляд клиента",
+        "sources": [
+         "04_Reklama_qoralamasi",
+         "03_Yetkazish_qoidalari"
+        ],
+        "text": "На основе 04_Reklama_qoralamasi и 03_Yetkazish_qoidalari найдите фразы, которые клиент может понять неверно. К каждой приведите цитату и предложите более точный текст. Не приписывайте тексту недоказанного умысла ввести в заблуждение."
+       },
+       {
+        "id": "Q4",
+        "title": "Причина расхождения",
+        "sources": [
+         "04_Reklama_qoralamasi",
+         "07_Yigilish_qaydi"
+        ],
+        "text": "Проанализируйте по 04_Reklama_qoralamasi и 07_Yigilish_qaydi, почему взгляды маркетинга и операций расходятся. Разделите доказательства, период, цель и допущение. К каждой причине проставьте источник или пометку «не подтверждено»."
+       },
+       {
+        "id": "Q5",
+        "title": "Сбалансированная критика",
+        "sources": [],
+        "text": "Проверьте мой следующий вывод по источникам: довод за, довод против, неопределённость и условие пересмотра. Возражайте выводу только при наличии доказательств. Не выдумывайте доводов, которых нет в источнике."
+       }
+      ]
+     }
+    ]
+   },
+   "praktikum": {
+    "title": "Korxona bilimini ishga soling.",
+    "lead": "Практические результаты для HR, продаж, сервиса, склада и маркетинга.",
+    "rules": [
+     "Для каждого упражнения открывайте отдельный notebook.",
+     "Загружайте только файлы Manbaalar этого упражнения.",
+     "Сначала откройте инструкцию — в ней сказано, из чего состоит упражнение."
+    ],
+    "exercisesTitle": "",
+    "exercisesNote": "",
+    "promptsNote": "",
+    "guide": {
+     "slug": "qollanma",
+     "name": "Talaba_qollanmasi.pdf",
+     "size": 38284
+    },
+    "closing": {
+     "slug": "sinov",
+     "name": "Biznesimda_7_kunlik_sinov.pdf",
+     "size": 32438
+    },
+    "exercises": [
+     {
+      "key": "01-hr-onboarding",
+      "num": "01",
+      "title": "Опора для нового сотрудника",
+      "note": "План первой недели, карточки для запоминания и тест на проверку знаний.",
+      "tag": "ОСНОВНОЕ",
+      "yoriqnoma": {
+       "slug": "01-hr-onboarding-yoriqnoma",
+       "name": "01_Yoriqnoma.pdf",
+       "size": 35017
+      },
+      "promptsPdf": {
+       "slug": "01-hr-onboarding-promptlar-pdf",
+       "name": "02_Promptlar.pdf",
+       "size": 37919
+      },
+      "sources": [
+       {
+        "slug": "01-hr-onboarding-m1",
+        "name": "Ichki mehnat tartibi qoidalari.pdf",
+        "size": 215646
+       },
+       {
+        "slug": "01-hr-onboarding-m2",
+        "name": "Onboarding qo'llanmasi.pdf",
+        "size": 198861
+       }
+      ],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "P1",
+        "target": "Chat",
+        "title": "План первой недели",
+        "text": "Sovuq Zanjir Servisga yangi savdo menejeri keldi. Tanlangan manbalar asosida uni dastlabki 5 ish kunida ishga oʻrgatish rejasini tuzing. Jadvalda har kunning mavzusi, amaliy vazifasi, masʼuli va xodim oʻrganganini qanday koʻrsatishini yozing. Har vazifaning manbasi va sahifasini koʻrsating. Birinchi kun, Bitrix24 va 1C, mahsulotlar, savdo, servis va hujjatlar bilan tanishuvni qamrang. Siz qoʻshgan tekshirish usullarini \"oʻquv taklifi\" deb belgilang. Hujjatda koʻrsatilmagan vakolat, muddat yoki natija talabini oʻzingizdan qoʻshmang. Qoʻllanma bilan rasmiy qoida zid boʻlsa, qatʼiy xulosa bermay xodimlar bilan ishlash boʻlimi aniqlashtirishi kerakligini yozing. Javob oʻzbek lotin yozuvida boʻlsin."
+       },
+       {
+        "id": "P2",
+        "target": "Studio → Flashcards → sozlash",
+        "title": "Карточки для запоминания",
+        "text": "Yangi savdo menejeri uchun qisqa kartalar yarating. Mavzular: birinchi kun; birinchi hafta; kimga murojaat qilish; Bitrix24 va 1C vazifasi; parollarni saqlash; mijozga vaʼda berishdan oldin manbani tekshirish. Har kartada bitta savol va qisqa javob boʻlsin. Faqat aniq, manbada tasdiqlangan faktlar. Taʼtil, mehnat huquqi yoki hujjatlar oʻrtasida ziddiyatli qoida haqida karta tuzmang. Oʻzbek lotin yozuvida yozing."
+       },
+       {
+        "id": "P3",
+        "target": "Studio → Quiz → sozlash",
+        "title": "Ситуационный тест",
+        "text": "Yangi savdo menejeri uchun vaziyatli test yarating. \"Mahsulot kodini qayerdan topaman?\", \"Servis boʻyicha kimga murojaat qilaman?\", \"Parolni hamkasbga bersam boʻladimi?\", \"Mijozga muddat aytishdan oldin nima qilaman?\" kabi ish vaziyatlarini qamrang. Har savolda bitta asosli javob boʻlsin. Javob izohi manbaga tayanishi kerak. Taʼtil va hujjatlar oʻrtasidagi ziddiyatlarni testga kiritmang. Oʻzbek lotin yozuvida yozing."
+       },
+       {
+        "id": "P4",
+        "target": "Chat / zaxira",
+        "title": "Текст вместо студии",
+        "text": "Tanlangan manbalardan yangi savdo menejeri uchun 5 ta savol-javob kartasi va 5 ta vaziyatli test tuzing. Testda 3 tadan variant boʻlsin. Toʻgʻri javoblar va manba izohlarini eng oxirida alohida \"Oʻqituvchi tekshiradi\" boʻlimiga joylang. Taʼtil va ziddiyatli qoidalarni ishlatmang. Oʻzbek lotin yozuvida yozing."
+       }
+      ],
+      "notes": []
+     },
+     {
+      "key": "02-savdo",
+      "num": "02",
+      "title": "От продукта к разговору",
+      "note": "Короткая понятная клиенту презентация и три вопроса для выявления потребностей.",
+      "tag": "ОСНОВНОЕ",
+      "yoriqnoma": {
+       "slug": "02-savdo-yoriqnoma",
+       "name": "01_Yoriqnoma.pdf",
+       "size": 34853
+      },
+      "promptsPdf": {
+       "slug": "02-savdo-promptlar-pdf",
+       "name": "02_Promptlar.pdf",
+       "size": 34376
+      },
+      "sources": [
+       {
+        "slug": "02-savdo-m1",
+        "name": "Mijoz keyslari (tasdiqlangan).pdf",
+        "size": 201858
+       },
+       {
+        "slug": "02-savdo-m2",
+        "name": "Narxlar_2026.csv",
+        "size": 2303
+       },
+       {
+        "slug": "02-savdo-m3",
+        "name": "Narxlar_izohi.pdf",
+        "size": 32724
+       }
+      ],
+      "extras": [
+       {
+        "slug": "02-savdo-x1",
+        "name": "Narxlar ro'yxati.xlsx",
+        "size": 7536
+       }
+      ],
+      "prompts": [
+       {
+        "id": "P1",
+        "target": "Chat",
+        "title": "Аргументы для презентации",
+        "text": "Kafe egasi uchun qisqa savdo taqdimotiga tayyorlanyapman. Bon Appetit keysining oʻzini va 01.06.2026 narxlar roʻyxatini ishlating. 1) Mijoz muammosi, yechim va natijani manbasi bilan ajrating. 2) SZ-650 va KP-6 uchun kod, nom, QQS bilan narx, narx sanasi va montaj shartini jadvalda bering. 3) Yangi mijozdan soʻraladigan 3 ta ehtiyoj savolini taklif qiling. Keysdagi natijani yangi mijozga vaʼda qilmang. Manbada yoʻq texnik afzallik, chegirma, ombor qoldigʻi yoki yetkazish muddatini oʻylab topmang. Fakt va savdo taklifini ajrating. Oʻzbek lotin yozuvida yozing."
+       },
+       {
+        "id": "P2",
+        "target": "Studio → Slide Deck → sozlash",
+        "title": "Короткая презентация для продажи",
+        "text": "Kafe egasi uchun taxminan 5 slaydlik qisqa savdo taqdimoti yarating. 1: kafe oshxonalaridagi turli uskunalar muammosi. 2: Bon Appetitda yagona oshxona standarti qanday joriy qilingan. 3: faqat shu keys natijasi - taom tayyorlash 18 daqiqadan 12 daqiqaga; haftasiga taxminan 10 soat tejalishi bosh oshpaz bahosi ekanini yozing. 4: 01.06.2026 roʻyxatidan SZ-650 va KP-6 narxlari, QQS bilan, montaj alohida; bu tayyor loyiha smetasi emas. 5: yangi mijozga 3 ta ehtiyoj savoli va joyni koʻrib chiqishni kelishish taklifi. Har slaydda bitta asosiy fikr. Kam matn, sodda chiziqli ikonka, qora fon, och matn. Yangi mijozga shu natijani kafolatlamang. Har muhim fakt yonida manba nomi/sahifasi yoki mahsulot kodini koʻrsating. \"Oʻquv qoralamasi\" belgisi boʻlsin. Oʻzbek lotin yozuvida yozing."
+       }
+      ],
+      "notes": []
+     },
+     {
+      "key": "03a-servis",
+      "num": "03A",
+      "title": "Что делает оператор?",
+      "note": "Инструкция по приёму обращения для оператора и ответы на частые вопросы.",
+      "tag": "ОДНО ИЗ ДВУХ С 03B",
+      "yoriqnoma": {
+       "slug": "03a-servis-yoriqnoma",
+       "name": "01_Yoriqnoma.pdf",
+       "size": 34989
+      },
+      "promptsPdf": {
+       "slug": "03a-servis-promptlar-pdf",
+       "name": "02_Promptlar.pdf",
+       "size": 34391
+      },
+      "sources": [
+       {
+        "slug": "03a-servis-m1",
+        "name": "Servis reglamenti.pdf",
+        "size": 193718
+       },
+       {
+        "slug": "03a-servis-m2",
+        "name": "Texnik qo'llanma SZ-400.pdf",
+        "size": 339236
+       }
+      ],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "P1",
+        "target": "Chat",
+        "title": "Приём обращения",
+        "text": "Oʻquv vaziyati: Samarqanddagi mijoz SZ-400 ekranida E07 chiqqanini aytdi. Men servis operatoriman, texnik emasman. Tanlangan manbalardan operator soʻrashi kerak boʻlgan maʼlumotlar, qayd qilish joyi, servisga topshirish va mijozga aytiladigan muddatni toping. Muddat qachondan hisoblanishini aniq yozing. Toʻlov/kafolat holati nomaʼlum boʻlsa, uni tekshiriladigan savol sifatida qoldiring. Har qoidaga manba va sahifa/band bering. Texnik qoʻllanmada mutaxassis uchun yozilgan taʼmirlashni mijozga tavsiya qilmang. Sovutish gazi (R290) bilan ishlash yoki elektr qismlarini ochish va tuzatish boʻyicha yoʻl-yoʻriq bermang. Operator javobini oʻzbek lotin yozuvida tuzing."
+       },
+       {
+        "id": "P2",
+        "target": "Studio → Reports → Create your own",
+        "title": "Инструкция оператора",
+        "text": "SZSning yangi servis operatori uchun bir sahifalik ish yoʻriqnomasi tayyorlang. Boʻlimlar: 1) mijozdan olinadigan maʼlumotlar; 2) murojaatni qayd qilish; 3) servisga topshirish; 4) mijozga muddatni tushuntirish; 5) javobi manbada yoʻq boʻlsa nima qilish. Oxirida muddat, diagnostika, ehtiyot qism va kafolat boʻyicha 4 ta savol va ularga qisqa javob boʻlsin. Barcha javoblar tanlangan manbalarga tayansin, manba/sahifa koʻrsatilsin. Kafolatdan keyingi diagnostika bilan barcha taʼmirni bir narx deb aytmang. Bu operator materiali: sovutgichning elektr yoki sovutish tizimini ochish va taʼmirlash boʻyicha koʻrsatma bermang. Manbada yoʻq vaʼda qoʻshmang. Oʻzbek lotin yozuvida yozing."
+       }
+      ],
+      "notes": []
+     },
+     {
+      "key": "03b-ombor",
+      "num": "03B",
+      "title": "Проследите путь заказа",
+      "note": "Карта тем через Mind Map и контрольный список перед отправкой.",
+      "tag": "ОДНО ИЗ ДВУХ С 03A",
+      "yoriqnoma": {
+       "slug": "03b-ombor-yoriqnoma",
+       "name": "01_Yoriqnoma.pdf",
+       "size": 35239
+      },
+      "promptsPdf": {
+       "slug": "03b-ombor-promptlar-pdf",
+       "name": "02_Promptlar.pdf",
+       "size": 34793
+      },
+      "sources": [
+       {
+        "slug": "03b-ombor-m1",
+        "name": "Reglament.pdf",
+        "size": 202941
+       }
+      ],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "P1",
+        "target": "Chat",
+        "title": "От кого кому?",
+        "text": "Faqat Reglament.pdf asosida oddiy buyurtmaning savdodan ombor, logistika va qabul qilishgacha boʻlgan yoʻlini tushuntiring. Jadvalda har bosqichni, masʼulini, ish boshlash uchun kerakli maʼlumotni va keyingi boʻlimga nima topshirilishini koʻrsating. Har bosqichning manba bandini yozing. 1Cda hozir sotish mumkin boʻlgan tovar bilan boshqa buyurtma uchun band qilingan tovarni farqlang. Imzolangan shartnomadagi maxsus shartlar boʻyicha istisnoni alohida yozing. Hujjatda masʼul koʻrsatilmagan boʻlsa \"aniqlashtirish kerak\" deb yozing. Toʻlov kuni hisoblanishi boʻyicha bandlar farqlansa, aniq sana chiqarmang, aniqlashtirish uchun ajrating. Oʻzbek lotin yozuvida yozing."
+       },
+       {
+        "id": "P2",
+        "target": "Chat yoki Studio → Reports",
+        "title": "Чек-лист перед отправкой",
+        "text": "Reglament.pdf asosida savdo va ombor xodimi uchun ixcham cheklist tuzing. Kamida quyidagilarni tekshirsin: mahsulot kodi, soni, manzil, aloqa shaxsi va telefon, montaj zarurati, toʻlov sharti/tasdigʻi, 1Cda sotish mumkin boʻlgan va boshqa buyurtmaga band qilingan tovarlar, mijozga kelishilgan yetkazish sharti. Jadvalda nima tekshirilishi, masʼul, tekshiriladigan hujjat va manba bandini yozing. Har qatorga bajarilganini belgilash uchun joy qoldiring. Manbada mavjud boʻlmagan yangi nazoratni qoʻshsangiz \"taklif\" deb belgilang. Kamchilik boʻlsa kimga aniqlashtirish yuborilishini koʻrsating; manbada belgilanmagan buyruq yoki taqiq yaratmang. Bu oʻquv andozasi, haqiqiy buyurtma yoki tizimdagi vazifa emas. Oʻzbek lotin yozuvida yozing."
+       }
+      ],
+      "notes": []
+     },
+     {
+      "key": "04-marketing",
+      "num": "04",
+      "title": "Один кейс, несколько форматов",
+      "note": "Одна инфографика по клиентскому кейсу; проверка возможностей видео или аудио.",
+      "tag": "ОСНОВНОЕ",
+      "yoriqnoma": {
+       "slug": "04-marketing-yoriqnoma",
+       "name": "01_Yoriqnoma.pdf",
+       "size": 35478
+      },
+      "promptsPdf": {
+       "slug": "04-marketing-promptlar-pdf",
+       "name": "02_Promptlar.pdf",
+       "size": 38848
+      },
+      "sources": [
+       {
+        "slug": "04-marketing-m1",
+        "name": "Mijoz keyslari (tasdiqlangan).pdf",
+        "size": 201858
+       }
+      ],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "P1",
+        "target": "Chat",
+        "title": "Карта фактов для контента",
+        "text": "Faqat Mijoz keyslari hujjatining Bon Appetit boʻlimidan foydalaning. Kontentga kerakli maʼlumotlarni qisqa yozing: muammo nima edi, nima oʻzgardi, nechta kafe qatnashdi va natija qanday boʻldi? Oʻlchangan natija bilan taxminiy bahoni ajrating, bahoni kim berganini va manba sahifasini koʻrsating. Boshqa mijozlarning raqamlarini qoʻshmang. Hujjatda koʻrsatilmagan daromad, foyda yoki foizni oʻzingizdan hisoblab qoʻshmang. Oxirida mijozga vaʼda qilib boʻlmaydigan bitta umumlashtirishni koʻrsating. Oʻzbek lotin yozuvida yozing."
+       },
+       {
+        "id": "P2",
+        "target": "Studio → Infographic → sozlash",
+        "title": "Инфографика",
+        "text": "Bon Appetit keysidan kafe biznesi egalari uchun bitta vertikal infografika yarating. Tuzilishi: MUAMMO → YECHIM → NATIJA. 6 kafeda turli uskunalardan yagona oshxona standartiga oʻtish koʻrinsin. Asosiy koʻrsatkich: tushlikda taom tayyorlash 18 daqiqadan 12 daqiqaga tushgan. Qoʻshimcha izoh: haftasiga taxminan 10 soat tejalishi bosh oshpaz hisobiga asoslangan. Bu faqat shu keys natijasi, boshqa mijozga kafolat emas. Boshqa keys raqamlari va yangi statistika qoʻshilmang. Qora fon, och matn, ingichka chiziqli ikonka, kam matn, yirik raqamlar. \"Oʻquv namunasi\" va \"Manba: Mijoz keyslari, 3-sahifa\" koʻrinsin. Oʻzbek lotin yozuvida yozing."
+       },
+       {
+        "id": "P3",
+        "target": "Studio → Video Overview → sozlash / qoʻshimcha",
+        "title": "Короткое видео",
+        "text": "Faqat Bon Appetit haqidagi manba asosida kafe egalari uchun rus tilida qisqa video yarating. Turli oshxona uskunalari qanday muammo tugʻdirganini, 6 kafeda yagona tartib joriy qilinganini va taom tayyorlash vaqti 18 daqiqadan 12 daqiqaga tushganini tushuntiring. Haftasiga taxminan 10 soat tejalishi bosh oshpaz bahosi ekanini ayting. Boshqa mijozlarning natijalarini qoʻshmang va yangi mijozga shu natijani vaʼda qilmang. Sodda chiziqli rasmlardan foydalaning. Bu oʻquv uchun tuzilgan misol ekanini belgilang. Oxirida kafe egasiga \"Oshxonangizda avval qaysi ishga ketayotgan vaqtni oʻlchaysiz?\" degan savolni bering."
+       },
+       {
+        "id": "P4",
+        "target": "Chat / video uchun zaxira",
+        "title": "Сценарий видео на узбекском",
+        "text": "Faqat Bon Appetit keysi asosida kafe biznesi egasi uchun 60-90 soniyalik oʻzbekcha video ssenariysi yozing. Har kadrda nima koʻrinishi, ekranga qanday qisqa matn yozilishi va ovozda nima aytilishini jadvalda koʻrsating. Tuzilishi: muammo, 6 kafeda yagona oshxona standarti, natija, yakuniy savol. Taom tayyorlash 18 daqiqadan 12 daqiqaga tushgani va haftasiga taxminan 10 soat tejalishi bosh oshpaz bahosi ekanini aniq ajrating. Boshqa keys raqamlarini qoʻshmang, yangi mijozga aynan shu foydani kafolatlamang. Oʻquv namunasi deb belgilang. Oxirida tekshirish uchun manba sahifasini yozing. Oʻzbek lotin yozuvida, ovoz chiqarib oʻqishga tabiiy gaplar bilan yozing."
+       }
+      ],
+      "notes": []
+     },
+     {
+      "key": "05-xarid-qoshimcha",
+      "num": "05",
+      "title": "Предложения в одну таблицу",
+      "note": "Короткий проверочный список для отдела закупок и вопросы поставщику.",
+      "tag": "ДОПОЛНИТЕЛЬНО",
+      "yoriqnoma": {
+       "slug": "05-xarid-qoshimcha-yoriqnoma",
+       "name": "01_Yoriqnoma.pdf",
+       "size": 34815
+      },
+      "promptsPdf": {
+       "slug": "05-xarid-qoshimcha-promptlar-pdf",
+       "name": "02_Promptlar.pdf",
+       "size": 34220
+      },
+      "sources": [
+       {
+        "slug": "05-xarid-qoshimcha-m1",
+        "name": "Katalog_izohi.pdf",
+        "size": 32907
+       },
+       {
+        "slug": "05-xarid-qoshimcha-m2",
+        "name": "Telefon_takliflari.csv",
+        "size": 1661
+       }
+      ],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "P1",
+        "target": "Studio → Data Table → sozlash",
+        "title": "Короткий список закупки",
+        "text": "Korxonamiz uchun bitta ish telefoni tanlayapmiz. Berilgan katalogdan yangi, sotuvda mavjud va kamida 12 oy kafolati bor telefonlarni toping. Narxi 7 million soʻmdan oshmasin. Mos takliflarni eng arzonidan boshlab jadvalda koʻrsating. Jadvalga taklif raqami, brendi, telefon nomi va modeli, xotira hajmi, holati, kafolat muddati, soʻmdagi narxi, qaysi doʻkonda sotilishi, shahar, eʼlon sanasi va yetkazish shartini kiriting. Bir telefon turli sotuvchilarda boʻlsa, har bir taklifni alohida qatorda qoldiring. Faqat talablarimizga mos telefonlarni kiriting. Maʼlumot yetishmasa, \"berilmagan\" deb yozing. Jadval sarlavhalari va izohlarini oʻzbekcha yozing. Bu katalog oʻquv uchun tuzilganini, narxlar haqiqiy savdo taklifi emasligini qayd eting."
+       },
+       {
+        "id": "P2",
+        "target": "Chat",
+        "title": "Вопросы поставщику",
+        "text": "Telefonni xarid qilishdan oldin sotuvchidan aniqlashtirishimiz kerak boʻlgan 5 savolni yozing. Savollar telefon modeli va xotirasi, yakuniy narx va xarid hujjati, kafolat shartlari, sotuvda borligi hamda yetkazish haqida boʻlsin. Katalogda javobi bor savolni va javobi yetishmayotgan savolni ajrating. \"Sotuvda bor\" belgisi nechta telefon qolganini bildirmasligini hisobga oling. Bu oʻquv katalogi, undagi maʼlumotni haqiqiy sotuvchi tasdigʻi deb olmang. Faqat savollar matnini oʻzbekcha tayyorlang, hech kimga yubormang."
+       }
+      ],
+      "notes": []
+     },
+     {
+      "key": "06-rahbar-audio-qoshimcha",
+      "num": "06",
+      "title": "Чтобы руководитель понял и в дороге",
+      "note": "Короткое аудиорезюме по одной теме и вопросы, которые уточнит руководитель.",
+      "tag": "ДЕМОНСТРАЦИЯ ИЛИ ДОМАШНЕЕ ЗАДАНИЕ",
+      "yoriqnoma": {
+       "slug": "06-rahbar-audio-qoshimcha-yoriqnoma",
+       "name": "01_Yoriqnoma.pdf",
+       "size": 34673
+      },
+      "promptsPdf": {
+       "slug": "06-rahbar-audio-qoshimcha-promptlar-pdf",
+       "name": "02_Promptlar.pdf",
+       "size": 34023
+      },
+      "sources": [
+       {
+        "slug": "06-rahbar-audio-qoshimcha-m1",
+        "name": "Kengayish rejasi, Samarqand filiali.pdf",
+        "size": 225085
+       }
+      ],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "P1",
+        "target": "Chat",
+        "title": "Письменное резюме для руководителя",
+        "text": "Samarqand filiali kengayish rejasi asosida rahbar uchun 150 soʻzgacha qisqa xulosa yozing. Rejaning maqsadini, hozirgi holatni, rejalashtirilgan ishlarni va ochiq qolgan masalalarni tushuntiring. Oxirida uchrashuvda aniqlashtirish kerak boʻlgan 3 savolni yozing. Kelajak rejasini bajarilgan ish deb yozmang. Har asosiy daʼvoga manba sahifasi/bandi bering. Oʻzbek lotin yozuvida yozing."
+       },
+       {
+        "id": "P2",
+        "target": "Studio → Audio Overview → Brief / ruscha audio",
+        "title": "Короткое аудиорезюме",
+        "text": "Samarqand filiali kengayish rejasi asosida korxona rahbari uchun rus tilida qisqa audio xulosa yarating. Rejaning maqsadi, hujjatda tasdiqlangan holat, hali rejalashtirilayotgan ishlar va qaror oldidan ochiq qolgan savollarni tushuntiring. Kelajakdagi taxminlarni erishilgan natija deb aytmang. Hujjatda koʻrsatilmagan tasdiqni oʻzingizdan qoʻshmang. Oxirida rahbar uchrashuvda berishi kerak boʻlgan 3 savolni ayting. Bu oʻquv uchun tuzilgan misol ekanini belgilang."
+       }
+      ],
+      "notes": []
+     }
+    ]
+   },
+   "prep": null,
+   "date": "2026-09-12",
+   "materialsHtml": "<p class=\"mdoc-lede\">Файлы для работы на занятии. Скачайте и загрузите в NotebookLM.</p><div class=\"mdoc-list\"><section class=\"pp\"><div class=\"pp-art\"><img src=\"/aip/asset/mat-sources.webp?v=4f3dcd65\" width=\"900\" height=\"787\" alt=\"\" decoding=\"async\"></div><div class=\"pp-body\"><div class=\"pp-hd\"><span class=\"pp-num\">01</span><h3 class=\"pp-t\">Источники</h3></div><p class=\"pp-note\">Семь файлов — документы вымышленной компании. Загрузите в NotebookLM как источники именно их и ничего больше.</p><ul class=\"mfiles\" role=\"list\"><li class=\"mfile\"><span class=\"mfile-main\"><span class=\"mfile-name\" title=\"01_Kompaniya.pdf\">01_Kompaniya.pdf</span><span class=\"mfile-meta\">PDF · 21,1 КБ</span></span><a class=\"mfile-get\" href=\"/api/aip/lesson/1/doc/hw-kompaniya\" download=\"01_Kompaniya.pdf\" aria-label=\"01_Kompaniya.pdf — скачать\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1Z\"/><path d=\"M4 19a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z\"/></svg></a></li><li class=\"mfile\"><span class=\"mfile-main\"><span class=\"mfile-name\" title=\"02_Amaldagi_narxlar.csv\">02_Amaldagi_narxlar.csv</span><span class=\"mfile-meta\">CSV · 1,2 КБ</span></span><a class=\"mfile-get\" href=\"/api/aip/lesson/1/doc/hw-narxlar\" download=\"02_Amaldagi_narxlar.csv\" aria-label=\"02_Amaldagi_narxlar.csv — скачать\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1Z\"/><path d=\"M4 19a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z\"/></svg></a></li><li class=\"mfile\"><span class=\"mfile-main\"><span class=\"mfile-name\" title=\"03_Yetkazish_qoidalari.pdf\">03_Yetkazish_qoidalari.pdf</span><span class=\"mfile-meta\">PDF · 21,0 КБ</span></span><a class=\"mfile-get\" href=\"/api/aip/lesson/1/doc/hw-yetkazish\" download=\"03_Yetkazish_qoidalari.pdf\" aria-label=\"03_Yetkazish_qoidalari.pdf — скачать\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1Z\"/><path d=\"M4 19a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z\"/></svg></a></li><li class=\"mfile\"><span class=\"mfile-main\"><span class=\"mfile-name\" title=\"04_Reklama_qoralamasi.pdf\">04_Reklama_qoralamasi.pdf</span><span class=\"mfile-meta\">PDF · 20,8 КБ</span></span><a class=\"mfile-get\" href=\"/api/aip/lesson/1/doc/hw-reklama\" download=\"04_Reklama_qoralamasi.pdf\" aria-label=\"04_Reklama_qoralamasi.pdf — скачать\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1Z\"/><path d=\"M4 19a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z\"/></svg></a></li><li class=\"mfile\"><span class=\"mfile-main\"><span class=\"mfile-name\" title=\"05_Eski_narxlar.csv\">05_Eski_narxlar.csv</span><span class=\"mfile-meta\">CSV · 934 Б</span></span><a class=\"mfile-get\" href=\"/api/aip/lesson/1/doc/hw-eski-narxlar\" download=\"05_Eski_narxlar.csv\" aria-label=\"05_Eski_narxlar.csv — скачать\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1Z\"/><path d=\"M4 19a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z\"/></svg></a></li><li class=\"mfile\"><span class=\"mfile-main\"><span class=\"mfile-name\" title=\"06_Buyurtmalar.csv\">06_Buyurtmalar.csv</span><span class=\"mfile-meta\">CSV · 3,3 КБ</span></span><a class=\"mfile-get\" href=\"/api/aip/lesson/1/doc/hw-buyurtmalar\" download=\"06_Buyurtmalar.csv\" aria-label=\"06_Buyurtmalar.csv — скачать\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1Z\"/><path d=\"M4 19a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z\"/></svg></a></li><li class=\"mfile\"><span class=\"mfile-main\"><span class=\"mfile-name\" title=\"07_Yigilish_qaydi.txt\">07_Yigilish_qaydi.txt</span><span class=\"mfile-meta\">TXT · 1,6 КБ</span></span><a class=\"mfile-get\" href=\"/api/aip/lesson/1/doc/hw-yigilish\" download=\"07_Yigilish_qaydi.txt\" aria-label=\"07_Yigilish_qaydi.txt — скачать\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1Z\"/><path d=\"M4 19a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z\"/></svg></a></li></ul><div class=\"pp-do\"><a class=\"cta\" href=\"/api/aip/lesson/1/doc/hw-manbaalar\" download=\"Manbaalar.zip\">Скачать всё</a><span class=\"m-count\">ZIP · 59,3 КБ</span></div><p class=\"pp-foot\">Не меняйте имена файлов — промпты обращаются к ним по имени.</p></div></section><section class=\"pp\"><div class=\"pp-art\"><img src=\"/aip/asset/mat-prompts.webp?v=4f3dcd65\" width=\"740\" height=\"745\" alt=\"\" decoding=\"async\"></div><div class=\"pp-body\"><div class=\"pp-hd\"><span class=\"pp-num\">02</span><h3 class=\"pp-t\">Промпты</h3></div><p class=\"pp-note\">Тринадцать промптов упражнения. Рядом с каждым есть кнопка копирования — вставляете прямо в NotebookLM.</p><div class=\"pp-do\"><button class=\"cta bbtn bbtn-claude\" type=\"button\" data-opens=\"notebooklm\">Открыть промпты →</button><span class=\"m-count\">13 промптов</span></div></div></section><section class=\"pp\"><div class=\"pp-art\"><img src=\"/aip/asset/mat-book.webp?v=4f3dcd65\" width=\"549\" height=\"900\" alt=\"\" decoding=\"async\"></div><div class=\"pp-body\"><div class=\"pp-hd\"><span class=\"pp-num\">03</span><h3 class=\"pp-t\">Руководство студента</h3></div><p class=\"pp-note\">Письменное руководство к заданию: порядок упражнения и на что обращать внимание.</p><div class=\"pp-do\"><a class=\"cta\" href=\"/api/aip/lesson/1/doc/hw-qollanma\" download=\"Talaba_qollanmasi.pdf\">Скачать руководство</a><span class=\"m-count\">PDF · 25,7 КБ</span></div></div></section></div>"
+  },
+  {
+   "n": 2,
+   "title": "Claude и Code",
+   "subtitle": "Claude, Code / Cowork, терминология",
+   "summary": "Работа с Claude и терминология. Практика: сайт, лид-форма, Telegram-бот и подключение Sheets.",
+   "topics": [
+    "Claude",
+    "Code / Cowork",
+    "Терминология",
+    "Сайт",
+    "Лид-форма",
+    "Telegram bot",
+    "Sheets"
+   ],
+   "published": true,
+   "slideCount": 63,
+   "slideKind": "image",
+   "hasBook": false,
+   "bookNote": "",
+   "bookVariants": [],
+   "homework": "Свободное творчество: используя то, чему научились на занятии, создайте что-нибудь для своего бизнеса. Что именно — выбираете сами; главное, чтобы это было действительно нужно вашему бизнесу.",
+   "materials": [],
+   "prompts": null,
+   "praktikum": {
+    "title": "47 промптов — для вашего бизнеса.",
+    "lead": "47 готовых промптов: идеи, критическое мышление, продажи, реклама и обучение.",
+    "rules": [
+     "Выберите промпт под свою задачу.",
+     "Замените текст в [скобках] своими данными.",
+     "Скопируйте текст целиком и вставьте в Claude — если ваш бизнес описан в HQ Project, то в этом проекте.",
+     "Проверьте ответ фактами и цифрами своего бизнеса."
+    ],
+    "exercisesTitle": "Разделы",
+    "exercisesNote": "Откройте раздел под свою задачу.",
+    "promptsNote": "Каждый самостоятелен — берите нужный.",
+    "guide": null,
+    "closing": null,
+    "exercises": [
+     {
+      "key": "01-biznes-goyalar",
+      "num": "01",
+      "title": "Бизнес-идеи",
+      "note": "Новые бизнес-возможности из повторяющихся проблем, вашего преимущества и перемен на рынке.",
+      "tag": "01–11",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "01",
+        "target": "",
+        "title": "Бизнес из повторяющихся проблем",
+        "text": "[Soha]dagi korxonalar hozir qoʻl mehnati, elektron jadvallar yoki Telegram guruhlari orqali hal qilayotgan, kundalik ishda takrorlanadigan 20 ta muammoni sanab bering.\nHar biri uchun uch narsani baholang: muammo oyiga qancha xarajat keltiradi, uni hal qilish uchun qancha toʻlashga tayyor boʻlishadi va nega bu ish hali avtomatlashtirilmagan.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "02",
+        "target": "",
+        "title": "Бизнес под ваше преимущество",
+        "text": "Menda [imkoniyat: auditoriya / maʼlumotlar / mahsulotni mijozga yetkazish kanali / koʻnikma] bor.\nAynan shu imkoniyat tufayli amalga oshirish mumkin boʻlgan 15 ta biznes gʻoyasini taklif qiling.\nBu imkoniyati yoʻq raqobatchi ortimdan osongina ergasha olmasin.\nIstalgan odam boshlay oladigan gʻoyalarni chiqarib tashlang.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "03",
+        "target": "",
+        "title": "Возьмите у меня интервью",
+        "text": "Mendan intervyu oling.\nKundalik ishimda duch keladigan qiyinchiliklar haqida 10 ta savol bering, lekin savollarni bittadan bering.\nIntervyu tugagach, 5 ta biznes gʻoyasini taklif qiling.\nHar bir gʻoya menga oʻxshagan kamida 10 000 kishida ham uchraydigan muammoni hal qilsin.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "04",
+        "target": "",
+        "title": "Идея, проверяемая за 14 дней",
+        "text": "Faqat [mening koʻnikmalarim]dan foydalanib, mijozlarga Telegram kanali orqali yetib boradigan 10 ta biznes gʻoyasini taklif qiling.\nHar birini 14 kun ichida, 500 dollardan kam mablagʻ bilan tekshira olishim kerak.\nGʻoya ishlashining mezoni roʻyxatdan oʻtganlar soni emas, haqiqiy pul toʻlagan mijoz boʻlsin.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "05",
+        "target": "",
+        "title": "Бизнес для маленькой команды",
+        "text": "Ikki kishidan oshmaydigan jamoa bilan oyiga 10 000 dollar foydaga chiqish imkoniyati bor 10 ta biznesni taklif qiling.\nKontent yaratish, dropshipping va agentlik xizmatlarini chiqarib tashlang.\nHar birida kichik jamoa shu darajadagi natijaga qaysi mexanizm hisobiga erishishini tushuntiring.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "06",
+        "target": "",
+        "title": "Возможности, когда ИИ дешевеет",
+        "text": "Til modeli (LLM) orqali soʻrovlarga javob olish xarajati 100 barobar kamayishi aynan [bozor]da qaysi bizneslarni amalga oshirish imkonini beradi?\nChatbotlar va kontent yaratishni chiqarib tashlang.\nAvval avtomatlashtirish juda qimmatga tushgan ish jarayonlariga eʼtibor qarating.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "07",
+        "target": "",
+        "title": "Второй продукт для текущего клиента",
+        "text": "Men [biznes]ni yuritaman.\nMavjud mijozlarimga, ularni qayta jalb qilish uchun deyarli xarajat qilmasdan, qanday 8 ta qoʻshimcha mahsulot sota olaman?\nUlarni ikki mezon boʻyicha tartiblang: mijozning men haqimda shakllangan ishonchidan qanchalik foydalanadi va yangidan qanchalik dalil talab qiladi.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "08",
+        "target": "",
+        "title": "Тест, способный опровергнуть идею",
+        "text": "Mana 5 ta biznes gʻoyasi: [roʻyxat].\nHar biri uchun imkon qadar arzon, gʻoyani rad etish imkonini ham beradigan sinov tuzing.\nSinov oldindan ijobiy natijaga moslab qurilmasin: salbiy natija chiqsa, gʻoyadan voz kechish uchun asos boʻlsin.\nMuvaffaqiyat va muvaffaqiyatsizlikning aniq chegaralarini koʻrsating.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "09",
+        "target": "",
+        "title": "Три критика",
+        "text": "Ushbu gʻoyani jiddiy sinovdan oʻtkazing: [gʻoya].\nUchta alohida rol nomidan javob bering: shubha bilan qaraydigan investor, boʻlajak mijozlarim ichidagi eng ishonchsizi va meni bozordan siqib chiqarmoqchi boʻlgan raqobatchi.\nKeyin qaysi eʼtiroz gʻoyani barbod qilish ehtimoli eng yuqori ekanini ayting.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "10",
+        "target": "",
+        "title": "Расчёт рынка в открытую",
+        "text": "[Gʻoya] uchun [hudud]dagi amalda erishish mumkin boʻlgan bozor hajmini quyidagi hisob bilan baholang: ehtimoliy xaridorlar soni × ulardan real jalb qilish mumkin boʻlgan ulush × narx.\nHisob-kitobni ochiq koʻrsating.\nQaysi bitta raqam notoʻgʻri boʻlsa, yakuniy xulosa oʻzgarishini ayting.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "11",
+        "target": "",
+        "title": "Бизнес-возможности из новых инициатив",
+        "text": "Oxirgi 12 oy ichida [mamlakat]da eʼlon qilingan 8 ta davlat raqamlashtirish tashabbusi, yangi qoida va tartib yoki infratuzilma loyihasini aniqlang.\nHar biri asosida shu oʻzgarishdan foydalanadigan xususiy biznes taklif qiling.\nJavobni oʻzbek tilida bering."
+       }
+      ],
+      "notes": []
+     },
+     {
+      "key": "02-tanqidiy-fikrlash",
+      "num": "02",
+      "title": "Критическое мышление",
+      "note": "Проверка планов и решений допущениями, рисками и сильным контраргументом.",
+      "tag": "12–20",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "12",
+        "target": "",
+        "title": "Отделить факты от предположений",
+        "text": "Mana mening rejam yoki qarashim: [matn].\nU tayangan barcha farazlarni sanang, ochiq aytilganlarini ham, yashirinlarini ham.\nUlarni uch guruhga ajrating: tekshirilgan faktlar, asosli taxminlar va faqat umidga tayangan fikrlar.\nHar bir umidga tayangan fikrni fakt deb hisoblash uchun qanday dalil kerakligini ayting.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "13",
+        "target": "",
+        "title": "Сильный довод против вашего плана",
+        "text": "[Reja] amalga oshmaydi deb hisoblaydigan eng zukko tanqidchi roliga kiring.\nFikrim ortidagi barcha sabab va asoslarni hisobga oling.\nRejaning oʻzini tanqid qiling, uni soddalashtirib yoki mazmunini buzib koʻrsatib hujum qilmang.\nEʼtirozlaringizni keltirishi mumkin boʻlgan zarariga qarab tartiblang.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "14",
+        "target": "",
+        "title": "Почему конкурент так поступил?",
+        "text": "Raqobatchim yoki qarshi tomon [harakat] qildi, bu menga ahmoqona koʻrinyapti.\nMen bilmaydigan maʼlumotlar yoki ularni harakatga undayotgan manfaatlarni hisobga olganda, bu qaror mantiqli boʻlishi mumkinligini tushuntiradigan 3 ta izoh bering.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "15",
+        "target": "",
+        "title": "Что нужно знать до решения?",
+        "text": "Men [variantlar] orasidan birini tanlamoqchiman.\nVaziyatni uch qismga ajrating: hozir bilganlarim, qaror qabul qilishdan oldin kam xarajat bilan aniqlay oladiganlarim va faqat qaror qilib, sinab koʻrgandan keyin biladiganlarim.\nUchinchi guruhdagi, qancha tahlil qilsam ham oldindan aniqlab boʻlmaydigan narsalarni kutib, qarorni choʻzmayapmanmi?\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "16",
+        "target": "",
+        "title": "Во что обойдётся отмена решения?",
+        "text": "[Qaror]ni baholang: undan qaytish mumkinmi yoki yoʻqmi?\nQaytish amalda qancha pul, vaqt va obroʻ yoʻqotishiga olib keladi?\nAgar undan qaytish arzon boʻlsa, tahlilni toʻxtatib, qaror qilishimni ayting.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "17",
+        "target": "",
+        "title": "Увидеть провал заранее",
+        "text": "[Reja] nega muvaffaqiyatsiz boʻlishi mumkinligini oldindan tahlil qiling.\nTasavvur qiling: 12 oy oʻtdi va reja butunlay barbod boʻldi.\nJamoa ichida muhokama qilish uchun hisobot yozing: nima notoʻgʻri ketdi, muammolar qanday ketma-ketlikda yuz berdi va qaysi dastlabki ogohlantiruvchi belgini eʼtiborsiz qoldirdik?\nMuvaffaqiyatsizlikning bir-biridan farqli 3 ta ssenariysini bering.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "18",
+        "target": "",
+        "title": "Стоит ли продолжать проект?",
+        "text": "Men [loyiha]ga [vaqt/pul] sarfladim.\nUni davom ettirish kerakligini faqat kelajakdagi xarajat va kelajakdagi foydaga qarab baholang.\nQarorimni asoslashda avval sarflangan mablagʻ yoki vaqtni dalil qilib keltirsam, har safar buni koʻrsatib bering.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "19",
+        "target": "",
+        "title": "Сверить сроки и затраты с похожими проектами",
+        "text": "Men [vazifa] uchun [vaqt/xarajat] ketadi deb hisobladim.\nTaqqoslashga mos loyihalarni toping: menga oʻxshash odamlar bajargan shunga oʻxshash ishlar amalda qancha vaqt yoki mablagʻ talab qilgan?\nTaxminimni oʻsha loyihalarda kuzatilgan odatiy natijalarga moslab tuzating.\nFaqat oʻz loyihamga qarab hisoblaganimda nimalarni eʼtibordan chetda qoldirganimni ayting.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "20",
+        "target": "",
+        "title": "Найти вопрос получше",
+        "text": "Hozir berayotgan savolim: [savol].\nUndan yaxshiroq 5 ta savol tuzing.\nUlarga javob topilsa, dastlabki savolim ahamiyatini yoʻqotsin yoki javobi osonlashsin.\nJavobni oʻzbek tilida bering."
+       }
+      ],
+      "notes": []
+     },
+     {
+      "key": "03-savdo-va-muzokaralar",
+      "num": "03",
+      "title": "Продажи и переговоры",
+      "note": "От первой встречи до цены, возражений, переговоров и коммерческого предложения.",
+      "tag": "21–32",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "21",
+        "target": "",
+        "title": "Первая встреча с клиентом",
+        "text": "Men [boʻlajak mijoz: kompaniya, lavozim, soha] bilan [taklifim] haqida birinchi marta gaplashaman.\nMijoz ehtiyojini aniqlash uchun 12 ta savol tuzing.\nSavollarni shunday tartiblangki, har bir javob keyingi savolni berish uchun asos yaratsin.\nByudjetni toʻgʻridan-toʻgʻri soʻramasdan aniqlashga yordam beradigan 3 ta savolni belgilang.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "22",
+        "target": "",
+        "title": "Пусть клиент сам назовёт цену проблемы",
+        "text": "Boʻlajak mijozning hozirgi ish jarayoni unga qanchaga tushayotganini men aytmasdan aniqlashga yordam beradigan 5 ta savol yozing.\nMaqsad: men oʻz narximni aytishimdan oldin, mijoz muammo unga qanchaga tushayotganini oʻz soʻzlari bilan ovoz chiqarib aytsin.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "23",
+        "target": "",
+        "title": "Разбор после встречи",
+        "text": "Oxirgi suhbat qaydlarimni [qaydlarni joylang] quyidagi qismlarga ajrating: tasdiqlangan muammolar, mijoz aytgan raqam va koʻrsatkichlar, ochiq aytilmagan, lekin men sezgan xatarlar, mijoz tasvirlagan qaror qabul qilish jarayoni va men soʻramay qolgan, keyingi suhbatda albatta soʻrashim kerak boʻlgan 3 ta masala.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "24",
+        "target": "",
+        "title": "Объяснить цену через ценность",
+        "text": "Men [taklif] uchun [narx] soʻrayman.\nTaklifimning qiymatini hisoblang: mijozning oʻz raqamlariga tayanib, hozirgi muammo unga qanchaga tushayotganini aniqlang.\nMen soʻrayotgan narxni yetkazib beradigan qiymatimga nisbat sifatida koʻrsating.\nNarxni aytayotganimda ovoz chiqarib tushuntira oladigan, 3 jumladan iborat matn yozing.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "25",
+        "target": "",
+        "title": "Предложение в трёх уровнях",
+        "text": "[Xizmat] uchun uch darajali taklif tuzing: mijoz sotib olishini oʻzim xohlamaydigan, solishtirish uchun berilgan imkoniyatlari cheklangan arzon paket, mijoz tanlashini istaydigan asosiy paket va asosiy paket narxini maqbul koʻrsatadigan premium paket.\nUchalasiga ham narx belgilang.\nHar bir paket xaridor qaroriga psixologik jihatdan qanday taʼsir qilishini tushuntiring.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "26",
+        "target": "",
+        "title": "Подготовка к возражениям",
+        "text": "[Mijoz turi]ning [taklifim]ga bildirishi ehtimoli eng yuqori boʻlgan 10 ta eʼtirozni yozing.\nHar biri uchun quyidagilarni bering: eʼtiroz ortidagi xavotir, vaziyatga boshqacha qarashga yordam beradigan izoh, bitta dalil va eʼtiroz bartaraf boʻlganini tekshiradigan savol.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "27",
+        "target": "",
+        "title": "Разобраться с ответом «дорого»",
+        "text": "Mijoz “Juda qimmat” dedi.\nBu gapning olti xil sababiga mos oltita alohida javob bering: byudjeti yoʻq, qiymatni koʻrmayapti, notoʻgʻri muqobil bilan solishtiryapti, odat boʻyicha savdolashyapti, bu taklif uchun mos xaridor emas yoki taklif uning ehtiyojiga haqiqatan mos kelmaydi.\nQaysi holatga duch kelganimni aniqlashga yordam beradigan savolni ham qoʻshing.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "28",
+        "target": "",
+        "title": "«Пришлите предложение, мы подумаем»",
+        "text": "Mijoz “Taklif yuboring, oʻylab koʻramiz” dedi.\nBu javobni yo sanasi kelishilgan aniq keyingi qadamga, yo ochiq aytilgan rad javobiga olib keladigan 4 ta javob yozing.\n“Balki” degan noaniqlikni tugatmoqchiman.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "29",
+        "target": "",
+        "title": "Вернуть к жизни предложение без ответа",
+        "text": "Taklifni yuborganimdan keyin boʻlajak mijoz javob bermay qoʻydi.\nSuhbatni qayta boshlash uchun ikki hafta davomida yuboriladigan 3 ta xabar ketma-ketligini yozing.\nBirinchi xabar yangi foyda bersin.\nIkkinchi xabar vaziyatga mos dalil keltirsin.\nUchinchi xabar bu masalani yopayotganimni ochiq aytib, suhbatni yakunlasin.\n“Shunchaki holatni bilmoqchi edim” mazmunidagi gaplarni ishlatmang.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "30",
+        "target": "",
+        "title": "Ролевая тренировка продаж с оценкой",
+        "text": "[Mijoz roli: shubha bilan qaraydigan moliya direktori / oldin yomon tajribaga uchragan kompaniya asoschisi / xarid boʻlimi xodimi] roliga kiring.\nMen [taklif]ni taqdim qilaman, Siz esa hayotdagidek eʼtiroz bildiring va har raundda bosimni oshiring.\nHar bir javobimdan keyin roldan chiqib, meni uch mezon boʻyicha baholang: eʼtirozni eshitib, inobatga oldimmi, uning asl sababini aniqladimmi va suhbatni keyingi qadamga olib oʻtdimmi?\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "31",
+        "target": "",
+        "title": "Лист подготовки к переговорам",
+        "text": "[Bitim] boʻyicha muzokaraga tayyorgarlik varagʻimni tuzing.\nUnda quyidagilar boʻlsin: erishmoqchi boʻlgan natijam, qaysi chegaradan keyin kelishuvdan voz kechishim, kelishuv boʻlmasa men uchun eng yaxshi muqobil yoʻl va qarshi tomonning ehtimoliy muqobillari.\nNarxdan tashqari kelishish mumkin boʻlgan barcha shartlarni sanang: ish hajmi, muddat, toʻlov shartlari, intellektual mulk huquqlari, eksklyuzivlik va loyiha natijasini mijoz misoli sifatida eʼlon qilish huquqi.\nMuzokarani qanday boshlashimni va boshlangʻich taklifimning asoslarini ham yozing.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "32",
+        "target": "",
+        "title": "Структура коммерческого предложения",
+        "text": "[Bitim] uchun tijoriy taklif tuzilmasini yozing.\nTaklifning oʻzi mijozni qarorga olib kelsin: avval uning muammosi oʻz soʻzlari bilan, keyin hech narsa qilmaslikning xarajati uning oʻz raqamlari bilan berilsin.\nSoʻng muammodan yechimga olib boradigan yondashuvim, uni tasdiqlaydigan dalillar va oxirida kerakli mablagʻ koʻrsatilsin.\nYakunida mijoz oldida imzolashga tayyor bitta aniq tanlov qolsin.\nJavobni oʻzbek tilida bering."
+       }
+      ],
+      "notes": []
+     },
+     {
+      "key": "04-reklama-va-kreativ",
+      "num": "04",
+      "title": "Реклама и креатив",
+      "note": "Подходы, портрет клиента, видеосценарий и разбор рекламы.",
+      "tag": "33–39",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "33",
+        "target": "",
+        "title": "Десять подходов для рекламы",
+        "text": "Mahsulot: [mahsulot].\nAuditoriya: [auditoriya].\nReklama uchun 10 ta yondashuv ishlab chiqing: muammo, mavqe, qiziqish, boshqalarning tajribasi va fikri, odatiy qarashga zid fikr, oldingi va keyingi holat, bizning usul va eski usul, asoschi hikoyasi, eʼtirozni oldindan bartaraf etish va shoshilinchlik.\nUlarni kutilayotgan bosishlar ulushi (CTR) boʻyicha tartiblang.\nHar biri uchun diqqatni tortadigan birinchi jumla, asosiy vaʼda va uygʻotmoqchi boʻlgan hissiyotni yozing.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "34",
+        "target": "",
+        "title": "Пять портретов клиента",
+        "text": "[Mahsulot]im uchun bir-biridan farq qiladigan 5 ta mijoz portretini yarating.\nHar biri uchun uch narsani yozing: qaysi vaziyat yoki tasvir uni lentani varaqlashdan toʻxtatadi, u oʻz muammosini qanday soʻzlar bilan ifodalaydi va qanday tasvirlarga ishonadi.\nMuammoni aynan mijozning oʻz soʻzlari bilan ayting, reklama tilidagi iboralarni ishlatmang.\nU ishonadigan tasvirlarni ranglar, muhit, yuzlar va fakturalar orqali tasvirlang.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "35",
+        "target": "",
+        "title": "Рекламное сообщение и доказательства",
+        "text": "[Mahsulot] uchun reklama xabarlarini iyerarxiya shaklida tuzing: bir satrlik asosiy daʼvo, uni qoʻllab-quvvatlaydigan uchta dalil va har bir dalil bartaraf etadigan eʼtiroz.\nBiz yaratadigan har bir reklama materiali shu tuzilmadagi bitta bandga mos kelsin.\nTuzilmani reklama yaratish jarayoniga uzatishim mumkin boʻlgan tartibli JSON shaklida bering.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "36",
+        "target": "",
+        "title": "Где реклама не работает?",
+        "text": "Reklama kabinetimdagi maʼlumotlar: [har bir reklama materiali boʻyicha koʻrsatkichlarni joylang].\nReklama yoʻlini tahlil qiling: muammo odamni lentani varaqlashdan toʻxtatadigan boshlanishdami, diqqatni ushlab turadigan asosiy qismdami, bosishga undaydigan chaqiriqdami yoki bosgandan keyin ochiladigan sahifa reklamaga mos kelmasligidami?\nReklamaning qaysi qismini qayta yaratish va qaysi qismini oʻzgarishsiz qoldirish kerakligini ayting.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "37",
+        "target": "",
+        "title": "20 коротких рекламных зачинов",
+        "text": "[Mahsulot] uchun [til]da diqqatni tortadigan 20 ta reklama boshlanishini yozing.\nHar biri koʻpi bilan 8 soʻzdan iborat boʻlsin.\nToʻrt turga teng taqsimlang: savol bilan boshlanadigan, raqamga tayangan, salbiy oqibat yoki xavfdan ogohlantiradigan va “Siz”ga murojaat qiladigan boshlanishlar.\nUlarni [platforma + auditoriya] uchun odamni lentani varaqlashdan toʻxtatish ehtimoliga qarab tartiblang.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "38",
+        "target": "",
+        "title": "Сценарий 15-секундного видео",
+        "text": "[Mahsulot] uchun 3 sahnadan iborat 15 soniyalik reklama ssenariysini tuzing.\nHar bir sahna alohida yaratiladigan bitta video boʻlagi boʻlsin.\nBirinchi sahna muammoni tasvirlasin, 5 soniya.\nIkkinchi sahna mahsulotni koʻrsatsin, 5 soniya.\nUchinchi sahna natijani koʻrsatsin va harakatga chaqiriq uchun joy qoldirsin, 5 soniya.\nHar bir sahnani yaratish uchun prompt yozing.\nSahnalar orasida koʻrinish va voqea izchilligini saqlash boʻyicha koʻrsatmalarni ham qoʻshing.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "39",
+        "target": "",
+        "title": "Ответ на рекламу конкурента",
+        "text": "Raqobatchi reklamasiga javob tayyorlaydigan tizim tuzing.\nKirish maʼlumoti yangi raqobatchi reklamasining skrinshoti yoki tavsifi boʻladi.\nTil modeli (LLM) uning reklama yondashuvi va taklifini ajratib olsin, unga javoban 3 ta reklama gʻoyasini yaratsin va ularni yaratish uchun promptlar yozsin.\nReklamadagi maʼlumotni ajratib olish promptini ham, raqobatchining taklifiga javob beradigan oʻz pozitsiyamizni ishlab chiqish promptini ham yozing.\nJavobni oʻzbek tilida bering."
+       }
+      ],
+      "notes": []
+     },
+     {
+      "key": "05-organish",
+      "num": "05",
+      "title": "Обучение",
+      "note": "Как быстро и глубоко освоить новый навык.",
+      "tag": "40–47",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "40",
+        "target": "",
+        "title": "Негласные правила практиков",
+        "text": "[Soha]da ishlaydigan mutaxassislar oʻz-oʻzidan ayon deb biladigan, lekin yangi boshlovchilarga hech qachon tushuntirmaydigan 10 ta tushunchani sanang.\nBu ishni amalda qilgan odamni u haqda faqat oʻqigan odamdan ajratib turadigan, koʻpincha ochiq aytilmaydigan bilimlarni koʻrsating.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "41",
+        "target": "",
+        "title": "Учебный план от результата",
+        "text": "[Koʻnikma]ni [aniq natija]ga erisha oladigan darajada oʻrganish uchun [Y hafta] davomida [haftasiga X soat] vaqtim bor.\nOʻquv rejasini yakuniy natijadan boshlab teskari tartibda tuzing: Y-hafta oxirida men aynan NIMA QILA OLISHIM kerak va har bir hafta shu natijaga qanday olib boradi?\nHar bir hafta yakunida tayyor ish yoki mahsulot boʻlsin, birorta hafta faqat “tushundim” bilan tugamasin.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "42",
+        "target": "",
+        "title": "Учиться через вопросы",
+        "text": "Menga [tushuncha]ni Suqrot usulida oʻrgating: savollarni bittadan bering, maʼruza qilmang.\nHozir bilganlarimdan boshlang: [nimalarni bilishingizni yozing].\nTushunchani oʻz javoblarim orqali anglab yetishimga imkon bering.\nFaqat ishonch bilan notoʻgʻri javob berganimda meni tuzating.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "43",
+        "target": "",
+        "title": "Проверить знания строгими вопросами",
+        "text": "Men [mavzu]ni tushunaman deb hisoblayman.\nMavzu menga tanishligi bilan uni chinakam tushunishim orasidagi farqni ochish uchun qattiqqoʻl imtihonchi beradigan 5 ta savol tuzing.\nSavollarni bittadan bering va javoblarimni qattiqqoʻllik bilan baholang.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "44",
+        "target": "",
+        "title": "Отрепетировать ситуацию заранее",
+        "text": "Siz bilan [koʻnikma]ni mashq qilmoqchiman.\n[Vaziyat: mijoz bilan uchrashuv / kodni koʻrib chiqish / bahs / chet tilida suhbat]ni murakkabligi 10 dan 6 darajada boʻlgan rolli mashq sifatida olib boring.\nMashq davomida roldan chiqmang.\nTugatgach, roldan chiqib, uch narsani ayting: men yomon yoʻl tutgan 3 ta aniq vaziyat, har birida qanday yoʻl tutish kuchliroq boʻlardi va keyingi mashqqacha tuzatishim kerak boʻlgan bitta takroriy xato.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "45",
+        "target": "",
+        "title": "30 минут с экспертом",
+        "text": "[Soha] mutaxassisi bilan gaplashish uchun 30 daqiqam bor.\nSavollar roʻyxatini tuzing: javobini Google orqali topish mumkin boʻlgan savollar ham, “Yangi boshlovchilarga qanday maslahat berasiz?” kabi savollar ham boʻlmasin.\nU qanday qoidalarga tayanib qaror qilishini, amalda xato qilgan vaziyatlari haqidagi hikoyalarini va nimalarni boshqa hech qachon qilmasligini bilmoqchiman.\n10 ta savolni suhbatda beriladigan tartibda yozing.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "46",
+        "target": "",
+        "title": "Извлечь урок из опыта",
+        "text": "Yaqindagi tajribamdan saboq chiqarishga yordam bering: [loyiha yoki voqeani tasvirlang].\nMen bilan yakuniy tahlil oʻtkazing va savollarni bittadan bering: reja qanday edi, amalda nima boʻldi, nega farq yuz berdi, nimani saqlab qolaman va nimani oʻzgartiraman?\nSoʻng boshqa vaziyatlarda ham qoʻllash mumkin boʻlgan 3 ta tamoyilni “agar ... boʻlsa, unda ...” shaklidagi qoida qilib yozing.\nJavobni oʻzbek tilida bering."
+       },
+       {
+        "id": "47",
+        "target": "",
+        "title": "Памятка на одну страницу",
+        "text": "[Mavzu] haqida bilish zarur boʻlgan hamma narsani bitta sahifaga jamlang.\nShu sahifaga qarab mavzuni toʻliq qayta tushunib olishim mumkin boʻlsin: asosiy tamoyil, 5 ta muhim farq, 3 ta amaliy tartib va ish notoʻgʻri ketadigan holatlar kiritilsin.\nBu sahifa bilimimni qayta esga tushirish uchun tayanch boʻladi, har bir soʻz zarur vazifani bajarsin.\nJavobni oʻzbek tilida bering."
+       }
+      ],
+      "notes": []
+     }
+    ]
+   },
+   "prep": null,
+   "date": "2026-09-19"
+  },
+  {
+   "n": 3,
+   "title": "Skill и агенты",
+   "subtitle": "Skill, Plugin, Connector, Plan, команда агентов, here.now",
+   "summary": "Расширим возможности Claude: skill, plugin, connector и команда агентов. Практика: build и deployment.",
+   "topics": [
+    "Skill",
+    "Plugin",
+    "Connector",
+    "Plan",
+    "Команда агентов",
+    "here.now",
+    "Build",
+    "Deployment"
+   ],
+   "published": true,
+   "slideCount": 40,
+   "slideKind": "video",
+   "hasBook": false,
+   "bookNote": "",
+   "bookVariants": [],
+   "homework": "Свободное творчество: используя то, чему научились на занятии, создайте что-нибудь для своего бизнеса. Что именно — выбираете сами; главное, чтобы это было действительно нужно вашему бизнесу.",
+   "materials": [],
+   "prompts": null,
+   "praktikum": null,
+   "prep": null,
+   "date": "2026-09-26"
+  },
+  {
+   "n": 4,
+   "title": "Агенты и альтернативы",
+   "subtitle": "Hermes Agent, /oops, альтернативы",
+   "summary": "Запустим агентов, разберём способы исправления ошибок и альтернативные инструменты. Практика: build и итоговый проект.",
+   "topics": [
+    "Hermes Agent",
+    "/oops",
+    "Альтернативы",
+    "Build",
+    "Практика"
+   ],
+   "published": true,
+   "slideCount": 0,
+   "slideKind": "image",
+   "hasBook": true,
+   "bookNote": "«Как применять AI в бизнесе»: практическое пособие. Пять наборов — распечатайте и заполните вместе с командой.",
+   "bookVariants": [],
+   "homework": "",
+   "materials": [],
+   "prompts": null,
+   "praktikum": {
+    "title": "Hermes: ваш личный AI-агент.",
+    "lead": "Личный AI-агент на вашем собственном сервере: Hermes, Telegram-бот, память и утренний брифинг. Девять карточек и бонус.",
+    "rules": [
+     "Выполняйте карточки по порядку — каждая опирается на предыдущую.",
+     "Копируйте промпт целиком кнопкой «Nusxalash» и отправляйте туда, куда сказано в его заголовке.",
+     "Места в квадратных скобках заполните сами.",
+     "Никогда не пишите ключи, токены и пароли в чат."
+    ],
+    "exercisesTitle": "Карточки",
+    "exercisesNote": "Начните с первой карточки. Если работаете на ноутбуке, смотрите в карточке «Путь для ноутбука».",
+    "promptsNote": "Скопируйте и отправьте туда, куда сказано в заголовке.",
+    "guide": null,
+    "closing": null,
+    "exercises": [
+     {
+      "key": "01-ornatish",
+      "num": "01",
+      "title": "Установка",
+      "note": "Результат: Claude показывает версию Hermes. Займёт 5–10 минут.",
+      "tag": "",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "",
+        "target": "",
+        "title": "Отправьте в Claude Code",
+        "text": "SERVER.md faylimni oʻqi va \"ssh vps\" orqali serverimga ulan.\nServerga Hermes Agent oʻrnat.\nRasmiy buyruq: `curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash -s -- --skip-browser --skip-computer-use`\nOʻrnatish 5-10 daqiqa oladi: kutib tur, yarim yoʻlda toʻxtatma.\nButun dars uchun ikki qoida, ularni SERVER.md ga ham yoz:\n- hermes buyrugʻini doim toʻliq yoʻl bilan chaqir: `~/.local/bin/hermes`\n- sudo ishlatma: hamma narsa mening oddiy foydalanuvchim nomidan ishga tushsin.\nOxirida vaqt mintaqasini Toshkentga oʻrnat (`hermes config set timezone Asia/Tashkent`) va `hermes --version` natijasini menga koʻrsat."
+       }
+      ],
+      "notes": [
+       {
+        "title": "Заметка",
+        "text": "Строка \"setup skipped (no terminal)\" — это нормально. Claude проведёт настройку в следующих карточках."
+       },
+       {
+        "title": "Путь для ноутбука",
+        "text": "Вместо \"ssh vps\" в промпте скажите Claude Code: \"установи всё на этот компьютер, к серверу не подключайся\"; SERVER.md не нужен. На Windows Claude сам выберет установщик для PowerShell. Позже карточка 9 перенесёт агента на VPS, ничего не потеряв."
+       }
+      ]
+     },
+     {
+      "key": "02-miya",
+      "num": "02",
+      "title": "Мозг",
+      "note": "Результат: агент даёт первый ответ на узбекском.",
+      "tag": "",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "",
+        "target": "",
+        "title": "Отправьте в Claude Code",
+        "text": "Hermes OpenRouter orqali ishlasin.\nOpenRouter kalitimni chatga yozishimni soʻrama.\nMenga alohida terminalda oʻzim ishga tushiradigan bitta buyruq ber: u serverga ulanadi, kalitni ekranda koʻrsatmasdan soʻraydi va uni `~/.hermes/.env` fayliga `OPENROUTER_API_KEY=...` qatori sifatida qoʻshadi.\nMen \"tayyor\" desam:\n1. Provayder: openrouter. Model: `google/gemini-3.8-flash`.\n2. `~/.hermes/config.yaml` ichida shu model uchun OpenRouter provayder tartibini oʻrnat: avval google-ai-studio, keyin google-vertex (provider_routing ning models boʻlimi).\n3. Sinov: `hermes chat -q \"Salom! Bir gapda: sen kimsan?\"` va javobni menga koʻrsat."
+       }
+      ],
+      "notes": [
+       {
+        "title": "Заметка",
+        "text": "Ключ: создайте новый ключ на openrouter.ai/keys и поставьте на него месячный лимит (например, $5). Весь урок стоит примерно $0.10."
+       }
+      ]
+     },
+     {
+      "key": "03-panel-va-gateway",
+      "num": "03",
+      "title": "Панель и gateway",
+      "note": "Результат: в браузере открывается http://localhost:9119, а внизу слева видно \"Gateway Status: Running\".",
+      "tag": "",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "",
+        "target": "",
+        "title": "Отправьте в Claude Code",
+        "text": "Serverda ikkita doimiy xizmatni sozla.\nIkkalasi ham systemd user service boʻlsin, sudoʼsiz, va server qayta yuklanganidan keyin oʻzi ishga tushsin (`loginctl enable-linger`):\n1. Gateway: `hermes gateway install`\n2. Dashboard: `hermes dashboard --no-open --host 127.0.0.1 --port 9119`. Yangi port ochma, firewallʼga tegma.\nKeyin kompyuterimdagi `~/.ssh/config` fayliga \"hermes-panel\" nomli yangi yozuv qoʻsh: \"vps\" bilan bir xil server, foydalanuvchi va kalit, plyus `LocalForward 9119 127.0.0.1:9119`.\nMenga alohida terminalda qaysi buyruqni ishga tushirishni va brauzerda qaysi manzilni ochishni ayt."
+       }
+      ],
+      "notes": [
+       {
+        "title": "Заметка",
+        "text": "Не закрывайте терминал с туннелем до конца урока. Если закроете, закроется только панель управления. Агент продолжит работать на сервере."
+       },
+       {
+        "title": "Путь для ноутбука",
+        "text": "Туннель не нужен: панель управления открывается прямо на `http://localhost:9119`. Запустите её в обычном терминале командой `hermes dashboard` и не закрывайте окно. `hermes gateway install` сам выберет автозапуск для вашей системы (на Mac — launchd, на Windows — запланированная задача). Агент работает, только пока ноутбук включён и не спит."
+       }
+      ]
+     },
+     {
+      "key": "04-telegram",
+      "num": "04",
+      "title": "Telegram",
+      "note": "Результат: бот на вашем телефоне отвечает на \"Salom\".",
+      "tag": "",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [],
+      "notes": [
+       {
+        "title": "В панели управления (копировать не нужно)",
+        "text": "1. В панели управления: CHANNELS, затем Telegram, затем CREATE WITH QR.\n2. Отсканируйте QR-код телефоном. Откроется @NousHostedHermesBot: нажмите \"Start\", затем \"Create bot\".\n3. В этом же чате нажмите \"Connect this bot\". Сообщение может прийти дважды: нажмите на одно. Без этого шага панель так и останется в состоянии \"waiting\".\n4. Панель покажет \"Ready\", а под ALLOWED USERS будет ваш ID. Нажмите SAVE AND RESTART.\n5. Напишите своему новому боту \"Salom\"."
+       },
+       {
+        "title": "Если QR не работает",
+        "text": "Создайте бота в @BotFather командой `/newbot`, узнайте свой ID в @userinfobot. В панели управления в разделе MANUAL SETUP введите токен и ID и сохраните. Токен вводится только в панель управления, никогда — в чат."
+       }
+      ]
+     },
+     {
+      "key": "05-intervyu",
+      "num": "05",
+      "title": "Интервью",
+      "note": "Результат: бот представляется своим именем и может описать ваш бизнес. 25–30 минут.",
+      "tag": "",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "",
+        "target": "",
+        "title": "Отправьте в Claude Code",
+        "text": "Sen tajribali biznes-konsultantsan.\nMaqsad: mening shaxsiy AI agentim uchun ikkita fayl tayyorlash.\nMenga savollarni BITTADAN ber va javobimni kut.\nMenga oson boʻlishi uchun har bir savolga 2-3 ta misol javob qoʻsh.\nAgar javobim qisqa yoki noaniq boʻlsa, bitta aniqlashtiruvchi savol ber.\nJami 12 tadan koʻp boʻlmagan savol, uchta blokda:\n- A. Men: ismim, rolim, kunim qanday oʻtadi, qanday muloqot qilishni yoqtiraman, qaysi tilda.\n- B. Biznesim: nima sotamiz, mijozlarimiz kim, jamoa, asosiy raqamlar, raqobatchilar, hozirgi 3 ta eng katta ogʻriq.\n- C. Agentim: uning ismi, xarakteri, har kuni men uchun nima qilishi kerak, nima qilmasligi kerak.\nIntervyu tugagach, avval ikkala faylni menga koʻrsat:\n1. SOUL.md: agentning ismi, xarakteri, ohangi, tili va chegaralari. Biznes faktlarisiz. Salomlashishga qisqa javob bersin. 2 500 belgidan oshmasin.\n2. AGENTS.md: biznesim haqidagi faktlar va agentning ish qoidalari.\nMen \"Tasdiqlayman\" desam:\n- SOUL.md ni serverdagi `~/.hermes/SOUL.md` manziliga joyla (eskisini SOUL.md.bak qilib saqla);\n- `~/biznes` papkasini yarat va AGENTS.md ni u yerga joyla;\n- uni Hermesʼning ishchi papkasi qil: toʻliq yoʻl bilan `hermes config set terminal.cwd`;\n- oxirida gatewayʼni qayta ishga tushir."
+       }
+      ],
+      "notes": [
+       {
+        "title": "Проверка",
+        "text": "Отправьте в Telegram `/new`, затем напишите: \"Кто ты и что ты знаешь о моём бизнесе?\". Бот должен ответить именем из SOUL.md и перечислить факты о вашем бизнесе."
+       }
+      ]
+     },
+     {
+      "key": "06-meni-eslab-qol",
+      "num": "06",
+      "title": "Запомни меня",
+      "note": "Результат: в файле USER.md появляются факты о вас.",
+      "tag": "",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "",
+        "target": "",
+        "title": "Отправьте в Claude Code",
+        "text": "Intervyudagi javoblarim asosida Telegram botimga yuboradigan bitta xabar tayyorla.\nXabar \"Buni xotirangga saqla:\" bilan boshlansin, 600 belgidan oshmasin va faqat men haqimdagi eng muhim faktlarni oʻz ichiga olsin: ism, rol, muloqot uslubi, ish soatlari.\nMen uni botga yuboraman va senga \"yubordim\" deyman.\nKeyin serverdagi `~/.hermes/memories/USER.md` faylini oʻqi va faktlar haqiqatan ham saqlanganini tekshir."
+       }
+      ],
+      "notes": [
+       {
+        "title": "Заметка",
+        "text": "Агент сохраняет только то, о чём вы сами попросили. Если какой-то факт выпал, напишите боту отдельно: \"Запомни это: ...\"."
+       }
+      ]
+     },
+     {
+      "key": "07-ertalabki-brifing",
+      "num": "07",
+      "title": "Утренний брифинг",
+      "note": "Результат: приходит пробный брифинг, а задача видна на странице CRON в панели управления.",
+      "tag": "",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "",
+        "target": "",
+        "title": "Напишите это боту в Telegram",
+        "text": "Har kuni ertalab soat 8:00 da (Toshkent vaqti) menga qisqa brifing yubor:\n1. Oʻzbekiston va dunyoda [sohangiz] boʻyicha eng muhim 3 ta yangilik, manbalari bilan;\n2. raqobatchilarim [nomlar] haqida yangi maʼlumotlar;\n3. bugun uchun bitta amaliy maslahat.\nOʻzbek tilida, 15 qatordan oshmasin.\nSinov tariqasida bittasini hozir yubor."
+       }
+      ],
+      "notes": [
+       {
+        "title": "Заметка",
+        "text": "Проверяйте цифры. Агент ищет в интернете и показывает источники, но и он может ошибаться. Перед любым важным решением откройте источник."
+       }
+      ]
+     },
+     {
+      "key": "08-yakuniy-sinov",
+      "num": "08",
+      "title": "Финальная проверка",
+      "note": "Результат: после перезагрузки сервера бот снова отвечает.",
+      "tag": "",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "",
+        "target": "",
+        "title": "Сами, в отдельном терминале",
+        "text": "Serverni qayta yuklang: `ssh -t vps sudo reboot`. Parolni oʻzingiz kiritasiz. 2 daqiqa kuting."
+       },
+       {
+        "id": "",
+        "target": "",
+        "title": "Затем отправьте в Claude Code",
+        "text": "Mening \"vps\" serverim qayta yuklandi.\nHermes gateway va dashboard xizmatlari oʻz-oʻzidan ishga tushganini tekshir va menga ularning holatini koʻrsat."
+       }
+      ],
+      "notes": [
+       {
+        "title": "Финальное доказательство",
+        "text": "Напишите боту с телефона и получите ответ. Снова откройте туннель (`ssh -N hermes-panel`) и проверьте, что панель управления опять открывается."
+       },
+       {
+        "title": "Путь для ноутбука",
+        "text": "Вместо перезагрузки сервера закройте крышку ноутбука на минуту, затем откройте и напишите боту. Пока ноутбук спит, бот молчит, а брифинг, выпавший на это время, пропускается или приходит с опозданием: лучшее доказательство того, почему агенту место на VPS."
+       }
+      ]
+     },
+     {
+      "key": "09-vpsga-kochirish",
+      "num": "09",
+      "title": "Переезд на VPS",
+      "note": "Результат: тот же бот отвечает с прежним именем, памятью и утренним брифингом — теперь даже при закрытом ноутбуке. Около 15 минут.",
+      "tag": "",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "",
+        "target": "",
+        "title": "Отправьте в Claude Code",
+        "text": "Hermes agentimni shu kompyuterdan yangi VPS serverimga hech narsa yoʻqotmasdan koʻchirmoqchiman.\nSERVER.md faylimni oʻqi: server \"ssh vps\" nomi bilan ulangan.\n1. Kompyuterimda: `hermes backup -o ~/hermes-kochirish.zip` bilan toʻliq zaxira nusxa ol va `~/biznes` papkamni alohida arxivga joyla.\n2. Serverga Hermes oʻrnat (1-kartadagi rasmiy buyruq, ikki qoida bilan: toʻliq yoʻl `~/.local/bin/hermes`, sudoʼsiz).\n3. Ikkala arxivni serverga koʻchir, `hermes import ~/hermes-kochirish.zip --force` bilan tikla va `~/biznes` ni uy papkamga och.\n4. Serverdagi `~/.hermes/config.yaml` ichida kompyuterimga tegishli har bir yoʻlni server yoʻliga almashtir (masalan `terminal.cwd`, `tts.gemini.persona_prompt_file`), keyin `hermes doctor` ni ishga tushir.\n5. Muhim: avval kompyuterimdagi gatewayʼni toʻxtat va uning avtoishga tushishini oʻchir. Bitta Telegram bot bir vaqtda faqat bitta joyda ishlay oladi.\n6. Keyin serverda gateway va boshqaruv panelini 3-kartadagidek doimiy xizmat qil va ularning holatini koʻrsat.\n7. Zaxira zip faylini ikkala mashinada ham oʻchir: unda kalitlarim bor.\nOxirida men botga yozaman, sen esa serverdagi gateway logida xabar kelganini tekshirasan."
+       }
+      ],
+      "notes": [
+       {
+        "title": "Заметка",
+        "text": "В резервной копии есть всё: личность, память, настройки, ключи, skills, запланированные задачи и история переписки. Вне её остаётся только папка `~/biznes`, поэтому она переезжает вторым архивом. Никогда не отправляйте zip резервной копии в чат или по почте: в нём ваши ключи."
+       }
+      ]
+     },
+     {
+      "key": "10-ovozli-agent",
+      "num": "10",
+      "title": "Голосовой агент",
+      "note": "Результат: вы отправляете боту голосовое сообщение на узбекском; он показывает, что услышал, и отвечает голосовым.",
+      "tag": "Bonus",
+      "yoriqnoma": null,
+      "promptsPdf": null,
+      "sources": [],
+      "extras": [],
+      "prompts": [
+       {
+        "id": "",
+        "target": "",
+        "title": "Отправьте в Claude Code",
+        "text": "Hermes agentim mening oʻzbekcha ovozli xabarlarimni tushunishini va ovoz bilan javob berishini xohlayman, ikkalasi ham Google Gemini orqali.\nGoogle AI Studio kalitimni chatga yozishimni soʻrama.\nMenga alohida terminalda oʻzim ishga tushiradigan bitta buyruq ber: u kalitni ekranda koʻrsatmasdan soʻraydi va serverdagi `~/.hermes/.env` fayliga `GEMINI_API_KEY=...` qatori qilib qoʻshadi.\nMen \"tayyor\" desam:\n1. Ovozli javoblar: `hermes config set tts.provider gemini`, `tts.gemini.model` = `gemini-3.8-flash-tts`, `tts.gemini.voice` = `Kore` va `tts.gemini.base_url` = `https://generativelanguage.googleapis.com/v1beta` (bu qator Hermes xatosini aylanib oʻtish uchun kerak, uni saqlab qol).\n2. Qisqa ovoz yoʻriqnomasi faylini yoz: `~/.hermes/voice-uz.md` (\"native Uzbek speaker from Tashkent, calm and warm, read numbers as Uzbek words\") va `tts.gemini.persona_prompt_file` ga uning toʻliq yoʻlini oʻrnat.\n3. Ovozni tushunish: kichik Python skript yoz: `~/.hermes/bin/gemini-stt.py` (faqat standart kutubxona). U audio fayl yoʻli va chiqish matn fayli yoʻlini oladi, audioni Gemini API modeli `gemini-3.8-flash` ga inline audio sifatida yuboradi, prompt esa: \"transcribe verbatim; Uzbek in Latin script, Russian words in Cyrillic, English words in Latin; output only the transcript\", `GEMINI_API_KEY` ni muhit oʻzgaruvchisidan yoki `~/.hermes/.env` dan oʻqiydi va transkriptni chiqish fayliga yozadi. Avval uni biror audio faylda sinab koʻr.\n4. `~/.hermes/config.yaml` faylida, `stt:` boʻlimi ichida `provider: gemini`, `language: uz` qilib oʻrnat va buyruq provayderini qoʻsh: `providers` → `gemini` → `type: command`, `command: \"python3 <full path>/gemini-stt.py {input_path} {output_path}\"`, `env_passthrough: [GEMINI_API_KEY]`, `timeout: 120`. Faylni toʻgʻridan-toʻgʻri tahrirla: `hermes config set` bu blokni yoza olmaydi.\n5. Gatewayʼni qayta ishga tushir.\n\nKeyin Telegramʼda `/voice on` yubor va ovozli xabar yozib joʻnat."
+       }
+      ],
+      "notes": [
+       {
+        "title": "Заметки",
+        "text": "- `/voice on`: голосовой ответ, только когда вы отправляете голосовое. `/voice tts`: голосовой ответ на каждое сообщение. `/voice off`: только текст.\n- Сначала бот показывает расшифровку (\"🎙️ ...\"), чтобы вы видели, что он услышал."
+       }
+      ]
+     }
+    ]
+   },
+   "prep": null,
+   "date": "2026-10-03"
+  }
+ ],
+ "schedule": {
+  "shanba": "2026-09-12",
+  "yakshanba": "2026-09-13",
+  "sessions": 4
+ },
+ "live": {
+  "override": 3
+ }
+}

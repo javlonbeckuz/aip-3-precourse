@@ -1,0 +1,18 @@
+import { launch } from './lib.mjs';
+const w = +process.argv[2] || 390, idx = +process.argv[3] || 0;
+const b = await launch(w, 800);
+await b.size(w, 800, true);
+await b.send('Emulation.setTouchEmulationEnabled', { enabled: true });
+await b.goto('http://localhost:8765/comp/glass-options.html', 2500);
+console.log('inner', await b.ev('innerWidth + " scrollW " + document.documentElement.scrollWidth'));
+await b.ev(`document.querySelectorAll('#lessons .gf-root')[${idx}].scrollIntoView({block:'center'})`); await b.wait(2500);
+await b.shot(`ph_${w}_${idx}_closed`);
+const r = await b.ev(`(()=>{const e=document.querySelectorAll('#lessons .gf-root')[${idx}];const r=e.getBoundingClientRect();return {x:r.left,y:r.top,w:r.width,h:r.height}})()`);
+const x = r.x + r.w / 2, y = r.y + r.h * .8;
+await b.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y }] });
+await b.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+await b.wait(2000);
+await b.shot(`ph_${w}_${idx}_open`);
+const info = await b.ev(`(()=>{const e=document.querySelectorAll('#lessons .gf-root')[${idx}];return {open:e.hasAttribute('data-open'),scrollY:scrollY, sheets:[...e.querySelectorAll('.gf-sheet')].map(s=>{const r=s.getBoundingClientRect();return [Math.round(r.left),Math.round(r.right),Math.round(r.top)]}), docW:document.documentElement.scrollWidth}})()`);
+console.log(JSON.stringify(info), JSON.stringify(b.logs.slice(0,5)));
+b.close();

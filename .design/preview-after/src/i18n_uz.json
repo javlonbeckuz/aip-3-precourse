@@ -1,0 +1,3272 @@
+{
+ "common.close": {
+  "uz": "Yopish",
+  "translate": true,
+  "note": "button in the popup, the sheets and the slide viewer; ≤ 12 chars"
+ },
+ "common.back": {
+  "uz": "Orqaga",
+  "translate": true,
+  "note": "back link label on the file screen, ≤ 12 chars"
+ },
+ "common.done": {
+  "uz": "Bajarildi",
+  "translate": true,
+  "note": "filled chip \"done\" (11px UPPERCASE), ≤ 12 chars"
+ },
+ "common.mark_done": {
+  "uz": "Bajarildi deb belgilash",
+  "translate": true,
+  "note": "outline chip, tap to mark done (11px UPPERCASE, ≤ 26 chars) and the same text on the end-of-page toggle"
+ },
+ "common.done_hint": {
+  "uz": "Bajarildi, bekor qilish uchun bosing",
+  "translate": true,
+  "note": "aria-label (not visible) of the filled done chip: \"Done, press to undo\""
+ },
+ "common.copy": {
+  "uz": "Nusxalash",
+  "translate": true,
+  "note": "label under the round copy button (11px UPPERCASE, ≤ 11 chars)"
+ },
+ "common.copied": {
+  "uz": "Nusxalandi",
+  "translate": true,
+  "note": "the same label for 2 s after copying (≤ 11 chars)"
+ },
+ "common.copy_aria": {
+  "uz": "Nusxalash: {title}",
+  "translate": true,
+  "note": "aria-label (not visible) of the copy button; {title} = the prompt title · keep {params} as they are"
+ },
+ "common.namuna": {
+  "uz": "namuna",
+  "translate": true,
+  "note": "tiny outline tag meaning \"placeholder / sample\" (11px UPPERCASE, ≤ 10 chars)"
+ },
+ "common.sr_done": {
+  "uz": " · bajarildi",
+  "translate": true,
+  "note": "screen-reader-only suffix after a tick (not visible)"
+ },
+ "common.sr_download": {
+  "uz": "Yuklab olish: ",
+  "translate": true,
+  "note": "screen-reader-only prefix on file rows (not visible)"
+ },
+ "common.sr_external": {
+  "uz": " (yangi oynada ochiladi)",
+  "translate": true,
+  "note": "screen-reader-only suffix on links that open a new window (not visible)"
+ },
+ "common.sample_file": {
+  "uz": "namuna fayl",
+  "translate": true,
+  "note": "small grey line under a placeholder file name"
+ },
+ "common.unknown_size": {
+  "uz": "oʻlchami nomaʼlum",
+  "translate": true,
+  "note": "file size line on the file screen when the size is unknown"
+ },
+ "common.guide": {
+  "uz": "Qoʻllanma",
+  "translate": true,
+  "note": "group heading (small UPPERCASE) for the guide file, ≤ 20 chars"
+ },
+ "common.bonus": {
+  "uz": "bonus",
+  "translate": true,
+  "note": "small word under a Hermes card title (bonus card)"
+ },
+ "common.extra": {
+  "uz": "qoʻshimcha",
+  "translate": true,
+  "note": "small word under an exercise title (extra, not counted); lower case"
+ },
+ "unit.sl": {
+  "uz": "Slaydlar",
+  "translate": true,
+  "note": "tab label / unit name in the lesson folder; ≤ 11 chars at 320 px (tabs are ~100 px wide)"
+ },
+ "unit.am": {
+  "uz": "Amaliyot",
+  "translate": true,
+  "note": "tab label / unit name in the lesson folder; ≤ 11 chars at 320 px (tabs are ~100 px wide)"
+ },
+ "unit.vz": {
+  "uz": "Vazifa",
+  "translate": true,
+  "note": "tab label / unit name in the lesson folder; ≤ 11 chars at 320 px (tabs are ~100 px wide)"
+ },
+ "unit.kt": {
+  "uz": "Kitob",
+  "translate": true,
+  "note": "tab label / unit name in the lesson folder; ≤ 11 chars at 320 px (tabs are ~100 px wide)"
+ },
+ "unit.am_n": {
+  "uz": "Amaliyot {num}",
+  "translate": true,
+  "note": "tab label / unit name in the lesson folder; ≤ 11 chars at 320 px (tabs are ~100 px wide) · keep {params} as they are"
+ },
+ "unit.hermes": {
+  "uz": "Hermes {id}",
+  "translate": true,
+  "note": "tab label / unit name in the lesson folder; ≤ 11 chars at 320 px (tabs are ~100 px wide) · keep {params} as they are"
+ },
+ "lesson.n": {
+  "uz": "{n}-dars",
+  "translate": true,
+  "note": "lesson number label used in headlines, e.g. \"3-dars\" (UPPERCASE, wide font, ≤ 10 chars) · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "lesson.label": {
+  "uz": "{n}-dars · {date}",
+  "translate": true,
+  "note": "small UPPERCASE card label, e.g. \"3-dars · 26-sentabr\"; {date} is built from the month table · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "lesson.label0": {
+  "uz": "0-dars · tayyorgarlik",
+  "translate": true,
+  "note": "small UPPERCASE label of the prep card"
+ },
+ "lesson.meta": {
+  "uz": "{date} · {d}/{t} qadam",
+  "translate": true,
+  "note": "one line under the back link: lesson · date · progress, 13px UPPERCASE, ≤ 38 chars · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "steps": {
+  "uz": "{d}/{t} qadam",
+  "translate": true,
+  "note": "progress unit \"3/6 steps\" (2.0 says \"qadam\"); the noun follows the TOTAL ({t}), so ru needs one/few/many · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "kind.video": {
+  "uz": "video",
+  "translate": true,
+  "note": "what the slides are: \"video\""
+ },
+ "kind.image": {
+  "uz": "rasm",
+  "translate": true,
+  "note": "what the slides are: \"images\" (2.0 says \"rasm\")"
+ },
+ "date.fmt": {
+  "uz": "{d}-{m}",
+  "translate": true,
+  "note": "date pattern: {d} day, {m} month name (month names are a table in code, already translated); uz = \"12-sentabr\", ru \"12 сентября\", en \"12 September\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "date.until": {
+  "uz": "{date}gacha",
+  "translate": true,
+  "note": "pattern \"{date}gacha\" = \"by {date}\" (a deadline), e.g. \"до 12 сентября\" · keep {params} as they are"
+ },
+ "date.opens": {
+  "uz": "{date}da ochiladi",
+  "translate": true,
+  "note": "pattern \"opens on {date}\" for the locked card, ≤ 28 chars at 320 px · keep {params} as they are"
+ },
+ "nav.label": {
+  "uz": "Boʻlimlar",
+  "translate": true,
+  "note": "aria-label of the top navigation"
+ },
+ "nav.home": {
+  "uz": "Dastur",
+  "translate": true,
+  "note": "top-left nav link and the back link back to the home screen, ≤ 12 chars"
+ },
+ "nav.homebtn": {
+  "uz": "Bosh sahifa",
+  "translate": true,
+  "note": "aria-label and tooltip (not visible text) of the round home button at the top left"
+ },
+ "menu.label": {
+  "uz": "Menyu",
+  "translate": true,
+  "note": "aria-label of the menu button and the menu"
+ },
+ "lang.label": {
+  "uz": "Til",
+  "translate": true,
+  "note": "aria-label of the language switch"
+ },
+ "menu.id": {
+  "uz": "Shaxsiy ID",
+  "translate": true,
+  "note": "row label in the name menu"
+ },
+ "menu.group": {
+  "uz": "Guruh",
+  "translate": true,
+  "note": "row label"
+ },
+ "menu.group_value": {
+  "uz": "Shanba guruhi",
+  "translate": true,
+  "note": "value: the group name (\"Saturday group\")"
+ },
+ "menu.mentor": {
+  "uz": "Mentor",
+  "translate": true,
+  "note": "row label"
+ },
+ "menu.mentor_value": {
+  "uz": "X. Maroziqov",
+  "translate": true,
+  "note": "value: a person name (keep, transliterate only if usual)"
+ },
+ "menu.course": {
+  "uz": "Kurs",
+  "translate": true,
+  "note": "row label"
+ },
+ "menu.course_value": {
+  "uz": "4 dars · 12 sen – 3 okt",
+  "translate": true,
+  "note": "value: \"4 lessons · 12 Sep – 3 Oct\" (short month names)"
+ },
+ "menu.logout": {
+  "uz": "Chiqish",
+  "translate": true,
+  "note": "outline button, ≤ 14 chars"
+ },
+ "popup.label": {
+  "uz": "Yangi dars",
+  "translate": true,
+  "note": "aria-label of the popup"
+ },
+ "popup.k": {
+  "uz": "Yangi dars ochildi",
+  "translate": true,
+  "note": "small label on the new-lesson popup, ≤ 24 chars"
+ },
+ "popup.title": {
+  "uz": "3-dars · Skill va agentlar",
+  "translate": true,
+  "note": "popup title, 17px UPPERCASE wide font, ≤ 32 chars"
+ },
+ "popup.open": {
+  "uz": "Darsni ochish",
+  "translate": true,
+  "note": "black pill button on the popup, ≤ 16 chars"
+ },
+ "popup.live": {
+  "uz": "Yangi dars ochildi: 3-dars, Skill va agentlar.",
+  "translate": true,
+  "note": "screen-reader announcement when the popup appears"
+ },
+ "toast.done": {
+  "uz": "{no} bajarildi",
+  "translate": true,
+  "note": "toast text; {no} is a prompt number like \"P3\" or \"01\", ≤ 24 chars · keep {params} as they are"
+ },
+ "toast.undo": {
+  "uz": "Bekor qilish",
+  "translate": true,
+  "note": "toast button (underlined), ≤ 14 chars"
+ },
+ "toast.notfound": {
+  "uz": "Sahifa topilmadi",
+  "translate": true,
+  "note": "toast when a link is unknown, ≤ 28 chars"
+ },
+ "lock.title": {
+  "uz": "{n}-dars {date}da ochiladi.",
+  "translate": true,
+  "note": "title of the bottom sheet on the locked card · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "lock.desc": {
+  "uz": "Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.",
+  "translate": true,
+  "note": "text of the bottom sheet on the locked card"
+ },
+ "lock.sub": {
+  "uz": "10 ta Hermes kartasi va kitob: «Biznesda AIʼni qoʻllash» (lotin va kirill)",
+  "translate": true,
+  "note": "subtitle of the locked lesson 4 card (3 lines max): what opens there"
+ },
+ "live.copied_new": {
+  "uz": "Nusxalandi: {title}. Bajarildi. Bekor qilish tugmasi pastda.",
+  "translate": true,
+  "note": "screen-reader announcement (aria-live), not visible; full sentence · keep {params} as they are"
+ },
+ "live.copied": {
+  "uz": "Nusxalandi: {title}. Bajarildi.",
+  "translate": true,
+  "note": "screen-reader announcement (aria-live), not visible; full sentence · keep {params} as they are"
+ },
+ "live.copy_failed": {
+  "uz": "Nusxa olinmadi. Matnni qoʻlda belgilang.",
+  "translate": true,
+  "note": "screen-reader announcement (aria-live), not visible; full sentence"
+ },
+ "live.marked": {
+  "uz": "{no} bajarildi.",
+  "translate": true,
+  "note": "screen-reader announcement (aria-live), not visible; full sentence · keep {params} as they are"
+ },
+ "live.unmarked": {
+  "uz": "{no} bajarildi belgisi olib tashlandi.",
+  "translate": true,
+  "note": "screen-reader announcement (aria-live), not visible; full sentence · keep {params} as they are"
+ },
+ "live.end_on": {
+  "uz": "Bajarildi deb belgilandi.",
+  "translate": true,
+  "note": "screen-reader announcement (aria-live), not visible; full sentence"
+ },
+ "live.end_off": {
+  "uz": "Belgi olib tashlandi.",
+  "translate": true,
+  "note": "screen-reader announcement (aria-live), not visible; full sentence"
+ },
+ "gate.label": {
+  "uz": "Shaxsiy ID",
+  "translate": true,
+  "note": "label above the ID field (12px UPPERCASE mono), ≤ 16 chars"
+ },
+ "gate.title": {
+  "uz": "Shaxsiy\nkabinet",
+  "translate": true,
+  "note": "login heading over the photo; \\n = line break; UPPERCASE wide font, ≤ 12 chars per line at 390 px · \\n = line break"
+ },
+ "gate.submit": {
+  "uz": "Kirish",
+  "translate": true,
+  "note": "login button (13px UPPERCASE, letter-spaced), ≤ 10 chars"
+ },
+ "gate.welcome": {
+  "uz": "Xush kelibsiz, {name}!",
+  "translate": true,
+  "note": "welcome line on the loader and under the field; {name} is the student first name (keep it) · keep {params} as they are"
+ },
+ "gate.err.toolong": {
+  "uz": "ID 6 ta belgidan iborat. Xabardagi IDʼni qayta tekshiring.",
+  "translate": true,
+  "note": "login error under the ID field, shown in 14px; MUST fit 2 lines at 320 px (≈ 70 chars)"
+ },
+ "gate.err.badchars": {
+  "uz": "IDʼda 0, 1, I, L va O boʻlmaydi. Qayta tekshiring.",
+  "translate": true,
+  "note": "login error under the ID field, shown in 14px; MUST fit 2 lines at 320 px (≈ 70 chars)"
+ },
+ "gate.err.short": {
+  "uz": "Yana {n} ta belgi kiriting.",
+  "translate": true,
+  "note": "login error under the ID field, shown in 14px; MUST fit 2 lines at 320 px (≈ 70 chars) · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "gate.err.unknown_short": {
+  "uz": "Bu ID topilmadi. Xabardagi IDʼni toʻliq yozing.",
+  "translate": true,
+  "note": "login error under the ID field, shown in 14px; MUST fit 2 lines at 320 px (≈ 70 chars)"
+ },
+ "gate.err.notfound": {
+  "uz": "Bu ID topilmadi. Mentoringizdan tekshirib oling.",
+  "translate": true,
+  "note": "login error under the ID field, shown in 14px; MUST fit 2 lines at 320 px (≈ 70 chars)"
+ },
+ "lesson.0.card": {
+  "uz": "Oʻrnatish va\ntayyorgarlik",
+  "translate": true,
+  "note": "the lesson title on the home card, \\n = line break, ≤ 14 chars per line (UPPERCASE, wide font) · \\n = line break"
+ },
+ "lesson.1.title": {
+  "uz": "Kirish",
+  "translate": true,
+  "note": "lesson title in the lesson-page headline (UPPERCASE, wide font; wraps on spaces), ≤ 16 chars"
+ },
+ "lesson.1.card": {
+  "uz": "Kirish",
+  "translate": true,
+  "note": "the lesson title on the home card, \\n = line break, ≤ 14 chars per line (UPPERCASE, wide font)"
+ },
+ "lesson.1.lede": {
+  "uz": "AI aslida nima ekanini, modellar qanday ishlashini va kontekst nega hamma narsani hal qilishini koʻramiz. Amaliyot: NotebookLM.",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.1.t0": {
+  "uz": "AI nima",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.1.t1": {
+  "uz": "Modellar",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.1.t2": {
+  "uz": "Context",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.1.t3": {
+  "uz": "RAG",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.1.t4": {
+  "uz": "NotebookLM",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.2.title": {
+  "uz": "Claude va Code",
+  "translate": true,
+  "note": "lesson title in the lesson-page headline (UPPERCASE, wide font; wraps on spaces), ≤ 16 chars"
+ },
+ "lesson.2.card": {
+  "uz": "Claude\nva Code",
+  "translate": true,
+  "note": "the lesson title on the home card, \\n = line break, ≤ 14 chars per line (UPPERCASE, wide font) · \\n = line break"
+ },
+ "lesson.2.lede": {
+  "uz": "Claude bilan ishlash va terminologiya. Amaliyot: vebsayt, lead forma, Telegram bot va Sheets ulanishi.",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.2.t0": {
+  "uz": "Claude",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.2.t1": {
+  "uz": "Code / Cowork",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.2.t2": {
+  "uz": "Terminologiya",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.2.t3": {
+  "uz": "Vebsayt",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.2.t4": {
+  "uz": "Lead forma",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.2.t5": {
+  "uz": "Telegram bot",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.2.t6": {
+  "uz": "Sheets",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.title": {
+  "uz": "Skill va agentlar",
+  "translate": true,
+  "note": "lesson title in the lesson-page headline (UPPERCASE, wide font; wraps on spaces), ≤ 16 chars"
+ },
+ "lesson.3.card": {
+  "uz": "Skill va\nagentlar",
+  "translate": true,
+  "note": "the lesson title on the home card, \\n = line break, ≤ 14 chars per line (UPPERCASE, wide font) · \\n = line break"
+ },
+ "lesson.3.lede": {
+  "uz": "Claude imkoniyatlarini kengaytiramiz: skill, plugin, connector va agentlar jamoasi. Amaliyot: build va deployment.",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t0": {
+  "uz": "Skill",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t1": {
+  "uz": "Plugin",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t2": {
+  "uz": "Connector",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t3": {
+  "uz": "Plan",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t4": {
+  "uz": "Agentlar jamoasi",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t5": {
+  "uz": "here.now",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t6": {
+  "uz": "Build",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t7": {
+  "uz": "Deployment",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.title": {
+  "uz": "Agent va alternativalar",
+  "translate": true,
+  "note": "lesson title in the lesson-page headline (UPPERCASE, wide font; wraps on spaces), ≤ 16 chars"
+ },
+ "lesson.4.card": {
+  "uz": "Agent va\nalternativalar",
+  "translate": true,
+  "note": "the lesson title on the home card, \\n = line break, ≤ 14 chars per line (UPPERCASE, wide font) · \\n = line break"
+ },
+ "lesson.4.lede": {
+  "uz": "Agentlarni ishga solamiz, xatolarni tuzatish yoʻllarini va muqobil vositalarni koʻramiz. Amaliyot: build va yakuniy loyiha.",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.t0": {
+  "uz": "Hermes Agent",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.t1": {
+  "uz": "/oops",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.t2": {
+  "uz": "Alternativalar",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.t3": {
+  "uz": "Build",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.t4": {
+  "uz": "Amaliyot",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "c.sect.g": {
+  "uz": "Biznes gʻoyalar",
+  "translate": false,
+  "note": "library section chip, ≤ 22 chars"
+ },
+ "c.sect.t": {
+  "uz": "Tanqidiy fikrlash",
+  "translate": false,
+  "note": "library section chip"
+ },
+ "c.sect.s": {
+  "uz": "Savdo va muzokaralar",
+  "translate": false,
+  "note": "library section chip"
+ },
+ "c.sect.r": {
+  "uz": "Reklama va kreativ",
+  "translate": false,
+  "note": "library section chip"
+ },
+ "c.sect.o": {
+  "uz": "Oʻrganish",
+  "translate": false,
+  "note": "library section chip"
+ },
+ "c.am1.title": {
+  "uz": "Korxona bilimini ishga soling",
+  "translate": false,
+  "note": "REAL 2.0 title of the lesson 1 practice: \"Korxona bilimini ishga soling\" (put your business knowledge to work)"
+ },
+ "c.hermes.caution": {
+  "uz": "Kalit, token va parolni hech qachon chatga yozmang.",
+  "translate": false,
+  "note": "safety warning shown on the Hermes pages (important, keep the meaning exactly)"
+ },
+ "c.book.title": {
+  "uz": "Biznesda AIʼni qoʻllash: amaliy qoʻllanma",
+  "translate": false,
+  "note": "book title: \"Biznesda AIʼni qoʻllash: amaliy qoʻllanma\"; the main title is a proper name, translate only the subtitle"
+ },
+ "c.book.note": {
+  "uz": "Beshta toʻplam — chop etib, jamoangiz bilan toʻldirasiz.",
+  "translate": false,
+  "note": "book subtitle sentence"
+ },
+ "home.title": {
+  "uz": "Dastur",
+  "translate": true,
+  "note": "home screen"
+ },
+ "home.lessons": {
+  "uz": "Darslar",
+  "translate": true,
+  "note": "home screen"
+ },
+ "home.ring.label": {
+  "uz": "Toʻliq bajarilgan darslar",
+  "translate": true,
+  "note": "aria-label of the progress ring"
+ },
+ "home.ring.valuetext": {
+  "uz": "{t} darsdan {d} tasi toʻliq bajarilgan.",
+  "translate": true,
+  "note": "screen-reader text of the ring: \"1 of 4 lessons completed.\"; {d} done, {t} total · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "home.ring.ps": {
+  "uz": "Toʻliq bajarilgan darslar",
+  "translate": true,
+  "note": "line next to the ring, 17px, ≤ 26 chars (may wrap to 2 lines)"
+ },
+ "hero.k": {
+  "uz": "Hozir davom etmoqda",
+  "translate": true,
+  "note": "small UPPERCASE label on the blue card: \"happening now\""
+ },
+ "hero.sub": {
+  "uz": "Slaydlar {i} / {n} · davom etish",
+  "translate": true,
+  "note": "line on the blue card; {i} slides seen of {n} · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "next.k": {
+  "uz": "Keyingi qadam",
+  "translate": true,
+  "note": "title of the \"next step\" link under the ring"
+ },
+ "next.ex_prompt": {
+  "uz": "Amaliyot {num} · {pid} {title}",
+  "translate": true,
+  "note": "home screen · keep {params} as they are"
+ },
+ "next.ex": {
+  "uz": "Amaliyot {num}",
+  "translate": true,
+  "note": "home screen · keep {params} as they are"
+ },
+ "next.pick": {
+  "uz": "Amaliyot 03 · {num} {title}",
+  "translate": true,
+  "note": "home screen · keep {params} as they are"
+ },
+ "next.vz": {
+  "uz": "Vazifa · {pid}",
+  "translate": true,
+  "note": "home screen · keep {params} as they are"
+ },
+ "next.sl": {
+  "uz": "Slaydlar · {i} / {total}",
+  "translate": true,
+  "note": "home screen · keep {params} as they are"
+ },
+ "cta.continue": {
+  "uz": "Davom etish: {what}",
+  "translate": true,
+  "note": "text of the big outline button on a lesson page; {what} is e.g. \"Amaliyot 01 · P3 Vaziyatli test\" (long: ≤ 46 chars in total, wraps to 2 lines) · keep {params} as they are"
+ },
+ "note.prep_todo": {
+  "uz": "{until} · {steps}",
+  "translate": true,
+  "note": "state note on the prep card while unfinished; {until} = \"by 12 September\", {steps} = \"3/4 steps\" · keep {params} as they are"
+ },
+ "note.done": {
+  "uz": "Bajarildi · {d}/{t} qadam",
+  "translate": true,
+  "note": "state note on a finished card, e.g. \"Bajarildi · 3/3 qadam\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "note.live_a": {
+  "uz": "Hozir",
+  "translate": true,
+  "note": "part 1 of the live-lesson card note: \"Now\""
+ },
+ "note.live_b": {
+  "uz": " davom etmoqda",
+  "translate": true,
+  "note": "part 2 of the same note: \" in progress\" (HIDDEN under 360 px, so the note must still make sense without it)"
+ },
+ "note.live_c": {
+  "uz": " · {d}/{t} qadam",
+  "translate": true,
+  "note": "part 3: \" · 0/2 steps\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "note.open": {
+  "uz": "Ochiq · {d}/{t} qadam",
+  "translate": true,
+  "note": "state note on an open card, e.g. \"Ochiq · 3/6 qadam\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "prep.title": {
+  "uz": "Birinchi darsgacha",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.meta": {
+  "uz": "Tayyorgarlik",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.cnt": {
+  "uz": "{d}/4 bajarildi",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "prep.pdf": {
+  "uz": "PDF yuklab olish",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.list.k": {
+  "uz": "Tayyorgarlik · 4 ta band",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.list.rule": {
+  "uz": "Har bir bandni bajarganingizdan keyin belgilang.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.intro": {
+  "uz": "Birinchi dars {date}. Shu roʻyxatni oʻshangacha tayyorlab qoʻying — hammasi 30 daqiqacha vaqt oladi, darsda esa toʻgʻridan-toʻgʻri ishni boshlaymiz.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · keep {params} as they are"
+ },
+ "prep.0.title": {
+  "uz": "Kompyuter",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.0.note": {
+  "uz": "MacBook tavsiya etiladi, Windows ham boʻladi. Telefon yoki planshet yetarli emas.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.0.s0": {
+  "uz": "Darsga oʻz noutbukingiz bilan keling — praktikum boshdan-oxir amaliy.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.0.s1": {
+  "uz": "Quvvat adapterini ham oling.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.0.s2": {
+  "uz": "Diskda kamida 5 GB boʻsh joy qoldiring.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.1.title": {
+  "uz": "Google akkaunt",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.1.note": {
+  "uz": "Claude, NotebookLM va Gemini shu akkaunt orqali ochiladi. Akkauntingiz bor boʻlsa, yangisi shart emas.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.1.s0": {
+  "uz": "accounts.google.com/signup sahifasini oching.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.1.s1": {
+  "uz": "Ism, familiya va yangi pochta manzilini kiriting.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.1.s2": {
+  "uz": "Telefon raqamni tasdiqlang — SMS kod keladi.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.1.s3": {
+  "uz": "Parolni yozib qoʻying: darsda kerak boʻladi.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.1.a0": {
+  "uz": "Google akkaunt ochish",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.title": {
+  "uz": "Claude",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.note": {
+  "uz": "Praktikumning asosiy vositasi. Avval claude.ai da hisob oching, keyin dasturni oʻrnating.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.s0": {
+  "uz": "claude.ai ga kiring va “Continue with Google” orqali roʻyxatdan oʻting.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.s1": {
+  "uz": "claude.ai/download sahifasidan dasturni yuklab oling.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.s2": {
+  "uz": "Mac: .dmg faylni oching va Claude belgisini Applications ichiga tortib tashlang.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.s3": {
+  "uz": "Windows: .exe faylni ishga tushiring va oʻrnatishni tasdiqlang.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.s4": {
+  "uz": "Dasturga oʻsha Google akkaunt bilan kiring.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.a0": {
+  "uz": "Claude dasturini yuklash",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.2.a1": {
+  "uz": "claude.ai da hisob ochish",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.3.title": {
+  "uz": "Visa karta",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.3.note": {
+  "uz": "Claude Pro obunasi uchun kerak boʻladi. Birinchi darsda bepul tarif ham yetarli.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.3.s0": {
+  "uz": "Bankingizdan xalqaro Visa yoki Mastercard oching — Uzcard va Humo bu yerda ishlamaydi.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.3.s1": {
+  "uz": "Kartada dollar hisobi va onlayn toʻlov yoqilgan boʻlsin.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.3.s2": {
+  "uz": "Pro obunasi oyiga $20. Majburiy emas, lekin ishni ancha yengillashtiradi.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "prep.3.foot": {
+  "uz": "Keyingi darslarda kerak boʻladi.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "lesson.1.sub": {
+  "uz": "AI nima, modellar, Context, RAG, NotebookLM",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.2.sub": {
+  "uz": "Claude, Code / Cowork, terminologiya",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.sub": {
+  "uz": "Skill, Plugin, Connector, Plan, agentlar jamoasi, here.now",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.sub": {
+  "uz": "Hermes Agent, /oops, alternativalar",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "vz1.g1_note": {
+  "uz": "Yetti fayl — toʻqima kompaniyaning hujjatlari. Shularni NotebookLM ga manbaa sifatida yuklang, boshqa hech narsani emas.",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.g2_note": {
+  "uz": "Mashqning oʻn uchta prompti. Har birining yonida nusxalash tugmasi bor — NotebookLM ga toʻgʻridan-toʻgʻri qoʻyasiz.",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.g3_note": {
+  "uz": "Vazifaning yozma qoʻllanmasi: mashq tartibi va nimaga eʼtibor berish kerakligi.",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.g2_cta": {
+  "uz": "Promptlarni ochish",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "live.prep_done": {
+  "uz": "{title} bajarildi · {d}/4 tayyor",
+  "translate": true,
+  "note": "screen-reader announcement (aria-live), not visible; full sentence · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "live.prep_undone": {
+  "uz": "{title}: belgi olib tashlandi · {d}/4 tayyor",
+  "translate": true,
+  "note": "screen-reader announcement (aria-live), not visible; full sentence · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "prep.pdf_meta": {
+  "uz": "PDF · {n} slayd · {size}",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "hero.sub_start": {
+  "uz": "Slaydlar · {n} ta · boshlash",
+  "translate": true,
+  "note": "home screen · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "hero.sub_seen": {
+  "uz": "Slaydlar koʻrildi · {n} / {n}",
+  "translate": true,
+  "note": "home screen · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "next.prep": {
+  "uz": "Tayyorgarlik · {title}",
+  "translate": true,
+  "note": "home screen · keep {params} as they are"
+ },
+ "cta.start": {
+  "uz": "Boshlash: {what}",
+  "translate": true,
+  "note": "UI text · keep {params} as they are"
+ },
+ "lock.desc_n": {
+  "uz": "Slaydlar, amaliyot va vazifa dars kuni shu yerda chiqadi.",
+  "translate": true,
+  "note": "locked lesson 4: card subtitle / bottom sheet"
+ },
+ "lib.back": {
+  "uz": "Boʻlimlar",
+  "translate": true,
+  "note": "47-prompt library (lesson 2)"
+ },
+ "lib.sect_meta": {
+  "uz": "Promptlar {range}",
+  "translate": true,
+  "note": "47-prompt library (lesson 2) · keep {params} as they are"
+ },
+ "lib.next": {
+  "uz": "Keyingi boʻlim\n{num} · {title}",
+  "translate": true,
+  "note": "47-prompt library (lesson 2) · \\n = line break · keep {params} as they are"
+ },
+ "lib.index": {
+  "uz": "Boʻlimlar\nroʻyxati",
+  "translate": true,
+  "note": "47-prompt library (lesson 2) · \\n = line break"
+ },
+ "lib.cnt": {
+  "uz": "{d}/{t} prompt bajarildi",
+  "translate": true,
+  "note": "47-prompt library (lesson 2) · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "pane.vz1.begin": {
+  "uz": "Vazifani\nboshlash",
+  "translate": true,
+  "note": "text inside a lesson-folder pane (lilac), small caps label or sentence · \\n = line break"
+ },
+ "sl.back_lesson": {
+  "uz": "Darsga\nqaytish",
+  "translate": true,
+  "note": "book / slide viewer / file screens · \\n = line break"
+ },
+ "vz1.sheet.back": {
+  "uz": "Vazifa\nsahifasi",
+  "translate": true,
+  "note": "homework (Vazifa) screens · \\n = line break"
+ },
+ "vz1.sheet.next": {
+  "uz": "Keyingi qadam\n{what}",
+  "translate": true,
+  "note": "homework (Vazifa) screens · \\n = line break · keep {params} as they are"
+ },
+ "end.done_ex": {
+  "uz": "Mashq bajarildi",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "end.mark_ex": {
+  "uz": "Mashqni bajarildi deb belgilash",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "end.done_card": {
+  "uz": "Karta bajarildi",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "end.mark_card": {
+  "uz": "Kartani bajarildi deb belgilash",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "prep.steps_n": {
+  "uz": "{n} ta qadam",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "book.lat_name": {
+  "uz": "Lotin yozuvida",
+  "translate": true,
+  "note": "book / slide viewer / file screens"
+ },
+ "gate.help": {
+  "uz": "Masalan: AIP-7KQ2XM",
+  "translate": true,
+  "note": "login screen (white text over a photo)"
+ },
+ "prep.intro_late": {
+  "uz": "Birinchi dars {date} kuni boʻldi. Shu roʻyxatni imkon qadar tezroq tayyorlab qoʻying. Hammasi 30 daqiqacha vaqt oladi.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · keep {params} as they are"
+ },
+ "part.locked": {
+  "uz": "Hozircha yopiq",
+  "translate": true,
+  "note": "UI text"
+ },
+ "part.opens": {
+  "uz": "{date}, {time} da ochiladi",
+  "translate": true,
+  "note": "UI text · keep {params} as they are"
+ },
+ "gate.err.rate": {
+  "uz": "Juda koʻp urinish. {n} daqiqadan keyin qayta urinib koʻring.",
+  "translate": true,
+  "note": "login error under the ID field, shown in 14px; MUST fit 2 lines at 320 px (≈ 70 chars) · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "gate.err.offline": {
+  "uz": "Aloqa yoʻq. Internetni tekshirib, qayta urinib koʻring.",
+  "translate": true,
+  "note": "login error under the ID field, shown in 14px; MUST fit 2 lines at 320 px (≈ 70 chars)"
+ },
+ "toast.save_failed": {
+  "uz": "Saqlanmadi. Qayta urinib koʻring.",
+  "translate": true,
+  "note": "undo toast at the bottom; ≤ 28 chars"
+ },
+ "menu.group_shanba": {
+  "uz": "Shanba guruhi",
+  "translate": true,
+  "note": "name menu (dropdown under the student name); row label or value, short"
+ },
+ "menu.group_yakshanba": {
+  "uz": "Yakshanba guruhi",
+  "translate": true,
+  "note": "name menu (dropdown under the student name); row label or value, short"
+ },
+ "menu.course_range": {
+  "uz": "{n} dars · {from} – {to}",
+  "translate": true,
+  "note": "name menu (dropdown under the student name); row label or value, short · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "toast.lang_failed": {
+  "uz": "Til oʻzgarmadi. Qayta urinib koʻring.",
+  "translate": true,
+  "note": "undo toast at the bottom; ≤ 28 chars"
+ },
+ "tab.list": {
+  "uz": "Dars boʻlimlari",
+  "translate": true,
+  "note": "aria-label of the tab bar of the lesson folder"
+ },
+ "pane.sl.meta": {
+  "uz": "{n} ta slayd · {kind}",
+  "translate": true,
+  "note": "small UPPERCASE line, e.g. \"78 slides · video\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "pane.sl.start": {
+  "uz": "Slaydlarni koʻrish",
+  "translate": true,
+  "note": "link text next to a round arrow, ≤ 14 chars"
+ },
+ "pane.sl.again": {
+  "uz": "Qayta\nkoʻrish",
+  "translate": true,
+  "note": "two-line link text (\\n), ≤ 12 chars per line · \\n = line break"
+ },
+ "pane.sl.go": {
+  "uz": "Davom etish\n{i} / {n}",
+  "translate": true,
+  "note": "two-line link text: \"Continue\\n14 / 40\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · \\n = line break · keep {params} as they are"
+ },
+ "pane.am1.label": {
+  "uz": "Darsda qilinadi",
+  "translate": true,
+  "note": "first line of the Amaliyot pane label (13px UPPERCASE), the second line is the 2.0 title \"Korxona bilimini ishga soling\""
+ },
+ "pane.am1.meta": {
+  "uz": "{d}/4 asosiy mashq bajarildi",
+  "translate": true,
+  "note": "line under the exercise list: \"2/4 core exercises done\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "pane.am1.page": {
+  "uz": "Amaliyot\nsahifasi",
+  "translate": true,
+  "note": "two-line link text (\\n), ≤ 12 chars per line · \\n = line break"
+ },
+ "pane.am2.label": {
+  "uz": "Kutubxona\n5 boʻlim · 47 ta prompt",
+  "translate": true,
+  "note": "two-line (\\n) label of the library pane · \\n = line break"
+ },
+ "pane.am2.done": {
+  "uz": "Amaliyot: bajarildi",
+  "translate": true,
+  "note": "status line"
+ },
+ "pane.am2.todo": {
+  "uz": "Amaliyot: bajarilmagan",
+  "translate": true,
+  "note": "status line"
+ },
+ "pane.am2.open": {
+  "uz": "Kutubxonani\nochish",
+  "translate": true,
+  "note": "two-line link text (\\n) · \\n = line break"
+ },
+ "pane.am4.label": {
+  "uz": "Hermes agenti\n9 ta karta + bonus",
+  "translate": true,
+  "note": "two-line (\\n) label of the Hermes pane · \\n = line break"
+ },
+ "pane.am4.page": {
+  "uz": "Kartalar\nsahifasi",
+  "translate": true,
+  "note": "two-line link text (\\n) · \\n = line break"
+ },
+ "pane.vz1.label": {
+  "uz": "Uyda\n«Ravon Uy» keysi",
+  "translate": true,
+  "note": "two-line (\\n) label of the homework pane; «Ravon Uy» is the case name (keep) · \\n = line break"
+ },
+ "pane.vz1.sub": {
+  "uz": "prompt bajarildi. NotebookLMʼda birma-bir.",
+  "translate": true,
+  "note": "sentence under the big \"5/8\" number: \"prompts done. One by one in NotebookLM.\""
+ },
+ "pane.vz1.page": {
+  "uz": "Vazifa sahifasi",
+  "translate": true,
+  "note": "underlined link text, ≥ 44 px tall"
+ },
+ "pane.vz1.go": {
+  "uz": "Davom etish\nVazifa · {pid}",
+  "translate": true,
+  "note": "two-line link text: \"Continue\\nHomework · P6\" · \\n = line break · keep {params} as they are"
+ },
+ "pane.vz1.open": {
+  "uz": "Promptlarni\nochish",
+  "translate": true,
+  "note": "two-line link text · \\n = line break"
+ },
+ "pane.vz.label": {
+  "uz": "Uyda\nErkin ijod",
+  "translate": true,
+  "note": "two-line (\\n) label of the free-text homework pane · \\n = line break"
+ },
+ "pane.kt.label": {
+  "uz": "{title}",
+  "translate": true,
+  "note": "two-line (\\n) label of the book pane; {title} is the book title (keep) · keep {params} as they are"
+ },
+ "lesson.sheetpdf": {
+  "uz": "Promptlar varaqasi\nP1–P8, Q1–Q5 · PDF",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text · \\n = line break"
+ },
+ "row.mark": {
+  "uz": "{d}/{t} prompt",
+  "translate": true,
+  "note": "mark at the right of an exercise row: \"2/4 prompt\" (12px mono, ≤ 12 chars) · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "ex.sub_03a": {
+  "uz": "03A bajarildi · 03B ixtiyoriy",
+  "translate": true,
+  "note": "small line under row 03: 03A is done, 03B optional"
+ },
+ "ex.sub_03b": {
+  "uz": "03B bajarildi · 03A ixtiyoriy",
+  "translate": true,
+  "note": "small line under row 03: 03B is done, 03A optional"
+ },
+ "vz1.title": {
+  "uz": "Vazifa",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.meta": {
+  "uz": "NotebookLM mashqi",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.lede": {
+  "uz": "«Ravon Uy» keysi: manbalarni yuklab oling, keyin promptlarni birma-bir bajaring.",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.g1": {
+  "uz": "1 · Manbaalar",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.g1_hint": {
+  "uz": "Fayl nomlarini oʻzgartirmang — promptlar ularga nom bilan murojaat qiladi.",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.zip": {
+  "uz": "Hammasini yuklash",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.g2": {
+  "uz": "2 · Promptlar",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.cnt": {
+  "uz": "{d}/{t} asosiy bajarildi",
+  "translate": true,
+  "note": "homework (Vazifa) screens · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "vz1.pdf": {
+  "uz": "PDF varianti",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.g3": {
+  "uz": "3 · Talaba qoʻllanmasi",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.sheet.meta": {
+  "uz": "Ravon Uy",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.sheet.h1": {
+  "uz": "Promptlar",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.sheet.lede": {
+  "uz": "Har bir promptni nusxalab, NotebookLM ga qoʻying. Tartib bilan yuring: har biri oldingisining javobiga tayanadi.",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.sheet.k": {
+  "uz": "Asosiy mashq · {d}/{t} bajarildi",
+  "translate": true,
+  "note": "homework (Vazifa) screens · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "vz1.sheet.rule": {
+  "uz": "Sakkizta prompt, birma-bir.",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.more": {
+  "uz": "Qoʻshimcha · Q1–Q5",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vz1.more_sub": {
+  "uz": " Vaqt qolsa yoki uyda ishlash uchun.",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "lbl.manba": {
+  "uz": "Manba:",
+  "translate": true,
+  "note": "bold label before the source name, e.g. \"Source:\""
+ },
+ "vzf.hint2": {
+  "uz": "Yuborish shart emas.",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vzf.on": {
+  "uz": "Bajardim",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "vzf.off": {
+  "uz": "Bajardim",
+  "translate": true,
+  "note": "homework (Vazifa) screens"
+ },
+ "am1.meta": {
+  "uz": "Amaliyot · {d}/4 asosiy mashq bajarildi",
+  "translate": true,
+  "note": "practice (Amaliyot) screens · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "am1.g_core": {
+  "uz": "Asosiy mashqlar",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "am1.g_extra": {
+  "uz": "Qoʻshimcha",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "am1.g_extra_hint": {
+  "uz": "Vaqt qolsa yoki uyda ishlash uchun.",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "am1.g_closing": {
+  "uz": "Yakuniy fayl",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "pick.meta": {
+  "uz": "1-dars · Amaliyot · 03",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "pick.group": {
+  "uz": "Tanlang",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "pick.title": {
+  "uz": "Bittasini tanlang: A yoki B",
+  "translate": true,
+  "note": "title of the \"pick one\" block (03A or 03B)"
+ },
+ "pick.lede": {
+  "uz": "Ikkitadan bittasini tanlang. Bittasi bajarilsa, mashq bajarilgan hisoblanadi; ikkinchisi ixtiyoriy.",
+  "translate": true,
+  "note": "sentence under it"
+ },
+ "c.ex.extra_06": {
+  "uz": "Namoyish yoki uyga vazifa",
+  "translate": false,
+  "note": "real 2.0 sub-label of exercise 06 (\"demo or homework\")"
+ },
+ "pick.done_sfx": {
+  "uz": " · bajarildi",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "ex.meta": {
+  "uz": "Mashq {num}",
+  "translate": true,
+  "note": "practice (Amaliyot) screens · keep {params} as they are"
+ },
+ "ex.meta_extra": {
+  "uz": "Mashq {num} · {extra}",
+  "translate": true,
+  "note": "practice (Amaliyot) screens · keep {params} as they are"
+ },
+ "ex.back": {
+  "uz": "Amaliyot",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "ex.back_pick": {
+  "uz": "03 · Bittasini tanlang",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "ex.g1": {
+  "uz": "1 · Avval oʻqing",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "ex.g2": {
+  "uz": "2 · NotebookLMʼga yuklang",
+  "translate": true,
+  "note": "practice (Amaliyot) screens"
+ },
+ "ex.k": {
+  "uz": "Promptlar · {d}/{t} bajarildi",
+  "translate": true,
+  "note": "small UPPERCASE eyebrow above the prompt list: \"Prompts · 2/4 done\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "ex.rule": {
+  "uz": "[Qavslar] ichini oʻzingiz toʻldirasiz.",
+  "translate": true,
+  "note": "one-line rule above prompt lists; keep the square brackets"
+ },
+ "lbl.where": {
+  "uz": "Qayerga:",
+  "translate": true,
+  "note": "bold label before the paste target, e.g. \"Where:\""
+ },
+ "ex.pdf": {
+  "uz": "PDF varianti · {size}",
+  "translate": true,
+  "note": "underlined link: \"PDF version · 37,0 KB\" · keep {params} as they are"
+ },
+ "end.done": {
+  "uz": "Bajarildi",
+  "translate": true,
+  "note": "toggle text after marking (with a tick)"
+ },
+ "end.mark": {
+  "uz": "Bajarildi deb belgilash",
+  "translate": true,
+  "note": "toggle text before marking (also its aria-label)"
+ },
+ "ex.next": {
+  "uz": "Keyingi mashq\n{num} · {title}",
+  "translate": true,
+  "note": "two-line link (\\n) at the end of an exercise: \"Next exercise\\n02 · Title\" · \\n = line break · keep {params} as they are"
+ },
+ "ex.index": {
+  "uz": "Amaliyot\nsahifasi",
+  "translate": true,
+  "note": "two-line link (\\n) · \\n = line break"
+ },
+ "lib.meta": {
+  "uz": "Amaliyot",
+  "translate": true,
+  "note": "47-prompt library (lesson 2)"
+ },
+ "lib.title": {
+  "uz": "Prompt kutubxonasi",
+  "translate": true,
+  "note": "47-prompt library (lesson 2)"
+ },
+ "lib.lede": {
+  "uz": "47 ta tayyor prompt, 5 boʻlimda. Vazifangizga mos boʻlimni oching.",
+  "translate": true,
+  "note": "47-prompt library (lesson 2)"
+ },
+ "lib.search": {
+  "uz": "Prompt qidirish",
+  "translate": true,
+  "note": "placeholder AND hidden label of the search field"
+ },
+ "lib.sections": {
+  "uz": "Boʻlimlar",
+  "translate": true,
+  "note": "47-prompt library (lesson 2)"
+ },
+ "lib.k": {
+  "uz": "Promptlar · 47 ta",
+  "translate": true,
+  "note": "47-prompt library (lesson 2)"
+ },
+ "lib.found": {
+  "uz": "{n} ta natija",
+  "translate": true,
+  "note": "result count: \"2 results\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "lib.empty": {
+  "uz": "Hech narsa topilmadi. Boshqa soʻz bilan qidiring.",
+  "translate": true,
+  "note": "empty search state sentence"
+ },
+ "lib.clear": {
+  "uz": "Tozalash",
+  "translate": true,
+  "note": "button, ≤ 14 chars"
+ },
+ "lib.rules": {
+  "uz": "Qoidalar (4)",
+  "translate": true,
+  "note": "link on the \"[Brackets] …\" rules line: \"Rules (4)\""
+ },
+ "lib.finish_on": {
+  "uz": "Amaliyot yakunlandi",
+  "translate": true,
+  "note": "toggle after finishing"
+ },
+ "lib.finish_off": {
+  "uz": "Amaliyotni yakunladim",
+  "translate": true,
+  "note": "toggle before finishing (also its aria-label)"
+ },
+ "hi.meta": {
+  "uz": "Amaliyot · {d}/9 karta bajarildi",
+  "translate": true,
+  "note": "Hermes cards (lesson 4) · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "hi.title": {
+  "uz": "Hermes agenti",
+  "translate": true,
+  "note": "Hermes cards (lesson 4)"
+ },
+ "hi.group": {
+  "uz": "Kartalar",
+  "translate": true,
+  "note": "Hermes cards (lesson 4)"
+ },
+ "hc.meta": {
+  "uz": "{id} / 09",
+  "translate": true,
+  "note": "small UPPERCASE line: \"07 / 09\" · keep {params} as they are"
+ },
+ "hc.meta_bonus": {
+  "uz": "Bonus",
+  "translate": true,
+  "note": "small UPPERCASE line for the bonus card"
+ },
+ "hc.next": {
+  "uz": "Keyingi karta\n{id} · {title}",
+  "translate": true,
+  "note": "two-line link (\\n): \"Next card\\n08 · Title\" · \\n = line break · keep {params} as they are"
+ },
+ "hc.index": {
+  "uz": "Kartalar\nsahifasi",
+  "translate": true,
+  "note": "two-line link (\\n) · \\n = line break"
+ },
+ "book.cyr_extra": {
+  "uz": "PDF · kirill",
+  "translate": true,
+  "note": "book / slide viewer / file screens"
+ },
+ "sl.close": {
+  "uz": "Yopish",
+  "translate": true,
+  "note": "book / slide viewer / file screens"
+ },
+ "sl.all": {
+  "uz": "Barcha slaydlar",
+  "translate": true,
+  "note": "button (top right of the slide viewer) and sheet title"
+ },
+ "sl.prev": {
+  "uz": "Oldingi slayd",
+  "translate": true,
+  "note": "aria-label of the ‹ button"
+ },
+ "sl.next": {
+  "uz": "Keyingi slayd",
+  "translate": true,
+  "note": "aria-label of the › button"
+ },
+ "sl.seen": {
+  "uz": "Koʻrildi",
+  "translate": true,
+  "note": "badge shown on the last slide"
+ },
+ "sl.ph": {
+  "uz": "namuna slayd",
+  "translate": true,
+  "note": "tiny tag on the placeholder slide"
+ },
+ "sl.topic": {
+  "uz": "{n}-dars · {topic}",
+  "translate": true,
+  "note": "big caption on the placeholder slide; {topic} is a lesson topic · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "sl.note": {
+  "uz": "Slayd rasmlari 2.0 dan koʻrinmagan (himoyalangan). Bu yerda joy tutuvchi.",
+  "translate": true,
+  "note": "grey 14px note on the placeholder slide"
+ },
+ "sl.doc_title": {
+  "uz": "{i} / {n} · {n_dars}",
+  "translate": true,
+  "note": "book / slide viewer / file screens · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "file.meta": {
+  "uz": "Fayl",
+  "translate": true,
+  "note": "book / slide viewer / file screens"
+ },
+ "file.hint": {
+  "uz": "Bu prototipda fayl yoʻq: yuklab olish 2.0 serverida ishlaydi. Qator va havolalar tekshiruv uchun shu sahifaga olib keladi.",
+  "translate": true,
+  "note": "book / slide viewer / file screens"
+ },
+ "ns.text": {
+  "uz": "Namuna matn: bu promptning haqiqiy matni 2.0 maʼlumotida koʻrinmagan. Haqiqiy matn keyin shu yerga joylanadi.",
+  "translate": true,
+  "note": "placeholder prompt text shown wherever 2.0 text was not available (long, 2 sentences)"
+ },
+ "ns.text_qimmat": {
+  "uz": "Namuna matn: qimmat deb javob berishsa, [Soha] boʻyicha shu javobni aniqlashtiring. Haqiqiy matn 2.0 maʼlumotida koʻrinmagan.",
+  "translate": true,
+  "note": "same placeholder, but for the two prompts the search demo finds by the word \"qimmat\" (\"expensive\"): KEEP that word (or its stem) in the translation; keep [Soha] in brackets"
+ },
+ "ns.prompt": {
+  "uz": "Prompt {n}",
+  "translate": true,
+  "note": "placeholder (\"namuna\") text that stands in for 2.0 content that was never available · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "ns.rule": {
+  "uz": "Qoida {n}",
+  "translate": true,
+  "note": "placeholder (\"namuna\") text that stands in for 2.0 content that was never available · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "ns.q_title": {
+  "uz": "{id} sarlavhasi",
+  "translate": true,
+  "note": "placeholder (\"namuna\") text that stands in for 2.0 content that was never available · keep {params} as they are"
+ },
+ "ns.source": {
+  "uz": "manba nomi (namuna)",
+  "translate": true,
+  "note": "placeholder (\"namuna\") text that stands in for 2.0 content that was never available"
+ },
+ "ns.footnote": {
+  "uz": "sahifa oxiridagi izoh matni 2.0 maʼlumotida koʻrinmagan.",
+  "translate": true,
+  "note": "placeholder (\"namuna\") text that stands in for 2.0 content that was never available"
+ },
+ "ns.natija": {
+  "uz": "Natija: namuna (2.0 maʼlumotida koʻrinmagan).",
+  "translate": true,
+  "note": "placeholder (\"namuna\") text that stands in for 2.0 content that was never available"
+ },
+ "ns.note": {
+  "uz": "Namuna izoh: 2.0 maʼlumotida koʻrinmagan.",
+  "translate": true,
+  "note": "placeholder (\"namuna\") text that stands in for 2.0 content that was never available"
+ },
+ "ns.note_02": {
+  "uz": "Namuna izoh: bu mashqning izohi 2.0 maʼlumotida koʻrinmagan.",
+  "translate": true,
+  "note": "placeholder (\"namuna\") text that stands in for 2.0 content that was never available"
+ },
+ "ns.note_04": {
+  "uz": "Namuna izoh: 04-mashq sarlavhasi 2.0 maʼlumotida yoʻq, faqat «Marketing» toifasi bor.",
+  "translate": true,
+  "note": "placeholder (\"namuna\") text that stands in for 2.0 content that was never available"
+ },
+ "ns.lead": {
+  "uz": "Kompaniya hujjatlarini NotebookLMʼga yuklab, ular asosida ishlang. Har mashqda: fayllarni yuklang, keyin promptlardan nusxa oling.",
+  "translate": true,
+  "note": "placeholder (\"namuna\") text that stands in for 2.0 content that was never available"
+ },
+ "tag.home": {
+  "uz": "Asosiy sahifa: Dastur",
+  "translate": true,
+  "note": "review-only caption shown above a screen with ?review; low priority, ≤ 60 chars"
+ },
+ "tag.prep": {
+  "uz": "Tayyorgarlik (2.0: 4 ta band, PDF)",
+  "translate": true,
+  "note": "review-only caption shown above a screen with ?review; low priority, ≤ 60 chars"
+ },
+ "tag.lesson": {
+  "uz": "{n}-dars sahifasi ({parts} ta boʻlim)",
+  "translate": true,
+  "note": "review-only caption shown above a screen with ?review; low priority, ≤ 60 chars · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "tag.vz1": {
+  "uz": "Vazifa: «Ravon Uy» (3 qadam)",
+  "translate": true,
+  "note": "review-only caption shown above a screen with ?review; low priority, ≤ 60 chars"
+ },
+ "tag.vz1sheet": {
+  "uz": "Vazifa promptlari (P1–P8, Q1–Q5)",
+  "translate": true,
+  "note": "review-only caption shown above a screen with ?review; low priority, ≤ 60 chars"
+ },
+ "tag.am1": {
+  "uz": "Amaliyot (qoida, qoʻllanma, mashqlar, yakuniy fayl)",
+  "translate": true,
+  "note": "review-only caption shown above a screen with ?review; low priority, ≤ 60 chars"
+ },
+ "tag.pick": {
+  "uz": "03 · Bittasini tanlang (03A / 03B)",
+  "translate": true,
+  "note": "review-only caption shown above a screen with ?review; low priority, ≤ 60 chars"
+ },
+ "tag.ex": {
+  "uz": "Mashq {num}: {title}",
+  "translate": true,
+  "note": "review-only caption shown above a screen with ?review; low priority, ≤ 60 chars · keep {params} as they are"
+ },
+ "tag.lib": {
+  "uz": "47 promptlik kutubxona (qidiruv + 5 boʻlim)",
+  "translate": true,
+  "note": "review-only caption shown above a screen with ?review; low priority, ≤ 60 chars"
+ },
+ "tag.hi": {
+  "uz": "Hermes: 9 ta karta + bonus",
+  "translate": true,
+  "note": "review-only caption shown above a screen with ?review; low priority, ≤ 60 chars"
+ },
+ "tag.hc": {
+  "uz": "Hermes {id}: {title}",
+  "translate": true,
+  "note": "review-only caption shown above a screen with ?review; low priority, ≤ 60 chars · keep {params} as they are"
+ },
+ "tag.slide": {
+  "uz": "Slayd koʻrgich ({n} ta slayd, namuna)",
+  "translate": true,
+  "note": "review-only caption shown above a screen with ?review; low priority, ≤ 60 chars · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "tag.file": {
+  "uz": "Fayl (namuna)",
+  "translate": true,
+  "note": "review-only caption shown above a screen with ?review; low priority, ≤ 60 chars"
+ },
+ "title.lesson": {
+  "uz": "{n}-dars · {title}",
+  "translate": true,
+  "note": "browser tab title, ≤ 40 chars · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "title.ex": {
+  "uz": "{num} · {title}",
+  "translate": true,
+  "note": "browser tab title, ≤ 40 chars · keep {params} as they are"
+ },
+ "title.vz": {
+  "uz": "Vazifa · {n}-dars",
+  "translate": true,
+  "note": "browser tab title, ≤ 40 chars · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "title.am": {
+  "uz": "Amaliyot · {n}-dars",
+  "translate": true,
+  "note": "browser tab title, ≤ 40 chars · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "title.pick": {
+  "uz": "03 · Bittasini tanlang",
+  "translate": true,
+  "note": "browser tab title, ≤ 40 chars"
+ },
+ "title.vzsheet": {
+  "uz": "Vazifa promptlari",
+  "translate": true,
+  "note": "browser tab title, ≤ 40 chars"
+ },
+ "title.site": {
+  "uz": "AI Praktikum 3.0",
+  "translate": true,
+  "note": "browser tab title, ≤ 40 chars"
+ },
+ "title.gate": {
+  "uz": "Kirish",
+  "translate": true,
+  "note": "browser tab title, ≤ 40 chars"
+ },
+ "title.type": {
+  "uz": "Shrift",
+  "translate": true,
+  "note": "browser tab title, ≤ 40 chars"
+ },
+ "title.all": {
+  "uz": "Hammasi",
+  "translate": true,
+  "note": "browser tab title, ≤ 40 chars"
+ },
+ "c.ex.01.title": {
+  "uz": "Yangi xodimga tayanch",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.tag": {
+  "uz": "ASOSIY",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.note": {
+  "uz": "Birinchi hafta rejasi, yodlash kartalari va bilimni tekshiruvchi test.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.briefLabel": {
+  "uz": "Avval shuni oching",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.P1.title": {
+  "uz": "Birinchi hafta rejasi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.P1.where": {
+  "uz": "Chat",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.P1.text": {
+  "uz": "Sovuq Zanjir Servisga yangi savdo menejeri keldi. Tanlangan manbalar asosida uni dastlabki 5 ish kunida ishga oʻrgatish rejasini tuzing. Jadvalda har kunning mavzusi, amaliy vazifasi, masʼuli va xodim oʻrganganini qanday koʻrsatishini yozing. Har vazifaning manbasi va sahifasini koʻrsating. Birinchi kun, Bitrix24 va 1C, mahsulotlar, savdo, servis va hujjatlar bilan tanishuvni qamrang. Siz qoʻshgan tekshirish usullarini \"oʻquv taklifi\" deb belgilang. Hujjatda koʻrsatilmagan vakolat, muddat yoki natija talabini oʻzingizdan qoʻshmang. Qoʻllanma bilan rasmiy qoida zid boʻlsa, qatʼiy xulosa bermay xodimlar bilan ishlash boʻlimi aniqlashtirishi kerakligini yozing. Javob oʻzbek lotin yozuvida boʻlsin.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.P2.title": {
+  "uz": "Yodlash kartalari",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.P2.where": {
+  "uz": "Studio → Flashcards → sozlash",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.P2.text": {
+  "uz": "Yangi savdo menejeri uchun qisqa kartalar yarating. Mavzular: birinchi kun; birinchi hafta; kimga murojaat qilish; Bitrix24 va 1C vazifasi; parollarni saqlash; mijozga vaʼda berishdan oldin manbani tekshirish. Har kartada bitta savol va qisqa javob boʻlsin. Faqat aniq, manbada tasdiqlangan faktlar. Taʼtil, mehnat huquqi yoki hujjatlar oʻrtasida ziddiyatli qoida haqida karta tuzmang. Oʻzbek lotin yozuvida yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.P3.title": {
+  "uz": "Vaziyatli test",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.P3.where": {
+  "uz": "Studio → Quiz → sozlash",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.P3.text": {
+  "uz": "Yangi savdo menejeri uchun vaziyatli test yarating. \"Mahsulot kodini qayerdan topaman?\", \"Servis boʻyicha kimga murojaat qilaman?\", \"Parolni hamkasbga bersam boʻladimi?\", \"Mijozga muddat aytishdan oldin nima qilaman?\" kabi ish vaziyatlarini qamrang. Har savolda bitta asosli javob boʻlsin. Javob izohi manbaga tayanishi kerak. Taʼtil va hujjatlar oʻrtasidagi ziddiyatlarni testga kiritmang. Oʻzbek lotin yozuvida yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.P4.title": {
+  "uz": "Studio oʻrniga matn",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.P4.where": {
+  "uz": "Chat / zaxira",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.01.P4.text": {
+  "uz": "Tanlangan manbalardan yangi savdo menejeri uchun 5 ta savol-javob kartasi va 5 ta vaziyatli test tuzing. Testda 3 tadan variant boʻlsin. Toʻgʻri javoblar va manba izohlarini eng oxirida alohida \"Oʻqituvchi tekshiradi\" boʻlimiga joylang. Taʼtil va ziddiyatli qoidalarni ishlatmang. Oʻzbek lotin yozuvida yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.02.title": {
+  "uz": "Mahsulotdan suhbatga",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.02.tag": {
+  "uz": "ASOSIY",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.02.note": {
+  "uz": "Mijozga tushunarli qisqa taqdimot va uchta ehtiyojni aniqlash savoli.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.02.P1.title": {
+  "uz": "Taqdimot uchun dalillar",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.02.P1.where": {
+  "uz": "Chat",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.02.P1.text": {
+  "uz": "Kafe egasi uchun qisqa savdo taqdimotiga tayyorlanyapman. Bon Appetit keysining oʻzini va 01.06.2026 narxlar roʻyxatini ishlating. 1) Mijoz muammosi, yechim va natijani manbasi bilan ajrating. 2) SZ-650 va KP-6 uchun kod, nom, QQS bilan narx, narx sanasi va montaj shartini jadvalda bering. 3) Yangi mijozdan soʻraladigan 3 ta ehtiyoj savolini taklif qiling. Keysdagi natijani yangi mijozga vaʼda qilmang. Manbada yoʻq texnik afzallik, chegirma, ombor qoldigʻi yoki yetkazish muddatini oʻylab topmang. Fakt va savdo taklifini ajrating. Oʻzbek lotin yozuvida yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.02.P2.title": {
+  "uz": "Qisqa savdo taqdimoti",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.02.P2.where": {
+  "uz": "Studio → Slide Deck → sozlash",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.02.P2.text": {
+  "uz": "Kafe egasi uchun taxminan 5 slaydlik qisqa savdo taqdimoti yarating. 1: kafe oshxonalaridagi turli uskunalar muammosi. 2: Bon Appetitda yagona oshxona standarti qanday joriy qilingan. 3: faqat shu keys natijasi - taom tayyorlash 18 daqiqadan 12 daqiqaga; haftasiga taxminan 10 soat tejalishi bosh oshpaz bahosi ekanini yozing. 4: 01.06.2026 roʻyxatidan SZ-650 va KP-6 narxlari, QQS bilan, montaj alohida; bu tayyor loyiha smetasi emas. 5: yangi mijozga 3 ta ehtiyoj savoli va joyni koʻrib chiqishni kelishish taklifi. Har slaydda bitta asosiy fikr. Kam matn, sodda chiziqli ikonka, qora fon, och matn. Yangi mijozga shu natijani kafolatlamang. Har muhim fakt yonida manba nomi/sahifasi yoki mahsulot kodini koʻrsating. \"Oʻquv qoralamasi\" belgisi boʻlsin. Oʻzbek lotin yozuvida yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03.tag": {
+  "uz": "Tanlov",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03a.title": {
+  "uz": "Operator nima qiladi?",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03a.tag": {
+  "uz": "03B BILAN BIRIDAN BIRI",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03a.note": {
+  "uz": "Operator uchun murojaat qabul qilish yoʻriqnomasi va koʻp soʻraladigan savollarga javoblar.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03a.area": {
+  "uz": "Servis",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03a.P1.title": {
+  "uz": "Murojaatni qabul qilish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03a.P1.where": {
+  "uz": "Chat",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03a.P1.text": {
+  "uz": "Oʻquv vaziyati: Samarqanddagi mijoz SZ-400 ekranida E07 chiqqanini aytdi. Men servis operatoriman, texnik emasman. Tanlangan manbalardan operator soʻrashi kerak boʻlgan maʼlumotlar, qayd qilish joyi, servisga topshirish va mijozga aytiladigan muddatni toping. Muddat qachondan hisoblanishini aniq yozing. Toʻlov/kafolat holati nomaʼlum boʻlsa, uni tekshiriladigan savol sifatida qoldiring. Har qoidaga manba va sahifa/band bering. Texnik qoʻllanmada mutaxassis uchun yozilgan taʼmirlashni mijozga tavsiya qilmang. Sovutish gazi (R290) bilan ishlash yoki elektr qismlarini ochish va tuzatish boʻyicha yoʻl-yoʻriq bermang. Operator javobini oʻzbek lotin yozuvida tuzing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03a.P2.title": {
+  "uz": "Operator yoʻriqnomasi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03a.P2.where": {
+  "uz": "Studio → Reports → Create your own",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03a.P2.text": {
+  "uz": "SZSning yangi servis operatori uchun bir sahifalik ish yoʻriqnomasi tayyorlang. Boʻlimlar: 1) mijozdan olinadigan maʼlumotlar; 2) murojaatni qayd qilish; 3) servisga topshirish; 4) mijozga muddatni tushuntirish; 5) javobi manbada yoʻq boʻlsa nima qilish. Oxirida muddat, diagnostika, ehtiyot qism va kafolat boʻyicha 4 ta savol va ularga qisqa javob boʻlsin. Barcha javoblar tanlangan manbalarga tayansin, manba/sahifa koʻrsatilsin. Kafolatdan keyingi diagnostika bilan barcha taʼmirni bir narx deb aytmang. Bu operator materiali: sovutgichning elektr yoki sovutish tizimini ochish va taʼmirlash boʻyicha koʻrsatma bermang. Manbada yoʻq vaʼda qoʻshmang. Oʻzbek lotin yozuvida yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03b.title": {
+  "uz": "Buyurtma yoʻlini koʻring",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03b.tag": {
+  "uz": "03A BILAN BIRIDAN BIRI",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03b.note": {
+  "uz": "Mind Map orqali mavzular xaritasi va joʻnatishdan oldingi tekshiruv roʻyxati.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03b.area": {
+  "uz": "Ombor",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03b.P1.title": {
+  "uz": "Kimdan kimga?",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03b.P1.where": {
+  "uz": "Chat",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03b.P1.text": {
+  "uz": "Faqat Reglament.pdf asosida oddiy buyurtmaning savdodan ombor, logistika va qabul qilishgacha boʻlgan yoʻlini tushuntiring. Jadvalda har bosqichni, masʼulini, ish boshlash uchun kerakli maʼlumotni va keyingi boʻlimga nima topshirilishini koʻrsating. Har bosqichning manba bandini yozing. 1Cda hozir sotish mumkin boʻlgan tovar bilan boshqa buyurtma uchun band qilingan tovarni farqlang. Imzolangan shartnomadagi maxsus shartlar boʻyicha istisnoni alohida yozing. Hujjatda masʼul koʻrsatilmagan boʻlsa \"aniqlashtirish kerak\" deb yozing. Toʻlov kuni hisoblanishi boʻyicha bandlar farqlansa, aniq sana chiqarmang, aniqlashtirish uchun ajrating. Oʻzbek lotin yozuvida yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03b.P2.title": {
+  "uz": "Joʻnatishdan oldingi cheklist",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03b.P2.where": {
+  "uz": "Chat yoki Studio → Reports",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.03b.P2.text": {
+  "uz": "Reglament.pdf asosida savdo va ombor xodimi uchun ixcham cheklist tuzing. Kamida quyidagilarni tekshirsin: mahsulot kodi, soni, manzil, aloqa shaxsi va telefon, montaj zarurati, toʻlov sharti/tasdigʻi, 1Cda sotish mumkin boʻlgan va boshqa buyurtmaga band qilingan tovarlar, mijozga kelishilgan yetkazish sharti. Jadvalda nima tekshirilishi, masʼul, tekshiriladigan hujjat va manba bandini yozing. Har qatorga bajarilganini belgilash uchun joy qoldiring. Manbada mavjud boʻlmagan yangi nazoratni qoʻshsangiz \"taklif\" deb belgilang. Kamchilik boʻlsa kimga aniqlashtirish yuborilishini koʻrsating; manbada belgilanmagan buyruq yoki taqiq yaratmang. Bu oʻquv andozasi, haqiqiy buyurtma yoki tizimdagi vazifa emas. Oʻzbek lotin yozuvida yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.title": {
+  "uz": "Bitta keys, bir necha format",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.tag": {
+  "uz": "ASOSIY",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.note": {
+  "uz": "Mijoz keysidan bitta infografika; video yoki audio imkoniyatini koʻrish.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.P1.title": {
+  "uz": "Kontent uchun faktlar kartasi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.P1.where": {
+  "uz": "Chat",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.P1.text": {
+  "uz": "Faqat Mijoz keyslari hujjatining Bon Appetit boʻlimidan foydalaning. Kontentga kerakli maʼlumotlarni qisqa yozing: muammo nima edi, nima oʻzgardi, nechta kafe qatnashdi va natija qanday boʻldi? Oʻlchangan natija bilan taxminiy bahoni ajrating, bahoni kim berganini va manba sahifasini koʻrsating. Boshqa mijozlarning raqamlarini qoʻshmang. Hujjatda koʻrsatilmagan daromad, foyda yoki foizni oʻzingizdan hisoblab qoʻshmang. Oxirida mijozga vaʼda qilib boʻlmaydigan bitta umumlashtirishni koʻrsating. Oʻzbek lotin yozuvida yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.P2.title": {
+  "uz": "Infografika",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.P2.where": {
+  "uz": "Studio → Infographic → sozlash",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.P2.text": {
+  "uz": "Bon Appetit keysidan kafe biznesi egalari uchun bitta vertikal infografika yarating. Tuzilishi: MUAMMO → YECHIM → NATIJA. 6 kafeda turli uskunalardan yagona oshxona standartiga oʻtish koʻrinsin. Asosiy koʻrsatkich: tushlikda taom tayyorlash 18 daqiqadan 12 daqiqaga tushgan. Qoʻshimcha izoh: haftasiga taxminan 10 soat tejalishi bosh oshpaz hisobiga asoslangan. Bu faqat shu keys natijasi, boshqa mijozga kafolat emas. Boshqa keys raqamlari va yangi statistika qoʻshilmang. Qora fon, och matn, ingichka chiziqli ikonka, kam matn, yirik raqamlar. \"Oʻquv namunasi\" va \"Manba: Mijoz keyslari, 3-sahifa\" koʻrinsin. Oʻzbek lotin yozuvida yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.P3.title": {
+  "uz": "Qisqa video",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.P3.where": {
+  "uz": "Studio → Video Overview → sozlash / qoʻshimcha",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.P3.text": {
+  "uz": "Faqat Bon Appetit haqidagi manba asosida kafe egalari uchun rus tilida qisqa video yarating. Turli oshxona uskunalari qanday muammo tugʻdirganini, 6 kafeda yagona tartib joriy qilinganini va taom tayyorlash vaqti 18 daqiqadan 12 daqiqaga tushganini tushuntiring. Haftasiga taxminan 10 soat tejalishi bosh oshpaz bahosi ekanini ayting. Boshqa mijozlarning natijalarini qoʻshmang va yangi mijozga shu natijani vaʼda qilmang. Sodda chiziqli rasmlardan foydalaning. Bu oʻquv uchun tuzilgan misol ekanini belgilang. Oxirida kafe egasiga \"Oshxonangizda avval qaysi ishga ketayotgan vaqtni oʻlchaysiz?\" degan savolni bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.P4.title": {
+  "uz": "Oʻzbekcha video ssenariysi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.P4.where": {
+  "uz": "Chat / video uchun zaxira",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.04.P4.text": {
+  "uz": "Faqat Bon Appetit keysi asosida kafe biznesi egasi uchun 60-90 soniyalik oʻzbekcha video ssenariysi yozing. Har kadrda nima koʻrinishi, ekranga qanday qisqa matn yozilishi va ovozda nima aytilishini jadvalda koʻrsating. Tuzilishi: muammo, 6 kafeda yagona oshxona standarti, natija, yakuniy savol. Taom tayyorlash 18 daqiqadan 12 daqiqaga tushgani va haftasiga taxminan 10 soat tejalishi bosh oshpaz bahosi ekanini aniq ajrating. Boshqa keys raqamlarini qoʻshmang, yangi mijozga aynan shu foydani kafolatlamang. Oʻquv namunasi deb belgilang. Oxirida tekshirish uchun manba sahifasini yozing. Oʻzbek lotin yozuvida, ovoz chiqarib oʻqishga tabiiy gaplar bilan yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.05.title": {
+  "uz": "Takliflarni bir jadvalga",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.05.tag": {
+  "uz": "QOʻSHIMCHA",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.05.note": {
+  "uz": "Xarid boʻlimi uchun tekshiriladigan qisqa roʻyxat va taʼminotchiga savollar.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.05.P1.title": {
+  "uz": "Xaridning qisqa roʻyxati",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.05.P1.where": {
+  "uz": "Studio → Data Table → sozlash",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.05.P1.text": {
+  "uz": "Korxonamiz uchun bitta ish telefoni tanlayapmiz. Berilgan katalogdan yangi, sotuvda mavjud va kamida 12 oy kafolati bor telefonlarni toping. Narxi 7 million soʻmdan oshmasin. Mos takliflarni eng arzonidan boshlab jadvalda koʻrsating. Jadvalga taklif raqami, brendi, telefon nomi va modeli, xotira hajmi, holati, kafolat muddati, soʻmdagi narxi, qaysi doʻkonda sotilishi, shahar, eʼlon sanasi va yetkazish shartini kiriting. Bir telefon turli sotuvchilarda boʻlsa, har bir taklifni alohida qatorda qoldiring. Faqat talablarimizga mos telefonlarni kiriting. Maʼlumot yetishmasa, \"berilmagan\" deb yozing. Jadval sarlavhalari va izohlarini oʻzbekcha yozing. Bu katalog oʻquv uchun tuzilganini, narxlar haqiqiy savdo taklifi emasligini qayd eting.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.05.P2.title": {
+  "uz": "Taʼminotchiga savollar",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.05.P2.where": {
+  "uz": "Chat",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.05.P2.text": {
+  "uz": "Telefonni xarid qilishdan oldin sotuvchidan aniqlashtirishimiz kerak boʻlgan 5 savolni yozing. Savollar telefon modeli va xotirasi, yakuniy narx va xarid hujjati, kafolat shartlari, sotuvda borligi hamda yetkazish haqida boʻlsin. Katalogda javobi bor savolni va javobi yetishmayotgan savolni ajrating. \"Sotuvda bor\" belgisi nechta telefon qolganini bildirmasligini hisobga oling. Bu oʻquv katalogi, undagi maʼlumotni haqiqiy sotuvchi tasdigʻi deb olmang. Faqat savollar matnini oʻzbekcha tayyorlang, hech kimga yubormang.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.06.title": {
+  "uz": "Rahbar yoʻlda ham tushunsin",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.06.tag": {
+  "uz": "NAMOYISH YOKI UYGA VAZIFA",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.06.note": {
+  "uz": "Bir mavzudagi qisqa audio xulosa va rahbar aniqlashtiradigan savollar.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.06.P1.title": {
+  "uz": "Rahbar uchun yozma xulosa",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.06.P1.where": {
+  "uz": "Chat",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.06.P1.text": {
+  "uz": "Samarqand filiali kengayish rejasi asosida rahbar uchun 150 soʻzgacha qisqa xulosa yozing. Rejaning maqsadini, hozirgi holatni, rejalashtirilgan ishlarni va ochiq qolgan masalalarni tushuntiring. Oxirida uchrashuvda aniqlashtirish kerak boʻlgan 3 savolni yozing. Kelajak rejasini bajarilgan ish deb yozmang. Har asosiy daʼvoga manba sahifasi/bandi bering. Oʻzbek lotin yozuvida yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.06.P2.title": {
+  "uz": "Qisqa audio xulosa",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.06.P2.where": {
+  "uz": "Studio → Audio Overview → Brief / ruscha audio",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.ex.06.P2.text": {
+  "uz": "Samarqand filiali kengayish rejasi asosida korxona rahbari uchun rus tilida qisqa audio xulosa yarating. Rejaning maqsadi, hujjatda tasdiqlangan holat, hali rejalashtirilayotgan ishlar va qaror oldidan ochiq qolgan savollarni tushuntiring. Kelajakdagi taxminlarni erishilgan natija deb aytmang. Hujjatda koʻrsatilmagan tasdiqni oʻzingizdan qoʻshmang. Oxirida rahbar uchrashuvda berishi kerak boʻlgan 3 savolni ayting. Bu oʻquv uchun tuzilgan misol ekanini belgilang.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P1.title": {
+  "uz": "Bitta manbali javob",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P1.where": {
+  "uz": "03_Yetkazish_qoidalari",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P1.text": {
+  "uz": "Faqat 03_Yetkazish_qoidalari manbasidan foydalaning. Omborda bor mahsulotni Toshkent viloyatiga standart yetkazish muddati qancha? Javobni bir jumlada, tegishli band iqtibosi bilan bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P2.title": {
+  "uz": "Narxni tekshirish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P2.where": {
+  "uz": "02_Amaldagi_narxlar, 04_Reklama_qoralamasi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P2.text": {
+  "uz": "02_Amaldagi_narxlar.csv jadvalidagi K1 qatorini 04_Reklama_qoralamasi hujjatidagi narx bilan solishtiring. Jadval ustunlari: reklamadagi daʼvo, amaldagi qoida, ikkala manbadan iqtibos, tuzatish. CSVdagi mahsulot_kodi, holat va amal_boshlanishi ustunlarini hamda reklamaning tasdiq holatini hisobga oling.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P3.title": {
+  "uz": "Vaʼda va jarayon",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P3.where": {
+  "uz": "03_Yetkazish_qoidalari, 04_Reklama_qoralamasi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P3.text": {
+  "uz": "03_Yetkazish_qoidalari va 04_Reklama_qoralamasi hujjatlarini solishtiring. \"Barcha buyurtmalar 24 soatda\" vaʼdasi qaysi shartlarga mos kelmaydi? Har ikki manbadan iqtibos keltiring. Haqiqiy zidlikni ruxsat etilgan istisnodan ajrating.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P4.title": {
+  "uz": "Istisnoni tekshirish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P4.where": {
+  "uz": "03_Yetkazish_qoidalari, 06_Buyurtmalar",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P4.text": {
+  "uz": "03_Yetkazish_qoidalari va 06_Buyurtmalar manbalarini tanlang. RU-001 buyurtmasi 18 soatda yetkazilgan. Bu standart muddatga zidmi yoki ruxsat etilgan tezkor xizmatmi? Hudud, ombordagi mavjudlik, tasdiq vaqti va rahbar tasdigʻini tekshiring. Yetishmagan dalil boʻlsa ayting.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P5.title": {
+  "uz": "Yetishmagan maʼlumot",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P5.where": {
+  "uz": "07_Yigilish_qaydi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P5.text": {
+  "uz": "Faqat 07_Yigilish_qaydi manbasiga tayangan holda, qoʻshimcha kuryer bitta yetkazish uchun qancha olishini aniqlang. Maʼlumot yoʻq boʻlsa summani taxmin qilmang. Kimdan qanday hujjat olish kerakligini yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P6.title": {
+  "uz": "Qaror sinovi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P6.text": {
+  "uz": "Oʻquv vaziyatida bugun 12.09.2026. 14-sentyabrda \"barcha buyurtmalarni 24 soatda yetkazamiz\" kampaniyasini boshlash taklifini baholang. Jadval: qoʻllovchi dalil, qarshi dalil, nomaʼlum jihat, manba. Dalil boʻlmasa eʼtiroz ham, maqtov ham toʻqimang. Yakunda mavjud holat, shartlarni oʻzgartirish yoki kutish variantini asoslang.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P7.title": {
+  "uz": "Rahbar uchun bir sahifa",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P7.text": {
+  "uz": "Ravon Uy rahbari uchun 300 soʻzgacha qaror brifi tayyorlang. Tuzilma: qaror savoli; tavsiya; 3 ta manbali topilma; hal qilinmagan savol; masʼul, muddat va tekshirish mezoni koʻrsatilgan keyingi harakatlar. Fakt, taklif va taxminni ajrating. Faqat tanlangan asl hujjatlardan foydalaning.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P8.title": {
+  "uz": "Mijoz uchun FAQ",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P8.where": {
+  "uz": "02_Amaldagi_narxlar, 03_Yetkazish_qoidalari",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.P8.text": {
+  "uz": "Faqat 02_Amaldagi_narxlar.csv jadvali va 03_Yetkazish_qoidalari hujjatidan foydalaning. Mijozlar uchun 5 ta qisqa savol-javob yozing: K1 narxi, shahar muddati, viloyat muddati, 24 soat xizmatining barcha shartlari, yetkazish toʻlovi. Tekshirish uchun har javobga manba iqtibosini qoʻshing. Mijozga tayyor nusxada ichki xodim ismini keltirmang.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.Q1.title": {
+  "uz": "Yashirin taxmin",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.Q1.where": {
+  "uz": "07_Yigilish_qaydi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.Q1.text": {
+  "uz": "07_Yigilish_qaydi hujjatidagi kuniga 30 ta buyurtma taxminini tekshiring. Qaysi dalil bor, qaysi dalil yetishmaydi? Taxmin notoʻgʻri boʻlsa qanday oqibat bor? Uni tekshirish usulini taklif qiling. Asossiz ehtimol yoki foiz yozmang.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.Q2.title": {
+  "uz": "Vaqt va vakolat",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.Q2.where": {
+  "uz": "02_Amaldagi_narxlar, 04_Reklama_qoralamasi, 05_Eski_narxlar",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.Q2.text": {
+  "uz": "02_Amaldagi_narxlar.csv, 04_Reklama_qoralamasi va 05_Eski_narxlar.csv boʻyicha K1 narxi tarixini tuzing. Yozilgan sana, amal qilish davri, tasdiq holati va oʻrnini bosgan hujjatni koʻrsating. Bugungi narxni eng yangi fayl sanasiga qarab tanlamang.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.Q3.title": {
+  "uz": "Mijoz nigohi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.Q3.where": {
+  "uz": "04_Reklama_qoralamasi, 03_Yetkazish_qoidalari",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.Q3.text": {
+  "uz": "04_Reklama_qoralamasi va 03_Yetkazish_qoidalari asosida mijoz notoʻgʻri tushunishi mumkin boʻlgan jumlalarni toping. Har biriga iqtibos va aniqroq matn taklif qiling. Matnda isbotlanmagan aldov niyatini taxmin qilmang.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.Q4.title": {
+  "uz": "Kelishmovchilik sababi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.Q4.where": {
+  "uz": "04_Reklama_qoralamasi, 07_Yigilish_qaydi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.Q4.text": {
+  "uz": "04_Reklama_qoralamasi va 07_Yigilish_qaydi boʻyicha marketing va operatsiya qarashlari nima uchun farq qilishini tahlil qiling. Dalil, davr, maqsad va taxminni ajrating. Har sababga manba yoki \"tasdiqlanmagan\" belgisi qoʻying.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.Q5.title": {
+  "uz": "Muvozanatli tanqid",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.Q5.text": {
+  "uz": "Keyingi xulosamni manbalar asosida tekshiring: qoʻllovchi dalil, qarshi dalil, noaniqlik va qayta koʻrish sharti. Xulosaga faqat dalil boʻlsa eʼtiroz bildiring. Manbada yoʻq dalilni toʻqimang.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.rule0": {
+  "uz": "Faqat Manbaalar papkasidagi 7 faylni NotebookLM manbaasi sifatida yuklang.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.rule1": {
+  "uz": "Bu promptlarni manbaa sifatida yuklamang — ular savol, manbaa emas.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.rule2": {
+  "uz": "Har promptdan oldin faqat kerakli manbaalarni belgilang, qolganini oʻchiring.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.vz1.footnote": {
+  "uz": "Barcha kompaniya maʼlumotlari toʻqima — mashq uchun yozilgan. Oʻquv sanasi: 12.09.2026.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.am1.rule0": {
+  "uz": "Har mashq uchun alohida notebook oching.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.am1.rule1": {
+  "uz": "Faqat oʻsha mashqning Manbaalar fayllarini yuklang.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.am1.rule2": {
+  "uz": "Avval Yoʻriqnomani oching — mashq nimadan iboratligi oʻsha yerda.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.am1.lead": {
+  "uz": "HR, savdo, servis yoki ombor va marketing uchun amaliy natijalar.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.rule0": {
+  "uz": "Vazifangizga mos promptni tanlang.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.rule1": {
+  "uz": "[Qavslar] ichidagi joylarni oʻz maʼlumotlaringiz bilan almashtiring.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.rule2": {
+  "uz": "Matnni toʻliq nusxalab, Claude ichiga joylang — biznesingiz HQ Project ichida boʻlsa, shu loyihada.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.rule3": {
+  "uz": "Javobni oʻz biznesingizdagi fakt va raqamlar bilan tekshiring.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.hermes.rule0": {
+  "uz": "Kartalarni tartib bilan bajaring — har biri oldingisiga tayanadi.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.hermes.rule1": {
+  "uz": "Promptni “Nusxalash” tugmasi bilan toʻliq oling va sarlavhasida aytilgan joyga yuboring.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.hermes.rule2": {
+  "uz": "Kvadrat qavsdagi joylarni oʻzingiz toʻldiring.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.hermes.rule3": {
+  "uz": "Kalit, token va parolni hech qachon chatga yozmang.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.hermes.lead": {
+  "uz": "Oʻz serveringizda ishlaydigan shaxsiy AI agent: Hermes, Telegram bot, xotira va ertalabki brifing. Toʻqqizta karta va bonus.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.hw.2": {
+  "uz": "Erkin ijod: darsda oʻrganganlaringizdan foydalanib, oʻz biznesingiz uchun biror narsa yarating. Nima qilishni oʻzingiz tanlaysiz — muhimi, u biznesingizga haqiqatan kerak boʻlsin.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.hw.3": {
+  "uz": "Erkin ijod: darsda oʻrganganlaringizdan foydalanib, oʻz biznesingiz uchun biror narsa yarating. Nima qilishni oʻzingiz tanlaysiz — muhimi, u biznesingizga haqiqatan kerak boʻlsin.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.sect.g.note": {
+  "uz": "Takroriy muammo, oʻz ustunligingiz va bozordagi oʻzgarishlardan yangi biznes imkoniyatlarini topish.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.sect.t.note": {
+  "uz": "Reja va qarorlarni faraz, xatar va kuchli qarshi fikr bilan sinash.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.sect.s.note": {
+  "uz": "Birinchi uchrashuvdan narx, eʼtiroz, muzokara va tijoriy taklifgacha.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.sect.r.note": {
+  "uz": "Yondashuv, mijoz portreti, video ssenariysi va reklama tahlili.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.sect.o.note": {
+  "uz": "Yangi koʻnikmani tez va chuqur oʻzlashtirish usullari.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.01.title": {
+  "uz": "Takroriy muammolardan biznes topish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.01.text": {
+  "uz": "[Soha]dagi korxonalar hozir qoʻl mehnati, elektron jadvallar yoki Telegram guruhlari orqali hal qilayotgan, kundalik ishda takrorlanadigan 20 ta muammoni sanab bering.\nHar biri uchun uch narsani baholang: muammo oyiga qancha xarajat keltiradi, uni hal qilish uchun qancha toʻlashga tayyor boʻlishadi va nega bu ish hali avtomatlashtirilmagan.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.02.title": {
+  "uz": "Sizdagi ustunlikka mos biznes",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.02.text": {
+  "uz": "Menda [imkoniyat: auditoriya / maʼlumotlar / mahsulotni mijozga yetkazish kanali / koʻnikma] bor.\nAynan shu imkoniyat tufayli amalga oshirish mumkin boʻlgan 15 ta biznes gʻoyasini taklif qiling.\nBu imkoniyati yoʻq raqobatchi ortimdan osongina ergasha olmasin.\nIstalgan odam boshlay oladigan gʻoyalarni chiqarib tashlang.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.03.title": {
+  "uz": "Mendan intervyu oling",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.03.text": {
+  "uz": "Mendan intervyu oling.\nKundalik ishimda duch keladigan qiyinchiliklar haqida 10 ta savol bering, lekin savollarni bittadan bering.\nIntervyu tugagach, 5 ta biznes gʻoyasini taklif qiling.\nHar bir gʻoya menga oʻxshagan kamida 10 000 kishida ham uchraydigan muammoni hal qilsin.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.04.title": {
+  "uz": "14 kunda tekshiriladigan gʻoya",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.04.text": {
+  "uz": "Faqat [mening koʻnikmalarim]dan foydalanib, mijozlarga Telegram kanali orqali yetib boradigan 10 ta biznes gʻoyasini taklif qiling.\nHar birini 14 kun ichida, 500 dollardan kam mablagʻ bilan tekshira olishim kerak.\nGʻoya ishlashining mezoni roʻyxatdan oʻtganlar soni emas, haqiqiy pul toʻlagan mijoz boʻlsin.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.05.title": {
+  "uz": "Kichik jamoa uchun biznes",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.05.text": {
+  "uz": "Ikki kishidan oshmaydigan jamoa bilan oyiga 10 000 dollar foydaga chiqish imkoniyati bor 10 ta biznesni taklif qiling.\nKontent yaratish, dropshipping va agentlik xizmatlarini chiqarib tashlang.\nHar birida kichik jamoa shu darajadagi natijaga qaysi mexanizm hisobiga erishishini tushuntiring.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.06.title": {
+  "uz": "AI xarajati tushganda paydo boʻladigan imkoniyatlar",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.06.text": {
+  "uz": "Til modeli (LLM) orqali soʻrovlarga javob olish xarajati 100 barobar kamayishi aynan [bozor]da qaysi bizneslarni amalga oshirish imkonini beradi?\nChatbotlar va kontent yaratishni chiqarib tashlang.\nAvval avtomatlashtirish juda qimmatga tushgan ish jarayonlariga eʼtibor qarating.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.07.title": {
+  "uz": "Mavjud mijozga ikkinchi mahsulot",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.07.text": {
+  "uz": "Men [biznes]ni yuritaman.\nMavjud mijozlarimga, ularni qayta jalb qilish uchun deyarli xarajat qilmasdan, qanday 8 ta qoʻshimcha mahsulot sota olaman?\nUlarni ikki mezon boʻyicha tartiblang: mijozning men haqimda shakllangan ishonchidan qanchalik foydalanadi va yangidan qanchalik dalil talab qiladi.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.08.title": {
+  "uz": "Gʻoyani rad eta oladigan sinov",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.08.text": {
+  "uz": "Mana 5 ta biznes gʻoyasi: [roʻyxat].\nHar biri uchun imkon qadar arzon, gʻoyani rad etish imkonini ham beradigan sinov tuzing.\nSinov oldindan ijobiy natijaga moslab qurilmasin: salbiy natija chiqsa, gʻoyadan voz kechish uchun asos boʻlsin.\nMuvaffaqiyat va muvaffaqiyatsizlikning aniq chegaralarini koʻrsating.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.09.title": {
+  "uz": "Uchta tanqidchi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.09.text": {
+  "uz": "Ushbu gʻoyani jiddiy sinovdan oʻtkazing: [gʻoya].\nUchta alohida rol nomidan javob bering: shubha bilan qaraydigan investor, boʻlajak mijozlarim ichidagi eng ishonchsizi va meni bozordan siqib chiqarmoqchi boʻlgan raqobatchi.\nKeyin qaysi eʼtiroz gʻoyani barbod qilish ehtimoli eng yuqori ekanini ayting.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.10.title": {
+  "uz": "Bozor hisobini ochiq koʻrsatish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.10.text": {
+  "uz": "[Gʻoya] uchun [hudud]dagi amalda erishish mumkin boʻlgan bozor hajmini quyidagi hisob bilan baholang: ehtimoliy xaridorlar soni × ulardan real jalb qilish mumkin boʻlgan ulush × narx.\nHisob-kitobni ochiq koʻrsating.\nQaysi bitta raqam notoʻgʻri boʻlsa, yakuniy xulosa oʻzgarishini ayting.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.11.title": {
+  "uz": "Yangi tashabbuslardan biznes imkoniyati",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.11.text": {
+  "uz": "Oxirgi 12 oy ichida [mamlakat]da eʼlon qilingan 8 ta davlat raqamlashtirish tashabbusi, yangi qoida va tartib yoki infratuzilma loyihasini aniqlang.\nHar biri asosida shu oʻzgarishdan foydalanadigan xususiy biznes taklif qiling.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.12.title": {
+  "uz": "Fakt va taxminlarni ajratish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.12.text": {
+  "uz": "Mana mening rejam yoki qarashim: [matn].\nU tayangan barcha farazlarni sanang, ochiq aytilganlarini ham, yashirinlarini ham.\nUlarni uch guruhga ajrating: tekshirilgan faktlar, asosli taxminlar va faqat umidga tayangan fikrlar.\nHar bir umidga tayangan fikrni fakt deb hisoblash uchun qanday dalil kerakligini ayting.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.13.title": {
+  "uz": "Rejangizga kuchli qarshi fikr",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.13.text": {
+  "uz": "[Reja] amalga oshmaydi deb hisoblaydigan eng zukko tanqidchi roliga kiring.\nFikrim ortidagi barcha sabab va asoslarni hisobga oling.\nRejaning oʻzini tanqid qiling, uni soddalashtirib yoki mazmunini buzib koʻrsatib hujum qilmang.\nEʼtirozlaringizni keltirishi mumkin boʻlgan zarariga qarab tartiblang.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.14.title": {
+  "uz": "Raqobatchi nega shunday qildi?",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.14.text": {
+  "uz": "Raqobatchim yoki qarshi tomon [harakat] qildi, bu menga ahmoqona koʻrinyapti.\nMen bilmaydigan maʼlumotlar yoki ularni harakatga undayotgan manfaatlarni hisobga olganda, bu qaror mantiqli boʻlishi mumkinligini tushuntiradigan 3 ta izoh bering.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.15.title": {
+  "uz": "Qarordan oldin nimani bilish kerak?",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.15.text": {
+  "uz": "Men [variantlar] orasidan birini tanlamoqchiman.\nVaziyatni uch qismga ajrating: hozir bilganlarim, qaror qabul qilishdan oldin kam xarajat bilan aniqlay oladiganlarim va faqat qaror qilib, sinab koʻrgandan keyin biladiganlarim.\nUchinchi guruhdagi, qancha tahlil qilsam ham oldindan aniqlab boʻlmaydigan narsalarni kutib, qarorni choʻzmayapmanmi?\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.16.title": {
+  "uz": "Qarorni qaytarish qanchaga tushadi?",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.16.text": {
+  "uz": "[Qaror]ni baholang: undan qaytish mumkinmi yoki yoʻqmi?\nQaytish amalda qancha pul, vaqt va obroʻ yoʻqotishiga olib keladi?\nAgar undan qaytish arzon boʻlsa, tahlilni toʻxtatib, qaror qilishimni ayting.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.17.title": {
+  "uz": "Muvaffaqiyatsizlikni oldindan koʻrish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.17.text": {
+  "uz": "[Reja] nega muvaffaqiyatsiz boʻlishi mumkinligini oldindan tahlil qiling.\nTasavvur qiling: 12 oy oʻtdi va reja butunlay barbod boʻldi.\nJamoa ichida muhokama qilish uchun hisobot yozing: nima notoʻgʻri ketdi, muammolar qanday ketma-ketlikda yuz berdi va qaysi dastlabki ogohlantiruvchi belgini eʼtiborsiz qoldirdik?\nMuvaffaqiyatsizlikning bir-biridan farqli 3 ta ssenariysini bering.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.18.title": {
+  "uz": "Loyihani davom ettirish kerakmi?",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.18.text": {
+  "uz": "Men [loyiha]ga [vaqt/pul] sarfladim.\nUni davom ettirish kerakligini faqat kelajakdagi xarajat va kelajakdagi foydaga qarab baholang.\nQarorimni asoslashda avval sarflangan mablagʻ yoki vaqtni dalil qilib keltirsam, har safar buni koʻrsatib bering.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.19.title": {
+  "uz": "Muddat va xarajatni oʻxshash loyihalar bilan tekshirish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.19.text": {
+  "uz": "Men [vazifa] uchun [vaqt/xarajat] ketadi deb hisobladim.\nTaqqoslashga mos loyihalarni toping: menga oʻxshash odamlar bajargan shunga oʻxshash ishlar amalda qancha vaqt yoki mablagʻ talab qilgan?\nTaxminimni oʻsha loyihalarda kuzatilgan odatiy natijalarga moslab tuzating.\nFaqat oʻz loyihamga qarab hisoblaganimda nimalarni eʼtibordan chetda qoldirganimni ayting.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.20.title": {
+  "uz": "Yaxshiroq savol topish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.20.text": {
+  "uz": "Hozir berayotgan savolim: [savol].\nUndan yaxshiroq 5 ta savol tuzing.\nUlarga javob topilsa, dastlabki savolim ahamiyatini yoʻqotsin yoki javobi osonlashsin.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.21.title": {
+  "uz": "Birinchi savdo uchrashuvi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.21.text": {
+  "uz": "Men [boʻlajak mijoz: kompaniya, lavozim, soha] bilan [taklifim] haqida birinchi marta gaplashaman.\nMijoz ehtiyojini aniqlash uchun 12 ta savol tuzing.\nSavollarni shunday tartiblangki, har bir javob keyingi savolni berish uchun asos yaratsin.\nByudjetni toʻgʻridan-toʻgʻri soʻramasdan aniqlashga yordam beradigan 3 ta savolni belgilang.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.22.title": {
+  "uz": "Muammo xarajatini mijozning oʻzi aytsin",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.22.text": {
+  "uz": "Boʻlajak mijozning hozirgi ish jarayoni unga qanchaga tushayotganini men aytmasdan aniqlashga yordam beradigan 5 ta savol yozing.\nMaqsad: men oʻz narximni aytishimdan oldin, mijoz muammo unga qanchaga tushayotganini oʻz soʻzlari bilan ovoz chiqarib aytsin.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.23.title": {
+  "uz": "Uchrashuvdan keyingi tahlil",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.23.text": {
+  "uz": "Oxirgi suhbat qaydlarimni [qaydlarni joylang] quyidagi qismlarga ajrating: tasdiqlangan muammolar, mijoz aytgan raqam va koʻrsatkichlar, ochiq aytilmagan, lekin men sezgan xatarlar, mijoz tasvirlagan qaror qabul qilish jarayoni va men soʻramay qolgan, keyingi suhbatda albatta soʻrashim kerak boʻlgan 3 ta masala.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.24.title": {
+  "uz": "Narxni qiymat orqali tushuntirish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.24.text": {
+  "uz": "Men [taklif] uchun [narx] soʻrayman.\nTaklifimning qiymatini hisoblang: mijozning oʻz raqamlariga tayanib, hozirgi muammo unga qanchaga tushayotganini aniqlang.\nMen soʻrayotgan narxni yetkazib beradigan qiymatimga nisbat sifatida koʻrsating.\nNarxni aytayotganimda ovoz chiqarib tushuntira oladigan, 3 jumladan iborat matn yozing.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.25.title": {
+  "uz": "Uch darajali taklif",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.25.text": {
+  "uz": "[Xizmat] uchun uch darajali taklif tuzing: mijoz sotib olishini oʻzim xohlamaydigan, solishtirish uchun berilgan imkoniyatlari cheklangan arzon paket, mijoz tanlashini istaydigan asosiy paket va asosiy paket narxini maqbul koʻrsatadigan premium paket.\nUchalasiga ham narx belgilang.\nHar bir paket xaridor qaroriga psixologik jihatdan qanday taʼsir qilishini tushuntiring.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.26.title": {
+  "uz": "Eʼtirozlarga tayyorgarlik",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.26.text": {
+  "uz": "[Mijoz turi]ning [taklifim]ga bildirishi ehtimoli eng yuqori boʻlgan 10 ta eʼtirozni yozing.\nHar biri uchun quyidagilarni bering: eʼtiroz ortidagi xavotir, vaziyatga boshqacha qarashga yordam beradigan izoh, bitta dalil va eʼtiroz bartaraf boʻlganini tekshiradigan savol.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.27.title": {
+  "uz": "“Qimmat” degan javobni aniqlashtirish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.27.text": {
+  "uz": "Mijoz “Juda qimmat” dedi.\nBu gapning olti xil sababiga mos oltita alohida javob bering: byudjeti yoʻq, qiymatni koʻrmayapti, notoʻgʻri muqobil bilan solishtiryapti, odat boʻyicha savdolashyapti, bu taklif uchun mos xaridor emas yoki taklif uning ehtiyojiga haqiqatan mos kelmaydi.\nQaysi holatga duch kelganimni aniqlashga yordam beradigan savolni ham qoʻshing.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.28.title": {
+  "uz": "“Taklif yuboring, oʻylab koʻramiz”",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.28.text": {
+  "uz": "Mijoz “Taklif yuboring, oʻylab koʻramiz” dedi.\nBu javobni yo sanasi kelishilgan aniq keyingi qadamga, yo ochiq aytilgan rad javobiga olib keladigan 4 ta javob yozing.\n“Balki” degan noaniqlikni tugatmoqchiman.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.29.title": {
+  "uz": "Javobsiz qolgan taklifni qayta ochish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.29.text": {
+  "uz": "Taklifni yuborganimdan keyin boʻlajak mijoz javob bermay qoʻydi.\nSuhbatni qayta boshlash uchun ikki hafta davomida yuboriladigan 3 ta xabar ketma-ketligini yozing.\nBirinchi xabar yangi foyda bersin.\nIkkinchi xabar vaziyatga mos dalil keltirsin.\nUchinchi xabar bu masalani yopayotganimni ochiq aytib, suhbatni yakunlasin.\n“Shunchaki holatni bilmoqchi edim” mazmunidagi gaplarni ishlatmang.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.30.title": {
+  "uz": "Rolli savdo mashqi va baho",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.30.text": {
+  "uz": "[Mijoz roli: shubha bilan qaraydigan moliya direktori / oldin yomon tajribaga uchragan kompaniya asoschisi / xarid boʻlimi xodimi] roliga kiring.\nMen [taklif]ni taqdim qilaman, Siz esa hayotdagidek eʼtiroz bildiring va har raundda bosimni oshiring.\nHar bir javobimdan keyin roldan chiqib, meni uch mezon boʻyicha baholang: eʼtirozni eshitib, inobatga oldimmi, uning asl sababini aniqladimmi va suhbatni keyingi qadamga olib oʻtdimmi?\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.31.title": {
+  "uz": "Muzokaraga tayyorgarlik varagʻi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.31.text": {
+  "uz": "[Bitim] boʻyicha muzokaraga tayyorgarlik varagʻimni tuzing.\nUnda quyidagilar boʻlsin: erishmoqchi boʻlgan natijam, qaysi chegaradan keyin kelishuvdan voz kechishim, kelishuv boʻlmasa men uchun eng yaxshi muqobil yoʻl va qarshi tomonning ehtimoliy muqobillari.\nNarxdan tashqari kelishish mumkin boʻlgan barcha shartlarni sanang: ish hajmi, muddat, toʻlov shartlari, intellektual mulk huquqlari, eksklyuzivlik va loyiha natijasini mijoz misoli sifatida eʼlon qilish huquqi.\nMuzokarani qanday boshlashimni va boshlangʻich taklifimning asoslarini ham yozing.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.32.title": {
+  "uz": "Tijoriy taklif tuzilmasi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.32.text": {
+  "uz": "[Bitim] uchun tijoriy taklif tuzilmasini yozing.\nTaklifning oʻzi mijozni qarorga olib kelsin: avval uning muammosi oʻz soʻzlari bilan, keyin hech narsa qilmaslikning xarajati uning oʻz raqamlari bilan berilsin.\nSoʻng muammodan yechimga olib boradigan yondashuvim, uni tasdiqlaydigan dalillar va oxirida kerakli mablagʻ koʻrsatilsin.\nYakunida mijoz oldida imzolashga tayyor bitta aniq tanlov qolsin.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.33.title": {
+  "uz": "Reklama uchun oʻnta yondashuv",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.33.text": {
+  "uz": "Mahsulot: [mahsulot].\nAuditoriya: [auditoriya].\nReklama uchun 10 ta yondashuv ishlab chiqing: muammo, mavqe, qiziqish, boshqalarning tajribasi va fikri, odatiy qarashga zid fikr, oldingi va keyingi holat, bizning usul va eski usul, asoschi hikoyasi, eʼtirozni oldindan bartaraf etish va shoshilinchlik.\nUlarni kutilayotgan bosishlar ulushi (CTR) boʻyicha tartiblang.\nHar biri uchun diqqatni tortadigan birinchi jumla, asosiy vaʼda va uygʻotmoqchi boʻlgan hissiyotni yozing.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.34.title": {
+  "uz": "Beshta mijoz portreti",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.34.text": {
+  "uz": "[Mahsulot]im uchun bir-biridan farq qiladigan 5 ta mijoz portretini yarating.\nHar biri uchun uch narsani yozing: qaysi vaziyat yoki tasvir uni lentani varaqlashdan toʻxtatadi, u oʻz muammosini qanday soʻzlar bilan ifodalaydi va qanday tasvirlarga ishonadi.\nMuammoni aynan mijozning oʻz soʻzlari bilan ayting, reklama tilidagi iboralarni ishlatmang.\nU ishonadigan tasvirlarni ranglar, muhit, yuzlar va fakturalar orqali tasvirlang.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.35.title": {
+  "uz": "Reklama xabari va dalillari",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.35.text": {
+  "uz": "[Mahsulot] uchun reklama xabarlarini iyerarxiya shaklida tuzing: bir satrlik asosiy daʼvo, uni qoʻllab-quvvatlaydigan uchta dalil va har bir dalil bartaraf etadigan eʼtiroz.\nBiz yaratadigan har bir reklama materiali shu tuzilmadagi bitta bandga mos kelsin.\nTuzilmani reklama yaratish jarayoniga uzatishim mumkin boʻlgan tartibli JSON shaklida bering.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.36.title": {
+  "uz": "Reklama qayerda ishlamayapti?",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.36.text": {
+  "uz": "Reklama kabinetimdagi maʼlumotlar: [har bir reklama materiali boʻyicha koʻrsatkichlarni joylang].\nReklama yoʻlini tahlil qiling: muammo odamni lentani varaqlashdan toʻxtatadigan boshlanishdami, diqqatni ushlab turadigan asosiy qismdami, bosishga undaydigan chaqiriqdami yoki bosgandan keyin ochiladigan sahifa reklamaga mos kelmasligidami?\nReklamaning qaysi qismini qayta yaratish va qaysi qismini oʻzgarishsiz qoldirish kerakligini ayting.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.37.title": {
+  "uz": "20 ta qisqa reklama boshlanishi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.37.text": {
+  "uz": "[Mahsulot] uchun [til]da diqqatni tortadigan 20 ta reklama boshlanishini yozing.\nHar biri koʻpi bilan 8 soʻzdan iborat boʻlsin.\nToʻrt turga teng taqsimlang: savol bilan boshlanadigan, raqamga tayangan, salbiy oqibat yoki xavfdan ogohlantiradigan va “Siz”ga murojaat qiladigan boshlanishlar.\nUlarni [platforma + auditoriya] uchun odamni lentani varaqlashdan toʻxtatish ehtimoliga qarab tartiblang.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.38.title": {
+  "uz": "15 soniyalik video ssenariysi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.38.text": {
+  "uz": "[Mahsulot] uchun 3 sahnadan iborat 15 soniyalik reklama ssenariysini tuzing.\nHar bir sahna alohida yaratiladigan bitta video boʻlagi boʻlsin.\nBirinchi sahna muammoni tasvirlasin, 5 soniya.\nIkkinchi sahna mahsulotni koʻrsatsin, 5 soniya.\nUchinchi sahna natijani koʻrsatsin va harakatga chaqiriq uchun joy qoldirsin, 5 soniya.\nHar bir sahnani yaratish uchun prompt yozing.\nSahnalar orasida koʻrinish va voqea izchilligini saqlash boʻyicha koʻrsatmalarni ham qoʻshing.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.39.title": {
+  "uz": "Raqobatchi reklamasiga javob",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.39.text": {
+  "uz": "Raqobatchi reklamasiga javob tayyorlaydigan tizim tuzing.\nKirish maʼlumoti yangi raqobatchi reklamasining skrinshoti yoki tavsifi boʻladi.\nTil modeli (LLM) uning reklama yondashuvi va taklifini ajratib olsin, unga javoban 3 ta reklama gʻoyasini yaratsin va ularni yaratish uchun promptlar yozsin.\nReklamadagi maʼlumotni ajratib olish promptini ham, raqobatchining taklifiga javob beradigan oʻz pozitsiyamizni ishlab chiqish promptini ham yozing.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.40.title": {
+  "uz": "Amaliyotchilar biladigan yashirin qoidalar",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.40.text": {
+  "uz": "[Soha]da ishlaydigan mutaxassislar oʻz-oʻzidan ayon deb biladigan, lekin yangi boshlovchilarga hech qachon tushuntirmaydigan 10 ta tushunchani sanang.\nBu ishni amalda qilgan odamni u haqda faqat oʻqigan odamdan ajratib turadigan, koʻpincha ochiq aytilmaydigan bilimlarni koʻrsating.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.41.title": {
+  "uz": "Natijadan boshlangan oʻquv reja",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.41.text": {
+  "uz": "[Koʻnikma]ni [aniq natija]ga erisha oladigan darajada oʻrganish uchun [Y hafta] davomida [haftasiga X soat] vaqtim bor.\nOʻquv rejasini yakuniy natijadan boshlab teskari tartibda tuzing: Y-hafta oxirida men aynan NIMA QILA OLISHIM kerak va har bir hafta shu natijaga qanday olib boradi?\nHar bir hafta yakunida tayyor ish yoki mahsulot boʻlsin, birorta hafta faqat “tushundim” bilan tugamasin.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.42.title": {
+  "uz": "Savollar orqali oʻrganish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.42.text": {
+  "uz": "Menga [tushuncha]ni Suqrot usulida oʻrgating: savollarni bittadan bering, maʼruza qilmang.\nHozir bilganlarimdan boshlang: [nimalarni bilishingizni yozing].\nTushunchani oʻz javoblarim orqali anglab yetishimga imkon bering.\nFaqat ishonch bilan notoʻgʻri javob berganimda meni tuzating.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.43.title": {
+  "uz": "Bilimni talabchan savollar bilan tekshirish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.43.text": {
+  "uz": "Men [mavzu]ni tushunaman deb hisoblayman.\nMavzu menga tanishligi bilan uni chinakam tushunishim orasidagi farqni ochish uchun qattiqqoʻl imtihonchi beradigan 5 ta savol tuzing.\nSavollarni bittadan bering va javoblarimni qattiqqoʻllik bilan baholang.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.44.title": {
+  "uz": "Vaziyatni oldindan mashq qilish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.44.text": {
+  "uz": "Siz bilan [koʻnikma]ni mashq qilmoqchiman.\n[Vaziyat: mijoz bilan uchrashuv / kodni koʻrib chiqish / bahs / chet tilida suhbat]ni murakkabligi 10 dan 6 darajada boʻlgan rolli mashq sifatida olib boring.\nMashq davomida roldan chiqmang.\nTugatgach, roldan chiqib, uch narsani ayting: men yomon yoʻl tutgan 3 ta aniq vaziyat, har birida qanday yoʻl tutish kuchliroq boʻlardi va keyingi mashqqacha tuzatishim kerak boʻlgan bitta takroriy xato.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.45.title": {
+  "uz": "Mutaxassis bilan 30 daqiqa",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.45.text": {
+  "uz": "[Soha] mutaxassisi bilan gaplashish uchun 30 daqiqam bor.\nSavollar roʻyxatini tuzing: javobini Google orqali topish mumkin boʻlgan savollar ham, “Yangi boshlovchilarga qanday maslahat berasiz?” kabi savollar ham boʻlmasin.\nU qanday qoidalarga tayanib qaror qilishini, amalda xato qilgan vaziyatlari haqidagi hikoyalarini va nimalarni boshqa hech qachon qilmasligini bilmoqchiman.\n10 ta savolni suhbatda beriladigan tartibda yozing.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.46.title": {
+  "uz": "Tajriba yakunidan saboq olish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.46.text": {
+  "uz": "Yaqindagi tajribamdan saboq chiqarishga yordam bering: [loyiha yoki voqeani tasvirlang].\nMen bilan yakuniy tahlil oʻtkazing va savollarni bittadan bering: reja qanday edi, amalda nima boʻldi, nega farq yuz berdi, nimani saqlab qolaman va nimani oʻzgartiraman?\nSoʻng boshqa vaziyatlarda ham qoʻllash mumkin boʻlgan 3 ta tamoyilni “agar ... boʻlsa, unda ...” shaklidagi qoida qilib yozing.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.lib.47.title": {
+  "uz": "Bir sahifalik eslatma",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.lib.47.text": {
+  "uz": "[Mavzu] haqida bilish zarur boʻlgan hamma narsani bitta sahifaga jamlang.\nShu sahifaga qarab mavzuni toʻliq qayta tushunib olishim mumkin boʻlsin: asosiy tamoyil, 5 ta muhim farq, 3 ta amaliy tartib va ish notoʻgʻri ketadigan holatlar kiritilsin.\nBu sahifa bilimimni qayta esga tushirish uchun tayanch boʻladi, har bir soʻz zarur vazifani bajarsin.\nJavobni oʻzbek tilida bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.h.01.title": {
+  "uz": "Oʻrnatish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.01.natija": {
+  "uz": "Natija: Claude Hermes versiyasini koʻrsatadi. 5-10 daqiqa oladi.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.01.P1.where": {
+  "uz": "Claude Codeʼga yuboring",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.01.P1.text": {
+  "uz": "SERVER.md faylimni oʻqi va \"ssh vps\" orqali serverimga ulan.\nServerga Hermes Agent oʻrnat.\nRasmiy buyruq: `curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash -s -- --skip-browser --skip-computer-use`\nOʻrnatish 5-10 daqiqa oladi: kutib tur, yarim yoʻlda toʻxtatma.\nButun dars uchun ikki qoida, ularni SERVER.md ga ham yoz:\n- hermes buyrugʻini doim toʻliq yoʻl bilan chaqir: `~/.local/bin/hermes`\n- sudo ishlatma: hamma narsa mening oddiy foydalanuvchim nomidan ishga tushsin.\nOxirida vaqt mintaqasini Toshkentga oʻrnat (`hermes config set timezone Asia/Tashkent`) va `hermes --version` natijasini menga koʻrsat.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.h.01.note0.t": {
+  "uz": "Eslatma",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.01.note0.x": {
+  "uz": "\"setup skipped (no terminal)\" qatori normal holat. Claude sozlashni keyingi kartalarda amalga oshiradi.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.01.note1.t": {
+  "uz": "Noutbuk yoʻli",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.01.note1.x": {
+  "uz": "Promptdagi \"ssh vps\" oʻrniga Claude Codeʼga ayting: \"hammasini shu kompyuterimga oʻrnat, serverga ulanma\"; SERVER.md kerak emas. Windowsʼda Claude PowerShell oʻrnatuvchisini oʻzi tanlaydi. Keyinroq 9-karta agentni hech narsa yoʻqotmasdan VPSʼga koʻchiradi.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.02.title": {
+  "uz": "Miya",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.02.natija": {
+  "uz": "Natija: agent oʻzbek tilida birinchi javobini beradi.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.02.P1.where": {
+  "uz": "Claude Codeʼga yuboring",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.02.P1.text": {
+  "uz": "Hermes OpenRouter orqali ishlasin.\nOpenRouter kalitimni chatga yozishimni soʻrama.\nMenga alohida terminalda oʻzim ishga tushiradigan bitta buyruq ber: u serverga ulanadi, kalitni ekranda koʻrsatmasdan soʻraydi va uni `~/.hermes/.env` fayliga `OPENROUTER_API_KEY=...` qatori sifatida qoʻshadi.\nMen \"tayyor\" desam:\n1. Provayder: openrouter. Model: `google/gemini-3.8-flash`.\n2. `~/.hermes/config.yaml` ichida shu model uchun OpenRouter provayder tartibini oʻrnat: avval google-ai-studio, keyin google-vertex (provider_routing ning models boʻlimi).\n3. Sinov: `hermes chat -q \"Salom! Bir gapda: sen kimsan?\"` va javobni menga koʻrsat.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.h.02.note0.t": {
+  "uz": "Eslatma",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.02.note0.x": {
+  "uz": "Kalit: openrouter.ai/keys manzilida yangi kalit yarating va unga oylik limit qoʻying (masalan $5). Butun dars taxminan $0.10 turadi.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.03.title": {
+  "uz": "Panel va gateway",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.03.natija": {
+  "uz": "Natija: brauzeringizda http://localhost:9119 ochiladi va pastki chapda \"Gateway Status: Running\" koʻrinadi.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.03.P1.where": {
+  "uz": "Claude Codeʼga yuboring",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.03.P1.text": {
+  "uz": "Serverda ikkita doimiy xizmatni sozla.\nIkkalasi ham systemd user service boʻlsin, sudoʼsiz, va server qayta yuklanganidan keyin oʻzi ishga tushsin (`loginctl enable-linger`):\n1. Gateway: `hermes gateway install`\n2. Dashboard: `hermes dashboard --no-open --host 127.0.0.1 --port 9119`. Yangi port ochma, firewallʼga tegma.\nKeyin kompyuterimdagi `~/.ssh/config` fayliga \"hermes-panel\" nomli yangi yozuv qoʻsh: \"vps\" bilan bir xil server, foydalanuvchi va kalit, plyus `LocalForward 9119 127.0.0.1:9119`.\nMenga alohida terminalda qaysi buyruqni ishga tushirishni va brauzerda qaysi manzilni ochishni ayt.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.h.03.note0.t": {
+  "uz": "Eslatma",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.03.note0.x": {
+  "uz": "Tunnel terminalini dars oxirigacha ochiq qoldiring. Agar uni yopsangiz, faqat boshqaruv paneli yopiladi. Agent serverda ishlashda davom etadi.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.03.note1.t": {
+  "uz": "Noutbuk yoʻli",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.03.note1.x": {
+  "uz": "Tunnel kerak emas: boshqaruv paneli toʻgʻridan-toʻgʻri `http://localhost:9119` da ochiladi. Uni oddiy terminalda `hermes dashboard` bilan ishga tushiring va oynani ochiq qoldiring. `hermes gateway install` tizimingizga mos avtoishga tushirishni oʻzi tanlaydi (Macʼda launchd, Windowsʼda rejali vazifa). Agent faqat noutbuk yoqiq va uygʻoq paytda ishlaydi.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.04.title": {
+  "uz": "Telegram",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.04.natija": {
+  "uz": "Natija: telefoningizdagi bot \"Salom\"ga javob beradi.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.04.note0.t": {
+  "uz": "Boshqaruv panelida (nusxa olish shart emas)",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.04.note0.x": {
+  "uz": "1. Boshqaruv panelida: CHANNELS, keyin Telegram, keyin CREATE WITH QR.\n2. QR-kodni telefoningiz bilan skanerlang. @NousHostedHermesBot ochiladi: \"Start\", keyin \"Create bot\" tugmasini bosing.\n3. Shu chatda \"Connect this bot\" tugmasini bosing. Xabar ikki marta kelishi mumkin: bittasini bosing. Bu qadamsiz boshqaruv paneli \"waiting\" holatida qoladi.\n4. Boshqaruv paneli \"Ready\" deb koʻrsatadi va ALLOWED USERS ostida Sizning ID raqamingiz turadi. SAVE AND RESTART tugmasini bosing.\n5. Yangi botingizga \"Salom\" deb yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.h.04.note1.t": {
+  "uz": "QR ishlamasa",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.04.note1.x": {
+  "uz": "@BotFather ichida `/newbot` bilan bot yarating, @userinfobot dan ID raqamingizni oling. Boshqaruv panelida MANUAL SETUP ostida token va ID ni kiriting va saqlang. Token faqat boshqaruv paneliga kiritiladi, chatga hech qachon emas.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.05.title": {
+  "uz": "Intervyu",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.05.natija": {
+  "uz": "Natija: bot oʻz ismi bilan tanishadi va biznesingizni tasvirlab bera oladi. 25-30 daqiqa.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.05.P1.where": {
+  "uz": "Claude Codeʼga yuboring",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.05.P1.text": {
+  "uz": "Sen tajribali biznes-konsultantsan.\nMaqsad: mening shaxsiy AI agentim uchun ikkita fayl tayyorlash.\nMenga savollarni BITTADAN ber va javobimni kut.\nMenga oson boʻlishi uchun har bir savolga 2-3 ta misol javob qoʻsh.\nAgar javobim qisqa yoki noaniq boʻlsa, bitta aniqlashtiruvchi savol ber.\nJami 12 tadan koʻp boʻlmagan savol, uchta blokda:\n- A. Men: ismim, rolim, kunim qanday oʻtadi, qanday muloqot qilishni yoqtiraman, qaysi tilda.\n- B. Biznesim: nima sotamiz, mijozlarimiz kim, jamoa, asosiy raqamlar, raqobatchilar, hozirgi 3 ta eng katta ogʻriq.\n- C. Agentim: uning ismi, xarakteri, har kuni men uchun nima qilishi kerak, nima qilmasligi kerak.\nIntervyu tugagach, avval ikkala faylni menga koʻrsat:\n1. SOUL.md: agentning ismi, xarakteri, ohangi, tili va chegaralari. Biznes faktlarisiz. Salomlashishga qisqa javob bersin. 2 500 belgidan oshmasin.\n2. AGENTS.md: biznesim haqidagi faktlar va agentning ish qoidalari.\nMen \"Tasdiqlayman\" desam:\n- SOUL.md ni serverdagi `~/.hermes/SOUL.md` manziliga joyla (eskisini SOUL.md.bak qilib saqla);\n- `~/biznes` papkasini yarat va AGENTS.md ni u yerga joyla;\n- uni Hermesʼning ishchi papkasi qil: toʻliq yoʻl bilan `hermes config set terminal.cwd`;\n- oxirida gatewayʼni qayta ishga tushir.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.h.05.note0.t": {
+  "uz": "Sinov",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.05.note0.x": {
+  "uz": "Telegramʼda `/new` yuboring, keyin \"Sen kimsan va biznesim haqida nima bilasan?\" deb yozing. Bot SOUL.md dagi ism bilan javob berishi va biznes faktlaringizni sanab oʻtishi kerak.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.06.title": {
+  "uz": "Meni eslab qol",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.06.natija": {
+  "uz": "Natija: USER.md faylida Siz haqingizdagi faktlar paydo boʻladi.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.06.P1.where": {
+  "uz": "Claude Codeʼga yuboring",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.06.P1.text": {
+  "uz": "Intervyudagi javoblarim asosida Telegram botimga yuboradigan bitta xabar tayyorla.\nXabar \"Buni xotirangga saqla:\" bilan boshlansin, 600 belgidan oshmasin va faqat men haqimdagi eng muhim faktlarni oʻz ichiga olsin: ism, rol, muloqot uslubi, ish soatlari.\nMen uni botga yuboraman va senga \"yubordim\" deyman.\nKeyin serverdagi `~/.hermes/memories/USER.md` faylini oʻqi va faktlar haqiqatan ham saqlanganini tekshir.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.h.06.note0.t": {
+  "uz": "Eslatma",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.06.note0.x": {
+  "uz": "Agent faqat oʻzingiz soʻragan narsalarnigina saqlaydi. Agar biror fakt tushib qolgan boʻlsa, botga alohida yozing: \"Buni xotirangga saqla: ...\".",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.07.title": {
+  "uz": "Ertalabki brifing",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.07.natija": {
+  "uz": "Natija: sinov brifingi keladi va vazifa boshqaruv panelining CRON sahifasida koʻrinadi.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.07.P1.where": {
+  "uz": "Buni Telegramʼda botga yozing",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.07.P1.text": {
+  "uz": "Har kuni ertalab soat 8:00 da (Toshkent vaqti) menga qisqa brifing yubor:\n1. Oʻzbekiston va dunyoda [sohangiz] boʻyicha eng muhim 3 ta yangilik, manbalari bilan;\n2. raqobatchilarim [nomlar] haqida yangi maʼlumotlar;\n3. bugun uchun bitta amaliy maslahat.\nOʻzbek tilida, 15 qatordan oshmasin.\nSinov tariqasida bittasini hozir yubor.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.h.07.note0.t": {
+  "uz": "Eslatma",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.07.note0.x": {
+  "uz": "Raqamlarni tekshiring. Agent internetdan qidiradi va manbalarni koʻrsatadi, ammo u adashishi ham mumkin. Har qanday muhim qarordan oldin manbani ochib koʻring.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.08.title": {
+  "uz": "Yakuniy sinov",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.08.natija": {
+  "uz": "Natija: server qayta yuklanganidan keyin bot yana javob beradi.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.08.P1.where": {
+  "uz": "Oʻzingiz, alohida terminalda",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.08.P1.text": {
+  "uz": "Serverni qayta yuklang: `ssh -t vps sudo reboot`. Parolni oʻzingiz kiritasiz. 2 daqiqa kuting.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.08.P2.where": {
+  "uz": "Keyin Claude Codeʼga yuboring",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.08.P2.text": {
+  "uz": "Mening \"vps\" serverim qayta yuklandi.\nHermes gateway va dashboard xizmatlari oʻz-oʻzidan ishga tushganini tekshir va menga ularning holatini koʻrsat.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.h.08.note0.t": {
+  "uz": "Yakuniy dalil",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.08.note0.x": {
+  "uz": "Telefoningizdan botingizga yozing va javob oling. Tunnelni qayta oching (`ssh -N hermes-panel`) va boshqaruv paneli yana ochilishini tekshiring.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.08.note1.t": {
+  "uz": "Noutbuk yoʻli",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.08.note1.x": {
+  "uz": "Serverni qayta yuklash oʻrniga noutbuk qopqogʻini bir daqiqaga yoping, keyin oching va botga yozing. Noutbuk uxlab yotganda bot jim turadi, oʻsha paytga toʻgʻri kelgan brifing esa oʻtkazib yuboriladi yoki kechikib keladi: agent nega VPSʼda turishi kerakligining eng yaxshi isboti.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.09.title": {
+  "uz": "VPSʼga koʻchirish",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.09.natija": {
+  "uz": "Natija: oʻsha bot avvalgi ismi, xotirasi va ertalabki brifingi bilan javob beradi, endi noutbuk yopiq boʻlsa ham. Taxminan 15 daqiqa.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.09.P1.where": {
+  "uz": "Claude Codeʼga yuboring",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.09.P1.text": {
+  "uz": "Hermes agentimni shu kompyuterdan yangi VPS serverimga hech narsa yoʻqotmasdan koʻchirmoqchiman.\nSERVER.md faylimni oʻqi: server \"ssh vps\" nomi bilan ulangan.\n1. Kompyuterimda: `hermes backup -o ~/hermes-kochirish.zip` bilan toʻliq zaxira nusxa ol va `~/biznes` papkamni alohida arxivga joyla.\n2. Serverga Hermes oʻrnat (1-kartadagi rasmiy buyruq, ikki qoida bilan: toʻliq yoʻl `~/.local/bin/hermes`, sudoʼsiz).\n3. Ikkala arxivni serverga koʻchir, `hermes import ~/hermes-kochirish.zip --force` bilan tikla va `~/biznes` ni uy papkamga och.\n4. Serverdagi `~/.hermes/config.yaml` ichida kompyuterimga tegishli har bir yoʻlni server yoʻliga almashtir (masalan `terminal.cwd`, `tts.gemini.persona_prompt_file`), keyin `hermes doctor` ni ishga tushir.\n5. Muhim: avval kompyuterimdagi gatewayʼni toʻxtat va uning avtoishga tushishini oʻchir. Bitta Telegram bot bir vaqtda faqat bitta joyda ishlay oladi.\n6. Keyin serverda gateway va boshqaruv panelini 3-kartadagidek doimiy xizmat qil va ularning holatini koʻrsat.\n7. Zaxira zip faylini ikkala mashinada ham oʻchir: unda kalitlarim bor.\nOxirida men botga yozaman, sen esa serverdagi gateway logida xabar kelganini tekshirasan.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ },
+ "c.h.09.note0.t": {
+  "uz": "Eslatma",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.09.note0.x": {
+  "uz": "Zaxira nusxada hammasi bor: shaxsiyat, xotira, sozlamalar, kalitlar, skills, rejali vazifalar va suhbatlar tarixi. Faqat `~/biznes` papkasi undan tashqarida turadi, shuning uchun u ikkinchi arxiv boʻlib koʻchadi. Zaxira zip faylini hech qachon chatga yoki emailga yubormang: unda kalitlaringiz bor.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.10.title": {
+  "uz": "Ovozli agent",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.10.natija": {
+  "uz": "Natija: botga oʻzbekcha ovozli xabar yuborasiz; u nima eshitganini koʻrsatadi va ovozli xabar bilan javob beradi.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.10.P1.where": {
+  "uz": "Claude Codeʼga yuboring",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.10.P1.text": {
+  "uz": "Hermes agentim mening oʻzbekcha ovozli xabarlarimni tushunishini va ovoz bilan javob berishini xohlayman, ikkalasi ham Google Gemini orqali.\nGoogle AI Studio kalitimni chatga yozishimni soʻrama.\nMenga alohida terminalda oʻzim ishga tushiradigan bitta buyruq ber: u kalitni ekranda koʻrsatmasdan soʻraydi va serverdagi `~/.hermes/.env` fayliga `GEMINI_API_KEY=...` qatori qilib qoʻshadi.\nMen \"tayyor\" desam:\n1. Ovozli javoblar: `hermes config set tts.provider gemini`, `tts.gemini.model` = `gemini-3.8-flash-tts`, `tts.gemini.voice` = `Kore` va `tts.gemini.base_url` = `https://generativelanguage.googleapis.com/v1beta` (bu qator Hermes xatosini aylanib oʻtish uchun kerak, uni saqlab qol).\n2. Qisqa ovoz yoʻriqnomasi faylini yoz: `~/.hermes/voice-uz.md` (\"native Uzbek speaker from Tashkent, calm and warm, read numbers as Uzbek words\") va `tts.gemini.persona_prompt_file` ga uning toʻliq yoʻlini oʻrnat.\n3. Ovozni tushunish: kichik Python skript yoz: `~/.hermes/bin/gemini-stt.py` (faqat standart kutubxona). U audio fayl yoʻli va chiqish matn fayli yoʻlini oladi, audioni Gemini API modeli `gemini-3.8-flash` ga inline audio sifatida yuboradi, prompt esa: \"transcribe verbatim; Uzbek in Latin script, Russian words in Cyrillic, English words in Latin; output only the transcript\", `GEMINI_API_KEY` ni muhit oʻzgaruvchisidan yoki `~/.hermes/.env` dan oʻqiydi va transkriptni chiqish fayliga yozadi. Avval uni biror audio faylda sinab koʻr.\n4. `~/.hermes/config.yaml` faylida, `stt:` boʻlimi ichida `provider: gemini`, `language: uz` qilib oʻrnat va buyruq provayderini qoʻsh: `providers` → `gemini` → `type: command`, `command: \"python3 <full path>/gemini-stt.py {input_path} {output_path}\"`, `env_passthrough: [GEMINI_API_KEY]`, `timeout: 120`. Faylni toʻgʻridan-toʻgʻri tahrirla: `hermes config set` bu blokni yoza olmaydi.\n5. Gatewayʼni qayta ishga tushir.\n\nKeyin Telegramʼda `/voice on` yubor va ovozli xabar yozib joʻnat.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break · keep {params} as they are"
+ },
+ "c.h.10.note0.t": {
+  "uz": "Eslatmalar",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.h.10.note0.x": {
+  "uz": "- `/voice on`: faqat ovozli xabar yuborganingizda ovozli javob qaytaradi. `/voice tts`: har bir xabarga ovozli javob beradi. `/voice off`: faqat matn.\n- Bot avval transkriptni koʻrsatadi (\"🎙️ ...\"), shunda uning nima eshitganini koʻrishingiz mumkin.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked · \\n = line break"
+ }
+}

@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Utilitar · 3 yoʻnalish · AI Praktikum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&family=Golos+Text:wght@400;500;600;700&family=Martian+Mono:wdth,wght@87.5..100,400..600&display=swap">
+<style>
+:root{--font-display:'Mona Sans','Roboto Flex',sans-serif;--font-body:'Golos Text',system-ui,sans-serif;--font-mono:'Martian Mono',ui-monospace,monospace}
+*,*::before,*::after{box-sizing:border-box}
+body,h1,h2,h3,p,ol,ul,dl,dd{margin:0}
+ol,ul{padding:0;list-style:none}
+body{background:#0d0d0d;color:#EDEDED;font:400 16px/1.5 var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+button{background:none;border:0;padding:0;cursor:pointer;border-radius:0}
+:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.mono{font-family:var(--font-mono)}
+.ph{font-weight:700;text-decoration:underline 1.5px;text-underline-offset:4px}
+
+/* ===== review shell ===== */
+.page{padding:48px 24px 96px}
+.page>h1,.page>p,.opt{max-width:1440px;margin-left:auto;margin-right:auto}
+.page>h1{font:800 clamp(26px,3.6vw,40px)/1.1 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.page>p{margin-top:10px;color:#8A8A90}
+.opt{padding-top:64px;display:grid;gap:12px}
+.opt>h2{font:700 clamp(18px,2vw,24px)/1.3 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.opt>p{color:#A9A9AF;max-width:84ch}
+.vt{font:400 12px/1 var(--font-body);color:#6E6E74;margin:12px 0 8px}
+.frame{container-type:inline-size;overflow:clip;border:1px solid #1f1f22}
+.frame.m{width:375px;max-width:100%}
+.slabel{padding:8px 16px;background:#111;color:#8a8a8a;font:500 11px/1.3 var(--font-mono);letter-spacing:.06em;text-transform:uppercase}
+.scr{padding:36px 16px 44px}
+@container (min-width:900px){.scr{padding:56px 66px 64px}}
+.grid1{display:grid;grid-template-columns:minmax(0,1fr)}
+
+/* =====================================================================
+   U1 · TECHNICAL MANUAL / SPEC SHEET — paper, black ink, hairline grid, one safety-orange accent
+   ===================================================================== */
+.u1{background:#F2F1EC;color:#111}
+.u1 .lab{font:500 11px/1.4 var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
+.u1 .muted{color:#4A4A48}
+.u1 .sec{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;padding-top:12px;border-top:2px solid #111}
+.u1 .sec+.sec{margin-top:40px}
+.u1 h2{font:800 clamp(30px,7cqi,64px)/1.02 var(--font-display);font-stretch:125%;text-transform:uppercase;letter-spacing:-.01em}
+.u1 .row{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid rgb(17 17 17 / .25)}
+.u1 .inp{display:flex;align-items:center;height:52px;padding:0 14px;border:1px solid #111;background:#fff}
+.u1 .inp .pre{font:500 18px/1 var(--font-mono);color:#4A4A48}
+.u1 .inp input{flex:1;min-width:0;height:100%;border:0;outline:0;background:none;font:500 18px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
+.u1 .inp:focus-within{outline:2px solid #FF5F00;outline-offset:2px}
+.u1 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:48px;padding:0 20px;font:600 13px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;border:1px solid #111;white-space:nowrap;transition:background .12s,color .12s}
+.u1 .btn.solid{background:#111;color:#F2F1EC}
+.u1 .btn:hover{background:#111;color:#F2F1EC}
+.u1 .btn.flash{background:#FF5F00;border-color:#FF5F00;color:#111}
+.u1 .st{display:inline-block;padding:5px 8px;border:1px solid #111;font:600 11px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.u1 .st.live{background:#FF5F00;border-color:#FF5F00}
+.u1 .st.locked{color:#5A5A58;border-color:#8A8A86}
+.u1 .seg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;height:16px}
+.u1 .seg i{border:1px solid #111}.u1 .seg i.on{background:#111}
+.u1 .big{font:700 56px/.9 var(--font-display);font-stretch:125%}
+.u1 .tbl{display:grid}
+.u1 .tr{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:4px 12px;padding:14px 0;border-bottom:1px solid rgb(17 17 17 / .25);align-items:baseline}
+.u1 .th{display:none}
+.u1 .tr .c-sub,.u1 .tr .c-date{grid-column:2/-1;font-size:14px}
+.u1 .tr .c-title{font:700 17px/1.3 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.u1 .tr.locked .c-title,.u1 .tr.locked .c-sub,.u1 .tr.locked .c-no{color:#5A5A58}
+.u1 .ftr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:10px 0;border-bottom:1px solid rgb(17 17 17 / .25)}
+.u1 .ftr .meta{grid-column:1;font:400 12px/1.3 var(--font-mono);color:#4A4A48}
+.u1 .ftr .dl{grid-row:1/3;grid-column:2;display:grid;place-items:center;width:40px;height:40px;border:1px solid #111}
+.u1 .ftr .dl:hover{background:#111;color:#F2F1EC}
+.u1 .entry{padding:18px 0 22px;border-bottom:1px solid #111}
+.u1 .entry-h{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:baseline}
+.u1 .entry-h h3{font:700 18px/1.25 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.u1 .entry .st.dn{display:none}.u1 .entry.done .st.dn{display:inline-block}.u1 .entry.done .st.td{display:none}
+.u1 .to{margin-top:10px}
+.u1 .tx{margin-top:12px;padding-left:16px;border-left:2px solid #111;font:400 17px/1.6 var(--font-body);max-width:68ch}
+.u1 .act{margin-top:16px}
+@container (min-width:900px){
+  .u1 .sec{grid-template-columns:220px minmax(0,1fr);gap:24px}
+  .u1 .sec+.sec{margin-top:56px}
+  .u1 .gate-f{max-width:640px}
+  .u1 .row{grid-template-columns:160px minmax(0,1fr)}
+  .u1 .th{display:grid;padding:0 0 8px;border-bottom:1px solid #111}
+  .u1 .tr,.u1 .th{grid-template-columns:70px minmax(0,1.1fr) minmax(0,1.8fr) 200px 120px;gap:16px;align-items:center}
+  .u1 .tr .c-sub,.u1 .tr .c-date{grid-column:auto}
+  .u1 .ex-cols .sec{grid-template-columns:minmax(0,1fr);gap:14px}
+  .u1 .ftr{grid-template-columns:minmax(0,1fr) 44px 64px 40px}
+  .u1 .ftr .meta{grid-column:auto}.u1 .ftr .dl{grid-row:auto;grid-column:auto}
+  .u1 .ex-cols{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:48px;align-items:start}
+  .u1 .tx{font-size:19px}
+}
+
+/* =====================================================================
+   U2 · INDUSTRIAL SIGNAGE — concrete grey, black + safety yellow, sign plates, one hazard stripe
+   ===================================================================== */
+.u2{background:#BDBCB6;color:#000}
+.u2 h2{font:900 clamp(32px,8cqi,80px)/.98 var(--font-display);font-stretch:125%;text-transform:uppercase;letter-spacing:-.01em}
+.u2 .plate{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;background:#000;color:#fff;font:800 13px/1 var(--font-display);font-stretch:125%;text-transform:uppercase;letter-spacing:.02em}
+.u2 .plate.y{background:#FFD400;color:#000}
+.u2 .plate.w{background:#fff;color:#000}
+.u2 .plate.g{background:#5E5E5B;color:#fff}
+.u2 .sq{display:grid;place-items:center;min-width:56px;height:56px;padding:0 8px;background:#fff;color:#000;font:900 30px/1 var(--font-display);font-stretch:125%}
+.u2 .sign{background:#000;color:#fff;padding:20px}
+.u2 .lbl{display:block;margin-bottom:8px;font:700 13px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.06em}
+.u2 .inp{display:flex;align-items:center;height:60px;padding:0 16px;background:#fff;color:#000;border:3px solid #FFD400}
+.u2 .inp .pre{font:600 20px/1 var(--font-mono);color:#444}
+.u2 .inp input{flex:1;min-width:0;height:100%;border:0;outline:0;background:none;font:600 20px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
+.u2 .btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;height:64px;font:900 18px/1 var(--font-display);font-stretch:125%;text-transform:uppercase;letter-spacing:.02em;transition:background .12s}
+.u2 .btn.y{background:#FFD400;color:#000}.u2 .btn.y:hover{background:#ffe14d}
+.u2 .btn.k{background:#000;color:#fff}.u2 .btn.k:hover{background:#262626}
+.u2 .btn.flash{background:#FFD400;color:#000}
+.u2 .hazard{height:14px;background:repeating-linear-gradient(-45deg,#FFD400 0 14px,#000 14px 28px)}
+.u2 .cards{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin-top:24px}
+.u2 .card{background:#000;color:#fff}
+.u2 .card-b{display:grid;gap:10px;padding:18px}
+.u2 .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.u2 .card h3{font:800 22px/1.15 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.u2 .card p{color:#CFCFCF;font-size:15px}
+.u2 .card.locked{background:#3A3A38}.u2 .card.locked .sq{background:#8C8C88}
+.u2 .prog{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.u2 .prog .num{font:900 72px/.9 var(--font-display);font-stretch:125%}
+.u2 .frow{display:grid;grid-template-columns:minmax(0,1fr) 56px;align-items:center;gap:12px;padding:12px 0;border-top:3px solid #000}
+.u2 .frow b{font:800 16px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.u2 .frow span{display:block;font:500 13px/1.3 var(--font-mono);color:#222}
+.u2 .frow .dl{display:grid;place-items:center;width:56px;height:56px;background:#000;color:#fff}
+.u2 .pr{background:#F1F0EC;border:3px solid #000}
+.u2 .pr-h{display:flex;align-items:center;gap:12px;background:#000;color:#fff;padding:0 14px 0 0}
+.u2 .pr-h .sq{min-width:48px;height:48px;font-size:22px}
+.u2 .pr-h h3{flex:1;min-width:0;font:800 17px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase;padding:10px 0}
+.u2 .pr .dn{display:none}.u2 .pr.done .dn{display:inline-flex}
+.u2 .pr-b{display:grid;gap:12px;padding:16px}
+.u2 .tx{font:400 18px/1.6 var(--font-body);max-width:66ch}
+@container (min-width:900px){
+  .u2 .gate-g{display:grid;grid-template-columns:minmax(0,1fr) 560px;gap:48px;align-items:end}
+  .u2 .sign{padding:28px}
+  .u2 .main-g{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end}
+  .u2 .cards{grid-template-columns:repeat(3,1fr);gap:20px}
+  .u2 .card-b{padding:24px;min-height:240px;align-content:start}
+  .u2 .card h3{font-size:28px}
+  .u2 .prog .num{font-size:120px}
+  .u2 .ex-g{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:40px;align-items:start}
+  .u2 .tx{font-size:20px}
+  .u2 .pr-b{padding:22px 24px}
+  .u2 .pr-h h3{font-size:20px}
+}
+
+/* =====================================================================
+   U3 · SYSTEM UTILITY / TERMINAL-OPS — dark, dense, mono, one amber accent, strict grid, keyboard hints
+   ===================================================================== */
+.u3{background:#0E0F10;color:#D6D9DC;font-family:var(--font-mono);font-size:13px;line-height:1.55}
+.u3 .mut{color:#8B9096}
+.u3 .amb{color:#FFB000}
+.u3 .pane{border:1px solid #2A2D31;background:#121416}
+.u3 .pane-h{display:flex;justify-content:space-between;gap:12px;padding:8px 12px;border-bottom:1px solid #2A2D31;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#8B9096}
+.u3 .pane-b{padding:14px 12px}
+.u3 h2{font:600 clamp(20px,4.4cqi,34px)/1.2 var(--font-mono);letter-spacing:-.01em;color:#EDEFF1}
+.u3 kbd{display:inline-block;min-width:20px;padding:2px 6px;border:1px solid #3A3E43;border-bottom-width:2px;font:600 11px/1.2 var(--font-mono);color:#D6D9DC;text-align:center}
+.u3 .hint{color:#8B9096;font-size:12px}
+.u3 .dk{display:none}
+.u3 .inp{display:flex;align-items:center;gap:6px;height:44px;padding:0 10px;border:1px solid #3A3E43;background:#0B0C0D}
+.u3 .inp:focus-within{border-color:#FFB000}
+.u3 .inp input{flex:1;min-width:0;height:100%;border:0;outline:0;background:none;font:600 15px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:#EDEFF1}
+.u3 .btn{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;border:1px solid #3A3E43;font:600 12px/1 var(--font-mono);letter-spacing:.04em;text-transform:uppercase;color:#D6D9DC;white-space:nowrap;transition:background .1s,color .1s}
+.u3 .btn:hover{background:#D6D9DC;color:#0E0F10}
+.u3 .btn.flash{border-color:#FFB000;color:#FFB000}
+.u3 .kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px}
+.u3 .kv dt{color:#8B9096;text-transform:uppercase;font-size:11px;letter-spacing:.06em;padding-top:2px}
+.u3 .pbar{display:inline-grid;grid-template-columns:repeat(8,10px);gap:2px;vertical-align:middle;margin-right:8px}
+.u3 .pbar i{height:12px;background:#2A2D31}.u3 .pbar i.on{background:#D6D9DC}
+.u3 .t{width:100%}
+.u3 .t-r{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:2px 12px;padding:10px 12px;border-bottom:1px solid #22252A}
+.u3 .t-h{display:none;color:#8B9096;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.u3 .t-r .c3,.u3 .t-r .c4{grid-column:2/-1;color:#8B9096}
+.u3 .t-r.locked{color:#8B9096}
+.u3 .code{font-weight:600;white-space:nowrap}
+.u3 .fr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:center;padding:8px 12px;border-bottom:1px solid #22252A}
+.u3 .fr .m{color:#8B9096;font-size:12px}
+.u3 .pp{outline-offset:-1px}
+.u3 .pp:focus-visible{outline:1px solid #FFB000}
+.u3 .pp .dn{display:none}.u3 .pp.done .dn{display:inline}.u3 .pp.done .td{display:none}
+.u3 .tx{font:400 14px/1.7 var(--font-mono);font-stretch:87.5%;color:#D6D9DC;max-width:80ch}
+.u3 .ph{color:#FFB000;text-decoration:none;font-weight:600}
+.u3 .pp-f{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-top:1px solid #22252A}
+@container (min-width:900px){
+  .u3{font-size:14px}
+  .u3 .gate-g{max-width:720px}
+  .u3 .t-h{display:grid}
+  .u3 .dk{display:inline}
+  .u3 .t-r{grid-template-columns:60px minmax(0,1fr) minmax(0,1.6fr) 180px 110px;align-items:center}
+  .u3 .t-r .c3,.u3 .t-r .c4{grid-column:auto}
+  .u3 .main-g{display:grid;grid-template-columns:420px minmax(0,1fr);gap:16px;align-items:start}
+  .u3 .ex-g{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:16px;align-items:start}
+  .u3 .tx{font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){*{transition-duration:0s!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-copy" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><rect x="7" y="7" width="10" height="10"/><path d="M13 7V3H3v10h4"/></symbol>
+  <symbol id="i-down" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"><path d="M10 3v11M5 9.5l5 5 5-5M4 17h12"/></symbol>
+  <symbol id="i-next" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"><path d="M3.5 10h13M11 4.5l5.5 5.5-5.5 5.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"><path d="M4.5 10.5l3.5 3.5 7.5-8.5"/></symbol>
+</defs></svg>
+
+<main class="page">
+  <h1>Utilitar · 3 yoʻnalish</h1>
+  <p>Y2K bilan solishtirish uchun. Funksiya birinchi, tuzilma ochiq, maʼlumot bermaydigan bezak yoʻq. Har birida: (a) kirish, (b) asosiy sahifadan boʻlak, (c) mashq sahifasi. Prompt matni 7:1 dan yuqori; nusxa olish = bajarildi.</p>
+
+  <section class="opt"><h2>U1 · Texnik qoʻllanma / spec varaq</h2><p>Qogʻoz fon, qora siyoh, ingichka chiziqli jadval panjarasi, «§ 01» va «FIG. 06» raqamlash, mono yorliqlar. Yagona aksent: xavfsizlik-toʻq sariq (faqat LIVE va nusxa olingan payt).</p>
+    <p class="vt">Desktop</p><div class="frame" data-f="u1"></div><p class="vt">375 px</p><div class="frame m" data-f="u1"></div></section>
+
+  <section class="opt"><h2>U2 · Sanoat belgilari</h2><p>Beton-kulrang fon, qora va xavfsizlik-sariq, yoʻl koʻrsatkich plitalari kabi bloklar, keng katta harflar. Holatlar plita: LIVE / OPEN / LOCKED. Ogohlantiruvchi chiziq faqat bir marta (jonli dars). Nusxa: katta oddiy toʻrtburchak tugma.</p>
+    <p class="vt">Desktop</p><div class="frame" data-f="u2"></div><p class="vt">375 px</p><div class="frame m" data-f="u2"></div></section>
+
+  <section class="opt"><h2>U3 · Tizim utilitasi / terminal-ops</h2><p>Toʻq, zich, mono: jadvallar, holat kodlari [OK] [LIVE] [LOCKED], klaviatura ishoralari (C — nusxa), yagona amber aksent, qatʼiy panjara. Yorugʻlik, skanlayn, «yozilish» effekti yoʻq. Prompt blokini tanlab C tugmasini bosish ham nusxa oladi.</p>
+    <p class="vt">Desktop</p><div class="frame" data-f="u3"></div><p class="vt">375 px</p><div class="frame m" data-f="u3"></div></section>
+</main>
+
+<p class="sr-only" aria-live="polite" id="live"></p>
+
+<script>
+// Raw text keeps U+02BB/U+02BC and is what gets copied; display maps to ‘ ’ (Mona/Golos/Martian lack U+02BB).
+const P = [
+  {title:'Manbalarni tekshirish', to:'NotebookLM → Chat', done:true,
+   text:'Yuklangan manbalar asosida «Ravon Uy» kompaniyasining oxirgi choragidagi 5 ta asosiy raqamini jadval qilib chiqar. Har bir raqam qaysi hujjatdan olinganini koʻrsat.'},
+  {title:'Audio-brifing sozlamasi', to:'NotebookLM → Studio → Audio Overview → Customize', done:false,
+   text:'Rahbar uchun 10 daqiqalik brifing tayyorla. Avval eng muhim 3 ta muammo, keyin [boʻlim nomi] boʻyicha raqamlar. Ohang: qisqa va aniq, rasmiy emas. Oxirida bitta aniq tavsiya ber.'},
+  {title:'Savol-javob kartalari', to:'NotebookLM → Studio → Flashcards', done:false,
+   text:'Manbalardagi eng muhim 10 ta tushuncha boʻyicha savol-javob kartalari tuz. Har bir javob bir jumladan oshmasin.'},
+];
+const L = [
+  {n:'01', t:'Kirish', s:'AI, modellar, Context, RAG, NotebookLM', st:'open', d:'12 sentabr · 5/7'},
+  {n:'02', t:'Claude va Code', s:'Claude, Code/Cowork, terminologiya', st:'live', d:'Bugun · 19 sentabr'},
+  {n:'03', t:'Skill va agentlar', s:'Skill, Plugin, Connector, Plan, agent teams', st:'locked', d:'26 sentabr'},
+];
+const F = [['06_Rahbar_audio.pdf','PDF','240 KB','Yoʻriqnoma'],['Ravon_Uy_Q3_hisobot.pdf','PDF','1,2 MB','Manba 1'],['Savdo_jadvali_Q3.csv','CSV','48 KB','Manba 2']];
+const uz = s => s.replace(/ʻ/g,'‘').replace(/ʼ/g,'’');
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const T = s => esc(uz(s));
+const txt = s => T(s).replace(/\[[^\]]+\]/g, '<span class="ph">$&</span>');
+const ic = (id, n = 18) => `<svg width="${n}" height="${n}" aria-hidden="true"><use href="#${id}"/></svg>`;
+const doneN = () => P.filter(p => p.done).length;
+const where = p => `<span class="sr-only">Qayerga joylash: </span>`;
+let uid = 0;
+const ST = {open:'Open', live:'Live', locked:'Locked'};
+
+const B = {
+/* ---------------- U1 ---------------- */
+u1: id => `
+<div class="scr"><div class="sec gate-s"><p class="lab">§ 01 — Kirish</p><div class="grid1 gate-f">
+  <h2>Shaxsiy kabinet</h2>
+  <div class="row"><span class="lab">Maydon</span><label for="${id}" style="font-weight:600">Shaxsiy ID</label></div>
+  <div class="row"><span class="lab">Qiymat</span><div class="inp"><span class="pre" aria-hidden="true">AIP-</span><input id="${id}" value="7KQ2" maxlength="6" autocomplete="off" spellcheck="false" aria-describedby="${id}-h"></div></div>
+  <div class="row"><span class="lab">Format</span><span class="muted" id="${id}-h">6 ta belgi; 0, 1, I, L, O ishlatilmaydi. Oxirgisida oʻzi tekshiriladi.</span></div>
+  <div style="padding-top:16px"><button class="btn solid" type="button">Kirish ${ic('i-next', 16)}</button></div>
+</div></div></div>
+<p class="slabel">(b) Asosiy sahifa · boʻlak</p>
+<div class="scr">
+  <div class="sec"><p class="lab">§ 02 — Dastur</p><div class="grid1" style="gap:20px">
+    <h2>Salom, Dilshod</h2>
+    <div class="row" style="grid-template-columns:110px minmax(0,1fr) auto"><span class="lab">Progress</span><div class="seg" role="img" aria-label="1 / 4 dars yakunlandi"><i class="on"></i><i></i><i></i><i></i></div><span class="big">1/4</span></div>
+    <div class="tbl" role="table" aria-label="Darslar">
+      <div class="tr th lab" role="row"><span role="columnheader">No.</span><span role="columnheader">Dars</span><span role="columnheader">Mavzular</span><span role="columnheader">Sana</span><span role="columnheader">Holat</span></div>
+      ${L.map(l => `<div class="tr ${l.st}" role="row"><span class="c-no lab" role="cell">${l.n}</span><span class="c-title" role="cell">${T(l.t)}</span><span class="c-sub" role="cell">${T(l.s)}</span><span class="c-date lab" role="cell">${T(l.d)}</span><span role="cell"><span class="st ${l.st}">${ST[l.st]}</span></span></div>`).join('')}
+    </div>
+  </div></div>
+</div>
+<p class="slabel">(c) Mashq sahifasi</p>
+<div class="scr">
+  <div class="sec"><p class="lab">FIG. 06<br><a href="#">← 01-dars · Amaliyot</a></p><div class="grid1" style="gap:16px">
+    <h2>Rahbar uchun audio</h2>
+    <p class="muted" style="max-width:60ch">Avval fayllarni yuklab olib, NotebookLMʼga qoʻshing. Keyin promptlardan nusxa oling: nusxa olingan prompt bajarildi deb belgilanadi.</p>
+    <p class="lab">Bajarildi: <span data-count>${doneN()}</span> / ${P.length}</p>
+  </div></div>
+  <div class="ex-cols" style="margin-top:40px">
+    <div class="sec"><p class="lab">§ 03 — Promptlar</p><div class="grid1">
+      ${P.map((p, i) => `<article class="entry${p.done ? ' done' : ''}" data-p="${i}">
+        <div class="entry-h"><span class="lab">06.${i + 1}</span><h3>${T(p.title)}</h3><span><span class="st dn">✓ Bajarildi</span><span class="st td locked">Navbatda</span></span></div>
+        <p class="to"><span class="lab">Qayerga</span> &nbsp;<span class="mono" style="font-size:13px">${where(p)}${p.to}</span></p>
+        <p class="tx">${txt(p.text)}</p>
+        <div class="act"><button class="btn" type="button" data-copy="${i}" aria-label="Nusxa olish: ${T(p.title)}">${ic('i-copy', 16)}<span class="lb">Nusxa olish</span></button></div>
+      </article>`).join('')}
+    </div></div>
+    <div class="sec"><p class="lab">§ 04 — Fayllar</p><div class="grid1">
+      ${F.map(([n, t, s, r]) => `<div class="ftr"><span><b style="font-weight:600">${T(r)}</b><br><span class="mono" style="font-size:12px">${n}</span></span><span class="meta">${t}</span><span class="meta">${s}</span><a class="dl" href="#" aria-label="Yuklab olish: ${T(r)}, ${s}">${ic('i-down', 18)}</a></div>`).join('')}
+    </div></div>
+  </div>
+</div>`,
+
+/* ---------------- U2 ---------------- */
+u2: id => `
+<div class="scr"><div class="gate-g">
+  <div><span class="plate y">${ic('i-next', 18)} Kirish</span><h2 style="margin-top:20px">Shaxsiy<br>kabinet</h2></div>
+  <div class="sign"><label class="lbl" for="${id}">Shaxsiy ID</label>
+    <div class="inp"><span class="pre" aria-hidden="true">AIP-</span><input id="${id}" value="7KQ2" maxlength="6" autocomplete="off" spellcheck="false" aria-describedby="${id}-h"></div>
+    <p id="${id}-h" style="margin:10px 0 18px;color:#CFCFCF;font-size:14px">6 ta belgi. Oxirgisini yozganingizda oʻzi tekshiriladi.</p>
+    <button class="btn y" type="button">Kirish ${ic('i-next', 22)}</button></div>
+</div></div>
+<p class="slabel">(b) Asosiy sahifa · boʻlak</p>
+<div class="scr">
+  <div class="main-g"><div><span class="plate">Shanba guruhi · AIP-7KQ2XM</span><h2 style="margin-top:16px">Salom,<br>Dilshod</h2></div>
+    <div class="prog"><span class="num">1/4</span><span class="plate y">Dars<br>yakunlandi</span></div></div>
+  <div class="cards">${L.map(l => `<article class="card ${l.st}">${l.st === 'live' ? '<div class="hazard" aria-hidden="true"></div>' : ''}
+    <div class="card-b"><div class="card-top"><span class="sq">${l.n}</span><span class="plate ${l.st === 'live' ? 'y' : l.st === 'open' ? 'w' : 'g'}">${ST[l.st]}</span></div>
+      <h3>${T(l.t)}</h3><p>${T(l.s)}</p><p style="font-family:var(--font-mono);font-size:12px;text-transform:uppercase">${T(l.d)}</p></div></article>`).join('')}</div>
+</div>
+<p class="slabel">(c) Mashq sahifasi</p>
+<div class="scr">
+  <a class="plate w" href="#">← 01-dars · Amaliyot</a>
+  <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px"><span class="sq" style="min-width:72px;height:72px;font-size:40px;background:#000;color:#FFD400">06</span><h2>Rahbar uchun audio</h2></div>
+  <p style="margin:14px 0 0;max-width:60ch;font-size:17px">Avval fayllarni yuklab olib, NotebookLMʼga qoʻshing. Keyin promptlardan nusxa oling.</p>
+  <p style="margin-top:14px"><span class="plate"><span><span data-count>${doneN()}</span> / ${P.length} bajarildi</span></span></p>
+  <div class="ex-g" style="margin-top:32px">
+    <div class="grid1" style="gap:20px">${P.map((p, i) => `<article class="pr${p.done ? ' done' : ''}" data-p="${i}">
+      <div class="pr-h"><span class="sq">P${i + 1}</span><h3>${T(p.title)}</h3><span class="plate y dn" style="padding:6px 10px">${ic('i-check', 14)} Bajarildi</span></div>
+      <div class="pr-b"><p><span class="plate y" style="padding:6px 10px;font-size:11px">${where(p)}${ic('i-next', 14)} ${p.to}</span></p>
+        <p class="tx">${txt(p.text)}</p>
+        <button class="btn k" type="button" data-copy="${i}" aria-label="Nusxa olish: ${T(p.title)}">${ic('i-copy', 22)}<span class="lb">Nusxa olish</span></button></div></article>`).join('')}</div>
+    <div><span class="plate">Fayllar</span><div style="margin-top:12px">${F.map(([n, t, s, r]) => `<div class="frow"><div><b>${T(r)}</b><span>${n} · ${s}</span></div><a class="dl" href="#" aria-label="Yuklab olish: ${T(r)}, ${s}">${ic('i-down', 24)}</a></div>`).join('')}</div></div>
+  </div>
+</div>`,
+
+/* ---------------- U3 ---------------- */
+u3: id => `
+<div class="scr"><div class="gate-g grid1" style="gap:16px">
+  <p class="mut">aip/3.0 · kirish</p><h2>Shaxsiy kabinet</h2>
+  <div class="pane"><div class="pane-h"><span>auth · login</span><span>rate 8/min</span></div><div class="pane-b grid1" style="gap:12px">
+    <label for="${id}" class="mut">$ aip login --id</label>
+    <div class="inp"><span class="amb" aria-hidden="true">&gt;</span><span class="mut" aria-hidden="true">AIP-</span><input id="${id}" value="7KQ2" maxlength="6" autocomplete="off" spellcheck="false" aria-describedby="${id}-h"></div>
+    <p class="hint" id="${id}-h">6 belgi · alifbo 2–9, A–Z (0 1 I L O yoʻq) · <kbd>Enter</kbd> kirish</p>
+    <div><button class="btn" type="button">[ Kirish ]</button></div></div></div>
+</div></div>
+<p class="slabel">(b) Asosiy sahifa · boʻlak</p>
+<div class="scr"><div class="main-g">
+  <div class="pane"><div class="pane-h"><span>sessiya</span><span class="amb">● online</span></div><div class="pane-b">
+    <dl class="kv"><dt>user</dt><dd>dilshod.rahimov</dd><dt>id</dt><dd>AIP-7KQ2XM</dd><dt>guruh</dt><dd>shanba</dd><dt>mentor</dt><dd>x.maroziqov</dd>
+    <dt>progress</dt><dd><span class="pbar" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>1/4 · 25%</dd></dl></div></div>
+  <div class="pane"><div class="pane-h"><span>darslar · 3/5 koʻrsatilgan</span><span class="dk"><kbd>↑</kbd> <kbd>↓</kbd> tanlash · <kbd>Enter</kbd> ochish</span></div>
+    <div class="t" role="table" aria-label="Darslar"><div class="t-r t-h" role="row"><span role="columnheader">id</span><span role="columnheader">dars</span><span role="columnheader">mavzular</span><span role="columnheader">sana</span><span role="columnheader">status</span></div>
+    ${L.map(l => `<div class="t-r ${l.st}" role="row"><span role="cell" class="mut">${l.n}</span><span role="cell">${T(l.t)}</span><span role="cell" class="c3">${T(l.s)}</span><span role="cell" class="c4">${T(l.d)}</span><span role="cell" class="code ${l.st === 'live' ? 'amb' : l.st === 'locked' ? 'mut' : ''}">[${l.st === 'open' ? 'OK' : ST[l.st].toUpperCase()}]</span></div>`).join('')}</div></div>
+</div></div>
+<p class="slabel">(c) Mashq sahifasi</p>
+<div class="scr">
+  <p class="mut"><a href="#">← dars/01/amaliyot</a> · ex/06</p>
+  <h2 style="margin-top:8px">Rahbar uchun audio</h2>
+  <p class="mut" style="margin-top:8px;max-width:70ch">Fayllarni NotebookLMʼga yuklang, keyin promptlardan nusxa oling. Nusxa = bajarildi. Prompt blokini tanlab <kbd>C</kbd> bosish ham nusxa oladi.</p>
+  <p style="margin-top:10px">[<span data-count>${doneN()}</span>/${P.length} DONE]</p>
+  <div class="ex-g" style="margin-top:24px">
+    <div class="grid1" style="gap:14px">${P.map((p, i) => `<article class="pane pp${p.done ? ' done' : ''}" data-p="${i}" tabindex="0" aria-label="${T(p.title)}. C tugmasi nusxa oladi.">
+      <div class="pane-h"><span style="color:#EDEFF1;text-transform:none;letter-spacing:0;font-size:13px">P${i + 1} · ${T(p.title)}</span><span><span class="dn">[DONE]</span><span class="td">[TODO]</span></span></div>
+      <div class="pane-b"><p class="mut" style="margin-bottom:10px">${where(p)}dest: ${p.to}</p><p class="tx">${txt(p.text)}</p></div>
+      <div class="pp-f"><span class="hint"><kbd>C</kbd> nusxa</span><button class="btn" type="button" data-copy="${i}" aria-label="Nusxa olish: ${T(p.title)}">${ic('i-copy', 14)}<span class="lb">Nusxa olish</span></button></div></article>`).join('')}</div>
+    <div class="pane"><div class="pane-h"><span>fayllar</span><span>3</span></div>
+      ${F.map(([n, t, s, r]) => `<div class="fr"><span style="min-width:0;overflow-wrap:anywhere">${n}<br><span class="m">${T(r)} · ${t} · ${s}</span></span><a class="btn" href="#" aria-label="Yuklab olish: ${T(r)}, ${s}">${ic('i-down', 14)}</a></div>`).join('')}</div>
+  </div>
+</div>`,
+};
+
+const live = document.getElementById('live');
+async function copy(t){
+  try { await navigator.clipboard.writeText(t); return true; }
+  catch { const a = Object.assign(document.createElement('textarea'), {value:t}); document.body.append(a); a.select(); let ok = false; try { ok = document.execCommand('copy'); } catch {} a.remove(); return ok; }
+}
+async function doCopy(f, i){
+  const b = f.querySelector(`[data-copy="${i}"]`);
+  if (!(await copy(P[i].text))) { live.textContent = 'Nusxa olinmadi. Matnni qo‘lda belgilang.'; return; }
+  f.querySelector(`[data-p="${i}"]`).classList.add('done');
+  f.querySelector('[data-count]').textContent = f.querySelectorAll('[data-p].done').length;
+  const lb = b.querySelector('.lb'); b.classList.add('flash'); lb.textContent = 'Nusxa olindi';
+  clearTimeout(b._t); b._t = setTimeout(() => { b.classList.remove('flash'); lb.textContent = 'Nusxa olish'; }, 1500);
+  live.textContent = `Nusxa olindi: ${uz(P[i].title)}. Bajarildi.`;
+}
+document.querySelectorAll('[data-f]').forEach(f => {
+  f.innerHTML = `<div class="${f.dataset.f}"><p class="slabel">(a) Kirish</p>${B[f.dataset.f]('f' + uid++)}</div>`;
+  f.addEventListener('click', e => {
+    if (e.target.closest('a[href="#"]')) e.preventDefault();
+    const b = e.target.closest('[data-copy]'); if (b) doCopy(f, +b.dataset.copy);
+  });
+  f.addEventListener('keydown', e => {   // U3: focus a prompt block and press C to copy
+    const pp = e.target.closest('.pp'); if (!pp || e.target !== pp || e.key.toLowerCase() !== 'c' || e.ctrlKey || e.metaKey) return;
+    e.preventDefault(); doCopy(f, +pp.dataset.p);
+  });
+});
+for (const w = document.createTreeWalker(document.querySelector('.page'), NodeFilter.SHOW_TEXT); w.nextNode();) if (/[ʻʼ]/.test(w.currentNode.nodeValue)) w.currentNode.nodeValue = uz(w.currentNode.nodeValue);
+
+// ?selftest: headless has no clipboard and synthetic events are not user gestures — stub writeText, copy P2 by click in every frame (and P3 via the C key in U3), record results
+if (location.search.includes('selftest')) {
+  const copied = []; navigator.clipboard.writeText = async t => { copied.push(t); };
+  document.querySelectorAll('[data-f] [data-copy="1"]').forEach(b => b.click());
+  document.querySelectorAll('[data-f="u3"] .pp[data-p="2"]').forEach(pp => { pp.focus(); pp.dispatchEvent(new KeyboardEvent('keydown', {key:'c', bubbles:true})); });
+  setTimeout(() => {
+    document.body.dataset.test = [...document.querySelectorAll('[data-f]')].map(f => `${f.dataset.f}:${[...f.querySelectorAll('[data-p]')].map(x => +x.classList.contains('done')).join('')}:${f.querySelector('[data-count]').textContent}`).join(' ')
+      + ` copies=${copied.length} raw-okina=${copied.every(t => /ʻ/.test(t) || !/[‘]/.test(t))}`;
+  }, 500);
+}
+</script>
+</body>
+</html>

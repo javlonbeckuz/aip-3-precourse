@@ -1,0 +1,49 @@
+
+/* ===== PREVIEW: the approved "Your call" looks. Each one lives behind its own class on <html> (look-tabs, look-nextpill, look-nogrid, look-widepages, look-darkedge, look-libgrid, look-goo); ?looks=none | ?looks=tabs,goo,... picks them. Every block is independent, so one can be ported alone. ===== */
+.lk-old,.lk-new,.ex-side{display:contents}
+html:not(.look-tabs) .lk-new{display:none}
+html.look-tabs .lk-old{display:none}
+
+/* 1 · look-tabs: every folder tab has one anatomy (eyebrow top-left, one huge element, action bottom-right) */
+html.look-tabs .gt-pane[data-p="kt"]{justify-content:flex-start;gap:12px}
+html.look-tabs .gt-pane[data-p="kt"] .p-list{margin-top:auto}
+@container (max-width:480px){html.look-tabs .lk-new .p-num{font-size:88px}}/* "78/78" must fit a 320px pane */
+
+/* 2 · look-nextpill: "Keyingi qadam" = the reference's outline pill with the circle arrow */
+html.look-nextpill .main-head>.play.next{display:flex;flex-direction:row-reverse;align-items:center;justify-content:space-between;gap:12px;justify-self:stretch;width:100%;max-width:486px;min-height:60px;margin-top:0;padding:4px 4px 4px 22px;border:1px solid var(--white);border-radius:999px;transition:background .15s var(--ease)}
+html.look-nextpill .main-head>.play.next .play-circ.ol{width:52px;height:52px;border:0;background:var(--white);color:var(--black)}
+html.look-nextpill .main-head>.play.next>span:last-child{text-align:left;line-height:1.25}
+html.look-nextpill .main-head>.play.next small{margin-top:2px}
+html.look-nextpill a.play.next:hover{background:var(--surface-1)}
+@container (min-width:900px){
+  html.look-nextpill .main-head>.play.next{margin-top:calc(44 * var(--u));max-width:calc(486 * var(--u));min-height:calc(60 * var(--u))}
+  html.look-nextpill .main-head:not(:has(.now-card))>.play.next{grid-area:c;align-self:center;margin-top:0;max-width:none}
+}
+
+/* 5 · look-nogrid: pure black canvas (no grid, no floor gradient) */
+html.look-nogrid :is([data-screen="dastur"],[data-screen="dars"],[data-screen="ex"]) .site{background:#000}
+
+/* 6 · look-widepages: from 1200px the inner pages use the lesson page split (header left, file groups right) */
+@container (min-width:1200px){
+  html.look-widepages .ex-wrap{max-width:none;display:grid;grid-template-columns:calc(636 * var(--u)) minmax(0,1fr);grid-template-rows:repeat(5,auto) 1fr;column-gap:calc(66 * var(--u));align-items:start}
+  html.look-widepages .ex-wrap>*{grid-column:1}
+  html.look-widepages .ex-wrap>:is(.ex-files,.ex-side){grid-column:2;grid-row:2 / 7;display:block;max-width:none}
+}
+
+/* 7 · look-darkedge: lesson 4's dark card and folder get a 1px #3F3F3F outline that follows the shape (colour unchanged) */
+html.look-darkedge :is(.folder.c-night,.folder.c-dark){filter:drop-shadow(1px 0 0 #3F3F3F) drop-shadow(-1px 0 0 #3F3F3F) drop-shadow(0 1px 0 #3F3F3F) drop-shadow(0 -1px 0 #3F3F3F)}
+html.look-darkedge a.folder.c-night:hover{filter:drop-shadow(1px 0 0 #3F3F3F) drop-shadow(-1px 0 0 #3F3F3F) drop-shadow(0 1px 0 #3F3F3F) drop-shadow(0 -1px 0 #3F3F3F) brightness(1.07)}
+html.look-darkedge .gt-dark .gt-goo{filter:url(#goo-tabs) drop-shadow(1px 0 0 #3F3F3F) drop-shadow(-1px 0 0 #3F3F3F) drop-shadow(0 1px 0 #3F3F3F) drop-shadow(0 -1px 0 #3F3F3F)}
+@container (max-width:480px){html.look-darkedge .gt-dark .gt-goo{filter:url(#goo-tabs-sm) drop-shadow(1px 0 0 #3F3F3F) drop-shadow(-1px 0 0 #3F3F3F) drop-shadow(0 1px 0 #3F3F3F) drop-shadow(0 -1px 0 #3F3F3F)}}
+
+/* 8 · look-libgrid: the 5 library cards follow home's 2+3 span rule and lesson 2's grey */
+@container (min-width:900px){
+  html.look-libgrid .sects{grid-template-columns:repeat(6,minmax(0,1fr))}
+  html.look-libgrid .sects>li{grid-column:span 2}
+  html.look-libgrid .sects>li:nth-child(n+4){grid-column:span 3}
+}
+html.look-libgrid .sc{--f-bg:var(--grey);--f-ink:var(--black)}
+
+/* 10 · look-goo: no gooey filter while the tab indicator slides; it comes back when it lands (also lets Safari animate it) */
+html.look-goo .gt.moving .gt-goo{filter:none}
+html.look-goo.is-safari .gt-ind{transition:transform .4s cubic-bezier(.3,0,0,1)}

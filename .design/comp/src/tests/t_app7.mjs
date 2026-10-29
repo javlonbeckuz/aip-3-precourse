@@ -1,0 +1,28 @@
+import { launch } from './cdp_sc.mjs';
+const B = 'http://localhost:3055';
+const b = await launch(390,844,true);
+await b.send('Network.enable');
+const login = async () => { await b.goto(B+'/aip/'); await b.wait(500); if (await b.ev(`document.body.dataset.view`) === 'gate') { await b.click('#gid'); await b.type('XM'); await b.ev(`document.getElementById('gate-form').requestSubmit()`); await b.wait(2200); } };
+await login();
+await b.ev(`navTo('#/dars/1/amaliyot/02')`); await b.wait(500);
+await b.ev(`Object.defineProperty(navigator,'clipboard',{value:{writeText:async()=>{}},configurable:true})`);
+await b.send('Network.deleteCookies', {name: 'aip_session', url: B});
+await b.click('li[data-pid=P1] .cp'); await b.wait(900);
+console.log('401 on a write ->', await b.ev('location.pathname+" view="+document.body.dataset.view+" marker="+document.cookie.includes("aip_in=1")'));
+await login();
+await b.send('Network.deleteCookies', {name: 'aip_session', url: B});
+await b.ev(`window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true}))`); await b.wait(800);
+console.log('pageshow after the session ended ->', await b.ev('document.body.dataset.view'));
+await login();
+// history: Back / forward and deep reload
+await b.ev(`navTo('#/dars/1')`); await b.wait(300); await b.ev(`navTo('#/dars/1/amaliyot')`); await b.wait(300); await b.ev(`navTo('#/dars/1/amaliyot/03')`); await b.wait(300);
+await b.ev(`history.back()`); await b.wait(500); const back = await b.ev('location.pathname');
+await b.ev(`history.back()`); await b.wait(500); const back2 = await b.ev('location.pathname');
+await b.ev(`history.forward()`); await b.wait(500); const fwd = await b.ev('location.pathname');
+console.log('back', back, 'back', back2, 'forward', fwd);
+await b.goto(B+'/aip/dars/1/amaliyot/03a'); await b.wait(1000);
+console.log('deep reload', await b.ev('location.pathname+" h1="+document.querySelector("#s-app h1").textContent.trim()'));
+await b.ev(`history.back()`); await b.wait(500); console.log('back from a cold deep entry ->', await b.ev('location.pathname'));
+await b.goto(B+'/aip/nope/x'); await b.wait(800); console.log('unknown route ->', await b.ev('location.pathname+" view="+document.body.dataset.view'));
+console.log('logs', b.logs.filter(l => !/clip|40[13]/.test(l)));
+b.close();

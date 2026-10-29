@@ -1,0 +1,15 @@
+import { launch } from './lib.mjs';
+const b = await launch(1440, 900);
+await b.goto('http://localhost:8765/comp/glass-options.html', 2500);
+await b.ev(`document.querySelectorAll('#lessons .gf-root')[0].scrollIntoView({block:'center'})`); await b.wait(2000);
+await b.ev(`document.querySelectorAll('#lessons .gf-hit')[0].focus()`);
+await b.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, text: '\r' });
+await b.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 });
+await b.wait(1500);
+console.log('open', await b.ev(`document.querySelectorAll('#lessons .gf-root')[0].hasAttribute('data-open')+' inert='+document.querySelectorAll('#lessons .gf-files')[0].hasAttribute('inert')`));
+await b.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 }); await b.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 });
+console.log('focus:', await b.ev(`document.activeElement.className+' '+document.activeElement.textContent.slice(0,20)`));
+await b.shot('kb_open0');
+await b.key('Escape'); await b.wait(500);
+console.log('after esc', await b.ev(`document.querySelectorAll('#lessons .gf-root')[0].hasAttribute('data-open')+' focus='+document.activeElement.className`));
+b.close();

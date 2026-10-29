@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>UX audit · variantlar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&family=Golos+Text:wght@400;500;600&family=Martian+Mono:wdth,wght@87.5..100,400..500&display=swap">
+<style>
+/* tokens: copied from comp/index.html :root */
+:root{
+  --black:#000;--white:#fff;--hair:#3F3F3F;--tag-line:#595959;--muted:#A6A6A6;
+  --blue:#0A14FC;--grey:#E0E0E0;--yellow:#FDC959;--lilac:#B4A1D1;
+  --dark:#161616;--dark-ink:#9A9A9A;--danger:#FF6B5E;
+  --font-display:'Mona Sans','Roboto Flex',sans-serif;
+  --font-body:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'Martian Mono',ui-monospace,'SF Mono',Consolas,monospace;
+  --ease:cubic-bezier(.2,0,0,1);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+body,h1,h2,h3,p,ol,ul{margin:0}
+ol,ul{padding:0;list-style:none}
+body{background:#0d0d0d;color:var(--white);font:400 16px/1.5 var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+svg{flex:none}
+:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+
+/* ===== page chrome (same as gooey-options.html) ===== */
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:#050505;border-bottom:1px solid #222;font:500 11px/1.3 var(--font-mono);color:#9a9a9a}
+.bar strong{color:#fff;font-weight:500}
+main{max-width:1200px;margin:0 auto;padding:32px 16px 96px;display:grid;gap:80px}
+.opt-head{margin-bottom:24px}
+.opt-k{font:500 11px/1.4 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.opt-k b{font-weight:500;color:#fff}
+.opt-t{margin-top:10px;font:500 clamp(22px,4vw,36px)/1.08 var(--font-display);font-stretch:125%;text-transform:uppercase;overflow-wrap:anywhere}
+.opt-d{margin-top:10px;max-width:68ch;color:#cfcfd4;font-size:15px}
+.trio{display:grid;grid-template-columns:minmax(0,1fr);gap:40px}
+@media (min-width:1000px){.trio{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}}
+.col{display:grid;gap:12px;align-content:start;min-width:0}
+.ck{display:flex;align-items:center;gap:8px;min-height:22px;flex-wrap:wrap;font:500 11px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ck .rec{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;background:#fff;color:#000}
+.stage{container-type:inline-size;position:relative;background:var(--black);border:1px solid #262626;padding:16px;overflow:hidden}
+.stage.flush{padding:0}
+.cap{font-size:15px;line-height:1.5;color:#e6e6ea}
+.cap b{font-weight:600;color:#fff}
+.legend{max-width:68ch;color:#cfcfd4;font-size:15px}
+.legend p+p{margin-top:8px}
+
+/* ===== comp pieces (mobile rules from comp/index.html; frames stay < 900px) ===== */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font:500 13px/1.3 var(--font-body);text-transform:uppercase;color:var(--muted)}
+.headline{font:500 clamp(30px,10.4cqi,46px)/1.18 var(--font-display);font-stretch:125%;text-transform:uppercase;letter-spacing:-.01em}
+.headline .ln{display:flex;align-items:center;gap:12px}
+.cluster{display:inline-flex}
+.cluster span{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:3px solid var(--black);margin-left:-12px;font:500 11px/1 var(--font-mono)}
+.cluster span:first-child{margin-left:0}
+.cluster .b{background:var(--blue);color:#fff}.cluster .g{background:var(--grey);color:#000}.cluster .y{background:var(--yellow);color:#000}
+.stack{display:grid;gap:20px;align-content:start}
+.pill-cta{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:56px;padding:5px 5px 5px 20px;border:1px solid var(--white);border-radius:999px;font:400 17px/1.25 var(--font-body)}
+.pill-cta>span:first-child{text-wrap:balance}
+.pill-circ{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--white);color:var(--black);flex:none}
+.play{display:inline-flex;align-items:center;gap:14px;font-size:16px;line-height:1.35;text-align:left}
+.play-circ{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--white);color:var(--black);flex:none}
+.play-circ.ol{background:none;border:1px solid var(--white);color:var(--white)}
+.play.on-light .play-circ{background:var(--black);color:var(--lilac)}
+.play small{display:block;font-size:13px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{display:inline-flex;align-items:center;height:40px;padding:0 18px;border:1px solid var(--tag-line);border-radius:999px;font:500 13px/1 var(--font-body);text-transform:uppercase;white-space:nowrap}
+.now{font:500 13px/1.3 var(--font-body);text-transform:uppercase;color:var(--muted)}
+.now b{color:#fff;font-weight:500}
+
+/* folder-tab card */
+.folder{--f-bg:var(--grey);--f-ink:var(--black);--rise:16px;--r:14px;position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:16px;margin-top:var(--rise);min-height:196px;padding:22px 20px 24px;background:var(--f-bg);color:var(--f-ink);border-radius:var(--r) 0 var(--r) var(--r)}
+.folder>.tab{position:absolute;right:0;bottom:calc(100% - 1px);min-width:35%;height:calc(var(--rise) + 1px);background:var(--f-bg);border-radius:0 var(--r) 0 0}
+.tab>.ramp{position:absolute;right:calc(100% - 1px);bottom:0;height:calc(var(--rise) + 1px);width:calc((var(--rise) + 1px) * 28 / 21);color:var(--f-bg)}
+.folder.flatc{margin-top:0;border-radius:var(--r)}
+.c-blue{--f-bg:var(--blue);--f-ink:var(--white)}
+.c-grey{--f-bg:var(--grey);--f-ink:var(--black)}
+.c-yellow{--f-bg:var(--yellow);--f-ink:var(--black)}
+.c-dark{--f-bg:var(--dark);--f-ink:var(--dark-ink)}
+.f-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.f-label{font:500 13px/1.35 var(--font-body);text-transform:uppercase}
+.f-arrow{width:28px;height:28px;margin:-2px -4px 0 0}
+.f-title{display:block;font:500 19px/1.36 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.f-sub{display:block;margin-top:8px;font-size:14px;line-height:1.4;max-width:30ch;opacity:.85}
+.c-dark .f-sub{opacity:1}
+.f-num{font:400 64px/.9 var(--font-display);font-stretch:125%;letter-spacing:-.02em}
+.f-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.f-note{font:500 12px/1.3 var(--font-body);text-transform:uppercase;display:inline-flex;align-items:center;gap:6px}
+.cards{display:grid;gap:12px}
+/* NEW (proposal): state pill inside a card = the existing tag pill, drawn in the card's ink */
+.st{display:inline-flex;align-items:center;gap:6px;height:30px;margin-top:10px;padding:0 12px;border:1px solid currentColor;border-radius:999px;font:500 13px/1 var(--font-body);text-transform:uppercase;white-space:nowrap}
+/* NEW (proposal B of #3): rows inside a yellow card */
+.f-list{border-top:1px solid rgb(0 0 0 / .25)}
+.f-list a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;border-bottom:1px solid rgb(0 0 0 / .25);font-size:15px;line-height:1.3}
+
+/* lilac panel bits */
+.p-label{font:500 13px/1.3 var(--font-body);text-transform:uppercase}
+.p-num{font:400 120px/.85 var(--font-display);font-stretch:125%;letter-spacing:-.03em}
+.p-sub{font-size:16px;line-height:1.4;margin-top:6px}
+.p-list{border-top:1px solid rgb(0 0 0 / .25)}
+.p-list li>a,.p-list li>span{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;min-height:48px;padding:6px 0;border-bottom:1px solid rgb(0 0 0 / .25);font-size:15px;line-height:1.3}
+.p-list .n{font:500 12px/1 var(--font-mono)}
+.p-list .sz{font:500 12px/1 var(--font-mono)}
+.circ-dark{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--black);color:var(--black);flex:none}
+
+/* gooey folder tabs (static snapshot, same layers as the comp) */
+.gt{--th:46px;--bh:400px;--i:0;--n:4;position:relative;color:var(--black)}
+.gt-goo{position:absolute;inset:0;pointer-events:none;filter:url(#goo-tabs-sm)}
+.gt-ind{position:absolute;top:0;left:0;width:calc(100% / var(--n));height:var(--th);background:var(--lilac);transform:translateX(calc(var(--i) * 100%))}
+.gt-pan{position:absolute;top:var(--th);left:0;right:0;bottom:0;background:var(--lilac)}
+.gt-tabs{position:relative;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));height:var(--th)}
+.gt-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0 2px;font:500 12px/1 var(--font-display);font-stretch:112%;text-transform:uppercase;color:var(--muted)}
+.gt-tab[aria-selected="true"]{color:var(--black)}
+.gt-tab .ts{font:400 11px/1 var(--font-mono);text-transform:none;display:inline-flex;align-items:center;gap:3px}
+.gt-tab .ok{display:inline-flex;align-items:center;gap:4px}
+.gt-body{position:relative;height:var(--bh);padding:22px 20px 24px;overflow:hidden}
+.gt-body :focus-visible{outline-color:var(--black)}
+.gt-pane{height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.gt-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.gt-meta{font:500 13px/1.3 var(--font-body);text-transform:uppercase}
+@container (max-width:340px){.gt-tab{font-size:11px}.gt-body{padding:20px 16px 22px}.p-num{font-size:104px}}
+
+/* exercise files on black */
+.ef-h{font:400 13px/1.4 var(--font-body);color:#8A8A90}
+.ef-h.on{font:500 13px/1.3 var(--font-body);text-transform:uppercase;color:#fff;letter-spacing:.02em}
+.ef ul{margin-top:8px}
+.ef li{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;border-top:1px solid #1C1C1F;font-size:15px;color:#D9D9DE}
+.ef-sz{color:#8A8A90;font-size:13px;margin-left:6px;white-space:nowrap}
+.ef-dl{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;color:#8A8A90;flex:none}
+.ef+.ef{margin-top:24px}
+/* NEW (proposal): the whole file row is the link */
+.ef a.row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:60px;padding:8px 0}
+.ef a.row .nm{display:block;overflow-wrap:anywhere;color:#fff}
+.ef a.row .mt{display:block;margin-top:3px;font:400 12px/1.3 var(--font-mono);color:#8A8A90}
+.ef a.row .dl{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid #3F3F3F;color:#fff;flex:none}
+.ef-more{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;font-size:14px;color:var(--muted);text-decoration:underline;text-underline-offset:4px}
+.ef-hint{margin-top:2px;font-size:14px;color:var(--muted)}
+
+/* lilac prompt section */
+.s1{background:var(--lilac);color:var(--black);padding:28px 16px 32px}
+.s1-eyebrow{font:500 13px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em;color:#2E2440}
+.s1 ol{margin-top:16px;border-top:1.5px solid var(--black)}
+.s1 li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px 12px;padding:22px 0 26px;border-bottom:1px solid rgb(0 0 0 / .3)}
+.s1 .no{grid-row:1;grid-column:1;font:400 40px/.85 var(--font-display);font-stretch:125%;letter-spacing:-.02em}
+.s1 .done .no{opacity:.3}
+.s1 .body{grid-row:2;grid-column:1/-1;display:grid;gap:8px;min-width:0}
+.s1 .cpw{grid-row:1;grid-column:2;display:flex;flex-direction:column;align-items:center;gap:6px}
+.s1 .tt{display:flex;align-items:center;gap:8px;font:500 17px/1.25 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.s1 .to{font:400 14px/1.4 var(--font-body);color:#2E2440}
+.s1 .tx{margin-top:4px;font:400 17px/1.6 var(--font-body)}
+.s1 .ph{font-weight:600;text-decoration:underline 1.5px;text-underline-offset:4px}
+.s1 .cp{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--black);color:var(--black)}
+.s1 :focus-visible{outline-color:var(--black)}
+/* NEW (proposal) */
+.s1 .to.strong{font-size:15px;font-weight:500;color:var(--black)}
+.s1 .to.strong b{font-weight:600}
+.cpp{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 18px 0 14px;border:1.5px solid var(--black);border-radius:999px;font:500 15px/1 var(--font-body);white-space:nowrap}
+.cpp.pri{background:var(--black);color:var(--lilac)}
+.tick{position:relative;display:grid;place-items:center;width:26px;height:26px;border:1.5px solid var(--black);border-radius:50%;flex:none}
+.tick::after{content:"";position:absolute;inset:-10px}/* 46px hit area */
+.tick.on{background:var(--black);color:var(--lilac)}
+.cpl{font:500 11px/1 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+.donew{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:999px;background:var(--black);color:var(--lilac);font:500 11px/1 var(--font-body);text-transform:uppercase}
+.toast{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:48px;margin-top:20px;padding:0 6px 0 18px;border-radius:999px;background:var(--black);color:#fff;font-size:15px}
+.toast button{min-height:44px;padding:0 12px;font-weight:500;text-decoration:underline;text-underline-offset:4px}
+
+/* login (crop of the final sign-in, unchanged look) */
+.lg{position:relative;height:330px;isolation:isolate}
+.lg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 44%;z-index:-1}
+.mx{padding:40px 24px 24px;color:#fff}
+.mx-group{position:relative;margin-bottom:12px}
+.mx-group label{display:block;margin-bottom:12px;font:500 12px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:rgb(255 255 255 / .85)}
+.mx-group label,.mx-input{text-shadow:0 1px 2px rgb(0 0 0 / .9),0 0 14px rgb(0 0 0 / .7)}
+.mx-input{display:flex;align-items:baseline;gap:4px;padding:12px 0;border-bottom:1px solid rgb(255 255 255 / .45);font-size:20px;text-transform:uppercase}
+.mx-input span:first-child{color:rgb(255 255 255 / .85)}
+.mx-glow{position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--danger);box-shadow:0 0 15px var(--danger)}
+.mx-help{margin:0;font:400 11px/1.5 var(--font-mono);color:var(--danger)}
+/* NEW (proposal) */
+.mx-help.a{display:flex;gap:8px;padding:8px 10px;background:rgb(0 0 0 / .78);font:500 14px/1.4 var(--font-body)}
+.mx-help.b{display:flex;gap:8px;font:500 14px/1.4 var(--font-body);color:#fff;text-shadow:0 1px 2px rgb(0 0 0 / .95),0 0 12px rgb(0 0 0 / .9),0 0 24px rgb(0 0 0 / .8)}
+.mx-help.b svg{color:var(--danger);margin-top:1px;filter:drop-shadow(0 1px 2px #000)}
+.mx-submit{position:relative;width:200px;max-width:100%;margin-top:28px;filter:url(#gooey)}
+.mx-btn{position:relative;z-index:2;width:100%;padding:16px 24px;background:#fff;color:#000;font:600 13px/1 var(--font-display);font-stretch:125%;letter-spacing:2px;text-transform:uppercase}
+.mx-drop{position:absolute;top:50%;left:50%;z-index:1;width:100%;height:100%;background:#e0e0e0;border-radius:50px;transform:translate(-50%,-50%)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="goo-tabs-sm"><feGaussianBlur in="SourceGraphic" stdDeviation="7" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter>
+  <filter id="gooey"><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/><feColorMatrix in="blur" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="goo"/><feComposite in="SourceGraphic" in2="goo" operator="atop"/></filter>
+  <symbol id="i-ramp" viewBox="0 0 28 21"><path d="M0 21Q4 21 7 18L22 3Q25 0 28 0V21Z" fill="currentColor"/></symbol>
+  <symbol id="i-ne" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 28L28 6M10 6h18v18"/></symbol>
+  <symbol id="i-next" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10h13M11 4.5l5.5 5.5-5.5 5.5"/></symbol>
+  <symbol id="i-back" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 10h-13M9 4.5L3.5 10 9 15.5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v11M5 9.5l5 5 5-5M4 17h12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 20 20"><path d="M7 4.8v10.4L15.4 10z" fill="currentColor"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M13 7V4.5A1.5 1.5 0 0011.5 3h-7A1.5 1.5 0 003 4.5v7A1.5 1.5 0 004.5 13H7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5l3.5 3.5 7.5-8.5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="12" height="8.5" rx="1.5"/><path d="M7 9V6.5a3 3 0 016 0V9"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5l8 14.5H2z"/><path d="M10 8v4M10 14.5h.01"/></symbol>
+</defs></svg>
+
+<div class="bar"><span><strong>UX audit</strong> · 7 ta topilma · HOZIR / A / B</span><span>Toʻliq roʻyxat: .design/ux-audit.md</span></div>
+
+<main>
+  <section class="legend">
+    <p>Each block: <b>HOZIR</b> is the comp as it is today (rebuilt from its markup and CSS), then two fixes, <b>A</b> and <b>B</b>, in the same visual language. The white <b>Tavsiya</b> badge marks the one I recommend. Numbers in A/B follow the progress model in <code>ux-spec.md</code> (lesson 1 = 6 units), so they differ from the comp's 5/7 and 71% on purpose.</p>
+    <p>Ordered by impact on students. Static snapshots: nothing here is clickable.</p>
+  </section>
+
+  <!-- ========== 1 · HOME HERO ========== -->
+  <section aria-labelledby="h1">
+    <div class="opt-head">
+      <p class="opt-k"><b>1</b> · Asosiy sahifa · Yuqori taʼsir</p>
+      <h2 class="opt-t" id="h1">Bosh tugma bugungi darsga olib borsin</h2>
+      <p class="opt-d">Saturday, lesson 3 is live. The student opens the portal in class, and the big pill says "Davom etish: 1-dars, 06-mashq", an <i>optional</i> exercise from two weeks ago. Today's lesson is the 4th card, about 1.5 screens down at 390px. Above it sit three tag pills, plus a "← Chiqish" link in the slot where every other screen has its back arrow.</p>
+    </div>
+    <div class="trio">
+      <div class="col">
+        <p class="ck">Hozir</p>
+        <div class="stage"><div class="stack">
+          <span class="eyebrow"><svg width="16" height="16" aria-hidden="true"><use href="#i-back"/></svg>AIP-7KQ2XM · Chiqish</span>
+          <p class="headline"><span class="ln">Salom,</span><span class="ln"><span class="cluster" aria-hidden="true"><span class="b">01</span><span class="g">02</span><span class="y">03</span></span>Dilshod</span></p>
+          <a class="pill-cta" href="#"><span>Davom etish: <span style="white-space:nowrap">1-dars, 06-mashq</span></span><span class="pill-circ"><svg width="20" height="20" aria-hidden="true"><use href="#i-next"/></svg></span></a>
+          <ul class="tags"><li class="tag">Shanba guruhi</li><li class="tag">Mentor: X. Maroziqov</li><li class="tag">4 dars · 12 sen – 3 okt</li></ul>
+        </div></div>
+        <p class="cap">Eski qoʻshimcha mashq birinchi turadi; bugungi dars pastda yashiringan.</p>
+      </div>
+      <div class="col">
+        <p class="ck">A <span class="rec">Tavsiya</span></p>
+        <div class="stage"><div class="stack">
+          <p class="headline"><span class="ln">Salom,</span><span class="ln"><span class="cluster" aria-hidden="true"><span class="b">01</span><span class="g">02</span><span class="y">03</span></span>Dilshod</span></p>
+          <p class="now"><b>Hozir davom etmoqda</b> · 3-dars</p>
+          <a class="pill-cta" href="#"><span>Darsni ochish: Skill va agentlar</span><span class="pill-circ"><svg width="20" height="20" aria-hidden="true"><use href="#i-next"/></svg></span></a>
+          <a class="play" href="#"><span class="play-circ ol"><svg width="18" height="18" aria-hidden="true"><use href="#i-next"/></svg></span><span>Keyingi qadam<small>1-dars · Amaliyot 01 · P3</small></span></a>
+        </div></div>
+        <p class="cap"><b>A:</b> Bosh tugma bugungi jonli darsni ochadi, qolib ketgan ish esa ikkinchi qatorda turadi. Guruh, mentor va «Chiqish» menyuga koʻchdi, shuning uchun darslar bir ekran yuqoriga chiqadi.</p>
+      </div>
+      <div class="col">
+        <p class="ck">B</p>
+        <div class="stage"><div class="stack">
+          <p class="headline"><span class="ln">Salom,</span><span class="ln"><span class="cluster" aria-hidden="true"><span class="b">01</span><span class="g">02</span><span class="y">03</span></span>Dilshod</span></p>
+          <a class="folder flatc c-blue" href="#">
+            <span class="f-top"><span class="f-label">Hozir davom etmoqda<br>3-dars · 26-sentabr</span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span>
+            <span><span class="f-title">Skill va<br>agentlar</span><span class="f-sub">Slaydlar 14 / 40 · davom etish</span></span>
+          </a>
+          <a class="play" href="#"><span class="play-circ ol"><svg width="18" height="18" aria-hidden="true"><use href="#i-next"/></svg></span><span>Keyingi qadam<small>1-dars · Amaliyot 01 · P3</small></span></a>
+        </div></div>
+        <p class="cap"><b>B:</b> Jonli dars katta koʻk kartada, darsda telefonni ochgan talaba uni darrov topadi. Lekin bu karta pastdagi roʻyxatda yana takrorlanadi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 2 · COPY PROMPT ========== -->
+  <section aria-labelledby="h2">
+    <div class="opt-head">
+      <p class="opt-k"><b>2</b> · Mashq sahifasi · Yuqori taʼsir</p>
+      <h2 class="opt-t" id="h2">Nusxalash tugmasida soʻz boʻlsin</h2>
+      <p class="opt-d">The core job of the whole portal is a round icon with no word on it. A non-technical student does not read two overlapping squares as "copy". When they do tap it, the prompt is silently marked done and there is no undo. The "where to paste" line, the most common source of mistakes, is the faintest text in the row. The spec asks for a text label, a toast with "Bekor qilish", and a tick that works as a toggle.</p>
+    </div>
+    <div class="trio">
+      <div class="col">
+        <p class="ck">Hozir</p>
+        <div class="stage flush"><section class="s1">
+          <p class="s1-eyebrow">Promptlar · 2 ta</p>
+          <ol>
+            <li class="done"><span class="no">01</span>
+              <div class="body"><p class="tt"><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Manbalarni tekshirish</p><p class="to">NotebookLM → Chat</p><p class="tx">Yuklangan manbalar asosida «Ravon Uy» kompaniyasining oxirgi choragidagi 5 ta asosiy raqamini jadval qilib chiqar.</p></div>
+              <div class="cpw"><span class="cp"><svg width="20" height="20" aria-hidden="true"><use href="#i-copy"/></svg></span></div></li>
+            <li><span class="no">02</span>
+              <div class="body"><p class="tt">Audio-brifing sozlamasi</p><p class="to">NotebookLM → Studio → Audio Overview → Customize</p><p class="tx">Rahbar uchun 10 daqiqalik brifing tayyorla. Avval eng muhim 3 ta muammo, keyin <span class="ph">[boʻlim nomi]</span> boʻyicha raqamlar.</p></div>
+              <div class="cpw"><span class="cp"><svg width="20" height="20" aria-hidden="true"><use href="#i-copy"/></svg></span></div></li>
+          </ol>
+        </section></div>
+        <p class="cap">Faqat belgi bor, soʻz yoʻq; xato bosilsa, qaytarib boʻlmaydi.</p>
+      </div>
+      <div class="col">
+        <p class="ck">A <span class="rec">Tavsiya</span></p>
+        <div class="stage flush"><section class="s1">
+          <p class="s1-eyebrow">Promptlar · 1 / 2 bajarildi</p>
+          <ol>
+            <li class="done"><span class="no">01</span>
+              <div class="body"><p class="tt"><span class="tick on" role="img" aria-label="Bajarildi"><svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg></span>Manbalarni tekshirish</p><p class="to strong"><b>Qayerga:</b> NotebookLM → Chat</p><p class="tx">Yuklangan manbalar asosida «Ravon Uy» kompaniyasining oxirgi choragidagi 5 ta asosiy raqamini jadval qilib chiqar.</p></div>
+              <div class="cpw"><span class="cpp"><svg width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg>Nusxalash</span></div></li>
+            <li><span class="no">02</span>
+              <div class="body"><p class="tt"><span class="tick" role="img" aria-label="Bajarilmagan"></span>Audio-brifing sozlamasi</p><p class="to strong"><b>Qayerga:</b> NotebookLM → Studio → Audio Overview → Customize</p><p class="tx">Rahbar uchun 10 daqiqalik brifing tayyorla. Avval eng muhim 3 ta muammo, keyin <span class="ph">[boʻlim nomi]</span> boʻyicha raqamlar.</p></div>
+              <div class="cpw"><span class="cpp pri"><svg width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg>Nusxalash</span></div></li>
+          </ol>
+          <div class="toast" role="status"><span>01 bajarildi</span><button type="button">Bekor qilish</button></div>
+        </section></div>
+        <p class="cap"><b>A:</b> Tugmada «Nusxalash» soʻzi bor, navbatdagi prompt tugmasi qora. «Qayerga» qatori qalin, shuning uchun prompt notoʻgʻri joyga kamroq qoʻyiladi. Xato bosilsa, «Bekor qilish» bor.</p>
+      </div>
+      <div class="col">
+        <p class="ck">B</p>
+        <div class="stage flush"><section class="s1">
+          <p class="s1-eyebrow">Promptlar · 2 ta</p>
+          <ol>
+            <li class="done"><span class="no">01</span>
+              <div class="body"><p class="tt">Manbalarni tekshirish</p><p><span class="donew"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg>Bajarildi</span></p><p class="to strong"><b>Qayerga:</b> NotebookLM → Chat</p><p class="tx">Yuklangan manbalar asosida «Ravon Uy» kompaniyasining oxirgi choragidagi 5 ta asosiy raqamini jadval qilib chiqar.</p></div>
+              <div class="cpw"><span class="cp"><svg width="20" height="20" aria-hidden="true"><use href="#i-copy"/></svg></span><span class="cpl">Nusxalash</span></div></li>
+            <li><span class="no">02</span>
+              <div class="body"><p class="tt">Audio-brifing sozlamasi</p><p class="to strong"><b>Qayerga:</b> NotebookLM → Studio → Audio Overview → Customize</p><p class="tx">Rahbar uchun 10 daqiqalik brifing tayyorla. Avval eng muhim 3 ta muammo, keyin <span class="ph">[boʻlim nomi]</span> boʻyicha raqamlar.</p></div>
+              <div class="cpw"><span class="cp"><svg width="20" height="20" aria-hidden="true"><use href="#i-copy"/></svg></span><span class="cpl">Nusxalash</span></div></li>
+          </ol>
+        </section></div>
+        <p class="cap"><b>B:</b> Doira qoladi, ostiga «Nusxalash» yozuvi qoʻshildi. Bajarilgan prompt «Bajarildi» soʻzi bilan belgilanadi. Bekor qilish uchun shu belgini bosasiz (kamroq koʻrinadi).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 3 · LOGIN ERROR ========== -->
+  <section aria-labelledby="h3">
+    <div class="opt-head">
+      <p class="opt-k"><b>3</b> · Kirish · Yuqori taʼsir · faqat qulaylik, koʻrinish oʻzgarmaydi</p>
+      <h2 class="opt-t" id="h3">Xato xabari oʻqilsin, ID nusxasi ishlasin</h2>
+      <p class="opt-d">Students will paste their ID from a message as "AIP-7KQ2XM". The field has <code>maxlength=6</code> and an "AIP-" prefix, so the paste becomes "AIP-7K" and the student is told "Bunday ID yoʻq", which is false. The error itself is 11px red mono over the brightest part of the photo. The fix in code: strip "AIP-", spaces and dashes before checking, and drop the maxlength. The visual fix is below; the art, the headline and the button stay.</p>
+    </div>
+    <div class="trio">
+      <div class="col">
+        <p class="ck">Hozir</p>
+        <div class="stage flush"><div class="lg"><img src="login-pin.webp" alt="" width="1984" height="2400"><div class="mx">
+          <div class="mx-group"><label>Shaxsiy ID</label><div class="mx-input"><span>AIP-</span><span>AIP-7K</span></div><div class="mx-glow"></div></div>
+          <p class="mx-help">Bunday ID yoʻq. IDʼda 0, 1, I, L va O belgilari ishlatilmaydi.</p>
+          <div class="mx-submit"><div class="mx-drop"></div><span class="mx-btn" style="display:block;text-align:center">Kirish</span></div>
+        </div></div></div>
+        <p class="cap">Toʻliq ID qoʻyilganda kesiladi, xabar esa yolgʻon («Bunday ID yoʻq») va oʻqib boʻlmaydi.</p>
+      </div>
+      <div class="col">
+        <p class="ck">A <span class="rec">Tavsiya</span></p>
+        <div class="stage flush"><div class="lg"><img src="login-pin.webp" alt="" width="1984" height="2400"><div class="mx">
+          <div class="mx-group"><label>Shaxsiy ID</label><div class="mx-input"><span>AIP-</span><span>7KQ2X0</span></div><div class="mx-glow"></div></div>
+          <p class="mx-help a"><svg width="18" height="18" aria-hidden="true"><use href="#i-alert"/></svg><span>IDʼda 0, 1, I, L va O boʻlmaydi. Xabardagi IDʼni qayta tekshiring.</span></p>
+          <div class="mx-submit"><div class="mx-drop"></div><span class="mx-btn" style="display:block;text-align:center">Kirish</span></div>
+        </div></div></div>
+        <p class="cap"><b>A:</b> Xabar 14px oddiy shriftda, qora tasma ustida, har qanday fonda oʻqiladi. «AIP-7KQ2XM» toʻliq qoʻyilsa ham ishlaydi.</p>
+      </div>
+      <div class="col">
+        <p class="ck">B</p>
+        <div class="stage flush"><div class="lg"><img src="login-pin.webp" alt="" width="1984" height="2400"><div class="mx">
+          <div class="mx-group"><label>Shaxsiy ID</label><div class="mx-input"><span>AIP-</span><span>7KQ2X0</span></div><div class="mx-glow"></div></div>
+          <p class="mx-help b"><svg width="18" height="18" aria-hidden="true"><use href="#i-alert"/></svg><span>IDʼda 0, 1, I, L va O boʻlmaydi. Xabardagi IDʼni qayta tekshiring.</span></p>
+          <div class="mx-submit"><div class="mx-drop"></div><span class="mx-btn" style="display:block;text-align:center">Kirish</span></div>
+        </div></div></div>
+        <p class="cap"><b>B:</b> Matn oq, 14px, «Shaxsiy ID» yozuvidagi kabi qora soya bilan. Yangi quti qoʻshilmaydi, lekin fotoning yorugʻ joyida soya yetmay qolishi mumkin. «AIP-» bilan nusxa qoʻyish ham ishlaydi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4 · LESSON FOLDER ========== -->
+  <section aria-labelledby="h4">
+    <div class="opt-head">
+      <p class="opt-k"><b>4</b> · Dars sahifasi · Yuqori taʼsir</p>
+      <h2 class="opt-t" id="h4">Tablar holatni koʻrsatsin, keraksiz tab boʻlmasin</h2>
+      <p class="opt-d">In lessons 1 to 3, a quarter of the folder is "Kitob", which only says "opens in lesson 4", so it is a dead end. To find out what is left, the student has to tap all four tabs. The Amaliyot pane shows three unexplained numbers (4/5, 7 ta mashq, 13 ta prompt), and none of them says what was counted.</p>
+    </div>
+    <div class="trio">
+      <div class="col">
+        <p class="ck">Hozir</p>
+        <div class="stage"><div class="gt" style="--n:4;--i:2">
+          <div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
+          <div class="gt-tabs"><span class="gt-tab">Slaydlar</span><span class="gt-tab">Vazifa</span><span class="gt-tab" aria-selected="true">Amaliyot</span><span class="gt-tab">Kitob</span></div>
+          <div class="gt-body"><div class="gt-pane">
+            <p class="p-label">Amaliyot<br>Korxona bilimi</p>
+            <p class="p-num">4/5</p>
+            <div class="gt-foot"><p class="gt-meta">Majburiy<br>7 ta mashq · 13 ta prompt</p><span class="circ-dark"><svg width="22" height="22" aria-hidden="true"><use href="#i-ne"/></svg></span></div>
+          </div></div>
+        </div></div>
+        <p class="cap">4/5, 7 va 13: uchta raqam, lekin birortasining nimani sanashi yozilmagan. Kitob tabi esa boʻsh.</p>
+      </div>
+      <div class="col">
+        <p class="ck">A <span class="rec">Tavsiya</span></p>
+        <div class="stage"><div class="gt" style="--n:3;--i:2;--th:58px">
+          <div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
+          <div class="gt-tabs"><span class="gt-tab">Slaydlar<span class="ts"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg>koʻrildi</span></span><span class="gt-tab">Vazifa<span class="ts">5/8</span></span><span class="gt-tab" aria-selected="true">Amaliyot<span class="ts">2/4</span></span></div>
+          <div class="gt-body"><div class="gt-pane">
+            <p class="p-label">Amaliyot · darsda qilinadi<br>Korxona bilimini ishga soling</p>
+            <div><p class="p-num">2/4</p><p class="p-sub">asosiy mashq bajarildi</p></div>
+            <a class="play on-light" href="#"><span class="play-circ"><svg width="20" height="20" aria-hidden="true"><use href="#i-next"/></svg></span><span>Davom etish<br>01 · P3 Vaziyatli test</span></a>
+          </div></div>
+        </div></div>
+        <p class="cap"><b>A:</b> Kitob tabi faqat 4-darsda chiqadi. Har tab ostida holat yozilgan, shuning uchun nima qolgani bosmasdan koʻrinadi. Raqamning maʼnosi yozilgan, tugma esa aniq promptga olib boradi.</p>
+      </div>
+      <div class="col">
+        <p class="ck">B</p>
+        <div class="stage"><div class="gt" style="--n:3;--i:2">
+          <div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
+          <div class="gt-tabs"><span class="gt-tab"><span class="ok"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg>Slaydlar</span></span><span class="gt-tab">Vazifa</span><span class="gt-tab" aria-selected="true">Amaliyot</span></div>
+          <div class="gt-body"><div class="gt-pane">
+            <p class="p-label">Amaliyot · darsda qilinadi<br>2 / 4 asosiy mashq</p>
+            <ol class="p-list">
+              <li><a href="#"><span class="n">01</span><span>Yangi xodimga tayanch</span><span class="sz">2/4</span></a></li>
+              <li><a href="#"><span class="n">02</span><span>Mahsulotdan suhbatga</span><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg></a></li>
+              <li><a href="#"><span class="n">03</span><span>Bittasini tanlang: A yoki B</span><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg></a></li>
+              <li><a href="#"><span class="n">04</span><span>Marketing</span><span></span></a></li>
+            </ol>
+            <p class="gt-meta">+ 2 ta qoʻshimcha mashq</p>
+          </div></div>
+        </div></div>
+        <p class="cap"><b>B:</b> Mashqlar roʻyxati tabning ichida, kerakli mashq bir bosishda ochiladi. Lekin tablarning oʻzida holat yoʻq, Vazifa va Amaliyotni baribir ochib koʻrish kerak.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5 · PROGRESS CARD ========== -->
+  <section aria-labelledby="h5">
+    <div class="opt-head">
+      <p class="opt-k"><b>5</b> · Asosiy sahifa · Yuqori taʼsir</p>
+      <h2 class="opt-t" id="h5">«Natijangiz» bitta, tushunarli raqam boʻlsin</h2>
+      <p class="opt-d">The biggest number on the home page is "12/47", labelled "Sizning natijangiz". It is actually only lesson 2's prompt library. A student reads it as 25% of the course. Under it, "1 / 5 dars yakunlandi" disagrees with the "4 dars" tag at the top. The lesson page then says 71%, and the lesson card says 5/7. That is four formats for one idea.</p>
+    </div>
+    <div class="trio">
+      <div class="col">
+        <p class="ck">Hozir</p>
+        <div class="stage"><div class="folder c-yellow">
+          <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+          <span class="f-top"><span class="f-label">Sizning natijangiz<br>Amaliyot promptlari</span></span>
+          <span class="f-row"><span class="f-num">12/47</span><span class="f-note">1 / 5 dars yakunlandi</span></span>
+        </div></div>
+        <p class="cap">12/47 butun kursning natijasiga oʻxshaydi, aslida esa faqat 2-darsdagi promptlar.</p>
+      </div>
+      <div class="col">
+        <p class="ck">A <span class="rec">Tavsiya</span></p>
+        <div class="stage"><div class="folder c-yellow">
+          <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+          <span class="f-top"><span class="f-label">Sizning natijangiz<br>Toʻliq bajarilgan darslar</span></span>
+          <span class="f-row"><span class="f-num">1/4</span><span class="f-note"><svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg>Tayyorgarlik</span></span>
+        </div></div>
+        <p class="cap"><b>A:</b> Bitta raqam va bitta maʼno: 4 ta darsdan 1 tasi toʻliq tugagan. Tayyorgarlik alohida belgilanadi, 47 ta prompt esa 2-dars ichida qoladi.</p>
+      </div>
+      <div class="col">
+        <p class="ck">B</p>
+        <div class="stage"><div class="folder c-yellow" style="justify-content:flex-start">
+          <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+          <span class="f-top"><span class="f-label">Sizning natijangiz<br>5 ta ish qoldi</span></span>
+          <span class="f-list">
+            <a href="#"><span>1-dars · Vazifa · P6–P8</span><svg width="18" height="18" aria-hidden="true"><use href="#i-next"/></svg></a>
+            <a href="#"><span>1-dars · Amaliyot 01 va 04</span><svg width="18" height="18" aria-hidden="true"><use href="#i-next"/></svg></a>
+            <a href="#"><span>3-dars · Slaydlar 14 / 40</span><svg width="18" height="18" aria-hidden="true"><use href="#i-next"/></svg></a>
+          </span>
+        </div></div>
+        <p class="cap"><b>B:</b> Raqam oʻrnida roʻyxat bor: nima qolgani va qayerdaligi koʻrinadi, har biri bir bosishda ochiladi. Lekin bu «Keyingi qadam» qatorini takrorlaydi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 6 · LESSON CARD LABELS ========== -->
+  <section aria-labelledby="h6">
+    <div class="opt-head">
+      <p class="opt-k"><b>6</b> · Asosiy sahifa · Oʻrta taʼsir · katta kartalar qoladi</p>
+      <h2 class="opt-t" id="h6">Kartadagi yozuv: kamroq yorliq, aniq holat</h2>
+      <p class="opt-d">Every card opens with two lines of 13px capitals, "DARS 01 · 12 SENTABR / OCHIQ · 5/7 BAJARILDI". The state, which is what a student scans for, sits on the second line and reads as the same grey noise as the date. The locked card cannot be tapped and only repeats the date; it does not say what will appear there.</p>
+    </div>
+    <div class="trio">
+      <div class="col">
+        <p class="ck">Hozir</p>
+        <div class="stage"><div class="cards">
+          <div class="folder c-grey">
+            <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+            <span class="f-top"><span class="f-label">Dars 01 · 12 sentabr<br>Ochiq · 5/7 bajarildi</span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span>
+            <span><span class="f-title">Kirish</span><span class="f-sub">AI, modellar, Context, RAG, NotebookLM</span></span>
+          </div>
+          <div class="folder c-dark">
+            <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+            <span class="f-top"><span class="f-label">Dars 04 · 3 oktabr<br>Dars kuni ochiladi</span><svg width="22" height="22" aria-hidden="true"><use href="#i-lock"/></svg></span>
+            <span><span class="f-title">Agent va<br>alternativalar</span><span class="f-sub">Hermes Agent, /oops, alternativalar</span></span>
+          </div>
+        </div></div>
+        <p class="cap">Sana va holat bir xil kichik bosh harflarda; «5/7» nimani sanashi yozilmagan.</p>
+      </div>
+      <div class="col">
+        <p class="ck">A <span class="rec">Tavsiya</span></p>
+        <div class="stage"><div class="cards">
+          <a class="folder c-grey" href="#">
+            <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+            <span class="f-top"><span><span class="f-label">1-dars · 12-sentabr</span><br><span class="st">Ochiq · 3/6 qadam</span></span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span>
+            <span><span class="f-title">Kirish</span><span class="f-sub">AI, modellar, Context, RAG, NotebookLM</span></span>
+          </a>
+          <a class="folder c-dark" href="#">
+            <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+            <span class="f-top"><span><span class="f-label">4-dars · 3-oktabr</span><br><span class="st"><svg width="14" height="14" aria-hidden="true"><use href="#i-lock"/></svg>3-oktabrda ochiladi</span></span></span>
+            <span><span class="f-title">Agent va<br>alternativalar</span><span class="f-sub">Slaydlar va vazifa dars kuni shu yerda chiqadi</span></span>
+          </a>
+        </div></div>
+        <p class="cap"><b>A:</b> Holat alohida pillda, sana esa oddiy yozuvda: «ochiq, 6 qadamdan 3 tasi» bir qarashda oʻqiladi. Yopiq dars qachon va nima ochilishini aytadi.</p>
+      </div>
+      <div class="col">
+        <p class="ck">B</p>
+        <div class="stage"><div class="cards">
+          <a class="folder c-grey" href="#">
+            <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+            <span class="f-top"><span class="f-label">1-dars · 12-sentabr</span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span>
+            <span class="f-row"><span class="f-title">Kirish</span><span class="f-note">Ochiq · 3/6 qadam</span></span>
+          </a>
+          <div class="folder c-dark">
+            <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+            <span class="f-top"><span class="f-label">4-dars · 3-oktabr</span><svg width="22" height="22" aria-hidden="true"><use href="#i-lock"/></svg></span>
+            <span class="f-row"><span class="f-title">Agent va<br>alternativalar</span><span class="f-note">Dars kuni ochiladi</span></span>
+          </div>
+        </div></div>
+        <p class="cap"><b>B:</b> Kamroq matn: mavzular olib tashlandi, holat pastki burchakka tushdi. Sokinroq, lekin holat kichik boʻlib qoladi va karta nima haqida ekani koʻrinmaydi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 7 · EXERCISE FILES ========== -->
+  <section aria-labelledby="h7">
+    <div class="opt-head">
+      <p class="opt-k"><b>7</b> · Mashq sahifasi · Oʻrta taʼsir</p>
+      <h2 class="opt-t" id="h7">Fayllar: qaysini oʻqish, qaysini yuklash</h2>
+      <p class="opt-d">Four files in a flat list: the brief, a PDF copy of the prompts that are already on the page, and two real NotebookLM sources. Nothing tells the student which one to read and which ones to upload. Many will upload all four, the prompts PDF included. The download target is a 36px icon, and the row itself cannot be tapped.</p>
+    </div>
+    <div class="trio">
+      <div class="col">
+        <p class="ck">Hozir</p>
+        <div class="stage"><section class="ef">
+          <p class="ef-h">Fayllar</p>
+          <ul>
+            <li><span>06_Rahbar_audio.pdf <span class="ef-sz">240 KB</span></span><span class="ef-dl"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span></li>
+            <li><span>06_Promptlar.pdf <span class="ef-sz">96 KB</span></span><span class="ef-dl"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span></li>
+            <li><span>Ravon_Uy_Q3_hisobot.pdf <span class="ef-sz">1,2 MB</span></span><span class="ef-dl"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span></li>
+            <li><span>Savdo_jadvali_Q3.csv <span class="ef-sz">48 KB</span></span><span class="ef-dl"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span></li>
+          </ul>
+        </section></div>
+        <p class="cap">Toʻrt fayl bir xil koʻrinadi; promptlar PDFʼi pastdagi promptlarni takrorlaydi.</p>
+      </div>
+      <div class="col">
+        <p class="ck">A <span class="rec">Tavsiya</span></p>
+        <div class="stage">
+          <section class="ef">
+            <p class="ef-h on">1 · Avval oʻqing</p>
+            <ul><li><a class="row" href="#"><span><span class="nm">06_Rahbar_audio.pdf</span><span class="mt">PDF · 240 KB</span></span><span class="dl"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span></a></li></ul>
+          </section>
+          <section class="ef">
+            <p class="ef-h on">2 · NotebookLMʼga yuklang</p>
+            <ul>
+              <li><a class="row" href="#"><span><span class="nm">Ravon_Uy_Q3_hisobot.pdf</span><span class="mt">PDF · 1,2 MB</span></span><span class="dl"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span></a></li>
+              <li><a class="row" href="#"><span><span class="nm">Savdo_jadvali_Q3.csv</span><span class="mt">CSV · 48 KB</span></span><span class="dl"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span></a></li>
+            </ul>
+            <p class="ef-hint">Keyin pastdagi promptlardan nusxa oling.</p>
+          </section>
+        </div>
+        <p class="cap"><b>A:</b> Fayllar vazifasi boʻyicha ikkiga ajratildi, qaysini oʻqish va qaysini yuklash aniq. Butun qator bosiladi. Promptlar PDFʼi sahifa oxiridagi «PDF varianti» havolasiga koʻchdi.</p>
+      </div>
+      <div class="col">
+        <p class="ck">B</p>
+        <div class="stage"><section class="ef">
+          <p class="ef-h on">1 · Fayllarni yuklab oling</p>
+          <a class="play" href="#" style="margin:14px 0 6px"><span class="play-circ"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span><span>Hammasini yuklash<small>3 fayl · ZIP · 1,5 MB</small></span></a>
+          <ul>
+            <li><a class="row" href="#"><span><span class="nm">06_Rahbar_audio.pdf</span><span class="mt">PDF · 240 KB</span></span><span class="dl"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span></a></li>
+            <li><a class="row" href="#"><span><span class="nm">Ravon_Uy_Q3_hisobot.pdf</span><span class="mt">PDF · 1,2 MB</span></span><span class="dl"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span></a></li>
+            <li><a class="row" href="#"><span><span class="nm">Savdo_jadvali_Q3.csv</span><span class="mt">CSV · 48 KB</span></span><span class="dl"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span></a></li>
+          </ul>
+        </section></div>
+        <p class="cap"><b>B:</b> Telefonda 3 marta yuklash oʻrniga bitta tugma. Lekin NotebookLM ZIPʼni qabul qilmaydi, telefonda uni ochish esa koʻpchilikka qiyin.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+// Display layer (same as the comp): the fonts lack U+02BB/U+02BC, so show U+2018/U+2019.
+(function(){
+  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  for (let n; (n = w.nextNode());) if (/[ʻʼ]/.test(n.nodeValue)) n.nodeValue = n.nodeValue.replace(/ʻ/g,'‘').replace(/ʼ/g,'’');
+  document.title = document.title.replace(/ʻ/g,'‘');
+})();
+document.addEventListener('click', e => { if (e.target.closest('a[href="#"]')) e.preventDefault(); });
+</script>
+</body>
+</html>

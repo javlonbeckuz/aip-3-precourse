@@ -1,0 +1,11 @@
+import { launch } from './cdp_sc.mjs';
+const B = 'http://localhost:3055';
+const b = await launch(390,844,true);
+await b.goto(B+'/aip/'); await b.wait(800);
+console.log('gate logs', b.logs);
+await b.click('#gid'); await b.type('XM'); await b.ev(`document.getElementById('gate-form').requestSubmit()`); await b.wait(2500);
+console.log('after login', await b.ev('location.pathname+" view="+document.body.dataset.view'));
+console.log('logs', b.logs);
+console.log('home', await b.ev(`document.querySelector('#s-app').innerText.slice(0,400).split(String.fromCharCode(10)).join(' | ')`));
+await b.shot('app-home', true);
+b.close();

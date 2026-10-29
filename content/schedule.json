@@ -1,0 +1,11 @@
+{
+  "_help": "groups: lesson start per group, index 0 = lesson 1. Times without a zone are Asia/Tashkent (+05:00). liveOverride: null or a lesson number 1-4 that pins the live lesson. release: optional per-lesson, per-part opening time: 'open', '+0h' / '+3h' / '-2d' / '+30m' (relative to that group's lesson start; lesson 0 is relative to lesson 1's start) or an absolute 'YYYY-MM-DDTHH:MM'. Parts: slides, vazifa, amaliyot, kitob, prep. Defaults: prep 'open', everything else '+0h'. Example: \"release\": {\"1\": {\"vazifa\": \"+3h\"}, \"4\": {\"kitob\": \"2026-10-10T09:00\"}}. Dates to follow: set a group to null (\"shanba\": null) while its dates are not decided. Lessons 1-4 then stay locked for that group (and for students with no group), whatever release says; lesson 0 (prep) stays open. To announce dates, replace null with 4 increasing times.",
+  "timezone": "Asia/Tashkent",
+  "groups": {
+    "shanba": null,
+    "yakshanba": null
+  },
+  "liveOverride": null,
+  "liveDays": 7,
+  "release": {}
+}

@@ -1,0 +1,186 @@
+/* ===== audit 2026-10-19 polish pass: press states, motion tokens, overlays, type floor, focus ===== */
+:root{--ease-drawer:cubic-bezier(.32,.72,0,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--dur-press:100ms;--dur-1:160ms;--dur-2:200ms;--dur-3:260ms}
+*{-webkit-tap-highlight-color:transparent}
+html{scroll-padding-bottom:88px}
+
+/* ---- press feedback: every tappable thing answers in 100ms (hover is wrapped in a pointer media query by hover.py) */
+.pill-cta:active .pill-circ,.pill-ink:active .pc-c,.play:active .play-circ,.slv-btn:active,.s1 .cp:active .cp-c,.ef-row:active .ef-dl,.nl-go:active,.nl-x:active,.sheet-x:active,.nm-out:active,.mx-btn:active{transform:scale(.96);transition-duration:var(--dur-press)}
+a.folder:active,button.folder:active,.prep .pc:not(.open):active{transform:scale(.985);transition-duration:var(--dur-press)}
+.nl-go,.nl-x,.sheet-x,.nm-out,.slv-btn,.mx-btn{transition:transform 160ms var(--ease),background 160ms var(--ease)}
+.mx-btn{transition:none}
+.mx-btn:active{transform:scale(.97)}
+.gt-tab:active{color:var(--white)}
+.ef-dl{transition:background 160ms var(--ease),color 160ms var(--ease),transform 160ms var(--ease)}
+.s1 .cp-c svg{display:block}
+.s1 .cp.flash .cp-c svg{animation:ic-in 160ms var(--ease)}
+@keyframes ic-in{from{transform:scale(.8);opacity:0}}
+
+/* ---- folder tabs: the goo filter stays on the whole time (a sharp unfiltered shape mid-slide looked broken) */
+.gt-ind{transition:transform var(--dur-3) var(--ease-drawer)}
+.gt.kbd .gt-ind{transition-duration:var(--dur-1)}
+.is-safari .gt-ind{transition:none}/* Safari repaints an animated element under an SVG filter badly: it jumps instead (untestable here, so the old branch stays) */
+.gt-tab{transition:color var(--dur-1) var(--ease)}
+
+/* ---- overlays: opacity + a short slide, in and out (display is animated, so the exit plays) */
+.toast,.nl,.nmenu{transition:opacity var(--dur-2) var(--ease),transform var(--dur-2) var(--ease),display var(--dur-2) allow-discrete}
+.toast[hidden],.nl[hidden],.nmenu[hidden]{display:none;opacity:0;transition-duration:150ms}
+.toast[hidden]{transform:translateY(8px)}.nl[hidden],.nmenu[hidden]{transform:translateY(-12px)}
+@starting-style{.toast:not([hidden]){opacity:0;transform:translateY(8px)}.nl:not([hidden]),.nmenu:not([hidden]){opacity:0;transform:translateY(-12px)}}
+.nmenu{overscroll-behavior:contain}
+.nl{top:calc(64px + 16px + env(safe-area-inset-top))}
+@media (min-width:900px){.nl{top:calc(min(120px,8.34vw) + 16px)}}
+@media (max-height:500px){.nl{position:static;margin:8px 16px}}   /* a landscape phone: no fixed card over the content */
+.nl :focus-visible{outline-color:#000}
+
+/* the locked-lesson sheet rises 260ms (phones: from the bottom edge; 700px and up: scales up) */
+.sheet{transition:transform var(--dur-3) var(--ease-drawer),opacity var(--dur-2) var(--ease),overlay var(--dur-3) allow-discrete,display var(--dur-3) allow-discrete}
+.sheet:not([open]){transform:translateY(24px);opacity:0}
+.sheet::backdrop{transition:background-color var(--dur-2) var(--ease),overlay var(--dur-2) allow-discrete,display var(--dur-2) allow-discrete}
+.sheet:not([open])::backdrop{background-color:transparent}
+@starting-style{.sheet[open]{transform:translateY(24px);opacity:0}.sheet[open]::backdrop{background-color:transparent}}
+@media (min-width:700px){.sheet:not([open]){transform:scale(.96)}@starting-style{.sheet[open]{transform:scale(.96)}}}
+
+/* the accordion bodies fade in */
+.s1 .accp:not([hidden]){transition:opacity var(--dur-1) var(--ease)}
+.s1-more[open]>ol{transition:opacity var(--dur-1) var(--ease)}
+@starting-style{.s1 .accp:not([hidden]){opacity:0}.s1-more[open]>ol{opacity:0}}
+
+/* the prep cards slide into their new place (View Transition); the page keeps its own paint otherwise */
+::view-transition-group(*){animation-duration:var(--dur-3);animation-timing-function:var(--ease-drawer)}
+::view-transition-old(*),::view-transition-new(*){animation-duration:var(--dur-1)}
+
+/* long lists paint lazily: the route task stays short on a 4x throttled CPU */
+.s1 li,.ex-files li,.prep .pc:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 280px}
+
+/* reduced motion keeps the fades (a fade is not movement) */
+@media (prefers-reduced-motion:reduce){.toast,.nl,.nmenu,.sheet,.sheet::backdrop{transition:opacity 160ms var(--ease)!important;transform:none!important}}
+
+/* ---- type: mono is data only. Sentences are Golos. */
+.ef-mt.sent,.ef-mt .sent,.ldr-txt{font:400 15px/1.4 var(--font-body);color:var(--text-2);font-stretch:100%}
+.ef-mt .sent+*,.ef-mt .sent{letter-spacing:0}
+.s1 .ef-mt.sent,.s1 .ef-mt .sent{color:var(--ink-2)}
+.ef-mt .nat,.ef-mt .sent b{font-weight:500;color:var(--text-1)}
+.ldr-txt{color:#fff;letter-spacing:0}
+@media (min-width:900px){.ef-mt.sent,.ef-mt .sent,.ldr-txt{font-size:16px}}
+.ef-mt,.p-list .n,.xm{font-size:13px}
+.xo{font-size:14px;color:var(--text-2)}
+.gt .xo{color:var(--gt-ink2)}
+.cpl,.s1 .cpl{font-size:13px}
+.gt-tab{font-size:13px}
+.mx-help{font-size:13px}
+.ns{font-size:13px}
+
+/* type floor, balance and measure */
+.headline,.tt,.f-title,.gt-h,.sheet-t{text-wrap:balance}
+.lede,.tx,.ef-hint,.gt-meta{text-wrap:pretty}
+.s1 .note,.ef-hint{max-width:62ch}
+@container (min-width:900px){.headline.long{font-size:calc(64 * var(--u));line-height:calc(76 * var(--u))}}
+
+/* ---- focus and small things */
+.gt-foot{flex-wrap:wrap;row-gap:12px}.gt-meta{min-width:0}
+.wordmark{width:max-content}
+
+/* ---- login: the state of the field is on the photo, so the help text keeps the error's halo at full strength */
+.mx-help{text-shadow:0 1px 2px #000,0 0 3px #000,0 0 8px #000,0 0 16px rgb(0 0 0 / .95),0 0 28px rgb(0 0 0 / .85)}
+
+/* ---- home: a ring with nothing in it draws no arc; a rise animates from the old value */
+.rp{animation:none}
+.rp.up{animation:ring-in 600ms var(--ease) both}
+@keyframes ring-in{from{stroke-dasharray:var(--from,0) 100}}
+/* ---- prep: the cards are View Transition members; the finished state ends the page */
+.prep .pc{view-transition-name:var(--vt)}
+.prep-end{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.prep-end[hidden]{display:none}
+.pe-t{font:500 17px/1.4 var(--font-body)}
+.prep-end .play{margin-top:0}
+
+/* ---- 02: Keyingi qadam is an outline pill; with no hero card (no live lesson) it takes the empty right column on desktop */
+@container (min-width:900px){.main-head.nohero>.next{grid-area:c;align-self:center;margin-top:0;justify-self:start}}
+/* ---- 05: the canvas is plain black (no grid, no floor) */
+/* ---- 07: lesson 4's dark card gets a 1px outline so it reads against the black canvas */
+.folder.c-night,.folder.c-dark{outline:1px solid #3F3F3F;outline-offset:-1px}
+.gt-dark .gt-pan,.gt-dark .gt-ind{box-shadow:inset 0 0 0 1px #3F3F3F}
+/* ---- 08: library sections grid = home's 3 + 2 spans, in lesson 2's grey */
+@container (min-width:900px){.sects{grid-template-columns:repeat(6,minmax(0,1fr))}.sects>li{grid-column:span 2}.sects>li:nth-child(n+4){grid-column:span 3}}
+
+/* ---- 01: every lesson pane has the same bones: eyebrow top-left, one numeral, the action bottom-right */
+.gt-pane .p-num{font-size:96px;line-height:.9}
+@container (min-width:900px){.gt-pane .p-num{font-size:calc(200 * var(--u))}}
+/* ---- 06: from 1200px the sub-pages use the lesson page's split: header left (636), file groups right (688), top-aligned to the H1 */
+@container (min-width:1200px){
+  .ex-wrap:has(>.ex-files){max-width:none;display:grid;grid-template-columns:calc(636 * var(--u)) calc(688 * var(--u));grid-template-rows:repeat(7,auto) 1fr;justify-content:space-between;column-gap:0}
+  .ex-wrap:has(>.ex-files)>*{grid-column:1}
+  .ex-wrap:has(>.ex-files)>.ex-files{grid-column:2;grid-row:2/9;max-width:none;align-self:start}
+}
+.s1 ol{max-width:min(1100px,calc(62ch + 160px))}
+.gt .play{max-width:100%;min-width:0}.gt .play>span:first-child{min-width:0;overflow-wrap:anywhere}
+.gt-foot>.play{flex:0 1 auto}
+.gt-pane{min-width:0}.gt-body{grid-template-columns:minmax(0,1fr)}
+.mx-help:not(.err){font:400 13px/1.4 var(--font-body)}
+@media (max-width:360px){.mx-submit{margin-top:66px}}
+
+/* ---- type scale snap (tokens.md): Golos 13 / 15 / 18 (17 phone), Mona 13 / 19 / 22 / 34 / 56 / 88 (64 long) / 96 / 200, Martian 13 */
+.xo,.chip .cl,.slv-x,.slv-all,.sw,.rng,.slv-ct,.xm,.n{font-size:13px}
+.ef-hint,.ef-hint b{font-size:15px}
+.nav-name,.ef-nm,.lunits,.play span,.gt .play,.sheet-x,.ef-mt.sent,.ef-mt .sent,.ldr-txt{font-size:15px}
+.pe-t,.s1 .tx{font-size:17px}
+.s1 .tt,.s1 .acc,.sheet-t{font-size:19px}
+.now-card .f-title{font-size:22px}
+.slv-num{font-size:96px}
+.headline{font-size:40px}.headline.long{font-size:28px}.ex-h{font-size:32px}
+.ef-hint code,.note code{font-size:13px}
+@container (min-width:900px){
+  .pe-t,.s1 .tx,.lsub,.ps{font-size:18px}
+  .s1 .tt,.s1 .acc,.sheet-t{font-size:22px}
+  .now-card .f-title{font-size:34px}.pv{font-size:34px}
+  .slv-num{font-size:200px}
+  .headline{font-size:calc(88 * var(--u))}.ex-h{font-size:calc(56 * var(--u))}
+}
+@media (min-width:900px){.sheet-t{font-size:22px}.slv-num{font-size:200px}}
+.s1 .tx code,.note code,.ef-hint code{background:color-mix(in srgb,currentColor 9%,transparent);padding:.05em .3em;border-radius:4px;font-family:var(--font-mono);font-size:.9em;font-stretch:100%}
+.s1 .tx code{white-space:pre-wrap}
+.lib-empty .clearb{display:block;margin-top:12px}
+.xr .xo{font-size:13px}
+@media (max-width:399px){
+  .xr{grid-template-areas:"n t a" "n m a";align-items:start}
+  .xr .n{grid-area:n}.xr .xt{grid-area:t}.xr .xm{display:contents}.xr .xmt{grid-area:m;font-family:var(--font-body);color:var(--gt-ink2,var(--text-2))}.xr .xm>svg{grid-area:a;align-self:center}
+  .xr.nn{grid-template-areas:"t a" "m a"}
+}
+/* ---- 14: alignment */
+.grid3 .f-row{flex-direction:column;align-items:flex-start;gap:8px}.grid3 .f-note{margin-left:0}
+@container (min-width:900px){.prep .deck{align-items:stretch}}
+.s1-end{justify-content:space-between;max-width:min(1100px,calc(62ch + 160px));margin-top:20px;padding-top:20px;border-top:1px solid rgb(0 0 0 / .25)}
+@container (max-width:360px){
+  .prep .pc{--pic:64px}
+  .prep .hd{grid-template-areas:"no pic" "ti ti" "nt nt";grid-template-rows:auto auto auto}
+}
+.ex-files .xr{font-size:inherit}
+.ex-files .xr .n{color:var(--text-2)}
+code,.s1 .tx code,.note code,.ef-hint code{font-size:13px}
+.xr .xt{font-size:17px}.to.strong,.s1 .to{font-size:15px}.lsub{font-size:15px}
+.nav .wordmark{font-size:19px}
+.f-note,.nw2{font-size:13px}.prep .nt{font-size:15px}
+@container (min-width:900px){.xr .xt{font-size:18px}.lsub{font-size:18px}.nav .wordmark{font-size:max(17px,calc(22 * var(--u)))}.f-note,.nw2{font-size:15px}}
+body>.ldr{position:fixed;z-index:60}
+.ldr.out{opacity:0;transition:opacity var(--dur-2) var(--ease)}
+.s1-end .play,.prep-end .play{margin-top:0}
+.prep-end{margin:24px 16px 48px}
+@container (min-width:900px){.prep-end{margin:24px calc(66 * var(--u)) calc(48 * var(--u))}}
+.prep-more{margin:48px 16px}
+@container (min-width:900px){.prep-more{margin-inline:calc(66 * var(--u))}}
+
+/* ---- Background Paths (user decision 2026-10-19, exception to "no ambient decoration"): faint drawn curves behind the app screens, never behind the login photo */
+.bgp{display:none;contain:strict;will-change:transform;position:fixed;inset:0;z-index:0;pointer-events:none;color:#fff;opacity:.22;overflow:hidden}
+.bgp svg{position:absolute;inset:0;width:100%;height:100%}
+body[data-view="app"] .bgp,body[data-view="dastur"] .bgp,body[data-view="dars"] .bgp,body[data-view="ex"] .bgp{display:block}
+body[data-view="app"],body[data-view="dastur"],body[data-view="dars"],body[data-view="ex"]{background:#000}
+body[data-view="app"] .frame,body[data-view="dastur"] .frame,body[data-view="dars"] .frame,body[data-view="ex"] .frame{background:transparent}
+.frame{position:relative;z-index:1}
+.bgp path{animation:bgp linear infinite}
+@keyframes bgp{0%,100%{stroke-dashoffset:0}50%{stroke-dashoffset:-1}}/* dashoffset only: animating dasharray or opacity on SVG paths re-rasters every frame (7 fps at 4x CPU, 1440), the offset alone is free */
+html.hid .bgp path{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.bgp path{animation:none!important;stroke-dasharray:none!important}}
+@media (max-width:599px){.bgp{opacity:.2}}
+
+/* the copy toast sits inside its prompt row for keyboard order; content-visibility would contain and clip it */
+.s1 li:has(.toast:not([hidden])){content-visibility:visible}

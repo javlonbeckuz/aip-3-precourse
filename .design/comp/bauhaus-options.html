@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Bauhaus · 3 yoʻnalish · AI Praktikum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&family=Golos+Text:wght@400;500;600;700&family=Martian+Mono:wdth,wght@87.5..100,400..600&family=Jost:wght@400..700&display=swap">
+<style>
+:root{--font-display:'Mona Sans','Roboto Flex',sans-serif;--font-body:'Golos Text',system-ui,sans-serif;--font-mono:'Martian Mono',ui-monospace,monospace;--jost:'Jost','Golos Text',sans-serif}
+*,*::before,*::after{box-sizing:border-box}
+body,h1,h2,h3,p,ol,ul{margin:0}
+ol,ul{padding:0;list-style:none}
+body{background:#0d0d0d;color:#EDEDED;font:400 16px/1.5 var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+button{background:none;border:0;padding:0;cursor:pointer;border-radius:0}
+:focus-visible{outline:3px solid currentColor;outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.ph{font-weight:700;text-decoration:underline 1.5px;text-underline-offset:4px}
+.grid1{display:grid;grid-template-columns:minmax(0,1fr)}
+
+/* ===== review shell ===== */
+.page{padding:48px 24px 96px}
+.page>h1,.page>p,.opt{max-width:1440px;margin-left:auto;margin-right:auto}
+.page>h1{font:800 clamp(26px,3.6vw,40px)/1.1 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.page>p{margin-top:10px;color:#8A8A90}
+.opt{padding-top:64px;display:grid;gap:12px}
+.opt>h2{font:700 clamp(18px,2vw,24px)/1.3 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.opt>p{color:#A9A9AF;max-width:84ch}
+.vt{font:400 12px/1 var(--font-body);color:#6E6E74;margin:12px 0 8px}
+.frame{container-type:inline-size;overflow:clip;border:1px solid #1f1f22}
+.frame.m{width:375px;max-width:100%}
+.slabel{padding:8px 16px;background:#111;color:#8a8a8a;font:500 11px/1.3 var(--font-mono);letter-spacing:.06em;text-transform:uppercase}
+.scr{padding:36px 16px 44px}
+@container (min-width:900px){.scr{padding:56px 66px 64px}}
+
+/* shapes (CSS-drawn) */
+.sh{display:inline-block;flex:none;width:var(--s,20px);height:var(--s,20px);background:var(--c,#111)}
+.sh.c{border-radius:50%}
+.sh.t{clip-path:polygon(50% 0,100% 100%,0 100%)}
+.sh.o{background:none;box-shadow:inset 0 0 0 3px var(--c,#111)}
+.sh.o.c{border-radius:50%}
+
+/* =====================================================================
+   B1 · CLASSIC POSTER — cream paper, red / yellow / blue / black, asymmetric shapes, Bayer lowercase (Jost)
+   ===================================================================== */
+.b1{--cr:#EFE9DC;--rd:#D7262B;--yl:#F2C230;--bl:#1F4E9C;--k:#111;background:var(--cr);color:var(--k)}
+.b1 .hl{font:600 clamp(40px,9.5cqi,104px)/.95 var(--jost);letter-spacing:-.02em;text-transform:lowercase}
+.b1 .kick{font:600 12px/1.3 var(--font-body);letter-spacing:.14em;text-transform:uppercase}
+.b1 .comp{position:relative;aspect-ratio:1.25}
+.b1 .main-g{display:grid;gap:20px}
+.b1 .gate-g{display:grid;gap:28px}
+.b1 .comp>*{position:absolute}
+.b1 .lbl{display:block;font:600 14px/1.3 var(--font-body);margin-bottom:8px}
+.b1 .inp{display:flex;align-items:center;height:58px;padding:0 16px;background:#FBF8F1;border:3px solid var(--k)}
+.b1 .inp .pre{font:600 18px/1 var(--font-mono);color:#4a463f}
+.b1 .inp input{flex:1;min-width:0;height:100%;border:0;outline:0;background:none;font:600 18px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
+.b1 .btn{display:inline-flex;align-items:center;gap:12px;height:52px;padding:0 22px 0 18px;background:var(--k);color:var(--cr);font:600 16px/1 var(--font-body);white-space:nowrap;transition:background .12s}
+.b1 .btn .sh{--s:14px}
+.b1 .btn:hover{background:#333}
+.b1 .btn.flash{background:var(--bl);color:#fff}
+.b1 .dots{display:flex;gap:8px;align-items:center}
+.b1 .cards{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:28px}
+.b1 .card{display:grid;background:#FBF8F1;border:3px solid var(--k)}
+.b1 .field{position:relative;height:150px;overflow:hidden;border-bottom:3px solid var(--k)}
+.b1 .field .n{position:absolute;left:16px;bottom:8px;font:600 64px/1 var(--jost);color:#fff}
+.b1 .field>.sh{position:absolute}
+.b1 .card-b{padding:16px 18px 18px;display:grid;gap:6px}
+.b1 .card h3{font:600 24px/1.1 var(--jost);text-transform:lowercase}
+.b1 .card .st{font:600 12px/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase}
+.b1 .card.locked .card-b{color:#5A5650}
+.b1 .card.locked .field .n{color:var(--k)}
+.b1 .pr{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:22px 0;border-top:3px solid var(--k)}
+.b1 .pr .mk{--s:40px}
+.b1 .pr h3{font:600 24px/1.15 var(--jost);text-transform:lowercase}
+.b1 .pr .to{font:500 13px/1.4 var(--font-mono);color:#4a463f;margin-top:4px}
+.b1 .pr .tx{margin-top:10px;font:400 18px/1.6 var(--font-body);max-width:64ch}
+.b1 .pr .row{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:16px}
+.b1 .pr .dn{display:none;align-items:center;gap:8px;font:600 13px/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase}
+.b1 .pr.done .dn{display:inline-flex}
+.b1 .files li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--k)}
+.b1 .files .dl{display:grid;place-items:center;width:44px;height:44px;background:var(--yl);border-radius:50%;color:var(--k)}
+.b1 .files .dl:hover{background:var(--k);color:var(--yl)}
+@container (min-width:900px){
+  .b1 .gate-g{display:grid;grid-template-columns:minmax(0,1fr) 520px;gap:64px;align-items:center;min-height:520px}
+  .b1 .main-g{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end}
+  .b1 .cards{grid-template-columns:1.25fr 1fr 1fr;gap:24px;align-items:end}
+  .b1 .cards .card:nth-child(1) .field{height:260px}
+  .b1 .cards .card:nth-child(2) .field{height:200px}
+  .b1 .field .n{font-size:96px}
+  .b1 .ex-g{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:64px;align-items:start}
+  .b1 .pr{grid-template-columns:72px minmax(0,1fr);padding:28px 0}
+  .b1 .pr .mk{--s:56px}
+  .b1 .pr .tx{font-size:20px}
+}
+
+/* =====================================================================
+   B2 · DE STIJL GRID — strict modules, thick black rules, colour only as whole cells
+   ===================================================================== */
+.b2{--rd:#D7262B;--yl:#F2C230;--bl:#1F4E9C;--k:#111;background:#111;color:var(--k)}
+.b2 .g{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;background:var(--k);border:8px solid var(--k)}
+.b2 .cell{background:#fff;padding:18px;min-width:0}
+.b2 .r{background:var(--rd)}.b2 .y{background:var(--yl)}.b2 .b{background:var(--bl)}.b2 .k{background:var(--k);color:#fff}
+.b2 .hl{font:900 clamp(30px,7.5cqi,84px)/.95 var(--font-display);font-stretch:125%;text-transform:uppercase;letter-spacing:-.01em}
+.b2 .kick{font:700 12px/1.3 var(--font-body);letter-spacing:.12em;text-transform:uppercase}
+.b2 .inp{display:flex;align-items:center;height:58px;padding:0 14px;border:4px solid var(--k)}
+.b2 .inp .pre{font:600 18px/1 var(--font-mono);color:#444}
+.b2 .inp input{flex:1;min-width:0;height:100%;border:0;outline:0;background:none;font:600 18px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
+.b2 .blk{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:64px;background:var(--k);color:#fff;font:900 18px/1 var(--font-display);font-stretch:125%;text-transform:uppercase;letter-spacing:.02em}
+.b2 .blk:hover{background:#2a2a2a}
+.b2 .blk.flash{background:var(--yl);color:var(--k)}
+.b2 .big{font:900 clamp(56px,10cqi,140px)/.85 var(--font-display);font-stretch:125%}
+.b2 .n{font:900 48px/1 var(--font-display);font-stretch:125%;color:#fff}
+.b2 .lt{font:800 20px/1.15 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.b2 .ls{font-size:15px;margin-top:6px}
+.b2 .ld{font:600 12px/1.3 var(--font-mono);text-transform:uppercase;margin-top:10px}
+.b2 .locked .lt,.b2 .locked .ls,.b2 .locked .ld{color:#5A5650}
+.b2 .stc{display:flex;align-items:flex-end;justify-content:space-between;min-height:110px}
+.b2 .stc .kick{color:#fff}
+.b2 .stc.y .kick,.b2 .stc.w .kick{color:var(--k)}
+.b2 .stc.w .n{color:var(--k)}
+.b2 .pr h3{font:800 19px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.b2 .pr .to{font:500 13px/1.4 var(--font-mono);color:#444;margin-top:6px}
+.b2 .pr .tx{margin-top:12px;font:400 18px/1.6 var(--font-body);max-width:70ch}
+.b2 .pr .dn{display:none}.b2 .pr.done .dn{display:inline}
+.b2 .prs{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+.b2 .prow{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+.b2 .flag{min-height:16px;padding:0}
+.b2 .files li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:4px solid var(--k)}
+.b2 .files li:first-child{border-top:0}
+.b2 .files .dl{display:grid;place-items:center;width:48px;height:48px;background:var(--k);color:#fff}
+@container (min-width:900px){
+  .b2 .g{grid-template-columns:repeat(12,minmax(0,1fr));gap:10px;border-width:10px}
+  .b2 .cell{padding:28px}
+  .b2 .sp2{grid-column:span 2}.b2 .sp3{grid-column:span 3}.b2 .sp4{grid-column:span 4}.b2 .sp5{grid-column:span 5}.b2 .sp6{grid-column:span 6}.b2 .sp7{grid-column:span 7}.b2 .sp8{grid-column:span 8}.b2 .sp9{grid-column:span 9}.b2 .sp12{grid-column:span 12}
+  .b2 .tall{min-height:220px}
+  .b2 .prow{grid-template-columns:64px minmax(0,1fr) 240px;gap:10px}
+  .b2 .prs{gap:10px}
+  .b2 .flag{min-height:auto}
+  .b2 .blk{height:100%;min-height:120px}
+  .b2 .pr .tx{font-size:20px}
+}
+
+/* =====================================================================
+   B3 · MODERN FUNCTIONAL — off-white, muted primaries, shape = state (● live, ■ open/done, ▲ locked/queued)
+   ===================================================================== */
+.b3{--bg:#F4F1EA;--ink:#22201C;--mut:#6B675F;--rd:#B5523B;--bl:#3B5E8C;--yl:#D9A93A;--ln:#DCD6C9;background:var(--bg);color:var(--ink)}
+.b3 .hl{font:500 clamp(34px,7cqi,72px)/1.05 var(--jost);letter-spacing:-.015em}
+.b3 .kick{font:500 13px/1.3 var(--font-body);color:var(--mut)}
+.b3 .legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:var(--mut)}
+.b3 .legend span{display:inline-flex;align-items:center;gap:8px}
+.b3 .sh{--s:14px}
+.b3 .sh.live{--c:var(--rd);border-radius:50%}
+.b3 .sh.open{--c:var(--bl)}
+.b3 .sh.locked{--c:var(--yl);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.b3 .panel{background:#fff;border:1px solid var(--ln);padding:22px}
+.b3 .lbl{display:block;font:500 14px/1.3 var(--font-body);margin-bottom:8px}
+.b3 .inp{display:flex;align-items:center;height:52px;border-bottom:2px solid var(--ink)}
+.b3 .inp:focus-within{border-color:var(--bl)}
+.b3 .inp .pre{font:500 17px/1 var(--font-mono);color:var(--mut)}
+.b3 .inp input{flex:1;min-width:0;height:100%;border:0;outline:0;background:none;font:500 17px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
+.b3 .btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;background:var(--ink);color:var(--bg);font:500 15px/1 var(--font-body);white-space:nowrap;transition:background .12s}
+.b3 .btn:hover{background:#45413a}
+.b3 .btn.flash{background:var(--bl)}
+.b3 .sq4{display:flex;gap:6px}
+.b3 .sq4 i{width:18px;height:18px;border:2px solid var(--bl)}.b3 .sq4 i.on{background:var(--bl)}
+.b3 .ls{display:grid}
+.b3 .lr{display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px 12px;padding:16px 0;border-top:1px solid var(--ln);align-items:baseline}
+.b3 .lr .sh{--s:16px;align-self:center}
+.b3 .lr h3{font:500 20px/1.25 var(--jost)}
+.b3 .lr .sub{grid-column:2;font-size:14px;color:var(--mut)}
+.b3 .lr .dt{grid-column:2;font-size:13px;color:var(--mut)}
+.b3 .lr.locked h3{color:var(--mut)}
+.b3 .pr{display:grid;grid-template-columns:24px minmax(0,1fr);gap:14px}
+.b3 .pr>.sh{--s:18px;margin-top:6px}
+.b3 .pr.done>.sh{--c:var(--bl);border-radius:0;clip-path:none}
+.b3 .pr h3{font:500 22px/1.2 var(--jost)}
+.b3 .pr .to{font-size:13px;color:var(--mut);margin-top:4px}
+.b3 .pr .tx{margin-top:12px;font:400 18px/1.65 var(--font-body);max-width:64ch}
+.b3 .pr .row{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:16px}
+.b3 .pr .dn{display:none;font-size:13px;color:var(--mut)}.b3 .pr.done .dn{display:inline}
+.b3 .files li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--ln)}
+.b3 .files .dl{display:grid;place-items:center;width:40px;height:40px;border:2px solid var(--ink)}
+.b3 .files .dl:hover{background:var(--ink);color:var(--bg)}
+.b3 .mark{display:flex;gap:6px;align-items:flex-end}
+.b3 .gate-g,.b3 .main-g,.b3 .ex-g,.b1 .ex-g{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+@container (min-width:900px){
+  .b3 .gate-g{display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:64px;align-items:center;min-height:440px}
+  .b3 .main-g{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:56px;align-items:start}
+  .b3 .lr{grid-template-columns:32px minmax(0,1fr) minmax(0,1.3fr) 200px;align-items:center;padding:20px 0}
+  .b3 .lr .sub,.b3 .lr .dt{grid-column:auto}
+  .b3 .ex-g{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:56px;align-items:start}
+  .b3 .panel{padding:32px}
+  .b3 .pr .tx{font-size:19px}
+}
+@media (prefers-reduced-motion:reduce){*{transition-duration:0s!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-copy" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"><rect x="7" y="7" width="10" height="10"/><path d="M13 7V3H3v10h4"/></symbol>
+  <symbol id="i-down" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M10 3v11M5 9.5l5 5 5-5M4 17h12"/></symbol>
+  <symbol id="i-next" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M3.5 10h13M11 4.5l5.5 5.5-5.5 5.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4.5 10.5l3.5 3.5 7.5-8.5"/></symbol>
+</defs></svg>
+
+<main class="page">
+  <h1>Bauhaus · 3 yoʻnalish</h1>
+  <p>Har birida: (a) kirish, (b) asosiy sahifadan boʻlak, (c) mashq sahifasi. Shakllar CSS bilan chizilgan. Prompt matni hech qachon qizil yoki koʻk fonda emas, 7:1 dan yuqori. Nusxa olish = bajarildi. Sarlavhalar: B1 va B3 da Jost (Futura uslubi), B2 da Mona Sans Expanded.</p>
+
+  <section class="opt"><h2>B1 · Klassik plakat</h2><p>Krem qogʻoz, qizil, sariq, koʻk va qora. Doira, kvadrat va uchburchakdan asimmetrik kompozitsiyalar, Herbert Bayer uslubidagi kichik harfli Jost sarlavhalar. Dars kartalari rangli maydon, har bir prompt oʻz geometrik belgisi bilan.</p>
+    <p class="vt">Desktop</p><div class="frame" data-f="b1"></div><p class="vt">375 px</p><div class="frame m" data-f="b1"></div></section>
+
+  <section class="opt"><h2>B2 · Panjara / De Stijl</h2><p>Qatʼiy modulli panjara, qalin qora chiziqlar, rang faqat butun katakcha sifatida (qizil, sariq, koʻk, oq). Darslar roʻyxati katakchalar, mashq sahifasida fayllar va promptlar ham katakcha. Nusxa: yaxlit qora blok.</p>
+    <p class="vt">Desktop</p><div class="frame" data-f="b2"></div><p class="vt">375 px</p><div class="frame m" data-f="b2"></div></section>
+
+  <section class="opt"><h2>B3 · Zamonaviy funksional</h2><p>Oqish fon, yumshatilgan asosiy ranglar; holatni shakl bildiradi: ● jonli, ■ ochiq / bajarilgan, ▲ yopiq / navbatda. Promptlar uchun sokin oʻqish maydonlari.</p>
+    <p class="vt">Desktop</p><div class="frame" data-f="b3"></div><p class="vt">375 px</p><div class="frame m" data-f="b3"></div></section>
+</main>
+
+<p class="sr-only" aria-live="polite" id="live"></p>
+
+<script>
+// Raw text keeps U+02BB/U+02BC and is what gets copied; display maps to ‘ ’ (Mona/Golos/Martian/Jost lack U+02BB).
+const P = [
+  {title:'Manbalarni tekshirish', to:'NotebookLM → Chat', done:true,
+   text:'Yuklangan manbalar asosida «Ravon Uy» kompaniyasining oxirgi choragidagi 5 ta asosiy raqamini jadval qilib chiqar. Har bir raqam qaysi hujjatdan olinganini koʻrsat.'},
+  {title:'Audio-brifing sozlamasi', to:'NotebookLM → Studio → Audio Overview → Customize', done:false,
+   text:'Rahbar uchun 10 daqiqalik brifing tayyorla. Avval eng muhim 3 ta muammo, keyin [boʻlim nomi] boʻyicha raqamlar. Ohang: qisqa va aniq, rasmiy emas. Oxirida bitta aniq tavsiya ber.'},
+  {title:'Savol-javob kartalari', to:'NotebookLM → Studio → Flashcards', done:false,
+   text:'Manbalardagi eng muhim 10 ta tushuncha boʻyicha savol-javob kartalari tuz. Har bir javob bir jumladan oshmasin.'},
+];
+const L = [
+  {n:'01', t:'Kirish', s:'AI, modellar, Context, RAG, NotebookLM', st:'open', lab:'Ochiq', d:'12 sentabr · 5/7'},
+  {n:'02', t:'Claude va Code', s:'Claude, Code/Cowork, terminologiya', st:'live', lab:'Jonli', d:'Bugun · 19 sentabr'},
+  {n:'03', t:'Skill va agentlar', s:'Skill, Plugin, Connector, Plan, agent teams', st:'locked', lab:'Yopiq', d:'26 sentabrda ochiladi'},
+];
+const F = [['Yoʻriqnoma','PDF · 240 KB'],['Ravon Uy hisoboti','PDF · 1,2 MB'],['Savdo jadvali','CSV · 48 KB']];
+const uz = s => s.replace(/ʻ/g,'‘').replace(/ʼ/g,'’');
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const T = s => esc(uz(s));
+const txt = s => T(s).replace(/\[[^\]]+\]/g, '<span class="ph">$&</span>');
+const ic = (id, n = 18) => `<svg width="${n}" height="${n}" aria-hidden="true"><use href="#${id}"/></svg>`;
+const sh = (cls, c, s, st = '') => { const css = [c && `--c:${c}`, s && `--s:${s}`, st].filter(Boolean).join(';');
+  return `<span class="sh ${cls}"${css ? ` style="${css}"` : ''} aria-hidden="true"></span>`; };
+const doneN = () => P.filter(p => p.done).length;
+const where = '<span class="sr-only">Qayerga joylash: </span>';
+const cbtn = (i, cls, inner) => `<button class="${cls}" type="button" data-copy="${i}" aria-label="Nusxa olish: ${T(P[i].title)}">${inner}</button>`;
+const files = (dlInner) => `<ul class="files">${F.map(([n, m]) => `<li><span><b style="font-weight:600">${T(n)}</b><br><span style="font-size:13px;opacity:.8">${m}</span></span><a class="dl" href="#" aria-label="Yuklab olish: ${T(n)}, ${m}">${dlInner}</a></li>`).join('')}</ul>`;
+let uid = 0;
+
+const B = {
+/* ---------------- B1 · classic poster ---------------- */
+b1: id => `
+<div class="scr"><div class="gate-g">
+  <div class="comp" aria-hidden="true">
+    ${sh('c', 'var(--rd)', '58%', 'left:0;top:6%;width:58%;height:auto;aspect-ratio:1')}
+    ${sh('', 'var(--bl)', '40%', 'right:4%;top:0;width:40%;height:56%')}
+    ${sh('t', 'var(--yl)', '46%', 'right:16%;bottom:0;width:46%;height:52%')}
+    <span style="left:0;bottom:4%;width:72%;height:7%;background:var(--k)"></span>
+  </div>
+  <form class="grid1" style="gap:18px" onsubmit="return false">
+    <p class="kick">AI Praktikum · 3.0</p><h2 class="hl">shaxsiy kabinet</h2>
+    <div><label class="lbl" for="${id}">Shaxsiy ID</label><div class="inp"><span class="pre" aria-hidden="true">AIP-</span><input id="${id}" value="7KQ2" maxlength="6" autocomplete="off" spellcheck="false" aria-describedby="${id}-h"></div>
+      <p id="${id}-h" style="margin-top:8px;font-size:14px;color:#5A5650">6 ta belgi. Oxirgisini yozganingizda oʻzi tekshiriladi.</p></div>
+    <div><button class="btn" type="submit">${sh('c', 'var(--yl)', '14px')}Kirish</button></div>
+  </form>
+</div></div>
+<p class="slabel">(b) Asosiy sahifa · boʻlak</p>
+<div class="scr">
+  <div class="main-g"><div><p class="kick">Shanba guruhi · AIP-7KQ2XM</p><h2 class="hl" style="margin-top:10px">salom, dilshod</h2></div>
+    <div><p class="kick" style="margin-bottom:10px">Kurs · 1/4 dars yakunlandi</p><div class="dots" role="img" aria-label="1 / 4 dars yakunlandi">${sh('c', 'var(--rd)', '28px')}${sh('o c', '#111', '28px')}${sh('o c', '#111', '28px')}${sh('o c', '#111', '28px')}<span style="font:600 40px/1 var(--jost);margin-left:10px">1/4</span></div></div></div>
+  <div class="cards">
+    <article class="card open"><div class="field" style="background:var(--bl)">${sh('', 'var(--yl)', '38%', 'right:-6%;top:-10%;width:46%;height:auto;aspect-ratio:1')}${sh('c', 'var(--cr)', '24%', 'right:30%;bottom:18%;width:24%;height:auto;aspect-ratio:1')}<span class="n" aria-hidden="true">01</span></div>
+      <div class="card-b"><span class="st">■ Ochiq</span><h3>kirish</h3><p>${T(L[0].s)}</p><p style="font-size:13px">${T(L[0].d)}</p></div></article>
+    <article class="card live"><div class="field" style="background:var(--rd)">${sh('c', 'var(--yl)', '52%', 'right:-8%;top:-14%;width:52%;height:auto;aspect-ratio:1')}${sh('', 'var(--k)', '30%', 'left:46%;bottom:0;width:30%;height:18%')}<span class="n" aria-hidden="true">02</span></div>
+      <div class="card-b"><span class="st">● Jonli · bugun</span><h3>claude va code</h3><p>${T(L[1].s)}</p><p style="font-size:13px">${T(L[1].d)}</p></div></article>
+    <article class="card locked"><div class="field" style="background:var(--cr)"><svg aria-hidden="true" style="position:absolute;right:8%;bottom:12%;width:40%;height:62%" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="50,3 97,97 3,97" fill="none" stroke="#111" stroke-width="3" vector-effect="non-scaling-stroke"/></svg><span class="n" aria-hidden="true">03</span></div>
+      <div class="card-b"><span class="st">▲ Yopiq</span><h3>skill va agentlar</h3><p>${T(L[2].s)}</p><p style="font-size:13px">${T(L[2].d)}</p></div></article>
+  </div>
+</div>
+<p class="slabel">(c) Mashq sahifasi</p>
+<div class="scr">
+  <a class="kick" href="#">← 01-dars · amaliyot</a>
+  <div style="display:flex;align-items:flex-end;gap:16px;margin-top:14px">${sh('t', 'var(--yl)', '64px')}<h2 class="hl">rahbar uchun audio</h2></div>
+  <p style="margin-top:14px;max-width:58ch;font-size:17px">Avval fayllarni yuklab olib, NotebookLMʼga qoʻshing. Keyin promptlardan nusxa oling.</p>
+  <p class="kick" style="margin-top:12px"><span data-count>${doneN()}</span> / ${P.length} bajarildi</p>
+  <div class="ex-g" style="margin-top:32px">
+    <div>${P.map((p, i) => `<article class="pr${p.done ? ' done' : ''}" data-p="${i}">
+      ${[sh('mk c', 'var(--rd)', ''), sh('mk', 'var(--bl)', ''), sh('mk t', 'var(--yl)', '')][i]}
+      <div><h3>${T(p.title).toLowerCase()}</h3><p class="to">${where}${p.to}</p><p class="tx">${txt(p.text)}</p>
+        <div class="row">${cbtn(i, 'btn', `${ic('i-copy', 18)}<span class="lb">Nusxa olish</span>`)}<span class="dn">${sh('', '#111', '12px')}Bajarildi</span></div></div></article>`).join('')}</div>
+    <div><p class="kick" style="padding-bottom:10px">Fayllar</p>${files(ic('i-down', 20))}</div>
+  </div>
+</div>`,
+
+/* ---------------- B2 · De Stijl grid ---------------- */
+b2: id => `
+<div class="g">
+  <div class="cell r sp5 tall" aria-hidden="true"></div>
+  <div class="cell sp7"><p class="kick">AI Praktikum · 3.0</p><h2 class="hl" style="margin-top:12px">Shaxsiy<br>kabinet</h2></div>
+  <div class="cell y sp2" aria-hidden="true"></div>
+  <form class="cell sp7 grid1" style="gap:12px" onsubmit="return false"><label class="kick" for="${id}">Shaxsiy ID</label>
+    <div class="inp"><span class="pre" aria-hidden="true">AIP-</span><input id="${id}" value="7KQ2" maxlength="6" autocomplete="off" spellcheck="false" aria-describedby="${id}-h"></div>
+    <p id="${id}-h" style="font-size:14px">6 ta belgi. Oxirgisini yozganingizda oʻzi tekshiriladi.</p></form>
+  <div class="cell k sp3" style="padding:0"><button class="blk" type="button" style="height:100%">Kirish ${ic('i-next', 22)}</button></div>
+</div>
+<p class="slabel">(b) Asosiy sahifa · boʻlak</p>
+<div class="g">
+  <div class="cell sp8"><p class="kick">Shanba guruhi · AIP-7KQ2XM</p><h2 class="hl" style="margin-top:12px">Salom,<br>Dilshod</h2></div>
+  <div class="cell y sp4" role="img" aria-label="1 / 4 dars yakunlandi"><p class="kick">Dars yakunlandi</p><p class="big" style="margin-top:12px">1/4</p></div>
+  ${L.map(l => `<div class="cell sp4 grid1 ${l.st}" style="padding:0;gap:0;background:var(--k);row-gap:8px">
+     <div class="cell stc ${l.st === 'live' ? 'r' : l.st === 'open' ? 'b' : 'w'}"><span class="n" aria-hidden="true">${l.n}</span><span class="kick">${l.lab}</span></div>
+     <div class="cell ${l.st}"><h3 class="lt">${T(l.t)}</h3><p class="ls">${T(l.s)}</p><p class="ld">${T(l.d)}</p></div></div>`).join('')}
+</div>
+<p class="slabel">(c) Mashq sahifasi</p>
+<div class="g">
+  <div class="cell sp9"><a class="kick" href="#">← 01-dars · Amaliyot · 06</a><h2 class="hl" style="margin-top:12px">Rahbar uchun audio</h2><p style="margin-top:12px;max-width:60ch">Avval fayllarni yuklab olib, NotebookLMʼga qoʻshing. Keyin promptlardan nusxa oling.</p></div>
+  <div class="cell y sp3"><p class="kick">Bajarildi</p><p class="big" style="margin-top:12px"><span data-count>${doneN()}</span>/${P.length}</p></div>
+  <div class="cell sp12" style="padding:0;background:var(--k)"><div class="prs">${P.map((p, i) => `<div class="prow pr${p.done ? ' done' : ''}" data-p="${i}">
+     <div class="cell flag ${p.done ? 'b' : i === 1 ? 'r' : 'y'}" aria-hidden="true"></div>
+     <div class="cell"><h3>${T(p.title)} <span class="dn">· bajarildi</span></h3><p class="to">${where}${p.to}</p><p class="tx">${txt(p.text)}</p></div>
+     <div class="cell k" style="padding:0">${cbtn(i, 'blk', `${ic('i-copy', 22)}<span class="lb">Nusxa olish</span>`)}</div></div>`).join('')}</div></div>
+  <div class="cell b sp4 tall" aria-hidden="true"></div>
+  <div class="cell sp8"><p class="kick" style="margin-bottom:10px">Fayllar</p>${files(ic('i-down', 22))}</div>
+</div>`,
+
+/* ---------------- B3 · modern functional ---------------- */
+b3: id => `
+<div class="scr"><div class="gate-g">
+  <div class="grid1" style="gap:18px"><div class="mark" aria-hidden="true">${sh('c', 'var(--rd)', '28px')}${sh('', 'var(--bl)', '28px')}${sh('t', 'var(--yl)', '28px')}</div>
+    <p class="kick">AI Praktikum · 3.0-oqim</p><h2 class="hl">Shaxsiy kabinet</h2>
+    <p class="legend"><span>${sh('live', '', '')} jonli</span><span>${sh('open', '', '')} ochiq / bajarilgan</span><span>${sh('locked', '', '')} yopiq / navbatda</span></p></div>
+  <form class="panel grid1" style="gap:16px" onsubmit="return false"><div><label class="lbl" for="${id}">Shaxsiy ID</label><div class="inp"><span class="pre" aria-hidden="true">AIP-</span><input id="${id}" value="7KQ2" maxlength="6" autocomplete="off" spellcheck="false" aria-describedby="${id}-h"></div></div>
+    <p id="${id}-h" style="font-size:14px;color:var(--mut)">6 ta belgi. Oxirgisini yozganingizda oʻzi tekshiriladi.</p>
+    <div><button class="btn" type="submit">Kirish ${ic('i-next', 16)}</button></div></form>
+</div></div>
+<p class="slabel">(b) Asosiy sahifa · boʻlak</p>
+<div class="scr"><div class="main-g">
+  <div><p class="kick">Shanba guruhi · AIP-7KQ2XM</p><h2 class="hl" style="margin-top:8px">Salom, Dilshod</h2>
+    <div class="ls" style="margin-top:24px">${L.map(l => `<div class="lr ${l.st}"><span class="sh ${l.st}" role="img" aria-label="${l.lab}"></span><h3>${T(l.t)}</h3><p class="sub">${T(l.s)}</p><p class="dt">${T(l.d)}</p></div>`).join('')}</div></div>
+  <div class="panel"><p class="kick">Kurs progressi</p><p style="font:500 56px/1 var(--jost);margin:10px 0 14px">1/4</p><div class="sq4" role="img" aria-label="1 / 4 dars yakunlandi"><i class="on"></i><i></i><i></i><i></i></div>
+    <p class="legend" style="margin-top:20px"><span>${sh('live', '', '')} jonli</span><span>${sh('open', '', '')} ochiq</span><span>${sh('locked', '', '')} yopiq</span></p></div>
+</div></div>
+<p class="slabel">(c) Mashq sahifasi</p>
+<div class="scr">
+  <a class="kick" href="#">← 01-dars · Amaliyot · 06</a><h2 class="hl" style="margin-top:8px">Rahbar uchun audio</h2>
+  <p style="margin-top:12px;max-width:60ch;color:var(--mut)">Avval fayllarni yuklab olib, NotebookLMʼga qoʻshing. Keyin promptlardan nusxa oling.</p>
+  <p class="legend" style="margin-top:14px"><span>${sh('open', '', '')} bajarildi · <b style="color:var(--ink)"><span data-count>${doneN()}</span> / ${P.length}</b></span><span>${sh('live', '', '')} hozirgi</span><span>${sh('locked', '', '')} navbatda</span></p>
+  <div class="ex-g" style="margin-top:28px">
+    <div class="grid1" style="gap:16px">${P.map((p, i) => `<article class="panel pr${p.done ? ' done' : ''}" data-p="${i}">
+      <span class="sh ${i === 1 ? 'live' : 'locked'}" aria-hidden="true"></span>
+      <div><h3>${T(p.title)}</h3><p class="to">${where}${p.to}</p><p class="tx">${txt(p.text)}</p>
+        <div class="row">${cbtn(i, 'btn', `${ic('i-copy', 16)}<span class="lb">Nusxa olish</span>`)}<span class="dn">Bajarildi</span></div></div></article>`).join('')}</div>
+    <div class="panel"><p class="kick" style="padding-bottom:8px">Fayllar</p>${files(ic('i-down', 18))}</div>
+  </div>
+</div>`,
+};
+
+const live = document.getElementById('live');
+async function copy(t){
+  try { await navigator.clipboard.writeText(t); return true; }
+  catch { const a = Object.assign(document.createElement('textarea'), {value:t}); document.body.append(a); a.select(); let ok = false; try { ok = document.execCommand('copy'); } catch {} a.remove(); return ok; }
+}
+document.querySelectorAll('[data-f]').forEach(f => {
+  f.innerHTML = `<div class="${f.dataset.f}"><p class="slabel">(a) Kirish</p>${B[f.dataset.f]('f' + uid++)}</div>`;
+  f.addEventListener('click', async e => {
+    if (e.target.closest('a[href="#"]')) e.preventDefault();
+    const b = e.target.closest('[data-copy]'); if (!b) return;
+    const i = +b.dataset.copy;
+    if (!(await copy(P[i].text))) { live.textContent = 'Nusxa olinmadi. Matnni qo‘lda belgilang.'; return; }
+    f.querySelector(`[data-p="${i}"]`).classList.add('done');
+    f.querySelector('[data-count]').textContent = f.querySelectorAll('[data-p].done').length;
+    const lb = b.querySelector('.lb'); b.classList.add('flash'); lb.textContent = 'Nusxa olindi';
+    clearTimeout(b._t); b._t = setTimeout(() => { b.classList.remove('flash'); lb.textContent = 'Nusxa olish'; }, 1500);
+    live.textContent = `Nusxa olindi: ${uz(P[i].title)}. Bajarildi.`;
+  });
+});
+for (const w = document.createTreeWalker(document.querySelector('.page'), NodeFilter.SHOW_TEXT); w.nextNode();) if (/[ʻʼ]/.test(w.currentNode.nodeValue)) w.currentNode.nodeValue = uz(w.currentNode.nodeValue);
+
+// ?selftest: headless has no clipboard and synthetic clicks are not user gestures — stub writeText, click P2 copy in every frame, record results
+if (location.search.includes('selftest')) {
+  const copied = []; navigator.clipboard.writeText = async t => { copied.push(t); };
+  document.querySelectorAll('[data-f] [data-copy="1"]').forEach(b => b.click());
+  setTimeout(() => {
+    document.body.dataset.test = [...document.querySelectorAll('[data-f]')].map(f => `${f.dataset.f}:${[...f.querySelectorAll('[data-p]')].map(x => +x.classList.contains('done')).join('')}:${f.querySelector('[data-count]').textContent}`).join(' ')
+      + ` copies=${copied.length} raw-okina=${copied.every(t => t.includes('ʻ'))}`;
+  }, 500);
+}
+</script>
+</body>
+</html>

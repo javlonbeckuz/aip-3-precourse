@@ -1,0 +1,10 @@
+import { launch, URL, SP } from './cdp_fe.mjs';
+import { writeFileSync } from 'node:fs';
+const W = +process.argv[2], name = process.argv[3] || 'zoom';
+const b = await launch(W, W > 600 ? 878 : 844, W < 600);
+await b.goto(URL + '?solo&view=gate');
+await b.ev(`(()=>{const g=document.getElementById('gid');g.value='';g.focus()})()`); await b.type('7KQ2X0'); await b.wait(300);
+await b.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: 2, y: 2 });
+const r = await b.send('Page.captureScreenshot', { format: 'png', clip: { x: 0, y: 500, width: Math.min(W, 420), height: 90, scale: 3 } });
+writeFileSync(`${SP}/${name}_${W}.png`, Buffer.from(r.result.data, 'base64'));
+b.close();

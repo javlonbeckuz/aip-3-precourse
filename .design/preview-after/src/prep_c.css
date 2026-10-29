@@ -1,0 +1,142 @@
+/* ===== lesson 0 prep: option C, flat block cards (ported from comp/prep-c.html; the picture classes are scoped so they never meet the lilac lists) ===== */
+/* ===== OPTION C · flat block cards (horizontal accordion) ===== */
+.prep{padding:8px 16px 56px}
+.prep .deck{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.prep .pc{--pic:112px;justify-content:flex-start;gap:0;min-height:160px;padding:20px;overflow:clip}
+.prep .pc:not(.open){cursor:pointer}
+.prep .pc:not(.open):hover{filter:brightness(1.07)}
+.folder :focus-visible{outline-color:var(--black)}
+.prep .hd{display:grid;grid-template-columns:minmax(0,1fr) var(--pic);grid-template-areas:"no pic" "ti pic" "nt pic";grid-template-rows:auto auto 1fr;column-gap:14px;row-gap:6px;width:100%;min-height:44px;text-align:left;color:inherit}
+.prep .hd .no{grid-area:no}.prep .hd .f-title{grid-area:ti}.prep .hd .prep .nt{grid-area:nt;align-self:start}
+.prep .hd .pic{grid-area:pic;display:block;width:var(--pic);align-self:start;margin-top:-2px}
+.prep .no{font:500 13px/1.35 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+.prep .nt{font:500 14px/1.4 var(--font-body)}
+.ill{display:block;width:100%;height:auto;aspect-ratio:1;overflow:visible}
+.ill *{transform-box:view-box}
+.ill .s{stroke:#000;stroke-width:6;stroke-linejoin:round}
+.ill text{font-family:var(--font-mono);font-weight:500}
+.prep .pc.open .prep .hd{grid-template-columns:minmax(0,1fr);grid-template-areas:"pic" "no" "ti" "nt";grid-template-rows:none;row-gap:6px}
+.prep .pc.open .prep .hd .pic{width:100%;height:220px;display:grid;place-items:center;margin:0 0 10px}
+.prep .pc.open .prep .hd .pic .ill{width:200px;height:200px}
+.prep .bd{display:grid;gap:12px;margin-top:14px}
+.prep .bd[hidden]{display:none}
+.prep .steps{display:grid;gap:6px;padding-left:20px;list-style:decimal;font:400 15px/1.4 var(--font-body)}
+.prep .steps li{display:list-item}
+.prep .acts{display:grid;gap:4px;justify-items:start}
+.pill-ink{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:56px;padding:5px 5px 5px 20px;border:1px solid var(--black);border-radius:999px;font:400 16px/1.25 var(--font-body);color:var(--black);transition:background .15s var(--ease)}
+.pill-ink:hover{background:rgb(0 0 0 / .07)}
+.pill-ink .pc-c{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--black);color:var(--yellow);flex:none;transition:transform .15s var(--ease)}
+.pill-ink:hover .pc-c{transform:translateX(2px)}
+.pc-lk{display:inline-flex;align-items:center;gap:6px;min-height:44px;font:500 15px/1.3 var(--font-body);text-decoration:underline;text-underline-offset:4px}
+.prep .foot{font:500 14px/1.4 var(--font-body)}
+.prep .pf{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:16px}
+.prep .chip{position:relative;display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:5px 12px;border:1.5px solid var(--black);border-radius:14px;background:var(--black);color:var(--yellow);font:500 12px/1.2 var(--font-body);text-transform:uppercase;text-align:left}
+.prep .chip::after{content:"";position:absolute;inset:-8px -4px}/* 44px hit area */
+.prep .chip.off{background:none;color:var(--black)}
+.prep .chip .on{display:none;align-items:center;gap:6px}
+.prep .chip[aria-pressed="true"] .on{display:inline-flex}.prep .chip[aria-pressed="true"] .offt{display:none}
+/* picture state */
+.ill .badge{opacity:0}
+.prep .pc.done .ill .badge{opacity:1}
+.prep .pc.just .ill .badge{animation:pop .25s var(--ease) both}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+.ill:not(.on-screen) *,html.hid .ill *{animation-play-state:paused!important}
+@container (max-width:360px){.prep .pc{--pic:88px}}
+@container (min-width:900px){
+  .prep{padding:calc(24 * var(--u)) calc(66 * var(--u)) calc(80 * var(--u))}
+  .prep .deck{grid-template-columns:repeat(2,minmax(0,1fr));gap:calc(16 * var(--u));align-items:start}
+  .prep .pc{--p1:max(150px,calc(200 * var(--u)));--p2:max(220px,calc(300 * var(--u)));min-height:0;padding:calc(31 * var(--u)) calc(27 * var(--u)) calc(34 * var(--u))}
+  .prep .hd,.prep .pc.open .prep .hd{grid-template-columns:minmax(0,1fr);grid-template-areas:"no" "ti" "pic" "nt";grid-template-rows:none;row-gap:calc(8 * var(--u))}
+  .prep .hd .pic,.prep .pc.open .prep .hd .pic{display:block;width:min(100%,var(--p1));height:auto;margin:calc(14 * var(--u)) 0 calc(14 * var(--u))}
+  .prep .pc.open .prep .hd .pic{width:min(100%,var(--p2))}
+  .prep .pc.open .prep .hd .pic .ill{width:100%;height:auto}
+  .prep .no{font-size:max(12px,calc(15 * var(--u)))}
+  .f-title{font-size:max(16px,calc(22 * var(--u)))}
+  .prep .nt{font-size:max(14px,calc(15 * var(--u)))}
+  .prep .bd{margin-top:calc(16 * var(--u))}
+}
+@container (min-width:1200px){
+  .prep .deck{grid-template-columns:var(--cols,repeat(4,minmax(0,1fr)))}
+}
+
+/* ===== pictures: one loop at a time (the open card), one-shot on open; authored at the FINAL frame ===== */
+.ill{--loop:cubic-bezier(.45,0,.55,1)}
+/* 01 laptop: 6s, free cells fill from the left, hold, reset with a 300ms fade */
+.prep .pc.open .ill.on-screen .l-free{animation:l-fill 3s var(--loop) 1 both;transform-origin:191px 0}
+@keyframes l-fill{0%{transform:scaleX(0)}40%,100%{transform:scaleX(1)}}
+.ill.enter .l-lid{animation:l-rise .5s var(--ease) both}
+@keyframes l-rise{from{transform:translateY(16px);opacity:0}}
+/* 02 google: 6s, flap opens (front V folds up, back flap unfolds), card rises, tick appears, hold, reverse */
+.prep .pc.open .ill.on-screen .g-card{animation:g-card 3s var(--loop) 1 both}
+.prep .pc.open .ill.on-screen .g-tick{animation:g-tick 3s var(--loop) 1 both;transform-origin:150px 94px}
+@keyframes g-card{0%{transform:translateY(24px);opacity:0}40%,100%{transform:translateY(0);opacity:1}}
+@keyframes g-tick{0%,45%{transform:scale(0)}65%,100%{transform:scale(1)}}
+.ill.enter .g-env{animation:g-drop .45s var(--ease) both}
+@keyframes g-drop{from{transform:translateY(-20px);opacity:0}}
+/* 03 claude: 7s, the reply block slides up as one block, holds, fades */
+.prep .pc.open .ill.on-screen .c-reply{animation:c-reply 3s var(--loop) 1 both}
+@keyframes c-reply{0%{transform:translateY(8px);opacity:0}35%,100%{transform:translateY(0);opacity:1}}
+.ill.enter .c-win{animation:c-open .4s var(--ease) both;transform-origin:74px 154px}
+@keyframes c-open{from{transform:scale(.92);opacity:0}}
+/* 04 visa: 6s, the card slides 18 right (revealing the other cards) and back */
+.prep .pc.open .ill.on-screen .v-loop{animation:v-slide 3s var(--loop) 1 both}
+@keyframes v-slide{0%{transform:translateX(0)}35%,60%{transform:translateX(18px)}100%{transform:translateX(0)}}
+.ill.enter .v-in{animation:v-in .6s var(--ease) both}
+@keyframes v-in{from{transform:translateX(60px);opacity:0}}
+/* reduced motion = the finished static frame */
+@media (prefers-reduced-motion:reduce){.ill,.ill *{animation:none!important;transition:none!important}}
+/* lesson page: the 2.0 subtitle under the title */
+.lsub{margin-top:12px;font:500 16px/1.4 var(--font-body);color:var(--white)}
+@container (min-width:900px){.lsub{margin-top:calc(16 * var(--u));font-size:max(16px,calc(20 * var(--u)))}}
+button.ef-row{width:100%;text-align:left;color:inherit;font:inherit}
+/* lesson 2 Amaliyot: section cards */
+.sects{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:8px}
+.sc{min-height:200px;gap:20px}
+.sc .f-label{display:flex;align-items:center;gap:10px}
+.rng{padding:1px 10px;border:1px solid currentColor;border-radius:999px;font:500 12px/1.5 var(--font-mono)}
+.sc-b{display:grid;gap:8px}
+.sc-n{font:400 15px/1.4 var(--font-body)}
+.lib-grp[hidden]{display:none}
+.lib-grp+.lib-grp{margin-top:24px}
+/* section cards span the full page width (user: not squeezed into the 900px text column) */
+.ex-wide{padding:0 16px 40px}
+@container (min-width:900px){.ex-wide{padding:0 calc(66 * var(--u)) calc(48 * var(--u))}.sects{grid-template-columns:repeat(2,minmax(0,1fr));gap:calc(16 * var(--u))}.sc{min-height:calc(260 * var(--u))}}
+@container (min-width:1200px){.sects{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* ux pass 2 */
+.s1 .chip{height:28px;font-size:13px}
+.s1 .chip::after{inset:-8px -4px}
+.s1::after{content:"";display:block;height:72px}/* room for the toast (bottom) so it never covers the last prompt */
+.prep .stp{display:flex;align-items:center;gap:6px;margin-top:10px;font:500 13px/1.3 var(--font-body)}
+.prep .pc.open .stp{display:none}
+.note .nb{margin-top:4px}
+.note .steps{margin-top:6px}
+.gate-lang{gap:4px}
+.gate-lang a{display:inline-grid;place-items:center;min-width:44px;min-height:44px;padding:0}
+/* checkbox-style done control: a square box + label, on yellow (prep), lilac (prompts, end marks) and black (end marks on dark pages) */
+:root{--ck-w:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M4.5 10.5l3.5 3.5 7.5-8.5' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");--ck-b:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M4.5 10.5l3.5 3.5 7.5-8.5' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.s1 .chip,.prep .chip{height:auto;min-height:28px;padding:0 0 0 32px;border:0;border-radius:0;background:none;color:var(--ink);font:500 14px/1.3 var(--font-body);text-transform:none;gap:0;text-align:left}
+.s1 .chip.off,.prep .chip.off{background:none;color:var(--ink)}
+.s1 .chip::before,.prep .chip::before{content:"";position:absolute;left:0;top:50%;width:22px;height:22px;margin-top:-11px;border:2px solid var(--ink);border-radius:6px;background:center/16px no-repeat}
+.s1 .chip:not(.off)::before,.prep .chip:not(.off)::before{background-color:var(--ink);background-image:var(--ck-w)}
+.s1 .chip svg,.prep .chip svg{display:none}
+.s1 .chip::after{inset:-8px -6px}.prep .chip::after{inset:-8px -6px}
+.endb{display:inline-flex;align-items:center;gap:12px;min-height:44px;padding:0;border:0;border-radius:0;background:none;color:var(--ink);font:500 15px/1.3 var(--font-body);text-align:left}
+.endb::before{content:"";flex:none;width:24px;height:24px;border:2px solid currentColor;border-radius:6px;background:center/16px no-repeat}
+.endb[aria-pressed="true"]{background:none;color:var(--ink)}
+.endb[aria-pressed="true"]::before{background-color:currentColor;background-image:var(--ck-w)}
+.endb.dark{border:0;color:var(--white);margin-top:20px}
+.endb.dark[aria-pressed="true"]{background:none;color:var(--white)}
+.endb.dark[aria-pressed="true"]::before{background-image:var(--ck-b)}
+.clearb{min-height:44px;padding:0 18px;border:1.5px solid var(--ink);border-radius:999px;font:500 15px/1 var(--font-body);color:var(--ink)}
+/* the Q1-Q5 disclosure: a chevron that turns when open (no turn under reduced motion: the global rule zeroes transitions) */
+.s1-more>summary::after{content:"";flex:none;width:10px;height:10px;margin-left:auto;margin-right:4px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);transition:transform .2s var(--ease)}
+.s1-more[open]>summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
+/* redundancy pass */
+.s1 li.nonum .no{display:none}
+.s1 li.nonum{grid-template-columns:minmax(0,1fr) auto;align-items:center}
+.s1 li.nonum .body{grid-row:1;grid-column:1}
+.xr.nn{grid-template-columns:minmax(0,1fr) auto}
+/* done = copied: the title gets the check; the Vazifa mark inside the coloured folder panes follows the pane's ink */
+.s1 li.done .tt:not(:has(.acc))::before{content:"✓ ";font-weight:600}/* library rows already get theirs from .acc::before */
+.gt .endb,.gt .endb[aria-pressed="true"]{color:inherit}
+.gt-blue .endb[aria-pressed="true"]::before,.gt-dark .endb[aria-pressed="true"]::before{background-image:var(--ck-b)}

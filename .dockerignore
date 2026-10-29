@@ -1,0 +1,10 @@
+.design
+AI-Praktikum-3.0-final.html
+node_modules
+data
+*.log
+.git
+.env
+scripts
+**/*.test.js
+server/testutil.js

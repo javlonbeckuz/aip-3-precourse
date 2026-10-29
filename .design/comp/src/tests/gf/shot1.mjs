@@ -1,0 +1,10 @@
+import { launch } from './lib.mjs';
+const w = +process.argv[2] || 1440;
+const b = await launch(w, 900);
+await b.goto('http://localhost:8765/comp/glass-options.html', 2500);
+const H = await b.ev('document.documentElement.scrollHeight');
+await b.size(w, H);
+await b.wait(5000);
+await b.fullshot(`full_${w}`);
+console.log(H, JSON.stringify(b.logs.slice(0, 10)));
+b.close();

@@ -1,0 +1,423 @@
+[
+ {
+  "tier": "fix",
+  "n": 1,
+  "title": "A raw code key shows on Hermes card 04",
+  "route": "",
+  "note": "Applied in the real build (tiers 1 and 2 were handed to the real-build agent). Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "fix",
+  "n": 2,
+  "title": "A stray \"}\" prints under the book rows",
+  "route": "",
+  "note": "Applied in the real build (tiers 1 and 2 were handed to the real-build agent). Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "fix",
+  "n": 3,
+  "title": "Hermes prompts are squeezed, and card 10 runs off the screen",
+  "route": "",
+  "note": "Applied in the real build (tiers 1 and 2 were handed to the real-build agent). Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "fix",
+  "n": 4,
+  "title": "The slide viewer breaks on small phones",
+  "route": "",
+  "note": "Applied in the real build (tiers 1 and 2 were handed to the real-build agent). Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "fix",
+  "n": 5,
+  "title": "The login screen fails keyboard and phone users",
+  "route": "",
+  "note": "Applied in the real build (tiers 1 and 2 were handed to the real-build agent). Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 1,
+  "title": "On lesson day, the main card doesn't lead to today's work",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 2,
+  "title": "No link to NotebookLM or Claude anywhere",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 3,
+  "title": "40 of 47 library prompts are copied with unseen [brackets]",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 4,
+  "title": "Taps give no designed feedback on phones",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 5,
+  "title": "Switching folder tabs is slow and uses a blur",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 6,
+  "title": "The popup and toast hide what has focus",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 7,
+  "title": "The first and last screens look unfinished",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 8,
+  "title": "Mono type is used for sentences",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 9,
+  "title": "The type scale has drifted",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 10,
+  "title": "The same things have different names",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 11,
+  "title": "Deep pages lose their place, and the back link is tiny",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 12,
+  "title": "A failed copy is silent",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 13,
+  "title": "Downloads are easy to mix up",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 14,
+  "title": "Alignment slips on desktop and small phones",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 15,
+  "title": "Things jump instead of moving",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 16,
+  "title": "Route changes stall on mid-range phones",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 17,
+  "title": "A glow is still on prompt sections",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 18,
+  "title": "Screen reader and keyboard details",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 19,
+  "title": "Text-spacing and zoom edge cases",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 20,
+  "title": "Motion leftovers",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 21,
+  "title": "Lesson 2 asks students to tick \"I finished the library\"",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "next",
+  "n": 22,
+  "title": "Some 2.0 lines can cause wrong actions",
+  "route": "",
+  "note": "Applied in the real build. Not applied in the preview copy, so no shots.",
+  "status": "applied in real build",
+  "files": {}
+ },
+ {
+  "tier": "call",
+  "n": 1,
+  "title": "Fill the empty lesson tabs",
+  "route": "#/dars/1 (also #/dars/3, #/dars/4?tab=kt)",
+  "note": "today=2026-10-12. Slaydlar pane: slide position as the big numeral, caption, action bottom-right (same anatomy as Vazifa). Kitob pane: rows pushed to the bottom. Numeral drops to 88px under 480px so '78/78' fits.",
+  "status": "approved",
+  "files": {
+   "before390": "call-01-before-390.jpg",
+   "after390": "call-01-after-390.jpg",
+   "before1440": "call-01-before-1440.jpg",
+   "after1440": "call-01-after-1440.jpg"
+  },
+  "extras": [
+   {
+    "note": "Lesson 4 Kitob tab (#/dars/4?tab=kt)",
+    "files": {
+     "before390": "call-01b-before-390.jpg",
+     "after390": "call-01b-after-390.jpg",
+     "before1440": "call-01b-before-1440.jpg",
+     "after1440": "call-01b-after-1440.jpg"
+    }
+   },
+   {
+    "note": "Lesson 3 (blue) Slaydlar tab (#/dars/3)",
+    "files": {
+     "before390": "call-01c-before-390.jpg",
+     "after390": "call-01c-after-390.jpg",
+     "before1440": "call-01c-before-1440.jpg",
+     "after1440": "call-01c-after-1440.jpg"
+    }
+   }
+  ]
+ },
+ {
+  "tier": "call",
+  "n": 2,
+  "title": "Make \"Keyingi qadam\" the strongest thing on home",
+  "route": "#/dastur",
+  "note": "today=2026-10-12 (no live lesson): pill sits in the empty right column at 1440, full width at 390.",
+  "status": "approved",
+  "files": {
+   "before390": "call-02-before-390.jpg",
+   "after390": "call-02-after-390.jpg",
+   "before1440": "call-02-before-1440.jpg",
+   "after1440": "call-02-after-1440.jpg"
+  },
+  "extras": [
+   {
+    "note": "Live-lesson day (today=2026-09-26): pill stays under the ring",
+    "files": {
+     "before390": "call-02b-before-390.jpg",
+     "after390": "call-02b-after-390.jpg",
+     "before1440": "call-02b-before-1440.jpg",
+     "after1440": "call-02b-after-1440.jpg"
+    }
+   }
+  ]
+ },
+ {
+  "tier": "call",
+  "n": 3,
+  "title": "Calm the login screen",
+  "route": "#/kirish",
+  "note": "Rejected by the user; not built, no shots.",
+  "status": "rejected",
+  "files": {}
+ },
+ {
+  "tier": "call",
+  "n": 4,
+  "title": "Replace the 3D server-stack loader",
+  "route": "login -> home",
+  "note": "Rejected by the user; not built, no shots.",
+  "status": "rejected",
+  "files": {}
+ },
+ {
+  "tier": "call",
+  "n": 5,
+  "title": "Remove the background grid",
+  "route": "#/dastur",
+  "note": "today=2026-10-12, top of home. The grid is 5% white, so the difference is subtle in a JPEG: look for the faint cell lines behind the ring and cards (before) vs flat black (after).",
+  "status": "approved",
+  "files": {
+   "before390": "call-05-before-390.jpg",
+   "after390": "call-05-after-390.jpg",
+   "before1440": "call-05-before-1440.jpg",
+   "after1440": "call-05-after-1440.jpg"
+  }
+ },
+ {
+  "tier": "call",
+  "n": 6,
+  "title": "Use the desktop width on inner pages",
+  "route": "#/dars/1/vazifa (also #/dars/4/amaliyot/04)",
+  "note": "today=2026-10-12. Applies from 1200px only: header left, file groups right. The 390 pair is identical by design. Pairs are cropped to the same size, so the shorter AFTER page shows black below. Note: the Hermes 04 raw key visible on the extra shot is the tier-1 bug, fixed in the real build, not in this copy.",
+  "status": "approved",
+  "files": {
+   "before390": "call-06-before-390.jpg",
+   "after390": "call-06-after-390.jpg",
+   "before1440": "call-06-before-1440.jpg",
+   "after1440": "call-06-after-1440.jpg"
+  },
+  "extras": [
+   {
+    "note": "Hermes card 04 (#/dars/4/amaliyot/04)",
+    "files": {
+     "before390": "call-06b-before-390.jpg",
+     "after390": "call-06b-after-390.jpg",
+     "before1440": "call-06b-before-1440.jpg",
+     "after1440": "call-06b-after-1440.jpg"
+    }
+   }
+  ]
+ },
+ {
+  "tier": "call",
+  "n": 7,
+  "title": "Give lesson 4's dark card an edge",
+  "route": "#/dastur (also #/dars/4)",
+  "note": "today=2026-10-12. 1px #3F3F3F outline that follows the folder and tab shape; colour unchanged.",
+  "status": "approved",
+  "files": {
+   "before390": "call-07-before-390.jpg",
+   "after390": "call-07-after-390.jpg",
+   "before1440": "call-07-before-1440.jpg",
+   "after1440": "call-07-after-1440.jpg"
+  },
+  "extras": [
+   {
+    "note": "Lesson 4 page folder (#/dars/4)",
+    "files": {
+     "before390": "call-07b-before-390.jpg",
+     "after390": "call-07b-after-390.jpg",
+     "before1440": "call-07b-before-1440.jpg",
+     "after1440": "call-07b-after-1440.jpg"
+    }
+   }
+  ]
+ },
+ {
+  "tier": "call",
+  "n": 8,
+  "title": "Fix the library grid",
+  "route": "#/dars/2/amaliyot",
+  "note": "today=2026-10-12. 3+2 hole becomes 2+3 spans from 900px, and cards use lesson 2's grey (the grey is the open sub-decision in the report). 390 is stacked in both, so only the colour changes there.",
+  "status": "approved",
+  "files": {
+   "before390": "call-08-before-390.jpg",
+   "after390": "call-08-after-390.jpg",
+   "before1440": "call-08-before-1440.jpg",
+   "after1440": "call-08-after-1440.jpg"
+  }
+ },
+ {
+  "tier": "call",
+  "n": 9,
+  "title": "Show which fields a library prompt needs",
+  "route": "#/dars/2/amaliyot/*",
+  "note": "Rejected by the user; not built, no shots.",
+  "status": "rejected",
+  "files": {}
+ },
+ {
+  "tier": "call",
+  "n": 10,
+  "title": "Drop the gooey filter while a tab slides",
+  "route": "#/dars/1 (tab Slaydlar -> Vazifa)",
+  "note": "Motion strip: 0/100/200/300 ms of the tab switch, captured at 0.1x playback (setTimeout scaled to match), so frames are exact. BEFORE keeps the filter all the way; AFTER has it off while the indicator slides and back on after 450 ms. The pane blur is still the old one in both because that is a tier-2 item. 390 = 4 frames in a row, 1440 = 2x2 grid.",
+  "status": "approved",
+  "files": {
+   "before390": "call-10-before-390.jpg",
+   "after390": "call-10-after-390.jpg",
+   "before1440": "call-10-before-1440.jpg",
+   "after1440": "call-10-after-1440.jpg"
+  }
+ }
+]

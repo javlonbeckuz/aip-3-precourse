@@ -1,0 +1,13 @@
+import { launch } from './cdp_sc.mjs';
+const BASE = 'file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/AI-Praktikum-3.0-final.html';
+const EMPTY = '{"t":{},"sl":{"1":0,"2":0,"3":0,"4":0},"u4":0}';
+const b = await launch(1440,900,false);
+await b.goto(BASE+'?lang=uz#/dastur'); await b.ev(`localStorage.setItem('aip3.demo.v1', ${JSON.stringify(EMPTY)})`); await b.goto(BASE+'?lang=uz#/dars/0'); await b.ev('location.reload()'); await b.wait(1500);
+const st = `JSON.stringify({open:[...document.querySelectorAll('.pc.open')].map(x=>x.id),done:document.querySelectorAll('.pc.done').length,enter:document.querySelectorAll('.ill.enter').length,lbl:document.querySelector('#ph1').getAttribute('aria-labelledby'),chipName:document.querySelector('#pc0 .chip').getAttribute('aria-label')})`;
+console.log('start', await b.ev(st));
+await b.click('#pc0 .chip'); await b.wait(300); console.log('after tick', await b.ev(st));
+await b.click('#pc3 .hd'); await b.wait(200); console.log('opened 04', await b.ev(st));
+await b.ev(`setLang('ru')`); await b.wait(500); console.log('ru', await b.ev(st+'+" | "+document.querySelector("#pc3 .chip").textContent'));
+await b.ev(`setLang('uz')`); await b.wait(400); console.log('uz', await b.ev(st));
+await b.ev(`location.hash='#/dastur'`); await b.wait(300); await b.ev(`location.hash='#/dars/0'`); await b.wait(500); console.log('revisit', await b.ev(st));
+console.log('console', b.logs); b.close();

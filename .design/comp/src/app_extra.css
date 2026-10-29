@@ -1,0 +1,12 @@
+/* app-only rules */
+body[data-booting] .screen{visibility:hidden}/* until /me answered: no flash of the login screen for a signed-in student */
+button.nm-out{width:100%;color:var(--white);background:none;cursor:pointer}
+.lkd{display:inline-flex;align-items:center;gap:6px}
+html.hid .slv-media{filter:blur(24px)}/* the window is not in front */
+.slv-media{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transition:opacity .25s var(--ease)}
+.slv-media.ready{opacity:1}
+.slv-media.failed{display:none}
+.slv-media img,.slv-media video{grid-area:1/1;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none;pointer-events:none}
+.slv-err{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;gap:12px;padding:12px;text-align:center;font:500 14px/1.4 var(--font-body)}
+.slv-err[hidden]{display:none}
+.slv-retry{min-height:44px;padding:0 20px;border:1px solid var(--white);border-radius:999px;font:500 14px/1 var(--font-body)}

@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Element audit · HOZIR → tuzatish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&family=Golos+Text:wght@400;500;600&family=Martian+Mono:wdth,wght@87.5..100,400..500&display=swap">
+<style>
+/* tokens: copied from comp/index.html :root */
+:root{
+  --black:#000;--white:#fff;--hair:#3F3F3F;--tag-line:#595959;--muted:#A6A6A6;
+  --blue:#0A14FC;--grey:#E0E0E0;--yellow:#FDC959;--lilac:#B4A1D1;
+  --dark:#161616;--dark-ink:#9A9A9A;--danger:#FF6B5E;
+  --font-display:'Mona Sans','Roboto Flex',sans-serif;
+  --font-body:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'Martian Mono',ui-monospace,'SF Mono',Consolas,monospace;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+body,h1,h2,h3,p,ol,ul{margin:0}
+ol,ul{padding:0;list-style:none}
+body{background:#0d0d0d;color:var(--white);font:400 16px/1.5 var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+svg{flex:none}
+
+/* page chrome (same as ux-options.html) */
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;background:#050505;border-bottom:1px solid #222;font:500 11px/1.3 var(--font-mono);color:#9a9a9a}
+.bar strong{color:#fff;font-weight:500}
+main{max-width:1200px;margin:0 auto;padding:32px 16px 96px;display:grid;gap:72px}
+.opt-k{font:500 11px/1.4 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.opt-k b{font-weight:500;color:#fff}
+.opt-t{margin-top:10px;font:500 clamp(20px,4vw,32px)/1.1 var(--font-display);font-stretch:125%;text-transform:uppercase;overflow-wrap:anywhere}
+.opt-head{margin-bottom:20px}
+.trio{display:grid;grid-template-columns:minmax(0,1fr);gap:36px}
+@media (min-width:760px){.trio{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}}
+@media (min-width:1000px){.trio.three{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.col{display:grid;gap:12px;align-content:start;min-width:0}
+.ck{display:flex;align-items:center;gap:8px;min-height:22px;flex-wrap:wrap;font:500 11px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ck .rec{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;background:#fff;color:#000}
+.stage{container-type:inline-size;position:relative;background:var(--black);border:1px solid #262626;padding:16px;overflow:hidden}
+.stage.flush{padding:0}
+.stage.tight{padding:12px 0 16px;border-width:1px 0}
+.nw{white-space:nowrap}
+.cap{font-size:15px;line-height:1.5;color:#e6e6ea}
+.legend{max-width:68ch;color:#cfcfd4;font-size:15px}
+.legend p+p{margin-top:8px}
+.legend code{font:400 13px var(--font-mono)}
+
+/* folder card */
+.folder{--f-bg:var(--grey);--f-ink:var(--black);--rise:16px;--r:14px;position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:16px;margin-top:var(--rise);min-height:196px;padding:22px 20px 24px;background:var(--f-bg);color:var(--f-ink);border-radius:var(--r) 0 var(--r) var(--r)}
+.folder>.tab{position:absolute;right:0;bottom:calc(100% - 1px);min-width:35%;height:calc(var(--rise) + 1px);background:var(--f-bg);border-radius:0 var(--r) 0 0}
+.tab>.ramp{position:absolute;right:calc(100% - 1px);bottom:0;height:calc(var(--rise) + 1px);width:calc((var(--rise) + 1px) * 28 / 21);color:var(--f-bg)}
+.folder.flatc{margin-top:0;border-radius:var(--r)}
+.c-grey{--f-bg:var(--grey);--f-ink:var(--black)}
+.c-yellow{--f-bg:var(--yellow);--f-ink:var(--black)}
+.c-dark{--f-bg:var(--dark);--f-ink:var(--dark-ink)}
+.f-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.f-label{font:500 13px/1.35 var(--font-body);text-transform:uppercase}
+.f-arrow{width:28px;height:28px;margin:-2px -4px 0 0}
+.f-arrow.sm{width:24px;height:24px;margin:0}
+.f-title{display:block;font:500 19px/1.36 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.f-sub{display:block;margin-top:8px;font-size:14px;line-height:1.4;max-width:30ch;opacity:.85}
+.c-dark .f-sub{opacity:1}
+.f-num{font:400 64px/.9 var(--font-display);font-stretch:125%;letter-spacing:-.02em}
+.f-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.f-note{font:500 12px/1.3 var(--font-body);text-transform:uppercase}
+.st{display:inline-flex;align-items:center;gap:6px;min-height:30px;margin-top:10px;padding:5px 12px;border:1px solid currentColor;border-radius:999px;font:500 13px/1.2 var(--font-body);text-transform:uppercase}
+.cards{display:grid;gap:12px}
+/* NEW (#5): remaining steps by name, plain text (not links: the tabs above hold the actions) */
+.f-left{font-size:15px;line-height:1.4}
+
+/* lilac tabs + pane (static snapshot of the comp's gooey folder) */
+.gt{--th:58px;position:relative;color:var(--black)}
+.gt-goo{position:absolute;inset:0;pointer-events:none;filter:url(#goo-tabs-sm)}
+.gt-ind{position:absolute;top:0;left:0;width:calc(100% / 3);height:var(--th);background:var(--lilac)}
+.gt-pan{position:absolute;top:var(--th);left:0;right:0;bottom:0;background:var(--lilac)}
+.gt-tabs{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));height:var(--th)}
+.gt-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0 2px;font:500 12px/1 var(--font-display);font-stretch:112%;text-transform:uppercase;color:var(--muted)}
+.gt-tab.on{color:var(--black)}
+.gt-tab .ts{display:inline-flex;align-items:center;gap:3px;font:400 11px/1 var(--font-mono);text-transform:none;white-space:nowrap}
+.gt-body{position:relative;min-height:340px;padding:22px 20px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.p-label{font:500 13px/1.3 var(--font-body);text-transform:uppercase}
+.p-num{font:400 104px/.85 var(--font-display);font-stretch:125%;letter-spacing:-.03em}
+.p-sub{font-size:16px;line-height:1.4;margin-top:6px}
+.p-list{border-top:1px solid rgb(0 0 0 / .25)}
+.p-list li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;min-height:44px;padding:6px 0;border-bottom:1px solid rgb(0 0 0 / .25);font-size:15px;line-height:1.3}
+.p-list .n{font:500 12px/1 var(--font-mono)}
+.gt-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.gt-foot.end{justify-content:flex-end}
+.gt-meta{font:500 13px/1.3 var(--font-body);text-transform:uppercase}
+.play{display:inline-flex;align-items:center;gap:14px;font-size:16px;line-height:1.3;text-align:right}
+.play-circ{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--black);color:var(--lilac);flex:none}
+@container (max-width:300px){.gt-tab{font-size:11px}.gt-body{padding:20px 14px 22px}.p-num{font-size:88px}}
+
+/* lilac prompt row */
+.s1{background:var(--lilac);color:var(--black);padding:24px 16px 28px}
+.s1-eyebrow{font:500 13px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em;color:#2E2440}
+.s1-rule{margin-top:6px;font:500 14px/1.4 var(--font-body);color:var(--black)}
+.s1 ol{margin-top:14px;border-top:1.5px solid var(--black)}
+.s1 li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px 12px;padding:20px 0 24px;border-bottom:1px solid rgb(0 0 0 / .3)}
+.s1 .no{grid-row:1;grid-column:1;font:400 40px/.85 var(--font-display);font-stretch:125%;letter-spacing:-.02em}
+.s1 .done .no{opacity:.3}
+.s1 .body{grid-row:2;grid-column:1/-1;display:grid;gap:8px;min-width:0}
+.s1 .cpw{grid-row:1;grid-column:2}
+.s1 .cp{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:56px}
+.s1 .cp-c{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--black)}
+.s1 .cpl{font:500 11px/1 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+.s1 .tt{font:500 17px/1.25 var(--font-display);font-stretch:125%;text-transform:uppercase;overflow-wrap:anywhere}
+.s1 .to{font:500 15px/1.4 var(--font-body)}
+.s1 .to b{font-weight:600}
+.s1 .tx{font:400 17px/1.6 var(--font-body)}
+.s1 .ph{font-weight:600;text-decoration:underline 1.5px;text-underline-offset:4px}
+.s1 .ph.a{text-decoration:none}
+.s1 .ph.b{text-decoration:none;background:rgb(0 0 0 / .1);border-radius:4px;padding:1px 3px}
+.s1 .lnk{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:12px;font:500 15px/1.3 var(--font-body);text-decoration:underline;text-underline-offset:4px}
+.chip{justify-self:start;display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border:1.5px solid var(--black);border-radius:999px;background:var(--black);color:var(--lilac);font:500 11px/1 var(--font-body);text-transform:uppercase}
+.chip.off{background:none;color:var(--black)}
+/* NEW (#10): mark-done = square checkbox + word, 44px row */
+.mk{justify-self:start;display:inline-flex;align-items:center;gap:10px;min-height:44px;margin:-10px 0;font:500 15px/1.2 var(--font-body)}
+.mk .bx{display:grid;place-items:center;width:22px;height:22px;border:1.5px solid var(--black);border-radius:3px}
+.mk.on .bx{background:var(--black);color:var(--lilac)}
+.toast{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:48px;margin-top:16px;padding:0 6px 0 18px;border:1px solid var(--hair);border-radius:999px;background:var(--black);color:#fff;font-size:15px}
+.toast span:last-child{min-height:44px;display:grid;place-items:center;padding:0 12px;font-weight:500;text-decoration:underline;text-underline-offset:4px}
+
+/* login field (crop of the sign-in, unchanged look) */
+.lg{position:relative;isolation:isolate;padding:36px 20px 28px}
+.lg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:28% 52%;z-index:-1}
+.mx-group{position:relative}
+.mx-group label{display:block;margin-bottom:12px;font:500 12px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:rgb(255 255 255 / .85)}
+.mx-group label,.mx-input,.mx-help{text-shadow:0 1px 2px rgb(0 0 0 / .9),0 0 14px rgb(0 0 0 / .7)}
+.mx-input{display:flex;align-items:baseline;gap:4px;padding:12px 0;min-height:52px;border-bottom:1px solid rgb(255 255 255 / .45);font-size:20px;text-transform:uppercase}
+.mx-input .pre{color:rgb(255 255 255 / .85)}
+.mx-input .ph{color:rgb(255 255 255 / .6)}
+.mx-help{margin-top:8px;font:400 14px/1.4 var(--font-body);color:rgb(255 255 255 / .85)}
+.mx-btn{display:block;width:200px;max-width:100%;margin-top:24px;padding:16px 24px;border-radius:50px;background:#fff;color:#000;text-align:center;font:600 13px/1 var(--font-display);font-stretch:125%;letter-spacing:2px;text-transform:uppercase}
+
+/* nav bar */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:8px;height:64px;padding:0 16px;border-bottom:1px solid var(--hair)}
+.wordmark{font:500 16px/1 var(--font-display);font-stretch:125%;white-space:nowrap;text-transform:uppercase}
+.menu-btn{display:grid;place-items:center;width:44px;height:44px}
+.who{display:inline-flex;align-items:center;gap:6px;min-height:44px;font:500 16px/1 var(--font-body)}
+@container (max-width:300px){.wordmark{font-size:14px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="goo-tabs-sm"><feGaussianBlur in="SourceGraphic" stdDeviation="7" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter>
+  <symbol id="i-ramp" viewBox="0 0 28 21"><path d="M0 21Q4 21 7 18L22 3Q25 0 28 0V21Z" fill="currentColor"/></symbol>
+  <symbol id="i-ne" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 28L28 6M10 6h18v18"/></symbol>
+  <symbol id="i-next" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10h13M11 4.5l5.5 5.5-5.5 5.5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v11M5 9.5l5 5 5-5M4 17h12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 20 20"><path d="M7 4.8v10.4L15.4 10z" fill="currentColor"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M13 7V4.5A1.5 1.5 0 0011.5 3h-7A1.5 1.5 0 003 4.5v7A1.5 1.5 0 004.5 13H7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5l3.5 3.5 7.5-8.5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="12" height="8.5" rx="1.5"/><path d="M7 9V6.5a3 3 0 016 0V9"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 7h14M3 13h14"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l5 5 5-5"/></symbol>
+</defs></svg>
+
+<div class="bar"><span><strong>Element audit</strong> · HOZIR → tuzatish · 9 ta element</span><span>To‘liq ro‘yxat: .design/element-audit.md</span></div>
+
+<main>
+  <section class="legend">
+    <p>One question per element: what does a student think it tells them, and is that true? <b>HOZIR</b> is the comp today, rebuilt from its markup. Next to it is the fix, or two (A/B) where I was genuinely torn. Numbers match the fix list in <code>element-audit.md</code>. #1, the 01-02-03 circles, is already removed, so it is not shown.</p>
+    <p>Not shown here because they are not visual: #2 (the exercise screen needs real 2.0 data), #4 (remove the "Amaliyot" nav link), #9, #15, #18, #19 (copy only). Static snapshots: nothing is clickable.</p>
+    <p><b>Re-audit 2026-10-16:</b> the fixes themselves were checked the same way. #3 now uses the #10 checkbox (it used to show two different done marks), #5 lists what is left as plain text (its link rows duplicated the tab actions), #6 keeps "AIP-" (short IDs already log in on KIRISH), #8 shows the slide count once, and done prep says "Bajarildi · 4/4 qadam" like lesson 2.</p>
+  </section>
+
+  <!-- #3 prompt numbers -->
+  <section aria-labelledby="h3">
+    <div class="opt-head"><p class="opt-k"><b>#3</b> · Mashq · ⚠️</p><h2 class="opt-t" id="h3">“P3” qayerda?</h2></div>
+    <div class="trio">
+      <div class="col"><p class="ck">Hozir</p>
+        <div class="stage flush"><section class="s1"><p class="s1-eyebrow">Promptlar · 2 ta</p><ol>
+          <li class="done"><span class="no">01</span><div class="body"><h3 class="tt">Manbalarni tekshirish</h3><span class="chip"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg>Bajarildi</span></div><div class="cpw"><span class="cp"><span class="cp-c"><svg width="20" height="20" aria-hidden="true"><use href="#i-copy"/></svg></span><span class="cpl">Nusxalash</span></span></div></li>
+          <li><span class="no">02</span><div class="body"><h3 class="tt">Audio-brifing sozlamasi</h3><span class="chip off">Bajarildi deb belgilash</span></div><div class="cpw"><span class="cp"><span class="cp-c"><svg width="20" height="20" aria-hidden="true"><use href="#i-copy"/></svg></span><span class="cpl">Nusxalash</span></span></div></li>
+        </ol><div class="toast"><span>01 bajarildi</span><span>Bekor qilish</span></div></section></div>
+        <p class="cap">«Keyingi qadam» P3 deydi, bu yerda esa faqat 01 va 02 bor.</p>
+      </div>
+      <div class="col"><p class="ck">Tuzatish</p>
+        <div class="stage flush"><section class="s1"><p class="s1-eyebrow">Promptlar · 1 / 2 bajarildi</p><ol>
+          <li class="done"><span class="no">P1</span><div class="body"><h3 class="tt">Manbalarni tekshirish</h3><span class="mk on"><span class="bx"><svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg></span>Bajarildi</span></div><div class="cpw"><span class="cp"><span class="cp-c"><svg width="20" height="20" aria-hidden="true"><use href="#i-copy"/></svg></span><span class="cpl">Nusxalash</span></span></div></li>
+          <li><span class="no">P2</span><div class="body"><h3 class="tt">Audio-brifing sozlamasi</h3><span class="mk"><span class="bx"></span>Bajarildi</span></div><div class="cpw"><span class="cp"><span class="cp-c"><svg width="20" height="20" aria-hidden="true"><use href="#i-copy"/></svg></span><span class="cpl">Nusxalash</span></span></div></li>
+        </ol><div class="toast"><span>P1 bajarildi</span><span>Bekor qilish</span></div></section></div>
+        <p class="cap">Katta raqam havoladagi bilan bir xil: P1, P2, P3. Ikki xonali raqam faqat mashqlarga qoladi. Belgi #10 dagi katakcha.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- #5 yellow result card -->
+  <section aria-labelledby="h5">
+    <div class="opt-head"><p class="opt-k"><b>#5</b> · Dars sahifasi · ⚠️</p><h2 class="opt-t" id="h5">3/6 baho emas</h2></div>
+    <div class="trio">
+      <div class="col"><p class="ck">Hozir</p>
+        <div class="stage"><div class="folder flatc c-yellow">
+          <span class="f-top"><span class="f-label">Sizning natijangiz<br>1-dars · qadamlar</span></span>
+          <span class="f-row"><span class="f-num">3/6</span><span class="f-note">3 ta qadam qoldi</span></span>
+        </div></div>
+        <p class="cap">«Natija» ostidagi 3/6 bahoga (50%) o‘xshaydi; qaysi 3 qadam qolgani aytilmagan.</p>
+      </div>
+      <div class="col"><p class="ck">Tuzatish</p>
+        <div class="stage"><div class="folder flatc c-yellow">
+          <span class="f-top"><span class="f-label">1-dars · bajarilgan qadamlar</span></span>
+          <span class="f-num">3/6</span>
+          <p class="f-left">Qoldi: Amaliyot 01, Amaliyot 04, Vazifa</p>
+        </div></div>
+        <p class="cap">Qaysi 3 qadam qolgani nomi bilan; ochish tugmalari yuqoridagi tablarda, bu yerda takrorlanmaydi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- #6 login field -->
+  <section aria-labelledby="h6">
+    <div class="opt-head"><p class="opt-k"><b>#6</b> · Kirish · ⚠️</p><h2 class="opt-t" id="h6">Maydon to‘ldirilganga o‘xshaydi</h2></div>
+    <div class="trio">
+      <div class="col"><p class="ck">Hozir</p>
+        <div class="stage flush"><div class="lg"><img src="login-pin.webp" alt="" width="1984" height="2400"><div class="mx-group"><label>Shaxsiy ID</label><div class="mx-input"><span class="pre">AIP-</span><span class="ph">7KQ2XM</span></div></div><span class="mx-btn">Kirish</span></div></div>
+        <p class="cap">Kulrang misol yozilgan ID’ga o‘xshaydi: talaba bo‘sh maydon bilan «Kirish»ni bosadi.</p>
+      </div>
+      <div class="col"><p class="ck">Tuzatish</p>
+        <div class="stage flush"><div class="lg"><img src="login-pin.webp" alt="" width="1984" height="2400"><div class="mx-group"><label>Shaxsiy ID</label><div class="mx-input"><span class="pre">AIP-</span></div><p class="mx-help">Masalan: AIP-7KQ2XM</p></div><span class="mx-btn">Kirish</span></div></div>
+        <p class="cap">Maydon bo‘sh ko‘rinadi, misol ostida turadi; «AIP-» joyida qoladi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- #7 placeholder -->
+  <section aria-labelledby="h7">
+    <div class="opt-head"><p class="opt-k"><b>#7</b> · Mashq · ⚠️</p><h2 class="opt-t" id="h7">To‘ldiriladigan joy havola emas</h2></div>
+    <div class="trio three">
+      <div class="col"><p class="ck">Hozir</p>
+        <div class="stage flush"><section class="s1"><ol><li><span class="no">02</span><div class="body"><p class="to"><b>Qayerga:</b> NotebookLM → Studio → Audio Overview → Customize</p><p class="tx">Avval eng muhim 3 ta muammo, keyin <span class="ph">[bo‘lim nomi]</span> bo‘yicha raqamlar.</p></div></li></ol><span class="lnk"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg>PDF varianti · 96 KB</span></section></div>
+        <p class="cap">Qavsli so‘z va pastdagi PDF havolasi bir xil chizilgan: ikkalasi ham bosiladiganga o‘xshaydi.</p>
+      </div>
+      <div class="col"><p class="ck">A <span class="rec">Tavsiya</span></p>
+        <div class="stage flush"><section class="s1"><p class="s1-rule">[Qavslar] ichini o‘zingiz to‘ldirasiz.</p><ol><li><span class="no">P2</span><div class="body"><p class="to"><b>Qayerga:</b> NotebookLM → Studio → Audio Overview → Customize</p><p class="tx">Avval eng muhim 3 ta muammo, keyin <span class="ph a">[bo‘lim nomi]</span> bo‘yicha raqamlar.</p></div></li></ol><span class="lnk"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg>PDF varianti · 96 KB</span></section></div>
+        <p class="cap">Faqat qalin + qavs, chiziqsiz; 2.0 dagi qoida bir marta yuqorida. «Rangsiz, fonsiz» qoidasi saqlanadi.</p>
+      </div>
+      <div class="col"><p class="ck">B</p>
+        <div class="stage flush"><section class="s1"><p class="s1-rule">[Qavslar] ichini o‘zingiz to‘ldirasiz.</p><ol><li><span class="no">P2</span><div class="body"><p class="to"><b>Qayerga:</b> NotebookLM → Studio → Audio Overview → Customize</p><p class="tx">Avval eng muhim 3 ta muammo, keyin <span class="ph b">[bo‘lim nomi]</span> bo‘yicha raqamlar.</p></div></li></ol><span class="lnk"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg>PDF varianti · 96 KB</span></section></div>
+        <p class="cap">Och fon bilan aniqroq, lekin «fonsiz» qoidasini buzadi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- #8 slides pane -->
+  <section aria-labelledby="h8">
+    <div class="opt-head"><p class="opt-k"><b>#8</b> · Dars sahifasi · ⚠️</p><h2 class="opt-t" id="h8">Bosilmaydigan qatorlar</h2></div>
+    <div class="trio">
+      <div class="col"><p class="ck">Hozir</p>
+        <div class="stage flush"><div class="gt"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
+          <div class="gt-tabs"><span class="gt-tab on">Slaydlar<span class="ts"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg>ko‘rildi</span></span><span class="gt-tab">Amaliyot<span class="ts">2/4</span></span><span class="gt-tab">Vazifa<span class="ts">5/8</span></span></div>
+          <div class="gt-body"><p class="p-label">Slaydlar · video<br>Ko‘rildi</p>
+            <ol class="p-list"><li><span class="n">01</span><span>AI va modellar</span></li><li><span class="n">02</span><span>Context nima va u qayerda tugaydi</span></li><li><span class="n">03</span><span>RAG: hujjatlarga tayangan javob</span></li><li><span class="n">04</span><span>NotebookLM bilan ishlash</span></li></ol>
+            <div class="gt-foot"><span class="gt-meta">78 slayd</span><span class="play"><span>Slaydlarni<br>ko‘rish</span><span class="play-circ"><svg width="18" height="18" aria-hidden="true"><use href="#i-play"/></svg></span></span></div></div></div></div>
+        <p class="cap">01–04 qatorlar bob yoki mashqqa o‘xshaydi, bosilmaydi; «ko‘rildi» ikki marta.</p>
+      </div>
+      <div class="col"><p class="ck">Tuzatish (+ #12)</p>
+        <div class="stage flush"><div class="gt"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
+          <div class="gt-tabs"><span class="gt-tab on">Slaydlar<span class="ts"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg>ko‘rildi</span></span><span class="gt-tab">Amaliyot<span class="ts">2/4 mashq</span></span><span class="gt-tab">Vazifa<span class="ts">5/8 prompt</span></span></div>
+          <div class="gt-body"><p class="p-label">Slaydlar · video</p>
+            <div><p class="p-num">78</p><p class="p-sub">ta slayd, hammasi ko‘rildi.</p></div>
+            <div class="gt-foot end"><span class="play"><span>Qaytadan<br>ko‘rish</span><span class="play-circ"><svg width="18" height="18" aria-hidden="true"><use href="#i-play"/></svg></span></span></div></div></div></div>
+        <p class="cap">Boshqa ikki panel kabi: bitta katta raqam, birligi ostida, bitta harakat. Tablardagi kasrlar endi birlik bilan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- #10 done toggle -->
+  <section aria-labelledby="h10">
+    <div class="opt-head"><p class="opt-k"><b>#10</b> · Mashq · ❓</p><h2 class="opt-t" id="h10">Holat emas, tugma</h2></div>
+    <div class="trio">
+      <div class="col"><p class="ck">Hozir</p>
+        <div class="stage flush"><section class="s1"><ol>
+          <li class="done"><span class="no">01</span><div class="body"><h3 class="tt">Manbalarni tekshirish</h3><span class="chip"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg>Bajarildi</span></div></li>
+          <li><span class="no">02</span><div class="body"><h3 class="tt">Audio-brifing sozlamasi</h3><span class="chip off">Bajarildi deb belgilash</span></div></li>
+        </ol></section></div>
+        <p class="cap">Bu pilla bosh sahifadagi «OCHIQ · 3/6 QADAM» bilan bir xil, u esa bosilmaydi.</p>
+      </div>
+      <div class="col"><p class="ck">Tuzatish</p>
+        <div class="stage flush"><section class="s1"><ol>
+          <li class="done"><span class="no">P1</span><div class="body"><h3 class="tt">Manbalarni tekshirish</h3><span class="mk on"><span class="bx"><svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg></span>Bajarildi</span></div></li>
+          <li><span class="no">P2</span><div class="body"><h3 class="tt">Audio-brifing sozlamasi</h3><span class="mk"><span class="bx"></span>Bajarildi</span></div></li>
+        </ol></section></div>
+        <p class="cap">Kvadrat katakcha: hamma biladigan «belgilash» belgisi, holat pillasi bilan adashmaydi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- #11 menu trigger -->
+  <section aria-labelledby="h11">
+    <div class="opt-head"><p class="opt-k"><b>#11</b> · Har bir sahifa · ❓</p><h2 class="opt-t" id="h11">☰ ichida «Chiqish» bor</h2></div>
+    <div class="trio">
+      <div class="col"><p class="ck">Hozir</p>
+        <div class="stage flush"><div class="nav"><span class="wordmark">AI Praktikum 3.0</span><span class="menu-btn"><svg width="20" height="20" aria-hidden="true"><use href="#i-menu"/></svg></span></div></div>
+        <p class="cap">☰ bo‘limlar menyusini va’da qiladi, ichida esa ID, guruh, til va «Chiqish».</p>
+      </div>
+      <div class="col"><p class="ck">Tuzatish</p>
+        <div class="stage flush"><div class="nav"><span class="wordmark">AI Praktikum 3.0</span><span class="who">Dilshod<svg width="18" height="18" aria-hidden="true"><use href="#i-chev"/></svg></span></div></div>
+        <p class="cap">Tugma kimniki ekanini aytadi; kompyuterda ham «Dilshod Rahimov» va pastga strelka.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- #13 #14 #16 #17 lesson cards -->
+  <section aria-labelledby="h13">
+    <div class="opt-head"><p class="opt-k"><b>#13 · #14 · #16 · #17</b> · Bosh sahifa · ❓ 🗑</p><h2 class="opt-t" id="h13">Rang, strelka va takror yozuvlar</h2></div>
+    <div class="trio three">
+      <div class="col"><p class="ck">Hozir</p>
+        <div class="stage tight"><div class="cards">
+          <div class="folder c-yellow"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+            <span class="f-top"><span><span class="f-label">0-dars · tayyorgarlik</span><br><span class="st"><svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg>Tayyor · 4/4</span></span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span>
+            <span class="f-title">O‘rnatish va<br>tayyorgarlik</span></div>
+          <div class="folder c-dark"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+            <span class="f-top"><span><span class="f-label">4-dars · 3-oktabr</span><br><span class="st"><svg width="14" height="14" aria-hidden="true"><use href="#i-lock"/></svg>3-oktabrda ochiladi</span></span></span>
+            <span><span class="f-title">Agent va<br>alternativalar</span><span class="f-sub">10 ta Hermes kartasi va kitob: «Biznesda AI’ni qo‘llash» (lotin va kirill)</span></span></div>
+        </div></div>
+        <p class="cap">Tugagan tayyorgarlik sariq («hali qilish kerak») rangda; «tayyorgarlik» va «3-oktabr» ikki martadan; ↗ «saytdan chiqadi» deb o‘qiladi.</p>
+      </div>
+      <div class="col"><p class="ck">A <span class="rec">Tavsiya</span></p>
+        <div class="stage tight"><div class="cards">
+          <div class="folder c-grey"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+            <span class="f-top"><span><span class="f-label">0-dars · <span class="nw">12-sentabrgacha</span></span><br><span class="st"><svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg>Bajarildi · 4/4 qadam</span></span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span>
+            <span><span class="f-title">Tayyorgarlik</span><span class="f-sub">Kompyuter, Google, Claude, Visa karta</span></span></div>
+          <div class="folder c-dark"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+            <span class="f-top"><span><span class="f-label">4-dars</span><br><span class="st"><svg width="14" height="14" aria-hidden="true"><use href="#i-lock"/></svg>3-oktabrda ochiladi</span></span></span>
+            <span><span class="f-title">Agent va<br>alternativalar</span><span class="f-sub">10 ta Hermes kartasi va kitob: «Biznesda AI’ni qo‘llash» (lotin va kirill)</span></span></div>
+        </div></div>
+        <p class="cap">Tugagani kulrang va 2-dars kabi «Bajarildi · 4/4 qadam»; sariq faqat tayyorgarlik chala bo‘lsa; nom va sana bir martadan. ↗ qoladi.</p>
+      </div>
+      <div class="col"><p class="ck">B</p>
+        <div class="stage tight"><div class="cards">
+          <div class="folder c-grey"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+            <span class="f-top"><span><span class="f-label">0-dars · <span class="nw">12-sentabrgacha</span></span><br><span class="st"><svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg>Bajarildi · 4/4 qadam</span></span><svg class="f-arrow sm" aria-hidden="true"><use href="#i-next"/></svg></span>
+            <span><span class="f-title">Tayyorgarlik</span><span class="f-sub">Kompyuter, Google, Claude, Visa karta</span></span></div>
+          <div class="folder c-dark"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+            <span class="f-top"><span><span class="f-label">4-dars</span><br><span class="st"><svg width="14" height="14" aria-hidden="true"><use href="#i-lock"/></svg>3-oktabrda ochiladi</span></span></span>
+            <span><span class="f-title">Agent va<br>alternativalar</span><span class="f-sub">10 ta Hermes kartasi va kitob: «Biznesda AI’ni qo‘llash» (lotin va kirill)</span></span></div>
+        </div></div>
+        <p class="cap">A + → strelka: ↗ faqat saytdan chiqadigan narsaga (kitob PDF, Claude yuklash) qoladi.</p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

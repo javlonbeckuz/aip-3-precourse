@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="uz-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Birinchi darsgacha · variant C (blok kartalar) · AI Praktikum 3.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&family=Golos+Text:wght@400;500;600&family=Martian+Mono:wdth,wght@87.5..100,400..500&display=swap">
+<style>
+:root{
+  /* brand palette */
+  --black:#000; --white:#fff; --blue:#0A14FC; --grey:#E0E0E0; --yellow:#FDC959; --lilac:#B4A1D1; --danger:#FF6B5E;
+  /* surfaces, text, lines: the only greys (see .design/tokens.md) */
+  --surface-0:#000; --surface-1:#161616;
+  --text-1:#FFF; --text-2:#A6A6A6; --text-3:#8A8A90;/* text-3 = data only (sizes, dates) */
+  --line:#3F3F3F; --line-ui:#595959;
+  --ink:#000; --ink-2:#2E2440;/* text on light fills / secondary text on lilac */
+  /* state colours, one meaning each */
+  --state-live:var(--blue); --state-open:var(--lilac); --state-done:var(--grey); --state-locked:var(--surface-1); --you:var(--yellow);
+  --font-display:'Mona Sans','Roboto Flex',sans-serif;
+  --font-body:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'Martian Mono',ui-monospace,'SF Mono',Consolas,monospace;
+  --ease:cubic-bezier(.2,0,0,1);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+body,h1,h2,h3,p,ol,ul,dl,dd,pre{margin:0}
+ol,ul{padding:0;list-style:none}
+body{background:#0d0d0d;color:var(--white);font:400 16px/1.5 var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+svg{flex:none}
+:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+h1[tabindex="-1"]:focus{outline:none}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.comp-bar{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:10px;padding:8px 16px;background:#050505;border-bottom:1px solid #222;font:500 11px/1 var(--font-mono);color:#9a9a9a;overflow-x:auto;white-space:nowrap}
+.comp-bar strong{color:#fff;font-weight:500;margin-right:6px}
+.comp-bar button{height:28px;padding:0 8px;border:1px solid #2a2a2a;border-radius:4px;font:inherit;color:#9a9a9a}
+.comp-bar button[aria-pressed="true"]{color:#fff;border-color:#555;background:#1a1a1a}
+.frame{container-type:inline-size;max-width:1440px;margin:0 auto;background:var(--black);overflow:hidden}
+/* ===== scale: 1 --u = 1px at a 1440 frame (desktop); mobile uses px ===== */
+.site{--u:1px}
+@container (min-width:900px){.site{--u:calc(min(100cqi, 1440px) / 1440)}}/* full-bleed, but sizes stop growing past their 1440 design size */
+/* ===== nav ===== */
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;height:64px;padding:0 16px;border-bottom:1px solid var(--line)}
+.nav-links{display:flex}
+.home-btn{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--white);border-radius:50%;color:var(--white);transition:background .15s,color .15s}/* round home button: same outline circle as the other circle buttons */
+.home-btn:hover,.home-btn[aria-current]{background:var(--white);color:var(--black)}/* current page = filled */
+.wordmark{font:500 16px/1 var(--font-display);font-stretch:125%;white-space:nowrap;text-transform:uppercase}
+.nav-r{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.nav-name{display:none;min-height:44px;font-size:16px}
+.menu-btn{display:grid;place-items:center;width:44px;height:44px}
+@container (min-width:900px){
+  .nav{height:calc(120 * var(--u));padding:0 calc(49 * var(--u)) 0 calc(66 * var(--u))}
+  .home-btn{width:max(44px,calc(48 * var(--u)));height:max(44px,calc(48 * var(--u)))}
+  .wordmark{font-size:max(17px,calc(22 * var(--u)))}
+  .nav-r{justify-self:end;gap:calc(29 * var(--u))}
+  .nav-name{display:block;font-size:max(14px,calc(16 * var(--u)))}
+  .menu-btn{display:none}
+}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font:500 13px/1.3 var(--font-body);text-transform:uppercase;color:var(--text-2)}
+.eyebrow:is(a):hover{color:var(--white)}
+.eyebrow:is(a),.nav .wordmark{position:relative}
+.eyebrow:is(a)::after,.nav .wordmark::after{content:"";position:absolute;inset:-12px -8px}/* 44px hit area, layout unchanged */
+.headline{font:500 clamp(34px,10.4cqi,46px)/1.18 var(--font-display);font-stretch:125%;text-transform:uppercase;letter-spacing:-.01em}
+.headline .ln{display:flex;align-items:center;gap:12px}
+.lede{font-size:17px;line-height:1.5;color:var(--text-2);max-width:34em}
+/* ===== FOLDER-TAB CARD =====
+   Body: rounded rect, square top-right. Tab: right 35%, rises --rise.
+   Ramp: fixed-ratio SVG (viewBox 28x21) scaled uniformly by height — never stretched. */
+.folder{--f-bg:var(--grey);--f-ink:var(--black);--rise:16px;--r:14px;position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:16px;margin-top:var(--rise);min-height:196px;padding:22px 22px 24px;background:var(--f-bg);color:var(--f-ink);border-radius:var(--r) 0 var(--r) var(--r);transition:filter .15s var(--ease)}
+.folder>.tab{position:absolute;right:0;bottom:calc(100% - 1px);display:flex;align-items:center;justify-content:flex-end;min-width:35%;max-width:calc(100% - var(--rise) * 1.8);height:calc(var(--rise) + 1px);padding:0 16px 0 2px;background:var(--f-bg);border-radius:0 var(--r) 0 0}
+.tab>.ramp{position:absolute;right:calc(100% - 1px);bottom:0;height:calc(var(--rise) + 1px);width:calc((var(--rise) + 1px) * 28 / 21);color:var(--f-bg)}
+a.folder:hover{filter:brightness(1.07)}
+.c-blue{--f-bg:var(--state-live);--f-ink:var(--white)}/* now: once per screen, white text only */
+.c-lilac{--f-bg:var(--state-open);--f-ink:var(--ink)}/* work left */
+.c-yellow{--f-bg:var(--you);--f-ink:var(--ink)}/* prep (lesson 0), and the student's own progress: user decision 2026-10-16, overrides colour-audit #2 */
+.c-grey{--f-bg:var(--state-done);--f-ink:var(--ink)}/* finished: always with a check and "Bajarildi" */
+.c-dark{--f-bg:var(--state-locked);--f-ink:var(--text-2)}/* lesson 4 while locked: lock + date */
+.c-night{--f-bg:var(--state-locked);--f-ink:var(--white)}/* lesson 4 once unlocked: same dark identity, normal ink */
+.f-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.f-label{font:500 13px/1.35 var(--font-body);text-transform:uppercase;max-width:18em}
+.f-arrow{width:28px;height:28px;margin:-2px -4px 0 0}
+.f-title{font:500 19px/1.36 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.f-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.f-note .dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}/* quiet 'now' mark: never filled like a button */
+.f-note{margin-left:auto;font:500 14px/1.3 var(--font-body);text-transform:uppercase;display:inline-flex;align-items:center;gap:6px}
+button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
+@container (min-width:900px){
+  .folder{--rise:calc(21 * var(--u));--r:calc(15 * var(--u));min-height:calc(231 * var(--u));padding:calc(31 * var(--u)) calc(27 * var(--u)) calc(34 * var(--u))}
+  .folder>.tab{padding-right:calc(20 * var(--u))}
+  .f-label{font-size:max(12px,calc(15 * var(--u)))}
+  .f-arrow{width:calc(34 * var(--u));height:calc(34 * var(--u))}
+  .f-title{font-size:max(16px,calc(22 * var(--u)))}
+  .f-note{font-size:max(14px,calc(15 * var(--u)))}
+}
+/* lesson header: back link + one meta line with the lesson's progress (ux-audit H4 A) */
+.dl-h{display:grid;gap:10px;justify-items:start}
+.dl-m{font:500 13px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+@container (min-width:900px){.dl-h{margin-bottom:calc(20 * var(--u))}.dl-h .eyebrow{margin-bottom:0}.dl-m{font-size:max(12px,calc(15 * var(--u)))}}
+/* ===== flat card (non-folder): lesson resources ===== */
+.folder.flatc{margin-top:0;border-radius:var(--r)}
+:is([data-screen="dastur"],[data-screen="dars"],[data-screen="ex"]) .site{
+  isolation:isolate;
+  background:
+    linear-gradient(to right,rgb(255 255 255 / .05) 1px,transparent 1px) 0 0/48px 32px,
+    linear-gradient(to bottom,rgb(255 255 255 / .05) 1px,transparent 1px) 0 0/48px 32px,
+    linear-gradient(to bottom,#000 0,rgb(9 9 12) 100%);
+}
+@container (min-width:900px){
+  :is([data-screen="dastur"],[data-screen="dars"],[data-screen="ex"]) .site{
+    background:
+      linear-gradient(to right,rgb(255 255 255 / .05) 1px,transparent 1px) 0 0/calc(96 * var(--u)) calc(64 * var(--u)),
+      linear-gradient(to bottom,rgb(255 255 255 / .05) 1px,transparent 1px) 0 0/calc(96 * var(--u)) calc(64 * var(--u)),
+      linear-gradient(to bottom,#000 0,rgb(9 9 12) 100%);
+  }
+}
+/* ===== exercise: black header + quiet file list ===== */
+.ex-wrap{max-width:900px;padding:32px 16px 40px}
+.ex-wrap .lede{margin:16px 0 28px}
+.ex-h{font-size:clamp(28px,8.5cqi,40px);line-height:1.1;margin-top:16px}
+.ex-files{max-width:760px}
+.ex-files section+section{margin-top:24px}
+.ef-h{font:500 13px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em;color:var(--white)}
+.ex-files ul{margin-top:8px}
+.ex-files li{border-top:1px solid var(--line)}
+.ef-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;padding:8px 0;font-size:15px;color:var(--text-1)}
+.ef-nm{display:block;overflow-wrap:anywhere;color:var(--white)}
+.ef-mt{display:block;margin-top:3px;font:400 12px/1.3 var(--font-mono);color:var(--text-3)}
+.ef-dl{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);color:var(--white);flex:none;transition:background .15s,color .15s}
+a.ef-row:hover .ef-dl{background:var(--white);color:var(--black)}
+.ef-hint{margin-top:4px;font-size:14px;color:var(--text-2)}
+@container (min-width:900px){
+  .ex-wrap{padding:calc(62 * var(--u)) calc(66 * var(--u)) calc(48 * var(--u))}
+  .ex-h{font-size:calc(56 * var(--u))}
+}
+.ns{display:inline-block;margin-left:6px;padding:1px 8px;border:1px solid currentColor;border-radius:999px;font:500 11px/1.4 var(--font-body);text-transform:uppercase;letter-spacing:.02em;vertical-align:middle;white-space:nowrap}/* "namuna" = placeholder content that 2.0 never showed */
+.grp+.grp{margin-top:24px}
+.ex-files .grp{display:block}
+
+/* ===== OPTION C · flat block cards (horizontal accordion) ===== */
+.comp-bar .sep{width:1px;height:18px;background:#2a2a2a;flex:none}
+.screens{padding:0}
+.frame{overflow:clip}
+.prep{padding:8px 16px 56px}
+.deck{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.pc{--pic:112px;justify-content:flex-start;gap:0;min-height:160px;padding:20px;overflow:clip}
+.pc:not(.open){cursor:pointer}
+.pc:not(.open):hover{filter:brightness(1.07)}
+.folder :focus-visible{outline-color:var(--black)}
+.hd{display:grid;grid-template-columns:minmax(0,1fr) var(--pic);grid-template-areas:"no pic" "ti pic" "nt pic";grid-template-rows:auto auto 1fr;column-gap:14px;row-gap:6px;width:100%;min-height:44px;text-align:left;color:inherit}
+.hd .no{grid-area:no}.hd .f-title{grid-area:ti}.hd .nt{grid-area:nt;align-self:start}
+.hd .pic{grid-area:pic;display:block;width:var(--pic);align-self:start;margin-top:-2px}
+.no{font:500 13px/1.35 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+.nt{font:500 14px/1.4 var(--font-body)}
+.ill{display:block;width:100%;height:auto;aspect-ratio:1;overflow:visible}
+.ill *{transform-box:view-box}
+.ill .s{stroke:#000;stroke-width:6;stroke-linejoin:round}
+.ill text{font-family:var(--font-mono);font-weight:500}
+.pc.open .hd{grid-template-columns:minmax(0,1fr);grid-template-areas:"pic" "no" "ti" "nt";grid-template-rows:none;row-gap:6px}
+.pc.open .hd .pic{width:100%;height:220px;display:grid;place-items:center;margin:0 0 10px}
+.pc.open .hd .pic .ill{width:200px;height:200px}
+.bd{display:grid;gap:12px;margin-top:14px}
+.bd[hidden]{display:none}
+.steps{display:grid;gap:6px;padding-left:20px;list-style:decimal;font:400 15px/1.4 var(--font-body)}
+.steps li{display:list-item}
+.acts{display:grid;gap:4px;justify-items:start}
+.pill-ink{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:56px;padding:5px 5px 5px 20px;border:1px solid var(--black);border-radius:999px;font:400 16px/1.25 var(--font-body);color:var(--black);transition:background .15s var(--ease)}
+.pill-ink:hover{background:rgb(0 0 0 / .07)}
+.pill-ink .pc-c{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--black);color:var(--yellow);flex:none;transition:transform .15s var(--ease)}
+.pill-ink:hover .pc-c{transform:translateX(2px)}
+.lk{display:inline-flex;align-items:center;gap:6px;min-height:44px;font:500 15px/1.3 var(--font-body);text-decoration:underline;text-underline-offset:4px}
+.foot{font:500 14px/1.4 var(--font-body)}
+.pf{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:16px}
+.chip{position:relative;display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:5px 12px;border:1.5px solid var(--black);border-radius:14px;background:var(--black);color:var(--yellow);font:500 12px/1.2 var(--font-body);text-transform:uppercase;text-align:left}
+.chip::after{content:"";position:absolute;inset:-8px -4px}/* 44px hit area */
+.chip.off{background:none;color:var(--black)}
+.chip .on{display:none;align-items:center;gap:6px}
+.chip[aria-pressed="true"] .on{display:inline-flex}.chip[aria-pressed="true"] .offt{display:none}
+/* picture state */
+.ill .badge{opacity:0}
+.pc.done .ill .badge{opacity:1}
+.pc.just .ill .badge{animation:pop .25s var(--ease) both}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+.ill:not(.is-on) *,html.hid .ill *{animation-play-state:paused!important}
+@container (max-width:360px){.pc{--pic:88px}}
+@container (min-width:900px){
+  .eyebrow{font-size:max(12px,calc(15 * var(--u)));margin-bottom:calc(20 * var(--u))}
+  .headline{font-size:calc(88 * var(--u));line-height:calc(104 * var(--u))}
+  .lede{font-size:max(15px,calc(18 * var(--u)));margin-top:calc(24 * var(--u))}
+  .prep{padding:calc(24 * var(--u)) calc(66 * var(--u)) calc(80 * var(--u))}
+  .deck{grid-template-columns:repeat(2,minmax(0,1fr));gap:calc(16 * var(--u));align-items:start}
+  .pc{--p1:max(150px,calc(200 * var(--u)));--p2:max(220px,calc(300 * var(--u)));min-height:0;padding:calc(31 * var(--u)) calc(27 * var(--u)) calc(34 * var(--u))}
+  .hd,.pc.open .hd{grid-template-columns:minmax(0,1fr);grid-template-areas:"no" "ti" "pic" "nt";grid-template-rows:none;row-gap:calc(8 * var(--u))}
+  .hd .pic,.pc.open .hd .pic{display:block;width:min(100%,var(--p1));height:auto;margin:calc(14 * var(--u)) 0 calc(14 * var(--u))}
+  .pc.open .hd .pic{width:min(100%,var(--p2))}
+  .pc.open .hd .pic .ill{width:100%;height:auto}
+  .no{font-size:max(12px,calc(15 * var(--u)))}
+  .f-title{font-size:max(16px,calc(22 * var(--u)))}
+  .nt{font-size:max(14px,calc(15 * var(--u)))}
+  .bd{margin-top:calc(16 * var(--u))}
+}
+@container (min-width:1200px){
+  .deck{grid-template-columns:var(--cols,repeat(4,minmax(0,1fr)))}
+}
+
+/* ===== pictures: one loop at a time (the open card), one-shot on open; authored at the FINAL frame ===== */
+.ill{--loop:cubic-bezier(.45,0,.55,1)}
+/* 01 laptop: 6s, free cells fill from the left, hold, reset with a 300ms fade */
+.pc.open .ill.is-on .l-free{animation:l-fill 6s var(--loop) infinite;transform-origin:191px 0}
+@keyframes l-fill{0%{transform:scaleX(0);opacity:1}14%{transform:scaleX(1)}88%{transform:scaleX(1);opacity:1}93%{transform:scaleX(1);opacity:0}99%{transform:scaleX(0);opacity:0}100%{transform:scaleX(0);opacity:1}}
+.ill.enter .l-lid{animation:l-rise .5s var(--ease) both}
+@keyframes l-rise{from{transform:translateY(16px);opacity:0}}
+/* 02 google: 6s, flap opens (front V folds up, back flap unfolds), card rises, tick appears, hold, reverse */
+.pc.open .ill.is-on .g-card{animation:g-card 6s var(--loop) infinite}
+.pc.open .ill.is-on .g-tick{animation:g-tick 6s var(--loop) infinite;transform-origin:150px 94px}
+@keyframes g-card{0%,18%{transform:translateY(24px);opacity:0}32%,68%{transform:translateY(0);opacity:1}78%,100%{transform:translateY(24px);opacity:0}}
+@keyframes g-tick{0%,34%{transform:scale(0)}40%,62%{transform:scale(1)}66%,100%{transform:scale(0)}}
+.ill.enter .g-env{animation:g-drop .45s var(--ease) both}
+@keyframes g-drop{from{transform:translateY(-20px);opacity:0}}
+/* 03 claude: 7s, the reply block slides up as one block, holds, fades */
+.pc.open .ill.is-on .c-reply{animation:c-reply 7s var(--loop) infinite}
+@keyframes c-reply{0%{transform:translateY(8px);opacity:0}12%{transform:translateY(0);opacity:1}82%{transform:translateY(0);opacity:1}92%{transform:translateY(0);opacity:0}100%{transform:translateY(8px);opacity:0}}
+.ill.enter .c-win{animation:c-open .4s var(--ease) both;transform-origin:74px 154px}
+@keyframes c-open{from{transform:scale(.92);opacity:0}}
+/* 04 visa: 6s, the card slides 18 right (revealing the other cards) and back */
+.pc.open .ill.is-on .v-loop{animation:v-slide 6s var(--loop) infinite}
+@keyframes v-slide{0%{transform:translateX(0)}22%,62%{transform:translateX(18px)}84%,100%{transform:translateX(0)}}
+.ill.enter .v-in{animation:v-in .6s var(--ease) both}
+@keyframes v-in{from{transform:translateX(60px);opacity:0}}
+/* reduced motion = the finished static frame */
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:0s!important;animation:none!important}.ill,.ill *{animation:none!important;transition:none!important}}
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-ne" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 28L28 6M10 6h18v18"/></symbol>
+  <symbol id="i-next" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10h13M11 4.5l5.5 5.5-5.5 5.5"/></symbol>
+  <symbol id="i-back" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 10h-13M9 4.5L3.5 10 9 15.5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v11M5 9.5l5 5 5-5M4 17h12"/></symbol>
+  <symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5l3.5 3.5 7.5-8.5"/></symbol>
+  <symbol id="i-home" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 9.4L10 3.4l6.8 6V16a.6.6 0 0 1-.6.6h-3.4v-4.6H7.2v4.6H3.8a.6.6 0 0 1-.6-.6z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 7h14M3 13h14"/></symbol>
+</defs></svg>
+
+<nav class="comp-bar" aria-label="Komp">
+  <strong>Prep · C · blok kartalar</strong>
+  <button type="button" data-d="0" aria-pressed="false">0/4</button><button type="button" data-d="1" aria-pressed="true">1/4</button><button type="button" data-d="2" aria-pressed="false">2/4</button><button type="button" data-d="3" aria-pressed="false">3/4</button><button type="button" data-d="4" aria-pressed="false">4/4</button>
+  <span class="sep"></span>
+  <button type="button" data-w="390" aria-pressed="false">390</button><button type="button" data-w="1440" aria-pressed="true">1440</button>
+</nav>
+
+<div class="screens"><div class="frame" id="frame"><div class="site" data-screen="ex">
+<header class="nav">
+  <nav class="nav-links" aria-label="Bo‘limlar"><a class="home-btn" href="#" aria-label="Bosh sahifa" title="Bosh sahifa"><svg width="20" height="20" aria-hidden="true"><use href="#i-home"/></svg></a></nav>
+  <a class="wordmark" href="#">AI Praktikum 3.0</a>
+  <div class="nav-r"><button class="nav-name" type="button">Dilshod Rahimov</button><button class="menu-btn" type="button" aria-label="Menyu"><svg width="20" height="20" aria-hidden="true"><use href="#i-menu"/></svg></button></div>
+</header>
+<main>
+<div class="ex-wrap">
+  <div class="dl-h"><a class="eyebrow" href="#"><svg width="16" height="16" aria-hidden="true"><use href="#i-back"/></svg>Dastur</a><p class="dl-m">0-dars · tayyorgarlik · <span id="cnt">1/4 tayyor</span></p></div>
+  <h1 class="headline ex-h">Birinchi darsgacha</h1><p class="lede">Birinchi dars 12-sentabr. Shu ro‘yxatni o‘shangacha tayyorlab qo‘ying — hammasi 30 daqiqacha vaqt oladi, darsda esa to‘g‘ridan-to‘g‘ri ishni boshlaymiz.</p>
+  <div class="ex-files"><section class="grp"><h2 class="ef-h">Qo‘llanma</h2><ul><li><a class="ef-row" href="files/prep-uz.pdf" download><span><span class="sr-only">Yuklab olish: </span><span class="ef-nm">prep-uz.pdf</span><span class="ef-mt">PDF · 6 slayd · 350,6 KB</span></span><span class="ef-dl"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span></a></li></ul></section></div>
+</div>
+<section class="prep" aria-label="Tayyorgarlik · 4 ta band">
+<ol class="deck" id="deck">
+<li class="folder flatc c-yellow pc" id="pc0"><button class="hd" type="button" id="ph0" aria-expanded="false" aria-controls="pb0"><span class="no">01</span><span class="f-title" id="pt0">Kompyuter</span><span class="pic"><svg class="ill" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+<rect class="s" x="18" y="204" width="264" height="26" rx="10" fill="#E0E0E0"/>
+<path d="M122 204h56v4a8 8 0 0 1-8 8h-40a8 8 0 0 1-8-8z" fill="#000"/>
+<g class="l-lid"><rect x="46" y="48" width="208" height="156" rx="14" fill="#000"/><rect x="58" y="60" width="184" height="132" rx="6" fill="#0A14FC"/>
+<rect class="s" x="70" y="72" width="160" height="108" rx="8" fill="#fff"/>
+<rect x="84" y="86" width="70" height="8" rx="4" fill="#E0E0E0"/><rect x="84" y="100" width="44" height="8" rx="4" fill="#E0E0E0"/>
+<text x="84" y="138" font-size="22" fill="#000">5 GB</text>
+<rect x="191.2" y="148" width="11" height="20" rx="3" fill="#E0E0E0"/><rect x="204.6" y="148" width="11" height="20" rx="3" fill="#E0E0E0"/><rect x="84.0" y="148" width="11" height="20" rx="3" fill="#000"/><rect x="97.4" y="148" width="11" height="20" rx="3" fill="#000"/><rect x="110.8" y="148" width="11" height="20" rx="3" fill="#000"/><rect x="124.2" y="148" width="11" height="20" rx="3" fill="#000"/><rect x="137.6" y="148" width="11" height="20" rx="3" fill="#000"/><rect x="151.0" y="148" width="11" height="20" rx="3" fill="#000"/><rect x="164.4" y="148" width="11" height="20" rx="3" fill="#000"/><rect x="177.8" y="148" width="11" height="20" rx="3" fill="#000"/><g class="l-free"><rect x="191.2" y="148" width="11" height="20" rx="3" fill="#FDC959" stroke="#000" stroke-width="3"/><rect x="204.6" y="148" width="11" height="20" rx="3" fill="#FDC959" stroke="#000" stroke-width="3"/></g></g><g transform="translate(278 22)"><g class="badge"><circle r="16" fill="#000"/><path d="M-7 0.5l5 5 9-10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg></span><span class="nt">MacBook tavsiya etiladi, Windows ham bo‘ladi. Telefon yoki planshet yetarli emas.</span></button>
+<div class="bd" id="pb0" role="region" aria-labelledby="pt0" hidden><ol class="steps"><li>Darsga o‘z noutbukingiz bilan keling — praktikum boshdan-oxir amaliy.</li><li>Quvvat adapterini ham oling.</li><li>Diskda kamida 5 GB bo‘sh joy qoldiring.</li></ol></div>
+<div class="pf"><button class="chip off" type="button" aria-pressed="false" aria-label="Bajarildi deb belgilash" aria-describedby="pt0"><span class="offt">Bajarildi deb belgilash</span><span class="on"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg>Bajarildi</span></button></div></li>
+<li class="folder flatc c-yellow pc" id="pc1"><button class="hd" type="button" id="ph1" aria-expanded="false" aria-controls="pb1"><span class="no">02</span><span class="f-title" id="pt1">Google akkaunt</span><span class="pic"><svg class="ill" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+<g class="g-card"><rect class="s" x="92" y="22" width="116" height="150" rx="12" fill="#E0E0E0"/><rect x="108" y="40" width="72" height="9" rx="4.5" fill="#000"/><rect x="108" y="56" width="48" height="9" rx="4.5" fill="#000"/>
+<rect x="108" y="82" width="84" height="24" rx="12" fill="#0A14FC"/><g class="g-tick"><path d="M141 94l6 6 12-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g></g>
+<g class="g-env"><rect class="s" x="66" y="130" width="168" height="142" rx="22" fill="#fff"/><path d="M150.0 160.0A40 40 0 0 0 113.7 183.1" fill="none" stroke="#EA4335" stroke-width="26"/><path d="M113.7 183.1A40 40 0 0 0 115.4 220.0" fill="none" stroke="#FBBC04" stroke-width="26"/><path d="M115.4 220.0A40 40 0 0 0 178.3 228.3" fill="none" stroke="#34A853" stroke-width="26"/><path d="M178.3 228.3A40 40 0 0 0 190.0 201.4" fill="none" stroke="#4285F4" stroke-width="26"/><path d="M150.0 160.0A40 40 0 0 1 181.5 175.4" fill="none" stroke="#4285F4" stroke-width="26"/><rect x="150" y="187" width="53" height="26" fill="#4285F4"/></g><g transform="translate(278 22)"><g class="badge"><circle r="16" fill="#000"/><path d="M-7 0.5l5 5 9-10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg></span><span class="nt">Claude, NotebookLM va Gemini shu akkaunt orqali ochiladi. Akkauntingiz bor bo‘lsa, yangisi shart emas.</span></button>
+<div class="bd" id="pb1" role="region" aria-labelledby="pt1" hidden><ol class="steps"><li>accounts.google.com/signup sahifasini oching.</li><li>Ism, familiya va yangi pochta manzilini kiriting.</li><li>Telefon raqamni tasdiqlang — SMS kod keladi.</li><li>Parolni yozib qo‘ying: darsda kerak bo‘ladi.</li></ol><div class="acts"><a class="pill-ink" href="https://accounts.google.com/signup" target="_blank" rel="noopener noreferrer"><span>Google akkaunt ochish<span class="sr-only"> (yangi oynada ochiladi)</span></span><span class="pc-c"><svg width="26" height="26" aria-hidden="true"><use href="#i-ne"/></svg></span></a></div></div>
+<div class="pf"><button class="chip off" type="button" aria-pressed="false" aria-label="Bajarildi deb belgilash" aria-describedby="pt1"><span class="offt">Bajarildi deb belgilash</span><span class="on"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg>Bajarildi</span></button></div></li>
+<li class="folder flatc c-yellow pc" id="pc2"><button class="hd" type="button" id="ph2" aria-expanded="false" aria-controls="pb2"><span class="no">03</span><span class="f-title" id="pt2">Claude</span><span class="pic"><svg class="ill" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+<g class="c-win"><rect x="32" y="44" width="236" height="204" rx="14" fill="#000"/><circle cx="50" cy="57" r="4" fill="#E0E0E0"/><circle cx="64" cy="57" r="4" fill="#E0E0E0"/><circle cx="78" cy="57" r="4" fill="#E0E0E0"/>
+<path d="M38 70h224v164a8 8 0 0 1-8 8H46a8 8 0 0 1-8-8z" fill="#fff"/>
+<rect x="146" y="82" width="104" height="30" rx="15" fill="#000"/><rect x="162" y="93" width="62" height="8" rx="4" fill="#fff"/>
+<g class="c-reply"><rect class="s" x="48" y="128" width="52" height="52" rx="13" fill="#D97757"/><polygon points="74.0,132.0 75.8,147.2 83.0,138.4 78.9,149.1 93.1,143.0 80.8,152.2 93.0,154.0 80.8,155.8 93.1,165.0 78.9,158.9 83.0,169.6 75.8,160.8 74.0,176.0 72.2,160.8 64.5,170.5 69.1,158.9 54.9,165.0 67.2,155.8 56.0,154.0 67.2,152.2 54.9,143.0 69.1,149.1 64.5,137.5 72.2,147.2" fill="#fff"/>
+<rect x="112" y="130" width="128" height="12" rx="6" fill="#E0E0E0"/><rect x="112" y="150" width="108" height="12" rx="6" fill="#E0E0E0"/><rect x="112" y="170" width="72" height="12" rx="6" fill="#E0E0E0"/></g>
+<rect x="54" y="204" width="192" height="26" rx="13" fill="#E0E0E0"/><circle cx="231" cy="217" r="8" fill="#000"/></g><g transform="translate(278 22)"><g class="badge"><circle r="16" fill="#000"/><path d="M-7 0.5l5 5 9-10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg></span><span class="nt">Praktikumning asosiy vositasi. Avval claude.ai da hisob oching, keyin dasturni o‘rnating.</span></button>
+<div class="bd" id="pb2" role="region" aria-labelledby="pt2" hidden><ol class="steps"><li>claude.ai ga kiring va "Continue with Google" orqali ro‘yxatdan o‘ting.</li><li>claude.ai/download sahifasidan dasturni yuklab oling.</li><li>Mac: .dmg faylni oching va Claude belgisini Applications ichiga tortib tashlang.</li><li>Windows: .exe faylni ishga tushiring va o‘rnatishni tasdiqlang.</li><li>Dasturga o‘sha Google akkaunt bilan kiring.</li></ol><div class="acts"><a class="pill-ink" href="https://claude.ai/download" target="_blank" rel="noopener noreferrer"><span>Claude dasturini yuklash<span class="sr-only"> (yangi oynada ochiladi)</span></span><span class="pc-c"><svg width="26" height="26" aria-hidden="true"><use href="#i-ne"/></svg></span></a><a class="lk" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">claude.ai da hisob ochish<svg width="18" height="18" aria-hidden="true"><use href="#i-ne"/></svg><span class="sr-only"> (yangi oynada ochiladi)</span></a></div></div>
+<div class="pf"><button class="chip off" type="button" aria-pressed="false" aria-label="Bajarildi deb belgilash" aria-describedby="pt2"><span class="offt">Bajarildi deb belgilash</span><span class="on"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg>Bajarildi</span></button></div></li>
+<li class="folder flatc c-yellow pc" id="pc3"><button class="hd" type="button" id="ph3" aria-expanded="false" aria-controls="pb3"><span class="no">04</span><span class="f-title" id="pt3">Visa karta</span><span class="pic"><svg class="ill" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+<g transform="rotate(-9 150 92)"><rect class="s" x="62" y="36" width="176" height="112" rx="12" fill="#E0E0E0"/><rect x="78" y="52" width="56" height="10" rx="5" fill="#000"/></g>
+<g transform="rotate(-3 150 112)"><rect class="s" x="52" y="62" width="184" height="116" rx="12" fill="#E0E0E0"/><rect x="68" y="78" width="56" height="10" rx="5" fill="#000"/></g>
+<g class="v-in"><g class="v-loop"><rect class="s" x="40" y="106" width="196" height="126" rx="12" fill="#0A14FC"/>
+<rect class="s" x="58" y="124" width="38" height="28" rx="6" fill="#FDC959"/>
+<text x="208" y="160" text-anchor="end" font-size="38" fill="#fff" style="font-family:var(--font-display);font-weight:700;font-style:italic;font-stretch:125%">VISA</text>
+<rect x="58" y="198" width="84" height="9" rx="4.5" fill="#fff"/><rect x="150" y="198" width="44" height="9" rx="4.5" fill="#fff"/>
+<circle cx="226" cy="124" r="5" fill="#000"/><path d="M226 124Q246 146 240 176" fill="none" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+<rect class="s" x="226" y="170" width="58" height="38" rx="9" fill="#fff"/><circle cx="238" cy="180" r="3.5" fill="#000"/>
+<text x="262" y="198" text-anchor="middle" font-size="17" fill="#000">$20</text></g></g><g transform="translate(278 22)"><g class="badge"><circle r="16" fill="#000"/><path d="M-7 0.5l5 5 9-10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg></span><span class="nt">Claude Pro obunasi uchun kerak bo‘ladi. Birinchi darsda bepul tarif ham yetarli.</span></button>
+<div class="bd" id="pb3" role="region" aria-labelledby="pt3" hidden><ol class="steps"><li>Bankingizdan xalqaro Visa yoki Mastercard oching — Uzcard va Humo bu yerda ishlamaydi.</li><li>Kartada dollar hisobi va onlayn to‘lov yoqilgan bo‘lsin.</li><li>Pro obunasi oyiga $20. Majburiy emas, lekin ishni ancha yengillashtiradi.</li></ol><p class="foot">Keyingi darslarda kerak bo‘ladi.</p></div>
+<div class="pf"><button class="chip off" type="button" aria-pressed="false" aria-label="Bajarildi deb belgilash" aria-describedby="pt3"><span class="offt">Bajarildi deb belgilash</span><span class="on"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg>Bajarildi</span></button></div></li>
+</ol>
+</section>
+</main>
+</div></div></div>
+<div class="sr-only" id="live" role="status" aria-live="polite"></div>
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const cards = $$('.pc'), deck = $('#deck'), live = $('#live'), cnt = $('#cnt');
+  const titles = cards.map(c => $('.f-title', c).textContent);
+  let done = [true, false, false, false], open = 1;
+  const nextFrom = i => { for (let k = 1; k <= 4; k++) { const j = (i + k) % 4; if (!done[j]) return j; } return -1; };
+  const count = () => done.filter(Boolean).length;
+
+  function play(i) { // one-shot on open: restart the entrance animation of that picture
+    const s = $('.ill', cards[i]); s.classList.remove('enter'); void s.getBoundingClientRect(); s.classList.add('enter');
+  }
+  function render() {
+    cards.forEach((c, i) => {
+      const o = i === open, d = done[i], ch = $('.chip', c);
+      c.classList.toggle('open', o); c.classList.toggle('done', d);
+      $('.hd', c).setAttribute('aria-expanded', o); $('.bd', c).hidden = !o;
+      ch.setAttribute('aria-pressed', d); ch.classList.toggle('off', !d);
+      if (!o) $('.ill', c).classList.remove('enter');
+    });
+    deck.style.setProperty('--cols', open < 0 ? 'repeat(4,minmax(0,1fr))' : cards.map((_, i) => i === open ? '2fr' : '1fr').join(' '));
+    cnt.textContent = count() + '/4 tayyor';
+  }
+  const say = s => { live.textContent = ''; setTimeout(() => live.textContent = s, 30); };
+
+  function toggleOpen(i) { open = open === i ? -1 : i; render(); if (open === i) play(i); }
+  cards.forEach((c, i) => {
+    $('.hd', c).addEventListener('click', () => toggleOpen(i));
+    c.addEventListener('click', e => { if (!e.target.closest('button,a') && !c.classList.contains('open')) toggleOpen(i); }); // empty area of a closed card -> its header button
+    $('.chip', c).addEventListener('click', () => {
+      const was = done[i], prev = open; done[i] = !was;
+      if (!was) { c.classList.add('just'); setTimeout(() => c.classList.remove('just'), 600); open = (open >= 0 && open !== i && !done[open]) ? open : nextFrom(i); }
+      else open = i;
+      render();
+      if (open >= 0 && open !== prev) { play(open); $('.hd', cards[open]).focus(); }
+      say(`${titles[i]}${was ? '' : ' bajarildi'} · ${count()}/4 tayyor`);
+    });
+  });
+
+  // comp bar: demo state + frame width
+  $$('[data-d]').forEach(b => b.addEventListener('click', () => {
+    const d = +b.dataset.d; done = [0, 1, 2, 3].map(i => i < d); open = done.indexOf(false);
+    $$('[data-d]').forEach(x => x.setAttribute('aria-pressed', x === b)); render(); if (open >= 0) play(open);
+  }));
+  $$('[data-w]').forEach(b => b.addEventListener('click', () => {
+    $('#frame').style.maxWidth = b.dataset.w + 'px'; $$('[data-w]').forEach(x => x.setAttribute('aria-pressed', x === b));
+  }));
+
+  // pictures only move while on screen and while the tab is visible (CSS reads .is-on and html.hid)
+  const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('is-on', e.isIntersecting)), {threshold: .2});
+  $$('.ill').forEach(s => io.observe(s));
+  document.addEventListener('visibilitychange', () => document.documentElement.classList.toggle('hid', document.hidden));
+
+  render(); play(open);
+})();
+
+</script>
+</body>
+</html>

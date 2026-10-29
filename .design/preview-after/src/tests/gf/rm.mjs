@@ -1,0 +1,10 @@
+import { launch } from './lib.mjs';
+const b = await launch(1440, 900);
+await b.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
+await b.goto('http://localhost:8765/comp/glass-options.html', 1500);
+await b.ev(`document.querySelectorAll('#lessons .gf-root')[0].scrollIntoView({block:'center'})`); await b.wait(500);
+console.log('entered immediately', await b.ev(`document.querySelectorAll('#lessons .gf-root')[0].hasAttribute('data-entered')`));
+await b.ev(`document.querySelectorAll('#lessons .gf-hit')[0].click()`); await b.wait(60);
+console.log('transform instantly open?', await b.ev(`getComputedStyle(document.querySelector('#lessons .gf-front')).transitionDuration + ' ' + getComputedStyle(document.querySelector('#lessons .gf-sheet')).transitionDuration`));
+await b.shot('rm_open');
+b.close();

@@ -1,0 +1,334 @@
+<title>AIP3 Design Audit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&family=Mona+Sans:wdth,wght@125,500;125,600&display=swap">
+<style>
+/* Layout: the platform's own black stage; each tier is a flat colour block in the platform's meaning (blue = act now, grey = next, yellow = you decide, lilac = keep) */
+:root{
+  --bg:#000; --fg:#fff; --text-2:#B8B8BE; --text-3:#8A8A92; --line:#2E2E33; --line-2:#3F3F45;
+  --blue:#0A14FC; --yellow:#FDC959; --lilac:#B4A1D1; --grey:#E0E0E0; --ink:#0B0B0F; --ink-2:#3A3546;
+  --display:"Mona Sans","Arial Narrow",Arial,sans-serif; --body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"Martian Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:400 16px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 72px}
+h1,h2,h3{font-family:var(--display);font-stretch:125%;font-weight:500;text-transform:uppercase;letter-spacing:-.01em;margin:0;text-wrap:balance}
+.mono{font-family:var(--mono);font-stretch:87.5%}
+.eyebrow{font:600 13px/1.2 var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--text-2)}
+a{color:inherit}
+:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:40px;align-items:end;padding-bottom:40px;border-bottom:1px solid var(--line-2)}
+.hero h1{font-size:clamp(40px,7vw,88px);line-height:.95;margin-top:14px}
+.hero p{color:var(--text-2);max-width:62ch;margin:18px 0 0}
+.verdict{background:var(--blue);border-radius:16px;padding:24px 26px;color:#fff}
+.verdict .v{font:600 clamp(26px,3.2vw,36px)/1 var(--display);font-stretch:125%;text-transform:uppercase}
+.verdict p{color:#E6E7FF;margin:12px 0 0;font-size:15px}
+.verdict .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{font:500 12px/1 var(--mono);font-stretch:87.5%;border:1px solid rgb(255 255 255/.55);border-radius:99px;padding:7px 10px}
+
+/* lens strip */
+.lenses{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:32px 0 8px}
+.lens{border:1px solid var(--line-2);border-radius:14px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.lens .n{font:500 40px/1 var(--display);font-stretch:125%}
+.lens .t{font-weight:600}
+.lens .s{font:400 12px/1.4 var(--mono);font-stretch:87.5%;color:var(--text-3)}
+.lens .k{font-size:13px;color:var(--text-2);line-height:1.4}
+.note{color:var(--text-3);font-size:14px;margin:6px 0 0}
+
+/* tiers */
+.tier{margin-top:56px;border-radius:20px;padding:30px clamp(18px,3vw,36px) 18px}
+.tier.blue{background:var(--blue);color:#fff}
+.tier.grey{background:var(--grey);color:var(--ink)}
+.tier.yellow{background:var(--yellow);color:var(--ink)}
+.tier.lilac{background:var(--lilac);color:var(--ink)}
+.tier header{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:end;justify-content:space-between;padding-bottom:18px}
+.tier h2{font-size:clamp(28px,4vw,48px);line-height:1}
+.tier header p{margin:0;max-width:52ch;font-size:15px;opacity:.85}
+.tier ol{list-style:none;margin:0;padding:0;counter-reset:f}
+.f{display:grid;grid-template-columns:64px minmax(0,1fr);gap:4px 18px;padding:18px 0;border-top:1px solid currentColor;border-top-color:color-mix(in srgb,currentColor 28%,transparent)}
+.f::before{counter-increment:f;content:counter(f,decimal-leading-zero);font:500 34px/1 var(--display);font-stretch:125%;grid-row:1/span 3;opacity:.9}
+.f h3{font-size:19px;line-height:1.2;text-transform:none;font-stretch:115%;letter-spacing:0}
+.f .where{font:400 12px/1.5 var(--mono);font-stretch:87.5%;opacity:.8;overflow-wrap:anywhere}
+.f p{margin:4px 0 0;max-width:78ch;font-size:15px}
+.f .fix{margin-top:6px}
+.f .fix b{font-weight:600}
+.src{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.src span{font:500 11px/1 var(--mono);font-stretch:87.5%;border:1px solid currentColor;border-color:color-mix(in srgb,currentColor 45%,transparent);border-radius:99px;padding:5px 8px;text-transform:uppercase;letter-spacing:.02em}
+.grey .f p,.yellow .f p,.lilac .f p{color:var(--ink-2)}
+
+/* taps table */
+.taps{margin-top:56px}
+.taps h2{font-size:clamp(26px,3.4vw,40px)}
+.tbl{overflow-x:auto;margin-top:16px;border:1px solid var(--line-2);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line)}
+th{font:600 12px/1.2 var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--text-2)}
+td.num{font:500 15px/1 var(--mono);font-stretch:87.5%;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.num b{color:var(--yellow);font-weight:500}
+tr:last-child td{border-bottom:0}
+
+/* plan */
+.plan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.step{border:1px solid var(--line-2);border-radius:14px;padding:18px}
+.step .eyebrow{color:var(--yellow)}
+.step h3{font-size:18px;text-transform:none;font-stretch:115%;margin-top:8px}
+.step p{color:var(--text-2);font-size:14px;margin:8px 0 0}
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line-2);color:var(--text-3);font-size:13px}
+footer .mono{font-size:12px;overflow-wrap:anywhere}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:24px}
+  .lenses{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lens:last-child{grid-column:1/-1}
+  .plan{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .f{grid-template-columns:40px minmax(0,1fr);gap:4px 12px}
+  .f::before{font-size:22px}
+  .tier{border-radius:16px}
+}
+</style>
+
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <div class="eyebrow">AI Praktikum 3.0 · student platform · 19 Oct 2026</div>
+      <h1>Design audit</h1>
+      <p>Five expert lenses ran over every screen of the platform: 42 routes at 320, 390, 1024 and 1440 px, in Uzbek and Russian, on day 0, a live lesson and the all-open course, with empty and finished progress. 96 findings came back. This page merges them into 40 distinct issues, ranked.</p>
+    </div>
+    <div class="verdict">
+      <div class="eyebrow" style="color:#E6E7FF">Verdict</div>
+      <div class="v">Not ready to ship yet</div>
+      <p>The look is on-brief and reads as Praktikum, not a template, and colour contrast passes everywhere. Three small bugs block release, and about a day of usability fixes would make it feel finished.</p>
+      <div class="chips"><span class="chip">5 blockers</span><span class="chip">22 safe fixes</span><span class="chip">10 for you to decide</span></div>
+    </div>
+  </section>
+
+  <div class="lenses" aria-label="Findings per audit lens">
+    <div class="lens"><span class="n">18</span><span class="t">Visual design</span><span class="s">0 crit · 5 high</span><span class="k">Hierarchy, type scale, grid, consistency</span></div>
+    <div class="lens"><span class="n">19</span><span class="t">Accessibility</span><span class="s">0 crit · 4 high</span><span class="k">WCAG 2.2 AA, keyboard, screen reader, zoom</span></div>
+    <div class="lens"><span class="n">20</span><span class="t">UX &amp; copy</span><span class="s">1 crit · 3 high</span><span class="k">Real student jobs, tap counts, Uzbek wording</span></div>
+    <div class="lens"><span class="n">20</span><span class="t">Motion &amp; feel</span><span class="s">0 crit · 3 high</span><span class="k">Timing, easing, fps, press feedback</span></div>
+    <div class="lens"><span class="n">20</span><span class="t">Finish gate</span><span class="s">2 crit · 4 high</span><span class="k">States, edge cases, polish, 1,347 captures</span></div>
+  </div>
+  <p class="note">Every lens respected your earlier decisions: fixed lesson colours, no glows, the hero card, ☰, the login photo, copy = done, Uzbek course material and the 2.0 screen structure.</p>
+
+  <!-- 1 · blockers -->
+  <section class="tier blue" aria-labelledby="t1">
+    <header><h2 id="t1">Fix first</h2><p>Bugs a student would notice today. Each is a one-line or one-rule fix, and two of them are already in the real site's code.</p></header>
+    <ol>
+      <li class="f"><div><h3>A raw code key shows on Hermes card 04</h3><div class="where">#/dars/4/amaliyot/04 · every language and width</div></div>
+        <p>The prompt area reads <span class="mono">⟦HC.NO_PROMPTS⟧</span>, and screen readers announce it as the region name. The text was deleted during the redundancy clean-up, but the code still asks for it.</p>
+        <p class="fix"><b>Fix:</b> render nothing when a card has no prompts, and add a build check that fails on any <span class="mono">⟦</span> in rendered text.</p>
+        <div class="src"><span>UX</span><span>Accessibility</span></div></li>
+      <li class="f"><div><h3>A stray "}" prints under the book rows</h3><div class="where">#/dars/4 · Kitob tab · also in public/aip/app.js</div></div>
+        <p>A template typo (<span class="mono">.join('')}}</span>) shows a lone brace on the finished screen, in both the prototype and the shipping site.</p>
+        <p class="fix"><b>Fix:</b> delete the extra brace in both files, and add a crawl check for stray braces.</p>
+        <div class="src"><span>Finish</span></div></li>
+      <li class="f"><div><h3>Hermes prompts are squeezed, and card 10 runs off the screen</h3><div class="where">#/dars/4/amaliyot/01–10 · 320 and 390</div></div>
+        <p>The copy button keeps its own column, so prompt text gets about 260 px (28–30 characters per line). On card 10 a long URL pushes text to x=449 on a 390 screen, and the copy circle sits on top of the words. The notes show raw backticks, and <span class="mono">[GEMINI_API_KEY]</span> is styled like a placeholder to replace, which would break the config.</p>
+        <p class="fix"><b>Fix:</b> use the exercise-page row (copy circle beside the title, text full width below), add <span class="mono">overflow-wrap:anywhere</span>, show backtick spans as code, and skip placeholder styling inside code.</p>
+        <div class="src"><span>Finish</span><span>Visual</span></div></li>
+      <li class="f"><div><h3>The slide viewer breaks on small phones</h3><div class="where">#/dars/n/slayd/last · 320 Russian</div></div>
+        <p>The "back to lesson" control and the "All slides" pill are clipped. The stage is a tall portrait box while real slides are 16:9, and the real site shows an empty box while a slide loads, or a broken image if it fails.</p>
+        <p class="fix"><b>Fix:</b> a three-column footer that can shrink, <span class="mono">aspect-ratio:16/9</span> on the stage, and a loading state plus "Slayd yuklanmadi · Qayta urinish".</p>
+        <div class="src"><span>Finish</span><span>Visual</span></div></li>
+      <li class="f"><div><h3>The login screen fails keyboard and phone users</h3><div class="where">#/kirish</div></div>
+        <p>KIRISH has no visible focus ring, because the gooey filter erases it. The example line "Masalan: AIP-7KQ2XM" is 11 px on the bright photo, and at 320 a third of its letters fall below 4.5:1.</p>
+        <p class="fix"><b>Fix:</b> draw the focus ring inside the white pill, and give the example line the black halo the error message already uses.</p>
+        <div class="src"><span>Accessibility</span></div></li>
+    </ol>
+  </section>
+
+  <!-- 2 · safe fixes -->
+  <section class="tier grey" aria-labelledby="t2">
+    <header><h2 id="t2">Do next</h2><p>Usability fixes that don't change the look. They reuse patterns the platform already has, so no taste sign-off is needed.</p></header>
+    <ol>
+      <li class="f"><div><h3>On lesson day, the main card doesn't lead to today's work</h3><div class="where">#/dastur · 12 and 26 Sept</div></div>
+        <p>The hero says "Slaydlar · boshlash" while class is doing exercise 01, which is 3 taps away. "Keyingi qadam" points at an older lesson, and every lesson page opens on Slaydlar.</p>
+        <p class="fix"><b>Fix:</b> the hero links to the live lesson's real next step, the block below becomes "Qolib ketgan ish", and lesson pages open on the tab that holds the next step.</p>
+        <div class="src"><span>UX</span></div></li>
+      <li class="f"><div><h3>No link to NotebookLM or Claude anywhere</h3><div class="where">exercises · Vazifa · library</div></div>
+        <p>Seven pages say "upload to NotebookLM" and none links to it. The "new notebook per exercise" rule lives only on the index, which deep links skip.</p>
+        <p class="fix"><b>Fix:</b> add "NotebookLMʼni ochish ↗" with the line "Yangi notebook oching va faqat shu fayllarni yuklang." under each upload step, and "Claudeʼni ochish ↗" in the library.</p>
+        <div class="src"><span>UX</span></div></li>
+      <li class="f"><div><h3>40 of 47 library prompts are copied with unseen [brackets]</h3><div class="where">#/dars/2/amaliyot/*</div></div>
+        <p>Rows are collapsed, so students paste "[Soha]" into Claude unfilled and get a generic answer.</p>
+        <p class="fix"><b>Fix:</b> when a copied prompt has brackets, the toast says "Claudeʼda [qavslar]ni oʻz maʼlumotingiz bilan almashtiring."</p>
+        <div class="src"><span>UX</span></div></li>
+      <li class="f"><div><h3>Taps give no designed feedback on phones</h3><div class="where">all screens · 390</div></div>
+        <p>There are no press states. Android shows a square cyan box, even through the sheet a tap opens, and hover sticks after a tap: the copy circle stays black next to "Nusxalash".</p>
+        <p class="fix"><b>Fix:</b> remove the tap highlight, add a 100 ms <span class="mono">scale(.96)</span> press on circles and pills, and limit hover styles to mouse devices.</p>
+        <div class="src"><span>Motion</span></div></li>
+      <li class="f"><div><h3>Switching folder tabs is slow and uses a blur</h3><div class="where">#/dars/1–4</div></div>
+        <p>The old pane fades out first, the folder is blank for about 50 ms, and the new content is readable only at about 270 ms, through an 8 px blur reveal. On a mid-range laptop the gooey filter drops to about 50 fps.</p>
+        <p class="fix"><b>Fix:</b> one 200 ms crossfade with no blur, the indicator at 260 ms, and no animation when switching tabs with arrow keys.</p>
+        <div class="src"><span>Motion</span></div></li>
+      <li class="f"><div><h3>The popup and toast hide what has focus</h3><div class="where">#/dastur after login · prompt lists</div></div>
+        <p>On desktop the "Yangi dars ochildi" popup covers the Home button. At 400% zoom it fills 74% of the screen. The copy toast covers the focused prompt, and "Bekor qilish" is 22 Tab presses away, so keyboard users can't undo.</p>
+        <p class="fix"><b>Fix:</b> place the popup under the nav, reserve the toast's band with <span class="mono">scroll-padding-bottom</span>, and move the toast next to the button that triggered it.</p>
+        <div class="src"><span>Accessibility</span></div></li>
+      <li class="f"><div><h3>The first and last screens look unfinished</h3><div class="where">#/dastur · #/dars/0</div></div>
+        <p>At 0/4 the ring paints a yellow dot that reads as progress. At 4/4 the course has no "done" message. Finishing prep shows nothing and needs a 1,700 px scroll back. After day 1 the prep page still says "Birinchi darsgacha", and unfinished prep is never suggested.</p>
+        <p class="fix"><b>Fix:</b> hide the arc at 0; add a done line and "Tayyorsiz" endings using the existing next-step block; and send students with no Google or Claude account back to prep.</p>
+        <div class="src"><span>Finish</span><span>UX</span><span>Motion</span></div></li>
+      <li class="f"><div><h3>Mono type is used for sentences</h3><div class="where">Hermes index · 03A/03B picker · welcome</div></div>
+        <p>The Hermes "Natija" lines and the exercise choices are full sentences in small grey Martian Mono. They read like a terminal log, and the type rule says mono is for data only.</p>
+        <p class="fix"><b>Fix:</b> set them in Golos 15 px, and keep mono for counts, sizes and IDs.</p>
+        <div class="src"><span>Visual</span><span>Finish</span></div></li>
+      <li class="f"><div><h3>The type scale has drifted</h3><div class="where">all screens</div></div>
+        <p>24 sizes are in use where the tokens define 8. Labels, copy captions and 320 px tabs are 11 px, below the 13 px minimum. Lesson 4's headline (52 px) is smaller than its own sub-pages (56 px). 68 headings and intros end on a single orphaned word.</p>
+        <p class="fix"><b>Fix:</b> snap to the token scale, make 13 px the floor, set long lesson titles at 64 px, and add <span class="mono">text-wrap:balance</span> to headings.</p>
+        <div class="src"><span>Visual</span><span>Finish</span></div></li>
+      <li class="f"><div><h3>The same things have different names</h3><div class="where">home · lessons · Vazifa · gate</div></div>
+        <p>"qadam" means four things. One exercise is called "Amaliyot 01", "MASHQ 01" and "Asosiy mashq". There are six labels for one done checkbox, three spellings of "manba", and "13 prompts" above a "0/8" counter. Typing 3 characters of an ID says "not found", and the login submits on the 6th character without saying so.</p>
+        <p class="fix"><b>Fix:</b> use one word per meaning ("bajarildi" for counts, "Mashq" for exercises, "Manbalar"); "ID 6 ta belgidan iborat" for short IDs; and a help line that says it logs in on its own.</p>
+        <div class="src"><span>UX</span><span>Accessibility</span></div></li>
+      <li class="f"><div><h3>Deep pages lose their place, and the back link is tiny</h3><div class="where">exercises · Hermes cards · library sections</div></div>
+        <p>"← AMALIYOT" doesn't say which lesson, and the back link is 17 px tall on phones, though it is the main way back.</p>
+        <p class="fix"><b>Fix:</b> labels like "1-dars · Amaliyot", plus an invisible 44 px hit area.</p>
+        <div class="src"><span>UX</span><span>Accessibility</span></div></li>
+      <li class="f"><div><h3>A failed copy is silent</h3><div class="where">every prompt list</div></div>
+        <p>When the clipboard is refused (some in-app browsers on iOS), nothing visible happens and nothing is marked.</p>
+        <p class="fix"><b>Fix:</b> a toast saying "Nusxa olinmadi. Matnni bosib turing va «Nusxalash»ni tanlang."</p>
+        <div class="src"><span>UX</span></div></li>
+      <li class="f"><div><h3>Downloads are easy to mix up</h3><div class="where">exercise pages · Vazifa · Kitob</div></div>
+        <p>Six different briefs are all called "01_Yoriqnoma.pdf", and two different files are both "Talaba_qollanmasi.pdf". The book rows use the → "go to page" pattern instead of the ↓ download circle. Long file names break mid-word.</p>
+        <p class="fix"><b>Fix:</b> unique download names from the server, the standard file row for the book, and line breaks after underscores.</p>
+        <div class="src"><span>UX</span><span>Finish</span></div></li>
+      <li class="f"><div><h3>Alignment slips on desktop and small phones</h3><div class="where">home · exercises · prep · amaliyot index</div></div>
+        <p>Home card titles sit at different heights in one row. The "Keyingi mashq" link floats mid-column. Notes run 110 characters per line. Prep card footers are ragged. Row titles break one word per line at 320, and one list uses two row designs.</p>
+        <p class="fix"><b>Fix:</b> one baseline per card row, a two-ended end row, 62ch notes, stretched prep cards, meta under the title below 400 px, and one row component.</p>
+        <div class="src"><span>Visual</span><span>Finish</span></div></li>
+      <li class="f"><div><h3>Things jump instead of moving</h3><div class="where">prep · sheets · menu · home ring</div></div>
+        <p>Ticking a prep card jumps the next one 85 px in one frame. Bottom sheets appear with no rise. The name menu stays put while the page scrolls away. The ring redraws for a full second on every visit to home, even after Back.</p>
+        <p class="fix"><b>Fix:</b> a View Transition on prep, a 260 ms sheet rise, close the menu on scroll, and animate the ring only when progress went up.</p>
+        <div class="src"><span>Motion</span></div></li>
+      <li class="f"><div><h3>Route changes stall on mid-range phones</h3><div class="where">#/dars/1/amaliyot/01 and others · 4× CPU</div></div>
+        <p>Opening an exercise is a 238 ms long task, 182 ms of it layout, with no press feedback to cover it.</p>
+        <p class="fix"><b>Fix:</b> <span class="mono">content-visibility:auto</span> on off-screen rows. Target: 100 ms or less.</p>
+        <div class="src"><span>Motion</span></div></li>
+      <li class="f"><div><h3>A glow is still on prompt sections</h3><div class="where">every lilac prompt list</div></div>
+        <p>A faint radial lilac glow (<span class="mono">.s1::before</span>) survived the glow removal you asked for.</p>
+        <p class="fix"><b>Fix:</b> delete the rule.</p>
+        <div class="src"><span>Finish</span></div></li>
+      <li class="f"><div><h3>Screen reader and keyboard details</h3><div class="where">library · prep · slides · login</div></div>
+        <p>Each of the 47 library prompts is announced ending in "plus". Four prep toggles share one name. The slide grid toggle has no expanded state, and prompt pages skip from h1 to h3. The ID field blocks password managers. The search field border is 2.998:1, just under 3:1.</p>
+        <p class="fix"><b>Fix:</b> one attribute or one CSS line each; the details are in the accessibility audit.</p>
+        <div class="src"><span>Accessibility</span></div></li>
+      <li class="f"><div><h3>Text-spacing and zoom edge cases</h3><div class="where">#/dars/1–3 · RU/EN at 320</div></div>
+        <p>With larger text spacing, the play circle in the folder footer is clipped. The library's empty search says "nothing found" twice.</p>
+        <p class="fix"><b>Fix:</b> let the footer wrap, and hide the counter at 0.</p>
+        <div class="src"><span>Accessibility</span><span>Finish</span></div></li>
+      <li class="f"><div><h3>Motion leftovers</h3><div class="where">login · toast · accordions</div></div>
+        <p>The welcome loader spends half its time fading in and cuts hard to home. The toast and popup appear with keyframes and vanish in one frame. Reduced motion also kills the gentle fades that help people notice overlays.</p>
+        <p class="fix"><b>Fix:</b> a 160 ms loader fade-in and a 200 ms fade-out over home, matching enter and exit fades on overlays, and opacity-only fades for reduced-motion users.</p>
+        <div class="src"><span>Motion</span></div></li>
+      <li class="f"><div><h3>Lesson 2 asks students to tick "I finished the library"</h3><div class="where">#/dars/2 · Amaliyot</div></div>
+        <p>Nobody finishes a 47-prompt reference, so lesson 2 can stay at 2/3 forever.</p>
+        <p class="fix"><b>Fix:</b> count it done after the first copied prompt, extending copy = done to the library.</p>
+        <div class="src"><span>UX</span></div></li>
+      <li class="f"><div><h3>Some 2.0 lines can cause wrong actions</h3><div class="where">Vazifa sheet rule 3 · exercise 01 P4 · lesson ledes</div></div>
+        <p>"…qolganini oʻchiring" can read as "delete the sources". Lesson 2 and 3 intros promise practice that 3.0 doesn't have.</p>
+        <p class="fix"><b>Fix:</b> a content edit for the course owner: "belgisini olib tashlang (oʻchirmang)". Confirm the ledes with the mentor.</p>
+        <div class="src"><span>UX</span></div></li>
+    </ol>
+  </section>
+
+  <!-- 3 · look decisions -->
+  <section class="tier yellow" aria-labelledby="t3">
+    <header><h2 id="t3">Your call</h2><p>These change how the platform looks, so they wait for your decision. Ranked by impact.</p></header>
+    <ol>
+      <li class="f"><div><h3>Fill the empty lesson tabs</h3><div class="where">#/dars/1–4 · Slaydlar and Kitob panes</div></div>
+        <p>About 85% of the biggest coloured shape on every lesson page is empty, because the Slaydlar tab holds one label and one button. Vazifa shows how to fill it: one huge "5/8" numeral.</p>
+        <p class="fix"><b>Proposal:</b> the same layout for every tab: the slide position ("14/40") as the big numeral, with the action bottom-right.</p>
+        <div class="src"><span>Visual</span><span>Finish</span></div></li>
+      <li class="f"><div><h3>Make "Keyingi qadam" the strongest thing on home</h3><div class="where">#/dastur</div></div>
+        <p>The one next action is an 18 px line under the ring, and on most days the right half of the desktop home is empty.</p>
+        <p class="fix"><b>Proposal:</b> the reference's outline pill with the circle arrow, placed in the empty right column; full width on phones.</p>
+        <div class="src"><span>Visual</span></div></li>
+      <li class="f"><div><h3>Calm the login screen</h3><div class="where">#/kirish</div></div>
+        <p>The ID field still has a glow underline (red on error), a bouncy curve and a 10 px slide. The wordmark wave loops forever, uses about 15% of a mid-range phone's processor while the student types, and fails WCAG 2.2.2. "SHAXSIY KABINET" dissolves into the bright wave on phones.</p>
+        <p class="fix"><b>Proposal:</b> a plain 2 px underline, the wave plays 2–3 times and stops, and a soft dark halo behind the headline. The photo stays.</p>
+        <div class="src"><span>Visual</span><span>Motion</span><span>Accessibility</span></div></li>
+      <li class="f"><div><h3>Replace the 3D server-stack loader</h3><div class="where">login → home</div></div>
+        <p>It's the only shaded 3D object in a flat product, with red and green blinking lights, and it reads as stock art.</p>
+        <p class="fix"><b>Proposal:</b> a black screen with "Xush kelibsiz, {ism}!" in the display face, optionally the yellow ring drawing once.</p>
+        <div class="src"><span>Visual</span><span>Finish</span><span>Motion</span></div></li>
+      <li class="f"><div><h3>Remove the background grid</h3><div class="where">every app screen</div></div>
+        <p>The taste profile lists grids under "Never", but the tokens still draw a 5% grid and a floor gradient. With the glows gone, it is the last ambient decoration.</p>
+        <p class="fix"><b>Proposal:</b> pure black, as in the reference, and update tokens.md so the two docs agree.</p>
+        <div class="src"><span>Visual</span><span>Finish</span></div></li>
+      <li class="f"><div><h3>Use the desktop width on inner pages</h3><div class="where">Vazifa · exercises · prep · Hermes at 1440</div></div>
+        <p>Sub-pages are one 770 px column, leaving 42–60% of the screen black, and the copy circles sit 300 px away from the text they copy.</p>
+        <p class="fix"><b>Proposal:</b> reuse the lesson page's two-column split above 1200 px: header left, file groups right.</p>
+        <div class="src"><span>Visual</span><span>Finish</span></div></li>
+      <li class="f"><div><h3>Give lesson 4's dark card an edge</h3><div class="where">#/dastur · #/dars/4</div></div>
+        <p>#161616 on black is 1.16:1, so the folder shape disappears and the card reads as a hole in the list.</p>
+        <p class="fix"><b>Proposal:</b> a 1 px #3F3F3F outline, the same hairline the nav uses. The colour stays.</p>
+        <div class="src"><span>Visual</span></div></li>
+      <li class="f"><div><h3>Fix the library grid</h3><div class="where">#/dars/2/amaliyot · 1024+</div></div>
+        <p>Five cards in a 3+2 grid leave a hole that looks like a missing sixth section, and the cards are lilac (lesson 1's colour) on lesson 2's page.</p>
+        <p class="fix"><b>Proposal:</b> home's 2+3 span rule, and decide whether section cards follow lesson 2's grey.</p>
+        <div class="src"><span>Visual</span></div></li>
+      <li class="f"><div><h3>Show which fields a library prompt needs</h3><div class="where">#/dars/2/amaliyot/*</div></div>
+        <p>This goes beyond the copy toast in "Do next".</p>
+        <p class="fix"><b>Proposal:</b> one line under each collapsed title, such as "Toʻldiring: [Soha]".</p>
+        <div class="src"><span>UX</span></div></li>
+      <li class="f"><div><h3>Drop the gooey filter while a tab slides</h3><div class="where">#/dars/n · desktop</div></div>
+        <p>Only needed if the 260 ms timing fix in "Do next" still stutters.</p>
+        <p class="fix"><b>Proposal:</b> a plain indicator while it moves, with the filter back on when it lands. This also fixes Safari, where the tab joint jumps today.</p>
+        <div class="src"><span>Motion</span></div></li>
+    </ol>
+  </section>
+
+  <!-- 4 · strengths -->
+  <section class="tier lilac" aria-labelledby="t4">
+    <header><h2 id="t4">Keep</h2><p>What every lens agreed the platform does well.</p></header>
+    <ol>
+      <li class="f"><div><h3>It reads as Praktikum, not a template</h3><div class="where">all five lenses</div></div>
+        <p>Fixed lesson colours, folder cards, 88 px headlines and full-bleed lilac prompt lists are used consistently. There are no slop components: no gradients on content, no fake data, no 3-card feature rows. The exercise page is the clearest screen in the product.</p></li>
+      <li class="f"><div><h3>The colour system is fully AA</h3><div class="where">accessibility · 42 routes × 4 widths</div></div>
+        <p>0 text-contrast failures, measured both from styles and on real pixels; the lowest pair is 6.12:1. State is never shown by colour alone: there is always a ✓ or a word.</p></li>
+      <li class="f"><div><h3>Localisation and semantics hold</h3><div class="where">finish · accessibility</div></div>
+        <p>There is no raw ʻ/ʼ in 1,347 captures, and no horizontal scroll at 320 on any route. Course text is tagged Uzbek inside RU and EN. Tabs, dialogs, menus and live regions are built correctly, and reduced motion is fully honoured.</p></li>
+      <li class="f"><div><h3>Feedback is real and specific</h3><div class="where">UX · motion</div></div>
+        <p>Every gate error says what to do. Copy gives "Nusxalandi", marks the prompt and offers 5 s of undo. Locked and unknown links land on home with a reason. The prep pictures play once, pause off-screen and respect reduced motion. There are no console errors anywhere.</p></li>
+    </ol>
+  </section>
+
+  <section class="taps" aria-labelledby="t5">
+    <h2 id="t5">Taps for real student jobs</h2>
+    <p class="note">First-time student on a 390 px phone. In-app taps only.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Job</th><th>Today</th><th>After fixes</th></tr></thead>
+      <tbody>
+        <tr><td>Start today's exercise in class (lesson 1 day)</td><td class="num">3</td><td class="num"><b>1</b></td></tr>
+        <tr><td>Start today's slides (lesson 3 day)</td><td class="num">2</td><td class="num"><b>1</b></td></tr>
+        <tr><td>Exercise prompt into NotebookLM</td><td class="num">9</td><td class="num"><b>6</b></td></tr>
+        <tr><td>Vazifa: first prompt into NotebookLM</td><td class="num">9</td><td class="num"><b>7</b></td></tr>
+        <tr><td>Download all files of one exercise</td><td class="num">3</td><td class="num"><b>2</b></td></tr>
+        <tr><td>Switch language mid-page (phone)</td><td class="num">3</td><td class="num"><b>2</b></td></tr>
+        <tr><td>Finish prep</td><td class="num">8 + scroll</td><td class="num"><b>8</b></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="taps" aria-labelledby="t6">
+    <h2 id="t6">Suggested order</h2>
+    <div class="plan">
+      <div class="step"><div class="eyebrow">Round 1</div><h3>Blockers + safe fixes</h3><p>The 5 blockers and the 22 safe fixes, built and crawled again at 320, 390, 1024 and 1440 in UZ and RU. No look changes.</p></div>
+      <div class="step"><div class="eyebrow">Round 2</div><h3>Your look decisions</h3><p>Pick from the 10 in "Your call". Each one is built as a before/after preview first, then applied.</p></div>
+      <div class="step"><div class="eyebrow">Round 3</div><h3>Finish gate again</h3><p>Re-run the same finish crawl. It ships when there are no blockers and no new findings.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Sources: five audit files in the project folder, each with measurements, screenshots and exact CSS values.</p>
+    <p class="mono">.design/audit-2026-10-19/ visual.md · a11y.md · ux.md · motion.md · finish.md</p>
+  </footer>
+</div>

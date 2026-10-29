@@ -1,0 +1,8 @@
+/* app-only rules */
+body[data-booting] .screen{visibility:hidden}/* until /me answered: no flash of the login screen for a signed-in student */
+button.nm-out{width:100%;color:var(--white);background:none;cursor:pointer}
+.lkd{display:inline-flex;align-items:center;gap:6px}
+.slv-media{position:relative;display:grid;place-items:center;width:100%;height:100%;min-height:280px}
+.slv-media img,.slv-media video{grid-area:1/1;max-width:100%;max-height:min(70svh,720px);width:auto;height:auto;object-fit:contain;user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none;pointer-events:none}
+.slv-stage{overflow:hidden}
+html.hid .slv-media{filter:blur(24px)}/* the window is not in front */

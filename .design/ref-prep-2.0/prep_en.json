@@ -1,0 +1,92 @@
+{
+ "lesson": {
+  "n": 0,
+  "title": "Preparation",
+  "subtitle": "The setup and preparation stage",
+  "summary": "We install what you need, open the accounts, and set up the environment we will use throughout the praktikum.",
+  "topics": [
+   "Set up",
+   "Cod",
+   "Requirements"
+  ],
+  "published": false,
+  "slideCount": 0,
+  "slideKind": "image",
+  "hasBook": false,
+  "bookNote": "",
+  "bookVariants": [],
+  "homework": "",
+  "materials": [],
+  "prompts": null,
+  "praktikum": null,
+  "date": null
+ },
+ "prep": {
+  "intro": "The first lesson is {sana}. Have this list ready by then — it takes about 30 minutes in all, and it means we start working straight away in class.",
+  "items": [
+   {
+    "brand": "device",
+    "title": "A computer",
+    "note": "A MacBook is recommended, Windows works too. A phone or a tablet is not enough.",
+    "steps": [
+     "Bring your own laptop — the praktikum is hands-on from beginning to end.",
+     "Bring the charger as well.",
+     "Leave at least 5 GB free on the disk."
+    ],
+    "actions": []
+   },
+   {
+    "brand": "google",
+    "title": "A Google account",
+    "note": "Claude, NotebookLM and Gemini all open through this account. If you already have one, you do not need a new one.",
+    "steps": [
+     "Open accounts.google.com/signup.",
+     "Enter your first name, last name and a new email address.",
+     "Confirm your phone number — a code arrives by SMS.",
+     "Write the password down: you will need it in class."
+    ],
+    "actions": [
+     {
+      "label": "Create a Google account",
+      "url": "https://accounts.google.com/signup"
+     }
+    ]
+   },
+   {
+    "brand": "claude",
+    "title": "Claude",
+    "note": "The main tool of the praktikum. Open an account on claude.ai first, then install the app.",
+    "steps": [
+     "Go to claude.ai and sign up with \"Continue with Google\".",
+     "Download the app from claude.ai/download.",
+     "Mac: open the .dmg and drag the Claude icon into Applications.",
+     "Windows: run the .exe and confirm the installation.",
+     "Sign in to the app with that same Google account."
+    ],
+    "actions": [
+     {
+      "label": "Download the Claude app",
+      "url": "https://claude.ai/download"
+     },
+     {
+      "label": "Open an account on claude.ai",
+      "url": "https://claude.ai/",
+      "quiet": true
+     }
+    ]
+   },
+   {
+    "brand": "visa",
+    "title": "A Visa card",
+    "note": "You will need it for a Claude Pro subscription. The free tier is enough for the first lesson.",
+    "steps": [
+     "Get an international Visa or Mastercard from your bank — Uzcard and Humo do not work here.",
+     "The card needs a dollar account with online payments enabled.",
+     "Pro costs $20 a month. It is not required, but it makes the work considerably easier."
+    ],
+    "actions": [],
+    "footnote": "You will need it in the later lessons."
+   }
+  ]
+ }
+}

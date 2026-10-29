@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Gooey tablar · variantlar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&family=Golos+Text:wght@400;500;600&family=Martian+Mono:wdth,wght@87.5..100,400..500&display=swap">
+<style>
+:root{
+  --black:#000;--white:#fff;--muted:#A6A6A6;
+  --blue:#0A14FC;--grey:#E0E0E0;--yellow:#FDC959;--lilac:#B4A1D1;
+  --font-display:'Mona Sans','Roboto Flex',sans-serif;
+  --font-body:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'Martian Mono',ui-monospace,'SF Mono',Consolas,monospace;
+  --ease:cubic-bezier(.2,0,0,1);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+body,h1,h2,h3,p,ol,ul{margin:0}
+ol,ul{padding:0;list-style:none}
+body{background:var(--black);color:var(--white);font:400 16px/1.5 var(--font-body);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+
+/* page chrome */
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:#050505;border-bottom:1px solid #222;font:500 11px/1.3 var(--font-mono);color:#9a9a9a}
+.bar strong{color:#fff;font-weight:500}
+.bar button{height:32px;padding:0 12px;border:1px solid #444;border-radius:999px;color:#fff;white-space:nowrap}
+.bar button[aria-pressed="false"]{color:#9a9a9a;border-color:#2a2a2a}
+main{max-width:1100px;margin:0 auto;padding:32px 16px 96px;display:grid;gap:72px}
+.opt-head{margin-bottom:20px}
+.opt-k{font:500 11px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.opt-t{margin-top:10px;font:500 clamp(24px,4vw,36px)/1.05 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.opt-d{margin-top:10px;max-width:60ch;color:#cfcfd4;font-size:15px}
+
+/* ===== gooey tabs: the shapes sit in a filtered layer, the text sits on top unfiltered (stays crisp) ===== */
+.gt{--th:48px;--i:0;position:relative;color:var(--ink)}
+.gt-goo{position:absolute;inset:0;pointer-events:none}
+.goo-on .gt-goo{filter:url(#goo)}
+.gt-ind{position:absolute;top:0;left:0;width:calc(100% / var(--n));height:var(--th);background:var(--c);transform:translateX(calc(var(--i) * 100%));transition:transform .4s cubic-bezier(.3,0,0,1)}
+.gt-pan{position:absolute;top:var(--th);left:0;right:0;bottom:0;background:var(--c)}
+.gt-tabs{position:relative;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));height:var(--th)}
+.gt-tab{display:flex;align-items:center;justify-content:center;font:500 13px/1 var(--font-display);font-stretch:112%;letter-spacing:.02em;text-transform:uppercase;color:var(--muted);transition:color .25s var(--ease)}
+.gt-tab[aria-selected="true"]{color:var(--ink)}
+.gt-tab:hover{color:var(--white)}.gt-tab[aria-selected="true"]:hover{color:var(--ink)}
+.gt-tab:focus-visible{outline-offset:-4px;outline-color:currentColor}
+.gt-body{position:relative;min-height:var(--mh,300px);padding:28px 24px 32px;overflow:hidden}
+.gt-in{will-change:transform,opacity,filter}
+
+/* body content, shared by all three options */
+.eb{font:500 12px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+.ti{margin-top:14px;font:500 clamp(26px,4.2vw,40px)/1 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.li{margin-top:22px;border-top:1px solid rgb(0 0 0 / .22)}
+.li li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;min-height:48px;padding:8px 0;border-bottom:1px solid rgb(0 0 0 / .22);font-size:16px}
+.li .n{font:500 12px/1 var(--font-mono)}
+.li .s{font:500 12px/1 var(--font-mono);white-space:nowrap;opacity:.75}
+.big{margin-top:18px;font:400 clamp(64px,12vw,112px)/.9 var(--font-display);font-stretch:110%}
+.ft{margin-top:20px;font:500 12px/1.3 var(--font-body);text-transform:uppercase}
+.lock{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:16px;opacity:.75}
+
+@media (min-width:700px){.gt{--th:56px}.gt-body{padding:40px 44px 44px}.gt-tab{font-size:14px}}
+@media (max-width:480px){.gt-tab{font-size:12px;letter-spacing:0}.goo-on .gt-goo{filter:url(#goo-sm)}}
+@media (prefers-reduced-motion:reduce){.gt-ind{transition:none}}
+/* Safari repaints an animated element under an SVG filter badly: it jumps instead (same guard as the original demo) */
+.is-safari .gt-ind{transition:none}
+</style>
+</head>
+<body class="goo-on">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter>
+  <filter id="goo-sm"><feGaussianBlur in="SourceGraphic" stdDeviation="7" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter>
+</svg>
+
+<div class="bar"><span><strong>Gooey tablar</strong> · 3 ta joy</span><button type="button" id="tog" aria-pressed="true">Filtr: yoqilgan</button></div>
+
+<main>
+  <section>
+    <div class="opt-head">
+      <p class="opt-k">A · Dastur sahifasi</p>
+      <h2 class="opt-t">Dars tablari</h2>
+      <p class="opt-d">The five big lesson cards become one grey folder. The tab (00–04) slides over and melts into the folder, and the folder shows that lesson's topics. The page gets much shorter, with no scrolling past five cards.</p>
+    </div>
+    <div class="gt" data-gt="dastur" style="--c:var(--grey);--ink:var(--black);--mh:330px"></div>
+  </section>
+
+  <section>
+    <div class="opt-head">
+      <p class="opt-k">B · Dars sahifasi</p>
+      <h2 class="opt-t">Bo‘lim tablari</h2>
+      <p class="opt-d">Inside a lesson, slides, the task, practice and the book live in one lilac folder. Today those are separate blocks: a panel plus three cards.</p>
+    </div>
+    <div class="gt" data-gt="dars" style="--c:var(--lilac);--ink:var(--black);--mh:340px"></div>
+  </section>
+
+  <section>
+    <div class="opt-head">
+      <p class="opt-k">C · Amaliyot sahifasi</p>
+      <h2 class="opt-t">Fayllar · Promptlar · Natija</h2>
+      <p class="opt-d">On a practice page, three steps sit in one yellow folder: download the files, copy the prompts, see your result. The order of the tabs guides the student.</p>
+    </div>
+    <div class="gt" data-gt="ex" style="--c:var(--yellow);--ink:var(--black);--mh:320px"></div>
+  </section>
+</main>
+
+<script>
+const lock = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+const list = items => `<ul class="li">${items.map(([n, t, s]) => `<li><span class="n">${n}</span><span>${t}</span><span class="s">${s ?? ''}</span></li>`).join('')}</ul>`;
+
+const DATA = {
+  dastur: [
+    {tab:'00', html:`<p class="eb">Dars 00 · Tayyorgarlik · hammasi 30 daqiqa</p><h3 class="ti">O‘rnatish va tayyorgarlik</h3>${list([['01','Claude akkaunti','✓'],['02','NotebookLM’ga kirish','✓'],['03','Kurs kabinetiga kirish','✓'],['04','Kompyuterni tayyorlash','✓']])}<p class="ft">4 / 4 bajarildi</p>`},
+    {tab:'01', html:`<p class="eb">Dars 01 · 12 sentabr · ochiq</p><h3 class="ti">Kirish</h3>${list([['01','AI va modellar','✓'],['02','Context nima va u qayerda tugaydi','✓'],['03','RAG: hujjatlarga tayangan javob','✓'],['04','NotebookLM bilan ishlash','2 / 4']])}<p class="ft">5 / 7 bajarildi</p>`},
+    {tab:'02', html:`<p class="eb">Dars 02 · 19 sentabr · ochiq</p><h3 class="ti">Claude va Code</h3>${list([['01','Claude bilan ishlash'],['02','Code va Cowork'],['03','Terminologiya']])}<p class="ft">12 / 47 prompt</p>`},
+    {tab:'03', html:`<p class="eb">Dars 03 · 26 sentabr · davom etmoqda</p><h3 class="ti">Skill va agentlar</h3>${list([['01','Skill'],['02','Plugin va Connector'],['03','Plan'],['04','Agent teams, here.now']])}`},
+    {tab:'04', html:`<p class="eb">Dars 04 · 3 oktabr</p><h3 class="ti">Agent va alternativalar</h3><p class="lock">${lock}Dars kuni ochiladi</p>`},
+  ],
+  dars: [
+    {tab:'Slaydlar', html:`<p class="eb">Slaydlar · video · ko‘rildi</p>${list([['01','AI va modellar'],['02','Context nima va u qayerda tugaydi'],['03','RAG: hujjatlarga tayangan javob'],['04','NotebookLM bilan ishlash']])}<p class="ft">78 slayd</p>`},
+    {tab:'Vazifa', html:`<p class="eb">Vazifa · bajarilmagan · 7 fayl + ZIP</p><h3 class="ti">«Ravon Uy» keysi</h3><p class="ft">Topshirish muddati: 19 sentabr</p>`},
+    {tab:'Amaliyot', html:`<p class="eb">Amaliyot · korxona bilimi</p><p class="big">4/5</p><p class="ft">Majburiy · 7 ta mashq · 13 ta prompt</p>`},
+    {tab:'Kitob', html:`<p class="eb">Kitob</p><p class="lock">${lock}4-darsda ochiladi</p>`},
+  ],
+  ex: [
+    {tab:'Fayllar', html:`<p class="eb">1-qadam · yuklab oling</p>${list([['PDF','06_Rahbar_audio.pdf','240 KB'],['PDF','06_Promptlar.pdf','96 KB'],['PDF','Ravon_Uy_Q3_hisobot.pdf','1,2 MB'],['CSV','Savdo_jadvali_Q3.csv','48 KB']])}`},
+    {tab:'Promptlar', html:`<p class="eb">2-qadam · nusxa oling</p>${list([['01','Manbalarni tekshirish','✓'],['02','Audio-brifing sozlamasi','']])}<p class="ft">Nusxa olingan prompt bajarildi deb belgilanadi</p>`},
+    {tab:'Natija', html:`<p class="eb">Sizning natijangiz · 01-dars</p><p class="big">71%</p>`},
+  ],
+};
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) document.body.classList.add('is-safari');
+
+document.querySelectorAll('[data-gt]').forEach(root => {
+  const key = root.dataset.gt, items = DATA[key];
+  root.style.setProperty('--n', items.length);
+  root.innerHTML = `<div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
+    <div class="gt-tabs" role="tablist">${items.map((it, i) => `<button class="gt-tab" role="tab" id="${key}-t${i}" aria-controls="${key}-p" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${it.tab}</button>`).join('')}</div>
+    <div class="gt-body" role="tabpanel" id="${key}-p" aria-labelledby="${key}-t0"><div class="gt-in">${items[0].html}</div></div>`;
+  const tabs = [...root.querySelectorAll('.gt-tab')], body = root.querySelector('.gt-body');
+  let cur = 0;
+  async function show(i, focus){
+    if (i === cur) return;
+    const dir = i > cur ? 1 : -1; cur = i;
+    root.style.setProperty('--i', i);
+    tabs.forEach((t, k) => { t.setAttribute('aria-selected', k === i); t.tabIndex = k === i ? 0 : -1; });
+    if (focus) tabs[i].focus();
+    body.setAttribute('aria-labelledby', tabs[i].id);
+    const old = body.querySelector('.gt-in');
+    if (!reduce) await old.animate([{opacity:1, transform:'none', filter:'blur(0)'}, {opacity:0, transform:`translateY(${-24*dir}px)`, filter:'blur(8px)'}], {duration:150, easing:'ease-in', fill:'forwards'}).finished;
+    if (cur !== i) return; // a newer click won
+    old.innerHTML = items[i].html;
+    if (!reduce) old.animate([{opacity:0, transform:`translateY(${24*dir}px)`, filter:'blur(8px)'}, {opacity:1, transform:'none', filter:'blur(0)'}], {duration:220, easing:'cubic-bezier(.2,0,0,1)', fill:'forwards'});
+  }
+  tabs.forEach((t, i) => t.addEventListener('click', () => show(i)));
+  root.querySelector('.gt-tabs').addEventListener('keydown', e => {
+    const d = {ArrowRight:1, ArrowLeft:-1}[e.key]; if (!d) return;
+    e.preventDefault(); show((cur + d + items.length) % items.length, true);
+  });
+});
+
+const tog = document.getElementById('tog');
+tog.addEventListener('click', () => {
+  const on = document.body.classList.toggle('goo-on');
+  tog.setAttribute('aria-pressed', on); tog.textContent = on ? 'Filtr: yoqilgan' : 'Filtr: o‘chirilgan';
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "aip-portal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "AI Praktikum 3.0 student portal backend (zero dependencies)",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test",
+    "import-2.0": "node scripts/import-2.0.mjs"
+  }
+}

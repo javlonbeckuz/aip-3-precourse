@@ -1,0 +1,10 @@
+import { launch, URL } from './cdp_fe.mjs';
+const b = await launch(1440, 900, false);
+await b.goto(URL + '?solo&view=dastur');
+await b.click('.nav-name'); await b.wait(300);
+console.log('open', await b.ev('!document.getElementById("nmenu").hidden'));
+const pt = await b.ev(`(()=>{const r=document.querySelector('.nm-out').getBoundingClientRect();return [r.left+r.width/2,r.top+r.height/2,r.width,r.height, document.elementFromPoint(r.left+r.width/2,r.top+r.height/2).className]})()`);
+console.log('nm-out pt', JSON.stringify(pt));
+await b.click('.nm-out'); await b.wait(400);
+console.log('view', await b.ev('document.body.dataset.view'));
+b.close();

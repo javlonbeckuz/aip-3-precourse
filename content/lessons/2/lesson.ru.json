@@ -1,0 +1,393 @@
+{
+  "n": 2,
+  "title": "Claude и Code",
+  "subtitle": "Claude, Code / Cowork, терминология",
+  "summary": "Работа с Claude и терминология. Практика: сайт, лид-форма, Telegram-бот и подключение Sheets.",
+  "topics": [
+    "Claude",
+    "Code / Cowork",
+    "Терминология",
+    "Сайт",
+    "Лид-форма",
+    "Telegram bot",
+    "Sheets"
+  ],
+  "slideCount": 63,
+  "slideKind": "image",
+  "hasBook": false,
+  "bookNote": "",
+  "bookVariants": [],
+  "homework": "Erkin ijod: darsda oʻrganganlaringizdan foydalanib, oʻz biznesingiz uchun biror narsa yarating. Nima qilishni oʻzingiz tanlaysiz — muhimi, u biznesingizga haqiqatan kerak boʻlsin.",
+  "materials": [],
+  "prompts": null,
+  "praktikum": {
+    "title": "47 промптов — для вашего бизнеса.",
+    "lead": "47 готовых промптов: идеи, критическое мышление, продажи, реклама и обучение.",
+    "rules": [
+      "Выберите промпт под свою задачу.",
+      "Замените текст в [скобках] своими данными.",
+      "Скопируйте текст целиком и вставьте в Claude — если ваш бизнес описан в HQ Project, то в этом проекте.",
+      "Проверьте ответ фактами и цифрами своего бизнеса."
+    ],
+    "exercisesTitle": "Разделы",
+    "exercisesNote": "Откройте раздел под свою задачу.",
+    "promptsNote": "Каждый самостоятелен — берите нужный.",
+    "guide": null,
+    "closing": null,
+    "exercises": [
+      {
+        "key": "01-biznes-goyalar",
+        "num": "01",
+        "title": "Biznes gʻoyalar",
+        "note": "Takroriy muammo, oʻz ustunligingiz va bozordagi oʻzgarishlardan yangi biznes imkoniyatlarini topish.",
+        "tag": "01–11",
+        "yoriqnoma": null,
+        "promptsPdf": null,
+        "sources": [],
+        "extras": [],
+        "prompts": [
+          {
+            "id": "01",
+            "target": "",
+            "title": "Takroriy muammolardan biznes topish",
+            "text": "[Soha]dagi korxonalar hozir qoʻl mehnati, elektron jadvallar yoki Telegram guruhlari orqali hal qilayotgan, kundalik ishda takrorlanadigan 20 ta muammoni sanab bering.\nHar biri uchun uch narsani baholang: muammo oyiga qancha xarajat keltiradi, uni hal qilish uchun qancha toʻlashga tayyor boʻlishadi va nega bu ish hali avtomatlashtirilmagan.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "02",
+            "target": "",
+            "title": "Sizdagi ustunlikka mos biznes",
+            "text": "Menda [imkoniyat: auditoriya / maʼlumotlar / mahsulotni mijozga yetkazish kanali / koʻnikma] bor.\nAynan shu imkoniyat tufayli amalga oshirish mumkin boʻlgan 15 ta biznes gʻoyasini taklif qiling.\nBu imkoniyati yoʻq raqobatchi ortimdan osongina ergasha olmasin.\nIstalgan odam boshlay oladigan gʻoyalarni chiqarib tashlang.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "03",
+            "target": "",
+            "title": "Mendan intervyu oling",
+            "text": "Mendan intervyu oling.\nKundalik ishimda duch keladigan qiyinchiliklar haqida 10 ta savol bering, lekin savollarni bittadan bering.\nIntervyu tugagach, 5 ta biznes gʻoyasini taklif qiling.\nHar bir gʻoya menga oʻxshagan kamida 10 000 kishida ham uchraydigan muammoni hal qilsin.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "04",
+            "target": "",
+            "title": "14 kunda tekshiriladigan gʻoya",
+            "text": "Faqat [mening koʻnikmalarim]dan foydalanib, mijozlarga Telegram kanali orqali yetib boradigan 10 ta biznes gʻoyasini taklif qiling.\nHar birini 14 kun ichida, 500 dollardan kam mablagʻ bilan tekshira olishim kerak.\nGʻoya ishlashining mezoni roʻyxatdan oʻtganlar soni emas, haqiqiy pul toʻlagan mijoz boʻlsin.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "05",
+            "target": "",
+            "title": "Kichik jamoa uchun biznes",
+            "text": "Ikki kishidan oshmaydigan jamoa bilan oyiga 10 000 dollar foydaga chiqish imkoniyati bor 10 ta biznesni taklif qiling.\nKontent yaratish, dropshipping va agentlik xizmatlarini chiqarib tashlang.\nHar birida kichik jamoa shu darajadagi natijaga qaysi mexanizm hisobiga erishishini tushuntiring.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "06",
+            "target": "",
+            "title": "AI xarajati tushganda paydo boʻladigan imkoniyatlar",
+            "text": "Til modeli (LLM) orqali soʻrovlarga javob olish xarajati 100 barobar kamayishi aynan [bozor]da qaysi bizneslarni amalga oshirish imkonini beradi?\nChatbotlar va kontent yaratishni chiqarib tashlang.\nAvval avtomatlashtirish juda qimmatga tushgan ish jarayonlariga eʼtibor qarating.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "07",
+            "target": "",
+            "title": "Mavjud mijozga ikkinchi mahsulot",
+            "text": "Men [biznes]ni yuritaman.\nMavjud mijozlarimga, ularni qayta jalb qilish uchun deyarli xarajat qilmasdan, qanday 8 ta qoʻshimcha mahsulot sota olaman?\nUlarni ikki mezon boʻyicha tartiblang: mijozning men haqimda shakllangan ishonchidan qanchalik foydalanadi va yangidan qanchalik dalil talab qiladi.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "08",
+            "target": "",
+            "title": "Gʻoyani rad eta oladigan sinov",
+            "text": "Mana 5 ta biznes gʻoyasi: [roʻyxat].\nHar biri uchun imkon qadar arzon, gʻoyani rad etish imkonini ham beradigan sinov tuzing.\nSinov oldindan ijobiy natijaga moslab qurilmasin: salbiy natija chiqsa, gʻoyadan voz kechish uchun asos boʻlsin.\nMuvaffaqiyat va muvaffaqiyatsizlikning aniq chegaralarini koʻrsating.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "09",
+            "target": "",
+            "title": "Uchta tanqidchi",
+            "text": "Ushbu gʻoyani jiddiy sinovdan oʻtkazing: [gʻoya].\nUchta alohida rol nomidan javob bering: shubha bilan qaraydigan investor, boʻlajak mijozlarim ichidagi eng ishonchsizi va meni bozordan siqib chiqarmoqchi boʻlgan raqobatchi.\nKeyin qaysi eʼtiroz gʻoyani barbod qilish ehtimoli eng yuqori ekanini ayting.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "10",
+            "target": "",
+            "title": "Bozor hisobini ochiq koʻrsatish",
+            "text": "[Gʻoya] uchun [hudud]dagi amalda erishish mumkin boʻlgan bozor hajmini quyidagi hisob bilan baholang: ehtimoliy xaridorlar soni × ulardan real jalb qilish mumkin boʻlgan ulush × narx.\nHisob-kitobni ochiq koʻrsating.\nQaysi bitta raqam notoʻgʻri boʻlsa, yakuniy xulosa oʻzgarishini ayting.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "11",
+            "target": "",
+            "title": "Yangi tashabbuslardan biznes imkoniyati",
+            "text": "Oxirgi 12 oy ichida [mamlakat]da eʼlon qilingan 8 ta davlat raqamlashtirish tashabbusi, yangi qoida va tartib yoki infratuzilma loyihasini aniqlang.\nHar biri asosida shu oʻzgarishdan foydalanadigan xususiy biznes taklif qiling.\nJavobni oʻzbek tilida bering."
+          }
+        ],
+        "notes": []
+      },
+      {
+        "key": "02-tanqidiy-fikrlash",
+        "num": "02",
+        "title": "Tanqidiy fikrlash",
+        "note": "Reja va qarorlarni faraz, xatar va kuchli qarshi fikr bilan sinash.",
+        "tag": "12–20",
+        "yoriqnoma": null,
+        "promptsPdf": null,
+        "sources": [],
+        "extras": [],
+        "prompts": [
+          {
+            "id": "12",
+            "target": "",
+            "title": "Fakt va taxminlarni ajratish",
+            "text": "Mana mening rejam yoki qarashim: [matn].\nU tayangan barcha farazlarni sanang, ochiq aytilganlarini ham, yashirinlarini ham.\nUlarni uch guruhga ajrating: tekshirilgan faktlar, asosli taxminlar va faqat umidga tayangan fikrlar.\nHar bir umidga tayangan fikrni fakt deb hisoblash uchun qanday dalil kerakligini ayting.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "13",
+            "target": "",
+            "title": "Rejangizga kuchli qarshi fikr",
+            "text": "[Reja] amalga oshmaydi deb hisoblaydigan eng zukko tanqidchi roliga kiring.\nFikrim ortidagi barcha sabab va asoslarni hisobga oling.\nRejaning oʻzini tanqid qiling, uni soddalashtirib yoki mazmunini buzib koʻrsatib hujum qilmang.\nEʼtirozlaringizni keltirishi mumkin boʻlgan zarariga qarab tartiblang.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "14",
+            "target": "",
+            "title": "Raqobatchi nega shunday qildi?",
+            "text": "Raqobatchim yoki qarshi tomon [harakat] qildi, bu menga ahmoqona koʻrinyapti.\nMen bilmaydigan maʼlumotlar yoki ularni harakatga undayotgan manfaatlarni hisobga olganda, bu qaror mantiqli boʻlishi mumkinligini tushuntiradigan 3 ta izoh bering.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "15",
+            "target": "",
+            "title": "Qarordan oldin nimani bilish kerak?",
+            "text": "Men [variantlar] orasidan birini tanlamoqchiman.\nVaziyatni uch qismga ajrating: hozir bilganlarim, qaror qabul qilishdan oldin kam xarajat bilan aniqlay oladiganlarim va faqat qaror qilib, sinab koʻrgandan keyin biladiganlarim.\nUchinchi guruhdagi, qancha tahlil qilsam ham oldindan aniqlab boʻlmaydigan narsalarni kutib, qarorni choʻzmayapmanmi?\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "16",
+            "target": "",
+            "title": "Qarorni qaytarish qanchaga tushadi?",
+            "text": "[Qaror]ni baholang: undan qaytish mumkinmi yoki yoʻqmi?\nQaytish amalda qancha pul, vaqt va obroʻ yoʻqotishiga olib keladi?\nAgar undan qaytish arzon boʻlsa, tahlilni toʻxtatib, qaror qilishimni ayting.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "17",
+            "target": "",
+            "title": "Muvaffaqiyatsizlikni oldindan koʻrish",
+            "text": "[Reja] nega muvaffaqiyatsiz boʻlishi mumkinligini oldindan tahlil qiling.\nTasavvur qiling: 12 oy oʻtdi va reja butunlay barbod boʻldi.\nJamoa ichida muhokama qilish uchun hisobot yozing: nima notoʻgʻri ketdi, muammolar qanday ketma-ketlikda yuz berdi va qaysi dastlabki ogohlantiruvchi belgini eʼtiborsiz qoldirdik?\nMuvaffaqiyatsizlikning bir-biridan farqli 3 ta ssenariysini bering.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "18",
+            "target": "",
+            "title": "Loyihani davom ettirish kerakmi?",
+            "text": "Men [loyiha]ga [vaqt/pul] sarfladim.\nUni davom ettirish kerakligini faqat kelajakdagi xarajat va kelajakdagi foydaga qarab baholang.\nQarorimni asoslashda avval sarflangan mablagʻ yoki vaqtni dalil qilib keltirsam, har safar buni koʻrsatib bering.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "19",
+            "target": "",
+            "title": "Muddat va xarajatni oʻxshash loyihalar bilan tekshirish",
+            "text": "Men [vazifa] uchun [vaqt/xarajat] ketadi deb hisobladim.\nTaqqoslashga mos loyihalarni toping: menga oʻxshash odamlar bajargan shunga oʻxshash ishlar amalda qancha vaqt yoki mablagʻ talab qilgan?\nTaxminimni oʻsha loyihalarda kuzatilgan odatiy natijalarga moslab tuzating.\nFaqat oʻz loyihamga qarab hisoblaganimda nimalarni eʼtibordan chetda qoldirganimni ayting.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "20",
+            "target": "",
+            "title": "Yaxshiroq savol topish",
+            "text": "Hozir berayotgan savolim: [savol].\nUndan yaxshiroq 5 ta savol tuzing.\nUlarga javob topilsa, dastlabki savolim ahamiyatini yoʻqotsin yoki javobi osonlashsin.\nJavobni oʻzbek tilida bering."
+          }
+        ],
+        "notes": []
+      },
+      {
+        "key": "03-savdo-va-muzokaralar",
+        "num": "03",
+        "title": "Savdo va muzokaralar",
+        "note": "Birinchi uchrashuvdan narx, eʼtiroz, muzokara va tijoriy taklifgacha.",
+        "tag": "21–32",
+        "yoriqnoma": null,
+        "promptsPdf": null,
+        "sources": [],
+        "extras": [],
+        "prompts": [
+          {
+            "id": "21",
+            "target": "",
+            "title": "Birinchi savdo uchrashuvi",
+            "text": "Men [boʻlajak mijoz: kompaniya, lavozim, soha] bilan [taklifim] haqida birinchi marta gaplashaman.\nMijoz ehtiyojini aniqlash uchun 12 ta savol tuzing.\nSavollarni shunday tartiblangki, har bir javob keyingi savolni berish uchun asos yaratsin.\nByudjetni toʻgʻridan-toʻgʻri soʻramasdan aniqlashga yordam beradigan 3 ta savolni belgilang.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "22",
+            "target": "",
+            "title": "Muammo xarajatini mijozning oʻzi aytsin",
+            "text": "Boʻlajak mijozning hozirgi ish jarayoni unga qanchaga tushayotganini men aytmasdan aniqlashga yordam beradigan 5 ta savol yozing.\nMaqsad: men oʻz narximni aytishimdan oldin, mijoz muammo unga qanchaga tushayotganini oʻz soʻzlari bilan ovoz chiqarib aytsin.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "23",
+            "target": "",
+            "title": "Uchrashuvdan keyingi tahlil",
+            "text": "Oxirgi suhbat qaydlarimni [qaydlarni joylang] quyidagi qismlarga ajrating: tasdiqlangan muammolar, mijoz aytgan raqam va koʻrsatkichlar, ochiq aytilmagan, lekin men sezgan xatarlar, mijoz tasvirlagan qaror qabul qilish jarayoni va men soʻramay qolgan, keyingi suhbatda albatta soʻrashim kerak boʻlgan 3 ta masala.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "24",
+            "target": "",
+            "title": "Narxni qiymat orqali tushuntirish",
+            "text": "Men [taklif] uchun [narx] soʻrayman.\nTaklifimning qiymatini hisoblang: mijozning oʻz raqamlariga tayanib, hozirgi muammo unga qanchaga tushayotganini aniqlang.\nMen soʻrayotgan narxni yetkazib beradigan qiymatimga nisbat sifatida koʻrsating.\nNarxni aytayotganimda ovoz chiqarib tushuntira oladigan, 3 jumladan iborat matn yozing.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "25",
+            "target": "",
+            "title": "Uch darajali taklif",
+            "text": "[Xizmat] uchun uch darajali taklif tuzing: mijoz sotib olishini oʻzim xohlamaydigan, solishtirish uchun berilgan imkoniyatlari cheklangan arzon paket, mijoz tanlashini istaydigan asosiy paket va asosiy paket narxini maqbul koʻrsatadigan premium paket.\nUchalasiga ham narx belgilang.\nHar bir paket xaridor qaroriga psixologik jihatdan qanday taʼsir qilishini tushuntiring.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "26",
+            "target": "",
+            "title": "Eʼtirozlarga tayyorgarlik",
+            "text": "[Mijoz turi]ning [taklifim]ga bildirishi ehtimoli eng yuqori boʻlgan 10 ta eʼtirozni yozing.\nHar biri uchun quyidagilarni bering: eʼtiroz ortidagi xavotir, vaziyatga boshqacha qarashga yordam beradigan izoh, bitta dalil va eʼtiroz bartaraf boʻlganini tekshiradigan savol.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "27",
+            "target": "",
+            "title": "“Qimmat” degan javobni aniqlashtirish",
+            "text": "Mijoz “Juda qimmat” dedi.\nBu gapning olti xil sababiga mos oltita alohida javob bering: byudjeti yoʻq, qiymatni koʻrmayapti, notoʻgʻri muqobil bilan solishtiryapti, odat boʻyicha savdolashyapti, bu taklif uchun mos xaridor emas yoki taklif uning ehtiyojiga haqiqatan mos kelmaydi.\nQaysi holatga duch kelganimni aniqlashga yordam beradigan savolni ham qoʻshing.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "28",
+            "target": "",
+            "title": "“Taklif yuboring, oʻylab koʻramiz”",
+            "text": "Mijoz “Taklif yuboring, oʻylab koʻramiz” dedi.\nBu javobni yo sanasi kelishilgan aniq keyingi qadamga, yo ochiq aytilgan rad javobiga olib keladigan 4 ta javob yozing.\n“Balki” degan noaniqlikni tugatmoqchiman.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "29",
+            "target": "",
+            "title": "Javobsiz qolgan taklifni qayta ochish",
+            "text": "Taklifni yuborganimdan keyin boʻlajak mijoz javob bermay qoʻydi.\nSuhbatni qayta boshlash uchun ikki hafta davomida yuboriladigan 3 ta xabar ketma-ketligini yozing.\nBirinchi xabar yangi foyda bersin.\nIkkinchi xabar vaziyatga mos dalil keltirsin.\nUchinchi xabar bu masalani yopayotganimni ochiq aytib, suhbatni yakunlasin.\n“Shunchaki holatni bilmoqchi edim” mazmunidagi gaplarni ishlatmang.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "30",
+            "target": "",
+            "title": "Rolli savdo mashqi va baho",
+            "text": "[Mijoz roli: shubha bilan qaraydigan moliya direktori / oldin yomon tajribaga uchragan kompaniya asoschisi / xarid boʻlimi xodimi] roliga kiring.\nMen [taklif]ni taqdim qilaman, Siz esa hayotdagidek eʼtiroz bildiring va har raundda bosimni oshiring.\nHar bir javobimdan keyin roldan chiqib, meni uch mezon boʻyicha baholang: eʼtirozni eshitib, inobatga oldimmi, uning asl sababini aniqladimmi va suhbatni keyingi qadamga olib oʻtdimmi?\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "31",
+            "target": "",
+            "title": "Muzokaraga tayyorgarlik varagʻi",
+            "text": "[Bitim] boʻyicha muzokaraga tayyorgarlik varagʻimni tuzing.\nUnda quyidagilar boʻlsin: erishmoqchi boʻlgan natijam, qaysi chegaradan keyin kelishuvdan voz kechishim, kelishuv boʻlmasa men uchun eng yaxshi muqobil yoʻl va qarshi tomonning ehtimoliy muqobillari.\nNarxdan tashqari kelishish mumkin boʻlgan barcha shartlarni sanang: ish hajmi, muddat, toʻlov shartlari, intellektual mulk huquqlari, eksklyuzivlik va loyiha natijasini mijoz misoli sifatida eʼlon qilish huquqi.\nMuzokarani qanday boshlashimni va boshlangʻich taklifimning asoslarini ham yozing.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "32",
+            "target": "",
+            "title": "Tijoriy taklif tuzilmasi",
+            "text": "[Bitim] uchun tijoriy taklif tuzilmasini yozing.\nTaklifning oʻzi mijozni qarorga olib kelsin: avval uning muammosi oʻz soʻzlari bilan, keyin hech narsa qilmaslikning xarajati uning oʻz raqamlari bilan berilsin.\nSoʻng muammodan yechimga olib boradigan yondashuvim, uni tasdiqlaydigan dalillar va oxirida kerakli mablagʻ koʻrsatilsin.\nYakunida mijoz oldida imzolashga tayyor bitta aniq tanlov qolsin.\nJavobni oʻzbek tilida bering."
+          }
+        ],
+        "notes": []
+      },
+      {
+        "key": "04-reklama-va-kreativ",
+        "num": "04",
+        "title": "Reklama va kreativ",
+        "note": "Yondashuv, mijoz portreti, video ssenariysi va reklama tahlili.",
+        "tag": "33–39",
+        "yoriqnoma": null,
+        "promptsPdf": null,
+        "sources": [],
+        "extras": [],
+        "prompts": [
+          {
+            "id": "33",
+            "target": "",
+            "title": "Reklama uchun oʻnta yondashuv",
+            "text": "Mahsulot: [mahsulot].\nAuditoriya: [auditoriya].\nReklama uchun 10 ta yondashuv ishlab chiqing: muammo, mavqe, qiziqish, boshqalarning tajribasi va fikri, odatiy qarashga zid fikr, oldingi va keyingi holat, bizning usul va eski usul, asoschi hikoyasi, eʼtirozni oldindan bartaraf etish va shoshilinchlik.\nUlarni kutilayotgan bosishlar ulushi (CTR) boʻyicha tartiblang.\nHar biri uchun diqqatni tortadigan birinchi jumla, asosiy vaʼda va uygʻotmoqchi boʻlgan hissiyotni yozing.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "34",
+            "target": "",
+            "title": "Beshta mijoz portreti",
+            "text": "[Mahsulot]im uchun bir-biridan farq qiladigan 5 ta mijoz portretini yarating.\nHar biri uchun uch narsani yozing: qaysi vaziyat yoki tasvir uni lentani varaqlashdan toʻxtatadi, u oʻz muammosini qanday soʻzlar bilan ifodalaydi va qanday tasvirlarga ishonadi.\nMuammoni aynan mijozning oʻz soʻzlari bilan ayting, reklama tilidagi iboralarni ishlatmang.\nU ishonadigan tasvirlarni ranglar, muhit, yuzlar va fakturalar orqali tasvirlang.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "35",
+            "target": "",
+            "title": "Reklama xabari va dalillari",
+            "text": "[Mahsulot] uchun reklama xabarlarini iyerarxiya shaklida tuzing: bir satrlik asosiy daʼvo, uni qoʻllab-quvvatlaydigan uchta dalil va har bir dalil bartaraf etadigan eʼtiroz.\nBiz yaratadigan har bir reklama materiali shu tuzilmadagi bitta bandga mos kelsin.\nTuzilmani reklama yaratish jarayoniga uzatishim mumkin boʻlgan tartibli JSON shaklida bering.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "36",
+            "target": "",
+            "title": "Reklama qayerda ishlamayapti?",
+            "text": "Reklama kabinetimdagi maʼlumotlar: [har bir reklama materiali boʻyicha koʻrsatkichlarni joylang].\nReklama yoʻlini tahlil qiling: muammo odamni lentani varaqlashdan toʻxtatadigan boshlanishdami, diqqatni ushlab turadigan asosiy qismdami, bosishga undaydigan chaqiriqdami yoki bosgandan keyin ochiladigan sahifa reklamaga mos kelmasligidami?\nReklamaning qaysi qismini qayta yaratish va qaysi qismini oʻzgarishsiz qoldirish kerakligini ayting.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "37",
+            "target": "",
+            "title": "20 ta qisqa reklama boshlanishi",
+            "text": "[Mahsulot] uchun [til]da diqqatni tortadigan 20 ta reklama boshlanishini yozing.\nHar biri koʻpi bilan 8 soʻzdan iborat boʻlsin.\nToʻrt turga teng taqsimlang: savol bilan boshlanadigan, raqamga tayangan, salbiy oqibat yoki xavfdan ogohlantiradigan va “Siz”ga murojaat qiladigan boshlanishlar.\nUlarni [platforma + auditoriya] uchun odamni lentani varaqlashdan toʻxtatish ehtimoliga qarab tartiblang.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "38",
+            "target": "",
+            "title": "15 soniyalik video ssenariysi",
+            "text": "[Mahsulot] uchun 3 sahnadan iborat 15 soniyalik reklama ssenariysini tuzing.\nHar bir sahna alohida yaratiladigan bitta video boʻlagi boʻlsin.\nBirinchi sahna muammoni tasvirlasin, 5 soniya.\nIkkinchi sahna mahsulotni koʻrsatsin, 5 soniya.\nUchinchi sahna natijani koʻrsatsin va harakatga chaqiriq uchun joy qoldirsin, 5 soniya.\nHar bir sahnani yaratish uchun prompt yozing.\nSahnalar orasida koʻrinish va voqea izchilligini saqlash boʻyicha koʻrsatmalarni ham qoʻshing.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "39",
+            "target": "",
+            "title": "Raqobatchi reklamasiga javob",
+            "text": "Raqobatchi reklamasiga javob tayyorlaydigan tizim tuzing.\nKirish maʼlumoti yangi raqobatchi reklamasining skrinshoti yoki tavsifi boʻladi.\nTil modeli (LLM) uning reklama yondashuvi va taklifini ajratib olsin, unga javoban 3 ta reklama gʻoyasini yaratsin va ularni yaratish uchun promptlar yozsin.\nReklamadagi maʼlumotni ajratib olish promptini ham, raqobatchining taklifiga javob beradigan oʻz pozitsiyamizni ishlab chiqish promptini ham yozing.\nJavobni oʻzbek tilida bering."
+          }
+        ],
+        "notes": []
+      },
+      {
+        "key": "05-organish",
+        "num": "05",
+        "title": "Oʻrganish",
+        "note": "Yangi koʻnikmani tez va chuqur oʻzlashtirish usullari.",
+        "tag": "40–47",
+        "yoriqnoma": null,
+        "promptsPdf": null,
+        "sources": [],
+        "extras": [],
+        "prompts": [
+          {
+            "id": "40",
+            "target": "",
+            "title": "Amaliyotchilar biladigan yashirin qoidalar",
+            "text": "[Soha]da ishlaydigan mutaxassislar oʻz-oʻzidan ayon deb biladigan, lekin yangi boshlovchilarga hech qachon tushuntirmaydigan 10 ta tushunchani sanang.\nBu ishni amalda qilgan odamni u haqda faqat oʻqigan odamdan ajratib turadigan, koʻpincha ochiq aytilmaydigan bilimlarni koʻrsating.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "41",
+            "target": "",
+            "title": "Natijadan boshlangan oʻquv reja",
+            "text": "[Koʻnikma]ni [aniq natija]ga erisha oladigan darajada oʻrganish uchun [Y hafta] davomida [haftasiga X soat] vaqtim bor.\nOʻquv rejasini yakuniy natijadan boshlab teskari tartibda tuzing: Y-hafta oxirida men aynan NIMA QILA OLISHIM kerak va har bir hafta shu natijaga qanday olib boradi?\nHar bir hafta yakunida tayyor ish yoki mahsulot boʻlsin, birorta hafta faqat “tushundim” bilan tugamasin.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "42",
+            "target": "",
+            "title": "Savollar orqali oʻrganish",
+            "text": "Menga [tushuncha]ni Suqrot usulida oʻrgating: savollarni bittadan bering, maʼruza qilmang.\nHozir bilganlarimdan boshlang: [nimalarni bilishingizni yozing].\nTushunchani oʻz javoblarim orqali anglab yetishimga imkon bering.\nFaqat ishonch bilan notoʻgʻri javob berganimda meni tuzating.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "43",
+            "target": "",
+            "title": "Bilimni talabchan savollar bilan tekshirish",
+            "text": "Men [mavzu]ni tushunaman deb hisoblayman.\nMavzu menga tanishligi bilan uni chinakam tushunishim orasidagi farqni ochish uchun qattiqqoʻl imtihonchi beradigan 5 ta savol tuzing.\nSavollarni bittadan bering va javoblarimni qattiqqoʻllik bilan baholang.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "44",
+            "target": "",
+            "title": "Vaziyatni oldindan mashq qilish",
+            "text": "Siz bilan [koʻnikma]ni mashq qilmoqchiman.\n[Vaziyat: mijoz bilan uchrashuv / kodni koʻrib chiqish / bahs / chet tilida suhbat]ni murakkabligi 10 dan 6 darajada boʻlgan rolli mashq sifatida olib boring.\nMashq davomida roldan chiqmang.\nTugatgach, roldan chiqib, uch narsani ayting: men yomon yoʻl tutgan 3 ta aniq vaziyat, har birida qanday yoʻl tutish kuchliroq boʻlardi va keyingi mashqqacha tuzatishim kerak boʻlgan bitta takroriy xato.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "45",
+            "target": "",
+            "title": "Mutaxassis bilan 30 daqiqa",
+            "text": "[Soha] mutaxassisi bilan gaplashish uchun 30 daqiqam bor.\nSavollar roʻyxatini tuzing: javobini Google orqali topish mumkin boʻlgan savollar ham, “Yangi boshlovchilarga qanday maslahat berasiz?” kabi savollar ham boʻlmasin.\nU qanday qoidalarga tayanib qaror qilishini, amalda xato qilgan vaziyatlari haqidagi hikoyalarini va nimalarni boshqa hech qachon qilmasligini bilmoqchiman.\n10 ta savolni suhbatda beriladigan tartibda yozing.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "46",
+            "target": "",
+            "title": "Tajriba yakunidan saboq olish",
+            "text": "Yaqindagi tajribamdan saboq chiqarishga yordam bering: [loyiha yoki voqeani tasvirlang].\nMen bilan yakuniy tahlil oʻtkazing va savollarni bittadan bering: reja qanday edi, amalda nima boʻldi, nega farq yuz berdi, nimani saqlab qolaman va nimani oʻzgartiraman?\nSoʻng boshqa vaziyatlarda ham qoʻllash mumkin boʻlgan 3 ta tamoyilni “agar ... boʻlsa, unda ...” shaklidagi qoida qilib yozing.\nJavobni oʻzbek tilida bering."
+          },
+          {
+            "id": "47",
+            "target": "",
+            "title": "Bir sahifalik eslatma",
+            "text": "[Mavzu] haqida bilish zarur boʻlgan hamma narsani bitta sahifaga jamlang.\nShu sahifaga qarab mavzuni toʻliq qayta tushunib olishim mumkin boʻlsin: asosiy tamoyil, 5 ta muhim farq, 3 ta amaliy tartib va ish notoʻgʻri ketadigan holatlar kiritilsin.\nBu sahifa bilimimni qayta esga tushirish uchun tayanch boʻladi, har bir soʻz zarur vazifani bajarsin.\nJavobni oʻzbek tilida bering."
+          }
+        ],
+        "notes": []
+      }
+    ]
+  },
+  "prep": null
+}

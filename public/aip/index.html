@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="uz-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>AI Praktikum 3.0</title><link rel="icon" href="data:,">
+<link rel="stylesheet" href="/aip/app.css">
+
+</head>
+<body class="solo" data-view="gate" data-booting>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="goo-tabs"><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter>
+  <filter id="goo-tabs-sm"><feGaussianBlur in="SourceGraphic" stdDeviation="7" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter>
+  <symbol id="i-ramp" viewBox="0 0 28 21"><path d="M0 21Q4 21 7 18L22 3Q25 0 28 0V21Z" fill="currentColor"/></symbol>
+  <symbol id="i-ne" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 28L28 6M10 6h18v18"/></symbol>
+  <symbol id="i-next" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10h13M11 4.5l5.5 5.5-5.5 5.5"/></symbol>
+  <symbol id="i-back" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 10h-13M9 4.5L3.5 10 9 15.5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v11M5 9.5l5 5 5-5M4 17h12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 20 20"><path d="M7 4.8v10.4L15.4 10z" fill="currentColor"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M13 7V4.5A1.5 1.5 0 0011.5 3h-7A1.5 1.5 0 003 4.5v7A1.5 1.5 0 004.5 13H7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5l3.5 3.5 7.5-8.5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="12" height="8.5" rx="1.5"/><path d="M7 9V6.5a3 3 0 016 0V9"/></symbol>
+  <symbol id="i-send" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2.5L2 9l5.6 2L15 5.5 9.6 12.4l6 5.1z"/></symbol>
+  <symbol id="i-home" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 9.4L10 3.4l6.8 6V16a.6.6 0 0 1-.6.6h-3.4v-4.6H7.2v4.6H3.8a.6.6 0 0 1-.6-.6z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 7h14M3 13h14"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5l8 14.5H2z"/><path d="M10 8v4M10 14.5h.01"/></symbol>
+</defs></svg>
+
+<div class="screens">
+
+<!-- ================= a · GATE ================= -->
+<section class="screen is-on" data-screen="gate" id="s-gate">
+  <div class="frame"><div class="site">
+    <div class="gate-stage">
+      <picture class="gate-bg"><img src="/aip/login-pin.webp" alt="" width="1984" height="2400" fetchpriority="high"></picture>
+      <header class="nav">
+        <span class="wordmark" role="img" aria-label="AI Praktikum 3.0"><span class="wm-l" aria-hidden="true" data-c="A" style="--d:7.5"><span class="wm-g">A</span></span><span class="wm-l" aria-hidden="true" data-c="I" style="--d:6.5"><span class="wm-g">I</span></span><span class="wm-l wm-s" aria-hidden="true" data-c=" " style="--d:5.5"><span class="wm-g"> </span></span><span class="wm-l" aria-hidden="true" data-c="P" style="--d:4.5"><span class="wm-g">P</span></span><span class="wm-l" aria-hidden="true" data-c="r" style="--d:3.5"><span class="wm-g">r</span></span><span class="wm-l" aria-hidden="true" data-c="a" style="--d:2.5"><span class="wm-g">a</span></span><span class="wm-l" aria-hidden="true" data-c="k" style="--d:1.5"><span class="wm-g">k</span></span><span class="wm-l" aria-hidden="true" data-c="t" style="--d:0.5"><span class="wm-g">t</span></span><span class="wm-l" aria-hidden="true" data-c="i" style="--d:0.5"><span class="wm-g">i</span></span><span class="wm-l" aria-hidden="true" data-c="k" style="--d:1.5"><span class="wm-g">k</span></span><span class="wm-l" aria-hidden="true" data-c="u" style="--d:2.5"><span class="wm-g">u</span></span><span class="wm-l" aria-hidden="true" data-c="m" style="--d:3.5"><span class="wm-g">m</span></span><span class="wm-l wm-s" aria-hidden="true" data-c=" " style="--d:4.5"><span class="wm-g"> </span></span><span class="wm-l" aria-hidden="true" data-c="3" style="--d:5.5"><span class="wm-g">3</span></span><span class="wm-l" aria-hidden="true" data-c="." style="--d:6.5"><span class="wm-g">.</span></span><span class="wm-l" aria-hidden="true" data-c="0" style="--d:7.5"><span class="wm-g">0</span></span></span>
+      </header>
+      <main class="gate-form mx">
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="gooey"><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"/><feComposite in="SourceGraphic" in2="goo" operator="atop"/></filter></svg>
+        <header class="mx-head">
+          <h1 data-i18n="gate.title">Shaxsiy<br>kabinet</h1>
+        </header>
+        <form id="gate-form" novalidate>
+          <div class="mx-group pill-field">
+            <label for="gid" data-i18n="gate.label">Shaxsiy ID</label>
+            <div class="mx-input"><span aria-hidden="true">AIP-</span><input id="gid" type="text" value="" maxlength="10" autocomplete="username" inputmode="text" autocapitalize="characters" spellcheck="false" aria-describedby="gid-h"></div>
+            <div class="mx-glow"></div>
+            <p class="mx-help help" id="gid-h" aria-live="polite" data-i18n="gate.help">ID ni kiriting</p>
+          </div>
+          <div class="mx-submit"><div class="mx-drop"></div><button type="submit" class="mx-btn" data-i18n="gate.submit">Kirish</button></div>
+        </form>
+      </main>
+      <div class="ldr" id="gate-loader" hidden>
+        <div class="ldr-stack"><svg width="74" height="90" viewBox="0 0 74 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M40 76.5L72 57V69.8615C72 70.5673 71.628 71.2209 71.0211 71.5812L40 90V76.5Z" fill="#396CAA"/>
+            <path d="M34 75.7077L2 57V69.8615C2 70.5673 2.37203 71.2209 2.97892 71.5812L34 90V75.7077Z" fill="#396DAC"/>
+            <path d="M34 76.5H40V90H34V76.5Z" fill="#396CAA"/>
+            <path d="M3.27905 55.593L35.2806 37.5438C36.3478 36.9419 37.6522 36.9419 38.7194 37.5438L70.721 55.593C71.7294 56.1618 71.7406 57.6102 70.7411 58.1945L39.2712 76.593C37.8682 77.4133 36.1318 77.4133 34.7288 76.593L3.25887 58.1945C2.25937 57.6102 2.27061 56.1618 3.27905 55.593Z" fill="#163C79" stroke="#396CAA"/>
+            <path d="M40 79L72 60V70.4001C72 71.1151 71.6183 71.7758 70.9987 72.1329L40 90V79Z" fill="#173D7A"/>
+            <path d="M34 79L3 61V71.5751L34 90V79Z" fill="#0665B2"/>
+            <path class="strobe-c1" d="M58 72.5L60.5 71V74L58 75.5V72.5Z" fill="#FF715E"/>
+            <path d="M63 69.5L65.5 68V71L63 72.5V69.5Z" fill="#17e300b4"/>
+            <path d="M68 66.5L70.5 65V68L68 69.5V66.5Z" fill="#FF715E"/>
+            <path d="M40 58.5L72 39V51.8615C72 52.5673 71.628 53.2209 71.0211 53.5812L40 72V58.5Z" fill="#396CAA"/>
+            <path d="M34 57.7077L2 39V51.8615C2 52.5673 2.37203 53.2209 2.97892 53.5812L34 72V57.7077Z" fill="#396DAC"/>
+            <path d="M34 58.5H40V72H34V58.5Z" fill="#396CAA"/>
+            <path d="M3.27905 37.593L35.2806 19.5438C36.3478 18.9419 37.6522 18.9419 38.7194 19.5438L70.721 37.593C71.7294 38.1618 71.7406 39.6102 70.7411 40.1945L39.2712 58.593C37.8682 59.4133 36.1318 59.4133 34.7288 58.593L3.25887 40.1945C2.25937 39.6102 2.27061 38.1618 3.27905 37.593Z" fill="#163C79" stroke="#396CAA"/>
+            <path d="M40 61L72 42V52.4001C72 53.1151 71.6183 53.7758 70.9987 54.1329L40 72V61Z" fill="#173D7A"/>
+            <path d="M34 61L3 43V53.5751L34 72V61Z" fill="#0665B2"/>
+            <path d="M58 54.5L60.5 53V56L58 57.5V54.5Z" fill="#FF715E"/>
+            <path d="M63 51.5L65.5 50V53L63 54.5V51.5Z" fill="black"/>
+            <path class="strobe-c1" d="M63 51.5L65.5 50V53L63 54.5V51.5Z" fill="#FF715E"/>
+            <path d="M68 48.5L70.5 47V50L68 51.5V48.5Z" fill="#FF715E"/>
+            <path d="M40 40.5L72 21V33.8615C72 34.5673 71.628 35.2209 71.0211 35.5812L40 54V40.5Z" fill="#396CAA"/>
+            <path d="M34 39.7077L2 21V33.8615C2 34.5673 2.37203 35.2209 2.97892 35.5812L34 54V39.7077Z" fill="#396DAC"/>
+            <path d="M34 40.5H40V54H34V40.5Z" fill="#396CAA"/>
+            <path d="M3.27905 19.593L35.2806 1.54381C36.3478 0.941872 37.6522 0.941872 38.7194 1.54381L70.721 19.593C71.7294 20.1618 71.7406 21.6102 70.7411 22.1945L39.2712 40.593C37.8682 41.4133 36.1318 41.4133 34.7288 40.593L3.25887 22.1945C2.25937 21.6102 2.27061 20.1618 3.27905 19.593Z" fill="#124E89" stroke="#396CAA"/>
+            <path d="M40 43L72 24V34.4001C72 35.1151 71.6183 35.7758 70.9987 36.1329L40 54V43Z" fill="#173D7A"/>
+            <path d="M34 43L3 25V35.5751L34 54V43Z" fill="#0665B2"/>
+            <path d="M68 30.5L70.5 29V32L68 33.5V30.5Z" fill="#FF715E"/>
+            <path d="M58 36.5L60.5 35V38L58 39.5V36.5Z" fill="#FF715E"/>
+            <path d="M63 33.5L65.5 32V35L63 36.5V33.5Z" fill="#FF715E"/>
+            <path d="M20.1902 22.0719C18.8101 21.3026 18.8252 19.3119 20.2168 18.5636L36.1054 10.0189C37.2884 9.3827 38.7116 9.3827 39.8946 10.0189L55.7832 18.5636C57.1748 19.3119 57.1899 21.3026 55.8098 22.0719L40.4345 30.6429C38.9211 31.4865 37.0789 31.4865 35.5655 30.6429L20.1902 22.0719Z" fill="#396CAA"/>
+            <path d="M11 52.755C11 51.9801 11.8432 51.4997 12.5098 51.8947L23.5196 58.419C24.1273 58.7792 24.5 59.4332 24.5 60.1396V60.245C24.5 61.0199 23.6568 61.5003 22.9902 61.1053L11.9804 54.581C11.3727 54.2208 11 53.5668 11 52.8604V52.755Z" fill="#396CAA"/>
+            <mask id="ldr-m0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="11" y="51" width="14" height="11"><path d="M11 52.755C11 51.9801 11.8432 51.4997 12.5098 51.8947L23.5196 58.419C24.1273 58.7792 24.5 59.4332 24.5 60.1396V60.245C24.5 61.0199 23.6568 61.5003 22.9902 61.1053L11.9804 54.581C11.3727 54.2208 11 53.5668 11 52.8604V52.755Z" fill="#396CAA"/></mask>
+            <g mask="url(#ldr-m0)"><path d="M11.5 52.7417C11.5 51.9803 12.3349 51.5138 12.9833 51.9128L23.5482 58.4143C24.1397 58.7783 24.5 59.4231 24.5 60.1176V61.5L12.4598 54.4195C11.8651 54.0698 11.5 53.4315 11.5 52.7417V52.7417Z" fill="#163874"/></g>
+            <mask id="ldr-m1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="19" y="9" width="38" height="23"><path d="M20.1902 22.0719C18.8101 21.3026 18.8252 19.3119 20.2168 18.5636L36.1054 10.0189C37.2884 9.3827 38.7116 9.3827 39.8946 10.0189L55.7832 18.5636C57.1748 19.3119 57.1899 21.3026 55.8098 22.0719L40.4345 30.6429C38.9211 31.4865 37.0789 31.4865 35.5655 30.6429L20.1902 22.0719Z" fill="#396CAA"/></mask>
+            <g mask="url(#ldr-m1)"><path d="M18 21.3115L36.167 11.9451C37.3171 11.3521 38.6829 11.3521 39.833 11.9451L58 21.3115L40.3567 30.7405C38.8841 31.5275 37.1159 31.5275 35.6433 30.7405L18 21.3115Z" fill="#173D7A"/></g>
+            <path d="M37.447 21.565L35 19.9799L37.6941 18.66L40.141 20.245L37.447 21.565Z" fill="#FF715E"/>
+            <path d="M48.9738 30.8646L47.0741 29.7745L49.1792 28.684L51.0789 29.7741L48.9738 30.8646Z" fill="#173E7B"/>
+            <path d="M52.0661 29.0093L50.1635 27.9242L52.2657 26.8282L54.1682 27.9133L52.0661 29.0093Z" fill="#173E7B"/>
+            <path class="strobe-led" d="M55.1521 27.1464L53.2538 26.054L55.3602 24.9661L57.2585 26.0586L55.1521 27.1464Z" fill="#3A6DAB"/>
+          </svg></div>
+        <div class="ldr-ghost"><svg width="60" height="36" viewBox="0 0 60 36" fill="none" aria-hidden="true"><path d="M1.96545 19.4296C0.643777 18.6484 0.658726 16.7309 1.99242 15.9705L28.0186 1.12982C29.2467 0.429534 30.7533 0.429533 31.9814 1.12982L58.0076 15.9704C59.3413 16.7309 59.3562 18.6484 58.0346 19.4296L32.5442 34.4962C30.9749 35.4238 29.0251 35.4238 27.4558 34.4962L1.96545 19.4296Z" fill="#3C4F6D"/></svg></div>
+        <p class="ldr-txt" data-i18n="gate.welcome" data-i18n-p='{"name":"Student"}'>Xush kelibsiz, Student!</p>
+      </div>
+      <nav class="gate-lang" aria-label="Til" data-i18n-attr="aria-label:lang.label"><button type="button" data-lang="uz" lang="uz" aria-current="true">UZ<span class="sr-only"> · Oʻzbekcha</span></button><button type="button" data-lang="ru" lang="ru">RU<span class="sr-only"> · Русский</span></button><button type="button" data-lang="en" lang="en">EN<span class="sr-only"> · English</span></button></nav>
+    </div>
+  </div></div>
+</section>
+
+<!-- ================= app · every route below #/dastur is rendered here from the data object ================= -->
+<section class="screen" data-screen="dastur" id="s-app"></section>
+
+</div>
+
+<div class="nmenu" id="nmenu" role="dialog" aria-label="Menyu" data-i18n-attr="aria-label:menu.label" tabindex="-1" hidden>
+  <p class="nm-name" id="nm-name"></p>
+  <dl class="nm-list">
+    <div><dt data-i18n="menu.id">Shaxsiy ID</dt><dd class="mono" id="nm-id"></dd></div>
+    <div><dt data-i18n="menu.group">Guruh</dt><dd id="nm-group"></dd></div>
+    <div><dt data-i18n="menu.course">Kurs</dt><dd id="nm-course"></dd></div>
+  </dl>
+  <nav class="nm-lang" aria-label="Til" data-i18n-attr="aria-label:lang.label"><button type="button" data-lang="uz" lang="uz" aria-current="true">UZ<span class="sr-only"> · Oʻzbekcha</span></button><button type="button" data-lang="ru" lang="ru">RU<span class="sr-only"> · Русский</span></button><button type="button" data-lang="en" lang="en">EN<span class="sr-only"> · English</span></button></nav>
+  <button class="nm-out" type="button" id="logout" data-i18n="menu.logout">Chiqish</button>
+</div>
+<div class="toast" id="toast" hidden><span id="toast-t"></span><button type="button" id="toast-undo" data-i18n="toast.undo">Bekor qilish</button></div>
+<dialog class="sheet" id="lock-sheet" aria-labelledby="ls-t">
+  <p class="sheet-t" id="ls-t" data-i18n="lock.title">4-dars 3-oktabr kuni ochiladi.</p>
+  <p class="sheet-d" data-i18n="lock.desc">Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.</p>
+  <form method="dialog"><button class="sheet-x" data-i18n="common.close">Yopish</button></form>
+</dialog>
+<p class="sr-only" aria-live="polite" id="live"></p>
+
+<script src="/aip/app.js" defer></script>
+</body>
+</html>

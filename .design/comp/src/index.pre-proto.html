@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>AI Praktikum · dizayn komp (reference match)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&family=Golos+Text:wght@400;500;600&family=Martian+Mono:wdth,wght@87.5..100,400..500&display=swap">
+<style>
+/* ===== tokens: literal reference palette (see .design/tokens.md) ===== */
+:root{
+  /* brand palette */
+  --black:#000; --white:#fff; --blue:#0A14FC; --grey:#E0E0E0; --yellow:#FDC959; --lilac:#B4A1D1; --danger:#FF6B5E;
+  /* surfaces, text, lines: the only greys (see .design/tokens.md) */
+  --surface-0:#000; --surface-1:#161616;
+  --text-1:#FFF; --text-2:#A6A6A6; --text-3:#8A8A90;/* text-3 = data only (sizes, dates) */
+  --line:#3F3F3F; --line-ui:#5E5E5E;
+  --ink:#000; --ink-2:#2E2440;/* text on light fills / secondary text on lilac */
+  /* state colours, one meaning each */
+  --state-live:var(--blue); --state-open:var(--lilac); --state-done:var(--grey); --state-locked:var(--surface-1); --you:var(--yellow);
+  --font-display:'Mona Sans','Roboto Flex',sans-serif;
+  --font-body:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'Martian Mono',ui-monospace,'SF Mono',Consolas,monospace;
+  --ease:cubic-bezier(.2,0,0,1);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+body,h1,h2,h3,p,ol,ul,dl,dd,pre{margin:0}
+ol,ul{padding:0;list-style:none}
+body{background:#0d0d0d;color:var(--white);font:400 16px/1.5 var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+svg{flex:none}
+:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+h1[tabindex="-1"]:focus{outline:none}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* ===== comp chrome (not part of the design) ===== */
+.comp-bar{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:10px;padding:8px 16px;background:#050505;border-bottom:1px solid #222;font:500 11px/1 var(--font-mono);color:#9a9a9a;overflow-x:auto;white-space:nowrap}
+.comp-bar strong{color:#fff;font-weight:500;margin-right:6px}
+.comp-bar button{height:28px;padding:0 8px;border:1px solid #2a2a2a;border-radius:4px;font:inherit;color:#9a9a9a}
+.comp-bar button[aria-pressed="true"]{color:#fff;border-color:#555;background:#1a1a1a}
+.screens{display:grid;grid-template-columns:minmax(0,1fr);gap:56px;padding:24px 16px 72px}
+.screen-tag{max-width:1440px;margin:0 auto 10px;font:500 11px/1.3 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:#7a7a7a}
+body:not([data-view="all"]) .screen:not(.is-on){display:none}
+.frame{container-type:inline-size;max-width:1440px;margin:0 auto;background:var(--black);overflow:hidden}
+.is-375 .frame,.is-375 .screen-tag{max-width:375px}
+@media (max-width:480px){.screens{padding:16px 0 56px}.screen-tag{padding:0 16px}}
+
+/* ===== scale: 1 --u = 1px at a 1440 frame (desktop); mobile uses px ===== */
+.site{--u:1px}
+@container (min-width:900px){.site{--u:calc(min(100cqi, 1440px) / 1440)}}/* full-bleed, but sizes stop growing past their 1440 design size */
+
+/* ===== nav ===== */
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;height:64px;padding:0 16px;border-bottom:1px solid var(--line)}
+.nav-links{display:flex}
+.home-btn{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--white);border-radius:50%;color:var(--white);transition:background .15s,color .15s}/* round home button: same outline circle as the other circle buttons */
+.home-btn:hover,.home-btn[aria-current]{background:var(--white);color:var(--black)}/* current page = filled */
+.wordmark{font:500 16px/1 var(--font-display);font-stretch:125%;white-space:nowrap;text-transform:uppercase}
+.nav-r{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.nav-name{display:none;min-height:44px;font-size:16px}
+.menu-btn{display:grid;place-items:center;width:44px;height:44px}
+@container (min-width:900px){
+  .nav{height:calc(120 * var(--u));padding:0 calc(49 * var(--u)) 0 calc(66 * var(--u))}
+  .home-btn{width:max(44px,calc(48 * var(--u)));height:max(44px,calc(48 * var(--u)))}
+  .wordmark{font-size:max(17px,calc(22 * var(--u)))}
+  .nav-r{justify-self:end;gap:calc(29 * var(--u))}
+  .nav-name{display:block;font-size:max(14px,calc(16 * var(--u)))}
+  .menu-btn{display:none}
+}
+
+/* ===== hero (reference: 44 / 56 split) ===== */
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:32px;padding:32px 16px 0}
+.hero-l{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-content:start}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font:500 13px/1.3 var(--font-body);text-transform:uppercase;color:var(--text-2)}
+.eyebrow:is(a):hover{color:var(--white)}
+.eyebrow:is(a),.nav .wordmark{position:relative}
+.eyebrow:is(a)::after,.nav .wordmark::after{content:"";position:absolute;inset:-14px -8px}/* 44px hit area, layout unchanged */
+.headline{font:500 clamp(34px,10.4cqi,46px)/1.18 var(--font-display);font-stretch:125%;text-transform:uppercase;letter-spacing:-.01em}
+.headline .ln{display:flex;align-items:center;gap:12px}
+.lede{font-size:17px;line-height:1.5;color:var(--text-2);max-width:34em}
+
+.pill-cta{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;max-width:486px;min-height:56px;padding:5px 5px 5px 22px;border:1px solid var(--white);border-radius:999px;font:400 17px/1 var(--font-body);transition:background .15s var(--ease)}
+a.pill-cta:hover{background:var(--surface-1)}
+.pill-cta>span:first-child{line-height:1.25;text-wrap:balance}/* small phones: wraps to two even lines, never mid-word */
+.pill-circ{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--white);color:var(--black);flex:none;transition:transform .15s var(--ease)}
+.pill-cta:hover .pill-circ{transform:translateX(2px)}
+.pill-field input{flex:1;min-width:0;height:100%;background:none;border:0;outline:0;color:#fff;font:500 18px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
+.pill-field input::placeholder{color:var(--line-ui)}
+.pill-field:focus-within{outline:2px solid #fff;outline-offset:3px}
+.help{font-size:14px;color:var(--text-2);margin-top:-12px}
+.help.err{color:var(--danger);display:flex;gap:8px}
+.help.ok{color:var(--white);font-weight:500;font-size:18px}
+.f-sub{display:block;margin-top:8px;font-size:14px;line-height:1.4;max-width:30ch;opacity:.85}
+.c-dark .f-sub{opacity:1}
+@container (min-width:900px){.f-sub{font-size:max(13px,calc(15 * var(--u)))}}
+
+.play{display:inline-flex;align-items:center;gap:16px;font-size:17px;line-height:1.35}
+.play-circ{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--white);color:var(--black);flex:none}
+.play-circ.ol{background:none;border:1px solid var(--white);color:var(--white)}
+a.play:active .play-circ{transform:scale(.96)}
+.play-circ{transition:transform .15s var(--ease)}
+.play small{display:block;font-size:13px;color:var(--text-2)}
+@container (min-width:900px){.play small{font-size:max(13px,calc(15 * var(--u)))}}
+
+.p-label{font:500 13px/1.3 var(--font-body);text-transform:uppercase}
+.p-num{font:400 120px/.85 var(--font-display);font-stretch:125%;letter-spacing:-.03em}
+.p-sub{font-size:16px;line-height:1.5;margin-top:8px}
+.p-list{border-top:1px solid rgb(0 0 0 / .25)}
+.p-list li{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;min-height:48px;padding:6px 0;border-bottom:1px solid rgb(0 0 0 / .25);font-size:16px}
+.p-list .n{font:500 12px/1 var(--font-mono)}
+.p-list li.lk{display:block;min-height:0;padding:0}/* a row that is one link: number, title, mark, arrow (ux-audit H5 B) */
+.xr{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;min-height:48px;padding:6px 0;font-size:inherit;line-height:1.3}
+.xr:hover .xt{text-decoration:underline;text-underline-offset:3px}.xr:hover .xtag{text-decoration:none}
+.xo{display:block;font:400 12px/1.3 var(--font-body);color:var(--ink-2)}
+.xm{display:inline-flex;align-items:center;gap:8px;font:500 12px/1 var(--font-mono)}
+.xtag{display:inline-block;padding:2px 10px;border:1px solid currentColor;border-radius:999px;font:500 12px/1.3 var(--font-body);text-transform:uppercase}/* "04 Marketing" is a 2.0 category tag, not a title: shown as a tag */
+.play.on-light .play-circ{background:var(--black);color:var(--lilac)}
+
+@container (min-width:900px){
+  .hero{grid-template-columns:calc(636 * var(--u)) calc(688 * var(--u));justify-content:space-between;gap:0;padding:calc(62 * var(--u)) calc(50 * var(--u)) 0 calc(66 * var(--u))}
+  .hero-l{display:block;padding-top:calc(36 * var(--u))}
+  .headline{font-size:calc(88 * var(--u));line-height:calc(104 * var(--u))}
+  .headline .ln{gap:calc(14 * var(--u))}
+    .eyebrow{font-size:max(12px,calc(15 * var(--u)));margin-bottom:calc(20 * var(--u))}
+  .lede{font-size:max(15px,calc(18 * var(--u)));margin-top:calc(24 * var(--u))}
+  .pill-cta{width:calc(486 * var(--u));max-width:none;height:calc(60 * var(--u));min-height:0;padding:0 calc(4 * var(--u)) 0 calc(25 * var(--u));margin-top:calc(45 * var(--u));font-size:max(15px,calc(18 * var(--u)))}
+  .pill-circ{width:calc(52 * var(--u));height:calc(52 * var(--u))}
+  .help{margin-top:calc(12 * var(--u));font-size:max(13px,calc(15 * var(--u)))}
+  .play{margin-top:calc(76 * var(--u));gap:calc(16 * var(--u));font-size:max(15px,calc(18 * var(--u)))}
+  .play-circ{width:calc(44 * var(--u));height:calc(44 * var(--u));min-width:36px;min-height:36px}
+  .p-label{font-size:max(12px,calc(15 * var(--u)))}
+  .p-num{font-size:calc(200 * var(--u))}
+  .p-sub{font-size:max(14px,calc(18 * var(--u)))}
+  .p-list li{font-size:max(14px,calc(18 * var(--u)));min-height:calc(56 * var(--u))}
+}
+
+/* ===== tag pill (the Shrift screen) ===== */
+.tag{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 20px;border:1px solid var(--line-ui);border-radius:999px;font:500 13px/1 var(--font-body);text-transform:uppercase;white-space:nowrap}
+.tag svg{opacity:.8}
+@container (min-width:900px){.tag{height:calc(44 * var(--u));min-height:34px;padding:0 calc(33 * var(--u));font-size:max(12px,calc(15 * var(--u)))}}
+
+/* ===== FOLDER-TAB CARD =====
+   Body: rounded rect, square top-right. Tab: right 35%, rises --rise.
+   Ramp: fixed-ratio SVG (viewBox 28x21) scaled uniformly by height — never stretched. */
+.folder{--f-bg:var(--grey);--f-ink:var(--black);--rise:16px;--r:14px;position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:16px;margin-top:var(--rise);min-height:196px;padding:22px 22px 24px;background:var(--f-bg);color:var(--f-ink);border-radius:var(--r) 0 var(--r) var(--r);transition:filter .15s var(--ease),transform 160ms var(--ease)}
+.folder>.tab{position:absolute;right:0;bottom:calc(100% - 1px);display:flex;align-items:center;justify-content:flex-end;min-width:35%;max-width:calc(100% - var(--rise) * 1.8);height:calc(var(--rise) + 1px);padding:0 16px 0 2px;background:var(--f-bg);border-radius:0 var(--r) 0 0}
+.tab>.ramp{position:absolute;right:calc(100% - 1px);bottom:0;height:calc(var(--rise) + 1px);width:calc((var(--rise) + 1px) * 28 / 21);color:var(--f-bg)}
+a.folder:hover{filter:brightness(1.07)}
+.c-blue{--f-bg:var(--state-live);--f-ink:var(--white)}/* now: once per screen, white text only */
+.c-lilac{--f-bg:var(--state-open);--f-ink:var(--ink)}/* work left */
+.c-yellow{--f-bg:var(--you);--f-ink:var(--ink)}/* prep (lesson 0), and the student's own progress: user decision 2026-10-16, overrides colour-audit #2 */
+.c-grey{--f-bg:var(--state-done);--f-ink:var(--ink)}/* finished: always with a check and "Bajarildi" */
+.c-dark{--f-bg:var(--state-locked);--f-ink:var(--text-2)}/* lesson 4 while locked: lock + date */
+.c-night{--f-bg:var(--state-locked);--f-ink:var(--white)}/* lesson 4 once unlocked: same dark identity, normal ink */
+.f-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.f-label{font:500 13px/1.35 var(--font-body);text-transform:uppercase;max-width:18em}
+.f-arrow{width:28px;height:28px;margin:-2px -4px 0 0}
+.f-title{font:500 19px/1.36 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.f-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.f-note .dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}/* quiet 'now' mark: never filled like a button */
+.f-note{margin-left:auto;font:500 14px/1.3 var(--font-body);text-transform:uppercase;display:inline-flex;align-items:center;gap:6px}
+button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
+@container (min-width:900px){
+  .folder{--rise:calc(21 * var(--u));--r:calc(15 * var(--u));min-height:calc(231 * var(--u));padding:calc(31 * var(--u)) calc(27 * var(--u)) calc(34 * var(--u))}
+  .folder>.tab{padding-right:calc(20 * var(--u))}
+  .f-label{font-size:max(12px,calc(15 * var(--u)))}
+  .f-arrow{width:calc(34 * var(--u));height:calc(34 * var(--u))}
+  .f-title{font-size:max(16px,calc(22 * var(--u)))}
+  .f-note{font-size:max(14px,calc(15 * var(--u)))}
+}
+
+/* ===== GOOEY FOLDER TABS (dars): the shapes sit in a filtered layer (blur + alpha threshold), so the active tab melts into
+   the folder; labels and content sit above it, unfiltered, so text stays crisp. All panes share one grid cell (the inactive ones are inert + visibility:hidden), so the body is always as tall as the tallest pane: switching never jumps and nothing clips ===== */
+.gt{--th:46px;--bh:460px;--i:0;--n:3;--gt-fill:var(--lilac);--gt-ink:var(--black);--gt-ink2:var(--ink-2);--gt-line:rgb(0 0 0 / .25);position:relative;color:var(--gt-ink)}
+.gt-grey{--gt-fill:var(--grey)}
+.gt-blue{--gt-fill:var(--blue);--gt-ink:var(--white);--gt-ink2:rgb(255 255 255 / .85);--gt-line:rgb(255 255 255 / .3)}
+.gt-dark{--gt-fill:var(--state-locked);--gt-ink:var(--white);--gt-ink2:rgb(255 255 255 / .8);--gt-line:rgb(255 255 255 / .25)}/* per-lesson identity colour (lesson 1 lilac, 2 grey, 3 blue, 4 dark), whatever the state */
+.gt .p-list,.gt .p-list li{border-color:var(--gt-line)}
+.gt .xo{color:var(--gt-ink2)}
+.gt .play.on-light .play-circ{background:var(--gt-ink);color:var(--gt-fill)}
+.gt-goo{position:absolute;inset:0;pointer-events:none;filter:url(#goo-tabs)}
+.gt-ind{position:absolute;top:0;left:0;width:calc(100% / var(--n));height:var(--th);background:var(--gt-fill);transform:translateX(calc(var(--i) * 100%));transition:transform .4s cubic-bezier(.3,0,0,1)}
+.gt-pan{position:absolute;top:var(--th);left:0;right:0;bottom:0;background:var(--gt-fill)}
+.gt-tabs{position:relative;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));height:var(--th)}
+.gt-tab{display:flex;align-items:center;justify-content:center;padding:0 2px;font:500 13px/1 var(--font-display);font-stretch:112%;letter-spacing:.02em;text-transform:uppercase;color:var(--text-2);transition:color .25s var(--ease)}
+.gt-tab .ok{display:inline-flex;align-items:center;gap:5px}
+.gt-tab:hover,.gt-tab[aria-selected="true"]{color:var(--gt-ink)}
+.gt-tab:not([aria-selected="true"]):hover{color:var(--white)}
+.gt-tab:focus-visible{outline-offset:-4px;outline-color:currentColor}
+.gt-body :focus-visible{outline-color:var(--gt-ink)}/* white ring is under 3:1 on lilac */
+.gt-body{position:relative;display:grid;min-height:var(--bh);padding:22px 20px 24px;overflow:hidden}/* overflow only clips the pane swap animation */
+.gt-pane{grid-area:1/1;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.gt-pane[inert]{visibility:hidden}
+.gt .play{margin-top:0}.gt .play-circ{width:44px;height:44px;min-width:0;min-height:0}
+.gt-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}.gt-foot.end{justify-content:flex-end}
+.gt .play{justify-content:flex-end;gap:14px;font-size:16px;line-height:1.3;text-align:right}/* action = words, then the circle: the whole link is the target */
+.gt-meta{font:500 13px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+.gt .p-sub{margin-top:6px}
+@container (max-width:480px){.gt-tab{font-size:12px;letter-spacing:0}.gt-goo{filter:url(#goo-tabs-sm)}}
+@container (max-width:360px){.f-note .nw2{display:none}/* 320px: "Hozir · 0/2 qadam" (the full live wording does not fit one line) */
+.gt-tab{font-size:11px}.gt-body{padding:20px 16px 22px}}
+@container (min-width:900px){
+  .gt{--th:max(44px,calc(56 * var(--u)));--bh:calc(max(480px,calc(512 * var(--u))) - var(--th));align-self:start}/* the body grows with its tallest pane; 480px is the minimum */
+  .gt-tab{font-size:max(13px,calc(16 * var(--u)))}
+  .gt-body{padding:calc(36 * var(--u))}
+  .gt-meta{font-size:max(12px,calc(15 * var(--u)))}
+}
+
+/* lesson header: back link + one meta line with the lesson's progress (ux-audit H4 A) */
+.dl-h{display:grid;gap:10px;justify-items:start}
+.dl-m{font:500 13px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+@container (min-width:900px){.dl-h{margin-bottom:calc(20 * var(--u))}.dl-h .eyebrow{margin-bottom:0}.dl-m{font-size:max(12px,calc(15 * var(--u)))}}
+/* ===== section heading (list / grid screens) ===== */
+.page-head{display:grid;gap:20px;padding:32px 16px 8px}
+.grid3{display:grid;gap:12px;padding:24px 16px 48px}
+@container (min-width:900px){
+  .page-head{grid-template-columns:1fr auto;align-items:end;padding:calc(62 * var(--u)) calc(61 * var(--u)) calc(20 * var(--u)) calc(66 * var(--u))}
+  .grid3{grid-template-columns:repeat(6,1fr);gap:calc(28 * var(--u)) calc(16 * var(--u));padding:calc(40 * var(--u)) calc(61 * var(--u)) calc(64 * var(--u)) calc(66 * var(--u))}
+  .grid3 .folder{min-height:calc(260 * var(--u))}
+  .grid3>li{grid-column:span 2}.grid3>li:nth-child(n+4){grid-column:span 3}/* 3 + 2: lessons 0-2 on the first row, 3-4 on a wide second row, so the grid is always full */
+}
+/* course progress ring: thin track, thick flat arc from 12 o'clock, round caps; draws itself in on first show (no motion: final value) */
+.prog{display:flex;align-items:center;gap:16px;justify-self:start}
+.ring{position:relative;flex:none;width:88px;aspect-ratio:1}
+.ring svg{display:block;width:100%;height:100%;transform:rotate(-90deg);fill:none}
+.rt,.rp{fill:none}
+.rt{stroke:rgb(255 255 255 / .12);stroke-width:4}
+.rp{stroke:var(--yellow);stroke-width:9;stroke-linecap:round;stroke-dasharray:25 100;animation:ring-in .9s var(--ease) .15s both}
+@keyframes ring-in{from{stroke-dasharray:0 100}}
+.pv{position:absolute;inset:0;display:grid;place-items:center;font:500 22px/1 var(--font-display);font-stretch:125%}
+.pt{display:grid;gap:4px}
+.pl{font:500 13px/1.3 var(--font-body);text-transform:uppercase;color:var(--text-2)}
+.ps{font:400 17px/1.35 var(--font-body)}
+.pn{display:inline-flex;align-items:center;gap:6px;font:500 14px/1.3 var(--font-body);color:var(--yellow)}
+/* home hero (ux-audit H1 B): the progress ring, the live lesson as one big blue card, then the next step */
+.main-head{grid-template-areas:"r" "c" "p"}
+.main-head>.prog{grid-area:r}.main-head>.now-card{grid-area:c;min-height:220px}.main-head>.next{grid-area:p;justify-self:start}
+.now-card .f-title{font-size:26px}.now-card .f-sub{font-size:15px;opacity:1;max-width:none}
+@container (min-width:900px){
+  .main-head{grid-template-columns:minmax(0,1fr) calc(560 * var(--u));grid-template-rows:1fr auto auto 1fr;grid-template-areas:". c" "r c" "p c" ". c";gap:0 calc(40 * var(--u));align-items:stretch}
+  .main-head>.next{margin-top:calc(44 * var(--u))}/* ring + next step sit centred against the card */
+  .prog{gap:calc(28 * var(--u))}.ring{width:max(112px,calc(180 * var(--u)))}.pv{font-size:max(28px,calc(46 * var(--u)))}
+  .pl{font-size:max(12px,calc(15 * var(--u)))}.ps{font-size:max(15px,calc(24 * var(--u)))}.pn{font-size:max(14px,calc(17 * var(--u)))}
+  .main-head>.now-card{min-height:calc(340 * var(--u))}
+  .now-card .f-title{font-size:calc(44 * var(--u))}.now-card .f-sub{font-size:max(14px,calc(18 * var(--u)))}
+}
+
+/* ===== flat card (non-folder): lesson resources ===== */
+.folder.flatc{margin-top:0;border-radius:var(--r)}
+/* ===== LOGIN: the Pinterest photo (pin 78109374783982031, by Anton Dee: needs the author's OK before going live),
+   1% painted on the CRT (login-pin.*, the portrait original); on wide screens it is full-width and cropped to
+   the user's chosen frame: the man + CRT bottom centre, the swirl top right, the bookshelf on the right edge ===== */
+.gate-stage{position:relative;min-height:760px;display:grid;grid-template-rows:auto 1fr;grid-template-columns:minmax(0,1fr);isolation:isolate;overflow:hidden;background:#05070f}
+.gate-bg,.gate-bg img{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.gate-bg img{object-fit:cover;object-position:35% 50%}
+.gate-stage::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(#000,transparent 20%,transparent 78%,#000),linear-gradient(90deg,#000,transparent 14%,transparent 86%,#000)}
+.gate-stage .nav{grid-template-columns:1fr;justify-items:center;border-bottom:0;background:none}
+.gate-lang{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);display:flex;gap:24px;font:500 14px/1 var(--font-body)}
+.gate-lang a{padding:8px 2px;color:rgb(255 255 255 / .7);transition:color .15s}
+.gate-lang a:hover,.gate-lang a[aria-current]{color:#fff}
+.gate-lang a[aria-current]{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.gate-form{align-self:center;justify-self:center;margin:24px 0}
+/* login wordmark: a weight wave that ripples out from the middle (no script, no mouse). Each letter's slot is as wide as that letter at the heaviest weight
+   (the invisible ::after copy), so the word never changes width and nothing around it moves; only the glyph inside its slot breathes. Negative delays: it is already mid-wave on load */
+.wm-l{display:inline-grid;contain:layout}
+.wm-l::after{content:attr(data-c);grid-area:1/1;font-weight:800;visibility:hidden}
+.wm-g{grid-area:1/1;justify-self:center;animation:wm-wave 1.35s step-end infinite alternate;animation-delay:calc(var(--d) * .1s - 8s)}
+/* ease-in-out, 300 to 800, in 25-unit steps: every frame re-uses a handful of font instances (smooth weights would build 16 new ones per frame: ~30% of the main thread) */
+@keyframes wm-wave{0%{font-weight:300}5%{font-weight:300}10%{font-weight:325}15%{font-weight:325}20%{font-weight:350}25%{font-weight:375}30%{font-weight:400}35%{font-weight:450}40%{font-weight:475}45%{font-weight:525}50%{font-weight:550}55%{font-weight:575}60%{font-weight:625}65%{font-weight:650}70%{font-weight:700}75%{font-weight:725}80%{font-weight:750}85%{font-weight:775}90%{font-weight:775}95%{font-weight:800}100%{font-weight:800}}
+.wm-s .wm-g{animation:none}/* a space has nothing to weigh */
+@media (prefers-reduced-motion:reduce){.wm-g{animation:none}}
+/* ?solo: only the sign-in screen, full window, no comp chrome */
+.solo .comp-bar,.solo .screen-tag{display:none}
+.solo .screens{padding:0}
+.solo{background:var(--black)}
+.solo .frame{max-width:none}/* every screen fills the window; --u is capped at the 1440 design size instead */
+.solo .site{min-height:100svh}/* short screens still fill the window height: the background never stops mid-screen */
+.solo .gate-stage{aspect-ratio:auto;height:100svh;min-height:600px}
+.solo[data-view="gate"]{overflow:hidden}
+/* after a good ID: the SevMini server-stack loader (loader-12), then the course page */
+.ldr{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgb(0 0 0 / .82);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);animation:ldr-in 160ms var(--ease)}
+.ldr[hidden]{display:none}
+.ldr-stack{animation:ldr-bounce 4s infinite ease-in-out}
+.ldr-stack svg{display:block;width:60px;height:73px}
+.ldr-ghost{position:relative;z-index:-1;transform:translateY(-20px);animation:ldr-fade 4s infinite ease-in-out}
+.ldr-ghost svg{display:block;width:49px;height:29px}
+.ldr-txt{margin-top:-2px;font:500 13px/1.4 var(--font-mono);letter-spacing:.04em;color:#fff}
+.strobe-led{animation:ldr-strobe .5s infinite}
+.strobe-c1{animation:ldr-strobe-g .8s infinite}
+@keyframes ldr-in{from{opacity:0}}
+@keyframes ldr-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes ldr-fade{0%,100%{opacity:1;scale:1}50%{opacity:.5;scale:.9}}
+@keyframes ldr-strobe{0%{opacity:1}50%{opacity:0}51%,100%{opacity:1}}
+@keyframes ldr-strobe-g{0%,50%,100%{fill:#17e300}25%,75%{fill:#17e300b4}}
+/* login card = MercuryLogin's .auth-container (card only; its blob background is left out) */
+.mx{--mercury:#e0e0e0;--dim:rgb(255 255 255 / .85);position:relative;width:100%;max-width:440px;padding:40px;color:#fff;font-family:var(--font-body)}
+.mx-head{margin-bottom:60px}
+.mx h1{font:500 3rem/1.05 var(--font-display);font-stretch:125%;letter-spacing:-.01em;text-transform:uppercase}
+.mx-group{position:relative;margin-bottom:12px;transition:transform .4s cubic-bezier(.2,1,.3,1)}
+.mx-group:focus-within{transform:translateX(10px);outline:0}/* the glow line is the focus mark */
+.mx-group label{display:block;margin-bottom:12px;font:500 12px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+/* the label and ID sit on a busy photo: a soft dark halo keeps them readable */
+.mx-group label,.mx-input{text-shadow:0 1px 2px rgb(0 0 0 / .9),0 0 14px rgb(0 0 0 / .7)}
+.mx-input{display:flex;align-items:baseline;gap:4px;border-bottom:1px solid rgb(255 255 255 / .45);font-size:20px}
+.mx-input span{color:var(--dim)}
+.mx-input input{flex:1;min-width:0;padding:12px 0;background:transparent;border:0;outline:0;color:#fff;font:inherit;text-transform:uppercase}
+.mx-input input::placeholder{color:rgb(255 255 255 / .6)}
+.mx-glow{position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--mercury);box-shadow:0 0 15px var(--mercury);transition:width .6s cubic-bezier(.2,1,.3,1)}
+.mx-group:focus-within .mx-glow{width:100%}
+.mx-group.is-error .mx-glow{width:100%;background:var(--danger);box-shadow:0 0 15px var(--danger)}
+.mx-help{position:absolute;z-index:3;left:0;right:0;top:100%;margin:0;font:400 11px/1.5 var(--font-mono);color:var(--dim)}/* inside .mx-group and out of flow: a message never moves the button */
+.mx-help.err{display:flex;gap:8px;font:500 14px/1.4 var(--font-body);color:#fff;text-shadow:0 1px 2px #000,0 0 3px #000,0 0 8px #000,0 0 16px rgb(0 0 0 / .95),0 0 28px rgb(0 0 0 / .85)}/* no box: halo like the label; 2 lines (39px) fit the 50px gap above the button */
+.mx-help.err svg{margin-top:1px;color:var(--danger);filter:drop-shadow(0 1px 2px #000)}
+.mx-help.ok{font-size:13px;color:#fff}
+.mx-submit{position:relative;width:240px;max-width:100%;margin-top:50px;filter:url(#gooey)}
+.mx-btn{position:relative;z-index:2;width:100%;padding:16px 32px;background:#fff;color:#000;border:0;font:600 13px/1 var(--font-display);font-stretch:125%;letter-spacing:2px;text-transform:uppercase;cursor:pointer}
+.mx-drop{position:absolute;top:50%;left:50%;z-index:1;width:100%;height:100%;background:var(--mercury);border-radius:50px;transform:translate(-50%,-50%);transition:transform 200ms var(--ease),filter 200ms var(--ease)}
+.mx-submit:hover .mx-drop{transform:translate(-50%,-50%) scale(1.05,1.2);filter:brightness(1.2)}
+.grid3>li,.gt,.main-head{position:relative}
+.s1{position:relative}
+
+/* ===== overlays (body level, so .frame does not clip them): new-lesson popup, name menu, undo toast, locked sheet ===== */
+.nl,.nmenu{position:fixed;display:grid;left:16px;right:16px;top:calc(72px + env(safe-area-inset-top))}
+.nl[hidden],.nmenu[hidden],.toast[hidden]{display:none}
+.nl{z-index:30;gap:14px;padding:18px;background:var(--white);color:var(--black);border:1px solid var(--black);border-radius:15px}
+.nl-k{font:500 12px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em;color:var(--ink-2)}
+.nl-t{margin-top:4px;font:500 17px/1.3 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.nl-a{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.nl-go,.nl-x{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;border:1px solid var(--black);border-radius:999px;font:500 15px/1 var(--font-body)}
+.nl-go{background:var(--black);color:var(--white)}
+.nl :focus-visible,.toast :focus-visible{outline-color:currentColor}
+.nmenu{z-index:35;max-height:calc(100dvh - 24px);overflow:auto;padding:20px;background:var(--black);border:1px solid var(--line);border-radius:15px}
+.nmenu:focus{outline:0}
+.nm-name{font:500 17px/1.3 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.nm-list{margin-top:12px;border-top:1px solid var(--line)}
+.nm-list div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.3}
+.nm-list dt{color:var(--text-2)}.nm-list dd{text-align:right}.nm-list .mono{font:500 14px/1.3 var(--font-mono)}
+.nm-lang{display:flex;gap:4px;margin-top:8px}
+.nm-lang a{display:grid;place-items:center;min-width:44px;min-height:44px;font:500 14px/1 var(--font-body);color:var(--text-2)}.nm-lang a[aria-current]{color:var(--white);text-decoration:underline;text-underline-offset:5px}
+.nm-out{display:flex;align-items:center;justify-content:center;min-height:48px;margin-top:8px;border:1px solid var(--white);border-radius:999px;font:500 16px/1 var(--font-body)}
+.nm-out:hover{background:var(--surface-1)}
+@media (min-width:900px){.nl{top:16px;left:24px;right:auto;width:380px}.nmenu{left:auto;right:var(--mr,24px);width:340px}}
+/* outside ?solo the comp bar and the screen padding sit above the nav: keep the popup below them, clear of the comp buttons and the nav */
+body:not(.solo) .nl{top:calc(172px + env(safe-area-inset-top))}
+@media (min-width:481px){body:not(.solo) .nl{top:165px}}
+@media (min-width:900px){body:not(.solo) .nl{top:calc(93px + min(120px,8.34vw))}}
+.toast{position:fixed;z-index:40;left:16px;right:16px;bottom:16px;margin:0 auto;max-width:420px;display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:48px;padding:0 6px 0 18px;border:1px solid var(--line);border-radius:999px;background:var(--black);color:#fff;font-size:15px}
+.toast button{min-height:44px;padding:0 12px;font-weight:500;text-decoration:underline;text-underline-offset:4px}
+.sheet{margin:auto auto 0;width:min(100%,480px);max-width:100%;padding:28px 16px calc(24px + env(safe-area-inset-bottom));border:0;border-radius:24px 24px 0 0;background:var(--surface-1);color:#fff}
+.sheet::backdrop{background:rgb(0 0 0 / .6)}
+.sheet-t{font:500 19px/1.36 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.sheet-d{margin-top:10px;color:var(--text-2);font-size:16px}
+.sheet-x{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin-top:24px;border:1px solid #fff;border-radius:999px;font:500 16px/1 var(--font-body)}
+@media (min-width:700px){.sheet{margin:auto;border-radius:24px}}
+
+@media (prefers-reduced-motion:reduce){.mx-group:focus-within{transform:none}}
+@container (max-width:480px){.mx-help.err{right:-24px}}
+@container (min-width:900px){
+  .gate-stage{aspect-ratio:2400/1340;min-height:0}
+  .gate-bg img{object-position:50% 60%}
+  .gate-form{position:absolute;left:25%;top:50%;transform:translate(-50%,-50%);margin:0}
+}
+
+/* ===== exercise: black header + quiet file list ===== */
+.ex-wrap{max-width:900px;padding:32px 16px 40px}
+.ex-wrap .lede{margin:16px 0 28px}
+.ex-h{font-size:clamp(28px,8.5cqi,40px);line-height:1.1;margin-top:16px}
+.ex-files{max-width:760px}
+.ex-files section+section{margin-top:24px}
+.ef-h{font:500 13px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em;color:var(--white)}
+.ex-files ul{margin-top:8px}
+.ex-files li{border-top:1px solid var(--line)}
+.ef-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;padding:8px 0;font-size:15px;color:var(--text-1)}
+.ef-nm{display:block;overflow-wrap:anywhere;color:var(--white)}
+.ef-mt{display:block;margin-top:3px;font:400 12px/1.3 var(--font-mono);color:var(--text-3)}
+.ef-dl{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);color:var(--white);flex:none;transition:background .15s,color .15s}
+a.ef-row:hover .ef-dl{background:var(--white);color:var(--black)}
+.ef-hint{margin-top:4px;font-size:14px;color:var(--text-2)}
+
+/* ===== PROMPT SECTION: full-bleed lilac, editorial numbered list; copy = done (the only lilac section background) ===== */
+.s1{background:var(--lilac);color:var(--black);padding:40px 16px 56px}
+.s1-eyebrow{font:500 13px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em;color:var(--ink-2)}
+.s1 ol{margin-top:20px;border-top:1.5px solid var(--black);max-width:1100px}
+.s1 li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px 16px;padding:26px 0 30px;border-bottom:1px solid rgb(0 0 0 / .3)}
+.s1 .no{grid-row:1;grid-column:1;font:400 40px/.85 var(--font-display);font-stretch:125%;letter-spacing:-.02em;transition:opacity .2s}
+.s1 .done .no{opacity:.55}
+.s1 .body{grid-row:2;grid-column:1/-1;display:grid;gap:8px;min-width:0}
+.s1 .cpw{grid-row:1;grid-column:2}
+.s1 .tt{font:500 17px/1.25 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.s1 .to{font:400 14px/1.4 var(--font-body);color:var(--ink-2)}
+.s1 .to.strong{font-size:15px;font-weight:500;color:var(--black)}.s1 .to b{font-weight:600}
+.s1 .tx{margin-top:8px;font:400 17px/1.6 var(--font-body);max-width:62ch}
+.s1 .ph{font-weight:600}/* plain text: bold, with its brackets; no colour and no underline, so it does not look like a link */
+.s1-rule{margin-top:8px;font:400 15px/1.4 var(--font-body);color:var(--ink-2)}
+/* copy control = circle + word (ux-audit H2 B); the whole column is the button */
+.s1 .cp{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:56px;color:var(--black)}
+.s1 .cp-c{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--black);transition:background 160ms var(--ease),color 160ms var(--ease)}
+.s1 .cp:hover .cp-c,.s1 .cp.flash .cp-c{background:var(--black);color:var(--lilac)}
+.s1 .cpl{font:500 11px/1 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+/* done chip = the undo toggle: filled "Bajarildi" / outline "Bajarildi deb belgilash" */
+.s1 .chip{position:relative;justify-self:start;display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border:1.5px solid var(--black);border-radius:999px;background:var(--black);color:var(--lilac);font:500 11px/1 var(--font-body);text-transform:uppercase}
+.s1 .chip::after{content:"";position:absolute;inset:-10px -4px}/* 44px hit area */
+.s1 .chip.off{background:none;color:var(--black)}
+.s1-pdf{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:20px;font:500 15px/1.3 var(--font-body);text-decoration:underline;text-underline-offset:4px}
+.s1 :focus-visible{outline-color:var(--black)}
+@container (min-width:700px){
+  .s1 li{grid-template-columns:150px minmax(0,1fr) auto;align-items:start;gap:0 32px;padding:36px 0 40px}
+  .s1 .body{grid-row:1;grid-column:2}
+  .s1 .cpw{grid-column:3}
+  .s1 .no{font-size:96px}
+  .s1 .tt{font-size:21px}
+  .s1 .to.strong{font-size:16px}
+  .s1 .tx{font-size:20px}
+  .s1 .cp-c{width:56px;height:56px}
+}
+@container (min-width:900px){
+  .ex-wrap{padding:calc(62 * var(--u)) calc(66 * var(--u)) calc(48 * var(--u))}
+  .ex-h{font-size:calc(56 * var(--u))}
+  .s1{padding:calc(64 * var(--u)) calc(66 * var(--u)) calc(80 * var(--u))}
+}
+/* ===== type check ===== */
+.type-grid{display:grid;gap:32px;padding:40px 16px}
+.type-grid>div{display:grid;gap:10px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+@container (min-width:900px){.type-grid{padding:calc(62 * var(--u)) calc(66 * var(--u))}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:0s!important;animation:none!important}}
+</style>
+</head>
+<body data-view="gate">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="goo-tabs"><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter>
+  <filter id="goo-tabs-sm"><feGaussianBlur in="SourceGraphic" stdDeviation="7" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter>
+  <symbol id="i-ramp" viewBox="0 0 28 21"><path d="M0 21Q4 21 7 18L22 3Q25 0 28 0V21Z" fill="currentColor"/></symbol>
+  <symbol id="i-ne" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 28L28 6M10 6h18v18"/></symbol>
+  <symbol id="i-next" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10h13M11 4.5l5.5 5.5-5.5 5.5"/></symbol>
+  <symbol id="i-back" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 10h-13M9 4.5L3.5 10 9 15.5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v11M5 9.5l5 5 5-5M4 17h12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 20 20"><path d="M7 4.8v10.4L15.4 10z" fill="currentColor"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M13 7V4.5A1.5 1.5 0 0011.5 3h-7A1.5 1.5 0 003 4.5v7A1.5 1.5 0 004.5 13H7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5l3.5 3.5 7.5-8.5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="12" height="8.5" rx="1.5"/><path d="M7 9V6.5a3 3 0 016 0V9"/></symbol>
+  <symbol id="i-send" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2.5L2 9l5.6 2L15 5.5 9.6 12.4l6 5.1z"/></symbol>
+  <symbol id="i-home" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 9.4L10 3.4l6.8 6V16a.6.6 0 0 1-.6.6h-3.4v-4.6H7.2v4.6H3.8a.6.6 0 0 1-.6-.6z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 7h14M3 13h14"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5l8 14.5H2z"/><path d="M10 8v4M10 14.5h.01"/></symbol>
+</defs></svg>
+
+<nav class="comp-bar" aria-label="Komp ekranlari">
+  <strong>AI Praktikum · komp</strong>
+  <button type="button" data-go="gate" aria-pressed="true">1 · Kirish</button>
+  <button type="button" data-go="dastur" aria-pressed="false">2 · Asosiy (Dastur)</button>
+  <button type="button" data-go="dars" aria-pressed="false">3 · Dars 01</button>
+  <button type="button" data-go="ex" aria-pressed="false">4 · Mashq</button>
+  <button type="button" data-go="type" aria-pressed="false">Shrift</button>
+  <button type="button" data-go="all" aria-pressed="false">Hammasi</button>
+  <button type="button" id="w375" aria-pressed="false">375 px</button>
+</nav>
+
+<div class="screens">
+
+<!-- ================= a · GATE ================= -->
+<section class="screen is-on" data-screen="gate" id="s-gate" aria-labelledby="t-gate">
+  <p class="screen-tag" id="t-gate">1 · /aip/ · Kirish (ID eshigi) · sinash uchun istalgan 6 belgi yoki AIP-XXXXXX yozing (KKKKKK = ID topilmadi)</p>
+  <div class="frame"><div class="site">
+    <div class="gate-stage">
+      <picture class="gate-bg"><source type="image/webp" srcset="login-pin.webp"><img src="login-pin.jpg" alt="" width="1984" height="2400" fetchpriority="high"></picture>
+      <header class="nav">
+        <a class="wordmark" href="#s-dastur">AI Praktikum 3.0</a>
+      </header>
+      <main class="gate-form mx">
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="gooey"><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"/><feComposite in="SourceGraphic" in2="goo" operator="atop"/></filter></svg>
+        <header class="mx-head">
+          <h1>Shaxsiy<br>kabinet</h1>
+        </header>
+        <form id="gate-form" novalidate>
+          <div class="mx-group pill-field">
+            <label for="gid">Shaxsiy ID</label>
+            <div class="mx-input"><span aria-hidden="true">AIP-</span><input id="gid" type="text" value="" maxlength="10" placeholder="7KQ2XM" autocomplete="username" inputmode="text" autocapitalize="characters" spellcheck="false" aria-describedby="gid-h"></div>
+            <div class="mx-glow"></div>
+            <p class="mx-help help" id="gid-h" aria-live="polite"></p>
+          </div>
+          <div class="mx-submit"><div class="mx-drop"></div><button type="submit" class="mx-btn">Kirish</button></div>
+        </form>
+      </main>
+      <div class="ldr" id="gate-loader" hidden>
+        <div class="ldr-stack"><svg width="74" height="90" viewBox="0 0 74 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M40 76.5L72 57V69.8615C72 70.5673 71.628 71.2209 71.0211 71.5812L40 90V76.5Z" fill="#396CAA"/>
+            <path d="M34 75.7077L2 57V69.8615C2 70.5673 2.37203 71.2209 2.97892 71.5812L34 90V75.7077Z" fill="#396DAC"/>
+            <path d="M34 76.5H40V90H34V76.5Z" fill="#396CAA"/>
+            <path d="M3.27905 55.593L35.2806 37.5438C36.3478 36.9419 37.6522 36.9419 38.7194 37.5438L70.721 55.593C71.7294 56.1618 71.7406 57.6102 70.7411 58.1945L39.2712 76.593C37.8682 77.4133 36.1318 77.4133 34.7288 76.593L3.25887 58.1945C2.25937 57.6102 2.27061 56.1618 3.27905 55.593Z" fill="#163C79" stroke="#396CAA"/>
+            <path d="M40 79L72 60V70.4001C72 71.1151 71.6183 71.7758 70.9987 72.1329L40 90V79Z" fill="#173D7A"/>
+            <path d="M34 79L3 61V71.5751L34 90V79Z" fill="#0665B2"/>
+            <path class="strobe-c1" d="M58 72.5L60.5 71V74L58 75.5V72.5Z" fill="#FF715E"/>
+            <path d="M63 69.5L65.5 68V71L63 72.5V69.5Z" fill="#17e300b4"/>
+            <path d="M68 66.5L70.5 65V68L68 69.5V66.5Z" fill="#FF715E"/>
+            <path d="M40 58.5L72 39V51.8615C72 52.5673 71.628 53.2209 71.0211 53.5812L40 72V58.5Z" fill="#396CAA"/>
+            <path d="M34 57.7077L2 39V51.8615C2 52.5673 2.37203 53.2209 2.97892 53.5812L34 72V57.7077Z" fill="#396DAC"/>
+            <path d="M34 58.5H40V72H34V58.5Z" fill="#396CAA"/>
+            <path d="M3.27905 37.593L35.2806 19.5438C36.3478 18.9419 37.6522 18.9419 38.7194 19.5438L70.721 37.593C71.7294 38.1618 71.7406 39.6102 70.7411 40.1945L39.2712 58.593C37.8682 59.4133 36.1318 59.4133 34.7288 58.593L3.25887 40.1945C2.25937 39.6102 2.27061 38.1618 3.27905 37.593Z" fill="#163C79" stroke="#396CAA"/>
+            <path d="M40 61L72 42V52.4001C72 53.1151 71.6183 53.7758 70.9987 54.1329L40 72V61Z" fill="#173D7A"/>
+            <path d="M34 61L3 43V53.5751L34 72V61Z" fill="#0665B2"/>
+            <path d="M58 54.5L60.5 53V56L58 57.5V54.5Z" fill="#FF715E"/>
+            <path d="M63 51.5L65.5 50V53L63 54.5V51.5Z" fill="black"/>
+            <path class="strobe-c1" d="M63 51.5L65.5 50V53L63 54.5V51.5Z" fill="#FF715E"/>
+            <path d="M68 48.5L70.5 47V50L68 51.5V48.5Z" fill="#FF715E"/>
+            <path d="M40 40.5L72 21V33.8615C72 34.5673 71.628 35.2209 71.0211 35.5812L40 54V40.5Z" fill="#396CAA"/>
+            <path d="M34 39.7077L2 21V33.8615C2 34.5673 2.37203 35.2209 2.97892 35.5812L34 54V39.7077Z" fill="#396DAC"/>
+            <path d="M34 40.5H40V54H34V40.5Z" fill="#396CAA"/>
+            <path d="M3.27905 19.593L35.2806 1.54381C36.3478 0.941872 37.6522 0.941872 38.7194 1.54381L70.721 19.593C71.7294 20.1618 71.7406 21.6102 70.7411 22.1945L39.2712 40.593C37.8682 41.4133 36.1318 41.4133 34.7288 40.593L3.25887 22.1945C2.25937 21.6102 2.27061 20.1618 3.27905 19.593Z" fill="#124E89" stroke="#396CAA"/>
+            <path d="M40 43L72 24V34.4001C72 35.1151 71.6183 35.7758 70.9987 36.1329L40 54V43Z" fill="#173D7A"/>
+            <path d="M34 43L3 25V35.5751L34 54V43Z" fill="#0665B2"/>
+            <path d="M68 30.5L70.5 29V32L68 33.5V30.5Z" fill="#FF715E"/>
+            <path d="M58 36.5L60.5 35V38L58 39.5V36.5Z" fill="#FF715E"/>
+            <path d="M63 33.5L65.5 32V35L63 36.5V33.5Z" fill="#FF715E"/>
+            <path d="M20.1902 22.0719C18.8101 21.3026 18.8252 19.3119 20.2168 18.5636L36.1054 10.0189C37.2884 9.3827 38.7116 9.3827 39.8946 10.0189L55.7832 18.5636C57.1748 19.3119 57.1899 21.3026 55.8098 22.0719L40.4345 30.6429C38.9211 31.4865 37.0789 31.4865 35.5655 30.6429L20.1902 22.0719Z" fill="#396CAA"/>
+            <path d="M11 52.755C11 51.9801 11.8432 51.4997 12.5098 51.8947L23.5196 58.419C24.1273 58.7792 24.5 59.4332 24.5 60.1396V60.245C24.5 61.0199 23.6568 61.5003 22.9902 61.1053L11.9804 54.581C11.3727 54.2208 11 53.5668 11 52.8604V52.755Z" fill="#396CAA"/>
+            <mask id="ldr-m0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="11" y="51" width="14" height="11"><path d="M11 52.755C11 51.9801 11.8432 51.4997 12.5098 51.8947L23.5196 58.419C24.1273 58.7792 24.5 59.4332 24.5 60.1396V60.245C24.5 61.0199 23.6568 61.5003 22.9902 61.1053L11.9804 54.581C11.3727 54.2208 11 53.5668 11 52.8604V52.755Z" fill="#396CAA"/></mask>
+            <g mask="url(#ldr-m0)"><path d="M11.5 52.7417C11.5 51.9803 12.3349 51.5138 12.9833 51.9128L23.5482 58.4143C24.1397 58.7783 24.5 59.4231 24.5 60.1176V61.5L12.4598 54.4195C11.8651 54.0698 11.5 53.4315 11.5 52.7417V52.7417Z" fill="#163874"/></g>
+            <mask id="ldr-m1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="19" y="9" width="38" height="23"><path d="M20.1902 22.0719C18.8101 21.3026 18.8252 19.3119 20.2168 18.5636L36.1054 10.0189C37.2884 9.3827 38.7116 9.3827 39.8946 10.0189L55.7832 18.5636C57.1748 19.3119 57.1899 21.3026 55.8098 22.0719L40.4345 30.6429C38.9211 31.4865 37.0789 31.4865 35.5655 30.6429L20.1902 22.0719Z" fill="#396CAA"/></mask>
+            <g mask="url(#ldr-m1)"><path d="M18 21.3115L36.167 11.9451C37.3171 11.3521 38.6829 11.3521 39.833 11.9451L58 21.3115L40.3567 30.7405C38.8841 31.5275 37.1159 31.5275 35.6433 30.7405L18 21.3115Z" fill="#173D7A"/></g>
+            <path d="M37.447 21.565L35 19.9799L37.6941 18.66L40.141 20.245L37.447 21.565Z" fill="#FF715E"/>
+            <path d="M48.9738 30.8646L47.0741 29.7745L49.1792 28.684L51.0789 29.7741L48.9738 30.8646Z" fill="#173E7B"/>
+            <path d="M52.0661 29.0093L50.1635 27.9242L52.2657 26.8282L54.1682 27.9133L52.0661 29.0093Z" fill="#173E7B"/>
+            <path class="strobe-led" d="M55.1521 27.1464L53.2538 26.054L55.3602 24.9661L57.2585 26.0586L55.1521 27.1464Z" fill="#3A6DAB"/>
+          </svg></div>
+        <div class="ldr-ghost"><svg width="60" height="36" viewBox="0 0 60 36" fill="none" aria-hidden="true"><path d="M1.96545 19.4296C0.643777 18.6484 0.658726 16.7309 1.99242 15.9705L28.0186 1.12982C29.2467 0.429534 30.7533 0.429533 31.9814 1.12982L58.0076 15.9704C59.3413 16.7309 59.3562 18.6484 58.0346 19.4296L32.5442 34.4962C30.9749 35.4238 29.0251 35.4238 27.4558 34.4962L1.96545 19.4296Z" fill="#3C4F6D"/></svg></div>
+        <p class="ldr-txt">Xush kelibsiz, Student!</p>
+      </div>
+      <nav class="gate-lang" aria-label="Til"><a href="#" aria-current="true" lang="uz">UZ<span class="sr-only"> · Oʻzbekcha</span></a><a href="#" lang="ru">RU<span class="sr-only"> · Русский</span></a><a href="#" lang="en">EN<span class="sr-only"> · English</span></a></nav>
+    </div>
+  </div></div>
+</section>
+
+<!-- ================= b · MAIN = DASTUR (2.0 lesson list as folder cards) ================= -->
+<section class="screen" data-screen="dastur" id="s-dastur" aria-labelledby="t-dastur">
+  <p class="screen-tag" id="t-dastur">2 · /aip/ · Asosiy sahifa: Dastur (2.0 darslari)</p>
+  <div class="frame"><div class="site">
+    <header class="nav">
+      <nav class="nav-links" aria-label="Boʻlimlar"><a href="#s-dastur" aria-current="page">Dastur</a></nav>
+      <a class="wordmark" href="#s-dastur">AI Praktikum 3.0</a>
+      <div class="nav-r"><button class="nav-name" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu">Student</button><button class="menu-btn" type="button" aria-label="Menyu" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu"><svg width="20" height="20" aria-hidden="true"><use href="#i-menu"/></svg></button></div>
+    </header>
+    <div class="page-head main-head">
+      <h1 class="sr-only">Dastur</h1>
+      <div class="prog" role="progressbar" aria-label="Toʻliq bajarilgan darslar" aria-valuemin="0" aria-valuemax="4" aria-valuenow="1" aria-valuetext="4 darsdan 1 tasi toʻliq bajarilgan. Tayyorgarlik bajarilgan.">
+        <span class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="rt" cx="50" cy="50" r="42"/><circle class="rp" cx="50" cy="50" r="42" pathLength="100"/></svg><span class="pv">1/4</span></span>
+        <span class="pt"><span class="pl">Sizning natijangiz</span><span class="ps">Toʻliq bajarilgan darslar</span><span class="pn"><svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg>Tayyorgarlik</span></span>
+      </div>
+      <a class="folder flatc c-blue now-card" href="#s-dars">
+        <span class="f-top"><span class="f-label">Hozir davom etmoqda<br>3-dars · 26-sentabr</span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span>
+        <span><span class="f-title">Skill va<br>agentlar</span><span class="f-sub">Slaydlar 14 / 40 · davom etish</span></span>
+      </a>
+      <a class="play next" href="#s-ex"><span class="play-circ ol"><svg width="18" height="18" aria-hidden="true"><use href="#i-next"/></svg></span><span>Keyingi qadam<small>1-dars · Amaliyot 01 · P3</small></span></a>
+    </div>
+    <ul class="grid3 lessons" aria-label="Darslar">
+      <li><a class="folder c-yellow" href="#">
+        <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+        <span class="f-top"><span class="f-label">0-dars · tayyorgarlik</span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span>
+        <span class="f-row"><span class="f-title">Oʻrnatish va<br>tayyorgarlik</span><span class="f-note"><svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg>Bajarildi · 4/4 qadam</span></span>
+      </a></li>
+      <li><a class="folder c-lilac" href="#s-dars">
+        <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+        <span class="f-top"><span class="f-label">1-dars · 12-sentabr</span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span>
+        <span class="f-row"><span class="f-title">Kirish</span><span class="f-note">Ochiq · 3/6 qadam</span></span>
+      </a></li>
+      <li><a class="folder c-grey" href="#">
+        <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+        <span class="f-top"><span class="f-label">2-dars · 19-sentabr</span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span>
+        <span class="f-row"><span class="f-title">Claude<br>va Code</span><span class="f-note"><svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg>Bajarildi · 3/3 qadam</span></span>
+      </a></li>
+      <li><a class="folder c-lilac" href="#s-dars">
+        <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+        <span class="f-top"><span class="f-label">3-dars · 26-sentabr</span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span>
+        <span class="f-row"><span class="f-title">Skill va<br>agentlar</span><span class="f-note"><span class="dot" aria-hidden="true"></span>Hozir<span class="nw2"> davom etmoqda</span> · 0/2 qadam</span></span>
+      </a></li>
+      <li><button class="folder c-dark" type="button" aria-haspopup="dialog" data-sheet="lock-sheet">
+        <span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+        <span class="f-top"><span class="f-label">4-dars · 3-oktabr</span></span>
+        <span class="f-row"><span><span class="f-title">Agent va<br>alternativalar</span><span class="f-sub">10 ta Hermes kartasi va kitob: «Biznesda AIʼni qoʻllash» (lotin va kirill)</span></span><span class="f-note"><svg width="14" height="14" aria-hidden="true"><use href="#i-lock"/></svg>3-oktabrda ochiladi</span></span>
+      </button></li>
+    </ul>
+  </div></div>
+</section>
+
+<!-- ================= c · LESSON 01 ================= -->
+<section class="screen" data-screen="dars" id="s-dars" aria-labelledby="t-dars">
+  <p class="screen-tag" id="t-dars">3 · /aip/dars/1 · Dars sahifasi</p>
+  <div class="frame"><div class="site">
+    <header class="nav">
+      <nav class="nav-links" aria-label="Boʻlimlar"><a href="#s-dastur" aria-current="page">Dastur</a></nav>
+      <a class="wordmark" href="#s-dastur">AI Praktikum 3.0</a>
+      <div class="nav-r"><button class="nav-name" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu">Student</button><button class="menu-btn" type="button" aria-label="Menyu" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu"><svg width="20" height="20" aria-hidden="true"><use href="#i-menu"/></svg></button></div>
+    </header>
+    <div class="hero">
+      <div class="hero-l">
+        <div class="dl-h"><a class="eyebrow" href="#s-dastur"><svg width="16" height="16" aria-hidden="true"><use href="#i-back"/></svg>Dastur</a><p class="dl-m">1-dars · 12-sentabr · 3/6 qadam</p></div>
+        <h1 class="headline"><span class="ln">1-dars</span><span class="ln">Kirish</span></h1>
+        <p class="lede">AI, modellar, Context, RAG va NotebookLM. Kompaniya hujjatlarini NotebookLMʼga yuklab, ulardan javob olishni oʻrganamiz.</p>
+        <a class="pill-cta" href="#s-ex"><span>Amaliyotni davom ettirish</span><span class="pill-circ"><svg width="20" height="20" aria-hidden="true"><use href="#i-next"/></svg></span></a>
+        <a class="play" href="#"><span class="play-circ ol"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span><span>Promptlar varaqasi<br>P1–P8, Q1–Q5 · PDF</span></a>
+      </div>
+      <div class="gt" id="dg">
+        <div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
+        <div class="gt-tabs" role="tablist" aria-label="Dars boʻlimlari">
+          <button class="gt-tab" role="tab" type="button" id="dg-t0" aria-controls="dg-p0" aria-selected="true"><span class="ok"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg>Slaydlar<span class="sr-only"> · koʻrildi</span></span></button>
+          <button class="gt-tab" role="tab" type="button" id="dg-t1" aria-controls="dg-p1" aria-selected="false" tabindex="-1">Amaliyot</button>
+          <button class="gt-tab" role="tab" type="button" id="dg-t2" aria-controls="dg-p2" aria-selected="false" tabindex="-1">Vazifa</button>
+        </div>
+        <div class="gt-body">
+          <div class="gt-pane" role="tabpanel" id="dg-p0" aria-labelledby="dg-t0">
+            <p class="p-label">Slaydlar · video<br>Koʻrildi</p>
+            <ol class="p-list">
+              <li><span class="n">01</span><span>AI va modellar</span><span></span></li>
+              <li><span class="n">02</span><span>Context nima va u qayerda tugaydi</span><span></span></li>
+              <li><span class="n">03</span><span>RAG: hujjatlarga tayangan javob</span><span></span></li>
+              <li><span class="n">04</span><span>NotebookLM bilan ishlash</span><span></span></li>
+            </ol>
+            <div class="gt-foot"><span class="gt-meta">78 ta slayd · video</span><a class="play on-light" href="#"><span>Slaydlarni<br>koʻrish</span><span class="play-circ"><svg width="18" height="18" aria-hidden="true"><use href="#i-play"/></svg></span></a></div>
+          </div>
+          <div class="gt-pane" role="tabpanel" id="dg-p1" aria-labelledby="dg-t1" inert>
+            <p class="p-label">Amaliyot · darsda qilinadi<br>Korxona bilimini ishga soling</p>
+            <ol class="p-list">
+              <li class="lk"><a class="xr" href="#"><span class="n">01</span><span class="xt">Yangi xodimga tayanch</span><span class="xm">2/4 prompt<svg width="16" height="16" aria-hidden="true"><use href="#i-next"/></svg></span></a></li>
+              <li class="lk"><a class="xr" href="#"><span class="n">02</span><span class="xt">Mahsulotdan suhbatga</span><span class="xm"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg><span class="sr-only"> · bajarildi</span><svg width="16" height="16" aria-hidden="true"><use href="#i-next"/></svg></span></a></li>
+              <li class="lk"><a class="xr" href="#"><span class="n">03</span><span class="xt">Bittasini tanlang: A yoki B<small class="xo">03A bajarildi · 03B ixtiyoriy</small></span><span class="xm"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg><span class="sr-only"> · bajarildi</span><svg width="16" height="16" aria-hidden="true"><use href="#i-next"/></svg></span></a></li>
+              <li class="lk"><a class="xr" href="#"><span class="n">04</span><span class="xt"><span class="xtag">Marketing</span></span><span class="xm"><svg width="16" height="16" aria-hidden="true"><use href="#i-next"/></svg></span></a></li>
+              <li class="lk"><a class="xr" href="#"><span class="n">05</span><span class="xt">Takliflarni bir jadvalga<small class="xo">qoʻshimcha</small></span><span class="xm"><svg width="16" height="16" aria-hidden="true"><use href="#i-next"/></svg></span></a></li>
+              <li class="lk"><a class="xr" href="#s-ex"><span class="n">06</span><span class="xt">Rahbar yoʻlda ham tushunsin<small class="xo">qoʻshimcha</small></span><span class="xm">1/2 prompt<svg width="16" height="16" aria-hidden="true"><use href="#i-next"/></svg></span></a></li>
+            </ol>
+            <p class="gt-meta">2/4 asosiy mashq bajarildi</p>
+          </div>
+          <div class="gt-pane" role="tabpanel" id="dg-p2" aria-labelledby="dg-t2" inert>
+            <p class="p-label">Vazifa · uyda<br>«Ravon Uy» keysi</p>
+            <div><p class="p-num">5/8</p><p class="p-sub">prompt bajarildi. NotebookLMʼda birma-bir.</p></div>
+            <div class="gt-foot end"><a class="play on-light" href="#"><span>Davom etish<br>Vazifa · P6</span><span class="play-circ"><svg width="20" height="20" aria-hidden="true"><use href="#i-next"/></svg></span></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ================= d · EXERCISE ================= -->
+<section class="screen" data-screen="ex" id="s-ex" aria-labelledby="t-ex">
+  <p class="screen-tag" id="t-ex">4 · /aip/dars/1/amaliyot/06 · Mashq: promptlar (lilac roʻyxat) · 04 sarlavhasi = joy tutuvchi (2.0 maʼlumotida yoʻq)</p>
+  <div class="frame"><div class="site">
+    <header class="nav">
+      <nav class="nav-links" aria-label="Boʻlimlar"><a href="#s-dastur">Dastur</a></nav>
+      <a class="wordmark" href="#s-dastur">AI Praktikum 3.0</a>
+      <div class="nav-r"><button class="nav-name" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu">Student</button><button class="menu-btn" type="button" aria-label="Menyu" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu"><svg width="20" height="20" aria-hidden="true"><use href="#i-menu"/></svg></button></div>
+    </header>
+    <div class="ex-wrap">
+      <a class="eyebrow" href="#s-dars"><svg width="16" height="16" aria-hidden="true"><use href="#i-back"/></svg>1-dars · Amaliyot · 06 · Qoʻshimcha</a>
+      <h1 class="headline ex-h">Rahbar yoʻlda ham tushunsin</h1>
+      <p class="lede">Avval fayllarni yuklab olib, NotebookLMʼga qoʻshing. Keyin promptlardan nusxa oling: nusxa olingan prompt bajarildi deb belgilanadi.</p>
+      <div class="ex-files">
+        <section aria-labelledby="ef-1">
+          <h2 class="ef-h" id="ef-1">1 · Avval oʻqing</h2>
+          <ul><li><a class="ef-row" href="#"><span><span class="sr-only">Yuklab olish: </span><span class="ef-nm">06_Rahbar_audio.pdf</span><span class="ef-mt">PDF · 240 KB</span></span><span class="ef-dl"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span></a></li></ul>
+        </section>
+        <section aria-labelledby="ef-2">
+          <h2 class="ef-h" id="ef-2">2 · NotebookLMʼga yuklang</h2>
+          <ul>
+            <li><a class="ef-row" href="#"><span><span class="sr-only">Yuklab olish: </span><span class="ef-nm">Ravon_Uy_Q3_hisobot.pdf</span><span class="ef-mt">PDF · 1,2 MB</span></span><span class="ef-dl"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span></a></li>
+            <li><a class="ef-row" href="#"><span><span class="sr-only">Yuklab olish: </span><span class="ef-nm">Savdo_jadvali_Q3.csv</span><span class="ef-mt">CSV · 48 KB</span></span><span class="ef-dl"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></span></a></li>
+          </ul>
+          <p class="ef-hint">Keyin pastdagi promptlardan nusxa oling.</p>
+        </section>
+      </div>
+    </div>
+    <section class="s1" aria-labelledby="pr-t">
+      <p class="s1-eyebrow" id="pr-t">Promptlar · 2 ta</p>
+      <p class="s1-rule">[Qavslar] ichini oʻzingiz toʻldirasiz.</p>
+      <ol>
+        <li class="done" data-i="0">
+          <span class="no" aria-hidden="true">01</span>
+          <div class="body"><h3 class="tt">Manbalarni tekshirish</h3><button class="chip" type="button" aria-label="Bajarildi, bekor qilish uchun bosing"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg>Bajarildi</button><p class="to strong"><b>Qayerga:</b> NotebookLM → Chat</p><p class="tx">Yuklangan manbalar asosida «Ravon Uy» kompaniyasining oxirgi choragidagi 5 ta asosiy raqamini jadval qilib chiqar. Har bir raqam qaysi hujjatdan olinganini koʻrsat.</p></div>
+          <div class="cpw"><button class="cp" type="button" aria-label="Nusxalash: Manbalarni tekshirish"><span class="cp-c"><svg width="20" height="20" aria-hidden="true"><use href="#i-copy"/></svg></span><span class="cpl">Nusxalash</span></button></div>
+        </li>
+        <li data-i="1">
+          <span class="no" aria-hidden="true">02</span>
+          <div class="body"><h3 class="tt">Audio-brifing sozlamasi</h3><button class="chip off" type="button" aria-label="Bajarildi deb belgilash">Bajarildi deb belgilash</button><p class="to strong"><b>Qayerga:</b> NotebookLM → Studio → Audio Overview → Customize</p><p class="tx">Rahbar uchun 10 daqiqalik brifing tayyorla. Avval eng muhim 3 ta muammo, keyin <span class="ph">[boʻlim nomi]</span> boʻyicha raqamlar. Ohang: qisqa va aniq, rasmiy emas. Oxirida bitta aniq tavsiya ber.</p></div>
+          <div class="cpw"><button class="cp" type="button" aria-label="Nusxalash: Audio-brifing sozlamasi"><span class="cp-c"><svg width="20" height="20" aria-hidden="true"><use href="#i-copy"/></svg></span><span class="cpl">Nusxalash</span></button></div>
+        </li>
+      </ol>
+      <a class="s1-pdf" href="#"><svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg>PDF varianti · 96 KB<span class="sr-only"> (06_Promptlar.pdf)</span></a>
+    </section>
+  </div></div>
+</section>
+
+<!-- ================= f · TYPE CHECK ================= -->
+<section class="screen" data-screen="type" aria-labelledby="t-type">
+  <p class="screen-tag" id="t-type">Shrift: Mona Sans Expanded (lotin) + Roboto Flex 125% (kirill)</p>
+  <div class="frame"><div class="site">
+    <div class="type-grid">
+      <div><p class="tag" style="justify-self:start">UZ</p><p class="headline">Oʻrnatish va gʻoyalar</p><p class="lede">Golos Text: Oʻ oʻ Gʻ gʻ, IDʼingiz, sunʼiy, «Ravon Uy»</p></div>
+      <div lang="ru"><p class="tag" style="justify-self:start">RU</p><p class="headline">Ваши уроки здесь</p><p class="lede">Занятия по субботам, 4 урока. Ёё Жж Щщ Ъъ</p></div>
+      <div lang="ru"><p class="tag" style="justify-self:start">RU + lotin</p><p class="headline">Личный кабинет</p></div>
+    </div>
+  </div></div>
+</section>
+
+</div>
+
+<aside class="nl" id="nl" aria-label="Yangi dars" hidden>
+  <div><p class="nl-k">Yangi dars ochildi</p><p class="nl-t">3-dars · Skill va agentlar</p></div>
+  <div class="nl-a"><a class="nl-go" href="#s-dars">Darsni ochish<svg width="18" height="18" aria-hidden="true"><use href="#i-next"/></svg></a><button class="nl-x" type="button">Yopish</button></div>
+</aside>
+<div class="nmenu" id="nmenu" role="dialog" aria-label="Menyu" tabindex="-1" hidden>
+  <p class="nm-name">Student</p>
+  <dl class="nm-list">
+    <div><dt>Shaxsiy ID</dt><dd class="mono">AIP-7KQ2XM</dd></div>
+    <div><dt>Guruh</dt><dd>Shanba guruhi</dd></div>
+    <div><dt>Kurs</dt><dd>4 dars · 12 sen – 3 okt</dd></div>
+  </dl>
+  <nav class="nm-lang" aria-label="Til"><a href="#" aria-current="true" lang="uz">UZ<span class="sr-only"> · Oʻzbekcha</span></a><a href="#" lang="ru">RU<span class="sr-only"> · Русский</span></a><a href="#" lang="en">EN<span class="sr-only"> · English</span></a></nav>
+  <a class="nm-out" href="#s-gate">Chiqish</a>
+</div>
+<div class="toast" id="toast" hidden><span id="toast-t"></span><button type="button" id="toast-undo">Bekor qilish</button></div>
+<dialog class="sheet" id="lock-sheet" aria-labelledby="ls-t">
+  <p class="sheet-t" id="ls-t">4-dars 3-oktabr kuni ochiladi.</p>
+  <p class="sheet-d">Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.</p>
+  <form method="dialog"><button class="sheet-x">Yopish</button></form>
+</dialog>
+<p class="sr-only" aria-live="polite" id="live"></p>
+
+<script>
+// Display layer: Mona Sans lacks U+02BB (ʻ) and U+02BC (ʼ); Golos + Martian lack U+02BB.
+// Render the same-shaped U+2018/U+2019; copy maps back (production: copy from raw data).
+(function(){
+  const map = s => s.replace(/ʻ/g,'‘').replace(/ʼ/g,'’');
+  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  for (let n; (n = w.nextNode());) if (/[ʻʼ]/.test(n.nodeValue)) n.nodeValue = map(n.nodeValue);
+  document.querySelectorAll('[aria-label],[placeholder],[title]').forEach(el => {
+    for (const a of ['aria-label','placeholder','title']) if (el.hasAttribute(a)) el.setAttribute(a, map(el.getAttribute(a)));
+  });
+  document.title = map(document.title);
+})();
+
+// Views: comp bar + in-page links (href="#s-…") switch screens; focus moves to the new screen's h1.
+const bar = document.querySelector('.comp-bar');
+function closeMenu(){
+  const m = document.getElementById('nmenu'); if (m.hidden) return;
+  m.hidden = true; document.querySelectorAll('[aria-controls="nmenu"]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+}
+function go(v, focus){
+  closeMenu(); document.getElementById('toast').hidden = true; // (elements by id: go() can run before the consts below exist)
+  if (v === 'gate') document.getElementById('nl').hidden = true;
+  document.body.dataset.view = v;
+  bar.querySelectorAll('[data-go]').forEach(x => x.setAttribute('aria-pressed', x.dataset.go === v));
+  document.querySelectorAll('.screen').forEach(s => s.classList.toggle('is-on', s.dataset.screen === v));
+  scrollTo(0, 0);
+  const h = focus && document.querySelector(`.screen[data-screen="${v}"] h1`);
+  if (h) { h.tabIndex = -1; h.focus({preventScroll:true}); }
+}
+bar.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.id === 'w375') { b.setAttribute('aria-pressed', document.body.classList.toggle('is-375')); return; }
+  go(b.dataset.go);
+});
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  e.preventDefault();
+  const sec = a.getAttribute('href').length > 1 && document.querySelector(a.getAttribute('href'));
+  if (!sec) return;
+  if (sec.dataset.screen === 'dars' && a.closest('#s-dastur,#nl')) hideNewLesson(); // a lesson opened from home or from the popup = seen
+  if (document.body.dataset.view === 'all') sec.scrollIntoView(); else go(sec.dataset.screen, true);
+});
+
+// Gate: takes "7KQ2XM" or "AIP-7KQ2XM" (any case, spaces and hyphens ignored, typed or pasted, even inside a copied message) and auto-submits on a
+// complete valid code, like 2.0. 2.0 also has short hand-assigned IDs (XM = demo mentor): they log in on Enter / KIRISH, never on auto-submit.
+// ponytail: "not found" is faked (KKKKKK, and any short ID except XM); in production it is the server's answer, plus its rate-limit and offline messages (ux-audit H3).
+const gid = document.getElementById('gid'), gh = document.getElementById('gid-h'), gpill = gid.closest('.pill-field');
+const helpText = gh.textContent, ID_RE = /^[2-9A-HJKMNP-Z]{6}$/, ID_CHARS = /^[2-9A-HJKMNP-Z]+$/, SHORT_IDS = ['XM'];
+const idCode = v => v.toUpperCase().replace(/[\s\-\u2010-\u2015]/g, '').replace(/^AIP/, ''); // no valid code starts with AIP (I is not in the alphabet)
+function gateMsg(text, state){
+  if (state === 'err') { gh.innerHTML = '<svg width="18" height="18" aria-hidden="true"><use href="#i-alert"/></svg><span></span>'; gh.lastChild.textContent = text; }
+  else gh.textContent = text;
+  gh.classList.toggle('err', state === 'err'); gh.classList.toggle('ok', state === 'ok');
+  gpill.classList.toggle('is-error', state === 'err');
+  state === 'err' ? gid.setAttribute('aria-invalid', 'true') : gid.removeAttribute('aria-invalid');
+}
+function tryLogin(){
+  if (gid.readOnly) return; // the loader is showing: one login only
+  const c = idCode(gid.value);
+  if (c.length > 6) return gateMsg('ID 6 ta belgidan iborat. Xabardagi ID’ni qayta tekshiring.', 'err');
+  if (c && !ID_CHARS.test(c)) return gateMsg('ID’da 0, 1, I, L va O bo‘lmaydi. Qayta tekshiring.', 'err');
+  if (c.length < 2) return gateMsg(`Yana ${6 - c.length} ta belgi kiriting.`, 'err');
+  if (c.length < 6 && !SHORT_IDS.includes(c)) return gateMsg('Bu ID topilmadi. Xabardagi ID’ni to‘liq yozing.', 'err');
+  if (c === 'KKKKKK') return gateMsg('Bu ID topilmadi. Mentoringizdan tekshirib oling.', 'err');
+  gid.value = c; gid.readOnly = true;
+  gateMsg('Xush kelibsiz, Student!', 'ok');
+  const ldr = document.getElementById('gate-loader');
+  ldr.hidden = false;
+  setTimeout(() => { go('dastur', true); ldr.hidden = true; gid.value = ''; gid.readOnly = false; gateMsg(helpText); showNewLesson(); }, 1800);
+}
+function onGidInput(e){
+  if (e?.isComposing || gid.readOnly) return; // IME: wait for compositionend, never rewrite mid-composition
+  const v = gid.value;
+  if (/^\s*AIP|[\s\-]/i.test(v)) { // the field already shows "AIP-"; spaces and hyphens never stay
+    const pos = gid.selectionStart, next = idCode(v).slice(0, 10);
+    gid.value = next;
+    if (pos < v.length) { const np = Math.min(idCode(v.slice(0, pos)).length, next.length); gid.setSelectionRange(np, np); } // mid-string edit: keep the caret
+  }
+  gateMsg(helpText); if (idCode(gid.value).length === 6) tryLogin();
+}
+gid.addEventListener('input', onGidInput);
+gid.addEventListener('compositionend', () => onGidInput());
+gid.addEventListener('paste', e => { // maxlength would cut "  aip-7kq2xm " or "ID: AIP-7KQ2XM" before we could clean it
+  const t = (e.clipboardData || window.clipboardData)?.getData('text'); if (t == null || gid.readOnly) return;
+  e.preventDefault();
+  const m = t.match(/AIP[\s\-\u2010-\u2015]*([2-9A-HJKMNP-Z]{6})/i); // an ID inside a message
+  if (m) gid.value = m[1].toUpperCase();
+  else if (/^\s*AIP/i.test(t)) gid.value = idCode(t);
+  else gid.setRangeText(idCode(t), gid.selectionStart, gid.selectionEnd, 'end');
+  gid.value = gid.value.slice(0, 10); gid.dispatchEvent(new Event('input'));
+});
+document.getElementById('gate-form').addEventListener('submit', e => { e.preventDefault(); tryLogin(); });
+// Deep link for review: index.html?view=dastur | dars | ex | all ; ?id=XXXXXX runs the login ; ?newlesson shows the popup
+const q = new URLSearchParams(location.search);
+if (q.has('solo')) document.body.classList.add('solo');
+if (q.get('view')) go(q.get('view'));
+if (q.get('id')) { gid.value = q.get('id'); gid.dispatchEvent(new Event('input')); }
+
+const live = document.getElementById('live');
+async function copy(text){
+  try { await navigator.clipboard.writeText(text); return true; }
+  catch { const t = Object.assign(document.createElement('textarea'), {value:text}); document.body.append(t); t.select(); const ok = document.execCommand('copy'); t.remove(); return ok; }
+}
+
+
+
+// Lilac prompt section: copy = done, with undo (ux-spec 3.1): the "Bajarildi" chip is a toggle, and a 5 s toast offers "Bekor qilish"
+const toast = document.getElementById('toast'), toastT = document.getElementById('toast-t');
+let undoLi = null, toastTimer = 0;
+const CHECK = '<svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg>';
+function setDone(li, on){
+  li.classList.toggle('done', on);
+  const c = li.querySelector('.chip'); c.classList.toggle('off', !on);
+  c.innerHTML = on ? CHECK + 'Bajarildi' : 'Bajarildi deb belgilash';
+  c.setAttribute('aria-label', on ? 'Bajarildi, bekor qilish uchun bosing' : 'Bajarildi deb belgilash');
+}
+function hideToast(){ clearTimeout(toastTimer); toast.hidden = true; undoLi = null; }
+function showToast(li){
+  undoLi = li; toastT.textContent = `${li.querySelector('.no').textContent} bajarildi`; toast.hidden = false;
+  armToast();
+}
+const armToast = () => { clearTimeout(toastTimer); toastTimer = setTimeout(hideToast, 5000); };
+['focusin', 'mouseenter'].forEach(ev => toast.addEventListener(ev, () => clearTimeout(toastTimer))); // paused while hovered or focused
+['focusout', 'mouseleave'].forEach(ev => toast.addEventListener(ev, () => { if (!toast.hidden && !toast.matches(':hover, :focus-within')) armToast(); }));
+document.getElementById('toast-undo').addEventListener('click', () => {
+  const li = undoLi; if (!li) return;
+  setDone(li, false); hideToast(); li.querySelector('.cp').focus();
+  live.textContent = `${li.querySelector('.no').textContent} bajarildi belgisi olib tashlandi.`;
+});
+document.addEventListener('click', async e => {
+  const chip = e.target.closest('.s1 .chip');
+  if (chip) {
+    const li = chip.closest('li'), on = !li.classList.contains('done'), no = li.querySelector('.no').textContent;
+    setDone(li, on); on ? showToast(li) : undoLi === li && hideToast();
+    live.textContent = on ? `${no} bajarildi.` : `${no} bajarildi belgisi olib tashlandi.`;
+    return;
+  }
+  const b = e.target.closest('.s1 .cp'); if (!b) return;
+  const li = b.closest('li');
+  const ok = await copy(li.querySelector('.tx').textContent.replace(/\u2018/g,'\u02BB').replace(/\u2019/g,'\u02BC'));
+  if (!ok) { live.textContent = 'Nusxa olinmadi. Matnni qo\u2018lda belgilang.'; return; }
+  const fresh = !li.classList.contains('done');
+  if (fresh) { setDone(li, true); showToast(li); }
+  b.classList.add('flash'); b.querySelector('use').setAttribute('href', '#i-check'); b.querySelector('.cpl').textContent = 'Nusxalandi';
+  live.textContent = `Nusxalandi: ${li.querySelector('.tt').textContent.trim()}.` + (fresh ? ' Bajarildi. Bekor qilish: «Bajarildi» tugmasi.' : ' Bajarildi.');
+  clearTimeout(b._t); b._t = setTimeout(() => { b.classList.remove('flash'); b.querySelector('use').setAttribute('href', '#i-copy'); b.querySelector('.cpl').textContent = 'Nusxalash'; }, 2000);
+});
+// ?selftest (with ?view=ex): stub the clipboard (headless has none), click P2 copy, then undo, and record the result
+if (q.has('selftest') && !navigator.clipboard) document.body.dataset.test = 'skipped: no navigator.clipboard (non-secure origin)';
+else if (q.has('selftest')) {
+  const copied = []; navigator.clipboard.writeText = async t => { copied.push(t); };
+  const li = document.querySelector('.s1 li[data-i="1"]');
+  li.querySelector('.cp').click();
+  setTimeout(() => {
+    const r = `p2done=${li.classList.contains('done')} chip=${!!li.querySelector('.chip:not(.off)')} label=${li.querySelector('.cpl').textContent} toast="${toast.hidden ? '' : toastT.textContent}" raw-okina=${copied[0]?.includes('\u02BB')} live="${live.textContent}"`;
+    toast.querySelector('button').click();
+    document.body.dataset.test = r + ` undone=${!li.classList.contains('done') && !!li.querySelector('.chip.off') && toast.hidden}`;
+  }, 400);
+}
+
+// New-lesson popup (top-left). Demo: shown after a login, or with ?newlesson (forces it). Production: the SERVER decides "a lesson opened since the
+// last visit" (ux-spec 1.1); localStorage here only remembers which lesson's popup was dismissed. It never takes focus; #live announces it.
+const nl = document.getElementById('nl'), NL_KEY = 'aip3.nl.seen', NL_LESSON = '3';
+const nlSeen = () => { try { const v = JSON.parse(localStorage.getItem(NL_KEY)); return Array.isArray(v) ? v : []; } catch { return []; } };
+function showNewLesson(force){
+  if (!force && nlSeen().includes(NL_LESSON)) return;
+  nl.hidden = false; live.textContent = 'Yangi dars ochildi: 3-dars, Skill va agentlar.';
+}
+function hideNewLesson(){
+  nl.hidden = true;
+  try { localStorage.setItem(NL_KEY, JSON.stringify([...new Set([...nlSeen(), NL_LESSON])])); } catch {}
+}
+nl.querySelector('.nl-x').addEventListener('click', () => { hideNewLesson(); const h = document.querySelector('.screen.is-on h1'); if (h) { h.tabIndex = -1; h.focus({preventScroll:true}); } });
+
+// Name menu (ID, group, mentor, dates, language, Chiqish) and the locked-lesson sheet
+document.addEventListener('click', e => {
+  const m = document.getElementById('nmenu'), t = e.target.closest('.nav-name,.menu-btn');
+  if (t) {
+    if (!m.hidden) return closeMenu();
+    if (Date.now() - (closeMenu.at || 0) < 200) return; // Safari: the button took no focus, so focusout already closed it on mousedown
+    const r = t.getBoundingClientRect();
+    m.style.top = `${Math.round(r.bottom + 8)}px`; m.style.setProperty('--mr', `${Math.max(16, Math.round(document.documentElement.clientWidth - r.right))}px`);
+    m.hidden = false; m._from = t; t.setAttribute('aria-expanded', 'true'); m.focus();
+  } else if (!m.hidden && !e.target.closest('#nmenu')) closeMenu();
+  const sh = e.target.closest('[data-sheet]'); if (sh) { const dlg = document.getElementById(sh.dataset.sheet); dlg.showModal(); if (sh.hasAttribute('aria-expanded')) { sh.setAttribute('aria-expanded', 'true'); dlg.addEventListener('close', () => sh.setAttribute('aria-expanded', 'false'), {once: true}); } }
+});
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape' || document.querySelector('dialog[open]')) return;
+  const m = document.getElementById('nmenu');
+  if (!m.hidden) { closeMenu(); m._from?.focus(); } // Esc on the menu never reaches the popup
+  else if (!nl.hidden && nl.contains(document.activeElement)) nl.querySelector('.nl-x').click(); // the popup closes by Esc only while focus is in it
+});
+// 3: Tab / Shift+Tab out of the menu closes it (the trigger is excluded so its toggle keeps working)
+const nmenu = document.getElementById('nmenu');
+nmenu.addEventListener('focusout', e => { const t = e.relatedTarget; if (!(t && (nmenu.contains(t) || t.closest('[aria-controls="nmenu"]')))) { closeMenu.at = Date.now(); closeMenu(); } });
+if (q.has('newlesson') && document.body.dataset.view !== 'gate') showNewLesson(true);
+// Dars folder tabs: slide the goo indicator (--i), swap panes with a short out/in (opacity + shift + blur)
+(function(){
+  const root = document.getElementById('dg'); if (!root) return;
+  const tabs = [...root.querySelectorAll('[role="tab"]')], panes = [...root.querySelectorAll('[role="tabpanel"]')];
+  const rm = matchMedia('(prefers-reduced-motion: reduce)');
+  if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) document.documentElement.classList.add('is-safari');
+  let cur = 0, seq = 0;
+  async function show(i, focus){
+    if (i === cur) { if (focus) tabs[i].focus(); return; }
+    const dir = i > cur ? 1 : -1, t = ++seq, reduce = rm.matches; cur = i;
+    root.style.setProperty('--i', i);
+    tabs.forEach((t, k) => { t.setAttribute('aria-selected', k === i); t.tabIndex = k === i ? 0 : -1; });
+    if (focus) tabs[i].focus();
+    const old = panes.find(p => !p.hasAttribute('inert')); // the attribute, not the property: CSS hides by [inert], and pre-inert browsers never sync the two
+    if (!reduce) await old.animate([{opacity:0, transform:`translateY(${-24*dir}px)`, filter:'blur(8px)'}], {duration:150, easing:'ease-in', fill:'forwards'}).finished.catch(() => {});
+    if (t !== seq) return; // a newer click won
+    panes.forEach((p, k) => { p.getAnimations().forEach(a => a.cancel()); p.toggleAttribute('inert', k !== i); });
+    if (!reduce) panes[i].animate([{opacity:0, transform:`translateY(${24*dir}px)`, filter:'blur(8px)'}, {opacity:1, transform:'none', filter:'blur(0)'}], {duration:220, easing:'cubic-bezier(.2,0,0,1)'});
+  }
+  tabs.forEach((t, i) => t.addEventListener('click', () => show(i)));
+  root.querySelector('[role="tablist"]').addEventListener('keydown', e => {
+    const n = tabs.length, to = {ArrowRight:(cur + 1) % n, ArrowLeft:(cur - 1 + n) % n, Home:0, End:n - 1}[e.key]; if (to == null) return;
+    e.preventDefault(); show(to, true);
+  });
+  // review deep link: ?view=dars&tabtest=0..2 opens that tab (0 Slaydlar, 1 Amaliyot, 2 Vazifa)
+  if (q.has('tabtest')) tabs[+q.get('tabtest')]?.click();
+})();
+
+// Login wordmark: the weight wave is CSS only (.wm-l / .wm-g, markup built in assemble.py); nothing to run here.
+</script>
+</body>
+</html>

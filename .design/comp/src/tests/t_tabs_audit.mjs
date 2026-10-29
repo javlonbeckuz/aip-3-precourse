@@ -1,0 +1,10 @@
+import { launch } from './cdp_fe.mjs';
+const b = await launch(390, 844, true); const U = 'http://localhost:8765/comp/index.html?solo';
+await b.goto(U + '#/dars/1'); await b.ev('S.setU4(true); render()'); await b.wait(500);
+await b.ev("document.querySelectorAll('.gt-tab')[2].click()"); await b.wait(60);
+console.log('mid', await b.ev("JSON.stringify({moving:document.querySelector('#dg').className, panes:[...document.querySelectorAll('.gt-pane')].map(p=>p.hasAttribute('inert')+':'+getComputedStyle(p).opacity)})"));
+await b.wait(500);
+console.log('end', await b.ev("JSON.stringify({cls:document.querySelector('#dg').className, i:getComputedStyle(document.querySelector('#dg')).getPropertyValue('--i'), panes:[...document.querySelectorAll('.gt-pane')].map(p=>p.hasAttribute('inert')+':'+getComputedStyle(p).opacity)})"));
+await b.shot('tabs-vazifa-390');
+await b.key('ArrowLeft'); await b.wait(100);
+console.log('log', JSON.stringify(b.logs)); b.close(); process.exit(0);

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="uz-Latn"><head><meta charset="utf-8"><meta name="viewport" content="width=1920"><meta name="robots" content="noindex">
+<title>Birinchi darsgacha · AI Praktikum 3.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&family=Golos+Text:wght@400;500;600&family=Martian+Mono:wdth,wght@87.5..100,400..500&display=swap">
+<style>
+:root{--yellow:#FDC959;--text-2:#A6A6A6;--ease:cubic-bezier(.2,0,0,1);
+ --font-display:'Mona Sans','Roboto Flex',sans-serif;--font-body:'Golos Text',system-ui,sans-serif;--font-mono:'Martian Mono',ui-monospace,monospace}
+@page{size:1920px 1080px;margin:0}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:#0d0d0d;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font:400 30px/1.4 var(--font-body);color:#fff;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ol,ul{margin:0}ol,ul{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+.slide{position:relative;width:1920px;height:1080px;margin:0 auto 24px;padding:80px 96px 88px;background:#000;overflow:hidden;display:flex;flex-direction:column;break-after:page;page-break-after:always}
+.slide:last-child{break-after:auto;page-break-after:auto}
+@media print{html,body{background:#000}.slide{margin:0}}
+.top{display:flex;justify-content:space-between;align-items:center;height:44px;flex:none}
+.wm{font:500 28px/1 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.mt{font:500 22px/1 var(--font-body);text-transform:uppercase;letter-spacing:.02em;color:var(--text-2);display:flex;gap:28px;align-items:center}
+.mt b{font:500 22px/1 var(--font-mono);color:var(--yellow)}
+.card{background:var(--yellow);color:#000;border-radius:28px}
+.ill{display:block;width:100%;height:auto;aspect-ratio:1;overflow:visible}
+.ill .s{stroke:#000;stroke-width:6;stroke-linejoin:round}
+.ill text{font-family:var(--font-mono);font-weight:500}
+.ill .badge{display:none}
+.no{font:500 24px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+.disp{font-family:var(--font-display);font-stretch:125%;font-weight:500;text-transform:uppercase}
+/* cover */
+.cover{display:grid;grid-template-columns:minmax(0,1fr) 760px;gap:72px;flex:1;margin-top:48px}
+.cover .l{display:flex;flex-direction:column;justify-content:center;gap:40px}
+.cover h1{font-size:120px;line-height:1.04;letter-spacing:-.01em}
+.cover .lede{font-size:34px;line-height:1.45;color:var(--text-2);max-width:900px}
+.cover .r{display:grid;grid-template-columns:1fr 1fr;gap:16px 8px;padding:48px;align-content:center}
+/* overview */
+.ov-h{margin-top:40px;font-size:64px;line-height:1.1}
+.ov{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:36px;flex:1}
+.ov .card{padding:32px 30px;display:flex;flex-direction:column;gap:12px}
+.ov .t{font-size:34px;line-height:1.2}
+.ov .ill{width:78%;margin:4px 0}
+.ov .n{font:500 24px/1.4 var(--font-body)}
+/* item */
+.item{display:grid;grid-template-columns:720px minmax(0,1fr);gap:64px;flex:1;margin-top:40px;min-height:0}
+.item .card{padding:40px;display:flex;flex-direction:column;justify-content:space-between}
+.item .card .no{font-size:30px}
+.item .card .ill{width:92%;margin:0 auto}
+.item .rt{display:flex;flex-direction:column;min-height:0}
+.item h2{font-size:80px;line-height:1.05}
+.item .note{margin-top:24px;font-size:30px;line-height:1.38}
+.steps{display:grid;gap:14px;margin-top:30px}
+.steps li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:20px;align-items:start;font-size:29px;line-height:1.34}
+.steps i{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--yellow);color:#000;font:500 22px/1 var(--font-display);font-style:normal;font-stretch:125%}
+.acts{display:grid;gap:14px;margin-top:auto;padding-top:26px}
+.act{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:80px;padding:12px 40px;border-radius:999px;border:2px solid #fff;font-size:28px}
+.act.p{background:var(--yellow);border-color:var(--yellow);color:#000}
+.act span{font:500 22px/1.2 var(--font-mono)}
+.foot{margin-top:auto;padding-top:22px;border-top:1px solid #3F3F3F;color:var(--yellow);font:500 28px/1.3 var(--font-body);text-transform:uppercase}
+</style></head>
+<body><div id="svgs" hidden><svg class="ill" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+<rect class="s" x="18" y="204" width="264" height="26" rx="10" fill="#E0E0E0"/>
+<path d="M122 204h56v4a8 8 0 0 1-8 8h-40a8 8 0 0 1-8-8z" fill="#000"/>
+<g class="l-lid"><rect x="46" y="48" width="208" height="156" rx="14" fill="#000"/><rect x="58" y="60" width="184" height="132" rx="6" fill="#0A14FC"/>
+<rect class="s" x="70" y="72" width="160" height="108" rx="8" fill="#fff"/>
+<rect x="84" y="86" width="70" height="8" rx="4" fill="#E0E0E0"/><rect x="84" y="100" width="44" height="8" rx="4" fill="#E0E0E0"/>
+<text x="84" y="138" font-size="22" fill="#000">5 GB</text>
+<rect x="191.2" y="148" width="11" height="20" rx="3" fill="#E0E0E0"/><rect x="204.6" y="148" width="11" height="20" rx="3" fill="#E0E0E0"/><rect x="84.0" y="148" width="11" height="20" rx="3" fill="#000"/><rect x="97.4" y="148" width="11" height="20" rx="3" fill="#000"/><rect x="110.8" y="148" width="11" height="20" rx="3" fill="#000"/><rect x="124.2" y="148" width="11" height="20" rx="3" fill="#000"/><rect x="137.6" y="148" width="11" height="20" rx="3" fill="#000"/><rect x="151.0" y="148" width="11" height="20" rx="3" fill="#000"/><rect x="164.4" y="148" width="11" height="20" rx="3" fill="#000"/><rect x="177.8" y="148" width="11" height="20" rx="3" fill="#000"/><g class="l-free"><rect x="191.2" y="148" width="11" height="20" rx="3" fill="#FDC959" stroke="#000" stroke-width="3"/><rect x="204.6" y="148" width="11" height="20" rx="3" fill="#FDC959" stroke="#000" stroke-width="3"/></g></g><g transform="translate(278 22)"><g class="badge"><circle r="16" fill="#000"/><path d="M-7 0.5l5 5 9-10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg><svg class="ill" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+<g class="g-card"><rect class="s" x="92" y="22" width="116" height="150" rx="12" fill="#E0E0E0"/><rect x="108" y="40" width="72" height="9" rx="4.5" fill="#000"/><rect x="108" y="56" width="48" height="9" rx="4.5" fill="#000"/>
+<rect x="108" y="82" width="84" height="24" rx="12" fill="#0A14FC"/><g class="g-tick"><path d="M141 94l6 6 12-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g></g>
+<g class="g-env"><rect class="s" x="66" y="130" width="168" height="142" rx="22" fill="#fff"/><path d="M150.0 160.0A40 40 0 0 0 113.7 183.1" fill="none" stroke="#EA4335" stroke-width="26"/><path d="M113.7 183.1A40 40 0 0 0 115.4 220.0" fill="none" stroke="#FBBC04" stroke-width="26"/><path d="M115.4 220.0A40 40 0 0 0 178.3 228.3" fill="none" stroke="#34A853" stroke-width="26"/><path d="M178.3 228.3A40 40 0 0 0 190.0 201.4" fill="none" stroke="#4285F4" stroke-width="26"/><path d="M150.0 160.0A40 40 0 0 1 181.5 175.4" fill="none" stroke="#4285F4" stroke-width="26"/><rect x="150" y="187" width="53" height="26" fill="#4285F4"/></g><g transform="translate(278 22)"><g class="badge"><circle r="16" fill="#000"/><path d="M-7 0.5l5 5 9-10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg><svg class="ill" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+<g class="c-win"><rect x="32" y="44" width="236" height="204" rx="14" fill="#000"/><circle cx="50" cy="57" r="4" fill="#E0E0E0"/><circle cx="64" cy="57" r="4" fill="#E0E0E0"/><circle cx="78" cy="57" r="4" fill="#E0E0E0"/>
+<path d="M38 70h224v164a8 8 0 0 1-8 8H46a8 8 0 0 1-8-8z" fill="#fff"/>
+<rect x="146" y="82" width="104" height="30" rx="15" fill="#000"/><rect x="162" y="93" width="62" height="8" rx="4" fill="#fff"/>
+<g class="c-reply"><rect class="s" x="48" y="128" width="52" height="52" rx="13" fill="#D97757"/><polygon points="74.0,132.0 75.8,147.2 83.0,138.4 78.9,149.1 93.1,143.0 80.8,152.2 93.0,154.0 80.8,155.8 93.1,165.0 78.9,158.9 83.0,169.6 75.8,160.8 74.0,176.0 72.2,160.8 64.5,170.5 69.1,158.9 54.9,165.0 67.2,155.8 56.0,154.0 67.2,152.2 54.9,143.0 69.1,149.1 64.5,137.5 72.2,147.2" fill="#fff"/>
+<rect x="112" y="130" width="128" height="12" rx="6" fill="#E0E0E0"/><rect x="112" y="150" width="108" height="12" rx="6" fill="#E0E0E0"/><rect x="112" y="170" width="72" height="12" rx="6" fill="#E0E0E0"/></g>
+<rect x="54" y="204" width="192" height="26" rx="13" fill="#E0E0E0"/><circle cx="231" cy="217" r="8" fill="#000"/></g><g transform="translate(278 22)"><g class="badge"><circle r="16" fill="#000"/><path d="M-7 0.5l5 5 9-10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg><svg class="ill" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+<g transform="rotate(-9 150 92)"><rect class="s" x="62" y="36" width="176" height="112" rx="12" fill="#E0E0E0"/><rect x="78" y="52" width="56" height="10" rx="5" fill="#000"/></g>
+<g transform="rotate(-3 150 112)"><rect class="s" x="52" y="62" width="184" height="116" rx="12" fill="#E0E0E0"/><rect x="68" y="78" width="56" height="10" rx="5" fill="#000"/></g>
+<g class="v-in"><g class="v-loop"><rect class="s" x="40" y="106" width="196" height="126" rx="12" fill="#0A14FC"/>
+<rect class="s" x="58" y="124" width="38" height="28" rx="6" fill="#FDC959"/>
+<text x="208" y="160" text-anchor="end" font-size="38" fill="#fff" style="font-family:var(--font-display);font-weight:700;font-style:italic;font-stretch:125%">VISA</text>
+<rect x="58" y="198" width="84" height="9" rx="4.5" fill="#fff"/><rect x="150" y="198" width="44" height="9" rx="4.5" fill="#fff"/>
+<circle cx="226" cy="124" r="5" fill="#000"/><path d="M226 124Q246 146 240 176" fill="none" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+<rect class="s" x="226" y="170" width="58" height="38" rx="9" fill="#fff"/><circle cx="238" cy="180" r="3.5" fill="#000"/>
+<text x="262" y="198" text-anchor="middle" font-size="17" fill="#000">$20</text></g></g><g transform="translate(278 22)"><g class="badge"><circle r="16" fill="#000"/><path d="M-7 0.5l5 5 9-10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg></div><main id="deck"></main>
+<script>
+const D={"uz": {"intro": "Birinchi dars {sana}. Shu roʻyxatni oʻshangacha tayyorlab qoʻying — hammasi 30 daqiqacha vaqt oladi, darsda esa toʻgʻridan-toʻgʻri ishni boshlaymiz.", "items": [{"brand": "device", "title": "Kompyuter", "note": "MacBook tavsiya etiladi, Windows ham boʻladi. Telefon yoki planshet yetarli emas.", "steps": ["Darsga oʻz noutbukingiz bilan keling — praktikum boshdan-oxir amaliy.", "Quvvat adapterini ham oling.", "Diskda kamida 5 GB boʻsh joy qoldiring."], "actions": []}, {"brand": "google", "title": "Google akkaunt", "note": "Claude, NotebookLM va Gemini shu akkaunt orqali ochiladi. Akkauntingiz bor boʻlsa, yangisi shart emas.", "steps": ["accounts.google.com/signup sahifasini oching.", "Ism, familiya va yangi pochta manzilini kiriting.", "Telefon raqamni tasdiqlang — SMS kod keladi.", "Parolni yozib qoʻying: darsda kerak boʻladi."], "actions": [{"label": "Google akkaunt ochish", "url": "https://accounts.google.com/signup"}]}, {"brand": "claude", "title": "Claude", "note": "Praktikumning asosiy vositasi. Avval claude.ai da hisob oching, keyin dasturni oʻrnating.", "steps": ["claude.ai ga kiring va \"Continue with Google\" orqali roʻyxatdan oʻting.", "claude.ai/download sahifasidan dasturni yuklab oling.", "Mac: .dmg faylni oching va Claude belgisini Applications ichiga tortib tashlang.", "Windows: .exe faylni ishga tushiring va oʻrnatishni tasdiqlang.", "Dasturga oʻsha Google akkaunt bilan kiring."], "actions": [{"label": "Claude dasturini yuklash", "url": "https://claude.ai/download"}, {"label": "claude.ai da hisob ochish", "url": "https://claude.ai/", "quiet": true}]}, {"brand": "visa", "title": "Visa karta", "note": "Claude Pro obunasi uchun kerak boʻladi. Birinchi darsda bepul tarif ham yetarli.", "steps": ["Bankingizdan xalqaro Visa yoki Mastercard oching — Uzcard va Humo bu yerda ishlamaydi.", "Kartada dollar hisobi va onlayn toʻlov yoqilgan boʻlsin.", "Pro obunasi oyiga $20. Majburiy emas, lekin ishni ancha yengillashtiradi."], "actions": [], "footnote": "Keyingi darslarda kerak boʻladi."}]}, "ru": {"intro": "Первое занятие {sana}. Подготовьте этот список до него — всё займёт около 30 минут, а на занятии мы сразу приступим к работе.", "items": [{"brand": "device", "title": "Компьютер", "note": "Рекомендуем MacBook, подойдёт и Windows. Телефона или планшета недостаточно.", "steps": ["Приходите на занятие со своим ноутбуком — практикум от начала до конца практический.", "Возьмите и зарядное устройство.", "Оставьте на диске не менее 5 ГБ свободного места."], "actions": []}, {"brand": "google", "title": "Аккаунт Google", "note": "Claude, NotebookLM и Gemini открываются через этот аккаунт. Если аккаунт уже есть, новый не нужен.", "steps": ["Откройте страницу accounts.google.com/signup.", "Введите имя, фамилию и новый адрес почты.", "Подтвердите номер телефона — придёт SMS-код.", "Запишите пароль: он понадобится на занятии."], "actions": [{"label": "Создать аккаунт Google", "url": "https://accounts.google.com/signup"}]}, {"brand": "claude", "title": "Claude", "note": "Главный инструмент практикума. Сначала заведите учётную запись на claude.ai, затем установите программу.", "steps": ["Зайдите на claude.ai и зарегистрируйтесь через «Continue with Google».", "Скачайте программу со страницы claude.ai/download.", "Mac: откройте файл .dmg и перетащите значок Claude в Applications.", "Windows: запустите файл .exe и подтвердите установку.", "Войдите в программу с тем же аккаунтом Google."], "actions": [{"label": "Скачать программу Claude", "url": "https://claude.ai/download"}, {"label": "Создать учётную запись на claude.ai", "url": "https://claude.ai/", "quiet": true}]}, {"brand": "visa", "title": "Карта Visa", "note": "Понадобится для подписки Claude Pro. На первом занятии хватит и бесплатного тарифа.", "steps": ["Откройте в банке международную Visa или Mastercard — Uzcard и Humo здесь не работают.", "На карте должен быть долларовый счёт и включены онлайн-платежи.", "Подписка Pro — $20 в месяц. Не обязательна, но заметно облегчает работу."], "actions": [], "footnote": "Понадобится на следующих занятиях."}]}, "en": {"intro": "The first lesson is {sana}. Have this list ready by then — it takes about 30 minutes in all, and it means we start working straight away in class.", "items": [{"brand": "device", "title": "A computer", "note": "A MacBook is recommended, Windows works too. A phone or a tablet is not enough.", "steps": ["Bring your own laptop — the praktikum is hands-on from beginning to end.", "Bring the charger as well.", "Leave at least 5 GB free on the disk."], "actions": []}, {"brand": "google", "title": "A Google account", "note": "Claude, NotebookLM and Gemini all open through this account. If you already have one, you do not need a new one.", "steps": ["Open accounts.google.com/signup.", "Enter your first name, last name and a new email address.", "Confirm your phone number — a code arrives by SMS.", "Write the password down: you will need it in class."], "actions": [{"label": "Create a Google account", "url": "https://accounts.google.com/signup"}]}, {"brand": "claude", "title": "Claude", "note": "The main tool of the praktikum. Open an account on claude.ai first, then install the app.", "steps": ["Go to claude.ai and sign up with \"Continue with Google\".", "Download the app from claude.ai/download.", "Mac: open the .dmg and drag the Claude icon into Applications.", "Windows: run the .exe and confirm the installation.", "Sign in to the app with that same Google account."], "actions": [{"label": "Download the Claude app", "url": "https://claude.ai/download"}, {"label": "Open an account on claude.ai", "url": "https://claude.ai/", "quiet": true}]}, {"brand": "visa", "title": "A Visa card", "note": "You will need it for a Claude Pro subscription. The free tier is enough for the first lesson.", "steps": ["Get an international Visa or Mastercard from your bank — Uzcard and Humo do not work here.", "The card needs a dollar account with online payments enabled.", "Pro costs $20 a month. It is not required, but it makes the work considerably easier."], "actions": [], "footnote": "You will need it in the later lessons."}]}}, UI={"uz": {"lang": "uz-Latn", "meta": "0-dars · tayyorgarlik", "title": "Birinchi darsgacha", "all30": "Hammasi 30 daqiqa", "date": "12-sentabr", "alt": "Qoʻllanma"}, "ru": {"lang": "ru", "meta": "Урок 0 · подготовка", "title": "До первого урока", "all30": "Всё займёт около 30 минут", "date": "12 сентября", "alt": "Руководство"}, "en": {"lang": "en", "meta": "Lesson 0 · preparation", "title": "Before the first lesson", "all30": "About 30 minutes in all", "date": "12 September", "alt": "Guide"}};
+const q=new URLSearchParams(location.search).get('lang'), L=UI[q]?q:'uz', u=UI[L], d=D[L];
+const X=s=>(L==='uz'?s.replace(/\u02bb/g,'\u2018').replace(/\u02bc/g,'\u2019'):s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+document.documentElement.lang=u.lang; document.title=X(u.title)+' · AI Praktikum 3.0';
+const S=[...document.querySelectorAll('#svgs>svg')].map(s=>s.outerHTML);
+const pad=n=>String(n).padStart(2,'0'), total=6;
+const hd=n=>`<div class="top"><span class="wm">AI Praktikum 3.0</span><span class="mt">${X(u.meta)}<b>${pad(n)} / ${pad(total)}</b></span></div>`;
+const intro=X(d.intro.replace('{sana}',u.date));
+const url=s=>s.replace(/^https?:\/\//,'').replace(/\/$/,'');
+let h=`<section class="slide">${hd(1)}<div class="cover"><div class="l"><h1 class="disp">${X(u.title)}</h1><p class="lede">${intro}</p></div><div class="r card">${S.join('')}</div></div></section>`;
+h+=`<section class="slide">${hd(2)}<h2 class="ov-h disp">${X(u.all30)}</h2><div class="ov">${d.items.map((it,i)=>`<div class="card"><span class="no">${pad(i+1)}</span><h3 class="t disp">${X(it.title)}</h3>${S[i]}<p class="n">${X(it.note)}</p></div>`).join('')}</div></section>`;
+d.items.forEach((it,i)=>{
+  h+=`<section class="slide">${hd(i+3)}<div class="item"><div class="card"><span class="no">${pad(i+1)}</span>${S[i]}<span></span></div><div class="rt"><h2 class="disp">${X(it.title)}</h2><p class="note">${X(it.note)}</p>
+  <ol class="steps">${it.steps.map((s,j)=>`<li><i>${j+1}</i><span>${X(s)}</span></li>`).join('')}</ol>
+  ${it.actions.length?`<div class="acts">${it.actions.map((a,j)=>`<a class="act${j?'':' p'}" href="${a.url}"><b style="font-weight:500">${X(a.label)}</b><span>${url(a.url)}</span></a>`).join('')}</div>`:''}
+  ${it.footnote?`<p class="foot">${X(it.footnote)}</p>`:''}</div></div></section>`;
+});
+document.getElementById('deck').innerHTML=h;
+(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>document.body.dataset.ready='1');
+</script></body></html>

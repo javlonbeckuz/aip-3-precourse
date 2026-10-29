@@ -1,0 +1,88 @@
+{
+  "n": 0,
+  "title": "Tayyorgarlik",
+  "subtitle": "Oʻrnatish va tayyorgarlik bosqichi",
+  "summary": "Kerakli dasturlarni oʻrnatamiz, hisoblarni ochamiz va praktikum davomida ishlatiladigan muhitni tayyorlaymiz.",
+  "topics": [
+    "Set up",
+    "Cod",
+    "Requirements"
+  ],
+  "slideCount": 0,
+  "slideKind": "image",
+  "hasBook": false,
+  "bookNote": "",
+  "bookVariants": [],
+  "homework": "",
+  "materials": [],
+  "prompts": null,
+  "praktikum": null,
+  "prep": {
+    "intro": "Birinchi dars {sana}. Shu roʻyxatni oʻshangacha tayyorlab qoʻying. Hammasi 30 daqiqacha vaqt oladi, darsda esa toʻgʻridan-toʻgʻri ishni boshlaymiz.",
+    "items": [
+      {
+        "brand": "device",
+        "title": "Kompyuter",
+        "note": "MacBook tavsiya etiladi, Windows ham boʻladi. Telefon yoki planshet yetarli emas.",
+        "steps": [
+          "Darsga oʻz noutbukingiz bilan keling. Praktikum boshdan-oxir amaliy.",
+          "Quvvat adapterini ham oling.",
+          "Diskda kamida 5 GB boʻsh joy qoldiring."
+        ],
+        "actions": []
+      },
+      {
+        "brand": "google",
+        "title": "Google akkaunt",
+        "note": "Claude, NotebookLM va Gemini shu akkaunt orqali ochiladi. Akkauntingiz bor boʻlsa, yangisi shart emas.",
+        "steps": [
+          "accounts.google.com/signup sahifasini oching.",
+          "Ism, familiya va yangi pochta manzilini kiriting.",
+          "Telefon raqamni tasdiqlang. SMS kod keladi.",
+          "Parolni yozib qoʻying: darsda kerak boʻladi."
+        ],
+        "actions": [
+          {
+            "label": "Google akkaunt ochish",
+            "url": "https://accounts.google.com/signup"
+          }
+        ]
+      },
+      {
+        "brand": "claude",
+        "title": "Claude",
+        "note": "Praktikumning asosiy vositasi. Avval claude.aiʼda hisob oching, keyin dasturni oʻrnating.",
+        "steps": [
+          "claude.ai ga kiring va \"Continue with Google\" orqali roʻyxatdan oʻting.",
+          "claude.ai/download sahifasidan dasturni yuklab oling.",
+          "Mac: .dmg faylni oching va Claude belgisini Applications ichiga tortib tashlang.",
+          "Windows: .exe faylni ishga tushiring va oʻrnatishni tasdiqlang.",
+          "Dasturga oʻsha Google akkaunt bilan kiring."
+        ],
+        "actions": [
+          {
+            "label": "Claude dasturini yuklash",
+            "url": "https://claude.ai/download"
+          },
+          {
+            "label": "claude.ai da hisob ochish",
+            "url": "https://claude.ai/",
+            "quiet": true
+          }
+        ]
+      },
+      {
+        "brand": "visa",
+        "title": "Visa karta",
+        "note": "Claude Pro obunasi uchun kerak boʻladi. Birinchi darsda bepul tarif ham yetarli.",
+        "steps": [
+          "Bankingizdan xalqaro Visa yoki Mastercard oching. Uzcard va Humo bu yerda ishlamaydi.",
+          "Kartada dollar hisobi va onlayn toʻlov yoqilgan boʻlsin.",
+          "Pro obunasi oyiga $20. Majburiy emas, lekin ishni ancha yengillashtiradi."
+        ],
+        "actions": [],
+        "footnote": "Keyingi darslarda kerak boʻladi."
+      }
+    ]
+  }
+}
