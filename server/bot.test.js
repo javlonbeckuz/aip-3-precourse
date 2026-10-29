@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { openDb, putProgress, createStudent, findStudents, getStudent } from './db.js';
 import { createContent } from './content.js';
 import { handleUpdate, makeBot, createApi } from './bot.js';
-import { REAL_CONTENT } from './testutil.js';
+import { REAL_CONTENT, tmpCopy } from './testutil.js';
 
 const ADMIN = 111, OTHER = 222, CHAT = 5000;
 const msg = (text, from = ADMIN) => ({ update_id: 1, message: { message_id: 1, from: { id: from, username: 'u' + from }, chat: { id: from, type: 'private' }, text } });
@@ -101,12 +101,12 @@ test('bot: /new flow with typed new mentor, escaping, cancel and validation', as
   assert.equal(db.prepare('SELECT COUNT(*) AS c FROM students').get().c, 2);
 });
 
-test('bot: /find by name and ID, with progress line', async () => {
-  const { db, calls, bot } = setup();
+test('bot: /find by name and ID, with progress line', async (t) => {
+  const { db, calls, bot } = setup({ content: createContent({ dir: tmpCopy(t) }) }); // fixture lessons: lesson 3 has 40 slides
   const s = createStudent(db, { fullName: 'Dilshod Rahimov', grp: 'shanba', mentor: 'Xurshid Maroziqov', createdBy: ADMIN });
   createStudent(db, { fullName: 'Sardor Karimov', grp: 'yakshanba' });
   db.prepare('UPDATE students SET last_login_at = ? WHERE id = ?').run('2026-09-12T05:30:00.000Z', s.id);
-  for (const k of ['prep:0', 'prep:1', 'prep:2', 'f:v3']) putProgress(db, s.id, k, 1);
+  for (const k of ['prep:0', 'prep:1', 'prep:2']) putProgress(db, s.id, k, 1);
   putProgress(db, s.id, 'sl:3', 40);
   await bot.onUpdate(msg('/find dilshod'));
   const card = texts(calls).at(-1);
@@ -115,7 +115,7 @@ test('bot: /find by name and ID, with progress line', async () => {
   assert.match(card, /Mentor: Xurshid Maroziqov/);
   assert.match(card, /Yaratilgan: \d{4}-\d\d-\d\d/);
   assert.match(card, /Oxirgi kirish: 2026-09-12 10:30/);
-  assert.match(card, /Tayyorgarlik 3\/4 \| darslar 1\/4 bajarilgan/); // lesson 3 = slides + Vazifa
+  assert.match(card, /Tayyorgarlik 3\/4 \| darslar 1\/6 bajarilgan/); // lesson 3 = its 40 slides
   assert.ok(!card.includes('Sardor'));
   await bot.onUpdate(msg(`/find ${s.id.toLowerCase()}`));
   assert.ok(texts(calls).at(-1).includes(s.id));

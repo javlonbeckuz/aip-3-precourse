@@ -101,7 +101,6 @@ a.folder:active,button.folder:active,.prep .pc:not(.open):active{transform:scale
 .folder.c-night,.folder.c-dark{outline:1px solid #3F3F3F;outline-offset:-1px}
 .gt-dark .gt-pan,.gt-dark .gt-ind{box-shadow:inset 0 0 0 1px #3F3F3F}
 /* ---- 08: library sections grid = home's 3 + 2 spans, in lesson 2's grey */
-@container (min-width:900px){.sects{grid-template-columns:repeat(6,minmax(0,1fr))}.sects>li{grid-column:span 2}.sects>li:nth-child(n+4){grid-column:span 3}}
 
 /* ---- 01: every lesson pane has the same bones: eyebrow top-left, one numeral, the action bottom-right */
 .gt-pane .p-num{font-size:96px;line-height:.9}
@@ -184,3 +183,20 @@ html.hid .bgp path{animation-play-state:paused}
 
 /* the copy toast sits inside its prompt row for keyboard order; content-visibility would contain and clip it */
 .s1 li:has(.toast:not([hidden])){content-visibility:visible}
+
+/* ---- 3.0: Amaliyot / Kit / Vazifa panes hold text and file groups on the lesson's own colour (ink follows --gt-ink, never the black canvas' white) */
+.gt .pane-text p+p{margin-top:12px}
+.gt .ex-files{max-width:none}
+.gt .ef-h,.gt .ef-row,.gt .ef-nm{color:var(--gt-ink)}
+.gt .ef-hint,.gt .ef-mt{color:var(--gt-ink2)}
+.gt .ex-files li{border-color:var(--gt-line)}
+.gt .ef-dl{border-color:var(--gt-line);color:var(--gt-ink)}
+.gt a.ef-row:hover .ef-dl{background:var(--gt-ink);color:var(--gt-fill)}
+.gt :focus-visible{outline-color:var(--gt-ink)}
+.gt .grp+.grp{margin-top:20px}
+/* an open lesson with no materials yet: one card in the lesson's colour instead of an empty folder */
+.soon-card{min-height:196px;gap:16px}
+.soon-t{max-width:24ch;font:500 20px/1.35 var(--font-body)}
+@container (min-width:900px){.soon-card{align-self:start;min-height:calc(300 * var(--u))}.soon-t{font-size:max(20px,calc(26 * var(--u)))}}
+/* four tabs on a 320 px phone: tighter label, no lock icon (the lock is in the pane text), smaller tick */
+@container (max-width:340px){.gt-tab{font-size:13px;text-transform:none;font-stretch:100%;letter-spacing:0}.gt-tab .lkd svg{display:none}.gt-tab .ok{gap:3px}.gt-tab .ok svg{width:10px;height:10px}}

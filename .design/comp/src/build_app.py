@@ -111,7 +111,6 @@ js = rep(js, "  if (a === 'fayl') return has(FILES, b) && !c ? {view: 'app', pag
 # render: no review bar, no type screen
 js = rep(js, """  document.querySelectorAll('[data-go]').forEach(x => x.setAttribute('aria-pressed', ROUTE_OF[x.dataset.go] === (ROUTE() || '#/kirish')));
   const jump = document.getElementById('jump'); if (jump) jump.value = ROUTES().includes(ROUTE()) ? ROUTE() : '';
-  document.getElementById('u4').setAttribute('aria-pressed', S.u4());
   if (todaySel) todaySel.value = Object.keys(TODAY_PRESETS).find(k => isoMs(TODAY_PRESETS[k]) === TODAY) || '';
 """, '')
 js = rep(js, "  document.getElementById('s-type').classList.toggle('is-on', view === 'type' || view === 'all');\n", '')

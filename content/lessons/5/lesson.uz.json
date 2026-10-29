@@ -1,0 +1,20 @@
+{
+  "n": 5,
+  "title": "Agentni yaxshilash",
+  "subtitle": "Xatolar jurnali, test toʻplami, cron, eskalatsiya, xavfsizlik, Kit 5 B",
+  "summary": "Pilotning birinchi haftasidagi xatolar boʻyicha agentni tuzatamiz. Jadval boʻyicha hisobot, eskalatsiya va xavfsizlik qoidalarini qoʻshamiz. Kit 5 B: 1-hafta.",
+  "topics": [
+    "Builder va assistent",
+    "Cron",
+    "Eskalatsiya",
+    "Test toʻplami",
+    "Prompt injection",
+    "Maʼlumotlar tartibi",
+    "Kit 5 B"
+  ],
+  "slideCount": 0,
+  "slideKind": "image",
+  "amaliyot": null,
+  "kit": null,
+  "vazifa": null
+}

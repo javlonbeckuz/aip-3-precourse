@@ -8,19 +8,23 @@ import { parseTime } from './content.js';
 export const REAL_CONTENT = path.resolve(import.meta.dirname, '..', 'content');
 export const at = (s) => parseTime(s);
 
-// a temp copy of the content (or an empty temp dir); removed after the test
-export function tmpCopy(t, dir = REAL_CONTENT) {
+export const FIXTURES = path.resolve(import.meta.dirname, 'fixtures');
+
+// a temp copy of the content (or an empty temp dir); removed after the test. The shipped lessons 1-6 are empty ('soon'), so a copy of the real
+// content gets server/fixtures laid over it (lesson 1 with all parts and files, lesson 3 with 40 slides); { fixtures: false } skips that.
+export function tmpCopy(t, dir = REAL_CONTENT, { fixtures = true } = {}) {
   const d = fs.mkdtempSync(path.join(os.tmpdir(), 'aip-'));
   if (dir) fs.cpSync(dir, d, { recursive: true });
-  // tests assume the default gating; the live schedule may have its time lock switched off ("release" all "open")
+  if (dir === REAL_CONTENT && fixtures) fs.cpSync(FIXTURES, d, { recursive: true });
+  // tests assume the default gating; the live schedule may have its time lock switched off ('release' all 'open')
   const sp = path.join(d, 'schedule.json');
   if (dir === REAL_CONTENT && fs.existsSync(sp)) {
     const sch = JSON.parse(fs.readFileSync(sp, 'utf8'));
     sch.release = {};
     sch.liveOverride = null;
-    // the shipped schedule is "dates to follow" (null); the gating tests run on these fixed dates
-    sch.groups = { shanba: ['2026-09-12T10:00', '2026-09-19T10:00', '2026-09-26T10:00', '2026-10-03T10:00'],
-      yakshanba: ['2026-09-13T10:00', '2026-09-20T10:00', '2026-09-27T10:00', '2026-10-04T10:00'] };
+    // the gating tests run on these fixed dates (weekly, Saturday and Sunday groups), not the shipped ones
+    sch.groups = { shanba: ['2026-09-12', '2026-09-19', '2026-09-26', '2026-10-03', '2026-10-10', '2026-10-17'].map((x) => x + 'T10:00'),
+      yakshanba: ['2026-09-13', '2026-09-20', '2026-09-27', '2026-10-04', '2026-10-11', '2026-10-18'].map((x) => x + 'T10:00') };
     fs.writeFileSync(sp, JSON.stringify(sch));
   }
   t.after(() => fs.rmSync(d, { recursive: true, force: true }));

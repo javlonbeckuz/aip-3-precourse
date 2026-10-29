@@ -43,8 +43,7 @@ function migrate(db) {
   }
 }
 
-// The 2.0 demo mentor account XM (a 2-letter ID is a guessable door). Seeded only with SEED_DEMO=1; otherwise
-// seeds it only with SEED_DEMO=1 (re-activating it) and otherwise switches an existing XM row off.
+// The 2.0 demo mentor account XM (a 2-letter ID is a guessable door). Seeds it only with SEED_DEMO=1 (re-activating it) and otherwise switches an existing XM row off.
 function seed(db, seedDemo) {
   if (seedDemo) {
     db.prepare(`INSERT INTO students (id, full_name, first_name, grp, mentor, created_at)
@@ -174,7 +173,7 @@ const MAX_KEYS = 600;
 
 export function checkProgress(key, value) {
   if (typeof key !== 'string' || key.length > 40) throw new HttpError(400, 'bad_key', 'Unknown progress key');
-  const sl = /^sl:([1-4])$/.exec(key);
+  const sl = /^sl:([1-9])$/.exec(key); // any single digit: db.js does not know LESSON_COUNT (content.js imports db.js); the content decides what counts
   if (sl) {
     if (!Number.isInteger(value) || value < 0 || value > 1000) throw new HttpError(400, 'bad_value', 'Slide mark must be an integer 0-1000');
     return { kind: 'sl', value };

@@ -1,9 +1,23 @@
 {
-  "_help": "groups: lesson start per group, index 0 = lesson 1. Times without a zone are Asia/Tashkent (+05:00). liveOverride: null or a lesson number 1-4 that pins the live lesson. release: optional per-lesson, per-part opening time: 'open', '+0h' / '+3h' / '-2d' / '+30m' (relative to that group's lesson start; lesson 0 is relative to lesson 1's start) or an absolute 'YYYY-MM-DDTHH:MM'. Parts: slides, vazifa, amaliyot, kitob, prep. Defaults: prep 'open', everything else '+0h'. Example: \"release\": {\"1\": {\"vazifa\": \"+3h\"}, \"4\": {\"kitob\": \"2026-10-10T09:00\"}}. Dates to follow: set a group to null (\"shanba\": null) while its dates are not decided. Lessons 1-4 then stay locked for that group (and for students with no group), whatever release says; lesson 0 (prep) stays open. To announce dates, replace null with 4 increasing times.",
+  "_help": "groups: lesson start per group, 6 times, index 0 = lesson 1. Times without a zone are Asia/Tashkent (+05:00). liveOverride: null or a lesson number 1-6 that pins the live lesson. liveDays: how long lesson 6 stays live. release: optional per-lesson, per-part opening time: \"open\", \"+0h\" / \"+3h\" / \"-2d\" / \"+30m\" (relative to that group's lesson start; lesson 0 is relative to lesson 1's start) or an absolute \"YYYY-MM-DDTHH:MM\". Parts: slides, amaliyot, kit, vazifa, prep. Defaults: prep \"open\", everything else \"+0h\". Example: \"release\": {\"1\": {\"vazifa\": \"+3h\"}, \"6\": {\"kit\": \"2026-12-26T09:00\"}}. A lesson with no parts yet opens at its start time. Dates to follow: set a group to null (\"shanba\": null) while its dates are not decided. Lessons 1-6 then stay locked for that group (and for students with no group), whatever release says; lesson 0 (prep) stays open. To announce dates, replace null with 6 increasing times.",
   "timezone": "Asia/Tashkent",
   "groups": {
-    "shanba": null,
-    "yakshanba": null
+    "shanba": [
+      "2026-11-21T10:00",
+      "2026-11-28T10:00",
+      "2026-12-05T10:00",
+      "2026-12-12T10:00",
+      "2026-12-19T10:00",
+      "2026-12-26T10:00"
+    ],
+    "yakshanba": [
+      "2026-11-22T10:00",
+      "2026-11-29T10:00",
+      "2026-12-06T10:00",
+      "2026-12-13T10:00",
+      "2026-12-20T10:00",
+      "2026-12-27T10:00"
+    ]
   },
   "liveOverride": null,
   "liveDays": 7,

@@ -1,0 +1,75 @@
+{
+  "n": 1,
+  "title": "AI qanday ishlaydi",
+  "subtitle": "AI qatlamlari, token, kontekst, modellar, NotebookLM, Kit 1",
+  "summary": "Avval oʻz biznesingiz uchun birinchi vositani yasaymiz. Keyin AI qayerda ishlashi, token va kontekst nima ekani, qaysi modelni tanlashni koʻramiz. Kit 1: ish qayerga ketadi.",
+  "topics": [
+    "AI qatlamlari",
+    "Maʼlumot qayerga ketadi",
+    "LLM va token",
+    "Kontekst oynasi",
+    "Model darajalari",
+    "Frontier va open-weight",
+    "Gallyutsinatsiya",
+    "NotebookLM",
+    "Kit 1"
+  ],
+  "slideCount": 78,
+  "slideKind": "image",
+  "amaliyot": {
+    "text": "Amaliyot matni.\n\nIkkinchi abzats.",
+    "groups": [
+      {
+        "title": "Amaliyot",
+        "files": [
+          {
+            "slug": "qollanma",
+            "name": "Talaba_qollanmasi.pdf",
+            "size": 38284
+          }
+        ]
+      }
+    ]
+  },
+  "kit": {
+    "text": "Kit 1 formasi.",
+    "groups": [
+      {
+        "title": "Kit 1",
+        "note": "Forma va skill",
+        "files": [
+          {
+            "slug": "kit1-forma",
+            "name": "kit1-forma.md",
+            "size": 15
+          },
+          {
+            "slug": "x",
+            "name": "x.pdf",
+            "size": 12
+          }
+        ]
+      }
+    ]
+  },
+  "vazifa": {
+    "text": "Vazifa matni.",
+    "groups": [
+      {
+        "title": "Fayllar",
+        "files": [
+          {
+            "slug": "hw-kompaniya",
+            "name": "01_Kompaniya.pdf",
+            "size": 21620
+          },
+          {
+            "slug": "hw-narxlar",
+            "name": "02_Amaldagi_narxlar.csv",
+            "size": 1222
+          }
+        ]
+      }
+    ]
+  }
+}

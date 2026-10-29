@@ -1,0 +1,15 @@
+{
+  "n": 5,
+  "title": "Improve the agent",
+  "subtitle": "Error log, test set, cron, escalation, security, Kit 5 B",
+  "summary": "We fix the agent using the mistakes from pilot week 1. We add a scheduled report, escalation and security rules. Kit 5 B: week 1.",
+  "topics": [
+    "Builder vs assistant",
+    "Cron jobs",
+    "Escalation",
+    "Test set",
+    "Prompt injection",
+    "Data governance",
+    "Kit 5 B"
+  ]
+}

@@ -234,14 +234,14 @@ const I18N = {uz: {
   'common.copy': 'Nusxalash', 'common.copied': 'Nusxalandi', 'common.copy_aria': 'Nusxalash: {title}', 'common.namuna': 'namuna', 'common.sr_done': ' · bajarildi',
   'common.sr_download': 'Yuklab olish: ', 'common.sr_external': ' (yangi oynada ochiladi)', 'common.sample_file': 'namuna fayl', 'common.unknown_size': 'oʻlchami nomaʼlum', 'common.guide': 'Qoʻllanma', 'common.bonus': 'bonus',
   'common.extra': 'qoʻshimcha',
-  'unit.sl': 'Slaydlar', 'unit.am': 'Amaliyot', 'unit.vz': 'Vazifa', 'unit.kt': 'Kitob', 'unit.am_n': 'Amaliyot {num}', 'unit.hermes': 'Hermes {id}',
+  'unit.sl': 'Slaydlar', 'unit.am': 'Amaliyot', 'unit.vz': 'Vazifa', 'unit.kt': 'Kit', 'unit.am_n': 'Amaliyot {num}', 'unit.hermes': 'Hermes {id}',
   'lesson.n': '{n}-dars', 'lesson.label': '{n}-dars · {date}', 'lesson.label0': '0-dars · tayyorgarlik', 'lesson.meta': '{date} · {d}/{t} bajarildi',
   'steps': '{d}/{t} bajarildi', 'kind.video': 'video', 'kind.image': 'rasm',
   // --- dates (month table is in code; these are the patterns)
   'date.fmt': '{d}-{m}', 'date.until': '{date}gacha', 'date.opens': '{date}da ochiladi',
   // --- nav, menu, popup, toast, sheet, live announcements
   'nav.label': 'Boʻlimlar', 'nav.home': 'Dastur', 'nav.homebtn': 'Bosh sahifa', 'menu.label': 'Menyu', 'lang.label': 'Til',
-  'menu.id': 'Shaxsiy ID', 'menu.group': 'Guruh', 'menu.group_value': 'Shanba guruhi', 'menu.course': 'Kurs', 'menu.course_value': '4 dars · 12 sen – 3 okt', 'menu.logout': 'Chiqish',
+  'menu.id': 'Shaxsiy ID', 'menu.group': 'Guruh', 'menu.group_value': 'Shanba guruhi', 'menu.course': 'Kurs', 'menu.course_value': '6 dars · 21 noy – 26 dek', 'menu.logout': 'Chiqish',
   'popup.label': 'Yangi dars', 'popup.k': 'Yangi dars ochildi', 'popup.title': '3-dars · Skill va agentlar', 'popup.open': 'Darsni ochish', 'popup.live': 'Yangi dars ochildi: 3-dars, Skill va agentlar.',
   'toast.done': '{no} bajarildi', 'toast.undo': 'Bekor qilish', 'toast.notfound': 'Sahifa topilmadi',
   'lock.title': '{n}-dars {date}da ochiladi.', 'lock.desc': 'Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.',
@@ -254,13 +254,13 @@ const I18N = {uz: {
   'gate.err.short': 'Yana {n} ta belgi kiriting.', 'gate.err.unknown_short': 'ID 6 ta belgidan iborat. Yana {n} ta belgi yozing.', 'gate.err.notfound': 'Bu ID topilmadi. Mentoringizdan tekshirib oling.',
   // --- lesson meta (2.0 metadata existed in UZ/RU/EN)
   'lesson.0.card': 'Oʻrnatish va\ntayyorgarlik',
-  'lesson.1.card': 'Kirish', 
+  'lesson.1.card': 'AI qanday\nishlaydi', 
   
-  'lesson.2.card': 'Claude\nva Code', 
+  'lesson.2.card': 'Claude\nCode', 
   
-  'lesson.3.card': 'Skill va\nagentlar', 
+  'lesson.3.card': 'API va\nMCP', 
   
-  'lesson.4.card': 'Agent va\nalternativalar', 
+  'lesson.4.card': 'Ishga\ntushirish', 
   
   
   
@@ -323,7 +323,7 @@ const I18N = {uz: {
   'hero.sub_seen': 'Slaydlar koʻrildi · {n} / {n}',
   'next.prep': 'Tayyorgarlik · {title}',
   'cta.start': 'Boshlash: {what}',
-  'lock.desc_n': 'Slaydlar, amaliyot va vazifa dars kuni shu yerda chiqadi.',
+  'lock.desc_n': 'Slaydlar, amaliyot, kit va vazifa dars kuni shu yerda chiqadi.',
   'lib.back': 'Boʻlimlar',
   'lib.sect_meta': 'Promptlar {range}',
   'lib.next': 'Keyingi boʻlim\n{num} · {title}',
@@ -373,9 +373,9 @@ const I18N = {uz: {
   'units.am2': 'kutubxona',
   'units.am4': 'Hermes kartalari',
   'units.vz': 'vazifa',
-  'units.kt': 'kitob',
+  'units.kt': 'kit',
   'units.and': 'va',
-  'next.all_done': 'Hammasi bajarildi ✓ · Kitob va bonus karta ochiq',
+  'next.all_done': 'Hammasi bajarildi ✓',
   'prep.ready': 'Tayyorsiz',
   'prep.end_before': 'Tayyorsiz. Birinchi dars {date}.',
   'prep.end_after': 'Tayyorgarlik tugadi.',
@@ -384,7 +384,7 @@ const I18N = {uz: {
   'lock.title_tba': '{n}-dars sanasi keyinroq eʼlon qilinadi.',
   'prep.intro_tba': 'Birinchi dars sanasini shu yerda eʼlon qilamiz. Roʻyxatni hozirdan tayyorlab qoʻying: hammasi 30 daqiqacha vaqt oladi.',
   'prep.end_tba': 'Tayyorsiz. Birinchi dars sanasi shu yerda chiqadi.',
-  'menu.course_tba': '4 dars, sanasi keyinroq',
+  'menu.course_tba': '6 dars, sanasi keyinroq',
   'menu.group_none': 'Guruh hali tanlanmagan',
   'prep.more.dflt': 'Oʻrganishda davom eting',
   'prep.lede_done': '4 qadamning hammasi bajarildi. Kerak boʻlsa, istalgan kartani qayta oching.',
@@ -439,6 +439,93 @@ const I18N = {uz: {
   'tag.hi': 'Hermes: 9 ta karta + bonus', 'tag.hc': 'Hermes {id}: {title}', 'tag.slide': 'Slayd koʻrgich ({n} ta slayd, namuna)', 'tag.file': 'Fayl (namuna)',
   'title.lesson': '{n}-dars · {title}', 'title.ex': '{num} · {title}', 'title.vz': 'Vazifa · {n}-dars', 'title.am': 'Amaliyot · {n}-dars', 'title.pick': '03 · Bittasini tanlang', 'title.vzsheet': 'Vazifa promptlari',
   'title.site': 'AI Praktikum 3.0', 'title.gate': 'Kirish', 'title.type': 'Shrift', 'title.all': 'Hammasi',
+  // --- 3.0: six lessons, Kit, empty-lesson state
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  'lesson.5.card': 'Agentni\nyaxshilash',
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  'lesson.6.card': 'Natijalar va\ndemo kuni',
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  'lesson.soon': 'Materiallar tez orada shu yerda chiqadi.',
+  'note.soon': 'Ochiq · materiallar tez orada',
+  'units.am': 'amaliyot',
+  'amf.on': 'Amaliyot bajarildi',
+  'amf.off': 'Amaliyot bajarildi',
+  'amf.aria': 'Amaliyot bajarildi deb belgilash',
+  'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi',
 }, ru: /*RU*/{
   "common.close": "Закрыть",
   "common.back": "Назад",
@@ -460,7 +547,7 @@ const I18N = {uz: {
   "unit.sl": "Слайды",
   "unit.am": "Практика",
   "unit.vz": "Задание",
-  "unit.kt": "Книга",
+  "unit.kt": "Kit",
   "unit.am_n": "Практика {num}",
   "unit.hermes": "Hermes {id}",
   "lesson.n": "Урок {n}",
@@ -482,7 +569,7 @@ const I18N = {uz: {
   "menu.group": "Группа",
   "menu.group_value": "Субботняя группа",
   "menu.course": "Курс",
-  "menu.course_value": "4 урока · 12 сент. – 3 окт.",
+  "menu.course_value": "6 уроков · 21 нояб. – 26 дек.",
   "menu.logout": "Выйти",
   "popup.label": "Новый урок",
   "popup.k": "Открыт новый урок",
@@ -516,10 +603,10 @@ const I18N = {uz: {
   "gate.err.unknown_short": "ID состоит из 6 символов. Введите ещё {n}.",
   "gate.err.notfound": "Такой ID не найден. Уточните его у своего ментора.",
   "lesson.0.card": "Установка и\nподготовка",
-  "lesson.1.card": "Введение",
-  "lesson.2.card": "Claude\nи Code",
-  "lesson.3.card": "Skill и\nагенты",
-  "lesson.4.card": "Агенты и\nальтернативы",
+  "lesson.1.card": "Как работает\nAI",
+  "lesson.2.card": "Claude\nCode",
+  "lesson.3.card": "API и\nMCP",
+  "lesson.4.card": "Запуск\nв работу",
   "home.title": "Программа",
   "home.lessons": "Уроки",
   "home.ring.label": "Полностью пройденные уроки",
@@ -691,7 +778,7 @@ const I18N = {uz: {
   "hero.sub_seen": "Слайды просмотрены · {n} / {n}",
   "next.prep": "Подготовка · {title}",
   "cta.start": "Начать: {what}",
-  "lock.desc_n": "Слайды, практика и задание появятся здесь в день урока.",
+  "lock.desc_n": "Слайды, практика, kit и задание появятся здесь в день урока.",
   "lib.back": "Разделы",
   "lib.sect_meta": "Промпты {range}",
   "lib.next": "Следующий раздел\n{num} · {title}",
@@ -745,9 +832,9 @@ const I18N = {uz: {
   "units.am2": "библиотека",
   "units.am4": "карточки Hermes",
   "units.vz": "задание",
-  "units.kt": "книга",
+  "units.kt": "kit",
   "units.and": "и",
-  "next.all_done": "Всё выполнено ✓ · книга и бонус-карточка открыты",
+  "next.all_done": "Всё выполнено ✓",
   "prep.ready": "Вы готовы",
   "prep.end_before": "Вы готовы. Первое занятие: {date}.",
   "prep.end_after": "Подготовка завершена.",
@@ -758,9 +845,19 @@ const I18N = {uz: {
   "lock.title_tba": "Дату урока {n} объявим позже.",
   "prep.intro_tba": "Дату первого занятия мы объявим здесь. Подготовьте этот список уже сейчас: всё займёт около 30 минут.",
   "prep.end_tba": "Вы готовы. Дата первого занятия появится здесь.",
-  "menu.course_tba": "4 урока, дата будет позже",
+  "menu.course_tba": "6 уроков, даты позже",
   "menu.group_none": "Группа пока не выбрана",
-  "prep.more.dflt": "Продолжайте учиться"
+  "prep.more.dflt": "Продолжайте учиться",
+  "lesson.5.card": "Улучшаем\nагента",
+  "lesson.6.card": "Итоги и\nдемо-день",
+  "lesson.soon": "Материалы скоро появятся здесь.",
+  "note.soon": "Открыт · материалы скоро",
+  "units.am": "практика",
+  "amf.on": "Практика выполнена",
+  "amf.off": "Практика выполнена",
+  "amf.aria": "Отметить практику выполненной",
+  "prep.cmd_copy": "Скопировать команду",
+  "toast.cmd_copied": "Команда скопирована"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -782,7 +879,7 @@ const I18N = {uz: {
   "unit.sl": "Slides",
   "unit.am": "Practice",
   "unit.vz": "Homework",
-  "unit.kt": "Book",
+  "unit.kt": "Kit",
   "unit.am_n": "Practice {num}",
   "unit.hermes": "Hermes {id}",
   "lesson.n": "Lesson {n}",
@@ -804,7 +901,7 @@ const I18N = {uz: {
   "menu.group": "Group",
   "menu.group_value": "Saturday group",
   "menu.course": "Course",
-  "menu.course_value": "4 lessons · 12 Sep – 3 Oct",
+  "menu.course_value": "6 lessons · 21 Nov – 26 Dec",
   "menu.logout": "Sign out",
   "popup.label": "New lesson",
   "popup.k": "New lesson is open",
@@ -836,10 +933,10 @@ const I18N = {uz: {
   "gate.err.unknown_short": "An ID has 6 characters. Type {n} more.",
   "gate.err.notfound": "This ID wasn’t found. Check it with your mentor.",
   "lesson.0.card": "Setup and\npreparation",
-  "lesson.1.card": "Introduction",
-  "lesson.2.card": "Claude\nand Code",
-  "lesson.3.card": "Skills and\nagents",
-  "lesson.4.card": "Agents and\nalternatives",
+  "lesson.1.card": "How AI\nworks",
+  "lesson.2.card": "Claude\nCode",
+  "lesson.3.card": "API and\nMCP",
+  "lesson.4.card": "Ship\nit",
   "home.title": "Program",
   "home.lessons": "Lessons",
   "home.ring.label": "Lessons fully completed",
@@ -1009,7 +1106,7 @@ const I18N = {uz: {
   "hero.sub_seen": "Slides seen · {n} / {n}",
   "next.prep": "Preparation · {title}",
   "cta.start": "Start: {what}",
-  "lock.desc_n": "The slides, the practice and the homework will appear here on the day of the lesson.",
+  "lock.desc_n": "The slides, practice, kit and homework will appear here on the day of the lesson.",
   "lib.back": "Sections",
   "lib.sect_meta": "Prompts {range}",
   "lib.next": "Next section\n{num} · {title}",
@@ -1063,9 +1160,9 @@ const I18N = {uz: {
   "units.am2": "the library",
   "units.am4": "Hermes cards",
   "units.vz": "homework",
-  "units.kt": "the book",
+  "units.kt": "kit",
   "units.and": "and",
-  "next.all_done": "All done ✓ · the book and the bonus card are open",
+  "next.all_done": "All done ✓",
   "prep.ready": "You're ready",
   "prep.end_before": "You're ready. The first lesson is on {date}.",
   "prep.end_after": "Preparation is complete.",
@@ -1076,9 +1173,19 @@ const I18N = {uz: {
   "lock.title_tba": "The date of lesson {n} will be announced later.",
   "prep.intro_tba": "We will post the date of the first lesson here. Get this list ready now: it takes about 30 minutes in all.",
   "prep.end_tba": "You're ready. The date of the first lesson will appear here.",
-  "menu.course_tba": "4 lessons, dates to follow",
+  "menu.course_tba": "6 lessons, dates to follow",
   "menu.group_none": "Group not set yet",
-  "prep.more.dflt": "Keep learning"
+  "prep.more.dflt": "Keep learning",
+  "lesson.5.card": "Improve\nthe agent",
+  "lesson.6.card": "Results and\ndemo day",
+  "lesson.soon": "The materials will appear here soon.",
+  "note.soon": "Open · materials soon",
+  "units.am": "practice",
+  "amf.on": "Practice done",
+  "amf.off": "Practice done",
+  "amf.aria": "Mark the practice as done",
+  "prep.cmd_copy": "Copy the command",
+  "toast.cmd_copied": "Command copied"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
@@ -1128,94 +1235,48 @@ function applyStatic(root = document){
   markMissing(root === document ? document.body : root);
 }
 
-// ===================== PROTOTYPE: data (Praktikum 2.0 content; "namuna" = placeholder for what 2.0 never gave us, e.g. binary files) =====================
-// Source of truth: .design/reference-blueprint.md (2.0 inventory) and ux-spec.md §5/§6 (demo content pack). Anything not in those files is `ph:true`
-// (or a null title/text) and is shown with a small "namuna" tag: the real text/title/size was never available, so it is never passed off as real.
-// UI words live in I18N (proto_i18n.js). The Uzbek 2.0 CONTENT below is registered into I18N.uz as "c.*" keys by registerContent().
-// The shape of the content is C20 (prototype: generated into this file by gen_content.py; the real app fills it from the API, see app_data.js): buildData() turns it into the globals the templates read.
+// ===================== PROTOTYPE: data (Praktikum 3.0: six lessons; "namuna" = placeholder text or file in the prototype demo) =====================
+// The demo content below is hand-written (lesson 1 has all four parts, the other lessons are empty on purpose: the "soon" state). Everything in it is `ph:true`
+// and is shown with a small "namuna" tag, so it is never passed off as real.
+// UI words live in I18N (proto_i18n.js). The Uzbek lesson text of the parts is registered into I18N.uz as "c.p.*" keys by registerContent().
+// The shape of the content is C20 = {parts: {n: {am|kt|vz: {text, groups: [{title, note, files: [{slug, name, size, ph}]}]}}}} (prototype: written by hand below; the real app fills it from the API, see app_state.js): buildData() turns it into the globals the templates read.
 let FILES = {};                                             // slug -> {name,size,ph,url}  (every file row opens #/fayl/{slug}, or downloads from `url` in the app)
 const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const F = (name, size, ph, slugOverride, url) => { const sl = slugOverride || slugify(name); return FILES[sl] = {slug: sl, name, size: size || '', ph: !!ph || !size, url: url || ''}; };
-// a prompt: null title / null text = placeholder ("namuna"); `where` is the "Qayerga:" target
-const P = (id, title, where, text) => ({id, title, where, text, ph: text == null});
-
-let LESSONS = {   // d = [day, month]; parts: sl slides, am amaliyot, vz vazifa, kt kitob
-  0: {d: [12, 9]},
-  1: {d: [12, 9], slides: 78, kind: 'video', parts: ['sl', 'am', 'vz'], topics: 5},
-  2: {d: [19, 9], slides: 63, kind: 'image', parts: ['sl', 'am', 'vz'], topics: 7},
-  3: {d: [26, 9], slides: 40, kind: 'video', parts: ['sl', 'vz'], topics: 8},
-  4: {d: [3, 10], slides: 0, parts: ['am', 'kt'], topics: 5},
+let LESSONS = {   // d = [day, month] (the shanba group: 21, 28 Nov, 5, 12, 19, 26 Dec); parts: sl slides, am amaliyot, kt kit, vz vazifa (only the parts a lesson really has)
+  0: {d: [21, 11]},
+  1: {d: [21, 11], slides: 12, kind: 'image', parts: ['sl', 'am', 'kt', 'vz'], topics: 9},
+  2: {d: [28, 11], slides: 0, parts: [], topics: 8},
+  3: {d: [5, 12], slides: 0, parts: [], topics: 8},
+  4: {d: [12, 12], slides: 0, parts: [], topics: 8},
+  5: {d: [19, 12], slides: 0, parts: [], topics: 7},
+  6: {d: [26, 12], slides: 0, parts: [], topics: 7},
 };
 
-// ---- lesson 0: prep checklist (2.0: 4 items, real steps from ref-prep-2.0)
+// ---- lesson 0: prep checklist (4 items: step counts and links only; the words come from the dictionary or the API)
 let PREP = {items: []};   // from the API (lesson 0)
 
-/*ART:begin*/ const PREP_ART = ["<svg class=\"ill\" viewBox=\"0 0 300 300\" aria-hidden=\"true\" focusable=\"false\"><rect class=\"s\" x=\"18\" y=\"204\" width=\"264\" height=\"26\" rx=\"10\" fill=\"#E0E0E0\"/><path d=\"M122 204h56v4a8 8 0 0 1-8 8h-40a8 8 0 0 1-8-8z\" fill=\"#000\"/><g class=\"l-lid\"><rect x=\"46\" y=\"48\" width=\"208\" height=\"156\" rx=\"14\" fill=\"#000\"/><rect x=\"58\" y=\"60\" width=\"184\" height=\"132\" rx=\"6\" fill=\"#0A14FC\"/><rect class=\"s\" x=\"70\" y=\"72\" width=\"160\" height=\"108\" rx=\"8\" fill=\"#fff\"/><rect x=\"84\" y=\"86\" width=\"70\" height=\"8\" rx=\"4\" fill=\"#E0E0E0\"/><rect x=\"84\" y=\"100\" width=\"44\" height=\"8\" rx=\"4\" fill=\"#E0E0E0\"/><text x=\"84\" y=\"138\" font-size=\"22\" fill=\"#000\">5 GB</text><rect x=\"191.2\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#E0E0E0\"/><rect x=\"204.6\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#E0E0E0\"/><rect x=\"84.0\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"97.4\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"110.8\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"124.2\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"137.6\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"151.0\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"164.4\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"177.8\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><g class=\"l-free\"><rect x=\"191.2\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#FDC959\" stroke=\"#000\" stroke-width=\"3\"/><rect x=\"204.6\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#FDC959\" stroke=\"#000\" stroke-width=\"3\"/></g></g><g transform=\"translate(278 22)\"><g class=\"badge\"><circle r=\"16\" fill=\"#000\"/><path d=\"M-7 0.5l5 5 9-10\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g></svg>", "<svg class=\"ill\" viewBox=\"0 0 300 300\" aria-hidden=\"true\" focusable=\"false\"><g class=\"g-card\"><rect class=\"s\" x=\"92\" y=\"22\" width=\"116\" height=\"150\" rx=\"12\" fill=\"#E0E0E0\"/><rect x=\"108\" y=\"40\" width=\"72\" height=\"9\" rx=\"4.5\" fill=\"#000\"/><rect x=\"108\" y=\"56\" width=\"48\" height=\"9\" rx=\"4.5\" fill=\"#000\"/><rect x=\"108\" y=\"82\" width=\"84\" height=\"24\" rx=\"12\" fill=\"#0A14FC\"/><g class=\"g-tick\"><path d=\"M141 94l6 6 12-12\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g><g class=\"g-env\"><rect class=\"s\" x=\"66\" y=\"130\" width=\"168\" height=\"142\" rx=\"22\" fill=\"#fff\"/><path d=\"M150.0 160.0A40 40 0 0 0 113.7 183.1\" fill=\"none\" stroke=\"#EA4335\" stroke-width=\"26\"/><path d=\"M113.7 183.1A40 40 0 0 0 115.4 220.0\" fill=\"none\" stroke=\"#FBBC04\" stroke-width=\"26\"/><path d=\"M115.4 220.0A40 40 0 0 0 178.3 228.3\" fill=\"none\" stroke=\"#34A853\" stroke-width=\"26\"/><path d=\"M178.3 228.3A40 40 0 0 0 190.0 201.4\" fill=\"none\" stroke=\"#4285F4\" stroke-width=\"26\"/><path d=\"M150.0 160.0A40 40 0 0 1 181.5 175.4\" fill=\"none\" stroke=\"#4285F4\" stroke-width=\"26\"/><rect x=\"150\" y=\"187\" width=\"53\" height=\"26\" fill=\"#4285F4\"/></g><g transform=\"translate(278 22)\"><g class=\"badge\"><circle r=\"16\" fill=\"#000\"/><path d=\"M-7 0.5l5 5 9-10\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g></svg>", "<svg class=\"ill\" viewBox=\"0 0 300 300\" aria-hidden=\"true\" focusable=\"false\"><g class=\"c-win\"><rect x=\"32\" y=\"44\" width=\"236\" height=\"204\" rx=\"14\" fill=\"#000\"/><circle cx=\"50\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><circle cx=\"64\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><circle cx=\"78\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><path d=\"M38 70h224v164a8 8 0 0 1-8 8H46a8 8 0 0 1-8-8z\" fill=\"#fff\"/><rect x=\"146\" y=\"82\" width=\"104\" height=\"30\" rx=\"15\" fill=\"#000\"/><rect x=\"162\" y=\"93\" width=\"62\" height=\"8\" rx=\"4\" fill=\"#fff\"/><g class=\"c-reply\"><rect class=\"s\" x=\"48\" y=\"128\" width=\"52\" height=\"52\" rx=\"13\" fill=\"#D97757\"/><polygon points=\"74.0,132.0 75.8,147.2 83.0,138.4 78.9,149.1 93.1,143.0 80.8,152.2 93.0,154.0 80.8,155.8 93.1,165.0 78.9,158.9 83.0,169.6 75.8,160.8 74.0,176.0 72.2,160.8 64.5,170.5 69.1,158.9 54.9,165.0 67.2,155.8 56.0,154.0 67.2,152.2 54.9,143.0 69.1,149.1 64.5,137.5 72.2,147.2\" fill=\"#fff\"/><rect x=\"112\" y=\"130\" width=\"128\" height=\"12\" rx=\"6\" fill=\"#E0E0E0\"/><rect x=\"112\" y=\"150\" width=\"108\" height=\"12\" rx=\"6\" fill=\"#E0E0E0\"/><rect x=\"112\" y=\"170\" width=\"72\" height=\"12\" rx=\"6\" fill=\"#E0E0E0\"/></g><rect x=\"54\" y=\"204\" width=\"192\" height=\"26\" rx=\"13\" fill=\"#E0E0E0\"/><circle cx=\"231\" cy=\"217\" r=\"8\" fill=\"#000\"/></g><g transform=\"translate(278 22)\"><g class=\"badge\"><circle r=\"16\" fill=\"#000\"/><path d=\"M-7 0.5l5 5 9-10\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g></svg>", "<svg class=\"ill\" viewBox=\"0 0 300 300\" aria-hidden=\"true\" focusable=\"false\"><g transform=\"rotate(-9 150 92)\"><rect class=\"s\" x=\"62\" y=\"36\" width=\"176\" height=\"112\" rx=\"12\" fill=\"#E0E0E0\"/><rect x=\"78\" y=\"52\" width=\"56\" height=\"10\" rx=\"5\" fill=\"#000\"/></g><g transform=\"rotate(-3 150 112)\"><rect class=\"s\" x=\"52\" y=\"62\" width=\"184\" height=\"116\" rx=\"12\" fill=\"#E0E0E0\"/><rect x=\"68\" y=\"78\" width=\"56\" height=\"10\" rx=\"5\" fill=\"#000\"/></g><g class=\"v-in\"><g class=\"v-loop\"><rect class=\"s\" x=\"40\" y=\"106\" width=\"196\" height=\"126\" rx=\"12\" fill=\"#0A14FC\"/><rect class=\"s\" x=\"58\" y=\"124\" width=\"38\" height=\"28\" rx=\"6\" fill=\"#FDC959\"/><text x=\"208\" y=\"160\" text-anchor=\"end\" font-size=\"38\" fill=\"#fff\" style=\"font-family:var(--font-display);font-weight:700;font-style:italic;font-stretch:125%\">VISA</text><rect x=\"58\" y=\"198\" width=\"84\" height=\"9\" rx=\"4.5\" fill=\"#fff\"/><rect x=\"150\" y=\"198\" width=\"44\" height=\"9\" rx=\"4.5\" fill=\"#fff\"/><circle cx=\"226\" cy=\"124\" r=\"5\" fill=\"#000\"/><path d=\"M226 124Q246 146 240 176\" fill=\"none\" stroke=\"#000\" stroke-width=\"4\" stroke-linecap=\"round\"/><rect class=\"s\" x=\"226\" y=\"170\" width=\"58\" height=\"38\" rx=\"9\" fill=\"#fff\"/><circle cx=\"238\" cy=\"180\" r=\"3.5\" fill=\"#000\"/><text x=\"262\" y=\"198\" text-anchor=\"middle\" font-size=\"17\" fill=\"#000\">$20</text></g></g><g transform=\"translate(278 22)\"><g class=\"badge\"><circle r=\"16\" fill=\"#000\"/><path d=\"M-7 0.5l5 5 9-10\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g></svg>"]; /*ART:end*/   // the four animated pictures of prep option C (UI, not content)
+/*ART:begin*/ const PREP_ART = ["<svg class=\"ill\" viewBox=\"0 0 300 300\" aria-hidden=\"true\" focusable=\"false\"><rect class=\"s\" x=\"18\" y=\"204\" width=\"264\" height=\"26\" rx=\"10\" fill=\"#E0E0E0\"/><path d=\"M122 204h56v4a8 8 0 0 1-8 8h-40a8 8 0 0 1-8-8z\" fill=\"#000\"/><g class=\"l-lid\"><rect x=\"46\" y=\"48\" width=\"208\" height=\"156\" rx=\"14\" fill=\"#000\"/><rect x=\"58\" y=\"60\" width=\"184\" height=\"132\" rx=\"6\" fill=\"#0A14FC\"/><rect class=\"s\" x=\"70\" y=\"72\" width=\"160\" height=\"108\" rx=\"8\" fill=\"#fff\"/><rect x=\"84\" y=\"86\" width=\"70\" height=\"8\" rx=\"4\" fill=\"#E0E0E0\"/><rect x=\"84\" y=\"100\" width=\"44\" height=\"8\" rx=\"4\" fill=\"#E0E0E0\"/><text x=\"84\" y=\"138\" font-size=\"22\" fill=\"#000\">5 GB</text><rect x=\"191.2\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#E0E0E0\"/><rect x=\"204.6\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#E0E0E0\"/><rect x=\"84.0\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"97.4\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"110.8\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"124.2\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"137.6\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"151.0\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"164.4\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"177.8\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><g class=\"l-free\"><rect x=\"191.2\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#FDC959\" stroke=\"#000\" stroke-width=\"3\"/><rect x=\"204.6\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#FDC959\" stroke=\"#000\" stroke-width=\"3\"/></g></g><g transform=\"translate(278 22)\"><g class=\"badge\"><circle r=\"16\" fill=\"#000\"/><path d=\"M-7 0.5l5 5 9-10\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g></svg>", "<svg class=\"ill\" viewBox=\"0 0 300 300\" aria-hidden=\"true\" focusable=\"false\"><g class=\"g-card\"><rect class=\"s\" x=\"92\" y=\"22\" width=\"116\" height=\"150\" rx=\"12\" fill=\"#E0E0E0\"/><rect x=\"108\" y=\"40\" width=\"72\" height=\"9\" rx=\"4.5\" fill=\"#000\"/><rect x=\"108\" y=\"56\" width=\"48\" height=\"9\" rx=\"4.5\" fill=\"#000\"/><rect x=\"108\" y=\"82\" width=\"84\" height=\"24\" rx=\"12\" fill=\"#0A14FC\"/><g class=\"g-tick\"><path d=\"M141 94l6 6 12-12\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g><g class=\"g-env\"><rect class=\"s\" x=\"66\" y=\"130\" width=\"168\" height=\"142\" rx=\"22\" fill=\"#fff\"/><path d=\"M150.0 160.0A40 40 0 0 0 113.7 183.1\" fill=\"none\" stroke=\"#EA4335\" stroke-width=\"26\"/><path d=\"M113.7 183.1A40 40 0 0 0 115.4 220.0\" fill=\"none\" stroke=\"#FBBC04\" stroke-width=\"26\"/><path d=\"M115.4 220.0A40 40 0 0 0 178.3 228.3\" fill=\"none\" stroke=\"#34A853\" stroke-width=\"26\"/><path d=\"M178.3 228.3A40 40 0 0 0 190.0 201.4\" fill=\"none\" stroke=\"#4285F4\" stroke-width=\"26\"/><path d=\"M150.0 160.0A40 40 0 0 1 181.5 175.4\" fill=\"none\" stroke=\"#4285F4\" stroke-width=\"26\"/><rect x=\"150\" y=\"187\" width=\"53\" height=\"26\" fill=\"#4285F4\"/></g><g transform=\"translate(278 22)\"><g class=\"badge\"><circle r=\"16\" fill=\"#000\"/><path d=\"M-7 0.5l5 5 9-10\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g></svg>", "<svg class=\"ill\" viewBox=\"0 0 300 300\" aria-hidden=\"true\" focusable=\"false\"><g class=\"c-win\"><rect x=\"32\" y=\"44\" width=\"236\" height=\"204\" rx=\"14\" fill=\"#000\"/><circle cx=\"50\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><circle cx=\"64\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><circle cx=\"78\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><path d=\"M38 70h224v164a8 8 0 0 1-8 8H46a8 8 0 0 1-8-8z\" fill=\"#fff\"/><rect x=\"146\" y=\"82\" width=\"104\" height=\"30\" rx=\"15\" fill=\"#000\"/><rect x=\"162\" y=\"93\" width=\"62\" height=\"8\" rx=\"4\" fill=\"#fff\"/><g class=\"c-reply\"><rect class=\"s\" x=\"48\" y=\"128\" width=\"52\" height=\"52\" rx=\"13\" fill=\"#D97757\"/><polygon points=\"74.0,132.0 75.8,147.2 83.0,138.4 78.9,149.1 93.1,143.0 80.8,152.2 93.0,154.0 80.8,155.8 93.1,165.0 78.9,158.9 83.0,169.6 75.8,160.8 74.0,176.0 72.2,160.8 64.5,170.5 69.1,158.9 54.9,165.0 67.2,155.8 56.0,154.0 67.2,152.2 54.9,143.0 69.1,149.1 64.5,137.5 72.2,147.2\" fill=\"#fff\"/><rect x=\"112\" y=\"130\" width=\"128\" height=\"12\" rx=\"6\" fill=\"#E0E0E0\"/><rect x=\"112\" y=\"150\" width=\"108\" height=\"12\" rx=\"6\" fill=\"#E0E0E0\"/><rect x=\"112\" y=\"170\" width=\"72\" height=\"12\" rx=\"6\" fill=\"#E0E0E0\"/></g><rect x=\"54\" y=\"204\" width=\"192\" height=\"26\" rx=\"13\" fill=\"#E0E0E0\"/><circle cx=\"231\" cy=\"217\" r=\"8\" fill=\"#000\"/></g><g transform=\"translate(278 22)\"><g class=\"badge\"><circle r=\"16\" fill=\"#000\"/><path d=\"M-7 0.5l5 5 9-10\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g></svg>", "<svg class=\"ill\" viewBox=\"0 0 300 300\" aria-hidden=\"true\" focusable=\"false\"><g class=\"w-win\"><rect x=\"32\" y=\"44\" width=\"236\" height=\"204\" rx=\"14\" fill=\"#000\"/><circle cx=\"50\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><circle cx=\"64\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><circle cx=\"78\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><path d=\"M38 70h224v164a8 8 0 0 1-8 8H46a8 8 0 0 1-8-8z\" fill=\"#0A14FC\"/><path d=\"M52 83l9 9-9 9\" fill=\"none\" stroke=\"#FDC959\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"72\" y=\"98\" font-size=\"19\" fill=\"#fff\">claude</text><g class=\"w-reply\"><rect class=\"s\" x=\"50\" y=\"120\" width=\"200\" height=\"100\" rx=\"12\" fill=\"#fff\"/><rect x=\"66\" y=\"140\" width=\"150\" height=\"11\" rx=\"5.5\" fill=\"#E0E0E0\"/><rect x=\"66\" y=\"162\" width=\"112\" height=\"11\" rx=\"5.5\" fill=\"#E0E0E0\"/><rect x=\"66\" y=\"184\" width=\"132\" height=\"11\" rx=\"5.5\" fill=\"#E0E0E0\"/></g></g><g transform=\"translate(278 22)\"><g class=\"badge\"><circle r=\"16\" fill=\"#000\"/><path d=\"M-7 0.5l5 5 9-10\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g></svg>"]; /*ART:end*/   // the four animated pictures of prep option C (UI, not content)
 
 let C20 = {};   // filled from GET /me (app_state.js): the bundle holds no lesson text
-let VZ1, AM1, EX, EX_ORDER, CORE, SECT, LIB, HERMES, BOOK;
-const FC = (f, ph, slug) => f ? F(f.name, f.size, ph, slug || f.slug, f.url) : null;   // file from the dump / API: name + size (+ url in the app), never a server path
-const BLANK = {vz: {files: [], zip: null, guide: null, rules: [], footnote: '', items: []}, am: {title: '', lead: '', rules: [], guide: null, closing: null, ex: {}}, lib: {rules: [], sections: []}, hw: {}, hermes: {lead: '', rules: [], cards: []}, book: {title: '', note: ''}};
+const PREP_CMDS = {3: {1: 'curl -fsSL https://claude.ai/install.sh | bash', 2: 'irm https://claude.ai/install.ps1 | iex'}};   // prep item 4: step index -> the command shown (and copyable) under that step
+let PARTS = {};   // lesson number -> {am|kt|vz: {text, groups: [{title, note, files}]}}: the shape the lesson page reads
+const FC = (f, ph, slug) => f ? F(f.name, f.size, ph, slug || f.slug, f.url) : null;   // file from the demo / API: name + size (+ url in the app), never a server path
 function buildData(){
-  FILES = {}; const C = {...BLANK, ...C20};
-  // ---- lesson 1: Vazifa «Ravon Uy» (7 files + ZIP, guide, prompt sheet P1-P8 main, Q1-Q5 extra)
-  VZ1 = {
-    files: C.vz.files.map(f => FC(f)), zip: FC(C.vz.zip), guide: FC(C.vz.guide, false, 'talaba-qollanmasi'),
-    sheetPdf: SAMPLE_FILES ? F('Promptlar_varaqasi.pdf') : null,   // the PDF of the prompt sheet is not in the dump: stays a sample file in the prototype only
-    rules: C.vz.rules, footnote: C.vz.footnote,
-    main: C.vz.items.filter(i => i.id[0] === 'P').map(i => P(i.id, i.title, i.src.length ? i.src.join(', ') : false, i.text)),
-    extra: C.vz.items.filter(i => i.id[0] === 'Q').map(i => P(i.id, i.title, i.src.length ? i.src.join(', ') : false, i.text)),
-  };
-  // ---- lesson 1: Amaliyot exercises (01 HR, 02 Savdo, 03A Servis / 03B Ombor, 04 Marketing, 05 Xarid, 06 Rahbar audio)
-  AM1 = {title: C.am.title, rules: C.am.rules, lead: C.am.lead, guide: FC(C.am.guide, false, 'talaba-qollanmasi-amaliyot'), closing: FC(C.am.closing)};
-  const mkEx = (k, more) => { const e = C.am.ex[k]; return {num: e.num, tag: e.tag, title: e.title, note: e.note, brief: FC(e.brief), sources: e.sources.map(f => FC(f)), promptsPdf: FC(e.pdf),
-    prompts: e.prompts.map(p => P(p.id, p.title, p.where, p.text)), ...more}; };
-  EX = {};   // `extra`: the 2.0 sub-label of the extra exercises
-  if (C.am.ex['01']) {
-    EX = {
-      '01': mkEx('01', {briefLabel: 'Avval shuni oching'}),
-      '02': mkEx('02'),
-      '03': {num: '03', tag: 'Tanlov', title: null, pick: ['03a', '03b']},
-      '03a': mkEx('03a', {parent: '03', area: 'Servis'}),
-      '03b': mkEx('03b', {parent: '03', area: 'Ombor'}),
-      '04': mkEx('04'),
-      '05': mkEx('05', {extra: 'common.extra'}),
-      '06': mkEx('06', {extra: 'c.ex.extra_06'}),
-    };
-  }
-  EX_ORDER = ['01', '02', '03', '04', '05', '06'];            // rows in the Amaliyot list; 03 is the "pick one" block
-  CORE = ['01', '02', '03', '04'];                            // the units the progress model counts (05 and 06 are extra)
-  // ---- lesson 2: the 47-prompt library (5 sections, every title and text from 2.0)
-  SECT = C.lib.sections.map(s => ({k: s.k, a: s.a, b: s.b, key: s.key, num: s.num, note: s.note, title: s.title}));
-  LIB = C.lib.sections.flatMap(s => s.prompts.map(p => ({n: +p.id, id: p.id, sect: s.k, title: p.title, text: p.text})));
-  // ---- lesson 4: Hermes personal agent, 10 cards (09 counted + bonus 10); a prompt's 2.0 title is its "send to" label (shown as the target)
-  HERMES = C.hermes.cards.map(c => ({id: c.id, title: c.title, bonus: c.bonus, natija: c.natija, notes: c.notes, manual: 0,
-    prompts: c.prompts.map((p, i) => P('P' + (i + 1), null, p.title, p.text))}));
-  BOOK = {lat: F('Biznesda_AIni_qollash_lotin.pdf'), variants: [{v: 'cyrl', label: 'Кирилл ёзувида', file: F('Biznesda_AIni_qollash_kirill.pdf')}]};
+  FILES = {}; PARTS = {};
+  Object.entries((C20 && C20.parts) || {}).forEach(([n, o]) => { PARTS[n] = {}; Object.entries(o).forEach(([k, b]) => {
+    PARTS[n][k] = {text: b.text || '', groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', files: (g.files || []).map(f => FC(f, f.ph))}))}; }); });
 }
-let SAMPLE_FILES = false, C20_TRANSLATED = false;   // prototype: files 2.0 never gave us are shown as marked sample files; the real app has none
+let SAMPLE_FILES = false, C20_TRANSLATED = false;   // prototype: the demo files are marked samples; the real app has none
 buildData();
 
 
 
-// ---- the Uzbek 2.0 content goes into I18N.uz as "c.*" keys (so the whole text of the prototype is in one dictionary)
+// ---- the Uzbek lesson text goes into I18N.uz as "c.p.*" keys (so the whole text of the prototype is in one dictionary)
 function registerContent(){
-  const u = I18N.uz, set = (k, v) => { if (typeof v === 'string') u[k] = v; };
-  const tr = I18N[C20_TRANSLATED ? LANG : 'uz'], setT = (k, v) => { if (typeof v === 'string') tr[k] = v; };   // rules, ledes and footnotes: the app gets them translated from the API, the prototype has the Uzbek text only
-  Object.entries(EX).forEach(([k, e]) => { set(`c.ex.${k}.title`, e.title); set(`c.ex.${k}.tag`, e.tag); set(`c.ex.${k}.note`, e.note); set(`c.ex.${k}.briefLabel`, e.briefLabel); set(`c.ex.${k}.area`, e.area);
-    (e.prompts || []).forEach(p => { set(`c.ex.${k}.${p.id}.title`, p.title); set(`c.ex.${k}.${p.id}.where`, p.where); set(`c.ex.${k}.${p.id}.text`, p.text); }); });
-  VZ1.main.concat(VZ1.extra).forEach(p => { set(`c.vz1.${p.id}.title`, p.title); set(`c.vz1.${p.id}.where`, p.where); set(`c.vz1.${p.id}.text`, p.text); });
-  VZ1.rules.forEach((r, i) => setT(`c.vz1.rule${i}`, r)); setT('c.vz1.footnote', VZ1.footnote);
-  AM1.rules.forEach((r, i) => setT(`c.am1.rule${i}`, r)); setT('c.am1.lead', AM1.lead); set('c.am1.title', AM1.title);
-  C20.lib.rules.forEach((r, i) => setT(`c.lib.rule${i}`, r));
-  C20.hermes.rules.forEach((r, i) => setT(`c.hermes.rule${i}`, r)); setT('c.hermes.lead', C20.hermes.lead); setT('c.hermes.caution', C20.hermes.rules[3]);
-  Object.entries(C20.hw).forEach(([n, v]) => set(`c.hw.${n}`, v));   // the homework text of each lesson
-  if (C20.book) { set('c.book.title', C20.book.title); set('c.book.note', C20.book.note); }
-  if (EX['06']) set('c.ex.extra_06', EX['06'].tag.charAt(0) + EX['06'].tag.slice(1).toLowerCase());
-  SECT.forEach(s => { set(`c.sect.${s.k}`, s.title); set(`c.sect.${s.k}.note`, s.note); });
-  LIB.forEach(p => { set(`c.lib.${p.id}.title`, p.title); set(`c.lib.${p.id}.text`, p.text); });
-  HERMES.forEach(h => { set(`c.h.${h.id}.title`, h.title); set(`c.h.${h.id}.natija`, h.natija); h.prompts.forEach(p => { set(`c.h.${h.id}.${p.id}.where`, p.where); set(`c.h.${h.id}.${p.id}.text`, p.text); });
-    h.notes.forEach((x, i) => { set(`c.h.${h.id}.note${i}.t`, x.t); set(`c.h.${h.id}.note${i}.x`, x.x); }); });
+  const set = (k, v) => { if (typeof v === 'string') I18N.uz[k] = v; };
+  Object.entries(PARTS).forEach(([n, o]) => Object.entries(o).forEach(([k, b]) => {
+    set(`c.p.${n}.${k}.text`, b.text); b.groups.forEach((g, i) => { set(`c.p.${n}.${k}.g${i}`, g.title); set(`c.p.${n}.${k}.g${i}.n`, g.note); }); }));
 }
 
 // ===================== PROTOTYPE: state, logic, templates, router (all UI text comes from t() / T() / cx(), see proto_i18n.js) =====================
@@ -1282,55 +1343,41 @@ const partLock = (n, p) => (LESSONS[n] && LESSONS[n].lock && LESSONS[n].lock[p])
 let recheckT = 0;
 function scheduleRecheck(){   // a part opens while the page is open: ask again when the earliest one is due
   clearTimeout(recheckT);
-  const times = Object.values(LESSONS).flatMap(L => Object.values(L.lock || {})).map(x => Date.parse(x)).filter(x => x > Date.now());
+  const times = Object.values(LESSONS).flatMap(L => [...Object.values(L.lock || {}), L.at]).map(x => Date.parse(x)).filter(x => x > Date.now());   // L.at = the start of a lesson that is not open yet (an empty lesson has no part times)
   if (times.length) recheckT = setTimeout(() => recheck(), Math.min(Math.min(...times) - Date.now() + 1500, 3600e3));   // ponytail: capped at 1 h (a device clock can be wrong); recheck() arms the next one
 }
 
-// ---- the API payload becomes the shapes the templates already read (C20 -> buildData(), LESSONS, PREP, BOOK)
+// ---- the API payload becomes the shapes the templates already read (C20 -> buildData(), LESSONS, PREP)
 const sid = s => String(s == null ? '' : s).replace(/[^A-Za-z0-9_-]/g, '');   // ids that end up in href / id / data-*: nothing else may pass
-const fileLabel = f => { const ext = (f.name.split('.').pop() || '').toUpperCase(); return f.size < 1024 ? `${ext} · ${f.size} B` : `${ext} · ${(f.size / 1024).toFixed(1).replace('.', ',')} KB`; };
+const fileLabel = f => { const ext = (f.name.split('.').pop() || '').toUpperCase(); return f.size < 1024 ? `${ext} · ${f.size} B` : f.size < 1048576 ? `${ext} · ${(f.size / 1024).toFixed(1).replace('.', ',')} KB` : `${ext} · ${(f.size / 1048576).toFixed(1).replace('.', ',')} MB`; };
 const fo = (n, f) => f ? {slug: sid(f.slug), name: f.name, size: fileLabel(f), url: `${API}/lesson/${n}/doc/${encodeURIComponent(f.slug)}`} : null;   // name + size + the download URL; the server path never reaches the client
 
-function makeC20(by){
-  const C = {}, open = (n, p) => by[n] && by[n].parts && by[n].parts[p] && by[n].parts[p].open;
-  if (open(1, 'vazifa')) {
-    const l = by[1], mat = a => (l.materials || []).find(m => m.art === a), src = mat('sources'), book = mat('book'), pr = l.prompts;
-    C.vz = {rules: pr?.rules || [], footnote: pr?.footnote || '', files: (src?.files || []).map(f => fo(1, f)), zip: src?.bundle ? fo(1, src.bundle) : null, guide: book?.files?.[0] ? fo(1, book.files[0]) : null,
-      items: (pr?.groups || []).flatMap(g => g.items).map(i => ({id: sid(i.id), title: i.title, src: i.sources || [], text: i.text}))};
+function makeC20(by){   // the open blocks of each lesson (Amaliyot, Kit, Vazifa) in the shape buildData() reads
+  const parts = {};
+  for (const l of Object.values(by)) {
+    if (l.n < 1) continue;
+    for (const [k, key] of [['am', 'amaliyot'], ['kt', 'kit'], ['vz', 'vazifa']]) {
+      const b = l[key]; if (!b || typeof b !== 'object') continue;
+      (parts[l.n] ??= {})[k] = {text: b.text || '', groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', files: (g.files || []).map(f => fo(l.n, f))}))};
+    }
   }
-  if (open(1, 'amaliyot') && by[1].praktikum) {
-    const pk = by[1].praktikum;
-    C.am = {title: pk.title.replace(/\.$/, ''), lead: pk.lead, rules: pk.rules, guide: fo(1, pk.guide), closing: fo(1, pk.closing), ex: {}};
-    pk.exercises.forEach(e => { C.am.ex[sid(e.num).toLowerCase()] = {num: sid(e.num), tag: e.tag, title: e.title, note: e.note, brief: fo(1, e.yoriqnoma), pdf: fo(1, e.promptsPdf),
-      sources: (e.sources || []).concat(e.extras || []).map(f => fo(1, f)), prompts: e.prompts.map(p => ({id: sid(p.id), where: p.target, title: p.title, text: p.text}))}; });
-  }
-  if (open(2, 'amaliyot') && by[2].praktikum) {
-    const pk = by[2].praktikum; let a = 1;
-    C.lib = {rules: pk.rules, sections: pk.exercises.map((e, si) => { const b = a + e.prompts.length - 1, s = {k: 'gtsro'[si], a, b, key: sid(e.key), num: sid(e.num), note: e.note, title: e.title, prompts: e.prompts.map(p => ({id: sid(p.id), title: p.title, text: p.text}))}; a = b + 1; return s; })};
-  }
-  C.hw = {}; [2, 3].forEach(n => { if (open(n, 'vazifa') && by[n].homework) C.hw[n] = by[n].homework; });   // the homework text of each lesson
-  if (open(4, 'amaliyot') && by[4].praktikum) {
-    const pk = by[4].praktikum;
-    C.hermes = {lead: pk.lead, rules: pk.rules, cards: pk.exercises.map(e => ({id: sid(e.num), bonus: e.tag === 'Bonus', title: e.title, natija: e.note, notes: (e.notes || []).map(n => ({t: n.title, x: n.text})), prompts: e.prompts.map(p => ({title: p.title, text: p.text}))}))};
-  }
-  if (open(4, 'kitob') && by[4].bookNote) { const bn = by[4].bookNote.split('. '); C.book = {title: bn[0], note: bn.slice(1).join('. ')}; }
-  return {...BLANK, ...C};
+  return {parts};
 }
 
 function applyLessons(ls, lsUz, lang){
   // lang = the language of the payload `ls`: its platform text goes into THAT dictionary, whatever LANG says by now (a switch may be under way)
   const by = {}; ls.forEach(l => by[l.n] = l);
-  const dOf = l => l && l.date ? [+l.date.slice(8, 10), +l.date.slice(5, 7)] : null, L = {};
+  const dOf = l => l && l.date ? [+l.date.slice(8, 10), +l.date.slice(5, 7)] : null, L = {}, lessons = ls.filter(l => l.n >= 1);
   L[0] = {d: dOf(by[1]), open: true};
-  for (const n of [1, 2, 3, 4]) {
-    const l = by[n], lock = {}, parts = [];
-    const add = (has, key, part) => { if (!has) return; parts.push(key); const pp = l.parts[part]; if (pp && !pp.open) lock[key] = pp.opensAt || 'unknown'; };
-    add(l.has.slides, 'sl', 'slides'); add(l.has.amaliyot, 'am', 'amaliyot'); add(l.has.vazifa, 'vz', 'vazifa'); add(l.has.kitob, 'kt', 'kitob');
-    L[n] = {n, d: dOf(l), open: !!l.open, lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: l.topics.length};
+  for (const l of lessons) {
+    const n = l.n, lock = {}, parts = [], has = l.has || {};
+    const add = (on, key, part) => { if (!on) return; parts.push(key); const pp = l.parts && l.parts[part]; if (pp && !pp.open) lock[key] = pp.opensAt || 'unknown'; };
+    add(has.slides, 'sl', 'slides'); add(has.amaliyot, 'am', 'amaliyot'); add(has.kit, 'kt', 'kit'); add(has.vazifa, 'vz', 'vazifa');
+    L[n] = {n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length};
   }
   LESSONS = L;
   const D = I18N[LANGS.includes(lang) ? lang : LANG];   // platform text of the payload's language (lesson metadata and the prep checklist come translated from the API)
-  for (const n of [1, 2, 3, 4]) { const l = by[n]; D[`lesson.${n}.title`] = l.title; D[`lesson.${n}.sub`] = l.subtitle; D[`lesson.${n}.lede`] = l.summary; l.topics.forEach((x, i) => { D[`lesson.${n}.t${i}`] = x; }); }
+  for (const l of lessons) { const n = l.n; D[`lesson.${n}.title`] = l.title; D[`lesson.${n}.sub`] = l.subtitle; D[`lesson.${n}.lede`] = l.summary; (l.topics || []).forEach((x, i) => { D[`lesson.${n}.t${i}`] = x; }); }
   const pr = by[0] && by[0].prep;
   if (pr) {
     const acts = it => (it.actions || []).filter(a => /^https:\/\//.test(a.url));   // only https links leave the portal
@@ -1345,19 +1392,8 @@ function applyLessons(ls, lsUz, lang){
     D['prep.more.title'] = mo.title || dflt; D['prep.more.note'] = mo.note || '';
     ml.forEach((x, i) => { D[`prep.more.${i}.t`] = x.title || x.url; D[`prep.more.${i}.n`] = x.note || ''; });
   }
-  const l1 = by[1];
-  if (l1.parts.vazifa && l1.parts.vazifa.open) {   // the headings, notes and ledes of the Vazifa materials come translated from the API (not from the bundle)
-    const mat = a => (l1.materials || []).find(m => m.art === a) || {}, src = mat('sources'), pm = mat('prompts'), bk = mat('book'), prm = l1.prompts || {}, g = prm.groups || [], set = (k, v) => { if (typeof v === 'string') D[k] = v; };
-    set('vz1.g1', '1 · ' + src.title); set('vz1.g1_note', src.note); set('vz1.g1_hint', src.footnote || ''); set('vz1.zip', src.bundle && src.bundle.label);
-    set('vz1.g2', '2 · ' + pm.title); set('vz1.g2_note', pm.note); set('vz1.g2_cta', pm.cta);
-    set('vz1.g3', '3 · ' + bk.title); set('vz1.g3_note', bk.note);
-    set('vz1.sheet.lede', prm.lede); set('vz1.sheet.rule', g[0] && g[0].note); set('vz1.more', g[1] && g[1].title); set('vz1.more_sub', g[1] && g[1].note);
-    set('vz1.sheet.meta', (prm.subtitle || '').split(' — ').pop());
-  }
   const byUz = {}; (lsUz || ls).forEach(l => byUz[l.n] = l);   // course material is Uzbek in every UI language
   C20 = makeC20(byUz); buildData();
-  const l4 = byUz[4], bf = (slug, name, q) => ({slug, name, size: '', ph: false, url: `${API}/lesson/4/book${q}`});
-  BOOK = {lat: bf('book', 'Biznesda_AIni_qollash_lotin.pdf', ''), variants: ((l4.parts.kitob && l4.parts.kitob.open && l4.bookVariants) || []).map(v => ({v: sid(v.v), label: v.label, file: bf('book-' + sid(v.v), `Biznesda_AIni_qollash_${sid(v.v)}.pdf`, '?v=' + encodeURIComponent(v.v))}))};
   registerContent();
 }
 async function fetchMe(){   // platform text in the UI language and course material in Uzbek: the writes still on their way go first, then both answers together
@@ -1370,8 +1406,11 @@ function applyMe(j, uz){
   S.set(j.progress); applyLessons(j.lessons, uz && uz.lessons, j.lang); scheduleRecheck();
 }
 
-// each lesson has ONE fixed colour whatever its state (state = words + icons in the note, never colour); yellow also stays the progress ring
-const LCOL = ['yellow', 'lilac', 'grey', 'blue', 'dark'];
+// each lesson has ONE fixed colour whatever its state (state = words + icons in the note, never colour); yellow also stays the progress ring. Emerald (lesson 6) is an identity colour, never a success colour
+const LCOL = ['yellow', 'lilac', 'grey', 'blue', 'dark', 'orange', 'emerald'];
+const LN = () => Object.keys(LESSONS).map(Number).filter(n => n > 0).sort((a, b) => a - b);   // the lesson numbers 1..N come from the data (the API in the app)
+const colCls = n => LCOL[n] === 'dark' ? 'c-night' : 'c-' + LCOL[n];   // an unlocked dark lesson keeps its dark identity, with normal (white) ink
+
 
 // ---- text helpers (content = 2.0 Uzbek text, unless a translation was added on purpose; placeholders use ns.* UI keys)
 // t() = plain text (textContent; esc() it before it goes into HTML or an attribute), T() = escaped HTML, cx() = content as plain text, cxh() = content as HTML with lang="uz-Latn" when it is still Uzbek inside a ru/en page.
@@ -1379,90 +1418,41 @@ const LCOL = ['yellow', 'lilac', 'grey', 'blue', 'dark'];
 const num2 = n => String(n).padStart(2, '0');
 const lessonDate = n => LESSONS[n].d ? fmtDate(...LESSONS[n].d) : t('date.tba');
 const stepsText = (d, tt) => t('steps', {d, t: tt, pl: tt});
-const exTitleT = k => k === '03' ? t('pick.title') : EX[k].title ? cx(`c.ex.${k}.title`, EX[k].title) : '';
-const exTagT = k => cx(`c.ex.${k}.tag`, EX[k].tag);
-const exTitleH = k => k === '03' ? esc(t('pick.title')) : EX[k].title ? cxh(`c.ex.${k}.title`, EX[k].title) : '';
-const exTagH = k => cxh(`c.ex.${k}.tag`, EX[k].tag);
-const exNoteH = k => EX[k].note ? cxh(`c.ex.${k}.note`, EX[k].note) : esc(t(EX[k].noteKey || 'ns.note'));
-const exExtra = (k, h) => { const x = EX[k].extra; if (!x) return ''; return x.startsWith('c.') ? (h ? cuh(x) : cu(x)) : (h ? esc(t(x)) : t(x)); };   // c.* = a 2.0 label (Uzbek, tagged); otherwise our own wording
-const pBase = {ex: (page, p) => `c.ex.${page}.${p.id}`, vz: (page, p) => `c.vz1.${p.id}`, lib: (page, p) => `c.lib.${p.id}`, h: (page, p) => `c.h.${page}.${p.id}`};
-// h = true: the same value as escaped HTML (content gets lang="uz-Latn" in ru/en, ns.* placeholders are translated UI and get none)
-const pText = (kind, page, p, h) => {
-  if (p.text == null) { const x = t(p.qimmat ? 'ns.text_qimmat' : 'ns.text'); return h ? mark(esc(x)) : x; }
-  const k = pBase[kind](page, p) + '.text'; return h ? cxh(k, p.text, x => mark(esc(x))) : cx(k, p.text);
-};
-const pWhere = (kind, page, p, h) => {
-  if (p.where === false) return '';   // 2.0 names no source for this prompt
-  if (p.where == null) { const x = t('ns.source'); return h ? esc(x) : x; }
-  const k = pBase[kind](page, p) + '.where'; return h ? cxh(k, p.where) : cx(k, p.where);
-};
-const pTitle = (kind, page, p, i, h) => {
-  if (p.title != null) { const k = pBase[kind](page, p) + '.title'; return h ? cxh(k, p.title) : cx(k, p.title); }
-  if (kind === 'h') return pWhere(kind, page, p, h);
-  const x = kind === 'vz' ? t('ns.q_title', {id: p.id}) : kind === 'lib' ? t('ns.prompt', {n: p.id}) : t('ns.prompt', {n: +p.id.replace(/\D/g, '') || i + 1});
-  return h ? esc(x) : x;
-};
-const pParts = (kind, page, p, i) => ({title: pTitle(kind, page, p, i), titleH: pTitle(kind, page, p, i, true), where: pWhere(kind, page, p), whereH: pWhere(kind, page, p, true), text: pText(kind, page, p), textH: pText(kind, page, p, true)});
-const hTitle = h => cx(`c.h.${h.id}.title`, h.title);
-const hTitleH = h => cxh(`c.h.${h.id}.title`, h.title);
-const hNatijaH = h => h.natija ? cxh(`c.h.${h.id}.natija`, h.natija) : esc(t('ns.natija'));
-const sectName = s => cu('c.sect.' + s.k), sectNameH = s => cuh('c.sect.' + s.k);
 const kindT = n => t('kind.' + LESSONS[n].kind);
 const ltitle = n => t(`lesson.${n}.title`);
 
-// ---- progress model (ux-spec §2): L1 = slides + core exercises 01,02,03(A or B),04 + Vazifa = 6; L2 = slides + Amaliyot + Vazifa = 3; L3 = slides + Vazifa = 2; L4 = Hermes 01-09 = 9
-const pk = (page, id) => `p:${page}:${id}`;
+// ---- progress model: the units of a lesson are the parts it really has: slides (all seen), Amaliyot (one tick), Vazifa (one tick). Kit is a folder of files and is not counted
 const slDone = n => S.sl(n) >= LESSONS[n].slides;
-const exCount = k => { const e = EX[k]; return [e.prompts.filter(p => S.has(pk(k, p.id))).length, e.prompts.length]; };
-const exDone = k => { const e = EX[k]; if (e.pick) return e.pick.some(exDone); if (S.has('x:' + k)) return true; const [d, tt] = exCount(k); return tt > 0 && d === tt; };
-const vzCount = () => [VZ1.main.filter(p => S.has(pk('v1', p.id))).length, VZ1.main.length];
-const vzDone1 = () => { const [d, tt] = vzCount(); return d === tt; };
-const hCount = h => [h.prompts.filter(p => S.has(pk('h' + h.id, p.id))).length, h.prompts.length];
-const hDone = h => S.has('x:h' + h.id) || (h.prompts.length > 0 && hCount(h)[0] === h.prompts.length);
 const prepCount = () => PREP.items.filter((_, i) => S.has('prep:' + i)).length;
-const firstOpen = (e, page) => e.prompts.find(p => !S.has(pk(page, p.id)));
 const slHref = n => `#/dars/${n}/slayd/${S.sl(n) === 0 || slDone(n) ? 1 : S.sl(n)}`;
-const exHref = (k, pid) => `#/dars/1/amaliyot/${k}${pid ? '?p=' + pid : ''}`;
 const partOpen = (n, p) => !partLock(n, p);
 function units(n){
-  const sl = partOpen(n, 'sl') ? [{label: t('unit.sl'), kind: 'sl', done: slDone(n), href: slHref(n)}] : [];
-  if (n === 1) return sl.concat(partOpen(1, 'am') ? CORE.map(k => ({label: t('unit.am_n', {num: EX[k].num}), done: exDone(k), href: exHref(k)})) : [], partOpen(1, 'vz') ? [{label: t('unit.vz'), done: vzDone1(), href: '#/dars/1/vazifa'}] : []);
-  if (n === 2) return sl.concat(partOpen(2, 'am') ? [{label: t('unit.am'), done: libUsed(), href: '#/dars/2/amaliyot'}] : [], partOpen(2, 'vz') ? [{label: t('unit.vz'), done: S.has('f:v2'), href: '#/dars/2?tab=vz'}] : []);
-  if (n === 3) return sl.concat(partOpen(3, 'vz') ? [{label: t('unit.vz'), done: S.has('f:v3'), href: '#/dars/3?tab=vz'}] : []);
-  if (n === 4) return partOpen(4, 'am') ? HERMES.filter(h => !h.bonus).map(h => ({label: t('unit.hermes', {id: h.id}), done: hDone(h), href: '#/dars/4/amaliyot/' + h.id})) : [];
-  return [];
+  const has = p => LESSONS[n].parts.includes(p) && partOpen(n, p), out = [];
+  if (has('sl')) out.push({label: t('unit.sl'), kind: 'sl', done: slDone(n), href: slHref(n)});
+  if (has('am')) out.push({label: t('unit.am'), done: S.has('f:am' + n), href: `#/dars/${n}?tab=am`});
+  if (has('vz')) out.push({label: t('unit.vz'), done: S.has('f:v' + n), href: `#/dars/${n}?tab=vz`});
+  return out;
 }
 const lProg = n => { const u = units(n); return [u.filter(x => x.done).length, u.length]; };
 const lDone = n => { if (LESSONS[n].lock && Object.keys(LESSONS[n].lock).length) return false; const [d, tt] = lProg(n); return tt > 0 && d === tt; };   // a lesson with a part still locked is not finished
-const ring = () => [[1, 2, 3, 4].filter(n => !isLocked(n) && lDone(n)).length, 4];
+const allDone = () => LN().every(n => !isLocked(n) && (lDone(n) || lProg(n)[1] === 0)) && LN().some(n => lProg(n)[1] > 0);   // every lesson is open and finished; an open lesson with nothing to count (soon, or Kit only) does not hold it back
+const ring = () => [LN().filter(n => !isLocked(n) && (lDone(n) || (allDone() && lProg(n)[1] === 0))).length, LN().length];   // always done/N; only when the course is all done do empty open lessons count as done, so "6/6" stands next to "all done"
 // first unfinished item of a lesson, with a precise label and target ("Keyingi qadam"); `what` is the label without the lesson prefix
 function nextOf(n){
-  const mk = (what, href, started) => ({what, label: `${T('lesson.n', {n})} · ${what}`, href, started: !!started}); // what / label are HTML; started = the target already has progress ("continue" vs "start")
-  if (n === 1) {
-    if (partOpen(1, 'am')) for (const k of CORE) { if (exDone(k)) continue; const e = EX[k];
-      if (e.pick) { const o = e.pick.find(x => exCount(x)[0] > 0) || e.pick[0]; return mk(T('next.pick', {num: EX[o].num, title: HT(exTitleH(o))}), '#/dars/1/amaliyot/03', exCount(o)[0] > 0); }
-      const p = firstOpen(e, k); return mk(p ? T('next.ex_prompt', {num: e.num, pid: p.id, title: HT(pTitle('ex', k, p, 0, true))}) : T('next.ex', {num: e.num}), exHref(k, exCount(k)[0] > 0 ? p?.id : undefined), exCount(k)[0] > 0); }
-    if (partOpen(1, 'vz') && !vzDone1()) { const p = VZ1.main.find(x => !S.has(pk('v1', x.id))); const st = vzCount()[0] > 0; return mk(T('next.vz', {pid: p.id}), st ? `#/dars/1/vazifa/promptlar?p=${p.id}` : '#/dars/1/vazifa', st); }
-    if (partOpen(1, 'sl') && !slDone(1)) return mk(T('next.sl', {i: S.sl(1), total: LESSONS[1].slides}), slHref(1), S.sl(1) > 0);
-  }
   const u = units(n).find(x => !x.done); if (!u) return null;
-  return mk(esc(u.label) + (u.kind === 'sl' ? ` · ${S.sl(n)} / ${LESSONS[n].slides}` : ''), u.href, u.kind === 'sl' && S.sl(n) > 0);
+  const what = esc(u.label) + (u.kind === 'sl' ? ` · ${S.sl(n)} / ${LESSONS[n].slides}` : '');   // what / label are HTML; started = the target already has progress ("continue" vs "start")
+  return {what, label: `${T('lesson.n', {n})} · ${what}`, href: u.href, started: u.kind === 'sl' && S.sl(n) > 0};
 }
 const nextStep = () => { const live = liveLesson();
-  if (courseStarted() && PREP.items.length > 2) { const i = [1, 2].find(j => !S.has('prep:' + j)); if (i != null) return {href: '#/dars/0', label: T('next.prep', {title: HT(T(`prep.${i}.title`))})}; }   // the Google account and Claude are what lesson 1 needs
-  return [1, 2, 3, 4].filter(n => !isLocked(n) && n !== live).map(nextOf).find(Boolean) || null; }; // the live lesson is the hero card, so it is not repeated here
+  if (courseStarted() && PREP.items.length > 3) { const i = [1, 2, 3].find(j => !S.has('prep:' + j)); if (i != null) return {href: '#/dars/0', label: T('next.prep', {title: HT(T(`prep.${i}.title`))})}; }   // the Google account, Claude and Warp are what lesson 1 needs
+  return LN().filter(n => !isLocked(n) && n !== live).map(nextOf).find(Boolean) || null; }; // the live lesson is the hero card, so it is not repeated here
 // live counters shown on the open page ("k/t"): one formatter for the templates and for refreshCounts()
-function cntText(type, id){
-  if (type === 'ex') { const [d, tt] = exCount(id); return t('ex.k', {d, t: tt, pl: tt}); }
-  if (type === 'h') { const [d, tt] = hCount(HERMES[+id - 1]); return t('ex.k', {d, t: tt, pl: tt}); }
-  if (type === 'vz1') { const [d, tt] = vzCount(); return t('vz1.cnt', {d, t: tt, pl: tt}); }
-  if (type === 'vz1k') { const [d, tt] = vzCount(); return t('vz1.sheet.k', {d, t: tt, pl: tt}); }
-  if (type === 'sc') { const [d, tt] = sectCount(sectBy(id)); return `${d}/${tt}`; }
-  if (type === 'sect') { const [d, tt] = sectCount(sectBy(id)); return t('lib.cnt', {d, t: tt, pl: tt}); }
+function cntText(type){
   if (type === 'prep') return t('prep.cnt', {d: prepCount(), pl: 4});
   return '';
 }
 const cnt = (type, id = '') => `<span data-cnt="${type}${id ? ':' + id : ''}">${esc(cntText(type, id))}</span>`;
+
 
 // ---- small helpers
 const I = (id, w = 16) => `<svg width="${w}" height="${w}" aria-hidden="true"><use href="#i-${id}"/></svg>`;
@@ -1490,9 +1480,6 @@ const fileMeta = (f, extra) => [extra ? `<span class="sent">${extra.html ?? esc(
 const fa = f => f.url ? `href="${esc(f.url)}" target="_blank" rel="noopener noreferrer"` : `href="#/fayl/${f.slug}"`;   // the prototype opens a file page, the app downloads from the API
 const fileRow = (f, extra) => `<li><a class="ef-row" ${fa(f)}><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${wbr(f.name)}${f.ph ? NSTAG() : ''}</span>${fileMeta(f, extra) ? `<span class="ef-mt">${fileMeta(f, extra)}</span>` : ''}</span><span class="ef-dl">${I('down', 18)}</span></a></li>`;
 const rowLink = (href, name, meta, markHTML) => `<li><a class="ef-row" href="${href}"><span><span class="ef-nm">${name}</span>${meta ? `<span class="ef-mt sent">${meta}</span>` : ''}</span><span class="xm">${markHTML || ''}${I('next')}</span></a></li>`;
-const exMark = k => exDone(k) ? SRCHK() : (!EX[k].pick && exCount(k)[0] ? esc(t('row.mark', {d: exCount(k)[0], t: exCount(k)[1], pl: exCount(k)[1]})) : '');
-const exSubH = k => { if (k === '03') return esc(exDone('03a') ? t('ex.sub_03a') : exDone('03b') ? t('ex.sub_03b') : ''); return exExtra(k, true); };
-const exTitleHTML = k => EX[k].tagTitle ? `<span class="xtag">${exTagH(k)}</span>` : exTitleH(k);
 const group = (h, body, hint, note, extra) => `<section class="grp"><h2 class="ef-h">${h}</h2>${note ? `<p class="ef-hint">${note}</p>` : ''}<ul>${body}</ul>${hint ? `<p class="ef-hint">${hint}</p>` : ''}${extra || ''}</section>`;
 const extLink = (url, key) => `<a class="pc-lk" href="${url}" target="_blank" rel="noopener noreferrer">${T(key)}${I('ne', 18)}<span class="sr-only"> ${T('common.sr_external')}</span></a>`;   // an outside tool the exercise needs
 const wbr = x => esc(x).replace(/_/g, '_<wbr>').replace(/\.(\w{2,4})$/, '<wbr>.$1');   // long file names break between words, not in the middle of one
@@ -1510,19 +1497,19 @@ function homePage(){
   const cardHTML = n => {
     const tab = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`, arrow = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
     const label = n === 0 ? T('lesson.label0') : T('lesson.label', {n, date: lessonDate(n)});
-    let cls, note, href = `#/dars/${n}`;
-    if (n === 0) { cls = 'c-yellow'; note = k === 4 ? `${I('check', 14)}${T('note.done', {d: 4, t: 4, pl: 4})}` : courseStarted() ? T('note.open', {d: k, t: 4, pl: 4}) : !LESSONS[0].d ? T('prep.cnt', {d: k, pl: 4}) : T('note.prep_todo', {until: t('date.until', {date: lessonDate(0)}), d: k, pl: 4}); }
+    let note, href = `#/dars/${n}`;
+    if (n === 0) { note = k === 4 ? `${I('check', 14)}${T('note.done', {d: 4, t: 4, pl: 4})}` : courseStarted() ? T('note.open', {d: k, t: 4, pl: 4}) : !LESSONS[0].d ? T('prep.cnt', {d: k, pl: 4}) : T('note.prep_todo', {until: t('date.until', {date: lessonDate(0)}), d: k, pl: 4}); }
     else if (isLocked(n)) {   // before its date: the lesson keeps its own colour, with a lock and the date (once, in the note)
       return `<li class="g-${LCOL[n]}"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${T('lesson.n', {n})}</span></span>
-        <span class="f-row"><span><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-sub">${T(n === 4 ? 'lock.sub' : `lesson.${n}.sub`)}</span></span><span class="f-note">${I('lock', 14)}${T(LESSONS[n].d ? 'date.opens' : 'date.tba', {date: lessonDate(n)})}</span></span></button></li>`;
+        <span class="f-row"><span><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-sub">${T(`lesson.${n}.sub`)}</span></span><span class="f-note">${I('lock', 14)}${T(LESSONS[n].d ? 'date.opens' : 'date.tba', {date: lessonDate(n)})}</span></span></button></li>`;
     } else {
       const [d, tt] = lProg(n);
-      if (lDone(n)) { cls = 'c-grey'; note = `${I('check', 14)}${T('note.done', {d: tt, t: tt, pl: tt})}`; }
-      else if (n === live) { cls = 'c-lilac'; note = `<span class="dot" aria-hidden="true"></span>${T('note.live_a')}<span class="nw2">${T('note.live_b')}</span>${T('note.live_c', {d, t: tt, pl: tt})}`; }
-      else { cls = 'c-lilac'; note = T('note.open', {d, t: tt, pl: tt}); }
+      if (tt === 0) note = T('note.soon');   // an open lesson whose materials are not in yet
+      else if (lDone(n)) note = `${I('check', 14)}${T('note.done', {d: tt, t: tt, pl: tt})}`;
+      else if (n === live) note = `<span class="dot" aria-hidden="true"></span><span>${T('note.live_a')}<span class="nw2">${T('note.live_b')}</span>${T('note.live_c', {d, t: tt, pl: tt})}</span>`;
+      else note = T('note.open', {d, t: tt, pl: tt});
     }
-    cls = n === 4 ? 'c-night' : 'c-' + LCOL[n];   // unlocked lesson 4 keeps its dark identity, with normal (white) ink
-    return `<li class="g-${LCOL[n]}"><a class="folder ${cls}" href="${href}">${tab}<span class="f-top"><span class="f-label">${label}</span>${arrow}</span><span class="f-row"><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-note">${note}</span></span></a></li>`;
+    return `<li class="g-${LCOL[n]}"><a class="folder ${colCls(n)}" href="${href}">${tab}<span class="f-top"><span class="f-label">${label}</span>${arrow}</span><span class="f-row"><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-note">${note}</span></span></a></li>`;
   };
   let ringPrev = null; try { ringPrev = sessionStorage.getItem('aip3.ring'); sessionStorage.setItem('aip3.ring', rd); } catch (e) {}
   const ringUp = ringPrev !== null && rd > +ringPrev, ringFrom = ringUp ? +ringPrev / rt * 100 : 0;   // animate only a rise, from where it was
@@ -1536,14 +1523,14 @@ function homePage(){
     if (first >= 0) cta = pill(`${T('next.k')} · ${T('next.prep', {title: HT(T(`prep.${first}.title`))})}`, '#/dars/0');
     else if (PREP.more) cta = pill(`${T('next.k')} · ${T('prep.more.title')}`, '#/dars/0?p=more');
   } else if (live) {
-    const [d, tt] = lProg(live), L = LESSONS[live], s = S.sl(live), c4 = live === 4;
-    const nxl = nextOf(live), slSub = !L.slides ? stepsText(d, tt) : s === 0 ? T('hero.sub_start', {n: L.slides}) : s >= L.slides ? T('hero.sub_seen', {n: L.slides}) : T('hero.sub', {i: s, n: L.slides}), sub = nxl && !/\/slayd\//.test(nxl.href) ? nxl.what : slSub, href = nxl ? nxl.href : `#/dars/${live}`;   // the hero opens today's next step ("continue" only when something was seen)
+    const [d, tt] = lProg(live), L = LESSONS[live], s = S.sl(live);
+    const nxl = nextOf(live), slSub = !L.slides ? stepsText(d, tt) : s === 0 ? T('hero.sub_start', {n: L.slides}) : s >= L.slides ? T('hero.sub_seen', {n: L.slides}) : T('hero.sub', {i: s, n: L.slides}), sub = tt === 0 ? T('lesson.soon') : nxl && !/\/slayd\//.test(nxl.href) ? nxl.what : slSub, href = nxl ? nxl.href : `#/dars/${live}`;   // the hero opens today's next step ("continue" only when something was seen)
     headCol = LCOL[live];
-    hero = `<a class="folder flatc c-${c4 ? 'night' : LCOL[live]} now-card" href="${href}"><span class="f-top"><span class="f-label">${T('hero.k')}<br>${T('lesson.label', {n: live, date: lessonDate(live)})}</span>${arrowH}</span>
+    hero = `<a class="folder flatc ${colCls(live)} now-card" href="${href}"><span class="f-top"><span class="f-label">${T('hero.k')}<br>${T('lesson.label', {n: live, date: lessonDate(live)})}</span>${arrowH}</span>
         <span><span class="f-title">${T(`lesson.${live}.card`)}</span><span class="f-sub">${sub}</span></span></a>`;
   }
   if (!pre && ns) cta = pill(`${T(live ? 'next.k_backlog' : 'next.k')} · ${ns.label}`, ns.href);
-  else if (!pre && !live && rd === rt) cta = pill(T('next.all_done'), '#/dars/4?tab=kt');   // the whole course is done: say so, and point at what is still open
+  else if (!pre && !live && allDone()) cta = pill(T('next.all_done'), `#/dars/${LN().filter(n => lProg(n)[1] > 0).at(-1)}`);   // the whole course is done: say so, and point at what is still open
   return {screen: 'dastur', tag: '#/dastur · ' + t('tag.home'), title: t('home.title'), html: nav('home') + `
     <div class="page-head main-head g-${headCol}${hero ? '' : ' nohero'}">
       <h1 class="sr-only">${T('home.title')}</h1>
@@ -1554,10 +1541,13 @@ function homePage(){
       ${hero}${cta}
     </div>
     <h2 class="sr-only">${T('home.lessons')}</h2>
-    <ul class="grid3 lessons">${[0, 1, 2, 3, 4].map(cardHTML).join('')}</ul>`};
+    <ul class="grid3 lessons">${[0, ...LN()].map(cardHTML).join('')}</ul>`};
 }
 
 // ---- lesson 0: prep checklist
+const PREP_CMD = (i, j) => (PREP_CMDS[i] || {})[j] || '';   // an install command shown under its step: a mono row with its own copy button (copying ticks nothing)
+const cmdRow = (i, j) => { const c = PREP_CMD(i, j); return c ? `<div class="cmd"><code tabindex="0" aria-label="${esc(c)}">${esc(c)}</code><button class="cmd-cp" type="button" data-cmd="${esc(c)}" aria-label="${esc(t('prep.cmd_copy'))}">${I('copy', 20)}</button></div>` : ''; };
+document.addEventListener('click', async e => { const b = e.target.closest('.cmd-cp'); if (!b) return; flashToast((await copy(b.dataset.cmd)) ? 'toast.cmd_copied' : 'toast.copy_failed'); });
 const deckCols = open => open < 0 ? 'repeat(4,minmax(0,1fr))' : PREP.items.map((_, i) => i === open ? '2fr' : '1fr').join(' ');
 function prepPage(){
   const done = PREP.items.map((_, i) => S.has('prep:' + i)), open = prepOpen ?? done.indexOf(false);
@@ -1566,7 +1556,7 @@ function prepPage(){
     const d = done[i], o = i === open, acts = it.actions || [];
     const ext = `<span class="sr-only"> ${T('common.sr_external')}</span>`;
     return `<li class="folder flatc c-yellow pc${o ? ' open' : ''}${d ? ' done' : ''}" id="pc${i}" data-i="${i}" style="--vt:pc${i}"><button class="hd" type="button" id="ph${i}" aria-expanded="${o}" aria-controls="pb${i}" aria-labelledby="pt${i}" aria-describedby="pn${i}"><span class="no">${num2(i + 1)}</span><span class="f-title" id="pt${i}">${T(`prep.${i}.title`)}</span><span class="pic">${PREP_ART[i]}</span><span class="nt" id="pn${i}">${T(`prep.${i}.note`)}<span class="stp">${T('prep.steps_n', {n: it.steps, pl: it.steps})}<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></button>
-      <div class="bd" id="pb${i}" role="region" aria-labelledby="pt${i}"${o ? '' : ' hidden'}><ol class="steps">${Array.from({length: it.steps}, (_, j) => `<li>${T(`prep.${i}.s${j}`)}</li>`).join('')}</ol>
+      <div class="bd" id="pb${i}" role="region" aria-labelledby="pt${i}"${o ? '' : ' hidden'}><ol class="steps">${Array.from({length: it.steps}, (_, j) => `<li>${T(`prep.${i}.s${j}`)}${cmdRow(i, j)}</li>`).join('')}</ol>
         ${acts.length ? `<div class="acts">${acts.map((a, j) => a.quiet
           ? `<a class="pc-lk" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${T(`prep.${i}.a${j}`)}${I('ne', 18)}${ext}</a>`
           : `<a class="pill-ink" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer"><span>${T(`prep.${i}.a${j}`)}${ext}</span><span class="pc-c">${I('ne', 26)}</span></a>`).join('')}</div>` : ''}
@@ -1619,211 +1609,43 @@ function initPrep(root){
 }
 document.addEventListener('visibilitychange', () => document.documentElement.classList.toggle('hid', document.hidden));
 
-// ---- lessons 1-4: the gooey folder with only the parts the lesson really has
+// ---- lessons 1-6: the gooey folder with only the parts the lesson really has (Slaydlar / Amaliyot / Kit / Vazifa)
 const partWhen = iso => /^\d{4}-\d\d-\d\dT\d\d:\d\d/.test(iso || '') ? {date: fmtDate(+iso.slice(8, 10), +iso.slice(5, 7)), time: iso.slice(11, 16)} : {date: '…', time: '…'};   // iso with the Tashkent offset: its own date and clock time
 const lockedPane = iso => `<p class="p-label">${T('part.locked')}</p><div><p class="p-sub">${T('part.opens', partWhen(iso))}</p></div>`;
-const libUsed = () => LIB.some(p => S.has(pk('lib', p.id)));   // the library is a reference: any copied prompt counts
-const tabOfHref = h => !h ? null : /\/slayd\//.test(h) ? 'sl' : /\/amaliyot/.test(h) ? 'am' : /\/vazifa|tab=vz/.test(h) ? 'vz' : /tab=kt/.test(h) ? 'kt' : null;
-function unitsLine(n){   // "Slaydlar, 4 ta mashq va vazifa": what the numbers count
-  const w = L => ({sl: 'units.sl', am: n === 1 ? 'units.am1' : n === 2 ? 'units.am2' : 'units.am4', vz: 'units.vz', kt: 'units.kt'}[L]), names = LESSONS[n].parts.map(p => t(w(p)));
-  const first = names.slice(0, -1).join(', ');
-  return esc(names.length > 1 ? `${first} ${t('units.and')} ${names[names.length - 1]}` : names[0] || '');
+const tabOfHref = h => { const m = /[?&]tab=(sl|am|kt|vz)\b/.exec(h || ''); return m ? m[1] : /\/slayd\//.test(h || '') ? 'sl' : null; };
+// Amaliyot / Kit / Vazifa share one pane: paragraphs, then file groups (title + note + rows); Amaliyot and Vazifa end with a tick
+function blockPane(n, p){
+  const b = (PARTS[n] || {})[p] || {text: '', groups: []}, key = `c.p.${n}.${p}`;
+  const text = b.text ? cu(`${key}.text`).split(/\n\s*\n/).map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`).join('') : '';
+  const groups = b.groups.map((g, i) => group(cuh(`${key}.g${i}`), g.files.map(f => fileRow(f)).join(''), '', g.note ? cuh(`${key}.g${i}.n`) : '')).join('');
+  const end = p === 'am' ? endb('f:am' + n, S.has('f:am' + n), 'amf.on', 'amf.off', '', 'amf.aria') : p === 'vz' ? endb('f:v' + n, S.has('f:v' + n), 'vzf.on', 'vzf.off', '', 'vzf.aria') : '';
+  return `<p class="p-label">${T('unit.' + p)}</p>${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${groups ? `<div class="ex-files">${groups}</div>` : ''}${end ? `<div class="gt-foot end">${end}</div>` : ''}`;
 }
-const bookRow = (f, name, meta) => `<li><a class="ef-row" ${fa(f)}><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${name}${f.ph ? NSTAG() : ''}</span><span class="ef-mt">${meta}</span></span><span class="ef-dl">${I('down', 18)}</span></a></li>`;
-const lk = (href, name, sub, mk) => `<li class="lk"><a class="xr${mk.n === '' ? ' nn' : ''}" href="${href}"${mk.a || ''}>${mk.n === '' ? '' : `<span class="n">${mk.n}</span>`}<span class="xt">${name}${sub ? `<small class="xo">${sub}</small>` : ''}</span><span class="xm"><span class="xmt">${mk.m}</span>${I('next')}</span></a></li>`;
 function lessonPage(n, tab){
   tab = tab || tabOfHref((nextOf(n) || {}).href);   // no ?tab: the tab with today's work
-  const L = LESSONS[n], [d, tt] = lProg(n);
+  const L = LESSONS[n], [d, tt] = lProg(n), empty = !L.parts.length;
   const tabsDef = L.parts.map(p => ({p, label: t('unit.' + p), lock: partLock(n, p), done: partLock(n, p) ? false : {
-    sl: () => slDone(n), am: () => n === 1 ? CORE.every(exDone) : n === 2 ? libUsed() : HERMES.filter(h => !h.bonus).every(hDone),
-    vz: () => n === 1 ? vzDone1() : S.has('f:v' + n), kt: () => false}[p]()}));
+    sl: () => slDone(n), am: () => S.has('f:am' + n), vz: () => S.has('f:v' + n), kt: () => false}[p]()}));
   const pane = {
     sl: () => `<p class="p-label">${T('unit.sl')}</p><p class="p-num">${S.sl(n) > 0 ? `${S.sl(n)}/${L.slides}` : L.slides}</p>
       <div class="gt-foot"><span class="gt-meta">${T('pane.sl.meta', {n: L.slides, pl: L.slides, kind: kindT(n)})}</span>${play(slHref(n), S.sl(n) === 0 ? T('pane.sl.start') : slDone(n) ? T('pane.sl.again') : T('pane.sl.go', {i: S.sl(n), n: L.slides}), 'play', 18)}</div>`,
-    am: () => n === 1 ? `<p class="p-label">${T('pane.am1.label')}<br>${cuh('c.am1.title')}</p>
-      <ol class="p-list">${EX_ORDER.map(k => lk(`#/dars/1/amaliyot/${k}`, exTitleHTML(k), exSubH(k), {n: EX[k].num.slice(0, 2), m: exMark(k)})).join('')}</ol>
-      <p class="gt-meta">${T('pane.am1.meta', {d: CORE.filter(exDone).length, pl: 4})}</p><div class="gt-foot end">${play('#/dars/1/amaliyot', T('pane.am1.page'))}</div>`
-      : n === 2 ? `<p class="p-label">${T('pane.am2.label')}</p>
-      <ol class="p-list">${SECT.map(s => lk(`#/dars/2/amaliyot/${s.key}`, sectNameH(s), '', {n: '', m: `${s.a}–${s.b}`})).join('')}</ol>
-      <p class="gt-meta">${T(libUsed() ? 'pane.am2.done' : 'pane.am2.todo')}</p><div class="gt-foot end">${play('#/dars/2/amaliyot', T('pane.am2.open'))}</div>`
-      : `<p class="p-label">${T('pane.am4.label')}</p>
-      <ol class="p-list">${HERMES.map(h => lk(`#/dars/4/amaliyot/${h.id}`, hTitleH(h), h.bonus ? esc(t('common.bonus')) : '', {n: h.id, m: hDone(h) ? SRCHK() : ''})).join('')}</ol>
-      <div class="gt-foot end">${play('#/dars/4/amaliyot', T('pane.am4.page'))}</div>`,
-    vz: () => n === 1 ? (() => { const [vd, vt] = vzCount(), nx1 = VZ1.main.find(x => !S.has(pk('v1', x.id)));
-      return `<p class="p-label">${T('pane.vz1.label')}</p><div><p class="p-num">${vd}/${vt}</p><p class="p-sub">${T('pane.vz1.sub')}</p></div>
-      <div class="gt-foot${nx1 && vd === 0 ? ' end' : ''}">${nx1 && vd === 0 ? '' : `<a class="gt-meta lk2" href="#/dars/1/vazifa">${T('pane.vz1.page')}</a>`}${play(nx1 && vd > 0 ? `#/dars/1/vazifa/promptlar?p=${nx1.id}` : nx1 ? '#/dars/1/vazifa' : '#/dars/1/vazifa/promptlar', nx1 ? T(vd > 0 ? 'pane.vz1.go' : 'pane.vz1.begin', {pid: nx1.id}) : T('pane.vz1.open'))}</div>`; })()
-      : `<p class="p-label">${T('pane.vz.label')}</p><div><p class="p-sub">${cuh('c.hw.' + n)}</p><p class="p-sub">${T('vzf.hint2')}</p></div>
-      <div class="gt-foot end">${endb('f:v' + n, S.has('f:v' + n), 'vzf.on', 'vzf.off', '', 'vzf.aria')}</div>`,
-    kt: () => `<div><p class="p-label">${T('pane.kt.label', {title: HT(cuh('c.book.title'))})}</p><p class="p-sub">${cuh('c.book.note')}</p></div>
-      <div class="ex-files"><ul>${bookRow(BOOK.lat, T('book.lat_name'), T('book.meta_lat'))}${BOOK.variants.map(v => bookRow(v.file, `<span${v.v === 'cyrl' ? ' lang="uz-Cyrl"' : ''}>${esc(v.label)}</span>`, T('book.cyr_extra'))).join('')}</ul></div>`,
+    am: () => blockPane(n, 'am'), kt: () => blockPane(n, 'kt'), vz: () => blockPane(n, 'vz'),
   };
   const tabs = tabsDef.map((x, i) => `<button class="gt-tab" role="tab" type="button" id="dg-t${i}" aria-controls="dg-p${i}" aria-selected="${i === 0}" data-l="${esc(x.label)}"${i ? ' tabindex="-1"' : ''}>${x.lock ? `<span class="lkd">${I('lock', 12)}${esc(x.label)}</span>` : x.done ? `<span class="ok">${I('check', 12)}${esc(x.label)}<span class="sr-only">${T('common.sr_done')}</span></span>` : esc(x.label)}</button>`).join('');
   const panes = tabsDef.map((x, i) => `<div class="gt-pane" role="tabpanel" id="dg-p${i}" aria-labelledby="dg-t${i}"${i ? ' inert' : ''}>${x.lock ? lockedPane(x.lock) : pane[x.p]()}</div>`).join('');
   const title = ltitle(n);   // no hero CTA pill: each folder tab already carries its part's own action (user, 2026-10-17)
+  const side = empty   // no materials yet: the lesson's own colour card says so, instead of an empty folder
+    ? `<div class="folder flatc ${colCls(n)} soon-card"><span class="f-label">${esc(lessonDate(n))}</span><p class="soon-t">${T('lesson.soon')}</p></div>`
+    : `<div class="gt gt-${LCOL[n]} g-${LCOL[n]}" id="dg" style="--n:${tabsDef.length}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
+      <div class="gt-tabs" role="tablist" aria-label="${esc(t('tab.list'))}">${tabs}</div><div class="gt-body">${panes}</div></div>`;
   return {screen: 'dars', tab: Math.max(0, L.parts.indexOf(tab)), tag: `#/dars/${n} · ` + t('tag.lesson', {n, parts: L.parts.length}), title: t('title.lesson', {n, title}), html: nav('d') + `
     <div class="hero"><div class="hero-l">
-      ${dlh('#/dastur', T('nav.home'), T('lesson.meta', {n, date: lessonDate(n), d, t: tt, pl: tt}))}
-      <p class="lunits">${unitsLine(n)}</p>
+      ${dlh('#/dastur', T('nav.home'), tt ? T('lesson.meta', {n, date: lessonDate(n), d, t: tt, pl: tt}) : esc(lessonDate(n)))}
       <h1 class="headline${title.split(' ').some(w => w.length >= 11) ? ' long' : ''}"><span class="ln">${T('lesson.n', {n})}</span><span class="ln">${esc(title)}</span></h1>
       <p class="lsub">${T(`lesson.${n}.sub`)}</p>
       <p class="lede">${T(`lesson.${n}.lede`)}</p>
     </div>
-    <div class="gt gt-${LCOL[n]} g-${LCOL[n]}" id="dg" style="--n:${tabsDef.length}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
-      <div class="gt-tabs" role="tablist" aria-label="${esc(t('tab.list'))}">${tabs}</div><div class="gt-body">${panes}</div></div></div>`};
-}
-
-// ---- lesson 1: Vazifa pages
-function vz1Page(){
-  return {screen: 'ex', tag: '#/dars/1/vazifa · ' + t('tag.vz1'), title: t('title.vz', {n: 1}), html: nav('d') + wrap(`
-    ${dlh('#/dars/1', T('lesson.n', {n: 1}), T('vz1.meta', {n: 1}))}
-    <h1 class="headline ex-h">${T('vz1.title')}</h1><p class="lede">${T('vz1.lede')}</p>
-    <div class="ex-files">
-      ${group(T('vz1.g1'), VZ1.files.map(f => fileRow(f)).join('') + fileRow(VZ1.zip, t('vz1.zip')), T('vz1.g1_hint'), T('vz1.g1_note'), `<p class="ef-hint">${T('nb.hint')}</p>` + extLink('https://notebooklm.google.com', 'nb.open'))}
-      ${group(T('vz1.g2'), rowLink('#/dars/1/vazifa/promptlar', T('vz1.g2_cta'), cnt('vz1')) + (VZ1.sheetPdf ? fileRow(VZ1.sheetPdf, t('vz1.pdf')) : ''), '', T('vz1.g2_note'))}
-      ${VZ1.guide ? group(T('vz1.g3'), fileRow(VZ1.guide), '', T('vz1.g3_note')) : ''}
-    </div>`)};
-}
-function vz1Sheet(){
-  const vt = (p, i, h) => (p.title != null ? pTitle('vz', 'v1', p, i, h) : (h ? esc : x => x)(pTitle('vz', 'v1', p, i).replace(/^P\d+ /, '')));
-  const lis = (arr, off) => arr.map((p, i) => pli({...pParts('vz', 'v1', p, i), i: off + i, pid: p.id, no: p.id, title: vt(p, i), titleH: vt(p, i, true), ph: p.ph, lbl: 'lbl.manba', key: pk('v1', p.id)})).join('');
-  return {screen: 'ex', tag: '#/dars/1/vazifa/promptlar · ' + t('tag.vz1sheet'), title: t('title.vzsheet'), html: nav('d') + wrap(`
-    ${dlh('#/dars/1/vazifa', T('back.vz1'), T('vz1.sheet.meta'))}
-    <h1 class="headline ex-h">${T('vz1.sheet.h1')}</h1><p class="lede">${T('vz1.sheet.lede')}</p>
-    <ol class="rules">${VZ1.rules.map((_, i) => `<li>${cuh('c.vz1.rule' + i)}</li>`).join('')}</ol>`,
-    `<section class="s1" aria-labelledby="pr-t"><h2 class="s1-eyebrow" id="pr-t" data-cnt="vz1k">${esc(cntText("vz1k"))}</h2><p class="s1-rule">${T('vz1.sheet.rule')}</p><ol>${lis(VZ1.main, 0)}</ol>
-      <details class="s1-more"><summary>${T('vz1.more')}<span class="s1-sub">${T('vz1.more_sub')}</span></summary><ol>${lis(VZ1.extra, 8)}</ol></details>
-      <p class="s1-rule">${cuh('c.vz1.footnote')}</p>
-      <div class="s1-end">${nextBlock('#/dars/1/vazifa', 'vz1.sheet.back')}${vzDone1() && nextOf(1) ? nextBlock(nextOf(1).href, 'vz1.sheet.next', {what: HT(nextOf(1).what)}) : ''}</div></section>`)};
-}
-
-// ---- lesson 1: Amaliyot index + exercise pages
-function am1Index(){
-  const rows = ks => ks.map(k => lk(`#/dars/1/amaliyot/${k}`, exTitleHTML(k), EX[k].extra === 'common.extra' ? '' : exSubH(k), {n: EX[k].num.slice(0, 2), m: exMark(k)})).join('');
-  return {screen: 'ex', tag: '#/dars/1/amaliyot · ' + t('tag.am1'), title: t('title.am', {n: 1}), html: nav('a') + wrap(`
-    ${dlh('#/dars/1', T('lesson.n', {n: 1}), T('am1.meta', {d: CORE.filter(exDone).length, pl: 4}))}
-    <h1 class="headline ex-h">${cuh('c.am1.title')}</h1><p class="lede">${cuh('c.am1.lead')}</p>
-    <ol class="rules">${AM1.rules.map((_, i) => `<li>${cuh('c.am1.rule' + i)}</li>`).join('')}</ol>
-    <div class="ex-files">
-      ${AM1.guide ? group(T('common.guide'), fileRow(AM1.guide)) : ''}
-      ${group(T('am1.g_core'), rows(['01', '02', '03', '04']))}
-      ${group(T('am1.g_extra'), rows(['05', '06']), T('am1.g_extra_hint'))}
-      ${AM1.closing ? group(T('am1.g_closing'), fileRow(AM1.closing)) : ''}
-    </div>`)};
-}
-function exPick(){
-  const e = EX['03'];
-  return {screen: 'ex', tag: '#/dars/1/amaliyot/03 · ' + t('tag.pick'), title: t('title.pick'), html: nav('a') + wrap(`
-    ${dlh('#/dars/1/amaliyot', T('back.am1'), T('pick.meta'))}
-    <h1 class="headline ex-h">${T('pick.title')}</h1><p class="lede">${T('pick.lede')}</p>
-    <div class="ex-files">${group(T('pick.group'), e.pick.map(k => rowLink(`#/dars/1/amaliyot/${k}`, `${EX[k].num} · ${exTitleH(k)}`, `${cxh(`c.ex.${k}.area`, EX[k].area)} · ${exNoteH(k)}`, exMark(k))).join(''))}</div>`)};
-}
-function exPage(k){
-  const e = EX[k]; if (e.pick) return exPick();
-  const hasPh = e.prompts.some(p => p.text && hasBracket(p.text));
-  const idx = EX_ORDER.indexOf(e.parent || k), nxK = e.parent ? '04' : EX_ORDER[idx + 1], nx = nxK ? EX[nxK] : null, done = S.has('x:' + k);
-  const lis = e.prompts.map((p, i) => pli({...pParts('ex', k, p, i), i, pid: p.id, no: p.id, ph: p.ph, lbl: 'lbl.where', key: pk(k, p.id)})).join('');
-  const meta = EX[k].extra ? T('ex.meta_extra', {num: e.num, extra: HT(exExtra(k, true))}) : T('ex.meta', {num: e.num});
-  const phNote = !e.note;
-  return {screen: 'ex', tag: `#/dars/1/amaliyot/${k} · ` + t('tag.ex', {num: e.num, title: e.tagTitle ? exTagT(k) : exTitleT(k)}), title: t('title.ex', {num: e.num, title: e.tagTitle ? exTagT(k) : exTitleT(k)}), html: nav('a') + wrap(`
-      ${dlh(e.parent ? '#/dars/1/amaliyot/03' : '#/dars/1/amaliyot', e.parent ? T('ex.back_pick') : T('back.am1'), meta)}
-      <h1 class="headline ex-h">${e.tagTitle ? `<span class="xtag big">${exTagH(k)}</span>` : exTitleH(k)}</h1>
-      <p class="lede">${exNoteH(k)}${phNote ? NSTAG() : ''}</p>
-      <div class="ex-files">
-        ${e.brief ? group(T('ex.g1'), fileRow(e.brief, e.briefLabel ? HT(cxh(`c.ex.${k}.briefLabel`, e.briefLabel)) : '')) : ''}
-        ${group(T('ex.g2'), e.sources.map(f => fileRow(f)).join(''), '', T('nb.hint'), extLink('https://notebooklm.google.com', 'nb.open'))}
-      </div>`,
-    `<section class="s1" aria-labelledby="pr-t"><h2 class="s1-eyebrow" id="pr-t" data-cnt="ex:${k}">${esc(cntText("ex", k))}</h2>${hasPh ? `<p class="s1-rule">${T('ex.rule')}</p>` : ''}<ol>${lis}</ol>
-      ${e.promptsPdf ? `<a class="s1-pdf" ${fa(e.promptsPdf)}>${I('down', 18)}${T('ex.pdf', {size: e.promptsPdf.size ? sizeT(e.promptsPdf.size).replace(/^PDF · /, '') : t('common.namuna')})}<span class="sr-only"> (${esc(e.promptsPdf.name)})</span></a>` : ''}
-      <div class="s1-end">${endb('x:' + k, done, 'end.done_ex', 'end.mark_ex', '', 'end.aria_ex')}
-        ${nx ? nextBlock(`#/dars/1/amaliyot/${nxK}`, 'ex.next', {num: nx.num, title: HT(nx.tagTitle ? exTagH(nxK) : exTitleH(nxK))}) : nextBlock('#/dars/1/amaliyot', 'ex.index')}</div></section>`)};
-}
-
-// ---- lesson 2: the 47-prompt library as 5 sections (2.0 "Boʻlimlar"): an index of section cards with search, and one page per section
-const sectBy = key => SECT.find(s => s.key === key);
-const sectPrompts = s => LIB.filter(p => p.sect === s.k);
-const sectCount = s => { const ps = sectPrompts(s); return [ps.filter(p => S.has(pk('lib', p.id))).length, ps.length]; };
-const libLi = p => { const i = LIB.indexOf(p), done = S.has(pk('lib', p.id)), title = pTitle('lib', '', p, i), titleH = pTitle('lib', '', p, i, true); return `<li id="L${p.id}" class="${done ? 'done' : ''}" data-i="${i}" data-pid="${p.id}" data-key="${pk('lib', p.id)}" data-sect="${p.sect}" data-n="${p.id}" data-t="${esc(title)}">
-      <span class="no" aria-hidden="true">${p.id}</span><div class="body"><h3 class="tt" tabindex="-1"><button class="acc" type="button" aria-expanded="false" aria-controls="lb${p.id}">${titleH}${p.title == null ? NSTAG() : ''}</button></h3><div class="accp" id="lb${p.id}" hidden><p class="tx" data-raw="${esc(pText('lib', '', p))}">${pText('lib', '', p, true)}</p></div></div>
-      <div class="cpw"><button class="cp" type="button" aria-label="${esc(t('common.copy_aria', {title}))}"><span class="cp-c">${I('copy', 20)}</span><span class="cpl">${T('common.copy')}</span></button></div></li>`; };
-const sectRange = s => `${num2(s.a)}–${num2(s.b)}`;
-function libPage(){
-  const on = libUsed();
-  const cards = SECT.map(s => `<li><a class="folder flatc c-grey sc" href="#/dars/2/amaliyot/${s.key}"><span class="f-top"><span class="f-label">${s.num}<span class="rng">${sectRange(s)}</span></span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span>
-      <span class="sc-b"><span class="f-title">${sectNameH(s)}</span><span class="sc-n">${cuh(`c.sect.${s.k}.note`)}</span></span><span class="f-note">${cnt('sc', s.key)}</span></a></li>`).join('');
-  const groups = SECT.map(s => `<div class="lib-grp" data-sect="${s.k}"><p class="s1-rule">${num2(SECT.indexOf(s) + 1)} · ${sectNameH(s)}</p><ol>${sectPrompts(s).map(libLi).join('')}</ol></div>`).join('');
-  return {screen: 'ex', tag: '#/dars/2/amaliyot · ' + t('tag.lib'), title: t('title.am', {n: 2}), html: nav('a') + wrap(`
-      ${dlh('#/dars/2', T('lesson.n', {n: 2}), T('lib.meta'))}
-      <h1 class="headline ex-h">${T('lib.title')}</h1><p class="lede">${T('lib.lede')}</p>
-      <ol class="rules">${C20.lib.rules.map((_, i) => `<li>${cuh('c.lib.rule' + i)}</li>`).join('')}</ol>
-      <p class="rules-link">${extLink('https://claude.ai', 'claude.open')}</p>
-      <div class="lib-bar"><label class="sr-only" for="lib-q">${T('lib.search')}</label><input id="lib-q" type="search" placeholder="${esc(t('lib.search'))}" autocomplete="off"><p class="lib-n" id="lib-n" aria-live="polite"></p></div>
-`,
-    `<div id="lib-cards" class="ex-wide"><h2 class="ef-h">${T('lib.sections')}</h2><ul class="sects">${cards}</ul></div>
-    <section class="s1" id="lib-res" aria-label="${esc(t('lib.search'))}" hidden>${groups}
-      <p class="lib-empty" id="lib-empty" role="status" hidden>${T('lib.empty')} <button class="clearb" type="button" id="lib-clear">${T('lib.clear')}</button></p></section>`)};
-}
-function libSection(s){
-  const i = SECT.indexOf(s), nx = SECT[i + 1], ps = sectPrompts(s);
-  const ttl = sectName(s);
-  return {screen: 'ex', tag: `#/dars/2/amaliyot/${s.key} · ` + t('tag.ex', {num: s.num, title: ttl}), title: t('title.ex', {num: s.num, title: ttl}), html: nav('a') + wrap(`
-      ${dlh('#/dars/2/amaliyot', T('back.lib'), T('lib.sect_meta', {range: sectRange(s)}))}
-      <h1 class="headline ex-h">${sectNameH(s)}</h1><p class="lede">${cuh(`c.sect.${s.k}.note`)}</p>`,
-    `<section class="s1" aria-labelledby="pr-t"><h2 class="s1-eyebrow" id="pr-t" data-cnt="sect:${s.key}">${esc(cntText('sect', s.key))}</h2>${ps.some(p => p.text && hasBracket(p.text)) ? `<p class="s1-rule">${T('ex.rule')}</p>` : ''}<ol>${ps.map(libLi).join('')}</ol>
-      <div class="s1-end">${nx ? nextBlock(`#/dars/2/amaliyot/${nx.key}`, 'lib.next', {num: nx.num, title: HT(sectNameH(nx))}) : nextBlock('#/dars/2/amaliyot', 'lib.index')}</div></section>`)};
-}
-function libInit(root){   // search across all 47: matching prompts appear grouped by section and the cards step aside; clearing the field brings the cards back
-  const inp = root.querySelector('#lib-q'), lis = [...root.querySelectorAll('#lib-res li[data-i]')], grps = [...root.querySelectorAll('.lib-grp')], norm = s => s.toLowerCase().replace(/[ʻʼ‘’'`]/g, '');
-  const empty = root.querySelector('#lib-empty'), cntEl = root.querySelector('#lib-n'), res = root.querySelector('#lib-res'), cards = root.querySelector('#lib-cards');
-  function apply(){
-    const term = norm(inp.value.trim());
-    res.hidden = !term; cards.hidden = !!term;
-    if (!term) { cntEl.textContent = ''; return; }
-    let n = 0;
-    lis.forEach(li => { const p = LIB[+li.dataset.i], hit = p.id.includes(term) || norm(pTitle('lib', '', p, +li.dataset.i)).includes(term) || norm(pText('lib', '', p)).includes(term); li.hidden = !hit; if (hit) n++; });
-    grps.forEach(g => { g.hidden = ![...g.querySelectorAll('li[data-i]')].some(li => !li.hidden); });
-    empty.hidden = n > 0; cntEl.textContent = n ? t('lib.found', {n, pl: n}) : '';   // the empty message says it; no "0 ta natija" as well
-    if (/^\d{1,2}$/.test(term)) { const li = root.querySelector('#L' + term.padStart(2, '0')); if (li && !li.hidden) openAcc(li, true); }
-  }
-  inp.addEventListener('input', apply);
-  root.querySelector('#lib-clear').addEventListener('click', () => { inp.value = ''; apply(); inp.focus(); });
-  apply();
-}
-function openAcc(li, open){ const b = li.querySelector('.acc'); if (!b) return; b.setAttribute('aria-expanded', open); document.getElementById(b.getAttribute('aria-controls')).hidden = !open; }
-document.addEventListener('click', e => { const b = e.target.closest('.acc'); if (b) openAcc(b.closest('li'), b.getAttribute('aria-expanded') !== 'true'); });
-
-// ---- lesson 4: Hermes index, cards, book
-function hIndex(){
-  const rows = HERMES.map(h => rowLink(`#/dars/4/amaliyot/${h.id}`, `${h.id} · ${hTitleH(h)}${h.bonus ? ' · ' + esc(t('common.bonus')) : ''}${h.natija ? '' : NSTAG()}`, hNatijaH(h), hDone(h) ? SRCHK() : '')).join('').replace(/(Natija|Результат|Result):/g, '<b class="nat">$1:</b>');
-  return {screen: 'ex', tag: '#/dars/4/amaliyot · ' + t('tag.hi'), title: t('title.am', {n: 4}), html: nav('a') + wrap(`
-    ${dlh('#/dars/4', T('lesson.n', {n: 4}), T('hi.meta', {d: lProg(4)[0], pl: 9}))}
-    <h1 class="headline ex-h">${T('hi.title')}</h1><p class="lede">${cuh('c.hermes.lead')}</p>
-    <ol class="rules">${C20.hermes.rules.map((_, i) => `<li>${cuh('c.hermes.rule' + i)}</li>`).join('')}</ol>
-    <div class="ex-files">${group(T('hi.group'), rows)}</div>`)};
-}
-const KEYCARDS = ['02', '04', '09', '10'];   // the cards that handle a key, token or password: the safety line is shown there (and on the index)
-const NUMLINE = /^\d+\.\s/;
-const codeH = x => esc(x).replace(/`([^`]+)`/g, '<code>$1</code>');   // a note's `code` spans become <code>, the backticks are not shown
-function noteBody(key, txt){   // 2.0 notes carry their own line breaks: "1." lines become an ordered list, "- " lines a bullet list, the rest keeps its breaks
-  const lines = cx(key, txt).split('\n'), lang = cxFb(key) ? ' lang="uz-Latn"' : '', numbered = lines.filter(l => NUMLINE.test(l)).length >= 2, out = [];
-  let list = null; const flush = () => { if (list) { out.push(`<${list.t}${list.t === 'ol' ? ' class="steps"' : ' class="bul"'}>${list.items.map(x => `<li>${codeH(x)}</li>`).join('')}</${list.t}>`); list = null; } };
-  for (const l of lines) {
-    const t = numbered && NUMLINE.test(l) ? 'ol' : /^- /.test(l) ? 'ul' : null;
-    if (t) { if (!list || list.t !== t) { flush(); list = {t, items: []}; } list.items.push(l.replace(t === 'ol' ? NUMLINE : /^- /, '')); }
-    else { flush(); out.push(`<span class="ln">${codeH(l)}</span>`); }
-  }
-  flush(); return `<div class="nb"${lang}>${out.join('')}</div>`;
-}
-function hCard(n){
-  const h = HERMES[n - 1], done = S.has('x:h' + h.id), nx = HERMES[n];
-  const lis = h.prompts.map((p, i) => pli({...pParts('h', h.id, p, i), i, pid: p.id, no: '', ph: p.ph, lbl: '', where: '', key: pk('h' + h.id, p.id)})).join('');
-  return {screen: 'ex', tag: `#/dars/4/amaliyot/${h.id} · ` + t('tag.hc', {id: h.id, title: hTitle(h)}), title: t('title.ex', {num: h.id, title: hTitle(h)}), html: nav('a') + wrap(`
-      ${dlh('#/dars/4/amaliyot', T('back.h'), T(h.bonus ? 'hc.meta_bonus' : 'hc.meta', {id: h.id}))}
-      <h1 class="headline ex-h">${hTitleH(h)}</h1><p class="lede goal">${hNatijaH(h)}${h.natija ? '' : NSTAG()}</p>
-      ${KEYCARDS.includes(h.id) ? `<p class="ef-hint caution">${cuh('c.hermes.caution')}</p>` : ''}
-      ${h.notes.map((x, i) => `<div class="ef-hint note"><b>${cxh(`c.h.${h.id}.note${i}.t`, x.t)}:</b>${noteBody(`c.h.${h.id}.note${i}.x`, x.x)}</div>`).join('')}`,
-    `<section class="s1"${h.prompts.length > 1 ? ' aria-labelledby="pr-t"' : ''}>${h.prompts.length ? `${h.prompts.length > 1 ? `<h2 class="s1-eyebrow" id="pr-t" data-cnt="h:${h.id}">${esc(cntText("h", h.id))}</h2>` : ''}${h.prompts.some(p => p.text && hasBracket(p.text)) ? `<p class="s1-rule">${T('ex.rule')}</p>` : ''}<ol>${lis}</ol>` : ''}
-      <div class="s1-end">${endb('x:h' + h.id, done, 'end.done_card', 'end.mark_card', '', 'end.aria_card')}
-        ${nx ? nextBlock(`#/dars/4/amaliyot/${nx.id}`, 'hc.next', {id: nx.id, title: HT(hTitleH(nx))}) : nextBlock('#/dars/4/amaliyot', 'hc.index')}</div></section>`)};
+    ${side}</div>`};
 }
 
 // ---- slides: a simple viewer (2.0 route /slaydlar): the slide images were never available, so every slide is a marked "namuna" stage
@@ -1857,36 +1679,28 @@ function resolve0(r){
   const [a, b, c, d, e] = r.parts, has = (o, k) => typeof k === 'string' && Object.hasOwn(o, k);
   if (!a || a === 'kirish') return r.parts.length > 1 ? null : {redirect: '#/dastur'};
   if (a === 'dastur') return b ? null : {view: 'app', page: homePage()};
-  if (a !== 'dars' || !/^[0-4]$/.test(b || '')) return null;
+  if (a !== 'dars' || !/^\d$/.test(b || '') || !LESSONS[+b]) return null;
   const n = +b, L = LESSONS[n];
   if (isLocked(n)) return {view: 'app', locked: n, page: homePage()};
   if (!c) return {view: 'app', page: n === 0 ? prepPage() : lessonPage(n, r.q.get('tab'))};
-  if (n === 0) return null;
-  const PART = {slayd: 'sl', vazifa: 'vz', amaliyot: 'am', kitob: 'kt'};
-  if (PART[c] && partLock(n, PART[c])) return {redirect: `#/dars/${n}?tab=${PART[c]}`};
-  if (c === 'slayd') { const i = /^\d+$/.test(d || '') ? +d : 0; return L.slides && i >= 1 && i <= L.slides && !e ? {view: 'app', page: slPage(n, i)} : null; }
-  if (c === 'vazifa') { if (!L.parts.includes('vz')) return null; if (!d) return n === 1 ? {view: 'app', page: vz1Page()} : {redirect: `#/dars/${n}?tab=vz`}; return n === 1 && d === 'promptlar' && !e ? {view: 'app', page: vz1Sheet()} : null; }
-  if (c === 'kitob') return n === 4 && !d ? {redirect: '#/dars/4?tab=kt'} : null;   // the book is a folder tab now; the old hash keeps working
-  if (c === 'amaliyot') {
-    if (!L.parts.includes('am')) return null;
-    if (!d) return {view: 'app', page: n === 1 ? am1Index() : n === 2 ? libPage() : hIndex()};
-    if (n === 2 && sectBy(d) && !e) return {view: 'app', page: libSection(sectBy(d))};
-    if (n === 1 && has(EX, d) && !e) return {view: 'app', page: exPage(d)};
-    if (n === 4 && /^(0[1-9]|10)$/.test(d) && !e) return {view: 'app', page: hCard(+d)};
-  }
-  return null;
+  const home = {redirect: `#/dars/${n}`};   // an old 2.0 bookmark (/kutubxona, /amaliyot/01, ...) lands on its lesson, never on "not found"
+  if (n === 0) return home;
+  const PART = {slayd: 'sl', amaliyot: 'am', kit: 'kt', vazifa: 'vz'};
+  if (c === 'kitob') return {redirect: `#/dars/${n}?tab=kt`};
+  if (!PART[c]) return home;
+  if (partLock(n, PART[c])) return {redirect: `#/dars/${n}?tab=${PART[c]}`};
+  if (c === 'slayd') { const i = /^\d+$/.test(d || '') ? +d : 0; return L.slides && i >= 1 && i <= L.slides && !e ? {view: 'app', page: slPage(n, i)} : home; }
+  return !d && L.parts.includes(PART[c]) ? {redirect: `#/dars/${n}?tab=${PART[c]}`} : home;   // the part pages are folder tabs: /amaliyot, /kit and /vazifa open that tab
 }
 const ROUTES = () => { const r = ['#/kirish', '#/dastur', '#/shrift', '#/dars/0'];
-  [1, 2, 3, 4].forEach(n => { r.push(`#/dars/${n}`); const L = LESSONS[n]; if (L.slides) r.push(`#/dars/${n}/slayd/1`, `#/dars/${n}/slayd/${n === 3 ? 14 : L.slides}`);
-    if (n === 1) r.push('#/dars/1/vazifa'); if (L.parts.includes('am')) r.push(`#/dars/${n}/amaliyot`); });
-  r.push('#/dars/1/vazifa/promptlar'); Object.keys(EX).forEach(k => r.push('#/dars/1/amaliyot/' + k)); HERMES.forEach(h => r.push('#/dars/4/amaliyot/' + h.id)); SECT.forEach(s => r.push('#/dars/2/amaliyot/' + s.key));
+  LN().forEach(n => { r.push(`#/dars/${n}`); const L = LESSONS[n]; if (L.slides) r.push(`#/dars/${n}/slayd/1`, `#/dars/${n}/slayd/${L.slides}`); });
   return r; };
-const ROUTE_OF = {gate: '#/kirish', dastur: '#/dastur', dars: '#/dars/1', ex: '#/dars/1/amaliyot/06', type: '#/shrift', all: '#/all'};
+const ROUTE_OF = {gate: '#/kirish', dastur: '#/dastur', dars: '#/dars/1', ex: '#/dars/2', type: '#/shrift', all: '#/all'};
 function go(v){ navTo(ROUTE_OF[v] || v); }
 // the parent of a route (ux-spec §1): used for cold entries so the system Back button stays inside the app
 function parentOf(h){
-  const p = h.replace(/^#\/?/, '').split('?')[0].split('/').filter(Boolean), [a, b, c, d] = p;
-  if (a === 'dars') { if (!c) return '#/dastur'; if (c === 'vazifa' && d) return `#/dars/${b}/vazifa`; if (c === 'amaliyot' && d) return d === '03a' || d === '03b' ? '#/dars/1/amaliyot/03' : `#/dars/${b}/amaliyot`; return `#/dars/${b}`; }
+  const p = h.replace(/^#\/?/, '').split('?')[0].split('/').filter(Boolean), [a, b, c] = p;
+  if (a === 'dars') return c ? `#/dars/${b}` : '#/dastur';
   return a === 'fayl' ? '#/dastur' : null;
 }
 
@@ -1898,7 +1712,6 @@ function mount(el, page){
   el.innerHTML = `<div class="frame"><div class="site">${body}</div></div>`;
   convertLinks(el); okina(el); markMissing(el);
   const dg = el.querySelector('#dg'); if (dg) { initGT(dg); if (page.tab > 0) { dg.dataset.instant = '1'; dg.querySelectorAll('.gt-tab')[page.tab]?.click(); delete dg.dataset.instant; } }   // ?tab=vz|kt|am|sl opens that folder tab
-  if (el.querySelector('#lib-q')) libInit(el);
   if (el.querySelector('#deck')) initPrep(el);
 }
 let firstRender = true, byClick = false, slFocus = '';
@@ -1911,7 +1724,7 @@ function render(keep){
   closeMenu(); toast.hidden = true;
   document.querySelectorAll('[data-clone]').forEach(x => x.remove());
   let r = parseHash(); let res = resolve(r);
-  if (res && res.redirect) { replaceRoute(res.redirect); r = parseHash(); res = resolve(r); }   // old hashes (#/dars/2/vazifa, #/dars/4/kitob) land on the folder tab
+  if (res && res.redirect) { replaceRoute(res.redirect); r = parseHash(); res = resolve(r); }   // old part routes (#/dars/2/vazifa) land on the folder tab
   if (!res) { replaceRoute('#/dastur'); res = resolve(parseHash()); setTimeout(() => flashToast('toast.notfound'), 50); }
   if (res.locked) replaceRoute('#/dastur');
   const view = res.view; document.body.dataset.view = view;
@@ -1921,7 +1734,7 @@ function render(keep){
   document.title = view === 'app' ? res.page.title + ' · ' + t('title.site') : t('title.' + view) + ' · ' + t('title.site');
   if (view === 'app') mount(app, res.page);
   let last = app;
-  if (view === 'all') ['#/dastur', '#/dars/1', '#/dars/1/amaliyot/06'].forEach(h => { const el = document.createElement('section'); el.className = 'screen is-on'; el.dataset.clone = '1'; last.after(el); last = el; mount(el, resolve({parts: h.slice(2).split('/'), q: new URLSearchParams()}).page); });
+  if (view === 'all') ['#/dastur', '#/dars/1', '#/dars/2'].forEach(h => { const el = document.createElement('section'); el.className = 'screen is-on'; el.dataset.clone = '1'; last.after(el); last = el; mount(el, resolve({parts: h.slice(2).split('/'), q: new URLSearchParams()}).page); });
   if (res.locked) openLockSheet(res.locked);
   const p = r.q.get('p'), target = p && app.querySelector(`[data-pid="${CSS.escape(p)}"]`), m = mem[ROUTE()];
   if (keep) {}
@@ -1952,7 +1765,7 @@ function refreshCounts(){ document.querySelectorAll('[data-cnt]').forEach(el => 
 // the locked-lesson sheet (static markup in the page): its title and text depend on which lesson was tapped; applyStatic re-renders them with these parameters on a language switch
 function lockSheet(n){
   const sh = document.getElementById('lock-sheet'), ti = sh.querySelector('#ls-t'), de = sh.querySelector('.sheet-d');
-  ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n, date: lessonDate(n)}); de.dataset.i18n = n === 4 ? 'lock.desc' : 'lock.desc_n';
+  ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n, date: lessonDate(n)}); de.dataset.i18n = 'lock.desc_n';
   applyStatic(sh); okina(sh); return sh;
 }
 const openLockSheet = n => lockSheet(n).showModal();
@@ -1962,15 +1775,12 @@ document.addEventListener('click', e => { const b = e.target.closest('[data-lock
 function updateLangUI(){ document.documentElement.lang = HTML_LANG[LANG]; document.querySelectorAll('[data-lang]').forEach(b => b.dataset.lang === LANG ? b.setAttribute('aria-current', 'true') : b.removeAttribute('aria-current')); }
 // a language switch re-renders the page, so everything the student changed on screen is saved first and put back after
 function langSnapshot(){
-  const ae = document.activeElement, lb = ae && ae.closest && ae.closest('[data-lang]'), m = document.getElementById('nmenu'), lq = app.querySelector('#lib-q');
+  const ae = document.activeElement, lb = ae && ae.closest && ae.closest('[data-lang]'), m = document.getElementById('nmenu');
   return {y: scrollY, nav: lb && lb.parentElement, menu: !m.hidden && m._from && (m._from.classList.contains('menu-btn') ? '.menu-btn' : '.nav-name'),
-    lib: lq && lq.value, chips: [...app.querySelectorAll('.lib-chip[aria-pressed="true"]')].map(c => c.dataset.sect), acc: [...app.querySelectorAll('.acc[aria-expanded="true"]')].map(b => b.getAttribute('aria-controls')),
     tab: [...app.querySelectorAll('.gt-tab')].findIndex(b => b.getAttribute('aria-selected') === 'true'), det: [...app.querySelectorAll('details')].map(d => d.open), sheet: !!app.querySelector('dialog[open]'),
     toast: toast.hidden ? null : undoLi ? {key: undoLi.dataset.key} : {flash: toastKey}};
 }
 function langRestore(st){
-  if (st.lib != null) { app.querySelectorAll('.lib-chip').forEach(c => c.setAttribute('aria-pressed', st.chips.includes(c.dataset.sect))); const lq = app.querySelector('#lib-q'); lq.value = st.lib; lq.dispatchEvent(new Event('input')); }
-  st.acc.forEach(id => { const b = app.querySelector(`.acc[aria-controls="${id}"]`); if (b) openAcc(b.closest('li'), true); });
   const dg = app.querySelector('#dg'); if (dg && st.tab > 0) { dg.dataset.instant = '1'; dg.querySelectorAll('.gt-tab')[st.tab]?.click(); delete dg.dataset.instant; } // instant: no out/in animation
   app.querySelectorAll('details').forEach((d, i) => { d.open = !!st.det[i]; });
   if (st.sheet) app.querySelector('dialog')?.showModal();
@@ -2011,7 +1821,7 @@ function fillMenu(){
   const s = SESS.student, $ = id => document.getElementById(id);
   $('nm-name').textContent = s.fullName; $('nm-id').textContent = s.id;
   $('nm-group').textContent = t('menu.group_' + (s.group || 'none'));
-  $('nm-course').textContent = LESSONS[1].d ? t('menu.course_range', {n: SESS.schedule.sessions, from: lessonDate(1), to: lessonDate(4)}) : t('menu.course_tba');
+  $('nm-course').textContent = LESSONS[1].d ? t('menu.course_range', {n: SESS.schedule.sessions, from: lessonDate(1), to: lessonDate(LN().at(-1))}) : t('menu.course_tba');
   okina($('nmenu'));
 }
 async function logout(){

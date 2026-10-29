@@ -1,26 +1,16 @@
 {
   "n": 3,
-  "title": "Skills and agents",
-  "subtitle": "Skill, Plugin, Connector, Plan, a team of agents, here.now",
-  "summary": "We extend what Claude can do: skills, plugins, connectors and a team of agents. Practice: build and deployment.",
+  "title": "API and MCP",
+  "subtitle": "APIs, keys, MCP, frontend and backend, system prompt, Kit 3",
+  "summary": "We split the chosen process into steps and write the agent's instructions. Then we connect the first version of the agent to real systems. Kit 3: redistributing the work.",
   "topics": [
-    "Skill",
-    "Plugin",
-    "Connector",
-    "Plan",
-    "A team of agents",
-    "here.now",
-    "Build",
-    "Deployment"
-  ],
-  "slideCount": 40,
-  "slideKind": "video",
-  "hasBook": false,
-  "bookNote": "",
-  "bookVariants": [],
-  "homework": "Erkin ijod: darsda oʻrganganlaringizdan foydalanib, oʻz biznesingiz uchun biror narsa yarating. Nima qilishni oʻzingiz tanlaysiz — muhimi, u biznesingizga haqiqatan kerak boʻlsin.",
-  "materials": [],
-  "prompts": null,
-  "praktikum": null,
-  "prep": null
+    "API",
+    "API keys and .env",
+    "MCP and connectors",
+    "Frontend and backend",
+    "Open source",
+    "System prompt",
+    "Agent v0",
+    "Kit 3"
+  ]
 }

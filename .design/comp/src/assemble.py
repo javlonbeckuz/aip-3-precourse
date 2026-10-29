@@ -84,12 +84,11 @@ s=s[:a]+'''<nav class="comp-bar" aria-label="Komp ekranlari">
   <button type="button" data-go="gate" aria-pressed="true">Kirish</button>
   <button type="button" data-go="dastur" aria-pressed="false">Asosiy</button>
   <button type="button" data-go="dars" aria-pressed="false">1-dars</button>
-  <button type="button" data-go="ex" aria-pressed="false">Mashq 06</button>
+  <button type="button" data-go="ex" aria-pressed="false">Boʻsh dars</button>
   <button type="button" data-go="type" aria-pressed="false">Shrift</button>
   <button type="button" data-go="all" aria-pressed="false">Hammasi</button>
   <select id="jump" aria-label="Ekranga oʻtish (barcha yoʻllar)"><option value="">Ekranga oʻtish…</option></select>
-  <button type="button" id="u4" aria-pressed="false">4-dars: ochish</button>
-  <select id="today" aria-label="Demo sana"><option value="">Sana…</option><option value="before">Kursdan oldin · 5-sentabr</option><option value="day1">1-dars kuni · 12-sentabr</option><option value="story">3-dars · 26-sentabr</option><option value="over">Kurs tugadi · 12-oktabr</option></select>
+  <select id="today" aria-label="Demo sana"><option value="">Sana…</option><option value="before">Kursdan oldin · 14-noyabr</option><option value="day1">1-dars kuni · 21-noyabr</option><option value="story">3-dars · 5-dekabr</option><option value="over">Kurs tugadi · 5-yanvar</option></select>
   <button type="button" id="rst">Reset demo</button>
   <button type="button" id="w375" aria-pressed="false">375 px</button>
 </nav>'''+s[b:]
@@ -133,7 +132,6 @@ function closeMenu(){
 bar.addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
   if (b.id === 'w375') return b.setAttribute('aria-pressed', document.body.classList.toggle('is-375'));
-  if (b.id === 'u4') { S.setU4(!S.u4()); return render(); }
   if (b.id === 'rst') { S.reset(); try { localStorage.removeItem(NL_KEY); } catch {} return render(); }
   if (b.dataset.go) go(b.dataset.go);
 });//#PROTO:end barclick

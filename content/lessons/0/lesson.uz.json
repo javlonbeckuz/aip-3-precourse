@@ -4,37 +4,32 @@
   "subtitle": "Oʻrnatish va tayyorgarlik bosqichi",
   "summary": "Kerakli dasturlarni oʻrnatamiz, hisoblarni ochamiz va praktikum davomida ishlatiladigan muhitni tayyorlaymiz.",
   "topics": [
-    "Set up",
-    "Cod",
-    "Requirements"
+    "Kompyuter",
+    "Google akkaunt",
+    "Claude",
+    "Warp va Claude Code"
   ],
   "slideCount": 0,
   "slideKind": "image",
-  "hasBook": false,
-  "bookNote": "",
-  "bookVariants": [],
-  "homework": "",
-  "materials": [],
-  "prompts": null,
-  "praktikum": null,
   "prep": {
     "intro": "Birinchi dars {sana}. Shu roʻyxatni oʻshangacha tayyorlab qoʻying. Hammasi 30 daqiqacha vaqt oladi, darsda esa toʻgʻridan-toʻgʻri ishni boshlaymiz.",
     "items": [
       {
         "brand": "device",
         "title": "Kompyuter",
-        "note": "MacBook tavsiya etiladi, Windows ham boʻladi. Telefon yoki planshet yetarli emas.",
+        "note": "macOS yoki Windows noutbuk, dastur oʻrnatish huquqi bilan. Telefon yoki planshet yetarli emas.",
         "steps": [
           "Darsga oʻz noutbukingiz bilan keling. Praktikum boshdan-oxir amaliy.",
-          "Quvvat adapterini ham oling.",
-          "Diskda kamida 5 GB boʻsh joy qoldiring."
+          "Administrator huquqi borligini tekshiring: dastur oʻrnata olishingiz kerak. Ish kompyuteri boʻlsa, IT boʻlimidan soʻrang.",
+          "Diskda kamida 5 GB boʻsh joy qoldiring.",
+          "Quvvat adapterini ham oling."
         ],
         "actions": []
       },
       {
         "brand": "google",
         "title": "Google akkaunt",
-        "note": "Claude, NotebookLM va Gemini shu akkaunt orqali ochiladi. Akkauntingiz bor boʻlsa, yangisi shart emas.",
+        "note": "NotebookLM, Gemini va Google Sheets shu akkaunt orqali ochiladi. Akkauntingiz boʻlsa, yangisi shart emas.",
         "steps": [
           "accounts.google.com/signup sahifasini oching.",
           "Ism, familiya va yangi pochta manzilini kiriting.",
@@ -50,14 +45,13 @@
       },
       {
         "brand": "claude",
-        "title": "Claude",
-        "note": "Praktikumning asosiy vositasi. Avval claude.aiʼda hisob oching, keyin dasturni oʻrnating.",
+        "title": "Claude obunasi",
+        "note": "Praktikumning asosiy vositasi. Kamida Pro tarifi kerak, 2-darsdan Max tavsiya etiladi.",
         "steps": [
-          "claude.ai ga kiring va \"Continue with Google\" orqali roʻyxatdan oʻting.",
-          "claude.ai/download sahifasidan dasturni yuklab oling.",
-          "Mac: .dmg faylni oching va Claude belgisini Applications ichiga tortib tashlang.",
-          "Windows: .exe faylni ishga tushiring va oʻrnatishni tasdiqlang.",
-          "Dasturga oʻsha Google akkaunt bilan kiring."
+          "claude.ai ga kiring va «Continue with Google» orqali roʻyxatdan oʻting.",
+          "Settings → Billing boʻlimida Pro tarifini tanlang. Narxi oyiga $20.",
+          "Toʻlov xalqaro Visa yoki Mastercard bilan. Kartada dollar hisobi va onlayn toʻlov yoqilgan boʻlsin. Uzcard va Humo ishlamaydi.",
+          "claude.ai/download sahifasidan Claude dasturini oʻrnating va oʻsha akkaunt bilan kiring."
         ],
         "actions": [
           {
@@ -69,19 +63,32 @@
             "url": "https://claude.ai/",
             "quiet": true
           }
-        ]
+        ],
+        "footnote": "2-darsdan Claude Code koʻp ishlatiladi va Pro limiti tez tugashi mumkin. Shunda Max tarifiga oʻting (oyiga $100 dan)."
       },
       {
-        "brand": "visa",
-        "title": "Visa karta",
-        "note": "Claude Pro obunasi uchun kerak boʻladi. Birinchi darsda bepul tarif ham yetarli.",
+        "brand": "warp",
+        "title": "Warp va Claude Code",
+        "note": "Claude Code Warp terminalida ishlaydi. Oʻrnating va bir marta ochib koʻring.",
         "steps": [
-          "Bankingizdan xalqaro Visa yoki Mastercard oching. Uzcard va Humo bu yerda ishlamaydi.",
-          "Kartada dollar hisobi va onlayn toʻlov yoqilgan boʻlsin.",
-          "Pro obunasi oyiga $20. Majburiy emas, lekin ishni ancha yengillashtiradi."
+          "warp.dev saytidan Warpʼni yuklab oling va oʻrnating.",
+          "Mac: Warpʼni oching va kiriting:",
+          "Windows: Warpʼni oching va kiriting:",
+          "claude deb yozing va Enter bosing. Brauzer ochiladi: Claude akkauntingiz bilan kiring.",
+          "Claude Code salomingizga javob bersa, hammasi tayyor."
         ],
-        "actions": [],
-        "footnote": "Keyingi darslarda kerak boʻladi."
+        "actions": [
+          {
+            "label": "Warpʼni yuklab olish",
+            "url": "https://www.warp.dev/"
+          },
+          {
+            "label": "Claude Code qoʻllanmasi",
+            "url": "https://code.claude.com/docs/en/quickstart",
+            "quiet": true
+          }
+        ],
+        "footnote": "Oʻrnatish chiqmasa, xatoning skrinshotini mentoringizga yuboring. 1-dars oxirida mentorlar yordam beradi."
       }
     ]
   }

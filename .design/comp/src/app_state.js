@@ -61,55 +61,41 @@ const partLock = (n, p) => (LESSONS[n] && LESSONS[n].lock && LESSONS[n].lock[p])
 let recheckT = 0;
 function scheduleRecheck(){   // a part opens while the page is open: ask again when the earliest one is due
   clearTimeout(recheckT);
-  const times = Object.values(LESSONS).flatMap(L => Object.values(L.lock || {})).map(x => Date.parse(x)).filter(x => x > Date.now());
+  const times = Object.values(LESSONS).flatMap(L => [...Object.values(L.lock || {}), L.at]).map(x => Date.parse(x)).filter(x => x > Date.now());   // L.at = the start of a lesson that is not open yet (an empty lesson has no part times)
   if (times.length) recheckT = setTimeout(() => recheck(), Math.min(Math.min(...times) - Date.now() + 1500, 3600e3));   // ponytail: capped at 1 h (a device clock can be wrong); recheck() arms the next one
 }
 
-// ---- the API payload becomes the shapes the templates already read (C20 -> buildData(), LESSONS, PREP, BOOK)
+// ---- the API payload becomes the shapes the templates already read (C20 -> buildData(), LESSONS, PREP)
 const sid = s => String(s == null ? '' : s).replace(/[^A-Za-z0-9_-]/g, '');   // ids that end up in href / id / data-*: nothing else may pass
-const fileLabel = f => { const ext = (f.name.split('.').pop() || '').toUpperCase(); return f.size < 1024 ? `${ext} · ${f.size} B` : `${ext} · ${(f.size / 1024).toFixed(1).replace('.', ',')} KB`; };
+const fileLabel = f => { const ext = (f.name.split('.').pop() || '').toUpperCase(); return f.size < 1024 ? `${ext} · ${f.size} B` : f.size < 1048576 ? `${ext} · ${(f.size / 1024).toFixed(1).replace('.', ',')} KB` : `${ext} · ${(f.size / 1048576).toFixed(1).replace('.', ',')} MB`; };
 const fo = (n, f) => f ? {slug: sid(f.slug), name: f.name, size: fileLabel(f), url: `${API}/lesson/${n}/doc/${encodeURIComponent(f.slug)}`} : null;   // name + size + the download URL; the server path never reaches the client
 
-function makeC20(by){
-  const C = {}, open = (n, p) => by[n] && by[n].parts && by[n].parts[p] && by[n].parts[p].open;
-  if (open(1, 'vazifa')) {
-    const l = by[1], mat = a => (l.materials || []).find(m => m.art === a), src = mat('sources'), book = mat('book'), pr = l.prompts;
-    C.vz = {rules: pr?.rules || [], footnote: pr?.footnote || '', files: (src?.files || []).map(f => fo(1, f)), zip: src?.bundle ? fo(1, src.bundle) : null, guide: book?.files?.[0] ? fo(1, book.files[0]) : null,
-      items: (pr?.groups || []).flatMap(g => g.items).map(i => ({id: sid(i.id), title: i.title, src: i.sources || [], text: i.text}))};
+function makeC20(by){   // the open blocks of each lesson (Amaliyot, Kit, Vazifa) in the shape buildData() reads
+  const parts = {};
+  for (const l of Object.values(by)) {
+    if (l.n < 1) continue;
+    for (const [k, key] of [['am', 'amaliyot'], ['kt', 'kit'], ['vz', 'vazifa']]) {
+      const b = l[key]; if (!b || typeof b !== 'object') continue;
+      (parts[l.n] ??= {})[k] = {text: b.text || '', groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', files: (g.files || []).map(f => fo(l.n, f))}))};
+    }
   }
-  if (open(1, 'amaliyot') && by[1].praktikum) {
-    const pk = by[1].praktikum;
-    C.am = {title: pk.title.replace(/\.$/, ''), lead: pk.lead, rules: pk.rules, guide: fo(1, pk.guide), closing: fo(1, pk.closing), ex: {}};
-    pk.exercises.forEach(e => { C.am.ex[sid(e.num).toLowerCase()] = {num: sid(e.num), tag: e.tag, title: e.title, note: e.note, brief: fo(1, e.yoriqnoma), pdf: fo(1, e.promptsPdf),
-      sources: (e.sources || []).concat(e.extras || []).map(f => fo(1, f)), prompts: e.prompts.map(p => ({id: sid(p.id), where: p.target, title: p.title, text: p.text}))}; });
-  }
-  if (open(2, 'amaliyot') && by[2].praktikum) {
-    const pk = by[2].praktikum; let a = 1;
-    C.lib = {rules: pk.rules, sections: pk.exercises.map((e, si) => { const b = a + e.prompts.length - 1, s = {k: 'gtsro'[si], a, b, key: sid(e.key), num: sid(e.num), note: e.note, title: e.title, prompts: e.prompts.map(p => ({id: sid(p.id), title: p.title, text: p.text}))}; a = b + 1; return s; })};
-  }
-  C.hw = {}; [2, 3].forEach(n => { if (open(n, 'vazifa') && by[n].homework) C.hw[n] = by[n].homework; });   // the homework text of each lesson
-  if (open(4, 'amaliyot') && by[4].praktikum) {
-    const pk = by[4].praktikum;
-    C.hermes = {lead: pk.lead, rules: pk.rules, cards: pk.exercises.map(e => ({id: sid(e.num), bonus: e.tag === 'Bonus', title: e.title, natija: e.note, notes: (e.notes || []).map(n => ({t: n.title, x: n.text})), prompts: e.prompts.map(p => ({title: p.title, text: p.text}))}))};
-  }
-  if (open(4, 'kitob') && by[4].bookNote) { const bn = by[4].bookNote.split('. '); C.book = {title: bn[0], note: bn.slice(1).join('. ')}; }
-  return {...BLANK, ...C};
+  return {parts};
 }
 
 function applyLessons(ls, lsUz, lang){
   // lang = the language of the payload `ls`: its platform text goes into THAT dictionary, whatever LANG says by now (a switch may be under way)
   const by = {}; ls.forEach(l => by[l.n] = l);
-  const dOf = l => l && l.date ? [+l.date.slice(8, 10), +l.date.slice(5, 7)] : null, L = {};
+  const dOf = l => l && l.date ? [+l.date.slice(8, 10), +l.date.slice(5, 7)] : null, L = {}, lessons = ls.filter(l => l.n >= 1);
   L[0] = {d: dOf(by[1]), open: true};
-  for (const n of [1, 2, 3, 4]) {
-    const l = by[n], lock = {}, parts = [];
-    const add = (has, key, part) => { if (!has) return; parts.push(key); const pp = l.parts[part]; if (pp && !pp.open) lock[key] = pp.opensAt || 'unknown'; };
-    add(l.has.slides, 'sl', 'slides'); add(l.has.amaliyot, 'am', 'amaliyot'); add(l.has.vazifa, 'vz', 'vazifa'); add(l.has.kitob, 'kt', 'kitob');
-    L[n] = {n, d: dOf(l), open: !!l.open, lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: l.topics.length};
+  for (const l of lessons) {
+    const n = l.n, lock = {}, parts = [], has = l.has || {};
+    const add = (on, key, part) => { if (!on) return; parts.push(key); const pp = l.parts && l.parts[part]; if (pp && !pp.open) lock[key] = pp.opensAt || 'unknown'; };
+    add(has.slides, 'sl', 'slides'); add(has.amaliyot, 'am', 'amaliyot'); add(has.kit, 'kt', 'kit'); add(has.vazifa, 'vz', 'vazifa');
+    L[n] = {n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length};
   }
   LESSONS = L;
   const D = I18N[LANGS.includes(lang) ? lang : LANG];   // platform text of the payload's language (lesson metadata and the prep checklist come translated from the API)
-  for (const n of [1, 2, 3, 4]) { const l = by[n]; D[`lesson.${n}.title`] = l.title; D[`lesson.${n}.sub`] = l.subtitle; D[`lesson.${n}.lede`] = l.summary; l.topics.forEach((x, i) => { D[`lesson.${n}.t${i}`] = x; }); }
+  for (const l of lessons) { const n = l.n; D[`lesson.${n}.title`] = l.title; D[`lesson.${n}.sub`] = l.subtitle; D[`lesson.${n}.lede`] = l.summary; (l.topics || []).forEach((x, i) => { D[`lesson.${n}.t${i}`] = x; }); }
   const pr = by[0] && by[0].prep;
   if (pr) {
     const acts = it => (it.actions || []).filter(a => /^https:\/\//.test(a.url));   // only https links leave the portal
@@ -124,19 +110,8 @@ function applyLessons(ls, lsUz, lang){
     D['prep.more.title'] = mo.title || dflt; D['prep.more.note'] = mo.note || '';
     ml.forEach((x, i) => { D[`prep.more.${i}.t`] = x.title || x.url; D[`prep.more.${i}.n`] = x.note || ''; });
   }
-  const l1 = by[1];
-  if (l1.parts.vazifa && l1.parts.vazifa.open) {   // the headings, notes and ledes of the Vazifa materials come translated from the API (not from the bundle)
-    const mat = a => (l1.materials || []).find(m => m.art === a) || {}, src = mat('sources'), pm = mat('prompts'), bk = mat('book'), prm = l1.prompts || {}, g = prm.groups || [], set = (k, v) => { if (typeof v === 'string') D[k] = v; };
-    set('vz1.g1', '1 · ' + src.title); set('vz1.g1_note', src.note); set('vz1.g1_hint', src.footnote || ''); set('vz1.zip', src.bundle && src.bundle.label);
-    set('vz1.g2', '2 · ' + pm.title); set('vz1.g2_note', pm.note); set('vz1.g2_cta', pm.cta);
-    set('vz1.g3', '3 · ' + bk.title); set('vz1.g3_note', bk.note);
-    set('vz1.sheet.lede', prm.lede); set('vz1.sheet.rule', g[0] && g[0].note); set('vz1.more', g[1] && g[1].title); set('vz1.more_sub', g[1] && g[1].note);
-    set('vz1.sheet.meta', (prm.subtitle || '').split(' — ').pop());
-  }
   const byUz = {}; (lsUz || ls).forEach(l => byUz[l.n] = l);   // course material is Uzbek in every UI language
   C20 = makeC20(byUz); buildData();
-  const l4 = byUz[4], bf = (slug, name, q) => ({slug, name, size: '', ph: false, url: `${API}/lesson/4/book${q}`});
-  BOOK = {lat: bf('book', 'Biznesda_AIni_qollash_lotin.pdf', ''), variants: ((l4.parts.kitob && l4.parts.kitob.open && l4.bookVariants) || []).map(v => ({v: sid(v.v), label: v.label, file: bf('book-' + sid(v.v), `Biznesda_AIni_qollash_${sid(v.v)}.pdf`, '?v=' + encodeURIComponent(v.v))}))};
   registerContent();
 }
 async function fetchMe(){   // platform text in the UI language and course material in Uzbek: the writes still on their way go first, then both answers together

@@ -7,7 +7,6 @@
   "engines": { "node": ">=24" },
   "scripts": {
     "start": "node server/index.js",
-    "test": "node --test",
-    "import-2.0": "node scripts/import-2.0.mjs"
+    "test": "node --test"
   }
 }

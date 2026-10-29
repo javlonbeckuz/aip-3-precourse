@@ -36,13 +36,13 @@ const errUz = (e) => ERR_UZ[e.code] ?? 'Xatolik yuz berdi.';
 const grpText = (s) => (s.grp ? `Guruh: ${GROUP_LABEL[s.grp]}` : 'Guruh yoʻq');
 
 function studentCard(s, ctx) {
-  const p = ctx.content.summary(getProgress(ctx.db, s.id));
+  const p = ctx.content.summary(getProgress(ctx.db, s.id), s.grp, s.review === 1);
   return [
     `<b>${esc(s.full_name)}</b>${s.active ? '' : ' (faol emas)'}`,
     `ID: <code>${esc(s.id)}</code> | ${grpText(s)} | Mentor: ${esc(s.mentor || '-')}`,
     `Telefon: ${esc(s.phone || '-')}`,
     `Yaratilgan: ${when(s.created_at)} | Oxirgi kirish: ${when(s.last_login_at) ?? 'hali kirmagan'}`,
-    `Tayyorgarlik ${p.prep[0]}/${p.prep[1]} | darslar ${p.done}/4 bajarilgan`,
+    `Tayyorgarlik ${p.prep[0]}/${p.prep[1]} | darslar ${p.done}/${Object.keys(p.lessons).length} bajarilgan`,
   ].join('\n');
 }
 

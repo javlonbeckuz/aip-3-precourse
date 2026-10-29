@@ -8,3 +8,4 @@ data
 scripts
 **/*.test.js
 server/testutil.js
+server/fixtures

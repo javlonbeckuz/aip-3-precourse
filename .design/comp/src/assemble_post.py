@@ -56,7 +56,7 @@ def post(s):
     rep('<a class="nm-out" href="#/kirish">Chiqish</a>', '<a class="nm-out" href="#/kirish" data-i18n="menu.logout">Chiqish</a>')
     rep('<button type="button" id="toast-undo">Bekor qilish</button>', '<button type="button" id="toast-undo" data-i18n="toast.undo">Bekor qilish</button>')
     rep('<p class="sheet-t" id="ls-t">4-dars 3-oktabr kuni ochiladi.</p>', '<p class="sheet-t" id="ls-t" data-i18n="lock.title">4-dars 3-oktabr kuni ochiladi.</p>')
-    rep('<p class="sheet-d">Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.</p>', '<p class="sheet-d" data-i18n="lock.desc">Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.</p>')
+    rep('<p class="sheet-d">Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.</p>', '<p class="sheet-d" data-i18n="lock.desc_n">Slaydlar, amaliyot, kit va vazifa dars kuni shu yerda chiqadi.</p>')
     rep('<form method="dialog"><button class="sheet-x">Yopish</button></form>\n</dialog>', '<form method="dialog"><button class="sheet-x" data-i18n="common.close">Yopish</button></form>\n</dialog>')
     rep('<div class="type-grid">', '<h1 class="sr-only" data-i18n="title.type">Shrift</h1>\n    <div class="type-grid">')
     # ---------- script: strings that were hard-coded in the pre-prototype code

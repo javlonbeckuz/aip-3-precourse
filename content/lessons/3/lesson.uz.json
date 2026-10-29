@@ -1,26 +1,21 @@
 {
   "n": 3,
-  "title": "Skill va agentlar",
-  "subtitle": "Skill, Plugin, Connector, Plan, agentlar jamoasi, here.now",
-  "summary": "Claude imkoniyatlarini kengaytiramiz: skill, plugin, connector va agentlar jamoasi. Amaliyot: build va deployment.",
+  "title": "API va MCP",
+  "subtitle": "API, kalitlar, MCP, frontend va backend, system prompt, Kit 3",
+  "summary": "Tanlangan jarayonni qadamlarga ajratamiz va agent yoʻriqnomasini yozamiz. Keyin agentning birinchi versiyasini haqiqiy tizimlarga ulaymiz. Kit 3: ishni qayta taqsimlash.",
   "topics": [
-    "Skill",
-    "Plugin",
-    "Connector",
-    "Plan",
-    "Agentlar jamoasi",
-    "here.now",
-    "Build",
-    "Deployment"
+    "API",
+    "API kaliti va .env",
+    "MCP va connector",
+    "Frontend va backend",
+    "Open source",
+    "System prompt",
+    "Agent v0",
+    "Kit 3"
   ],
-  "slideCount": 40,
-  "slideKind": "video",
-  "hasBook": false,
-  "bookNote": "",
-  "bookVariants": [],
-  "homework": "Erkin ijod: darsda oʻrganganlaringizdan foydalanib, oʻz biznesingiz uchun biror narsa yarating. Nima qilishni oʻzingiz tanlaysiz — muhimi, u biznesingizga haqiqatan kerak boʻlsin.",
-  "materials": [],
-  "prompts": null,
-  "praktikum": null,
-  "prep": null
+  "slideCount": 0,
+  "slideKind": "image",
+  "amaliyot": null,
+  "kit": null,
+  "vazifa": null
 }

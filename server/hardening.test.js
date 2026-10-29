@@ -188,18 +188,18 @@ test('files: aborted download closes the file; big clips stream; ranges; headers
 });
 
 // ---------- content
-test('content: only lesson folders 0-4 that contain lesson.uz.json', async (t) => {
+test('content: only lesson folders 0-6 that contain lesson.uz.json', async (t) => {
   const dir = tmpCopy(t);
   fs.cpSync(path.join(dir, 'lessons/1'), path.join(dir, 'lessons/7'), { recursive: true });
   fs.cpSync(path.join(dir, 'lessons/1'), path.join(dir, 'lessons/abc'), { recursive: true });
   fs.cpSync(path.join(dir, 'lessons/1'), path.join(dir, 'lessons/2.bak'), { recursive: true });
-  fs.mkdirSync(path.join(dir, 'lessons/5')); // no lesson.uz.json
-  assert.deepEqual(createContent({ dir }).lessonNumbers(), [0, 1, 2, 3, 4]);
+  fs.mkdirSync(path.join(dir, 'lessons/8')); // no lesson.uz.json
+  assert.deepEqual(createContent({ dir }).lessonNumbers(), [0, 1, 2, 3, 4, 5, 6]);
   const a = await startApp(t, { now: AFTER, contentDir: dir });
   const c = await a.login('XM');
-  assert.deepEqual(c.session.lessons.map((l) => l.n), [0, 1, 2, 3, 4]);
+  assert.deepEqual(c.session.lessons.map((l) => l.n), [0, 1, 2, 3, 4, 5, 6]);
   assert.equal((await c.get('/api/aip/lesson/7')).status, 404);
-  assert.equal((await c.get('/api/aip/lesson/5')).status, 404);
+  assert.equal((await c.get('/api/aip/lesson/8')).status, 404);
 });
 
 test('content: a "file" key or a duplicate slug anywhere in a lesson stops startup', (t) => {
@@ -207,16 +207,52 @@ test('content: a "file" key or a duplicate slug anywhere in a lesson stops start
   const f = path.join(dir, 'lessons/1/lesson.uz.json');
   const L = JSON.parse(fs.readFileSync(f, 'utf8'));
   const withFile = structuredClone(L);
-  withFile.materials[0].files[0].file = 'Vazifa/01_Kompaniya.pdf';
+  withFile.vazifa.groups[0].files[0].file = 'Vazifa/01_Kompaniya.pdf';
   fs.writeFileSync(f, JSON.stringify(withFile));
   assert.throws(() => createContent({ dir }).validateAll(), /forbidden "file" key/);
   const dup = structuredClone(L);
-  dup.praktikum.guide.slug = dup.materials[0].files[0].slug;
+  dup.amaliyot.groups[0].files[0].slug = dup.vazifa.groups[0].files[0].slug;
   fs.writeFileSync(f, JSON.stringify(dup));
   assert.throws(() => createContent({ dir }).validateAll(), /duplicate slug/);
   fs.writeFileSync(f, JSON.stringify(L));
   assert.doesNotThrow(() => createContent({ dir }).validateAll());
   assert.throws(() => validateLesson({ a: [{ file: 'x' }] }), /forbidden/);
+});
+
+test('content: every block file needs a plain slug, a name and an integer size at startup', () => {
+  const mk = (f) => ({ n: 1, vazifa: { text: '', groups: [{ title: 'g', files: [f] }] } });
+  assert.doesNotThrow(() => validateLesson(mk({ slug: 'kit-1', name: 'a.md', size: 0 })));
+  for (const slug of ['Kit1', 'a_b', '../x', '', 'a'.repeat(81), 5]) assert.throws(() => validateLesson(mk({ slug, name: 'a.md', size: 1 })), /bad file slug/, String(slug));
+  for (const name of ['', 5, undefined]) assert.throws(() => validateLesson(mk({ slug: 'ok', name, size: 1 })), /name must be/, String(name));
+  for (const size of [1.5, '10', undefined, null]) assert.throws(() => validateLesson(mk({ slug: 'ok', name: 'a.md', size })), /size must be an integer/, String(size));
+});
+
+test('summary: a lesson with a locked part is not done, even with every unit ticked', (t) => {
+  const dir = tmpCopy(t);
+  const f = path.join(dir, 'schedule.json');
+  const S = JSON.parse(fs.readFileSync(f, 'utf8'));
+  S.release = { 1: { vazifa: '+3h' } };
+  fs.writeFileSync(f, JSON.stringify(S));
+  let now = Date.parse('2026-09-12T10:00:00+05:00');
+  const c = createContent({ dir, now: () => now });
+  const p = { t: { 'f:am1': 1, 'f:v1': 1 }, sl: { 1: 78 } };
+  assert.deepEqual([c.summary(p, 'shanba').lessons[1], c.summary(p, 'shanba').done], [[3, 3], 0]); // vazifa is locked until 13:00
+  assert.equal(c.summary(p, null).done, 0);
+  assert.equal(c.summary(p, null, true).done, 0); // review does not beat a missing group
+  assert.equal(c.summary(p, 'shanba', true).done, 1);
+  now = Date.parse('2026-09-12T13:00:00+05:00');
+  assert.equal(c.summary(p, 'shanba').done, 1);
+});
+
+test('shipped lesson 0: Warp steps 1 and 2 end with ":" (the SPA adds the install commands as copy rows)', () => {
+  for (const lg of ['uz', 'ru', 'en']) { // PREP_CMDS in .design/comp/src/proto_data.js is keyed by item 3, steps 1 and 2
+    const item = JSON.parse(fs.readFileSync(path.join(REAL_CONTENT, 'lessons/0', `lesson.${lg}.json`), 'utf8')).prep.items[3];
+    assert.equal(item.brand, 'warp');
+    for (const i of [1, 2]) {
+      assert.ok(item.steps[i].endsWith(':'), `${lg} step ${i}`);
+      assert.doesNotMatch(item.steps[i], /install\.(sh|ps1)/, `${lg} step ${i}`);
+    }
+  }
 });
 
 test('content: loose times are NaN; a bad schedule fails at startup', (t) => {
@@ -233,6 +269,12 @@ test('content: loose times are NaN; a bad schedule fails at startup', (t) => {
   assert.throws(bad((s) => { s.release = { 1: { vazifa: '2026-9-1' } }; return s; }), /bad opening time/);
   assert.throws(bad((s) => { s.liveDays = -3; return s; }), /liveDays/);
   assert.throws(bad((s) => { s.liveDays = 'seven'; return s; }), /liveDays/);
+  assert.throws(bad((s) => { s.groups.shanba = s.groups.shanba.slice(0, 4); return s; }), /needs 6/); // the 2.0 shape (4 lessons)
+  assert.throws(bad((s) => { s.release = { 1: { kitob: 'open' } }; return s; }), /unknown part "kitob"/);
+  assert.throws(bad((s) => { s.release = { 7: { kit: 'open' } }; return s; }), /unknown lesson/);
+  assert.doesNotThrow(bad((s) => { s.release = { 6: { kit: '+1h' } }; s.liveOverride = 6; return s; }));
+  assert.throws(bad((s) => { s.liveOverride = 7; return s; }), /liveOverride/);
+  assert.throws(bad((s) => { s.liveOverride = 0; return s; }), /liveOverride/);
 });
 
 test('content: an unknown opening time fails closed', (t) => {
@@ -416,13 +458,13 @@ test('doc route: a locked slug answers exactly like an unknown slug (404), so na
   assert.equal((await c.get('/api/aip/lesson/1/doc/hw-kompaniya')).status, 404); // open, but the file is not there
 });
 
-test('content: groups.<g> = null means dates TBA; anything else but 4 increasing times is still refused', (t) => {
+test('content: groups.<g> = null means dates TBA; anything else but 6 increasing times is still refused', (t) => {
   const base = { timezone: 'Asia/Tashkent', groups: { shanba: null, yakshanba: null }, liveOverride: null };
   const p = parseSchedule(base);
   assert.deepEqual(p.groups, { shanba: null, yakshanba: null });
-  assert.doesNotThrow(() => parseSchedule({ ...base, groups: { shanba: null, yakshanba: ['2026-09-13T10:00', '2026-09-20T10:00', '2026-09-27T10:00', '2026-10-04T10:00'] } }));
-  const T = ['2026-09-13T10:00', '2026-09-20T10:00', '2026-09-27T10:00', '2026-10-04T10:00'];
-  for (const bad of [undefined, [], T.slice(0, 3), [...T].reverse(), 'soon', {}, 0, false]) assert.throws(() => parseSchedule({ ...base, groups: { shanba: bad, yakshanba: null } }), /schedule\.json/, String(bad));
+  assert.doesNotThrow(() => parseSchedule({ ...base, groups: { shanba: null, yakshanba: ['2026-09-13T10:00', '2026-09-20T10:00', '2026-09-27T10:00', '2026-10-04T10:00', '2026-10-11T10:00', '2026-10-18T10:00'] } }));
+  const T = ['2026-09-13T10:00', '2026-09-20T10:00', '2026-09-27T10:00', '2026-10-04T10:00', '2026-10-11T10:00', '2026-10-18T10:00'];
+  for (const bad of [undefined, [], T.slice(0, 4), T.slice(0, 5), [...T, '2026-10-25T10:00'], [...T].reverse(), 'soon', {}, 0, false]) assert.throws(() => parseSchedule({ ...base, groups: { shanba: bad, yakshanba: null } }), /schedule\.json/, String(bad));
   assert.throws(() => parseSchedule({ ...base, groups: { shanba: null } }), /yakshanba/); // a missing group is not "TBA"
   t.mock.method(console, 'error', () => {});
 });
@@ -432,11 +474,11 @@ test('content: fail closed for a NULL student group, an unknown group and TBA da
   const f = path.join(dir, 'schedule.json');
   const S = JSON.parse(fs.readFileSync(f, 'utf8'));
   S.groups.yakshanba = null;
-  S.release = { 1: { slides: 'open' }, 2: { vazifa: '2020-01-01T00:00' }, 3: { slides: '+0h' } };
+  S.release = { 1: { slides: 'open' }, 2: { vazifa: '2020-01-01T00:00' }, 3: { slides: '+0h' }, 6: { kit: 'open' } };
   fs.writeFileSync(f, JSON.stringify(S));
   const c = createContent({ dir, now: () => Date.parse('2099-01-01') });
   for (const g of [null, undefined, 'yakshanba', 'friday', '']) {
-    for (const [n, part] of [[1, 'slides'], [2, 'vazifa'], [3, 'slides'], [4, 'kitob']]) {
+    for (const [n, part] of [[1, 'slides'], [2, 'vazifa'], [3, 'slides'], [4, 'start'], [6, 'kit']]) {
       assert.ok(Number.isNaN(c.opensAt(n, part, g)), `${g} ${n}.${part}`);
       assert.equal(c.partOpen(n, part, g, false), false);
     }
@@ -445,9 +487,12 @@ test('content: fail closed for a NULL student group, an unknown group and TBA da
     assert.equal(c.scheduleView(g).starts[1], null);
     assert.equal(c.lessonView(1, 'uz', g).start, null);
   }
-  assert.ok(Number.isNaN(c.opensAt(4, 'kitob', null, true))); // review does not beat a missing group or TBA dates
-  assert.ok(Number.isNaN(c.opensAt(4, 'kitob', 'yakshanba', true)));
-  assert.equal(c.opensAt(4, 'kitob', 'shanba', true), 0); // a group with dates: review opens lesson 4
+  for (const n of [1, 2, 3, 4, 5, 6]) { // review does not beat a missing group or TBA dates, and opens every lesson for a group with dates
+    assert.ok(Number.isNaN(c.opensAt(n, 'slides', null, true)), `null ${n}`);
+    assert.ok(Number.isNaN(c.opensAt(n, 'start', 'yakshanba', true)), `tba ${n}`);
+    assert.equal(c.opensAt(n, 'kit', 'shanba', true), 0, `shanba ${n}`);
+  }
+  assert.equal(c.opensAt(0, 'prep', null, true), 0);
   assert.equal(c.partOpen(1, 'slides', 'shanba', false), true); // a group with dates is unaffected
   assert.equal(c.scheduleView('shanba').yakshanba, null);
 });

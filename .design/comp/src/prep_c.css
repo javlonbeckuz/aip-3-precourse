@@ -78,11 +78,17 @@
 @keyframes c-reply{0%{transform:translateY(8px);opacity:0}35%,100%{transform:translateY(0);opacity:1}}
 .ill.enter .c-win{animation:c-open .4s var(--ease) both;transform-origin:74px 154px}
 @keyframes c-open{from{transform:scale(.92);opacity:0}}
-/* 04 visa: 6s, the card slides 18 right (revealing the other cards) and back */
-.prep .pc.open .ill.on-screen .v-loop{animation:v-slide 3s var(--loop) 1 both}
-@keyframes v-slide{0%{transform:translateX(0)}35%,60%{transform:translateX(18px)}100%{transform:translateX(0)}}
-.ill.enter .v-in{animation:v-in .6s var(--ease) both}
-@keyframes v-in{from{transform:translateX(60px);opacity:0}}
+/* 04 warp: the terminal scales in, then the reply block slides up as one block and holds (no typing, no cursor) */
+.prep .pc.open .ill.on-screen .w-reply{animation:w-reply 3s var(--loop) 1 both}
+@keyframes w-reply{0%{transform:translateY(14px);opacity:0}35%,100%{transform:translateY(0);opacity:1}}
+.ill.enter .w-win{animation:w-open .4s var(--ease) both;transform-origin:150px 146px}
+@keyframes w-open{from{transform:scale(.92);opacity:0}}
+/* install commands under a prep step: one mono row, one copy button */
+.cmd{display:flex;align-items:center;gap:8px;margin-top:8px;padding:6px 6px 6px 12px;border:1px solid currentColor;border-radius:10px}
+.cmd code{flex:1;font-family:var(--font-mono);font-size:13px;font-stretch:100%;min-width:0;white-space:nowrap;overflow-x:auto;background:none;padding:0}/* a command is never broken mid-word: it scrolls, and the button copies all of it */
+.cmd-cp{display:grid;place-items:center;flex:none;min-width:44px;min-height:44px;color:inherit}
+.prep .bd{grid-template-columns:minmax(0,1fr)}.prep .steps,.prep .steps li{min-width:0}
+@container (min-width:900px){.prep .hd .pic{margin-inline:auto}}
 /* reduced motion = the finished static frame */
 @media (prefers-reduced-motion:reduce){.ill,.ill *{animation:none!important;transition:none!important}}
 /* lesson page: the 2.0 subtitle under the title */
@@ -147,7 +153,7 @@ button.ef-row{width:100%;text-align:left;color:inherit;font:inherit}
 /* done = copied: the title gets the check; the Vazifa mark inside the coloured folder panes follows the pane's ink */
 .s1 li.done .tt:not(:has(.acc))::before{content:"✓ ";font-weight:600}/* library rows already get theirs from .acc::before */
 .gt .endb,.gt .endb[aria-pressed="true"]{color:inherit}
-.gt-blue .endb[aria-pressed="true"]::before,.gt-dark .endb[aria-pressed="true"]::before{background-image:var(--ck-b)}
+.gt-blue .endb[aria-pressed="true"]::before,.gt-dark .endb[aria-pressed="true"]::before,.gt-emerald .endb[aria-pressed="true"]::before{background-image:var(--ck-b)}
 /* long tokens (URLs, paths) never run off the screen; the copy circle stays at the top of its row */
 .s1 .tx{overflow-wrap:anywhere}
 .s1 .cpw{align-self:start}

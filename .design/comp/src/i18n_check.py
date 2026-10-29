@@ -7,7 +7,7 @@ uz = load("i18n_uz.json")
 want = {k for k, v in uz.items() if v["translate"]}
 assert not any(k.startswith("c.") for k in want)
 PARAM = re.compile(r"\{(\w+)\}")
-BANNED = re.compile(r"unlock|seamless|journey|elevate|empower|dive in|let's|let’s|supercharge|harness|game.changer|cutting.edge|"
+BANNED = re.compile(r"unlock|seamless|journey|elevate|empower|dive in|let's|let’s|supercharge|harness(?:ing)? the|game.changer|cutting.edge|"
                     r"откройте для себя|погруз|раскройте потенциал|уникальн|инновацион|please|пожалуйста|\bsimply\b|\bjust\b|\beasily\b|просто|—|[\U0001F300-\U0001FAFF]", re.I)
 SAMPLE = {"ru": {"date": "26 сентября", "until": "до 12 сентября", "steps": "3/4 шага"},
           "en": {"date": "26 September", "until": "by 12 September", "steps": "3/4 steps"}}

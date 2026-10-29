@@ -109,11 +109,11 @@ export function createApp(cfg) {
     const q = url.searchParams.get('lang') ?? auth.parseCookies(req.headers.cookie).aip_lang;
     return LANGS.includes(q) ? q : 'uz';
   };
-  // students.review = 1 (set by hand in the DB, see README) opens lesson 4 early
-  const unlock4 = (s) => s.review === 1;
+  // students.review = 1 (set by hand in the DB, see README) opens every lesson early
+  const review = (s) => s.review === 1;
 
   function session(student, lang) {
-    return { ok: true, lang, student: publicStudent(student), lessons: content.lessonsView(lang, student.grp, unlock4(student)),
+    return { ok: true, lang, student: publicStudent(student), lessons: content.lessonsView(lang, student.grp, review(student)),
       schedule: content.scheduleView(student.grp), live: content.live(student.grp), progress: getProgress(db, student.id) };
   }
 
@@ -124,8 +124,8 @@ export function createApp(cfg) {
   }
   function gate(student, n, part) {
     if (!content.has(n)[part]) throw fail(404, 'not_found', 'No such content');
-    if (content.partOpen(n, part, student.grp, unlock4(student))) return;
-    throw fail(403, 'locked', 'This is not open yet', { opensAt: isoTashkent(content.opensAt(n, part, student.grp, unlock4(student))) });
+    if (content.partOpen(n, part, student.grp, review(student))) return;
+    throw fail(403, 'locked', 'This is not open yet', { opensAt: isoTashkent(content.opensAt(n, part, student.grp, review(student))) });
   }
 
   // cache: Cache-Control for the file (default: inherit no-store). PDFs drop the page CSP (Chrome's viewer), all API files may be framed by the portal itself.
@@ -227,7 +227,7 @@ export function createApp(cfg) {
     }],
     ['GET', /^\/api\/aip\/lesson\/(\d+)$/, (req, res, url, m) => {
       const s = needStudent(req), n = lessonNo(m[1]);
-      json(res, 200, { ok: true, lesson: content.lessonView(n, langOf(req, url), s.grp, unlock4(s)) });
+      json(res, 200, { ok: true, lesson: content.lessonView(n, langOf(req, url), s.grp, review(s)) });
     }],
     ['GET', /^\/api\/aip\/lesson\/(\d+)\/slide\/(\d+)$/, (req, res, url, m) => {
       const s = needStudent(req), n = lessonNo(m[1]), i = Number(m[2]);
@@ -254,16 +254,9 @@ export function createApp(cfg) {
       const s = needStudent(req), n = lessonNo(m[1]);
       const part = content.docPart(n, m[2]);
       // unknown and locked slugs get the same 404, so a guesser cannot tell which file names exist (user, 2026-10-17)
-      if (!part || !content.partOpen(n, part, s.grp, unlock4(s))) throw fail(404, 'not_found', 'No such file');
+      if (!part || !content.partOpen(n, part, s.grp, review(s))) throw fail(404, 'not_found', 'No such file');
       const f = content.docFile(n, m[2]);
       if (!f) throw fail(404, 'not_found', 'No such file');
-      sendFile(req, res, f.abs, { name: f.dl ?? f.name });
-    }],
-    ['GET', /^\/api\/aip\/lesson\/(\d+)\/book$/, (req, res, url, m) => {
-      const s = needStudent(req), n = lessonNo(m[1]);
-      gate(s, n, 'kitob');
-      const f = content.bookFile(n, url.searchParams.get('v') || null);
-      if (!f) throw fail(404, 'not_found', 'No such book');
       sendFile(req, res, f.abs, { name: f.name });
     }],
     ['GET', /^\/api\/aip\/prep\/pdf$/, (req, res, url) => {

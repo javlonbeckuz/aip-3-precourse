@@ -5,7 +5,7 @@ Errors always look like `{ "error": { "code": "...", "message": "..." } }`, some
 
 Auth: cookie `__Host-aip_session` (HttpOnly, Secure, SameSite=Lax, 24 h) in production; plain `aip_session` without Secure on http dev. The client never touches it. POST/PUT need `Content-Type: application/json` and, if the browser sends `Origin`, it must be the portal's own origin.
 
-Language: `?lang=uz|ru|en`, else the `aip_lang` cookie, else `uz`. Only platform text is translated (titles, subtitles, summaries, topics, prep, material headings, rules and ledes). Prompts, exercise titles and notes, homework text and group titles stay Uzbek in every language.
+Language: `?lang=uz|ru|en`, else the `aip_lang` cookie, else `uz`. Only platform text is translated (titles, subtitles, summaries, topics and prep). Slides and the amaliyot, kit and vazifa blocks are always read from the Uzbek lesson file, in every language.
 
 All times are ISO 8601 with the Tashkent offset, e.g. `2026-09-12T10:00:00+05:00`.
 
@@ -13,10 +13,10 @@ All times are ISO 8601 with the Tashkent offset, e.g. `2026-09-12T10:00:00+05:00
 
 ```
 student  { id, fullName, firstName, mentor, group: "shanba"|"yakshanba"|null }   // group is null until an admin picks one; the phone is never in this payload
-schedule { sessions: 4, shanba: "2026-09-12"|null, yakshanba: "2026-09-13"|null, group, starts: { "1": iso|null, "2": iso|null, "3": iso|null, "4": iso|null } }   // starts = this student's group; null = date to follow
-live     { n: 0..4, override: null|1..4 }      // n = the live lesson for this student's group (0 = none); override = pinned by schedule.json
-progress { t: { "<tick key>": 1 }, sl: { "1": 78 } }              // sl[lesson] = highest slide reached, 1-based (78 = the last of 78)
-file     { slug, name, size }                   // no server path, ever
+schedule { sessions: 6, shanba: "2026-11-21"|null, yakshanba: "2026-11-22"|null, group, starts: { "1": iso|null, ... "6": iso|null } }   // starts = this student's group; null = date to follow
+live     { n: 0..6, override: null|1..6 }      // n = the live lesson for this student's group (0 = none); override = pinned by schedule.json
+progress { t: { "<tick key>": 1 }, sl: { "1": 12 } }              // sl[lesson] = highest slide reached, 1-based
+file     { slug, name, size }                   // no server path, ever; size = integer number of bytes
 ```
 
 ### lesson (what a student may see)
@@ -24,29 +24,28 @@ file     { slug, name, size }                   // no server path, ever
 ```
 { n, title, subtitle, summary, topics[],
   start: iso|null, date: "YYYY-MM-DD"|null,           // this group's lesson start; null for lesson 0, and null while the dates are to follow (or the student has no group)
-  has:   { slides, vazifa, amaliyot, kitob, prep },   // booleans: the part exists at all (render or hide the row)
+  has:   { slides, amaliyot, kit, vazifa, prep },   // booleans: the part exists at all (render or hide the row)
   parts: { <part>: { open: true } | { open: false, opensAt: iso|null } },   // only parts that exist; opensAt null = date to follow
   open:  true if any part is open,
   // then, ONLY for open parts:
   slides   -> slideCount, slideKind: "image"|"video"
-  vazifa   -> homework (string), materials[], prompts ({title, subtitle, lede, rules[], footnote, groups[{title, note, items[{id,title,target,text}]}]} | null)
-  amaliyot -> praktikum { title, lead, rules[], exercisesTitle, exercisesNote, promptsNote, guide: file|null, closing: file|null,
-                          exercises[{ key, num, tag, title, note, yoriqnoma: file|null, promptsPdf: file|null, sources[file], extras[file],
-                                      prompts[{id,title,target,text}], notes[{title,text}] }] } | null
-  kitob    -> hasBook: true, bookNote, bookVariants[{ v: "cyrl", label }]
+  amaliyot -> amaliyot block   // read from the Uzbek lesson file in every language
+  kit      -> kit block        // the day's form (.md) + the ready-made skill (.zip)
+  vazifa   -> vazifa block
   prep     -> prep { intro, items[{ brand, title, note, steps[], actions[{label,url,quiet?}], footnote? }],
                      more?: { title, note, links[{ title, note, url }] } }   // more = extra links under the checklist; absent = hide the section; not counted as prep items
 }
-materials[] { art: "sources"|"prompts"|"book", title, note, files[file], bundle?: file & {label}, opens?, cta?, count?, footnote? }
+block    { text, groups[{ title, note?, files[file] }] }   // text = paragraphs separated by a blank line; a part exists when it has text or at least one group
+// A lesson with no parts yet ("empty": has all false) has parts: {} and open = true from its start time on (review: at once). Show "materials soon".
+// Title, subtitle, summary and topics follow ?lang= / the lang cookie; blocks and slides never do. prep follows the language (lesson 0).
 ```
 
 Notes for the frontend:
 - A locked part has NO content fields in the payload, only `parts.<part>.opensAt`. Show "opens on ...".
-- `prep.intro` contains `{sana}`. When `lessons[1].date` is null (dates to follow) do not fill it in; use the "date to follow" text instead.
-- Dates to follow: while a group's dates are not decided (`groups.<g>: null` in schedule.json), and for a student with no group, lessons 1-4 stay locked, `start`/`date`/`opensAt`/`schedule.starts.*`/`schedule.<group>` are `null` (show "date to follow"), and `live.n` is 0. Lesson 0 (prep) is still open. A 403 `locked` then carries `error.opensAt: null`.
-- Lesson 0 (prep) is open at once. Lesson 4 has `has.slides === false` (no slide row) and `has.kitob === true`.
-- `prep.intro` contains the placeholder `{sana}`; fill it with `lessons[1].date` formatted.
-- Prompt ids in lesson 4 (Hermes) are empty strings in the data; the progress keys use `P1`, `P2`, ... by position.
+- Dates to follow: while a group's dates are not decided (`groups.<g>: null` in schedule.json), and for a student with no group, lessons 1-6 stay locked, `start`/`date`/`opensAt`/`schedule.starts.*`/`schedule.<group>` are `null` (show "date to follow"), and `live.n` is 0. Lesson 0 (prep) is still open. A 403 `locked` then carries `error.opensAt: null`.
+- Lesson 0 (prep) is open at once. Lessons 1-6 ship with all `has.*` false until their content is added: show the colour card and "materials soon" (see the empty-lesson note above).
+- Kit is not counted in progress. The counted units are: slides reached (`sl:{n} >= slideCount`), the `f:am{n}` tick, the `f:v{n}` tick.
+- `prep.intro` contains the placeholder `{sana}`; fill it with `lessons[1].date` formatted. When `lessons[1].date` is null (dates to follow) do not fill it in; use the "date to follow" text instead.
 - File URL: `/api/aip/lesson/{n}/doc/{slug}`.
 
 ## Auth
@@ -72,11 +71,10 @@ Body `{}`. Clears the cookie, returns `{ ok: true }`. Always 200.
 | `GET /lesson/{n}` | `{ ok, lesson }` | none (locked parts come back as `opensAt`) |
 | `GET /lesson/{n}/slide/{i}` | image (`i` is 1-based; svg placeholder until real stills are added) | slides |
 | `GET\|HEAD /lesson/{n}/clip/{i}?q=1080\|2160` | `video/mp4`, Range supported; 404 when no clip exists | slides |
-| `GET /lesson/{n}/doc/{slug}` | the file; PDFs inline, others as attachment | vazifa or amaliyot, by which part lists the slug |
-| `GET /lesson/{n}/book[?v=cyrl]` | PDF | kitob |
+| `GET /lesson/{n}/doc/{slug}` | the file; PDFs inline, others as attachment | amaliyot, kit or vazifa, by which block lists the slug; sent under its real file name |
 | `GET /prep/pdf?lang=uz\|ru\|en` | prep checklist PDF | prep |
 
-Errors: 403 `locked` with `error.opensAt` before the opening time (slides, clips, book); a locked `doc` answers 404 `not_found`, exactly like an unknown slug, so file names cannot be probed; 404 `not_found` (no such lesson, part, slide, clip, file or book variant); 400 `bad_quality`.
+Errors: 403 `locked` with `error.opensAt` before the opening time (slides, clips); a locked `doc` answers 404 `not_found`, exactly like an unknown slug, so file names cannot be probed; 404 `not_found` (no such lesson, part, slide, clip or file); 400 `bad_quality`.
 
 ## Progress (auth)
 
@@ -89,12 +87,12 @@ Body `{ "key": "...", "value": ... }` (only these two fields). One key per call;
 | Key | Value | Meaning |
 |---|---|---|
 | `prep:{0-99}` | `1` set, `0`/`null` clear | prep item ticked |
-| `p:{page}:{id}` | same | prompt marked. `page`: `01`, `02`, `03a`, `03b`, `04`, `05`, `06`, `v1`, `lib`, `h01`..`h10`; `id`: `P1`, `12`, ... (`[a-z0-9]{1,8}` and `[A-Za-z0-9]{1,8}`) |
+| `p:{page}:{id}` | same | prompt marked. `page`: any `[a-z0-9]{1,8}`. The 2.0 pages (`01`..`06`, `v1`, `lib`, `h01`..`h10`) are legacy: still accepted, nothing in 3.0 uses them; `id`: `P1`, `12`, ... (`[a-z0-9]{1,8}` and `[A-Za-z0-9]{1,8}`) |
 | `x:{name}` | same | end toggle "Bajarildi" (`x:01`, `x:h04`) |
-| `f:{name}` | same | manual finish (`f:am2`, `f:v2`, `f:v3`) |
-| `sl:{1-4}` | integer 0..1000 | slide high-water mark, 1-based (the number of the furthest slide seen); the server keeps the maximum and never lowers it |
+| `f:{name}` | same | manual finish: `f:am{n}` (amaliyot) and `f:v{n}` (vazifa), n = 1..6 |
+| `sl:{1-9}` | integer 0..1000 | slide high-water mark, 1-based (the number of the furthest slide seen); the server keeps the maximum and never lowers it |
 
-There is no client-writable unlock switch: the early opening of lesson 4 is the server-side `students.review` flag, set by hand in the DB (README). `u4` is rejected as `bad_key`.
+There is no client-writable unlock switch: the early opening of every lesson is the server-side `students.review` flag, set by hand in the DB (README). `u4` is rejected as `bad_key`.
 
 Limits: body 256 bytes, 600 keys per student, 240 writes per minute. Errors: 400 `bad_key`, 400 `bad_value`, 400 `unknown_field`, 400 `too_many_keys`, 413, 429 `rate_limited`, 403 `bad_origin`.
 

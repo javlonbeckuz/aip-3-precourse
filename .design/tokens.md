@@ -29,9 +29,9 @@ Brand palette (unchanged): blue, grey, yellow and lilac on black. **Each lesson 
 | `--danger` | `#FF6B5E` | errors only: the ID error's underline and its ⚠ icon (the message text itself is white with a dark halo), always with ⚠ and text | 7.52 on black |
 | action | `#FFFFFF` | something you press: circle + arrow, outline pill, square button | |
 
-Decoration (not signals): the loader LEDs. There is no green anywhere: "done / OK" is a ✓ and a word.
+Decoration (not signals): the loader LEDs. Green is never a status colour: "done / OK" is a ✓ and a word. The one green on screen is emerald #0B7A55, the fixed identity colour of lesson 6 (white ink at full opacity); it never means success or done. Lesson 5 is orange #FF7A2F with black ink.
 
-**Lesson identity colours** (home cards, the lesson page folder, the glow behind them): lesson 0 yellow (ink black), lesson 1 lilac (black), lesson 2 grey (black), lesson 3 blue (white), lesson 4 dark `#161616` (text-2 while locked, white once unlocked). Every card is a different colour in every state; the colour never changes. State is the note in the card's corner: prep "12-sentabrgacha · 3/4 qadam" while unfinished; "✓ Bajarildi · n/n qadam" when done; "Ochiq · n/n qadam" when open; "● Hozir davom etmoqda · n/n qadam" when live (a quiet dot, never a filled pill: a filled pill looks like a button); "🔒 3-oktabrda ochiladi" when locked. The hero card ("Hozir davom etmoqda") takes the identity colour of whichever lesson is live (lesson 3 in the demo, so it is blue like the card below it); its ink follows the colour (white on blue and dark, black on yellow, lilac and grey). Code: `LCOL` in `proto_app.js`.
+**Lesson identity colours** (home cards, the lesson page folder, the glow behind them): lesson 0 yellow (ink black), lesson 1 lilac (black), lesson 2 grey (black), lesson 3 blue (white), lesson 4 dark `#161616` (text-2 while locked, white once unlocked), lesson 5 orange `#FF7A2F` (black), lesson 6 emerald `#0B7A55` (white, full opacity for subtitles and notes too). Every card is a different colour in every state; the colour never changes. State is the note in the card's corner: prep "12-sentabrgacha · 3/4 qadam" while unfinished; "✓ Bajarildi · n/n qadam" when done; "Ochiq · n/n qadam" when open; "● Hozir davom etmoqda · n/n qadam" when live (a quiet dot, never a filled pill: a filled pill looks like a button); "🔒 28-noyabrda ochiladi" when locked. The hero card ("Hozir davom etmoqda") takes the identity colour of whichever lesson is live (lesson 3 in the demo, so it is blue like the card below it); its ink follows the colour (white on blue and dark, black on yellow, lilac and grey). Code: `LCOL` in `proto_app.js`.
 
 **Lilac rule:** lilac is lesson 1's identity colour (its card and tab folder) and the prompt-section background. It is not a state colour. It also appears as a dimmed ambient glow behind lilac elements; that is decoration, not a signal.
 
@@ -71,7 +71,7 @@ Google Fonts families:
 | Nav | height 120, padding `0 49 0 66`. Grid `1fr auto 1fr`: 3 text links (gap 48) · centred wordmark · name + square button. Hairline below. |
 | Home hero | padding-top 62, sides `66 / 61`. Two columns `1fr | 560` (gap 40). The home has no greeting: the progress ring (180) and the "Keyingi qadam" row sit left, centred against the blue hero card (min-height 340), which sits right. |
 | Lesson-page hero | padding-top 62, sides `66 / 50`. Columns `636 | 688`: left = back link, meta line, headline, lede, CTA pill, play link; right = the gooey tab folder (`align-self:start`, min height 480, grown by its tallest pane). |
-| Lesson grid (home) | **6 columns**, gap 16 / row gap 28: lessons 0, 1, 2 span 2 each (3 per row), lessons 3 and 4 span 3 each (2 per row), so the grid is always full. No lower row, no tag stack. |
+| Lesson grid (home) | **12 columns**, gap 16 / row gap 28: lessons 0, 1, 2 span 4 each (3 per row), lessons 3 to 6 span 3 each (4 per row), so the grid is always full. No lower row, no tag stack. |
 | Card sizes | Folder body min-height 260 (mobile 196), rise 21 (mobile 16). Phones: one column, in order 0 to 4. |
 | Mobile | One column. Gutters 16, block gap 24–32. Nav 64 (wordmark, square button, menu). |
 
@@ -122,7 +122,7 @@ Google Fonts families:
 - The pill field shows its focus outline on `:focus-within`.
 
 ## Usage rule (user, 2026-10-15)
-- **The folder-tab card is used ONLY on the main page lesson list:** Dars 0–4 (the hero card and everything else use the flat card). It is used nowhere else.
+- **The folder-tab card is used ONLY on the main page lesson list:** Dars 0–6 (the hero card and everything else use the flat card). It is used nowhere else.
 - **Other screens use the flat card** (`.folder.flatc`): the same fills, radius 15 on all corners, no tab. This covers the lesson resources.
 - **Login is minimal:** headline + pill ID input + help link. No folder, no notch panel. A separate reference for it is pending.
 - **Prompt sections = full-bleed lilac, editorial numbered list; copy = done** (user decision, 2026-10-15; design 1 in `comp/prompt-options.html`).

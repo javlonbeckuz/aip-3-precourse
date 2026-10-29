@@ -183,7 +183,7 @@ test('integration endpoint: a CRM student (no group) logs in and sees precourse 
   assert.ok(me.schedule.starts[1] === null && me.schedule.group === null);
   const lessons = Object.fromEntries(me.lessons.map((l) => [l.n, l]));
   assert.equal(lessons[0].parts.prep.open, true);
-  for (const n of [1, 2, 3, 4]) {
+  for (const n of [1, 2, 3, 4, 5, 6]) {
     assert.equal(lessons[n].open, false, `lesson ${n}`);
     assert.equal(lessons[n].start, null);
     assert.equal(lessons[n].date, null);

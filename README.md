@@ -5,12 +5,13 @@ One Node process (Node 24+, no npm dependencies): `node:http`, `node:sqlite`, `n
 The API contract for the frontend is in [API.md](API.md).
 
 ```
-server/    index.js (http, routes, static) db.js (SQLite, migrations, students, progress)
+server/    fixtures/lessons/{1,3} (test-only lesson overlay)
+           index.js (http, routes, static) db.js (SQLite, migrations, students, progress)
            auth.js (ids, sessions, cookies, rate limit) content.js (content files, schedule, gating)
            bot.js (admin bot) migrations/*.sql   *.test.js
 content/   schedule.json  lessons/{n}/lesson.{uz,ru,en}.json  lessons/{n}/files/  prep/prep-{lang}.pdf
 public/    the SPA (stage 2). Shell: public/aip/index.html, else public/index.html
-scripts/   import-2.0.mjs (one-off importer from .design/ref-2.0-api)
+scripts/   shell.test.js (SPA shell checks)
 ```
 
 ## Run
@@ -57,7 +58,7 @@ python .design/comp/src/build.py --app    # prototype + i18n check, then public/
 node --test                               # includes scripts/shell.test.js: no inline script, no remote fonts, no course text in public/
 ```
 
-- It has no inline script (CSP `script-src 'self'`), no third-party requests (fonts are local; `python .design/comp/src/fetch_fonts.py` re-downloads them) and **no lesson text**: lessons, prompts, prep and the book come from `/api/aip` after login, so the gating stays on the server. Only platform UI strings are in `app.js`.
+- It has no inline script (CSP `script-src 'self'`), no third-party requests (fonts are local; `python .design/comp/src/fetch_fonts.py` re-downloads them) and **no lesson text**: lessons, prompts, prep come from `/api/aip` after login, so the gating stays on the server. Only platform UI strings are in `app.js`.
 - Routes use the History API under `/aip/...` (`/aip/dars/1`, `/aip/dars/1/amaliyot/01`, `/aip/dars/2/amaliyot/01-biznes-goyalar`, ...); the server returns the shell for every `/aip/*` path.
 - Language: the `aip_lang` cookie (set by the language switch, which refetches `/me`). Progress: `PUT /progress`, optimistic. A 401 anywhere returns to the login screen; `pageshow` re-checks `/me`.
 - Try it locally with a pinned clock: `SEED_DEMO=1 ALLOW_NOW=1 NOW=2026-09-12T09:59 DATA_DIR=$(mktemp -d) node server/index.js`, open `http://localhost:3000/aip/`, log in as `XM`.
@@ -73,45 +74,46 @@ The bot uses long polling, so no webhook or public URL is needed. Do not run two
 
 Commands (Uzbek UI, admins only; everyone else gets a polite refusal and a `bot: refused user <id>` log line):
 - `/new` (alias `/new_user`): full name, then phone, then group (Shanba / Yakshanba buttons), then mentor (buttons of previous mentors, or type one). The phone is the duplicate key: a number that is already registered shows the existing student's card instead of making a second one. Replies "Talaba yaratildi" with name, phone, group, mentor, ID and portal, then a second message you can forward to the student (portal URL + ID).
-- `/find <text>`: by name, ID or phone (4+ digits); shows phone, group, mentor, created date, last login, "Tayyorgarlik k/4 | darslar n/4 bajarilgan".
+- `/find <text>`: by name, ID or phone (4+ digits); shows phone, group, mentor, created date, last login, "Tayyorgarlik k/4 | darslar n/6 bajarilgan".
 - `/edit <ID> ism|telefon|guruh|mentor <value>`: fixes one field (`mentor -` clears the mentor). A phone that belongs to another student is refused.
 - `/list [shanba|yakshanba|yangi]`: 10 per page with Oldingi/Keyingi buttons; `yangi` = students who have no group yet.
 - `/start`, `/help`, `/cancel`.
 
 When the CRM creates a student (`POST /api/int/students`) every admin gets a card "Talaba yaratildi (CRM)" with **Shanba / Yakshanba** buttons plus the forwardable message. Any admin can press a button once: it sets the group and edits the card. Until a group is set the student sees only the precourse (lesson 0). If the bot is off or a send fails, the student is still created; the failure is logged as `#rowid`, never the ID. Look the student up with `SELECT id, full_name FROM students WHERE rowid = N` (rowids can change after a plain `VACUUM` or a restore), or in the bot with `/list` (newest first) or `/list yangi` if no group is set yet.
 
-There is no blocking or broadcasting. To deactivate a student (the API then answers the same `invalid_id` as for an unknown ID), or to give one the review flag that opens lesson 4 early, use SQL on the volume (`busy_timeout` avoids "database is locked" while the portal runs):
+There is no blocking or broadcasting. To deactivate a student (the API then answers the same `invalid_id` as for an unknown ID), or to give one the review flag that opens every lesson early, use SQL on the volume (`busy_timeout` avoids "database is locked" while the portal runs):
 ```
 node -e "const {DatabaseSync}=require('node:sqlite');const d=new DatabaseSync(process.env.DATA_DIR+'/aip.db');d.exec('PRAGMA busy_timeout=5000');d.exec(\"UPDATE students SET active=0 WHERE id='AIP-XXXXXX'\")"
 ```
-Same with `UPDATE students SET review=1 WHERE id='AIP-XXXXXX'` for the review flag (opens lesson 4 early; clients cannot set it).
+Same with `UPDATE students SET review=1 WHERE id='AIP-XXXXXX'` for the review flag (opens all 6 lessons early; clients cannot set it. It never beats TBA dates or a missing group).
 
 ## Timed releases: `content/schedule.json`
 
 ```json
 {
   "timezone": "Asia/Tashkent",
-  "groups": { "shanba": ["2026-09-12T10:00", "2026-09-19T10:00", "2026-09-26T10:00", "2026-10-03T10:00"],
-              "yakshanba": ["2026-09-13T10:00", "2026-09-20T10:00", "2026-09-27T10:00", "2026-10-04T10:00"] },
+  "groups": { "shanba": ["2026-11-21T10:00", "2026-11-28T10:00", "2026-12-05T10:00", "2026-12-12T10:00", "2026-12-19T10:00", "2026-12-26T10:00"],
+              "yakshanba": ["2026-11-22T10:00", "2026-11-29T10:00", "2026-12-06T10:00", "2026-12-13T10:00", "2026-12-20T10:00", "2026-12-27T10:00"] },
   "liveOverride": null,
   "liveDays": 7,
-  "release": { "1": { "vazifa": "+3h" }, "4": { "kitob": "2026-10-10T09:00" } }
+  "release": { "1": { "vazifa": "+3h" }, "6": { "kit": "2026-12-26T09:00" } }
 }
 ```
 
-- **Dates to follow**: `"shanba": null` (the shipped state) means the dates are not decided. For that group, and for any student with no group, lessons 1-4 stay locked whatever `release` says (and even with the `review` flag), the app shows "date to follow", `live` is 0, and lesson 0 (the precourse) stays open. `liveOverride` cannot change this.
-- `groups.<g>[i]` is the start of lesson i+1 for that group. Times without a zone are Asia/Tashkent (UTC+5, no DST). The start time of day (10:00) is an assumption: change it.
-- `liveOverride`: `null`, or 1-4 to pin the live lesson. It only changes `live`; it does not open anything.
-- `liveDays`: lesson 4 stays "live" this many days after its start. Lessons 1-3 are live until the next lesson starts.
-- `release.<lesson>.<part>`: when that part opens. Parts: `slides`, `vazifa`, `amaliyot`, `kitob`, `prep`. Value is `open`, a relative offset from that group's lesson start (`+0h`, `+3h`, `-2d`, `+30m`), or an absolute time. Lesson 0 offsets are relative to lesson 1's start.
+- **Dates to follow**: `"shanba": null` means the dates are not decided (the shipped file has all 6 dates). For that group, and for any student with no group, lessons 1-6 stay locked whatever `release` says (and even with the `review` flag), the app shows "date to follow", `live` is 0, and lesson 0 (the precourse) stays open. `liveOverride` cannot change this.
+- `groups.<g>[i]` is the start of lesson i+1 for that group. Times without a zone are Asia/Tashkent (UTC+5, no DST). Every group needs exactly 6 times. The shipped start is 10:00.
+- `liveOverride`: `null`, or 1-6 to pin the live lesson. It only changes `live`; it does not open anything.
+- `liveDays`: lesson 6 stays "live" this many days after its start. Lessons 1-5 are live until the next lesson starts.
+- `release.<lesson>.<part>`: when that part opens. Parts: `slides`, `amaliyot`, `kit`, `vazifa`, `prep` (anything else, such as the dropped `kitob`, stops startup). Value is `open`, a relative offset from that group's lesson start (`+0h`, `+3h`, `-2d`, `+30m`), or an absolute time. Lesson 0 offsets are relative to lesson 1's start.
 - Defaults: `prep` is `open`; every other part is `+0h`.
-- The server enforces it: locked parts are absent from payloads (only `opensAt`), and slide, clip, doc, book and prep-pdf endpoints answer 403 `locked`.
+- The server enforces it: locked parts are absent from payloads (only `opensAt`), and slide, clip and prep-pdf endpoints answer 403 `locked`, and the doc endpoint answers 404 for a locked file.
+- A lesson with no parts yet opens at its start time (no release key; `students.review` opens it at once).
 - The file is re-read when it changes (mtime). If an edit is invalid the server logs the error and keeps serving the last good copy; at startup an invalid file stops the server.
 
 ### Filling in the dates
 
-1. Edit `content/schedule.json`: replace `null` with the four lesson start times of each group, increasing, e.g. `"shanba": ["2026-11-21T10:00", "2026-11-28T10:00", "2026-12-05T10:00", "2026-12-12T10:00"]`. Add `release` offsets only where a part should open later than its lesson start (`"1": { "vazifa": "+3h" }`); with no entry every part opens at the start. Lesson 1 never opens before the start.
-2. Run `node --test` (it checks the shipped file: nothing in lessons 1-4 may open before that group's lesson 1).
+1. Edit `content/schedule.json`: replace `null` with the six lesson start times of each group, increasing, e.g. `"shanba": ["2026-11-21T10:00", ..., "2026-12-26T10:00"]`. Add `release` offsets only where a part should open later than its lesson start (`"1": { "vazifa": "+3h" }`); with no entry every part opens at the start. Lesson 1 never opens before the start.
+2. Run `node --test` (it checks the shipped file: nothing in lessons 1-6 may open before that group's lesson 1).
 3. Content is baked into the image, so the change goes live with a deploy (`railway up`, about a minute).
 
 The precourse links (`prep.more` in `content/lessons/0/lesson.{uz,ru,en}.json`, shape in API.md) are filled in the same way; while the key is absent the section stays hidden.
@@ -136,50 +138,40 @@ Abuse limits of the endpoint: 10 failed keys per 10 minutes per client (then 429
 
 ## Content format
 
-`content/lessons/{n}/lesson.{uz,ru,en}.json` (n = 0..4). A missing language falls back to `uz`. Edits are picked up without a restart.
+`content/lessons/{n}/lesson.{uz,ru,en}.json` (n = 0..6). A missing language falls back to `uz`. Edits are picked up without a restart.
 
-Example (shortened) `lesson.uz.json` of lesson 1:
+The `ru` and `en` files hold only `n`, `title`, `subtitle`, `summary`, `topics` (and `prep` for lesson 0). Everything else is read from the `uz` file, whatever the language. Lessons 1-6 ship with titles only, so they show "materials soon" until a part is added.
+
+Example (shortened) `lesson.uz.json` of a lesson with all parts:
 
 ```json
 {
-  "n": 1, "title": "Kirish", "subtitle": "AI nima, modellar, Context, RAG, NotebookLM",
-  "summary": "...", "topics": ["AI nima", "Modellar"],
-  "slideCount": 78, "slideKind": "video",
-  "hasBook": false, "bookNote": "", "bookVariants": [],
-  "homework": "",
-  "materials": [{ "art": "sources", "title": "Manbaalar", "note": "...", "files": [{ "slug": "hw-kompaniya", "name": "01_Kompaniya.pdf", "size": 21620 }],
-                  "bundle": { "slug": "hw-manbaalar", "name": "Manbaalar.zip", "size": 60748, "label": "Hammasini yuklash" }, "footnote": "..." }],
-  "prompts": { "title": "...", "subtitle": "...", "lede": "...", "rules": ["..."], "footnote": "...",
-               "groups": [{ "title": "Asosiy mashq", "note": "", "items": [{ "id": "P1", "title": "...", "target": "...", "text": "..." }] }] },
-  "praktikum": { "title": "...", "lead": "...", "rules": ["..."], "exercisesTitle": "", "exercisesNote": "", "promptsNote": "", "guide": { "slug": "qollanma", "name": "Talaba_qollanmasi.pdf", "size": 38284 }, "closing": null,
-                 "exercises": [{ "key": "01-hr-onboarding", "num": "01", "tag": "ASOSIY", "title": "...", "note": "...",
-                                 "yoriqnoma": { "slug": "01-hr-onboarding-yoriqnoma", "name": "01_Yoriqnoma.pdf", "size": 35017 }, "promptsPdf": null,
-                                 "sources": [], "extras": [], "prompts": [{ "id": "P1", "target": "Chat", "title": "...", "text": "..." }], "notes": [{ "title": "...", "text": "..." }] }] },
-  "prep": null
+  "n": 1, "title": "AI qanday ishlaydi", "subtitle": "...", "summary": "...", "topics": ["AI qatlamlari", "Kit 1"],
+  "slideCount": 12, "slideKind": "image",
+  "amaliyot": { "text": "Paragraph.\n\nNext paragraph.", "groups": [{ "title": "Fayllar", "note": "", "files": [{ "slug": "kompaniya", "name": "Kompaniya.pdf", "size": 21620 }] }] },
+  "kit": { "text": "...", "groups": [{ "title": "Kit 1", "files": [{ "slug": "kit1-forma", "name": "kit1-forma.md", "size": 3000 }, { "slug": "kit1-skill", "name": "kit1-skill.zip", "size": 9000 }] }] },
+  "vazifa": null
 }
 ```
 
-- A part exists if its fields are non-empty: slides (`slideCount > 0`), vazifa (`homework`, `materials` or `prompts`), amaliyot (`praktikum`), kitob (`hasBook`), prep (`prep`, lesson 0 only).
-- Every downloadable file object has a unique `slug` (per lesson), a display `name` and a `size`. There is no path field.
-- Course material (prompt texts and titles, exercise titles and notes, homework, group titles) is Uzbek in all three language files; only platform metadata is translated. `scripts/import-2.0.mjs` generated the files this way from `.design/ref-2.0-api/lessons_*.json`, dropping the 2.0 server paths and pre-rendered HTML.
+- A part exists if it has content: slides (`slideCount > 0`); amaliyot, kit and vazifa (a block with `text` or at least one group; `null` = none); prep (`prep`, lesson 0 only).
+- Every file object has a unique `slug` (per lesson), the real `name` (it is the download name, students save the files into their company folder) and a `size`. There is no path field.
+- Day 4 holds two groups in its Kit block ("Kit 5 A", "Kit 4 A/B"). Kit is not counted in progress.
 
 ### Where the files go
 
 | What | Path | Name rule |
 |---|---|---|
-| Lesson downloads | `content/lessons/{n}/files/` | `<slug><ext>`, ext from the file's `name`, e.g. `hw-kompaniya.pdf` |
-| Book (lesson 4) | `content/lessons/4/` | `book.pdf`, `book.cyrl.pdf` (variant `v` from `bookVariants`) |
+| Lesson downloads | `content/lessons/{n}/files/` | `<slug><ext>`, ext from the file's `name`, e.g. `kit1-forma.md` |
 | Slide stills | `content/lessons/{n}/slides/` | `1.webp` .. `N.webp` (`.jpg` / `.png` also work), 1-based |
 | Slide clips (video lessons) | `content/lessons/{n}/clips/` | `{i}-1080.mp4`, `{i}-2160.mp4` |
-| Prep checklist PDFs | `content/prep/` | `prep-uz.pdf`, `prep-ru.pdf`, `prep-en.pdf` (real files, from the prototype) |
+| Prep checklist PDFs | `content/prep/` | `prep-uz.pdf`, `prep-ru.pdf`, `prep-en.pdf` |
 
 ### Placeholders
 
-The 2.0 binaries are not available. Wherever a real file is missing the server falls back to a clearly marked stand-in:
-- Downloads and books: `<name>.placeholder` next to the real name, e.g. `files/hw-kompaniya.pdf.placeholder` (a one-page PDF saying "PLACEHOLDER", a short text/CSV, or an empty ZIP). **To publish the real file, drop it at the name without `.placeholder`; it wins automatically** (delete the placeholder when you like).
-- Slides: no files exist; `/slide/{i}` serves a generated SVG "i / N PLACEHOLDER slide". Clips return 404 until `clips/` has files.
+A missing file falls back to `<name>.placeholder` next to the real name (`files/kit1-forma.md.placeholder`). **To publish the real file, drop it at the name without `.placeholder`; it wins automatically.** Slides: until stills exist `/slide/{i}` serves a generated SVG. Clips return 404 until `clips/` has files. There are no placeholders in `content/` right now. The tests use `server/fixtures/lessons/{1,3}` (laid over a copy of `content/` by `tmpCopy`).
 
-Current placeholders (40): all of `content/lessons/1/files/*.placeholder` (hw-kompaniya, hw-narxlar, hw-yetkazish, hw-reklama, hw-eski-narxlar, hw-buyurtmalar, hw-yigilish, hw-manbaalar (zip), hw-qollanma, qollanma, sinov, and the yoriqnoma / promptlar-pdf / source files of exercises 01, 02, 03a, 03b, 04, 05, 06) and `content/lessons/4/book.pdf.placeholder`, `book.cyrl.pdf.placeholder`. Find them with `find content -name "*.placeholder"`. The `size` in the JSON is the 2.0 size, not the placeholder's.
+The 2.0 lessons are archived in `.design/archive-2.0/` (not in the Docker image).
 
 ## Security notes
 
@@ -192,7 +184,3 @@ Current placeholders (40): all of `content/lessons/1/files/*.placeholder` (hw-ko
 - Shared addresses: a classroom or office behind one NAT shares one rate-limit bucket (and, on IPv6, one /64). Ten wrong IDs from anyone in the room within 10 minutes lock the whole room out for the rest of that window, so typos by a few students can block everybody. Hand out the IDs on paper or by message and tell students to copy them rather than type them.
 - Sessions: the newest 5 per student are kept; expired rows are purged every 10 minutes.
 - The slide "anti-capture" (blur, no right-click) is a frontend job; the server only gates by time and session.
-
-## Re-importing
-
-`npm run import-2.0` (or `node scripts/import-2.0.mjs`) rewrites the lesson JSON from `.design/ref-2.0-api` and re-creates missing placeholders. It overwrites hand edits to `lesson.*.json`: use it only for a fresh start.

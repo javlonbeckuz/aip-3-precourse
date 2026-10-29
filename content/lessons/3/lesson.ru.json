@@ -1,26 +1,16 @@
 {
   "n": 3,
-  "title": "Skill и агенты",
-  "subtitle": "Skill, Plugin, Connector, Plan, команда агентов, here.now",
-  "summary": "Расширим возможности Claude: skill, plugin, connector и команда агентов. Практика: build и deployment.",
+  "title": "API и MCP",
+  "subtitle": "API, ключи, MCP, frontend и backend, system prompt, Kit 3",
+  "summary": "Разбиваем выбранный процесс на шаги и пишем инструкцию агента. Затем подключаем первую версию агента к реальным системам. Kit 3: перераспределяем работу.",
   "topics": [
-    "Skill",
-    "Plugin",
-    "Connector",
-    "Plan",
-    "Команда агентов",
-    "here.now",
-    "Build",
-    "Deployment"
-  ],
-  "slideCount": 40,
-  "slideKind": "video",
-  "hasBook": false,
-  "bookNote": "",
-  "bookVariants": [],
-  "homework": "Erkin ijod: darsda oʻrganganlaringizdan foydalanib, oʻz biznesingiz uchun biror narsa yarating. Nima qilishni oʻzingiz tanlaysiz — muhimi, u biznesingizga haqiqatan kerak boʻlsin.",
-  "materials": [],
-  "prompts": null,
-  "praktikum": null,
-  "prep": null
+    "API",
+    "API-ключ и .env",
+    "MCP и connector",
+    "Frontend и backend",
+    "Open source",
+    "System prompt",
+    "Агент v0",
+    "Kit 3"
+  ]
 }

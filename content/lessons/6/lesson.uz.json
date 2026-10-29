@@ -1,0 +1,20 @@
+{
+  "n": 6,
+  "title": "Natijalar va demo kuni",
+  "subtitle": "Baseline va farq, vazifa narxi, ROI, qaror, build yoki buy, demo",
+  "summary": "Pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaymiz va davom ettirish, oʻzgartirish yoki toʻxtatishni hal qilamiz. Keyin natijani taqdim etasiz. Kit 5 B: yakuniy raqamlar.",
+  "topics": [
+    "Baseline va farq",
+    "Bitta vazifa narxi",
+    "Topilgan pul",
+    "ROI",
+    "Davom, oʻzgartirish yoki toʻxtatish",
+    "Build, buy yoki open source",
+    "Demo"
+  ],
+  "slideCount": 0,
+  "slideKind": "image",
+  "amaliyot": null,
+  "kit": null,
+  "vazifa": null
+}

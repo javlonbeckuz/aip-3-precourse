@@ -1,0 +1,21 @@
+{
+  "n": 3,
+  "title": "API va MCP",
+  "subtitle": "API, kalitlar, MCP, frontend va backend, system prompt, Kit 3",
+  "summary": "Tanlangan jarayonni qadamlarga ajratamiz va agent yoʻriqnomasini yozamiz. Keyin agentning birinchi versiyasini haqiqiy tizimlarga ulaymiz. Kit 3: ishni qayta taqsimlash.",
+  "topics": [
+    "API",
+    "API kaliti va .env",
+    "MCP va connector",
+    "Frontend va backend",
+    "Open source",
+    "System prompt",
+    "Agent v0",
+    "Kit 3"
+  ],
+  "slideCount": 40,
+  "slideKind": "image",
+  "amaliyot": null,
+  "kit": null,
+  "vazifa": null
+}

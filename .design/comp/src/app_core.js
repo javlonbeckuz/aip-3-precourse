@@ -25,7 +25,7 @@ function fillMenu(){
   const s = SESS.student, $ = id => document.getElementById(id);
   $('nm-name').textContent = s.fullName; $('nm-id').textContent = s.id;
   $('nm-group').textContent = t('menu.group_' + (s.group || 'none'));
-  $('nm-course').textContent = LESSONS[1].d ? t('menu.course_range', {n: SESS.schedule.sessions, from: lessonDate(1), to: lessonDate(4)}) : t('menu.course_tba');
+  $('nm-course').textContent = LESSONS[1].d ? t('menu.course_range', {n: SESS.schedule.sessions, from: lessonDate(1), to: lessonDate(LN().at(-1))}) : t('menu.course_tba');
   okina($('nmenu'));
 }
 async function logout(){
