@@ -301,7 +301,7 @@ const I18N = {uz: {
   'amf.on': 'Amaliyot bajarildi',
   'amf.off': 'Amaliyot bajarildi',
   'amf.aria': 'Amaliyot bajarildi deb belgilash',
-  'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi',
+  'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi', 'pre.code_copy': 'Promokodni nusxalash', 'pre.code': 'Promokod', 'toast.code_copied': 'Promokod nusxalandi',
   'lesson.1.t0': 'AI qatlamlari',
   'lesson.1.t1': 'Maʼlumot qayerga ketadi',
   'lesson.1.t2': 'LLM va token',
@@ -843,7 +843,10 @@ const I18N = {uz: {
   "pre.label": "Материалы до курса",
   "pre.sub": "Инфраструктура и платформы HEAD",
   "pre.lede": "Материалы, которые нужны до начала курса, и ссылки на другие учебные платформы HEAD.",
-  "setup.title": "Установка и подготовка"
+  "setup.title": "Установка и подготовка",
+  "pre.code_copy": "Скопировать промокод",
+  "toast.code_copied": "Промокод скопирован",
+  "pre.code": "Промокод"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1293,7 +1296,10 @@ const I18N = {uz: {
   "pre.label": "Materials before the course",
   "pre.sub": "Infrastructure and HEAD platforms",
   "pre.lede": "Materials you need before the course starts, and links to the other HEAD learning platforms.",
-  "setup.title": "Setup and preparation"
+  "setup.title": "Setup and preparation",
+  "pre.code_copy": "Copy the promo code",
+  "toast.code_copied": "Promo code copied",
+  "pre.code": "Promo code"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive

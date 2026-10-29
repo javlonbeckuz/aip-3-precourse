@@ -455,5 +455,8 @@
  "pre.label": "Materials before the course",
  "pre.sub": "Infrastructure and HEAD platforms",
  "pre.lede": "Materials you need before the course starts, and links to the other HEAD learning platforms.",
- "setup.title": "Setup and preparation"
+ "setup.title": "Setup and preparation",
+ "pre.code_copy": "Copy the promo code",
+ "toast.code_copied": "Promo code copied",
+ "pre.code": "Promo code"
 }

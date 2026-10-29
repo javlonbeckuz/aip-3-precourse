@@ -90,6 +90,18 @@
         ],
         "footnote": "Oʻrnatish chiqmasa, xatoning skrinshotini mentoringizga yuboring. 01-dars oxirida mentorlar yordam beradi."
       }
-    ]
+    ],
+    "more": {
+      "title": "Prompt yozishni oʻrganing",
+      "note": "Kurs boshlanguncha shu platformada mashq qiling.",
+      "links": [
+        {
+          "title": "Protokol 57",
+          "note": "Prompt yozish boʻyicha HEAD platformasi: 57 ta protokol, har bir promptingizga AI 0 dan 100 gacha baho beradi. Praktikum talabalari uchun bepul: toʻlov paytida promokodni kiriting.",
+          "url": "https://p57.uz/",
+          "code": "PRAKTIKUM3"
+        }
+      ]
+    }
   }
 }

@@ -270,3 +270,7 @@ html.hid .bgp path{animation-play-state:paused}
 .f-biglock{position:absolute;right:24px;top:50%;width:64px;height:64px;transform:translateY(-50%);pointer-events:none}
 @container (min-width:900px){.f-biglock{right:calc(48 * var(--u));width:calc(120 * var(--u));height:calc(120 * var(--u))}}
 .ex-wrap .prep-more{margin:24px 0 0}
+
+/* Birinchi darsgacha: link descriptions read as sentences (body font), the promo code row gets a plain label */
+.prep-more .ef-mt{font-family:var(--font-body);font-size:15px;line-height:1.45;letter-spacing:0;text-transform:none}
+.pre-code{margin-top:4px}.pre-code .pc-l{font:600 14px/1 var(--font-body);opacity:.7;white-space:nowrap}

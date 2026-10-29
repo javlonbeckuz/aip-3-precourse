@@ -90,6 +90,18 @@
         ],
         "footnote": "If the install fails, send a screenshot of the error to your mentor. Mentors help at the end of Lesson 01."
       }
-    ]
+    ],
+    "more": {
+      "title": "Learn to write prompts",
+      "note": "Practise on this platform before the course starts.",
+      "links": [
+        {
+          "title": "Protokol 57",
+          "note": "HEAD’s prompt-writing platform: 57 protocols, and AI scores each of your prompts from 0 to 100. Free for Praktikum students: enter the promo code at checkout. The platform is in Uzbek.",
+          "url": "https://p57.uz/",
+          "code": "PRAKTIKUM3"
+        }
+      ]
+    }
   }
 }

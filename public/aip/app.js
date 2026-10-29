@@ -525,7 +525,7 @@ const I18N = {uz: {
   'amf.on': 'Amaliyot bajarildi',
   'amf.off': 'Amaliyot bajarildi',
   'amf.aria': 'Amaliyot bajarildi deb belgilash',
-  'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi',
+  'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi', 'pre.code_copy': 'Promokodni nusxalash', 'pre.code': 'Promokod', 'toast.code_copied': 'Promokod nusxalandi',
   
   
   
@@ -949,7 +949,10 @@ const I18N = {uz: {
   "pre.label": "Материалы до курса",
   "pre.sub": "Инфраструктура и платформы HEAD",
   "pre.lede": "Материалы, которые нужны до начала курса, и ссылки на другие учебные платформы HEAD.",
-  "setup.title": "Установка и подготовка"
+  "setup.title": "Установка и подготовка",
+  "pre.code_copy": "Скопировать промокод",
+  "toast.code_copied": "Промокод скопирован",
+  "pre.code": "Промокод"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1281,7 +1284,10 @@ const I18N = {uz: {
   "pre.label": "Materials before the course",
   "pre.sub": "Infrastructure and HEAD platforms",
   "pre.lede": "Materials you need before the course starts, and links to the other HEAD learning platforms.",
-  "setup.title": "Setup and preparation"
+  "setup.title": "Setup and preparation",
+  "pre.code_copy": "Copy the promo code",
+  "toast.code_copied": "Promo code copied",
+  "pre.code": "Promo code"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
@@ -1488,7 +1494,7 @@ function applyLessons(ls, lsUz, lang){
     pr.items.forEach((it, i) => { D[`prep.${i}.title`] = it.title; D[`prep.${i}.note`] = it.note; it.steps.forEach((s, j) => { D[`prep.${i}.s${j}`] = s; }); acts(it).forEach((a, j) => { D[`prep.${i}.a${j}`] = a.label; }); if (it.footnote) D[`prep.${i}.foot`] = it.footnote; });
   }
   const mo = pr && pr.more, ml = mo && Array.isArray(mo.links) ? mo.links.filter(x => x && /^https:\/\//.test(x.url)) : [];   // external learning platforms: links only, never counted as prep
-  PREP.more = ml.length ? {links: ml.map(x => ({url: x.url}))} : null;
+  PREP.more = ml.length ? {links: ml.map(x => ({url: x.url, code: typeof x.code === 'string' && /^[A-Za-z0-9_-]{1,32}$/.test(x.code) ? x.code : null}))} : null;   // code = an optional promo code shown with a copy button
   if (PREP.more) {
     const dflt = (I18N[lang] || I18N.uz)['prep.more.dflt'] || I18N.uz['prep.more.dflt'];   // the payload's language, not the UI's: never a blank heading or pill
     D['prep.more.title'] = mo.title || dflt; D['prep.more.note'] = mo.note || '';
@@ -1661,7 +1667,7 @@ function homePage(){
 // ---- lesson 0: prep checklist
 const PREP_CMD = (i, j) => (PREP_CMDS[i] || {})[j] || '';   // an install command shown under its step: a mono row with its own copy button (copying ticks nothing)
 const cmdRow = (i, j) => { const c = PREP_CMD(i, j); return c ? `<div class="cmd"><code tabindex="0" aria-label="${esc(c)}">${esc(c)}</code><button class="cmd-cp" type="button" data-cmd="${esc(c)}" aria-label="${esc(t('prep.cmd_copy'))}">${I('copy', 20)}</button></div>` : ''; };
-document.addEventListener('click', async e => { const b = e.target.closest('.cmd-cp'); if (!b) return; flashToast((await copy(b.dataset.cmd)) ? 'toast.cmd_copied' : 'toast.copy_failed'); });
+document.addEventListener('click', async e => { const b = e.target.closest('.cmd-cp'); if (!b) return; flashToast((await copy(b.dataset.cmd)) ? (b.dataset.toast || 'toast.cmd_copied') : 'toast.copy_failed'); });
 const deckCols = open => open < 0 ? 'repeat(4,minmax(0,1fr))' : PREP.items.map((_, i) => i === open ? '2fr' : '1fr').join(' ');
 function prepPage(){
   const done = PREP.items.map((_, i) => S.has('prep:' + i)), open = prepOpen ?? done.indexOf(false);
@@ -1687,7 +1693,7 @@ function prepPage(){
 // "Birinchi darsgacha": the materials before the course (infrastructure, links to HEAD's other learning platforms); nothing yet = the "soon" line
 function prePage(){
   const m = PREP.more;
-  const rows = m ? m.links.map((l, i) => `<li><a class="ef-row" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span><span class="ef-nm">${wbr(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.n`) ? `<span class="ef-mt">${T(`prep.more.${i}.n`)}</span>` : ''}</span><span class="ef-dl">${I('ne', 18)}<span class="sr-only">${T('common.sr_external')}</span></span></a></li>`).join('') : '';
+  const rows = m ? m.links.map((l, i) => `<li><a class="ef-row" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span><span class="ef-nm">${wbr(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.n`) ? `<span class="ef-mt">${T(`prep.more.${i}.n`)}</span>` : ''}</span><span class="ef-dl">${I('ne', 18)}<span class="sr-only">${T('common.sr_external')}</span></span></a>${l.code ? `<div class="cmd pre-code"><span class="pc-l">${T('pre.code')}</span><code tabindex="0" aria-label="${esc(l.code)}">${esc(l.code)}</code><button class="cmd-cp" type="button" data-cmd="${esc(l.code)}" data-toast="toast.code_copied" aria-label="${esc(t('pre.code_copy'))}">${I('copy', 20)}</button></div>` : ''}</li>`).join('') : '';
   return {screen: 'ex', tag: '#/kursgacha', title: t('prep.title'), html: nav('pre') + wrap(`
       ${dlh('#/dastur', T('nav.home'), T('pre.label'))}
       <h1 class="headline ex-h">${T('prep.title')}</h1><p class="lede">${T('pre.lede')}</p>

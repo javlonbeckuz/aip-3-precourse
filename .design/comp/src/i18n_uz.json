@@ -1764,6 +1764,21 @@
   "translate": true,
   "note": "undo toast at the bottom; ≤ 28 chars"
  },
+ "pre.code_copy": {
+  "uz": "Promokodni nusxalash",
+  "translate": true,
+  "note": "UI text"
+ },
+ "pre.code": {
+  "uz": "Promokod",
+  "translate": true,
+  "note": "UI text"
+ },
+ "toast.code_copied": {
+  "uz": "Promokod nusxalandi",
+  "translate": true,
+  "note": "undo toast at the bottom; ≤ 28 chars"
+ },
  "lesson.1.t0": {
   "uz": "AI qatlamlari",
   "translate": true,
