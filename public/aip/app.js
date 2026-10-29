@@ -412,7 +412,7 @@ const I18N = {uz: {
   'pick.meta': 'Mashq 03', 'pick.group': 'Tanlang', 'pick.title': 'Bittasini tanlang: A yoki B', 'pick.lede': 'Ikkitadan bittasini tanlang. Bittasi bajarilsa, mashq bajarilgan hisoblanadi; ikkinchisi ixtiyoriy.', 'pick.done_sfx': ' · bajarildi',
   'ex.meta': 'Mashq {num}', 'ex.meta_extra': 'Mashq {num} · {extra}', 'ex.back': 'Amaliyot', 'ex.back_pick': '03 · Bittasini tanlang',
   'ex.g1': '1 · Avval oʻqing', 'ex.g2': '2 · NotebookLMʼga yuklang', 
-  'ex.k': 'Promptlar · {d}/{t} bajarildi', 'ex.rule': '[Qavslar] ichini oʻzingiz toʻldirasiz.', 'lbl.where': 'Qayerga:', 'ex.pdf': 'PDF varianti · {size}',
+  'ex.k': 'Promptlar · {d}/{t} bajarildi', 'ex.rule': '[Qavslar] ichini oʻzingiz toʻldirasiz.', 'lbl.where': 'Qayerga:', 'lc.steps': '{n} qadam', 'lc.files': '{n} fayl', 'lc.prompts': '{n} prompt', 'lc.show': 'Matnni koʻrish', 'lc.hide': 'Matnni yashirish', 'ex.pdf': 'PDF varianti · {size}',
   'end.done': 'Bajarildi', 'end.mark': 'Bajarildi deb belgilash', 'ex.next': 'Keyingi mashq\n{num} · {title}', 'ex.index': 'Amaliyot\nsahifasi',
   // --- library (lesson 2)
   'lib.meta': 'Amaliyot', 'lib.title': 'Prompt kutubxonasi', 'lib.lede': '47 ta tayyor prompt, 5 boʻlimda. Ishingizga mos boʻlimni tanlang.', 'lib.search': 'Prompt qidirish',
@@ -954,7 +954,24 @@ const I18N = {uz: {
   "pre.code_copy": "Скопировать промокод",
   "toast.code_copied": "Промокод скопирован",
   "pre.code": "Промокод",
-  "pre.open": "Открыть"
+  "pre.open": "Открыть",
+  "lc.steps": "{n} шага",
+  "lc.steps#one": "{n} шаг",
+  "lc.steps#few": "{n} шага",
+  "lc.steps#many": "{n} шагов",
+  "lc.steps#other": "{n} шага",
+  "lc.files": "{n} файла",
+  "lc.files#one": "{n} файл",
+  "lc.files#few": "{n} файла",
+  "lc.files#many": "{n} файлов",
+  "lc.files#other": "{n} файла",
+  "lc.prompts": "{n} промпта",
+  "lc.prompts#one": "{n} промпт",
+  "lc.prompts#few": "{n} промпта",
+  "lc.prompts#many": "{n} промптов",
+  "lc.prompts#other": "{n} промпта",
+  "lc.show": "Показать текст",
+  "lc.hide": "Скрыть текст"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1290,7 +1307,18 @@ const I18N = {uz: {
   "pre.code_copy": "Copy the promo code",
   "toast.code_copied": "Promo code copied",
   "pre.code": "Promo code",
-  "pre.open": "Open"
+  "pre.open": "Open",
+  "lc.steps": "{n} steps",
+  "lc.steps#one": "{n} step",
+  "lc.steps#other": "{n} steps",
+  "lc.files": "{n} files",
+  "lc.files#one": "{n} file",
+  "lc.files#other": "{n} files",
+  "lc.prompts": "{n} prompts",
+  "lc.prompts#one": "{n} prompt",
+  "lc.prompts#other": "{n} prompts",
+  "lc.show": "Show text",
+  "lc.hide": "Hide text"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
@@ -1589,7 +1617,7 @@ const nav = active => `<header class="nav">
 function pli(o){
   const done = S.has(o.key);
   return `<li class="${done ? 'done' : ''}${o.no === '' ? ' nonum' : ''}" data-i="${o.i}" data-pid="${o.pid}" data-key="${o.key}" data-t="${esc(o.title)}"><span class="no" aria-hidden="true">${o.no}</span>
-    <div class="body"><h3 class="tt" tabindex="-1">${o.titleH}${o.ph ? NSTAG() : ''}</h3>${o.where ? `<p class="to strong"><b>${T(o.lbl)}</b> ${o.whereH}</p>` : ''}<p class="tx" data-raw="${esc(o.text)}">${o.textH}</p></div>
+    <div class="body"><h3 class="tt" tabindex="-1">${o.titleH}${o.ph ? NSTAG() : ''}</h3>${o.where ? `<p class="to strong"><b>${T(o.lbl)}</b> ${o.whereH}</p>` : ''}${o.fold ? `<details class="txd"><summary><span class="tx-s">${T('lc.show')}</span><span class="tx-h">${T('lc.hide')}</span></summary><p class="tx" data-raw="${esc(o.text)}">${o.textH}</p></details>` : `<p class="tx" data-raw="${esc(o.text)}">${o.textH}</p>`}</div>
     <div class="cpw"><button class="cp" type="button" aria-label="${esc(t('common.copy_aria', {title: o.title}))}"><span class="cp-c">${I('copy', 20)}</span><span class="cpl">${T('common.copy')}</span></button></div></li>`;
 }
 const sizeT = z => LANG === 'en' ? z.replace(/(\d),(\d)/g, '$1.$2') : z;   // file sizes are stored with the Uzbek/Russian decimal comma; English reads 21.1 KB
@@ -1761,18 +1789,34 @@ const partWhen = iso => /^\d{4}-\d\d-\d\dT\d\d:\d\d/.test(iso || '') ? {date: fm
 const lockedPane = iso => `<p class="p-label">${T('part.locked')}</p><div><p class="p-sub">${T('part.opens', partWhen(iso))}</p></div>`;
 const tabOfHref = h => { const m = /[?&]tab=(sl|am|kt|vz)\b/.exec(h || ''); return m ? m[1] : /\/slayd\//.test(h || '') ? 'sl' : null; };
 // prompt copy rows of a group (the 2.0 rows): copy = done, written as p:l{n}:{id}; the text stays Uzbek (lang="uz-Latn" inside a ru/en page). Not counted in the lesson's units
-function promptList(n, gkey, g){
+function promptList(n, gkey, g, fold){
   const lis = g.prompts.map((q, j) => { const k = `${gkey}.p${j}`, text = cu(`${k}.x`);
-    return pli({i: j, pid: q.kid, no: q.id || 'P' + (j + 1), key: `p:l${n}:${q.kid}`, title: cu(`${k}.t`), titleH: cuh(`${k}.t`), where: q.target, whereH: q.target ? cuh(`${k}.w`) : '', lbl: 'lbl.where', text, textH: cxh(`${k}.x`, I18N.uz[`${k}.x`], x => mark(esc(x)))}); }).join('');
+    return pli({fold,i: j, pid: q.kid, no: q.id || 'P' + (j + 1), key: `p:l${n}:${q.kid}`, title: cu(`${k}.t`), titleH: cuh(`${k}.t`), where: q.target, whereH: q.target ? cuh(`${k}.w`) : '', lbl: 'lbl.where', text, textH: cxh(`${k}.x`, I18N.uz[`${k}.x`], x => mark(esc(x)))}); }).join('');
   return `<div class="s1">${g.prompts.some(q => hasBracket(q.text)) ? `<p class="s1-rule">${T('ex.rule')}</p>` : ''}<ol>${lis}</ol></div>`;
 }
-// Amaliyot / Kit / Vazifa share one pane: paragraphs, then file groups (title + note + rows); Amaliyot and Vazifa end with a tick
+// a group note "ASOSIY. lead 1) a 2) b Tayyor, agar: c" -> {tag, lead, steps, ready}: display only, the stored text never changes
+function noteParts(s){
+  let n = String(s || '').trim(), tag = '', ready = '';
+  const tm = /^([A-Z0-9ʻʼ' ]{3,30})\.\s+/.exec(n); if (tm) { tag = tm[1]; n = n.slice(tm[0].length); }
+  const ri = n.search(/\s*Tayyor, agar:\s*/); if (ri >= 0) { ready = n.slice(ri).replace(/^\s*Tayyor, agar:\s*/, '').trim(); n = n.slice(0, ri); }
+  const ps = n.split(/\s*(?=\b\d\)\s)/), lead = /^\d\)\s/.test(ps[0]) ? '' : ps.shift();
+  return {tag, lead: (lead || '').trim(), steps: ps.map(x => x.replace(/^\d\)\s*/, '').trim()).filter(Boolean), ready};
+}
+// one group = one accordion row (native <details>): number, title and a short meta line; the first row starts open
+function groupRow(n, key, g, i){
+  const gk = `${key}.g${i}`, m = /^(\d+[A-Z]?)\.?\s+(.+)$/.exec(cu(gk)), no = m ? (/^\d+$/.test(m[1]) ? num2(+m[1]) : m[1]) : '', title = m ? m[2] : cu(gk);
+  const np = noteParts(g.note ? cu(`${gk}.n`) : ''), lg = cxFb(`${gk}.n`) || cxFb(gk) ? ' lang="uz-Latn"' : '';
+  const meta = [np.steps.length && t('lc.steps', {n: np.steps.length, pl: np.steps.length}), g.files.length && t('lc.files', {n: g.files.length, pl: g.files.length}), g.prompts.length && t('lc.prompts', {n: g.prompts.length, pl: g.prompts.length}), np.tag].filter(Boolean).join(' · ');
+  const body = `${np.lead ? `<p class="lc-lead">${esc(np.lead)}</p>` : ''}${np.steps.length ? `<ol class="lc-steps">${np.steps.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="lc-ready"><b>Tayyor, agar</b>${esc(np.ready)}</p>` : ''}${g.files.length ? `<div class="ex-files"><ul>${g.files.map(f => fileRow(f)).join('')}</ul></div>` : ''}${g.prompts.length ? promptList(n, gk, g, true) : ''}`;
+  return `<details class="lc-row"${i ? '' : ' open'}><summary class="lc-sum"${lg}><span class="lc-no">${esc(no)}</span><span><span class="lc-tt">${esc(title)}</span>${meta ? `<span class="lc-meta">${esc(meta)}</span>` : ''}</span><span class="lc-chev" aria-hidden="true"></span></summary><div class="lc-body"${lg}>${body}</div></details>`;
+}
+// Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups as accordion rows; Amaliyot and Vazifa end with a tick
 function blockPane(n, p){
   const b = (PARTS[n] || {})[p] || {text: '', groups: []}, key = `c.p.${n}.${p}`;
   const text = b.text ? cu(`${key}.text`).split(/\n\s*\n/).map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`).join('') : '';
-  const groups = b.groups.map((g, i) => group(cuh(`${key}.g${i}`), g.files.map(f => fileRow(f)).join(''), '', g.note ? cuh(`${key}.g${i}.n`) : '', g.prompts.length ? promptList(n, `${key}.g${i}`, g) : '')).join('');
+  const groups = b.groups.map((g, i) => groupRow(n, key, g, i)).join('');
   const end = p === 'am' ? endb('f:am' + n, S.has('f:am' + n), 'amf.on', 'amf.off', '', 'amf.aria') : p === 'vz' ? endb('f:v' + n, S.has('f:v' + n), 'vzf.on', 'vzf.off', '', 'vzf.aria') : '';
-  return `<p class="p-label">${T('unit.' + p)}</p>${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${groups ? `<div class="ex-files">${groups}</div>` : ''}${end ? `<div class="gt-foot end">${end}</div>` : ''}`;
+  return `<p class="p-label">${T('unit.' + p)}</p>${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${groups ? `<div class="lc">${groups}</div>` : ''}${end ? `<div class="gt-foot end">${end}</div>` : ''}`;
 }
 function lessonPage(n, tab){
   tab = tab || tabOfHref((nextOf(n) || {}).href);   // no ?tab: the tab with today's work

@@ -188,7 +188,7 @@ const I18N = {uz: {
   'pick.meta': 'Mashq 03', 'pick.group': 'Tanlang', 'pick.title': 'Bittasini tanlang: A yoki B', 'pick.lede': 'Ikkitadan bittasini tanlang. Bittasi bajarilsa, mashq bajarilgan hisoblanadi; ikkinchisi ixtiyoriy.', 'c.ex.extra_06': 'Namoyish yoki uyga vazifa', 'pick.done_sfx': ' · bajarildi',
   'ex.meta': 'Mashq {num}', 'ex.meta_extra': 'Mashq {num} · {extra}', 'ex.back': 'Amaliyot', 'ex.back_pick': '03 · Bittasini tanlang',
   'ex.g1': '1 · Avval oʻqing', 'ex.g2': '2 · NotebookLMʼga yuklang', 
-  'ex.k': 'Promptlar · {d}/{t} bajarildi', 'ex.rule': '[Qavslar] ichini oʻzingiz toʻldirasiz.', 'lbl.where': 'Qayerga:', 'ex.pdf': 'PDF varianti · {size}',
+  'ex.k': 'Promptlar · {d}/{t} bajarildi', 'ex.rule': '[Qavslar] ichini oʻzingiz toʻldirasiz.', 'lbl.where': 'Qayerga:', 'lc.steps': '{n} qadam', 'lc.files': '{n} fayl', 'lc.prompts': '{n} prompt', 'lc.show': 'Matnni koʻrish', 'lc.hide': 'Matnni yashirish', 'ex.pdf': 'PDF varianti · {size}',
   'end.done': 'Bajarildi', 'end.mark': 'Bajarildi deb belgilash', 'ex.next': 'Keyingi mashq\n{num} · {title}', 'ex.index': 'Amaliyot\nsahifasi',
   // --- library (lesson 2)
   'lib.meta': 'Amaliyot', 'lib.title': 'Prompt kutubxonasi', 'lib.lede': '47 ta tayyor prompt, 5 boʻlimda. Ishingizga mos boʻlimni tanlang.', 'lib.search': 'Prompt qidirish',
@@ -848,7 +848,24 @@ const I18N = {uz: {
   "pre.code_copy": "Скопировать промокод",
   "toast.code_copied": "Промокод скопирован",
   "pre.code": "Промокод",
-  "pre.open": "Открыть"
+  "pre.open": "Открыть",
+  "lc.steps": "{n} шага",
+  "lc.steps#one": "{n} шаг",
+  "lc.steps#few": "{n} шага",
+  "lc.steps#many": "{n} шагов",
+  "lc.steps#other": "{n} шага",
+  "lc.files": "{n} файла",
+  "lc.files#one": "{n} файл",
+  "lc.files#few": "{n} файла",
+  "lc.files#many": "{n} файлов",
+  "lc.files#other": "{n} файла",
+  "lc.prompts": "{n} промпта",
+  "lc.prompts#one": "{n} промпт",
+  "lc.prompts#few": "{n} промпта",
+  "lc.prompts#many": "{n} промптов",
+  "lc.prompts#other": "{n} промпта",
+  "lc.show": "Показать текст",
+  "lc.hide": "Скрыть текст"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1302,7 +1319,18 @@ const I18N = {uz: {
   "pre.code_copy": "Copy the promo code",
   "toast.code_copied": "Promo code copied",
   "pre.code": "Promo code",
-  "pre.open": "Open"
+  "pre.open": "Open",
+  "lc.steps": "{n} steps",
+  "lc.steps#one": "{n} step",
+  "lc.steps#other": "{n} steps",
+  "lc.files": "{n} files",
+  "lc.files#one": "{n} file",
+  "lc.files#other": "{n} files",
+  "lc.prompts": "{n} prompts",
+  "lc.prompts#one": "{n} prompt",
+  "lc.prompts#other": "{n} prompts",
+  "lc.show": "Show text",
+  "lc.hide": "Hide text"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive

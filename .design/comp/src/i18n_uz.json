@@ -1329,6 +1329,31 @@
   "translate": true,
   "note": "bold label before the paste target, e.g. \"Where:\""
  },
+ "lc.steps": {
+  "uz": "{n} qadam",
+  "translate": true,
+  "note": "UI text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "lc.files": {
+  "uz": "{n} fayl",
+  "translate": true,
+  "note": "UI text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "lc.prompts": {
+  "uz": "{n} prompt",
+  "translate": true,
+  "note": "UI text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "lc.show": {
+  "uz": "Matnni koʻrish",
+  "translate": true,
+  "note": "UI text"
+ },
+ "lc.hide": {
+  "uz": "Matnni yashirish",
+  "translate": true,
+  "note": "UI text"
+ },
  "ex.pdf": {
   "uz": "PDF varianti · {size}",
   "translate": true,

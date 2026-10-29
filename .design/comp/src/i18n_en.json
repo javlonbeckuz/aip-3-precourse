@@ -459,5 +459,19 @@
  "pre.code_copy": "Copy the promo code",
  "toast.code_copied": "Promo code copied",
  "pre.code": "Promo code",
- "pre.open": "Open"
+ "pre.open": "Open",
+ "lc.steps": {
+  "one": "{n} step",
+  "other": "{n} steps"
+ },
+ "lc.files": {
+  "one": "{n} file",
+  "other": "{n} files"
+ },
+ "lc.prompts": {
+  "one": "{n} prompt",
+  "other": "{n} prompts"
+ },
+ "lc.show": "Show text",
+ "lc.hide": "Hide text"
 }
