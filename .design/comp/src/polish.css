@@ -260,5 +260,10 @@ html.hid .bgp path{animation-play-state:paused}
 .f-flag{position:absolute;right:22px;bottom:24px;width:28px;height:28px;pointer-events:none}
 .folder:has(>.f-flag) .f-note{max-width:calc(100% - 44px)}
 @container (min-width:900px){.f-flag{right:calc(27 * var(--u));bottom:calc(34 * var(--u));width:calc(34 * var(--u));height:calc(34 * var(--u))}.folder:has(>.f-flag) .f-note{max-width:calc(100% - 56px)}}
+/* START badge on lesson 01: the finish flag's twin, two flags with the word between, same stroke, wider box */
+.f-start{width:84px}
+.f-start text{fill:currentColor;font:700 11.5px/1 var(--font-display);font-stretch:110%;letter-spacing:.02em}
+.folder:has(>.f-start) .f-note{max-width:calc(100% - 100px)}
+@container (min-width:900px){.f-start{width:calc(100 * var(--u))}.folder:has(>.f-start) .f-note{max-width:calc(100% - 122px)}}
 .fx.c-cream{--p1:#fff;--p2:#EDE8C9;--p3:#DAD4AD}
 .ex-wrap .prep-more{margin:24px 0 0}
