@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="uz-Latn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Dars uslublari 2</title>
+<link rel="stylesheet" href="../../public/aip/app.css">
+<style>
+body{background:#000;margin:0}
+.lc-opt{margin:0 0 56px}
+.lc-name{margin:0;padding:14px 16px;font:500 15px/1.4 var(--font-body);color:#fff;border-bottom:1px solid #3F3F3F;background:#0b0b0b}
+.lc-name small{display:block;margin-top:2px;font:400 13px/1.4 var(--font-body);color:#A6A6A6}
+.lc-cap{margin:0;padding:10px 16px;font:500 13px/1.3 var(--font-mono);color:#A6A6A6}
+.lc-h{margin:0;padding:10px 16px;font:500 13px/1.3 var(--font-mono);color:#FDC959}
+/* the lesson pane content (all styles): flat, ink = the folder's ink, lines = the folder's line colour */
+.lc{display:grid;gap:0;min-width:0}
+.lc ol,.lc ul{margin:0;padding:0;list-style:none}
+.lc-intro{margin:0 0 14px;font:400 15px/1.5 var(--font-body)}
+.lc-intro+.lc-intro{margin-top:-4px}
+.lc-row{border-top:1px solid var(--gt-line)}
+.lc-row:last-child{border-bottom:1px solid var(--gt-line)}
+.lc-sum{display:grid;grid-template-columns:34px minmax(0,1fr) 24px;gap:0 8px;align-items:center;width:100%;min-height:64px;padding:10px 0;text-align:left;cursor:pointer}
+.lc-no{font:500 13px/1.3 var(--font-mono);letter-spacing:0}
+.lc-tt{display:block;font:500 16px/1.25 var(--font-display);font-stretch:125%;text-transform:uppercase;text-wrap:balance}
+.lc-meta{display:block;margin-top:4px;font:500 12.5px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em;color:var(--gt-ink2)}
+.lc-chev{justify-self:end;width:10px;height:10px;margin-right:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);transition:transform .2s var(--ease)}
+.lc-row[data-open="1"] .lc-chev{transform:rotate(-135deg) translate(-2px,-2px)}
+.lc-body{display:none;padding:0 0 18px 42px}
+.lc-row[data-open="1"] .lc-body{display:block}
+.lc-lead{margin:0 0 10px;font:400 14.5px/1.5 var(--font-body)}
+.lc-steps{display:grid;gap:6px;margin:0 0 12px!important;padding-left:20px!important;list-style:decimal!important;font:400 15px/1.45 var(--font-body)}
+.lc-steps li{display:list-item}
+.lc-ready{margin:0 0 14px;padding:10px 12px;border:1px solid var(--gt-line);border-radius:10px;font:400 14.5px/1.45 var(--font-body)}
+.lc-ready b{display:block;margin-bottom:2px;font:500 12px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+.lc-pr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;padding:8px 0;border-top:1px solid var(--gt-line)}
+.lc-pr .pt{font:500 15px/1.3 var(--font-body)}
+.lc-pr .pw{grid-column:1;font:400 13px/1.3 var(--font-body);color:var(--gt-ink2)}
+.lc-pr .cpb{grid-row:1/3;grid-column:2;display:grid;place-items:center;width:44px;height:44px;border:1.5px solid var(--gt-ink);border-radius:50%}
+.lc-pr .tg{grid-column:1/-1;justify-self:start;min-height:32px;padding:4px 0;font:500 13px/1.3 var(--font-body);text-decoration:underline;text-underline-offset:3px}
+.lc-pr .tx{display:none;grid-column:1/-1;margin:2px 0 6px;padding:10px 12px;border:1px solid var(--gt-line);border-radius:10px;font:400 14px/1.55 var(--font-body);white-space:pre-line}
+.lc-pr[data-open="1"] .tx{display:block}
+.lc-chk{display:flex;align-items:center;gap:12px;min-height:44px;padding:0;font:500 14px/1.3 var(--font-body)}
+.lc-chk::before{content:"";flex:none;width:24px;height:24px;border:2px solid currentColor;border-radius:6px}
+.lc-chk[aria-pressed="true"]::before{background:currentColor var(--ck-w) center/16px no-repeat}
+.lc-sum .lc-no.chk{display:grid;place-items:center;width:24px;height:24px;border:2px solid currentColor;border-radius:6px;font-size:0}
+.lc-sum .lc-no.chk.on{background:currentColor var(--ck-w) center/16px no-repeat}
+/* B: cards + sub-page */
+.lc-grid{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+@container (min-width:900px){.lc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:calc(14 * var(--u))}}
+.lc-card{display:grid;gap:6px;align-content:start;min-height:112px;padding:16px;border:1.5px solid var(--gt-ink);border-radius:14px;text-align:left}
+.lc-card .lc-no{font-size:13px}
+.lc-card .lc-sm{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0;font:400 14px/1.4 var(--font-body);color:var(--gt-ink2)}
+.lc-card .lc-cn{margin-top:4px;font:500 12.5px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+.lc-sub-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.lc-back{display:inline-flex;align-items:center;gap:8px;min-height:44px;font:500 13px/1.3 var(--font-body);text-transform:uppercase}
+.lc-pn{display:flex;gap:8px}
+.lc-arrow{display:grid;place-items:center;width:44px;height:44px;border:1.5px solid var(--gt-ink);border-radius:50%}
+.lc-arrow.off{opacity:.35}
+.lc-title2{margin:0 0 10px;font:500 22px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase;text-wrap:balance}
+/* C: stepper */
+.lc-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.lc-count{font:500 14px/1.3 var(--font-mono)}
+.lc-strip{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px;margin-bottom:16px}
+.lc-strip i{height:6px;border-radius:3px;background:var(--gt-line)}
+.lc-strip i.on{background:var(--gt-ink)}
+.lc-ex .lc-no{display:block;margin-bottom:4px}
+.lc-pane-only{padding-bottom:6px}
+
+/* shared: one-line prompt row (text opens in a sheet) */
+.pcs{margin-top:12px;border-bottom:1px solid var(--gt-line)}
+.pcs-h{margin:0 0 6px;font:500 12px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+.pc2{display:grid;grid-template-columns:52px minmax(0,1fr) 44px;gap:0 10px;align-items:center;width:100%;min-height:58px;padding:6px 0;border-top:1px solid var(--gt-line);text-align:left;cursor:pointer;color:var(--gt-ink)}
+.pc2 .no{font:500 12px/1.3 var(--font-mono)}
+.pc2 .t{display:block;font:500 15px/1.3 var(--font-body)}
+.pc2 .w{display:block;font:400 12.5px/1.3 var(--font-body);color:var(--gt-ink2)}
+.pc2 .cpb{display:grid;place-items:center;width:44px;height:44px;border:1.5px solid var(--gt-ink);border-radius:50%}
+.lead{margin:0 0 10px;font:400 15px/1.5 var(--font-body);max-width:62ch}
+.stp{display:grid;gap:6px;margin:0 0 12px!important;padding-left:20px!important;list-style:decimal!important;font:400 15px/1.45 var(--font-body);max-width:62ch}
+.stp li{display:list-item}
+.rdy{margin:0 0 6px;font:400 14px/1.45 var(--font-body);max-width:62ch}
+.rdy b{margin-right:6px;font:500 12px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+.mtag{font:500 12px/1.3 var(--font-mono);letter-spacing:.02em}
+/* D: number pills */
+.d-pills{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 22px}
+.d-pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:52px;height:44px;padding:0 14px;border:1.5px solid var(--gt-ink);border-radius:999px;font:500 14px/1 var(--font-mono);color:var(--gt-ink)}
+.d-pill.on{background:var(--gt-ink);color:var(--gt-fill)}
+.d-title{margin:6px 0 14px;font:500 24px/1.15 var(--font-display);font-stretch:125%;text-transform:uppercase;text-wrap:balance}
+.d-next{display:flex;justify-content:flex-end;margin-top:18px;padding-top:14px;border-top:1px solid var(--gt-line);font:500 13px/1.3 var(--font-body);text-transform:uppercase}
+/* E: timeline */
+.e-node{position:relative;display:grid;grid-template-columns:38px minmax(0,1fr);gap:0 14px;padding-bottom:26px}
+.e-node::before{content:"";position:absolute;left:18px;top:38px;bottom:0;width:1.5px;background:var(--gt-ink);opacity:.4}
+.e-node:last-child::before{display:none}
+.e-dot{position:relative;display:grid;place-items:center;width:38px;height:38px;border:1.5px solid var(--gt-ink);border-radius:50%;background:var(--gt-fill);font:500 12px/1 var(--font-mono)}
+.e-dot.on{background:var(--gt-ink);color:var(--gt-fill)}
+.e-tt{margin:8px 0 8px;font:500 17px/1.25 var(--font-display);font-stretch:125%;text-transform:uppercase;text-wrap:balance}
+/* F: flat blocks, 2.0 big numbers */
+.f-blk{padding:24px 0 22px;border-top:1.5px solid var(--gt-ink)}
+.f-hd{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 16px;align-items:end;margin-bottom:14px}
+.f-no{font:400 64px/.8 var(--font-display);font-stretch:125%;letter-spacing:-.03em}
+.f-tt{font:500 18px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase;text-wrap:balance}
+.fs-wrap{padding:140px 0 0;background:#333}
+.fs{max-width:640px;margin:0 auto;padding:12px 18px 28px;border-radius:22px 22px 0 0;background:#B4A0D2;color:#000}
+.fs-bar{width:40px;height:4px;margin:0 auto 16px;border-radius:2px;background:rgb(0 0 0 / .3)}
+.fs-tt{margin:4px 0;font:500 20px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.fs-tx{margin:12px 0 18px;padding:14px;border:1px solid rgb(0 0 0 / .25);border-radius:12px;font:400 15px/1.55 var(--font-body);white-space:pre-line}
+.fs-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:52px;border-radius:999px;background:#000;color:#fff;font:500 15px/1 var(--font-body)}
+/* G: swipe cards */
+.g-rail{display:grid;grid-auto-flow:column;grid-auto-columns:88%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none}
+.g-card{align-self:start;scroll-snap-align:start;padding:18px 16px;border:1.5px solid var(--gt-ink);border-radius:18px}
+.g-card .d-title{margin:4px 0 12px;font-size:19px}
+.g-dots{display:flex;justify-content:center;gap:6px;margin-top:12px}
+.g-dots i{width:8px;height:8px;border-radius:50%;background:var(--gt-line)}
+.g-dots i.on{width:22px;border-radius:4px;background:var(--gt-ink)}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="goo-tabs"><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter>
+  <filter id="goo-tabs-sm"><feGaussianBlur in="SourceGraphic" stdDeviation="7" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter>
+  <symbol id="i-ramp" viewBox="0 0 28 21"><path d="M0 21Q4 21 7 18L22 3Q25 0 28 0V21Z" fill="currentColor"/></symbol>
+  <symbol id="i-ne" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 28L28 6M10 6h18v18"/></symbol>
+  <symbol id="i-next" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10h13M11 4.5l5.5 5.5-5.5 5.5"/></symbol>
+  <symbol id="i-back" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 10h-13M9 4.5L3.5 10 9 15.5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v11M5 9.5l5 5 5-5M4 17h12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 20 20"><path d="M7 4.8v10.4L15.4 10z" fill="currentColor"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M13 7V4.5A1.5 1.5 0 0011.5 3h-7A1.5 1.5 0 003 4.5v7A1.5 1.5 0 004.5 13H7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5l3.5 3.5 7.5-8.5"/></symbol>
+  <symbol id="i-start" viewBox="0 0 100 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 30V4.5M5 6h15v10H5M10 6v10M15 6v10M5 11h15M95 30V4.5M95 6H80v10h15M90 6v10M85 6v10M95 11H80"/><path d="M5 6h5v5H5zM15 6h5v5h-5zM10 11h5v5h-5zM95 6h-5v5h5zM85 6h-5v5h5zM90 11h-5v5h5z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-lg-claude" viewBox="0 0 28 28" fill="currentColor"><path d="M5.488 18.62L11.004 15.54L11.088 15.26L11.004 15.12H10.724L9.8 15.064L6.664 14.98L3.92 14.84L1.26 14.7L0.588 14.56L0 13.72L0.056 13.3L0.616 12.936L1.428 12.992L3.192 13.132L5.852 13.3L7.784 13.412L10.64 13.748H11.088L11.144 13.552L11.004 13.44L10.892 13.328L8.12 11.48L5.152 9.52L3.584 8.372L2.744 7.812L2.324 7.252L2.156 6.076L2.912 5.236L3.948 5.32L4.2 5.376L5.236 6.188L7.476 7.896L10.36 10.08L10.78 10.416L10.948 10.304L10.976 10.22L10.78 9.912L9.24 7L7.56 4.088L6.804 2.884L6.608 2.156C6.524 1.876 6.496 1.596 6.496 1.316L7.336 0.14L7.84 0L9.016 0.168L9.464 0.56L10.192 2.24L11.34 4.844L13.16 8.372L13.72 9.436L14 10.388L14.084 10.668H14.28V10.528L14.42 8.512L14.7 6.076L14.98 2.94L15.064 2.044L15.512 0.98L16.352 0.42L17.08 0.728L17.64 1.54L17.556 2.044L17.248 4.2L16.52 7.588L16.1 9.884H16.352L16.632 9.576L17.78 8.064L19.712 5.656L20.552 4.676L21.56 3.64L22.204 3.136H23.408L24.276 4.452L23.884 5.824L22.652 7.392L21.616 8.708L20.132 10.696L19.236 12.292L19.32 12.404H19.516L22.876 11.676L24.668 11.368L26.796 11.004L27.776 11.452L27.888 11.9L27.496 12.852L25.2 13.412L22.512 13.972L18.508 14.896L18.452 14.924L18.508 15.008L20.3 15.176L21.084 15.232H22.988L26.516 15.512L27.44 16.072L27.972 16.828L27.888 17.388L26.46 18.116L24.556 17.668L20.076 16.604L18.564 16.24H18.34V16.352L19.628 17.612L21.952 19.712L24.92 22.428L25.06 23.1L24.696 23.66L24.304 23.604L21.728 21.644L20.72 20.804L18.48 18.9H18.34V19.096L18.844 19.852L21.588 23.968L21.728 25.228L21.532 25.62L20.804 25.9L20.048 25.732L18.424 23.492L16.744 20.972L15.428 18.676L15.288 18.788L14.476 27.244L14.112 27.664L13.272 28L12.572 27.44L12.18 26.6L12.572 24.864L13.02 22.624L13.384 20.832L13.72 18.62L13.916 17.892V17.836H13.72L12.04 20.16L9.52 23.604L7.504 25.732L7.028 25.928L6.188 25.508L6.272 24.724L6.72 24.08L9.52 20.496L11.2 18.284L12.32 16.996L12.292 16.856H12.208L4.816 21.672L3.5 21.84L2.94 21.28L2.996 20.44L3.276 20.16L5.516 18.62H5.488Z"/></symbol>
+  <symbol id="i-lg-openai" viewBox="0 0 24 24" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></symbol>
+  <symbol id="i-lg-gemini" viewBox="0 0 24 24" fill="currentColor"><path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></symbol>
+  <symbol id="i-lg-notebooklm" viewBox="0 0 24 24" fill="currentColor"><path d="M11.999 3.201C5.372 3.201 0 8.528 0 15.101V20.8h2.212v-.568c0-2.666 2.178-4.827 4.866-4.827 2.688 0 4.866 2.16 4.866 4.827v.568h2.212v-.568c0-3.877-3.17-7.019-7.078-7.019A7.075 7.075 0 0 0 2.992 14.5a7.355 7.355 0 0 1 6.568-4.016c4.057 0 7.347 3.264 7.347 7.287V20.8h2.212V17.77c0-5.235-4.28-9.481-9.56-9.481a9.563 9.563 0 0 0-6.217 2.28A9.795 9.795 0 0 1 12 5.393c5.406 0 9.788 4.346 9.788 9.707V20.8H24V15.1c-.001-6.573-5.373-11.9-12.001-11.9Z"/></symbol>
+  <symbol id="i-lg-deepseek" viewBox="0 0 24 24" fill="currentColor"><path d="M2.2 12.3c0-4 3.5-6.9 8.2-6.9 2.1 0 4 .5 5.4 1.5.8-1 2-1.6 3.4-1.8l-.6 2.4c1.2 1.2 1.9 2.8 1.9 4.6 0 1.2-.3 2.2-.9 3.1l1.9 2.5-3-.4c-1.4.9-3.2 1.4-5.2 1.4-1.7 0-3.3-.4-4.6-1.1L6.2 20l.1-3.2c-2.5-1-4.1-2.6-4.1-4.5z"/><circle cx="6.9" cy="10.4" r="1.1" fill="#000"/></symbol>
+  <symbol id="i-lg-qwen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6l8.1 4.7v9.4L12 21.4l-8.1-4.7V7.3z"/><path d="M12.6 12.7l3.6 3.6"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 30V4.5M9 6h17v12H9M14.7 6v12M20.3 6v12M9 12h17"/><path d="M9 6h5.7v6H9zM20.3 6H26v6h-5.7zM14.7 12h5.6v6h-5.6z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="12" height="8.5" rx="1.5"/><path d="M7 9V6.5a3 3 0 016 0V9"/></symbol>
+  <symbol id="i-send" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2.5L2 9l5.6 2L15 5.5 9.6 12.4l6 5.1z"/></symbol>
+  <symbol id="i-home" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 9.4L10 3.4l6.8 6V16a.6.6 0 0 1-.6.6h-3.4v-4.6H7.2v4.6H3.8a.6.6 0 0 1-.6-.6z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 7h14M3 13h14"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5l8 14.5H2z"/><path d="M10 8v4M10 14.5h.01"/></symbol>
+</defs></svg>
+<div id="out"></div>
+<script>
+const DATA = {"subtitle": "AI qatlamlari, token, kontekst, modellar, NotebookLM, Kit 1", "summary": "Avval oʻz biznesingiz uchun birinchi vositani yasaymiz. Keyin AI qayerda ishlashi, token va kontekst nima ekani, qaysi modelni tanlashni koʻramiz. Kit 1: ish qayerga ketadi.", "amaliyot": {"text": "Bu amaliyotda oʻz biznesingiz uchun birinchi ishlaydigan vositani yasaysiz, modellarni solishtirasiz va Kit 1 intervyusini sinab koʻrasiz.\n\nOʻz noutbukingizda, oʻz biznesingiz maʼlumotlari bilan ishlang.\n\nMijozlarning shaxsiy maʼlumotlarini chatga yozmang. Chatga yozilgan matn provayderning data markaziga ketadi, odatda AQSh yoki Yevropaga.\n\nQiynalsangiz: xatoning skrinshotini oling va Claudeʼdan soʻrang. Hal boʻlmasa, mentorni chaqiring.", "groups": [{"title": "01 Birinchi artifakt", "note": "ASOSIY. 1) Claude ilovasida yangi chat oching. 2) Oʻz mahsulotlaringiz uchun narx kalkulyatori yoki bir sahifalik taklif soʻrang. 3) Natijada bitta narsani chat orqali oʻzgartiring. Tayyor, agar: kalkulyator haqiqiy mahsulotlaringiz bilan ishlaydi.", "files": [], "prompts": [{"id": "01P1", "title": "Narx kalkulyatori", "target": "Claude", "text": "Mening biznesim: [kompaniya nomi], [nima bilan shugʻullanadi].\nMahsulotlar va narxlar (soʻmda):\n[mahsulotlar roʻyxati va narxlari]\n\nShu mahsulotlar uchun narx kalkulyatorini artifakt qilib yasang. Mijoz mahsulot va miqdorni tanlasin, jami summa soʻmda chiqsin. [Chegirma yoki yetkazish sharti boʻlsa, shu yerga yozing.]\nInterfeys oʻzbek tilida boʻlsin. Roʻyxatda yoʻq mahsulot yoki narx qoʻshmang."}, {"id": "01P2", "title": "Bir sahifalik taklif", "target": "Claude", "text": "Mening biznesim: [kompaniya nomi], [nima bilan shugʻullanadi].\nMijozlarim: [kimlar].\nAsosiy mahsulotlar va narxlar: [mahsulotlar roʻyxati va narxlari].\n\nMijozga yuboriladigan bir sahifalik taklifni artifakt qilib yasang. Unda nima taklif qilinishi, narxlar, shartlar va bogʻlanish uchun [telefon yoki Telegram] boʻlsin.\nOʻzbek tilida, qisqa yozing. Men bermagan raqam, kafolat yoki natija qoʻshmang."}, {"id": "01P3", "title": "Bitta oʻzgartirish", "target": "Claude", "text": "Artifaktga shu oʻzgartirishni kiriting: [nima oʻzgarsin, masalan: 10 donadan ortiq xaridga chegirma qatorini qoʻshing].\nQolgan qismini oʻzgartirmang. Nima oʻzgarganini ikki gapda yozing."}]}, {"title": "02 Token tajribasi", "note": "ASOSIY. Token: matn boʻlinadigan va pul toʻlanadigan birlik. 1) Darsda koʻrsatilgan tokenizerni oching. 2) Biznesingizga oid bitta gapni oʻzbekcha qoʻying va tokenlar sonini yozib oling. 3) Xuddi shu gapni inglizcha qoʻying va solishtiring. Tayyor, agar: tokenlar farqini ayta olasiz.", "files": []}, {"title": "03 Modellarni solishtirish", "note": "ASOSIY. Claude modellari: Haiku arzon va tez, Sonnet oʻrta, Opus murakkab ish uchun. Open-weight model: fayli ochiq eʼlon qilingan, uni istalgan kishi oʻz serverida ishlata oladi (DeepSeek, Qwen). 1) Maxfiy boʻlmagan ikkita vazifa tanlang. 2) Har birini Claudeʼning ikki darajasida, keyin bepul open-weight chatda (DeepSeek yoki Qwen) bajaring. 3) Sifat va tezlikni yozib boring. DeepSeek saytida ishlasangiz ham, matn DeepSeek serveriga ketadi. Tayyor, agar: ikki vazifaning har biriga model tanladingiz va sababini ayta olasiz.", "files": [], "prompts": [{"id": "03P1", "title": "Matn yozish vazifasi", "target": "Claude, DeepSeek yoki Qwen", "text": "Biz [kompaniya nomi], [nima bilan shugʻullanadi].\n[Mahsulot yoki xizmat] haqida Telegram kanal uchun 3 ta qisqa post yozing. Har biri 60 soʻzdan oshmasin.\nOʻzbek lotin yozuvida, sodda tilda yozing. Narx yoki chegirma oʻylab topmang."}, {"id": "03P2", "title": "Saralash vazifasi", "target": "Claude, DeepSeek yoki Qwen", "text": "Quyidagi mijoz xabarlarini toifalarga ajrating: buyurtma, narx soʻrash, shikoyat, boshqa.\nJadvalda har xabar, uning toifasi va bir gaplik sabab boʻlsin.\n\n[10-20 ta xabar, ism va telefon raqamlarisiz]"}]}, {"title": "04 Kompaniya bilim bazasi", "note": "ASOSIY. NotebookLM faqat siz yuklagan hujjatlardan javob beradi va manbani koʻrsatadi. 1) Yangi notebook oching va 3-5 ta hujjat yuklang: narxlar roʻyxati, ichki qoidalar, shartnoma namunasi. 2) 3 ta savol bering. 3) Hujjatlar orasidagi ziddiyatlarni topishni soʻrang. 4) Audio overview yoki quiz yarating. Tayyor, agar: manba iqtiboslari bilan 3 ta javob bor.", "files": [], "prompts": [{"id": "04P1", "title": "Hujjatdan savol", "target": "NotebookLM → Chat", "text": "Faqat yuklangan hujjatlarga tayanib javob bering: [savol, masalan: ulgurji mijozga qanday chegirma beriladi].\nHar javobga manba nomi va iqtibos keltiring. Hujjatda javob boʻlmasa, \"hujjatda yoʻq\" deb yozing, taxmin qilmang.\nOʻzbek lotin yozuvida yozing."}, {"id": "04P2", "title": "Ziddiyatlarni topish", "target": "NotebookLM → Chat", "text": "Yuklangan hujjatlarni solishtiring va bir-biriga zid joylarni toping: narx, muddat, masʼul shaxs, shartlar.\nJadvalda har ziddiyat, ikkala manbadan iqtibos va kimdan aniqlashtirish kerakligi boʻlsin.\nZiddiyat topilmasa, shuni yozing. Oʻzbek lotin yozuvida yozing."}, {"id": "04P3", "title": "Xodim uchun test", "target": "NotebookLM → Studio → Quiz", "text": "Yangi xodim uchun shu hujjatlar asosida 5 ta savollik test yarating.\nSavollar ish vaziyatlariga oid boʻlsin: narx, ichki qoidalar, shartnoma shartlari. Har javob izohida manba boʻlsin.\nOʻzbek lotin yozuvida yozing."}]}, {"title": "05 Kit 1 mashqi", "note": "ASOSIY. Kit 1 \"Ish qayerga ketadi\": xodim vaqti qaysi vazifalarga ketishini xaritaga tushiradi. Kit 1 shakli (Kit tabida). 1) Yoningizdagi hamkasb bilan juft boʻling va rozilik matnini ovoz chiqarib oʻqing. 2) A.1-A.7 savollari bilan 5 daqiqalik intervyu oʻtkazing va yozib oling. 3) Yozuvni Geminiʼda matnga aylantiring. 4) Matnga Kit 1 promptini qoʻllang va B shakli jadvalini oling. 5) Har raqamni yozuv bilan solishtiring: transkripsiya oʻzbekcha raqamlarda adashadi, \"bir uch-toʻrt yuz ming\" 1 300 000 boʻlib qoladi. Tayyor, agar: B shakli jadvali bor va kamida bitta raqam qoʻlda tuzatilgan.", "files": [], "prompts": [{"id": "05P1", "title": "Transkripsiya", "target": "Gemini", "text": "Ilova qilingan audio yozuvni oʻzbek tilida soʻzma-soʻz matnga aylantiring.\nSuhbatdoshlarni \"Soʻrovchi\" va \"Xodim\" deb ajrating.\nHar raqam, summa va vaqtni eshitilganidek soʻz bilan ham yozing, masalan: 300 000 (\"uch yuz ming\").\nTushunarsiz joyni [?] bilan belgilang, oʻzingizdan toʻldirmang."}, {"id": "05P2", "title": "Kit 1 prompti: B shakli", "target": "Claude", "text": "Quyida xodim bilan intervyu matni va Kit 1 B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [shakl matni]\nIntervyu: [intervyu matni]"}]}]}, "vazifa": {"text": "Bu vazifada Kit 1 ni oʻz xodimlaringiz bilan oʻtkazasiz. Ikkinchi darsda Claude Code shu fayllar bilan ishlaydi.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: kamida 2 ta B shakli .md faylda saqlangan; daqiqa va chastotani xodimning oʻzi tuzatgan, [?] belgilari qolmagan; har vazifada B.9 toʻldirilgan; Claude Code Warpʼda ochiladi.", "groups": [{"title": "1. Jamoaga sababini ayting", "note": "Birinchi intervyudan oldin jamoaga bitta xabar yozing yoki qisqa yigʻilish qiling. Maqsad: ishni xaritaga tushirish, odamlarni almashtirish emas. Har intervyu boshida buni yana ayting.", "files": [], "prompts": [{"id": "V1P1", "title": "Jamoaga xabar", "target": "Claude", "text": "Men [kompaniya nomi] rahbariman. [Boʻlim nomi] xodimlari bilan 20-30 daqiqalik suhbat oʻtkazmoqchiman.\nMaqsad: kim qaysi ishga qancha vaqt sarflashini bilish va takrorlanadigan ishni AI bilan yengillashtirish. Maqsad odamlarni almashtirish emas.\nJamoaga Telegramda yuboriladigan xabar yozing: suhbat nima uchun, qancha vaqt oladi, yozib olinishi va yozuvni kim koʻrishi: [kim koʻradi].\nOddiy tilda, 80 soʻzdan oshmasin."}]}, {"title": "2. 2-3 xodim bilan intervyu", "note": "Bitta boʻlimdan 2-3 xodim bilan 20-30 daqiqalik Kit 1 A intervyusini oʻtkazing. Yozib olishdan oldin rozilik matnini oʻqing. Yakka ishlaydigan egalar va jamoasi yoʻq rahbarlar oʻzini yoki boʻlim boshligʻini intervyu qiladi. Kit 1 shakli (Kit tabida).", "files": []}, {"title": "3. Matnga aylantiring va Kit 1 promptini ishlating", "note": "Har intervyuni Geminiʼda matnga aylantiring, keyin Kit 1 promptini qoʻllang. Jadvaldagi har raqamni audio bilan tekshiring.", "files": [], "prompts": [{"id": "V3P1", "title": "Transkripsiya", "target": "Gemini", "text": "Ilova qilingan audio yozuvni oʻzbek tilida soʻzma-soʻz matnga aylantiring.\nSuhbatdoshlarni \"Soʻrovchi\" va \"[xodim ismi]\" deb ajrating.\nHar raqam, summa va vaqtni eshitilganidek soʻz bilan ham yozing, masalan: 300 000 (\"uch yuz ming\").\nTushunarsiz joyni [?] bilan belgilang, oʻzingizdan toʻldirmang."}, {"id": "V3P2", "title": "Kit 1 prompti: B shakli", "target": "Claude", "text": "Quyida [xodim ismi], [lavozimi] bilan intervyu matni va Kit 1 B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [shakl matni]\nIntervyu: [intervyu matni]"}]}, {"title": "4. Xodim bilan tekshiring", "note": "Har B shaklini xodimning oʻziga koʻrsating. Daqiqa va chastotani u tuzatsin, [?] belgilari qolmasin. Haftalik soatlarni jamlang va har vazifaga B.9 belgisini qoʻying.", "files": []}, {"title": "5. .md fayl qilib saqlang", "note": "Har B shaklini alohida .md faylga saqlang, masalan kit1-dilnoza.md. Fayllarni ikkinchi darsga olib keling.", "files": []}, {"title": "6. Warp va Claude Codeʼni tekshiring", "note": "Noutbukingizda Warp va Claude Code ochilishini tekshiring. Ochilmasa, xatoning skrinshotini oling va Claudeʼdan soʻrang. Hal boʻlmasa, guruh chatiga yozing.", "files": []}]}};
+const uz = s => String(s).replace(/ʻ/g, '‘').replace(/ʼ/g, '’');
+const esc = s => uz(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const I = (id, w = 20) => `<svg width="${w}" height="${w}" aria-hidden="true"><use href="#i-${id}"/></svg>`;
+// "ASOSIY. intro 1) a 2) b Tayyor, agar: c"  ->  {tag, intro, steps[], ready}  (display only)
+function parse(note) {
+  let n = (note || '').trim(), tag = '', ready = '';
+  const tm = n.match(/^([A-ZʻʼO' ]{3,20})\.\s+/); if (tm) { tag = tm[1]; n = n.slice(tm[0].length); }
+  const ri = n.search(/\s*Tayyor, agar:\s*/); if (ri >= 0) { ready = n.slice(ri).replace(/^\s*Tayyor, agar:\s*/, ''); n = n.slice(0, ri); }
+  const parts = n.split(/\s*(?=\b\d\)\s)/), intro = /^\d\)\s/.test(parts[0]) ? '' : parts.shift();
+  const steps = parts.map(p => p.replace(/^\d\)\s*/, '').trim()).filter(Boolean);
+  return {tag, intro: (intro || '').trim(), steps, ready: ready.trim()};
+}
+const AM = DATA.amaliyot, VZ = DATA.vazifa;
+const num2 = n => String(n).padStart(2, '0');
+const exs = AM.groups.map((g, i) => ({i, no: g.title.slice(0, 2), title: g.title.replace(/^\d+\s*/, ''), ...parse(g.note), prompts: g.prompts || []}));
+const hws = VZ.groups.map((g, i) => ({i, no: num2(i + 1), title: g.title.replace(/^\d+\.\s*/, ''), note: g.note || '', prompts: g.prompts || []}));
+const meta = e => [e.steps.length ? `${e.steps.length} qadam` : '', e.prompts.length ? `${e.prompts.length} prompt` : '', e.tag].filter(Boolean).join(' · ');
+const hmeta = h => [h.prompts.length ? `${h.prompts.length} prompt` : 'amaliy ish'].join(' · ');
+const intro = t => t.split(/\n\s*\n/).map(p => `<p class="lc-intro">${esc(p)}</p>`).join('');
+const prompt = p => `<div class="lc-pr" data-open="0"><span class="pt">${esc(p.title)}</span><span class="pw">${esc(p.target || '')}</span><span class="cpb" aria-hidden="true">${I('copy')}</span><button class="tg" type="button">Matnni koʻrish</button><p class="tx">${esc(p.text)}</p></div>`.replace('Matnni koʻrish', uz('Matnni koʻrish'));
+const stepsH = e => `${e.intro ? `<p class="lc-lead">${esc(e.intro)}</p>` : ''}${e.steps.length ? `<ol class="lc-steps">${e.steps.map(s => `<li>${esc(s)}</li>`).join('')}</ol>` : ''}${e.ready ? `<p class="lc-ready"><b>Tayyor, agar</b>${esc(e.ready)}</p>` : ''}${e.prompts.map(prompt).join('')}`;
+const pc2 = p => `<button class="pc2" type="button"><span class="no">${esc(p.id)}</span><span><span class="t">${esc(p.title)}</span><span class="w">${esc(p.target || '')}</span></span><span class="cpb">${I('copy')}</span></button>`;
+const pcs = ps => ps.length ? `<div class="pcs"><p class="pcs-h">Promptlar</p>${ps.map(pc2).join('')}</div>` : '';
+const exBody = e => `${e.intro ? `<p class="lead">${esc(e.intro)}</p>` : ''}${e.steps.length ? `<ol class="stp">${e.steps.map(s => `<li>${esc(s)}</li>`).join('')}</ol>` : ''}${e.ready ? `<p class="rdy"><b>Tayyor, agar</b>${esc(e.ready)}</p>` : ''}${pcs(e.prompts)}`;
+const hwBody = h => `<p class="lead">${esc(h.note)}</p>${pcs(h.prompts)}`;
+const intro1 = t => `<p class="lc-intro">${esc(t.split(/\n\s*\n/)[0])}</p>`;
+// D: number pills
+const pills = (list, on, done = 0) => `<div class="d-pills">${list.map((x, i) => `<button class="d-pill ${i === on ? 'on' : ''}" type="button">${i < done ? I('check', 14) : ''}${x.no}</button>`).join('')}</div>`;
+const D_am = (k = 0) => { const e = exs[k], nx = exs[k + 1]; return `<div class="lc">${intro1(AM.text)}${pills(exs, k)}<span class="mtag">${e.no} · ${esc(e.tag)}</span><h3 class="d-title">${esc(e.title)}</h3>${exBody(e)}<div class="d-next">Keyingisi: ${nx.no} ${esc(nx.title)} →</div></div>`; };
+const D_vz = (k = 2) => { const h = hws[k]; return `<div class="lc">${intro1(VZ.text)}${pills(hws, k, 2)}<span class="mtag">${h.no} / ${num2(hws.length)}</span><h3 class="d-title">${esc(h.title)}</h3>${hwBody(h)}</div>`; };
+// E: timeline
+const E_am = () => `<div class="lc">${intro1(AM.text)}<div>${exs.map((e, i) => `<div class="e-node"><span class="e-dot ${i < 1 ? 'on' : ''}">${i < 1 ? I('check', 16) : e.no}</span><div><h3 class="e-tt">${esc(e.title)}</h3>${exBody(e)}</div></div>`).join('')}</div></div>`;
+const E_vz = () => `<div class="lc">${intro1(VZ.text)}<div>${hws.map((h, i) => `<div class="e-node"><span class="e-dot ${i < 2 ? 'on' : ''}">${i < 2 ? I('check', 16) : h.no}</span><div><h3 class="e-tt">${esc(h.title)}</h3>${hwBody(h)}</div></div>`).join('')}</div></div>`;
+// F: flat blocks + sheet
+const F_am = () => `<div class="lc">${intro1(AM.text)}${exs.map(e => `<section class="f-blk"><div class="f-hd"><span class="f-no">${e.no}</span><h3 class="f-tt">${esc(e.title)}</h3></div>${exBody(e)}</section>`).join('')}</div>`;
+const F_vz = () => `<div class="lc">${intro1(VZ.text)}${hws.map(h => `<section class="f-blk"><div class="f-hd"><span class="f-no">${h.no}</span><h3 class="f-tt">${esc(h.title)}</h3></div>${hwBody(h)}</section>`).join('')}</div>`;
+const F_sheet = () => { const p = exs[0].prompts[0]; return `<div class="fs-wrap"><div class="fs"><div class="fs-bar"></div><span class="mtag">${p.id}</span><h3 class="fs-tt">${esc(p.title)}</h3><span class="mtag">Qayerga: ${esc(p.target)}</span><p class="fs-tx">${esc(p.text)}</p><button class="fs-btn" type="button">${I('copy')}Nusxalash</button></div></div>`; };
+// G: swipe cards
+const dots = (n, on) => `<div class="g-dots">${Array.from({length: n}, (_, i) => `<i class="${i === on ? 'on' : ''}"></i>`).join('')}</div>`;
+const G_am = () => `<div class="lc">${intro1(AM.text)}<div class="g-rail">${exs.map(e => `<article class="g-card"><span class="mtag">${e.no} / ${num2(exs.length)}</span><h3 class="d-title">${esc(e.title)}</h3>${exBody(e)}</article>`).join('')}</div>${dots(exs.length, 0)}</div>`;
+const G_vz = () => `<div class="lc">${intro1(VZ.text)}<div class="g-rail">${hws.map(h => `<article class="g-card"><span class="mtag">${h.no} / ${num2(hws.length)}</span><h3 class="d-title">${esc(h.title)}</h3>${hwBody(h)}</article>`).join('')}</div>${dots(hws.length, 0)}</div>`;
+// ---------------- the real lesson-page frame (lilac folder, tabs)
+const FOLDER = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l2 2.5h8.5A1.5 1.5 0 0 1 21 9v8.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/></svg>';
+const frame = (pane, tab, label) => `<div class="frame" data-h><div class="site">
+  <header class="nav"><nav class="nav-links"><a class="home-btn" href="#">${I('home')}</a></nav><span class="wordmark">AI Praktikum 3.0</span><div class="nav-r"><a class="prep-btn" href="#"><span class="pb-ic">${FOLDER}</span><span class="pb-t">Birinchi darsgacha</span></a><button class="nav-name" type="button">Student</button><button class="menu-btn" type="button" aria-label="Menyu">${I('menu')}</button></div></header>
+  <main><div class="hero"><div class="hero-l"><div class="dl-h"><a class="eyebrow" href="#">${I('back', 16)}Dastur</a><p class="dl-m">21-noyabr · 0/2 bajarildi</p></div>
+    <h1 class="headline"><span class="ln">01-dars</span><span class="ln">AI qanday ishlaydi</span></h1><p class="lsub">${esc(DATA.subtitle)}</p><p class="lede">${esc(DATA.summary)}</p></div>
+    <div class="gt gt-lilac g-lilac" id="dg" style="--n:2;--i:${tab === 'am' ? 0 : 1}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
+      <div class="gt-tabs" role="tablist"><button class="gt-tab" role="tab" type="button" aria-selected="${tab === 'am'}">Amaliyot</button><button class="gt-tab" role="tab" type="button" aria-selected="${tab === 'vz'}">Vazifa</button></div>
+      <div class="gt-body"><div class="gt-pane" role="tabpanel"><p class="p-label">${tab === 'am' ? 'Amaliyot' : 'Vazifa'}</p>${pane}</div></div></div></div></main></div></div>`;
+const OPTS = [
+  ['D', 'Raqamli tugmalar', 'Tepada 01 02 03 04 05 tugmalari. Bittasi tanlanadi, pastda faqat shu mashq. Promptlar bir qatorli, bosilsa matn pastdan chiqadi.', [['am', D_am(0)], ['vz', D_vz(2), 'bajarilganlarda belgi']]],
+  ['E', 'Yoʻl xaritasi', 'Chap tomonda raqamli nuqtalar va chiziq. Hammasi ochiq, bajarilgan qadam qora nuqta boʻladi. Promptlar bir qatorli.', [['am', E_am()], ['vz', E_vz()]]],
+  ['F', 'Katta raqamli bloklar (2.0 kabi)', 'Hammasi ochiq, har mashq katta raqam bilan. Promptlar bir qatorli, bosilsa matn pastdan varaq boʻlib chiqadi.', [['am', F_am()], ['vz', F_vz()], ['sheet', F_sheet(), 'promptni bosganda']]],
+  ['G', 'Suriladigan kartalar', 'Mashqlar yonma-yon kartalar, barmoq bilan suriladi. Pastda nuqtalar.', [['am', G_am()], ['vz', G_vz()]]],
+];
+document.getElementById('out').innerHTML = OPTS.map(([k, n, d, frames]) => `<section class="lc-opt" id="o${k}"><p class="lc-name">Variant ${k}: ${uz(n)}<small>${uz(d)}</small></p>${frames.map(([tab, pane, cap]) => `<p class="lc-h" data-fr>${k}-${tab === 'am' ? 'Amaliyot' : tab === 'vz' ? 'Vazifa' : 'Prompt'}${cap ? ' · ' + uz(cap) : ''}</p>${tab === 'sheet' ? pane : frame(pane, tab)}`).join('')}</section>`).join('');
+document.addEventListener('click', e => { if (e.target.closest('a[href="#"]')) e.preventDefault(); });
+</script></body></html>
