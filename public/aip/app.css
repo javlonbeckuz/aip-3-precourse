@@ -238,7 +238,7 @@
 }
 :root{
   
-  --black:#000; --white:#fff; --blue:#0A14FC; --grey:#E0E0E0; --yellow:#FDC959; --lilac:#B4A1D1; --danger:#FF6B5E; --orange:#FF7A2F; --emerald:#0B7A55; --cyan:#33CBEA;
+  --black:#000; --white:#fff; --blue:#0A14FC; --grey:#E0E0E0; --yellow:#FDC959; --lilac:#B4A1D1; --danger:#FF6B5E; --orange:#FF7A2F; --emerald:#0B7A55; --cream:#FFF7C5;
   
   --surface-0:#000; --surface-1:#161616;
   --text-1:#FFF; --text-2:#A6A6A6; --text-3:#8A8A90;
@@ -364,7 +364,7 @@ a.play:active .play-circ{transform:scale(.96)}
 .c-night{--f-bg:var(--state-locked);--f-ink:var(--white)}
 .c-orange{--f-bg:var(--orange);--f-ink:var(--black)}
 .c-course{--f-bg:var(--white);--f-ink:var(--black)}
-.c-cyan{--f-bg:var(--cyan);--f-ink:var(--black)}
+.c-cream{--f-bg:var(--cream);--f-ink:var(--black)}
 .c-emerald{--f-bg:var(--emerald);--f-ink:var(--white)}
 .f-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .f-label{font:500 13px/1.35 var(--font-body);text-transform:uppercase;max-width:18em}
@@ -385,7 +385,7 @@ button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
 .gt-blue{--gt-fill:var(--blue);--gt-ink:var(--white);--gt-ink2:rgb(255 255 255 / .85);--gt-line:rgb(255 255 255 / .3)}
 .gt-dark{--gt-fill:var(--state-locked);--gt-ink:var(--white);--gt-ink2:rgb(255 255 255 / .8);--gt-line:rgb(255 255 255 / .25)}
 .gt-orange{--gt-fill:var(--orange);--gt-ink:var(--black);--gt-ink2:rgb(0 0 0 / .85);--gt-line:rgb(0 0 0 / .3)}
-.gt-cyan{--gt-fill:var(--cyan);--gt-ink:var(--black);--gt-ink2:rgb(0 0 0 / .85);--gt-line:rgb(0 0 0 / .3)}
+.gt-cream{--gt-fill:var(--cream);--gt-ink:var(--black);--gt-ink2:rgb(0 0 0 / .85);--gt-line:rgb(0 0 0 / .3)}
 .gt-emerald{--gt-fill:var(--emerald);--gt-ink:var(--white);--gt-ink2:var(--white);--gt-line:rgb(255 255 255 / .4)}
 .gt .p-list,.gt .p-list li{border-color:var(--gt-line)}
 .gt .xo{color:var(--gt-ink2)}
@@ -1059,6 +1059,11 @@ html.hid .bgp path{animation-play-state:paused}
 @container (max-width:359px){.nav .wordmark{font-size:13px}
 .nav .nav-r{gap:4px}
 .nav .prep-btn{width:44px;height:44px}}
+.f-flag{position:absolute;right:22px;bottom:24px;width:28px;height:28px;pointer-events:none}
+.folder:has(>.f-flag) .f-note{max-width:calc(100% - 44px)}
+@container (min-width:900px){.f-flag{right:calc(27 * var(--u));bottom:calc(34 * var(--u));width:calc(34 * var(--u));height:calc(34 * var(--u))}
+.folder:has(>.f-flag) .f-note{max-width:calc(100% - 56px)}}
+.fx.c-cream{--p1:#fff;--p2:#EDE8C9;--p3:#DAD4AD}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}

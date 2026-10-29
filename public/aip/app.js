@@ -1496,8 +1496,8 @@ function applyMe(j, uz){
   S.set(j.progress); applyLessons(j.lessons, uz && uz.lessons, j.lang); scheduleRecheck();
 }
 
-// each lesson has ONE fixed colour whatever its state (state = words + icons in the note, never colour); yellow also stays the progress ring. Emerald (lesson 06) is an identity colour, never a success colour; colours follow the card's position (cyan is 07)
-const LCOL = ['yellow', 'lilac', 'grey', 'blue', 'dark', 'orange', 'emerald', 'cyan'];
+// each lesson has ONE fixed colour whatever its state (state = words + icons in the note, never colour); yellow also stays the progress ring. Emerald (lesson 06) is an identity colour, never a success colour; colours follow the card's position (cream is 07)
+const LCOL = ['yellow', 'lilac', 'grey', 'blue', 'dark', 'orange', 'emerald', 'cream'];
 const LN = () => Object.keys(LESSONS).map(Number).filter(n => n > 0).sort((a, b) => a - b);   // the lesson numbers 1..N come from the data (the API in the app)
 const lnum = n => LESSONS[n].num;   // the curriculum number 1..N, or null: Tayyorgarlik and Kirish have none (their label is their short name)
 const RN = () => LN().filter(n => lnum(n) != null);   // the numbered lessons: only these count in the ring, the course size and the all-done check
@@ -1594,6 +1594,7 @@ function homePage(){
   const fxH = cls => `<span class="fx ${cls}" aria-hidden="true"><i></i><i></i><i></i></span>`;   // the back panel of the 3D folder: its tab and three paper sheets (they only move on hover, focus and press)
   const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><span class="f-top"><span class="f-label">${T('course.label', {n: RN().length, pl: RN().length})}</span></span>
         <span class="f-row"><span class="f-title">${T('course.title')}</span><span class="f-note">${I('lock', 14)}${T(LESSONS[1].d ? 'date.opens' : 'date.tba', {date: lessonDate(1)})}</span></span></button>${fxH('c-course')}</li>`;
+  const flagH = n => LCOL[n] === 'cream' ? '<svg class="f-flag" aria-hidden="true"><use href="#i-flag"/></svg>' : '';   // the finish flag of the last lesson: decorative, bottom right, in every state
   const cardHTML = n => {
     const tab = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`, arrow = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
     const label = n === 0 ? T('lesson.label0') : lessonLabel(n);
@@ -1601,7 +1602,7 @@ function homePage(){
     if (n === 0) { note = k === 4 ? `${I('check', 14)}${T('note.done', {d: 4, t: 4, pl: 4})}` : courseStarted() ? T('note.open', {d: k, t: 4, pl: 4}) : !LESSONS[0].d ? T('prep.cnt', {d: k, pl: 4}) : T('note.prep_todo', {until: t('date.until', {date: lessonDate(0)}), d: k, pl: 4}); }
     else if (isLocked(n)) {   // before its date: the lesson keeps its own colour, with a lock and the date (once, in the note)
       return `<li class="g-${LCOL[n]} fo"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${lnH(n)}</span></span>
-        <span class="f-row"><span><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-sub">${T(`lesson.${n}.sub`)}</span></span><span class="f-note">${I('lock', 14)}${T(LESSONS[n].d ? 'date.opens' : 'date.tba', {date: lessonDate(n)})}</span></span></button>${fxH('c-' + LCOL[n])}</li>`;
+        <span class="f-row"><span><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-sub">${T(`lesson.${n}.sub`)}</span></span><span class="f-note">${I('lock', 14)}${T(LESSONS[n].d ? 'date.opens' : 'date.tba', {date: lessonDate(n)})}</span></span>${flagH(n)}</button>${fxH('c-' + LCOL[n])}</li>`;
     } else {
       const [d, tt] = lProg(n);
       if (tt === 0) note = T('note.soon');   // an open lesson whose materials are not in yet
@@ -1609,7 +1610,7 @@ function homePage(){
       else if (n === live) note = `<span class="dot" aria-hidden="true"></span><span>${T('note.live_a')}<span class="nw2">${T('note.live_b')}</span>${T('note.live_c', {d, t: tt, pl: tt})}</span>`;
       else note = T('note.open', {d, t: tt, pl: tt});
     }
-    return `<li class="g-${LCOL[n]} fo"><a class="folder ${colCls(n)}" href="${href}">${tab}<span class="f-top"><span class="f-label">${label}</span>${arrow}</span><span class="f-row"><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-note">${note}</span></span></a>${fxH(colCls(n))}</li>`;
+    return `<li class="g-${LCOL[n]} fo"><a class="folder ${colCls(n)}" href="${href}">${tab}<span class="f-top"><span class="f-label">${label}</span>${arrow}</span><span class="f-row"><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-note">${note}</span></span>${flagH(n)}</a>${fxH(colCls(n))}</li>`;
   };
   let ringPrev = null; try { ringPrev = sessionStorage.getItem('aip3.ring'); sessionStorage.setItem('aip3.ring', rd); } catch (e) {}
   const ringUp = ringPrev !== null && rd > +ringPrev, ringFrom = ringUp ? +ringPrev / rt * 100 : 0;   // animate only a rise, from where it was

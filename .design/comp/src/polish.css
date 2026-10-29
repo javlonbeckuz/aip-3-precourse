@@ -255,3 +255,9 @@ html.hid .bgp path{animation-play-state:paused}
 }
 /* 320 px: home, wordmark, the Tayyorgarlik button and the menu must all fit one line */
 @container (max-width:359px){.nav .wordmark{font-size:13px}.nav .nav-r{gap:4px}.nav .prep-btn{width:44px;height:44px}}
+
+/* ---- finish flag on the last lesson's card: about the size of the open-arrow, bottom right, level with the card's last text line; the note wraps before it */
+.f-flag{position:absolute;right:22px;bottom:24px;width:28px;height:28px;pointer-events:none}
+.folder:has(>.f-flag) .f-note{max-width:calc(100% - 44px)}
+@container (min-width:900px){.f-flag{right:calc(27 * var(--u));bottom:calc(34 * var(--u));width:calc(34 * var(--u));height:calc(34 * var(--u))}.folder:has(>.f-flag) .f-note{max-width:calc(100% - 56px)}}
+.fx.c-cream{--p1:#fff;--p2:#EDE8C9;--p3:#DAD4AD}
