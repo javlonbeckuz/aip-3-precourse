@@ -234,7 +234,7 @@ const kgVisual = () => `<svg class="kg-vis" viewBox="0 20 564 370" aria-hidden="
   ${KG_TILES.map(([, x, y, k]) => `<rect x="${x - 28}" y="${y - 28}" width="56" height="56" rx="14" fill="#000"/><use href="#i-lg-${k}" x="${x - 15}" y="${y - 15}" width="30" height="30" style="color:#FDC959"/>`).join('')}
   <rect class="kg-ring" x="238" y="161" width="88" height="88" rx="22" fill="none" stroke="#000" stroke-width="2"/><rect x="246" y="169" width="72" height="72" rx="18" fill="#000"/>
   <text x="282" y="214" text-anchor="middle" font-size="24" style="font-family:var(--font-mono);font-weight:500" fill="#FDC959">P57</text></svg>`;
-const kgCard = (l, i) => `<article class="kg">${i === 0 || l.visual ? kgVisual() : ''}<span class="kg-no">${num2(i + 1)}</span><h2 class="kg-t">${esc(t(`prep.more.${i}.t`))}</h2>${t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : ''}${l.code ? `<div class="cmd pre-code"><span class="pc-l">${T('pre.code')}</span><code tabindex="0" aria-label="${esc(l.code)}">${esc(l.code)}</code><button class="cmd-cp" type="button" data-cmd="${esc(l.code)}" data-toast="toast.code_copied" aria-label="${esc(t('pre.code_copy'))}">${I('copy', 20)}</button></div>` : ''}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a></article>`;
+const kgCard = (l, i) => `<article class="kg">${i === 0 || l.visual ? kgVisual() : ''}<div class="kg-tx"><span class="kg-no">${num2(i + 1)}</span><h2 class="kg-t">${esc(t(`prep.more.${i}.t`))}</h2>${t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : ''}${l.code ? `<div class="cmd pre-code"><span class="pc-l">${T('pre.code')}</span><code tabindex="0" aria-label="${esc(l.code)}">${esc(l.code)}</code><button class="cmd-cp" type="button" data-cmd="${esc(l.code)}" data-toast="toast.code_copied" aria-label="${esc(t('pre.code_copy'))}">${I('copy', 20)}</button></div>` : ''}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a></div></article>`;
 // "Birinchi darsgacha": the materials before the course (infrastructure, links to HEAD's other learning platforms); nothing yet = the "soon" line
 function prePage(){
   const m = PREP.more;
@@ -242,7 +242,7 @@ function prePage(){
   return {screen: 'ex', tag: '#/kursgacha', title: t('prep.title'), html: nav('pre') + wrap(`
       ${dlh('#/dastur', T('nav.home'), T('pre.label'))}
       <h1 class="headline ex-h">${T('prep.title')}</h1><p class="lede">${T('pre.lede')}</p>
-      ${m ? `<div class="ex-files prep-more"><h2 class="ef-h">${T('prep.more.title')}</h2>${t('prep.more.note') ? `<p class="ef-hint">${T('prep.more.note')}</p>` : ''}<div class="kgs">${rows}</div></div>` : `<p class="lede pre-soon">${T('lesson.soon')}</p>`}`)};
+      ${m ? `<div class="kg-wrap"><h2 class="ef-h">${T('prep.more.title')}</h2>${t('prep.more.note') ? `<p class="ef-hint">${T('prep.more.note')}</p>` : ''}<div class="kgs">${rows}</div></div>` : `<p class="lede pre-soon">${T('lesson.soon')}</p>`}`)};
 }
 // the accordion: first unchecked card open, checking opens the next (focus follows), a live region says what happened; the pictures only move while on screen and while the tab is visible
 let prepIO = null, prepOpen = null, prepFresh = true, liveTimer = 0;
