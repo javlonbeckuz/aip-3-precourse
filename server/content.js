@@ -174,11 +174,15 @@ export function createContent({ dir, now = () => Date.now() }) {
   const hasPart = (L) => ({ slides: L.slideCount > 0, amaliyot: blockHas(L.amaliyot), kit: blockHas(L.kit), vazifa: blockHas(L.vazifa), prep: !!L.prep });
   const FIELDS = { slides: ['slideCount', 'slideKind'], amaliyot: ['amaliyot'], kit: ['kit'], vazifa: ['vazifa'], prep: ['prep'] };
 
+  // display number: 1.. in order over the lessons that are numbered (lesson.uz.json "numbered" is not false); null for lesson 0 and unnumbered ones (Kirish)
+  const numbered = (n) => n > 0 && lesson(n).numbered !== false;
+  const numOf = (n) => (numbered(n) ? NUMS.filter((m) => m <= n && numbered(m)).length : null);
+
   // the lesson as one student may see it: open parts in full, locked parts only as `opensAt`.
   // Titles come from the student's language; the parts (slides, blocks, files) always from the UZ file, prep from the language file.
   function lessonView(n, lang, group, review = false) {
     const T = lesson(n, lang), L = lesson(n, 'uz'), has = hasPart(L);
-    const v = { n, title: T.title, subtitle: T.subtitle, summary: T.summary, topics: T.topics,
+    const v = { n, num: numOf(n), title: T.title, subtitle: T.subtitle, summary: T.summary, topics: T.topics,
       start: n ? isoTashkent(start(group, n)) : null, date: n ? dateTashkent(start(group, n)) : null, has, parts: {}, open: false };
     for (const part of PARTS.filter((p) => has[p])) {
       const at = opensAt(n, part, group, review), src = part === 'prep' ? T : L;
@@ -239,7 +243,8 @@ export function createContent({ dir, now = () => Date.now() }) {
     const shut = {};
     for (const n of NUMS) { const u = units(n, p); lessons[n] = [u.filter(Boolean).length, u.length]; shut[n] = locked(n); }
     return { prep: [[...Array(prepTotal).keys()].filter((i) => p.t[`prep:${i}`]).length, prepTotal], lessons,
-      done: NUMS.filter((n) => lessons[n][1] && lessons[n][0] === lessons[n][1] && !shut[n]).length };
+      total: NUMS.filter(numbered).length, // numbered lessons only: Kirish progress is stored but not counted
+      done: NUMS.filter((n) => numbered(n) && lessons[n][1] && lessons[n][0] === lessons[n][1] && !shut[n]).length };
   }
 
   return { schedule, validateAll, has: (n) => hasPart(lesson(n)), lesson, lessonNumbers, partOpen, opensAt, isOpen, live, scheduleView, lessonView, lessonsView, docPart, docFile, slideFile, clipFile, prepFile, summary, now };

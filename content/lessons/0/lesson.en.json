@@ -46,7 +46,7 @@
       {
         "brand": "claude",
         "title": "Claude subscription",
-        "note": "The main tool of the practicum. You need at least the Pro plan, and we recommend Max from Lesson 03.",
+        "note": "The main tool of the practicum. You need at least the Pro plan, and we recommend Max from Lesson 02.",
         "steps": [
           "Go to claude.ai and sign up with \"Continue with Google\".",
           "In Settings → Billing choose the Pro plan. It costs $20 a month.",
@@ -64,7 +64,7 @@
             "quiet": true
           }
         ],
-        "footnote": "From Lesson 03 you use Claude Code a lot, and the Pro limit can run out fast. Then switch to Max (from $100 a month)."
+        "footnote": "From Lesson 02 you use Claude Code a lot, and the Pro limit can run out fast. Then switch to Max (from $100 a month)."
       },
       {
         "brand": "warp",

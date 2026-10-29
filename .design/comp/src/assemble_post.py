@@ -109,7 +109,7 @@ function openMenu(t){
     rep("b.querySelector('.cpl').textContent = 'Nusxalandi';", "b.querySelector('.cpl').textContent = t('common.copied');")
     rep("live.textContent = `Nusxalandi: ${li.querySelector('.tt').textContent.trim()}.` + (fresh ? ' Bajarildi. Bekor qilish: «Bajarildi» tugmasi.' : ' Bajarildi.');", "live.textContent = t(fresh ? 'live.copied_new' : 'live.copied', {title: li.dataset.t || li.querySelector('.tt').textContent.trim()});")
     rep("b.querySelector('.cpl').textContent = 'Nusxalash'; }, 2000);", "b.querySelector('.cpl').textContent = t('common.copy'); }, 2000);")
-    rep("nl.hidden = false; live.textContent = 'Yangi dars ochildi: 03-dars, Claude Code.';", "const nt = t('lesson.n', {n: num2(3)}) + ' · ' + t('lesson.3.title'); document.getElementById('nl-t').textContent = nt; nl.hidden = false; live.textContent = t('popup.k') + ': ' + nt;")
+    rep("nl.hidden = false; live.textContent = 'Yangi dars ochildi: 03-dars, Claude Code.';", "const nt = lnT(3) + ' · ' + t('lesson.3.title'); document.getElementById('nl-t').textContent = nt; nl.hidden = false; live.textContent = t('popup.k') + ': ' + nt;")
     rep("if (b.id === 'rst') { S.reset(); try { localStorage.removeItem(NL_KEY); } catch {} return render(); }", "if (b.id === 'rst') { S.reset(); try { localStorage.removeItem(NL_KEY); } catch {} history.replaceState(null, '', '#/dastur'); return render(); }")
     # ---------- boot: language, cold entry, lock-sheet focus
     a = s.rindex('(function boot(){'); b2 = s.index('})();', a) + 5

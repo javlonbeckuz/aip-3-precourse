@@ -92,7 +92,7 @@ function applyLessons(ls, lsUz, lang){
     const n = l.n, lock = {}, parts = [], has = l.has || {};
     const add = (on, key, part) => { if (!on) return; parts.push(key); const pp = l.parts && l.parts[part]; if (pp && !pp.open) lock[key] = pp.opensAt || 'unknown'; };
     add(has.slides, 'sl', 'slides'); add(has.amaliyot, 'am', 'amaliyot'); add(has.kit, 'kt', 'kit'); add(has.vazifa, 'vz', 'vazifa');
-    L[n] = {n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length};
+    L[n] = {n, num: l.num !== undefined ? l.num : l.n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length};
   }
   LESSONS = L;
   const D = I18N[LANGS.includes(lang) ? lang : LANG];   // platform text of the payload's language (lesson metadata and the prep checklist come translated from the API)

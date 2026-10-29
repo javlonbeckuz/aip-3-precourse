@@ -250,7 +250,7 @@
   "note": "toast when a link is unknown, ≤ 28 chars"
  },
  "lock.title": {
-  "uz": "{n}-dars {date}da ochiladi.",
+  "uz": "{n} {date}da ochiladi.",
   "translate": true,
   "note": "title of the bottom sheet on the locked card · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -610,7 +610,7 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.2.note": {
-  "uz": "Praktikumning asosiy vositasi. Kamida Pro tarifi kerak, 03-darsdan Max tavsiya etiladi.",
+  "uz": "Praktikumning asosiy vositasi. Kamida Pro tarifi kerak, 02-darsdan Max tavsiya etiladi.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
@@ -965,7 +965,7 @@
   "note": "shared UI word or pattern; check it fits as a button (≥ 44 px tall, ≤ 18 chars)"
  },
  "lock.title_tba": {
-  "uz": "{n}-dars sanasi keyinroq eʼlon qilinadi.",
+  "uz": "{n} sanasi keyinroq eʼlon qilinadi.",
   "translate": true,
   "note": "locked lesson: bottom sheet title / text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -1485,7 +1485,7 @@
   "note": "tiny tag on the placeholder slide"
  },
  "sl.topic": {
-  "uz": "{n}-dars · {topic}",
+  "uz": "{n} · {topic}",
   "translate": true,
   "note": "big caption on the placeholder slide; {topic} is a lesson topic · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -2135,7 +2135,7 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.2.foot": {
-  "uz": "03-darsdan Claude Code koʻp ishlatiladi va Pro limiti tez tugashi mumkin. Shunda Max tarifiga oʻting (oyiga $100 dan).",
+  "uz": "02-darsdan Claude Code koʻp ishlatiladi va Pro limiti tez tugashi mumkin. Shunda Max tarifiga oʻting (oyiga $100 dan).",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },

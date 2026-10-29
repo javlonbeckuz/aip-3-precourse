@@ -263,6 +263,24 @@ test('shipped lesson 0 names lessons in the padded form (01-dars, Lesson 01), ne
   }
 });
 
+test('num: 1..6 over numbered lessons in order, null for lesson 0 and Kirish; summary counts numbered lessons only', (t) => {
+  const c = createContent({ dir: tmpCopy(t), now: () => Date.parse('2026-10-30T10:00:00+05:00') }); // every fixture date has passed
+  assert.deepEqual([0, 1, 2, 3, 4, 5, 6, 7].map((n) => c.lessonView(n, 'uz', 'shanba').num), [null, 1, null, 2, 3, 4, 5, 6]);
+  assert.equal(c.lesson(2).numbered, false);
+  assert.equal(c.lessonView(2, 'ru', null).num, null);
+  const p = { t: { 'f:am2': 1, 'f:v2': 1 }, sl: { 2: 78 } }; // Kirish finished
+  let s = c.summary(p, 'shanba');
+  assert.deepEqual([s.lessons[2], s.done, s.total], [[3, 3], 0, 6]); // progress kept, not counted
+  s = c.summary({ t: p.t, sl: { ...p.sl, 3: 40 } }, 'shanba');
+  assert.equal(s.done, 1);
+});
+
+test('shipped content: num runs 1..6 and Kirish has none', () => {
+  const c = createContent({ dir: REAL_CONTENT, now: () => 0 });
+  assert.deepEqual([0, 1, 2, 3, 4, 5, 6, 7].map((n) => c.lessonView(n, 'uz', 'shanba').num), [null, 1, null, 2, 3, 4, 5, 6]);
+  assert.equal(JSON.parse(fs.readFileSync(path.join(REAL_CONTENT, 'lessons/2/lesson.uz.json'), 'utf8')).numbered, false);
+});
+
 test('content: a null entry makes the date of one lesson TBA; the dated ones must still increase', () => {
   const T = ['2026-09-13T10:00', null, '2026-09-27T10:00', '2026-10-04T10:00', '2026-10-11T10:00', '2026-10-18T10:00', '2026-10-25T10:00'];
   const base = { timezone: 'Asia/Tashkent', groups: { shanba: T, yakshanba: null } };

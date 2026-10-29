@@ -244,7 +244,7 @@ const I18N = {uz: {
   'menu.id': 'Shaxsiy ID', 'menu.group': 'Guruh', 'menu.group_value': 'Shanba guruhi', 'menu.course': 'Kurs', 'menu.course_value': '7 dars · 21 noy – 26 dek', 'menu.logout': 'Chiqish',
   'popup.label': 'Yangi dars', 'popup.k': 'Yangi dars ochildi', 'popup.open': 'Darsni ochish', 
   'toast.done': '{no} bajarildi', 'toast.undo': 'Bekor qilish', 'toast.notfound': 'Sahifa topilmadi',
-  'lock.title': '{n}-dars {date}da ochiladi.', 'lock.desc': 'Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.',
+  'lock.title': '{n} {date}da ochiladi.', 'lock.desc': 'Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.',
   'lock.sub': '10 ta Hermes kartasi va kitob: «Biznesda AIʼni qoʻllash» (lotin va kirill)',
   'live.copied_new': 'Nusxalandi: {title}. Bajarildi. Bekor qilish tugmasi pastda.', 'live.copied': 'Nusxalandi: {title}. Bajarildi.', 'live.copy_failed': 'Nusxa olinmadi. Matnni qoʻlda belgilang.',
   'live.marked': '{no} bajarildi.', 'live.unmarked': '{no} bajarildi belgisi olib tashlandi.', 'live.end_on': 'Bajarildi deb belgilandi.', 'live.end_off': 'Belgi olib tashlandi.',
@@ -381,7 +381,7 @@ const I18N = {uz: {
   'prep.end_after': 'Tayyorgarlik tugadi.',
   'prep.end_back': 'Dasturga qaytish',
   'date.tba': 'Sana keyinroq',
-  'lock.title_tba': '{n}-dars sanasi keyinroq eʼlon qilinadi.',
+  'lock.title_tba': '{n} sanasi keyinroq eʼlon qilinadi.',
   'prep.intro_tba': 'Birinchi dars sanasini shu yerda eʼlon qilamiz. Roʻyxatni hozirdan tayyorlab qoʻying: hammasi 30 daqiqacha vaqt oladi.',
   'prep.end_tba': 'Tayyorsiz. Birinchi dars sanasi shu yerda chiqadi.',
   'menu.course_tba': '{n} dars, sanasi keyinroq',
@@ -424,7 +424,7 @@ const I18N = {uz: {
   'hc.next': 'Keyingi karta\n{id} · {title}', 'hc.index': 'Kartalar\nsahifasi',
   'book.cyr_extra': 'PDF · kirill',
   // --- slides
-  'sl.close': 'Yopish', 'sl.all': 'Barcha slaydlar', 'sl.prev': 'Oldingi slayd', 'sl.next': 'Keyingi slayd', 'sl.seen': 'Koʻrildi', 'sl.ph': 'namuna slayd', 'sl.topic': '{n}-dars · {topic}',
+  'sl.close': 'Yopish', 'sl.all': 'Barcha slaydlar', 'sl.prev': 'Oldingi slayd', 'sl.next': 'Keyingi slayd', 'sl.seen': 'Koʻrildi', 'sl.ph': 'namuna slayd', 'sl.topic': '{n} · {topic}',
   'sl.note': 'Slayd rasmlari 2.0 dan koʻrinmagan (himoyalangan). Bu yerda joy tutuvchi.', 'sl.doc_title': '{i} / {n} · {n_dars}',
   // --- file screen
   'file.meta': 'Fayl', 'file.hint': 'Bu prototipda fayl yoʻq: yuklab olish 2.0 serverida ishlaydi. Qator va havolalar tekshiruv uchun shu sahifaga olib keladi.',
@@ -660,7 +660,7 @@ const I18N = {uz: {
   "toast.done": "{no}: выполнено",
   "toast.undo": "Отменить",
   "toast.notfound": "Страница не найдена",
-  "lock.title": "Урок {n} откроется {date}.",
+  "lock.title": "{n} откроется {date}.",
   "lock.desc": "Карточки Hermes и книга «Biznesda AIʼni qoʻllash» (на латинице и кириллице) появятся здесь в день урока.",
   "lock.sub": "10 карточек Hermes и книга «Biznesda AIʼni qoʻllash» (латиница и кириллица)",
   "live.copied_new": "Скопировано: {title}. Выполнено. Отменить можно кнопкой внизу.",
@@ -808,7 +808,7 @@ const I18N = {uz: {
   "sl.next": "Следующий слайд",
   "sl.seen": "Просмотрено",
   "sl.ph": "образец слайда",
-  "sl.topic": "Урок {n} · {topic}",
+  "sl.topic": "{n} · {topic}",
   "sl.note": "Изображения слайдов из 2.0 не были доступны (они защищены). Здесь заглушка.",
   "sl.doc_title": "{i} / {n} · {n_dars}",
   "file.meta": "Файл",
@@ -919,7 +919,7 @@ const I18N = {uz: {
   "prep.lede_done": "Все 4 шага выполнены. При необходимости откройте любую карточку снова.",
   "sl.img": "Слайд {i}: {topic}",
   "date.tba": "Дата будет позже",
-  "lock.title_tba": "Дату урока {n} объявим позже.",
+  "lock.title_tba": "{n}: дату объявим позже.",
   "prep.intro_tba": "Дату первого занятия мы объявим здесь. Подготовьте этот список уже сейчас: всё займёт около 30 минут.",
   "prep.end_tba": "Вы готовы. Дата первого занятия появится здесь.",
   "menu.course_tba": "{n} уроков, даты позже",
@@ -990,7 +990,7 @@ const I18N = {uz: {
   "toast.done": "{no} done",
   "toast.undo": "Undo",
   "toast.notfound": "Page not found",
-  "lock.title": "Lesson {n} opens on {date}.",
+  "lock.title": "{n} opens on {date}.",
   "lock.desc": "The Hermes cards and the book “Biznesda AIʼni qoʻllash” (Latin and Cyrillic script) will appear here on the day of the lesson.",
   "lock.sub": "10 Hermes cards and the book “Biznesda AIʼni qoʻllash” (Latin and Cyrillic)",
   "live.copied_new": "Copied: {title}. Marked done. To undo, use the button at the bottom.",
@@ -1136,7 +1136,7 @@ const I18N = {uz: {
   "sl.next": "Next slide",
   "sl.seen": "Viewed",
   "sl.ph": "sample slide",
-  "sl.topic": "Lesson {n} · {topic}",
+  "sl.topic": "{n} · {topic}",
   "sl.note": "Slide images from 2.0 weren’t available (they’re protected). This is a placeholder.",
   "sl.doc_title": "{i} / {n} · {n_dars}",
   "file.meta": "File",
@@ -1245,7 +1245,7 @@ const I18N = {uz: {
   "prep.lede_done": "All 4 steps are done. Open any card again if you need it.",
   "sl.img": "Slide {i}: {topic}",
   "date.tba": "Date to follow",
-  "lock.title_tba": "The date of lesson {n} will be announced later.",
+  "lock.title_tba": "{n}: the date will be announced later.",
   "prep.intro_tba": "We will post the date of the first lesson here. Get this list ready now: it takes about 30 minutes in all.",
   "prep.end_tba": "You're ready. The date of the first lesson will appear here.",
   "menu.course_tba": "{n} lessons, dates to follow",
@@ -1323,14 +1323,14 @@ let FILES = {};                                             // slug -> {name,siz
 const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const F = (name, size, ph, slugOverride, url) => { const sl = slugOverride || slugify(name); return FILES[sl] = {slug: sl, name, size: size || '', ph: !!ph || !size, url: url || ''}; };
 let LESSONS = {   // d = [day, month] (the shanba group), null = the date is not decided yet (02 Kirish); parts: sl slides, am amaliyot, kt kit, vz vazifa (only the parts a lesson really has)
-  0: {d: [21, 11]},
-  1: {d: [21, 11], slides: 12, kind: 'image', parts: ['sl', 'am', 'kt', 'vz'], topics: 9},
-  2: {d: null, slides: 12, kind: 'image', parts: ['sl', 'am', 'vz'], topics: 5},
-  3: {d: [28, 11], slides: 0, parts: [], topics: 8},
-  4: {d: [5, 12], slides: 0, parts: [], topics: 8},
-  5: {d: [12, 12], slides: 0, parts: [], topics: 8},
-  6: {d: [19, 12], slides: 0, parts: [], topics: 7},
-  7: {d: [26, 12], slides: 0, parts: [], topics: 7},
+  0: {num: null, d: [21, 11]},
+  1: {num: 1, d: [21, 11], slides: 12, kind: 'image', parts: ['sl', 'am', 'kt', 'vz'], topics: 9},
+  2: {num: null, d: null, slides: 12, kind: 'image', parts: ['sl', 'am', 'vz'], topics: 5},
+  3: {num: 2, d: [28, 11], slides: 0, parts: [], topics: 8},
+  4: {num: 3, d: [5, 12], slides: 0, parts: [], topics: 8},
+  5: {num: 4, d: [12, 12], slides: 0, parts: [], topics: 8},
+  6: {num: 5, d: [19, 12], slides: 0, parts: [], topics: 7},
+  7: {num: 6, d: [26, 12], slides: 0, parts: [], topics: 7},
 };
 
 // ---- lesson 0: prep checklist (4 items: step counts and links only; the words come from the dictionary or the API)
@@ -1458,7 +1458,7 @@ function applyLessons(ls, lsUz, lang){
     const n = l.n, lock = {}, parts = [], has = l.has || {};
     const add = (on, key, part) => { if (!on) return; parts.push(key); const pp = l.parts && l.parts[part]; if (pp && !pp.open) lock[key] = pp.opensAt || 'unknown'; };
     add(has.slides, 'sl', 'slides'); add(has.amaliyot, 'am', 'amaliyot'); add(has.kit, 'kt', 'kit'); add(has.vazifa, 'vz', 'vazifa');
-    L[n] = {n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length};
+    L[n] = {n, num: l.num !== undefined ? l.num : l.n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length};
   }
   LESSONS = L;
   const D = I18N[LANGS.includes(lang) ? lang : LANG];   // platform text of the payload's language (lesson metadata and the prep checklist come translated from the API)
@@ -1494,6 +1494,11 @@ function applyMe(j, uz){
 // each lesson has ONE fixed colour whatever its state (state = words + icons in the note, never colour); yellow also stays the progress ring. Emerald (lesson 06) is an identity colour, never a success colour; colours follow the card's position (cyan is 07)
 const LCOL = ['yellow', 'lilac', 'grey', 'blue', 'dark', 'orange', 'emerald', 'cyan'];
 const LN = () => Object.keys(LESSONS).map(Number).filter(n => n > 0).sort((a, b) => a - b);   // the lesson numbers 1..N come from the data (the API in the app)
+const lnum = n => LESSONS[n].num;   // the curriculum number 1..N, or null: Tayyorgarlik and Kirish have none (their label is their short name)
+const RN = () => LN().filter(n => lnum(n) != null);   // the numbered lessons: only these count in the ring, the course size and the all-done check
+const lnT = n => lnum(n) == null ? ltitle(n) : t('lesson.n', {n: num2(lnum(n))});   // "01-dars" / "Урок 01" / "Lesson 01", or "Kirish"
+const lnH = n => esc(lnT(n));
+const lessonLabel = n => lnum(n) == null ? `${esc(ltitle(n))} · ${esc(lessonDate(n))}` : T('lesson.label', {n: num2(lnum(n)), date: lessonDate(n)});
 const colCls = n => LCOL[n] === 'dark' ? 'c-night' : 'c-' + LCOL[n];   // an unlocked dark lesson keeps its dark identity, with normal (white) ink
 
 
@@ -1520,13 +1525,13 @@ function units(n){
 }
 const lProg = n => { const u = units(n); return [u.filter(x => x.done).length, u.length]; };
 const lDone = n => { if (LESSONS[n].lock && Object.keys(LESSONS[n].lock).length) return false; const [d, tt] = lProg(n); return tt > 0 && d === tt; };   // a lesson with a part still locked is not finished
-const allDone = () => LN().every(n => !isLocked(n) && (lDone(n) || lProg(n)[1] === 0)) && LN().some(n => lProg(n)[1] > 0);   // every lesson is open and finished; an open lesson with nothing to count (soon, or Kit only) does not hold it back
-const ring = () => [LN().filter(n => !isLocked(n) && (lDone(n) || (allDone() && lProg(n)[1] === 0))).length, LN().length];   // always done/N; only when the course is all done do empty open lessons count as done, so "7/7" stands next to "all done"
+const allDone = () => RN().every(n => !isLocked(n) && (lDone(n) || lProg(n)[1] === 0)) && RN().some(n => lProg(n)[1] > 0);   // every lesson is open and finished; an open lesson with nothing to count (soon, or Kit only) does not hold it back
+const ring = () => [RN().filter(n => !isLocked(n) && (lDone(n) || (allDone() && lProg(n)[1] === 0))).length, RN().length];   // always done/N; only when the course is all done do empty open lessons count as done, so "6/6" stands next to "all done"
 // first unfinished item of a lesson, with a precise label and target ("Keyingi qadam"); `what` is the label without the lesson prefix
 function nextOf(n){
   const u = units(n).find(x => !x.done); if (!u) return null;
   const what = esc(u.label) + (u.kind === 'sl' ? ` · ${S.sl(n)} / ${LESSONS[n].slides}` : '');   // what / label are HTML; started = the target already has progress ("continue" vs "start")
-  return {what, label: `${T('lesson.n', {n: num2(n)})} · ${what}`, href: u.href, started: u.kind === 'sl' && S.sl(n) > 0};
+  return {what, label: `${lnH(n)} · ${what}`, href: u.href, started: u.kind === 'sl' && S.sl(n) > 0};
 }
 const nextStep = () => { const live = liveLesson();
   if (courseStarted() && PREP.items.length > 3) { const i = [1, 2, 3].find(j => !S.has('prep:' + j)); if (i != null) return {href: '#/dars/0', label: T('next.prep', {title: HT(T(`prep.${i}.title`))})}; }   // the Google account, Claude and Warp are what lesson 1 needs
@@ -1580,15 +1585,15 @@ const nextBlock = (href, key, params) => `<a class="play on-light" href="${href}
 function homePage(){
   const [rd, rt] = ring(), ns = nextStep(), live = liveLesson(), pre = !courseStarted(), k = prepCount();
   const fxH = cls => `<span class="fx ${cls}" aria-hidden="true"><i></i><i></i><i></i></span>`;   // the back panel of the 3D folder: its tab and three paper sheets (they only move on hover, focus and press)
-  const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><span class="f-top"><span class="f-label">${T('course.label', {n: LN().length})}</span></span>
+  const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><span class="f-top"><span class="f-label">${T('course.label', {n: RN().length, pl: RN().length})}</span></span>
         <span class="f-row"><span class="f-title">${T('course.title')}</span><span class="f-note">${I('lock', 14)}${T(LESSONS[1].d ? 'date.opens' : 'date.tba', {date: lessonDate(1)})}</span></span></button>${fxH('c-course')}</li>`;
   const cardHTML = n => {
     const tab = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`, arrow = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
-    const label = n === 0 ? T('lesson.label0') : T('lesson.label', {n: num2(n), date: lessonDate(n)});
+    const label = n === 0 ? T('lesson.label0') : lessonLabel(n);
     let note, href = `#/dars/${n}`;
     if (n === 0) { note = k === 4 ? `${I('check', 14)}${T('note.done', {d: 4, t: 4, pl: 4})}` : courseStarted() ? T('note.open', {d: k, t: 4, pl: 4}) : !LESSONS[0].d ? T('prep.cnt', {d: k, pl: 4}) : T('note.prep_todo', {until: t('date.until', {date: lessonDate(0)}), d: k, pl: 4}); }
     else if (isLocked(n)) {   // before its date: the lesson keeps its own colour, with a lock and the date (once, in the note)
-      return `<li class="g-${LCOL[n]} fo"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${T('lesson.n', {n: num2(n)})}</span></span>
+      return `<li class="g-${LCOL[n]} fo"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${lnH(n)}</span></span>
         <span class="f-row"><span><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-sub">${T(`lesson.${n}.sub`)}</span></span><span class="f-note">${I('lock', 14)}${T(LESSONS[n].d ? 'date.opens' : 'date.tba', {date: lessonDate(n)})}</span></span></button>${fxH('c-' + LCOL[n])}</li>`;
     } else {
       const [d, tt] = lProg(n);
@@ -1606,7 +1611,7 @@ function homePage(){
   let hero = '', cta = '', headCol = LCOL[0];
   if (pre) {   // before lesson 1: the prep card is the hero, and the one next step is the first open prep item
     const first = PREP.items.findIndex((_, i) => !S.has('prep:' + i));
-    hero = `<a class="folder flatc c-yellow now-card" href="#/dars/0"><span class="f-top"><span class="f-label">${k === 4 ? `${T('prep.ready')}<br>${T('lesson.label', {n: num2(1), date: lessonDate(1)})}` : LESSONS[0].d ? `${T('lesson.label0')}<br>${T('date.until', {date: lessonDate(0)})}` : T('lesson.label0')}</span>${arrowH}</span>
+    hero = `<a class="folder flatc c-yellow now-card" href="#/dars/0"><span class="f-top"><span class="f-label">${k === 4 ? `${T('prep.ready')}<br>${lessonLabel(1)}` : LESSONS[0].d ? `${T('lesson.label0')}<br>${T('date.until', {date: lessonDate(0)})}` : T('lesson.label0')}</span>${arrowH}</span>
         <span><span class="f-title">${T('prep.title')}</span><span class="f-sub">${T('prep.cnt', {d: k, pl: 4})}</span></span></a>`;
     if (first >= 0) cta = pill(`${T('next.k')} · ${T('next.prep', {title: HT(T(`prep.${first}.title`))})}`, '#/dars/0');
     else if (PREP.more) cta = pill(`${T('next.k')} · ${T('prep.more.title')}`, '#/dars/0?p=more');
@@ -1614,7 +1619,7 @@ function homePage(){
     const [d, tt] = lProg(live), L = LESSONS[live], s = S.sl(live);
     const nxl = nextOf(live), slSub = !L.slides ? stepsText(d, tt) : s === 0 ? T('hero.sub_start', {n: L.slides}) : s >= L.slides ? T('hero.sub_seen', {n: L.slides}) : T('hero.sub', {i: s, n: L.slides}), sub = tt === 0 ? T('lesson.soon') : nxl && !/\/slayd\//.test(nxl.href) ? nxl.what : slSub, href = nxl ? nxl.href : `#/dars/${live}`;   // the hero opens today's next step ("continue" only when something was seen)
     headCol = LCOL[live];
-    hero = `<a class="folder flatc ${colCls(live)} now-card" href="${href}"><span class="f-top"><span class="f-label">${T('hero.k')}<br>${T('lesson.label', {n: num2(live), date: lessonDate(live)})}</span>${arrowH}</span>
+    hero = `<a class="folder flatc ${colCls(live)} now-card" href="${href}"><span class="f-top"><span class="f-label">${T('hero.k')}<br>${lessonLabel(live)}</span>${arrowH}</span>
         <span><span class="f-title">${T(`lesson.${live}.card`)}</span><span class="f-sub">${sub}</span></span></a>`;
   }
   if (!pre && ns) cta = pill(`${T(live ? 'next.k_backlog' : 'next.k')} · ${ns.label}`, ns.href);
@@ -1733,10 +1738,10 @@ function lessonPage(n, tab){
     ? `<div class="folder flatc ${colCls(n)} soon-card"><span class="f-label">${esc(lessonDate(n))}</span><p class="soon-t">${T('lesson.soon')}</p></div>`
     : `<div class="gt gt-${LCOL[n]} g-${LCOL[n]}${tall ? ' gt-tall' : ''}" id="dg" style="--n:${tabsDef.length}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
       <div class="gt-tabs" role="tablist" aria-label="${esc(t('tab.list'))}">${tabs}</div><div class="gt-body">${panes}</div></div>`;
-  return {screen: 'dars', tab: Math.max(0, L.parts.indexOf(tab)), tag: `#/dars/${n} · ` + t('tag.lesson', {n: num2(n), parts: L.parts.length}), title: t('title.lesson', {n: num2(n), title}), html: nav('d') + `
+  return {screen: 'dars', tab: Math.max(0, L.parts.indexOf(tab)), tag: `#/dars/${n} · ` + t('tag.lesson', {n: lnT(n), parts: L.parts.length}), title: lnum(n) == null ? title : t('title.lesson', {n: num2(lnum(n)), title}), html: nav('d') + `
     <div class="hero"><div class="hero-l">
       ${dlh('#/dastur', T('nav.home'), tt ? T('lesson.meta', {n, date: lessonDate(n), d, t: tt, pl: tt}) : esc(lessonDate(n)))}
-      <h1 class="headline${title.split(' ').some(w => w.length >= 11) ? ' long' : ''}"><span class="ln">${T('lesson.n', {n: num2(n)})}</span><span class="ln">${esc(title)}</span></h1>
+      <h1 class="headline${title.split(' ').some(w => w.length >= 11) ? ' long' : ''}">${lnum(n) == null ? '' : `<span class="ln">${lnH(n)}</span>`}<span class="ln">${esc(title)}</span></h1>
       <p class="lsub">${T(`lesson.${n}.sub`)}</p>
       <p class="lede">${T(`lesson.${n}.lede`)}</p>
     </div>
@@ -1749,7 +1754,7 @@ function slPage(n, i){
   const topic = t(`lesson.${n}.t${Math.min(L.topics - 1, Math.floor((i - 1) / N * L.topics))}`);
   const prev = i > 1 ? `#/dars/${n}/slayd/${i - 1}` : '', next = i < N ? `#/dars/${n}/slayd/${i + 1}` : '';
   const nums = Array.from({length: N}, (_, k) => `<a href="#/dars/${n}/slayd/${k + 1}"${k + 1 === i ? ' aria-current="true"' : ''}>${k + 1}</a>`).join('');
-  return {screen: 'slayd', tag: `#/dars/${n}/slayd/${i} · ` + t('tag.slide', {n: N}), title: t('sl.doc_title', {i, n: N, n_dars: t('lesson.n', {n: num2(n)})}), html: `
+  return {screen: 'slayd', tag: `#/dars/${n}/slayd/${i} · ` + t('tag.slide', {n: N}), title: t('sl.doc_title', {i, n: N, n_dars: lnT(n)}), html: `
     <div class="slv"><div class="slv-bar"><a class="slv-x" href="#/dars/${n}">${I('back')}${T('sl.close')}</a><h1 class="slv-ct" tabindex="-1">${i} / ${N}</h1>
         <button class="slv-all" type="button" data-sheet="slides-sheet" aria-haspopup="dialog" aria-expanded="false" aria-controls="slides-sheet">${T('sl.all')}</button></div>
       <div class="slv-stage" data-sl="${i}" data-n="${n}" data-max="${N}">${slideStage(n, i)}</div>
@@ -1862,11 +1867,11 @@ function lockSheet(n){
   const sh = document.getElementById('lock-sheet'), ti = sh.querySelector('#ls-t'), de = sh.querySelector('.sheet-d'), ls = sh.querySelector('#ls-list');
   ls.hidden = true; de.hidden = false;
   if (n === 'course') {   // the one course folder: every lesson with its label, title and date ("Sana keyinroq" while it has none)
-    ti.dataset.i18n = 'course.sheet_t'; ti.dataset.i18nP = JSON.stringify({n: LN().length, pl: LN().length}); de.hidden = true; ls.hidden = false;
-    ls.innerHTML = LN().map(k => `<li><span class="sl-n">${T('lesson.n', {n: num2(k)})}</span><span class="sl-t">${esc(ltitle(k))}</span><span class="sl-d">${LESSONS[k].d ? esc(lessonDate(k)) : T('date.tba')}</span></li>`).join('');
+    ti.dataset.i18n = 'course.sheet_t'; ti.dataset.i18nP = JSON.stringify({n: RN().length, pl: RN().length}); de.hidden = true; ls.hidden = false;
+    ls.innerHTML = LN().map(k => `<li><span class="sl-n">${lnum(k) == null ? '' : lnH(k)}</span><span class="sl-t">${esc(ltitle(k))}</span><span class="sl-d">${LESSONS[k].d ? esc(lessonDate(k)) : T('date.tba')}</span></li>`).join('');
     applyStatic(sh); okina(sh); return sh;
   }
-  ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n: num2(n), date: lessonDate(n)}); de.dataset.i18n = 'lock.desc_n';
+  ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n: lnT(n), date: lessonDate(n)}); de.dataset.i18n = 'lock.desc_n';
   applyStatic(sh); okina(sh); return sh;
 }
 const openLockSheet = n => lockSheet(n).showModal();
@@ -1922,7 +1927,7 @@ function fillMenu(){
   const s = SESS.student, $ = id => document.getElementById(id);
   $('nm-name').textContent = s.fullName; $('nm-id').textContent = s.id;
   $('nm-group').textContent = t('menu.group_' + (s.group || 'none'));
-  $('nm-course').textContent = LESSONS[1].d ? t('menu.course_range', {n: LN().length, pl: LN().length, from: lessonDate(1), to: lessonDate(LN().filter(n => LESSONS[n].d).at(-1))}) : t('menu.course_tba', {n: LN().length, pl: LN().length});
+  $('nm-course').textContent = LESSONS[1].d ? t('menu.course_range', {n: RN().length, pl: RN().length, from: lessonDate(1), to: lessonDate(LN().filter(n => LESSONS[n].d).at(-1))}) : t('menu.course_tba', {n: RN().length, pl: RN().length});
   okina($('nmenu'));
 }
 async function logout(){
@@ -1994,7 +1999,7 @@ function slideStage(n, i){
   if (i < LESSONS[n].slides) new Image().src = `${base}/slide/${i + 1}`;   // the next still is on its way before the tap
   const L = LESSONS[n], topic = t(`lesson.${n}.t${Math.min(L.topics - 1, Math.floor((i - 1) / L.slides * L.topics))}`);
   // loading: the placeholder layout (number and topic) stays under the image, which fades in on load; error: a message with a retry
-  return `<div class="slv-ph"><span class="slv-num">${num2(i)}</span><span class="slv-t">${T('sl.topic', {n: num2(n), topic})}</span></div>
+  return `<div class="slv-ph"><span class="slv-num">${num2(i)}</span><span class="slv-t">${T('sl.topic', {n: lnT(n), topic})}</span></div>
     <div class="slv-media" role="img" aria-label="${esc(t('sl.img', {i, topic}))}" data-src="${base}/slide/${i}"><img src="${base}/slide/${i}" alt="" draggable="false">${vid ? `<video src="${base}/clip/${i}?q=1080" muted playsinline autoplay loop disablepictureinpicture></video>` : ''}</div>
     <div class="slv-err" hidden role="alert"><span>${T('sl.error')}</span><button type="button" class="slv-retry">${T('sl.retry')}</button></div>`;
 }

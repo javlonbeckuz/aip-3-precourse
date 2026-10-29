@@ -157,6 +157,7 @@ Example (shortened) `lesson.uz.json` of a lesson with all parts:
 - A part exists if it has content: slides (`slideCount > 0`); amaliyot, kit and vazifa (a block with `text` or at least one group; `null` = none); prep (`prep`, lesson 0 only).
 - Every file object has a unique `slug` (per lesson), the real `name` (it is the download name, students save the files into their company folder) and a `size`. There is no path field.
 - A group may also carry `prompts: [{ id, title, target?, text }]` (id: 1-8 letters or digits, unique per lesson; text stays Uzbek). The SPA shows them as copy rows and writes `p:l{n}:{id}` on copy. Startup rejects a bad or duplicate prompt.
+- `"numbered": false` in a lesson's `lesson.uz.json` makes it unnumbered (Kirish): the payload gives it `num: null`, the numbered lessons count 1..6 in order, and the bot count (`darslar d/6`) and `summary.total` skip it. Its progress is still stored.
 - Day 4 holds two groups in its Kit block ("Kit 5 A", "Kit 4 A/B"). Kit is not counted in progress.
 
 ### Where the files go

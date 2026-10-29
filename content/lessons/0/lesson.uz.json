@@ -46,7 +46,7 @@
       {
         "brand": "claude",
         "title": "Claude obunasi",
-        "note": "Praktikumning asosiy vositasi. Kamida Pro tarifi kerak, 03-darsdan Max tavsiya etiladi.",
+        "note": "Praktikumning asosiy vositasi. Kamida Pro tarifi kerak, 02-darsdan Max tavsiya etiladi.",
         "steps": [
           "claude.ai ga kiring va «Continue with Google» orqali roʻyxatdan oʻting.",
           "Settings → Billing boʻlimida Pro tarifini tanlang. Narxi oyiga $20.",
@@ -64,7 +64,7 @@
             "quiet": true
           }
         ],
-        "footnote": "03-darsdan Claude Code koʻp ishlatiladi va Pro limiti tez tugashi mumkin. Shunda Max tarifiga oʻting (oyiga $100 dan)."
+        "footnote": "02-darsdan Claude Code koʻp ishlatiladi va Pro limiti tez tugashi mumkin. Shunda Max tarifiga oʻting (oyiga $100 dan)."
       },
       {
         "brand": "warp",

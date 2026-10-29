@@ -85,3 +85,40 @@ Take the ANIMATION ONLY. Keep our flat lesson colours. No gradients, no shadows,
   - on press or focus-visible on touch and keyboard;
   - none under `prefers-reduced-motion`.
 - Papers use neutral tints of the card's own colour or the existing greys. No new colour language.
+
+## Change (user, 2026-10-29 evening): Kirish has NO number
+The curriculum has 6 days. Kirish is not in it, so it is unnumbered, like Tayyorgarlik. Numbered lessons are **01-06 = curriculum Day 1-6**.
+
+Card order (internal lesson n stays as is; only the DISPLAY changes):
+
+| Internal n | Card label | Lesson |
+|---|---|---|
+| 0 | TAYYORGARLIK | Tayyorgarlik |
+| 1 | 01-DARS | AI qanday ishlaydi |
+| 2 | **KIRISH** | Kirish (no number, still grey, date TBA) |
+| 3 | 02-DARS | Claude Code |
+| 4 | 03-DARS | API va MCP |
+| 5 | 04-DARS | Ishga tushirish |
+| 6 | 05-DARS | Agentni yaxshilash |
+| 7 | 06-DARS | Natijalar va demo kuni |
+
+**Content.** `lesson.uz.json` for lesson 2 gets `"numbered": false`. The server adds `num` to every lesson in the payload:
+- 1..6 for numbered lessons, counted in order and skipping unnumbered ones;
+- `null` for 0 and for Kirish.
+
+Labels use `num2(num)`. When `num` is null, the label is the lesson's short name, as Tayyorgarlik's is, so the Kirish card label reads "KIRISH". Lock sheet: "Kirish sanasi keyinroq eʼlon qilinadi."
+
+**Counting (default, pending user OK).**
+- Kirish is NOT counted in the ring, the all-done check, the course size or the bot summary. Those are numbered lessons only: ring x/6, "KURS · 6 DARS", menu "6 dars", bot `darslar d/6`.
+- Kirish progress is still stored, and its prompts still tick.
+- The course folder's date list still shows Kirish as an unnumbered row.
+
+**Colours** stay by internal n: Kirish grey, then blue, dark, orange, emerald, cyan.
+
+**Prep text.** Change "03-darsdan" back to "02-darsdan", because Claude Code is now 02. "01-dars oxirida" stays as it is. Same in RU and EN ("с урока 02", "from Lesson 02"). Reprint the PDFs.
+
+**Tests.**
+- `num` mapping.
+- Ring and summary over numbered lessons only.
+- The bot shows /6.
+- The shipped invariant: `num` sequence 1..6 with Kirish null.

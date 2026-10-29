@@ -42,7 +42,7 @@ function studentCard(s, ctx) {
     `ID: <code>${esc(s.id)}</code> | ${grpText(s)} | Mentor: ${esc(s.mentor || '-')}`,
     `Telefon: ${esc(s.phone || '-')}`,
     `Yaratilgan: ${when(s.created_at)} | Oxirgi kirish: ${when(s.last_login_at) ?? 'hali kirmagan'}`,
-    `Tayyorgarlik ${p.prep[0]}/${p.prep[1]} | darslar ${p.done}/${Object.keys(p.lessons).length} bajarilgan`,
+    `Tayyorgarlik ${p.prep[0]}/${p.prep[1]} | darslar ${p.done}/${p.total} bajarilgan`,
   ].join('\n');
 }
 

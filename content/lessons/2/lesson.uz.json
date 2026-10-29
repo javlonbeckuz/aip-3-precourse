@@ -1,5 +1,6 @@
 {
   "n": 2,
+  "numbered": false,
   "title": "Kirish",
   "subtitle": "AI nima, modellar, Context, RAG, NotebookLM",
   "summary": "AI aslida nima ekanini, modellar qanday ishlashini va kontekst nega hamma narsani hal qilishini koʻramiz. Amaliyot: NotebookLM.",

@@ -22,7 +22,7 @@ file     { slug, name, size }                   // no server path, ever; size = 
 ### lesson (what a student may see)
 
 ```
-{ n, title, subtitle, summary, topics[],
+{ n, num, title, subtitle, summary, topics[],   // n = folder/URL number (0..7); num = the number to DISPLAY: 1..6 in order over the numbered lessons, null for lesson 0 and for unnumbered ones (Kirish, n=2: "numbered": false in its uz file). Use num, never n, in labels ("03-dars" for num 3); a null num shows the short name
   start: iso|null, date: "YYYY-MM-DD"|null,           // this group's lesson start; null for lesson 0, and null while the dates are to follow (or the student has no group)
   has:   { slides, amaliyot, kit, vazifa, prep },   // booleans: the part exists at all (render or hide the row)
   parts: { <part>: { open: true } | { open: false, opensAt: iso|null } },   // only parts that exist; opensAt null = date to follow
@@ -45,7 +45,7 @@ Notes for the frontend:
 - Dates to follow: while a group's dates are not decided (`groups.<g>: null` in schedule.json), and for a student with no group, lessons 1-7 stay locked, `start`/`date`/`opensAt`/`schedule.starts.*`/`schedule.<group>` are `null` (show "date to follow"), and `live.n` is 0. Lesson 0 (prep) is still open. A 403 `locked` then carries `error.opensAt: null`.
 - One lesson can be TBA inside a dated group (`null` in that group's array; shipped: lesson 2 "Kirish"). It behaves like the group case for that lesson only: `start`/`date`/`opensAt` null, every part locked, never live, and `review` does not open it. Other lessons are unaffected. `starts["2"]` is null.
 - Lesson 0 (prep) is open at once. Lessons 1 and 3-7 ship with all `has.*` false until their content is added: show the colour card and "materials soon" (see the empty-lesson note above). Lesson 2 (Kirish, the 2.0 lesson) has slides (78, placeholder svg until stills land), amaliyot and vazifa with prompts, and no kit.
-- Kit is not counted in progress. The counted units are: slides reached (`sl:{n} >= slideCount`), the `f:am{n}` tick, the `f:v{n}` tick.
+- Progress counts numbered lessons only (`num` not null): the ring and the bot are x/6, Kirish progress is stored but not counted. Kit is not counted in progress. The counted units are: slides reached (`sl:{n} >= slideCount`), the `f:am{n}` tick, the `f:v{n}` tick.
 - `prep.intro` contains the placeholder `{sana}`; fill it with `lessons[1].date` formatted. When `lessons[1].date` is null (dates to follow) do not fill it in; use the "date to follow" text instead.
 - File URL: `/api/aip/lesson/{n}/doc/{slug}`.
 
