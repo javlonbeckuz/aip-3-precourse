@@ -1048,7 +1048,17 @@ html.hid .bgp path{animation-play-state:paused}
 .sl-n{grid-row:span 2;font:500 13px/1.5 var(--font-body);text-transform:uppercase;color:var(--text-2);min-width:5.2em}
 .sl-t{font:500 16px/1.3 var(--font-body)}
 .sl-d{font:400 14px/1.3 var(--font-body);color:var(--text-2)}
-.sl-t+.sl-d,.sl-n+.sl-d{grid-column:2}
+.prep-btn{display:grid;place-items:center;flex:none;width:48px;height:48px;border-radius:50%;background:var(--yellow);color:var(--black);text-decoration:none;font:600 15px/1 var(--font-body);white-space:nowrap}
+.prep-btn .pb-ic{display:grid;place-items:center}
+.prep-btn .pb-t{display:none}
+.prep-btn[aria-current]{outline:2px solid var(--white);outline-offset:2px}
+@media (hover:hover) and (pointer:fine){.prep-btn:hover{filter:brightness(1.07)}}
+@container (min-width:900px){.prep-btn{display:flex;align-items:center;gap:10px;width:auto;height:max(44px,calc(48 * var(--u)));padding:0 18px 0 6px;border-radius:999px;font-size:max(14px,calc(15 * var(--u)))}
+.prep-btn .pb-ic{width:36px;height:36px;border-radius:50%;background:var(--black);color:var(--yellow)}
+.prep-btn .pb-t{display:block}}
+@container (max-width:359px){.nav .wordmark{font-size:13px}
+.nav .nav-r{gap:4px}
+.nav .prep-btn{width:44px;height:44px}}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}

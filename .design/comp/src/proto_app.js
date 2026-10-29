@@ -85,10 +85,12 @@ const SRCHK = () => I('check', 12) + `<span class="sr-only">${T('common.sr_done'
 const mark = s => s.split(/(`[^`]*`)/).map((part, i) => i % 2 ? `<code>${part.slice(1, -1)}</code>` : part.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>')).join('');   // [fill-in] marks, but never inside a `code span` (a literal value there is not a placeholder)
 const hasBracket = s => /\[[^\]]+\]/.test(String(s).replace(/`[^`]*`/g, ''));
 const back = (href, label) => `<a class="eyebrow" href="${href}">${I('back')}${label}</a>`;
+// Tayyorgarlik lives in the header once the course has started (before it, it is a card on the home page): a yellow pill on desktop, a round icon button on phones
+const prepBtn = active => courseStarted() ? `<a class="prep-btn" href="#/dars/0" aria-label="${esc(t('prep.btn_aria', {d: prepCount(), pl: 4}))}"${active === 'prep' ? ' aria-current="page"' : ''}><span class="pb-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l2 2.5h8.5A1.5 1.5 0 0 1 21 9v8.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/></svg></span><span class="pb-t">${T('prep.btn', {d: prepCount(), pl: 4})}</span></a>` : '';
 const nav = active => `<header class="nav">
   <nav class="nav-links" aria-label="${esc(t('nav.label'))}"><a class="home-btn" href="#/dastur" aria-label="${esc(t('nav.homebtn'))}" title="${esc(t('nav.homebtn'))}"${active === 'home' ? ' aria-current="page"' : ''}>${I('home', 20)}</a></nav>
   <span class="wordmark">AI Praktikum 3.0</span>
-  <div class="nav-r"><button class="nav-name" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu">${esc(STUDENT)}</button><button class="menu-btn" type="button" aria-label="${esc(t('menu.label'))}" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu">${I('menu', 20)}</button></div>
+  <div class="nav-r">${prepBtn(active)}<button class="nav-name" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu">${esc(STUDENT)}</button><button class="menu-btn" type="button" aria-label="${esc(t('menu.label'))}" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu">${I('menu', 20)}</button></div>
 </header>`;
 // one prompt row of the lilac list: copy = done (+ undo), a "Qayerga:" / "Manba:" target, the full text; ticks persist in S
 // o.title / o.text are plain (data-t, aria, copy); o.titleH / o.whereH / o.textH are the escaped HTML of the same values
@@ -119,10 +121,8 @@ const nextBlock = (href, key, params) => `<a class="play on-light" href="${href}
 function homePage(){
   const [rd, rt] = ring(), ns = nextStep(), live = liveLesson(), pre = !courseStarted(), k = prepCount();
   const fxH = cls => `<span class="fx ${cls}" aria-hidden="true"><i></i><i></i><i></i></span>`;   // the back panel of the 3D folder: its tab and three paper sheets (they only move on hover, focus and press)
-  const lockedLs = () => LN().filter(isLocked);   // every lesson that is still shut (Kirish included) lives in ONE normal-size locked folder
-  const courseCard = () => { const ks = lockedLs(), nx = ks.find(n => LESSONS[n].d);
-    return `<li class="g-course fo"><button class="folder c-course" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><span class="f-top"><span class="f-label">${pre ? T('course.label', {n: RN().length, pl: RN().length}) : T('course.label_k')}</span></span>
-        <span class="f-row"><span class="f-title">${pre ? T('course.title') : T('course.locked', {k: ks.length, pl: ks.length})}</span><span class="f-note">${I('lock', 14)}${T(nx ? 'date.opens' : 'date.tba', {date: nx ? lessonDate(nx) : ''})}</span></span></button>${fxH('c-course')}</li>`; };
+  const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><span class="f-top"><span class="f-label">${T('course.label', {n: RN().length, pl: RN().length})}</span></span>
+        <span class="f-row"><span class="f-title">${T('course.title')}</span><span class="f-note">${I('lock', 14)}${T(LESSONS[1].d ? 'date.opens' : 'date.tba', {date: lessonDate(1)})}</span></span></button>${fxH('c-course')}</li>`;
   const cardHTML = n => {
     const tab = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`, arrow = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
     const label = n === 0 ? T('lesson.label0') : lessonLabel(n);
@@ -170,7 +170,7 @@ function homePage(){
       ${hero}${cta}
     </div>
     <h2 class="sr-only">${T('home.lessons')}</h2>
-    <ul class="grid3 lessons${pre ? ' pre' : ''}">${pre ? cardHTML(0) + courseCard() : LN().filter(n => !isLocked(n)).map(cardHTML).join('') + (lockedLs().length ? courseCard() : '') + cardHTML(0)}</ul>`};
+    <ul class="grid3 lessons${pre ? ' pre' : ''}">${pre ? cardHTML(0) + courseCard() : (courseStarted() ? LN() : [...LN(), 0]).map(cardHTML).join('')}</ul>`};
 }
 
 // ---- lesson 0: prep checklist
@@ -211,7 +211,7 @@ function prepPage(){
         ${it.foot ? `<p class="foot">${T(`prep.${i}.foot`)}</p>` : ''}</div>
       <div class="pf"><button class="chip${d ? '' : ' off'}" type="button" aria-pressed="${d}" aria-label="${esc(t('common.mark_done'))}" aria-describedby="pt${i}"><span class="cl">${T('common.done')}</span></button></div></li>`;
   }).join('');
-  return {screen: 'ex', tag: '#/dars/0 · ' + t('tag.prep'), title: t(courseStarted() ? 'prep.title_late' : 'prep.title'), html: nav('d') + wrap(`
+  return {screen: 'ex', tag: '#/dars/0 · ' + t('tag.prep'), title: t(courseStarted() ? 'prep.title_late' : 'prep.title'), html: nav('prep') + wrap(`
       ${dlh('#/dastur', T('nav.home'), `${T('prep.meta')} · ${cnt('prep')}`)}
       <h1 class="headline ex-h">${T(courseStarted() ? 'prep.title_late' : 'prep.title')}</h1><p class="lede">${prepCount() === 4 ? T('prep.lede_done') : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>
       <div class="ex-files"><section class="grp"><h2 class="ef-h">${T('common.guide')}</h2><ul>${prepFileRow()}</ul></section></div>`,
@@ -437,10 +437,9 @@ function refreshCounts(){ document.querySelectorAll('[data-cnt]').forEach(el => 
 function lockSheet(n){
   const sh = document.getElementById('lock-sheet'), ti = sh.querySelector('#ls-t'), de = sh.querySelector('.sheet-d'), ls = sh.querySelector('#ls-list');
   ls.hidden = true; de.hidden = false;
-  if (n === 'course') {   // the one locked folder: only the shut lessons, each with its label, title and date ("Sana keyinroq" while it has none)
-    const ks = LN().filter(isLocked);
-    ti.dataset.i18n = courseStarted() ? 'course.locked' : 'course.sheet_t'; ti.dataset.i18nP = JSON.stringify({k: ks.length, n: RN().length, pl: courseStarted() ? ks.length : RN().length}); de.hidden = true; ls.hidden = false;
-    ls.innerHTML = ks.map(k => `<li><span class="sl-n">${lnH(k)}</span>${lnum(k) == null ? '' : `<span class="sl-t">${esc(ltitle(k))}</span>`}<span class="sl-d">${LESSONS[k].d ? esc(lessonDate(k)) : T('date.tba')}</span></li>`).join('');
+  if (n === 'course') {   // the one course folder: every lesson with its label, title and date ("Sana keyinroq" while it has none)
+    ti.dataset.i18n = 'course.sheet_t'; ti.dataset.i18nP = JSON.stringify({n: RN().length, pl: RN().length}); de.hidden = true; ls.hidden = false;
+    ls.innerHTML = LN().map(k => `<li><span class="sl-n">${lnum(k) == null ? '' : lnH(k)}</span><span class="sl-t">${esc(ltitle(k))}</span><span class="sl-d">${LESSONS[k].d ? esc(lessonDate(k)) : T('date.tba')}</span></li>`).join('');
     applyStatic(sh); okina(sh); return sh;
   }
   ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n: lnT(n), date: lessonDate(n)}); de.dataset.i18n = 'lock.desc_n';

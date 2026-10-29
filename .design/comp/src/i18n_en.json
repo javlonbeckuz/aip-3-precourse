@@ -450,6 +450,6 @@
  "prep.3.a0": "Download Warp",
  "prep.3.a1": "Claude Code guide",
  "prep.3.foot": "If the install fails, send a screenshot of the error to your mentor. Mentors help at the end of Lesson 01.",
- "course.label_k": "Course",
- "course.locked": "{k} lessons locked"
+ "prep.btn": "Preparation {d}/4",
+ "prep.btn_aria": "Preparation, {d}/4 done"
 }

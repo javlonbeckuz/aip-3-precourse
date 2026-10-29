@@ -2179,15 +2179,15 @@
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
- "course.label_k": {
-  "uz": "Kurs",
+ "prep.btn": {
+  "uz": "Tayyorgarlik {d}/4",
   "translate": true,
-  "note": "UI text"
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
- "course.locked": {
-  "uz": "{k} ta dars yopiq",
+ "prep.btn_aria": {
+  "uz": "Tayyorgarlik, {d}/4 bajarildi",
   "translate": true,
-  "note": "UI text · keep {params} as they are"
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "c.p.1.am.text": {
   "uz": "Namuna matn. Amaliyot darsda bajariladi: yoʻriqnomani oching, fayllarni yuklab oling va oʻz biznesingiz uchun birinchi vositani yasang.\n\nTayyor boʻlgach, pastdagi belgini bosing.",

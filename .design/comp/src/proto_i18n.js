@@ -385,8 +385,7 @@ const I18N = {uz: {
   'prep.3.a0': 'Warpʼni yuklab olish',
   'prep.3.a1': 'Claude Code qoʻllanmasi',
   'prep.3.foot': 'Oʻrnatish chiqmasa, xatoning skrinshotini mentoringizga yuboring. 01-dars oxirida mentorlar yordam beradi.',
-  'course.label_k': 'Kurs',
-  'course.locked': '{k} ta dars yopiq',
+  'prep.btn': 'Tayyorgarlik {d}/4', 'prep.btn_aria': 'Tayyorgarlik, {d}/4 bajarildi',
 }, ru: /*RU*/{
   "common.close": "Закрыть",
   "common.back": "Назад",
@@ -835,8 +834,8 @@ const I18N = {uz: {
   "prep.3.a0": "Скачать Warp",
   "prep.3.a1": "Руководство по Claude Code",
   "prep.3.foot": "Если установка не получилась, отправьте скриншот ошибки своему ментору. В конце урока 01 менторы помогут.",
-  "course.label_k": "Курс",
-  "course.locked": "закрыто уроков: {k}"
+  "prep.btn": "Подготовка {d}/4",
+  "prep.btn_aria": "Подготовка, выполнено {d}/4"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1281,8 +1280,8 @@ const I18N = {uz: {
   "prep.3.a0": "Download Warp",
   "prep.3.a1": "Claude Code guide",
   "prep.3.foot": "If the install fails, send a screenshot of the error to your mentor. Mentors help at the end of Lesson 01.",
-  "course.label_k": "Course",
-  "course.locked": "{k} lessons locked"
+  "prep.btn": "Preparation {d}/4",
+  "prep.btn_aria": "Preparation, {d}/4 done"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
