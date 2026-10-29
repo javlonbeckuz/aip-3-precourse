@@ -2180,14 +2180,34 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.btn": {
-  "uz": "Tayyorgarlik {d}/4",
+  "uz": "Birinchi darsgacha",
   "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.btn_aria": {
-  "uz": "Tayyorgarlik, {d}/4 bajarildi",
+  "uz": "Birinchi darsgacha",
   "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "pre.label": {
+  "uz": "Kursgacha materiallar",
+  "translate": true,
+  "note": "UI text"
+ },
+ "pre.sub": {
+  "uz": "Infratuzilma va HEAD platformalari",
+  "translate": true,
+  "note": "UI text"
+ },
+ "pre.lede": {
+  "uz": "Kurs boshlanishidan oldin kerak boʻladigan materiallar va HEADʼning boshqa oʻquv platformalariga havolalar.",
+  "translate": true,
+  "note": "UI text"
+ },
+ "setup.title": {
+  "uz": "Oʻrnatish va tayyorgarlik",
+  "translate": true,
+  "note": "UI text"
  },
  "c.p.1.am.text": {
   "uz": "Namuna matn. Amaliyot darsda bajariladi: yoʻriqnomani oching, fayllarni yuklab oling va oʻz biznesingiz uchun birinchi vositani yasang.\n\nTayyor boʻlgach, pastdagi belgini bosing.",

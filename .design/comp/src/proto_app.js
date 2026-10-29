@@ -14,8 +14,8 @@ const S = {
 S.load();
 registerContent();
 //#STATE:end
-// each lesson has ONE fixed colour whatever its state (state = words + icons in the note, never colour); yellow also stays the progress ring. Emerald (lesson 06) is an identity colour, never a success colour; colours follow the card's position (cream is 07)
-const LCOL = ['yellow', 'lilac', 'grey', 'blue', 'dark', 'orange', 'emerald', 'cream'];
+// each lesson has ONE fixed colour whatever its state (state = words + icons in the note, never colour); the setup folder (Tayyorgarlik) is Claude orange; yellow stays the progress ring and the pre-course hero. Emerald (lesson 06) is an identity colour, never a success colour; colours follow the card's position (cream is 07)
+const LCOL = ['claude', 'lilac', 'grey', 'blue', 'dark', 'orange', 'emerald', 'cream'];
 const LN = () => Object.keys(LESSONS).map(Number).filter(n => n > 0).sort((a, b) => a - b);   // the lesson numbers 1..N come from the data (the API in the app)
 const lnum = n => LESSONS[n].num;   // the curriculum number 1..N, or null: Tayyorgarlik and Kirish have none (their label is their short name)
 const RN = () => LN().filter(n => lnum(n) != null);   // the numbered lessons: only these count in the ring, the course size and the all-done check
@@ -85,8 +85,8 @@ const SRCHK = () => I('check', 12) + `<span class="sr-only">${T('common.sr_done'
 const mark = s => s.split(/(`[^`]*`)/).map((part, i) => i % 2 ? `<code>${part.slice(1, -1)}</code>` : part.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>')).join('');   // [fill-in] marks, but never inside a `code span` (a literal value there is not a placeholder)
 const hasBracket = s => /\[[^\]]+\]/.test(String(s).replace(/`[^`]*`/g, ''));
 const back = (href, label) => `<a class="eyebrow" href="${href}">${I('back')}${label}</a>`;
-// Tayyorgarlik lives in the header once the course has started (before it, it is a card on the home page): a yellow pill on desktop, a round icon button on phones
-const prepBtn = active => courseStarted() ? `<a class="prep-btn" href="#/dars/0" aria-label="${esc(t('prep.btn_aria', {d: prepCount(), pl: 4}))}"${active === 'prep' ? ' aria-current="page"' : ''}><span class="pb-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l2 2.5h8.5A1.5 1.5 0 0 1 21 9v8.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/></svg></span><span class="pb-t">${T('prep.btn', {d: prepCount(), pl: 4})}</span></a>` : '';
+// "Birinchi darsgacha" (materials before the course) lives in the header once the course has started (before it, it is the hero card on the home page): a yellow pill on desktop, a round icon button on phones
+const prepBtn = active => courseStarted() ? `<a class="prep-btn" href="#/kursgacha" aria-label="${esc(t('prep.btn_aria'))}"${active === 'pre' ? ' aria-current="page"' : ''}><span class="pb-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l2 2.5h8.5A1.5 1.5 0 0 1 21 9v8.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/></svg></span><span class="pb-t">${T('prep.btn')}</span></a>` : '';
 const nav = active => `<header class="nav">
   <nav class="nav-links" aria-label="${esc(t('nav.label'))}"><a class="home-btn" href="#/dastur" aria-label="${esc(t('nav.homebtn'))}" title="${esc(t('nav.homebtn'))}"${active === 'home' ? ' aria-current="page"' : ''}>${I('home', 20)}</a></nav>
   <span class="wordmark">AI Praktikum 3.0</span>
@@ -148,10 +148,10 @@ function homePage(){
   let hero = '', cta = '', headCol = LCOL[0];
   if (pre) {   // before lesson 1: the prep card is the hero, and the one next step is the first open prep item
     const first = PREP.items.findIndex((_, i) => !S.has('prep:' + i));
-    hero = `<a class="folder flatc c-yellow now-card" href="#/dars/0"><span class="f-top"><span class="f-label">${k === 4 ? `${T('prep.ready')}<br>${lessonLabel(1)}` : LESSONS[0].d ? `${T('lesson.label0')}<br>${T('date.until', {date: lessonDate(0)})}` : T('lesson.label0')}</span>${arrowH}</span>
-        <span><span class="f-title">${T('prep.title')}</span><span class="f-sub">${T('prep.cnt', {d: k, pl: 4})}</span></span></a>`;
+    hero = `<a class="folder flatc c-yellow now-card" href="#/kursgacha"><span class="f-top"><span class="f-label">${T('pre.label')}${LESSONS[0].d ? `<br>${T('date.until', {date: lessonDate(0)})}` : ''}</span>${arrowH}</span>
+        <span><span class="f-title">${T('prep.title')}</span><span class="f-sub">${T('pre.sub')}</span></span></a>`;
     if (first >= 0) cta = pill(`${T('next.k')} · ${T('next.prep', {title: HT(T(`prep.${first}.title`))})}`, '#/dars/0');
-    else if (PREP.more) cta = pill(`${T('next.k')} · ${T('prep.more.title')}`, '#/dars/0?p=more');
+    else if (PREP.more) cta = pill(`${T('next.k')} · ${T('prep.more.title')}`, '#/kursgacha');
   } else if (live) {
     const [d, tt] = lProg(live), L = LESSONS[live], s = S.sl(live);
     const nxl = nextOf(live), slSub = !L.slides ? stepsText(d, tt) : s === 0 ? T('hero.sub_start', {n: L.slides}) : s >= L.slides ? T('hero.sub_seen', {n: L.slides}) : T('hero.sub', {i: s, n: L.slides}), sub = tt === 0 ? T('lesson.soon') : nxl && !/\/slayd\//.test(nxl.href) ? nxl.what : slSub, href = nxl ? nxl.href : `#/dars/${live}`;   // the hero opens today's next step ("continue" only when something was seen)
@@ -171,7 +171,7 @@ function homePage(){
       ${hero}${cta}
     </div>
     <h2 class="sr-only">${T('home.lessons')}</h2>
-    <ul class="grid3 lessons${pre ? ' pre' : ''}">${pre ? cardHTML(0) + courseCard() : (courseStarted() ? LN() : [...LN(), 0]).map(cardHTML).join('')}</ul>`};
+    <ul class="grid3 lessons${pre ? ' pre' : ''}">${pre ? cardHTML(0) + courseCard() : [...LN(), 0].map(cardHTML).join('')}</ul>`};
 }
 
 // ---- lesson 0: prep checklist
@@ -212,12 +212,21 @@ function prepPage(){
         ${it.foot ? `<p class="foot">${T(`prep.${i}.foot`)}</p>` : ''}</div>
       <div class="pf"><button class="chip${d ? '' : ' off'}" type="button" aria-pressed="${d}" aria-label="${esc(t('common.mark_done'))}" aria-describedby="pt${i}"><span class="cl">${T('common.done')}</span></button></div></li>`;
   }).join('');
-  return {screen: 'ex', tag: '#/dars/0 · ' + t('tag.prep'), title: t(courseStarted() ? 'prep.title_late' : 'prep.title'), html: nav('prep') + wrap(`
+  return {screen: 'ex', tag: '#/dars/0 · ' + t('tag.prep'), title: t('setup.title'), html: nav('prep') + wrap(`
       ${dlh('#/dastur', T('nav.home'), `${T('prep.meta')} · ${cnt('prep')}`)}
-      <h1 class="headline ex-h">${T(courseStarted() ? 'prep.title_late' : 'prep.title')}</h1><p class="lede">${prepCount() === 4 ? T('prep.lede_done') : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>
+      <h1 class="headline ex-h">${T('setup.title')}</h1><p class="lede">${prepCount() === 4 ? T('prep.lede_done') : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>
       <div class="ex-files"><section class="grp"><h2 class="ef-h">${T('common.guide')}</h2><ul>${prepFileRow()}</ul></section></div>`,
     `<section class="prep" aria-label="${esc(t('prep.list.k'))}"><ol class="deck" id="deck" style="--cols:${deckCols(open)}">${cards}</ol></section>
-      <div class="prep-end" id="prep-end"${prepCount() === 4 ? '' : ' hidden'}><p class="pe-t">${T(courseStarted() ? 'prep.end_after' : LESSONS[1].d ? 'prep.end_before' : 'prep.end_tba', {date: lessonDate(1)})}</p><a class="play" href="#/dastur"><span>${T('prep.end_back')}</span><span class="play-circ">${I('next', 20)}</span></a></div>${PREP.more ? `<div class="ex-files prep-more" data-pid="more">${group(T('prep.more.title'), PREP.more.links.map((l, i) => `<li><a class="ef-row" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span><span class="ef-nm">${wbr(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.n`) ? `<span class="ef-mt">${T(`prep.more.${i}.n`)}</span>` : ''}</span><span class="ef-dl">${I('ne', 18)}<span class="sr-only">${T('common.sr_external')}</span></span></a></li>`).join(''), '', t('prep.more.note') ? T('prep.more.note') : '')}</div>` : ''}`)};
+      <div class="prep-end" id="prep-end"${prepCount() === 4 ? '' : ' hidden'}><p class="pe-t">${T(courseStarted() ? 'prep.end_after' : LESSONS[1].d ? 'prep.end_before' : 'prep.end_tba', {date: lessonDate(1)})}</p><a class="play" href="#/dastur"><span>${T('prep.end_back')}</span><span class="play-circ">${I('next', 20)}</span></a></div>`)};
+}
+// "Birinchi darsgacha": the materials before the course (infrastructure, links to HEAD's other learning platforms); nothing yet = the "soon" line
+function prePage(){
+  const m = PREP.more;
+  const rows = m ? m.links.map((l, i) => `<li><a class="ef-row" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span><span class="ef-nm">${wbr(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.n`) ? `<span class="ef-mt">${T(`prep.more.${i}.n`)}</span>` : ''}</span><span class="ef-dl">${I('ne', 18)}<span class="sr-only">${T('common.sr_external')}</span></span></a></li>`).join('') : '';
+  return {screen: 'ex', tag: '#/kursgacha', title: t('prep.title'), html: nav('pre') + wrap(`
+      ${dlh('#/dastur', T('nav.home'), T('pre.label'))}
+      <h1 class="headline ex-h">${T('prep.title')}</h1><p class="lede">${T('pre.lede')}</p>
+      ${m ? `<div class="ex-files prep-more">${group(T('prep.more.title'), rows, '', t('prep.more.note') ? T('prep.more.note') : '')}</div>` : `<p class="lede pre-soon">${T('lesson.soon')}</p>`}`)};
 }
 // the accordion: first unchecked card open, checking opens the next (focus follows), a live region says what happened; the pictures only move while on screen and while the tab is visible
 let prepIO = null, prepOpen = null, prepFresh = true, liveTimer = 0;
@@ -344,6 +353,7 @@ function resolve(r){
   if (a === 'shrift') return {view: 'type'};
   if (a === 'all') return {view: 'all'};
   if (a === 'dastur') return b ? null : {view: 'app', page: homePage()};
+  if (a === 'kursgacha') return b ? null : {view: 'app', page: prePage()};
   if (a === 'fayl') return has(FILES, b) && !c ? {view: 'app', page: filePage(b)} : null;
   if (a !== 'dars' || !/^\d$/.test(b || '') || !LESSONS[+b]) return null;
   const n = +b, L = LESSONS[n];
@@ -358,7 +368,7 @@ function resolve(r){
   if (c === 'slayd') { const i = /^\d+$/.test(d || '') ? +d : 0; return L.slides && i >= 1 && i <= L.slides && !e ? {view: 'app', page: slPage(n, i)} : home; }
   return !d && L.parts.includes(PART[c]) ? {redirect: `#/dars/${n}?tab=${PART[c]}`} : home;   // the part pages are folder tabs: /amaliyot, /kit and /vazifa open that tab
 }
-const ROUTES = () => { const r = ['#/kirish', '#/dastur', '#/shrift', '#/dars/0'];
+const ROUTES = () => { const r = ['#/kirish', '#/dastur', '#/shrift', '#/kursgacha', '#/dars/0'];
   LN().forEach(n => { r.push(`#/dars/${n}`); const L = LESSONS[n]; if (L.slides) r.push(`#/dars/${n}/slayd/1`, `#/dars/${n}/slayd/${L.slides}`); });
   return r; };
 const ROUTE_OF = {gate: '#/kirish', dastur: '#/dastur', dars: '#/dars/1', ex: '#/dars/2', type: '#/shrift', all: '#/all'};
@@ -367,7 +377,7 @@ function go(v){ const h = ROUTE_OF[v] || v; if (location.hash === h) render(); e
 function parentOf(h){
   const p = h.replace(/^#\/?/, '').split('?')[0].split('/').filter(Boolean), [a, b, c] = p;
   if (a === 'dars') return c ? `#/dars/${b}` : '#/dastur';
-  return a === 'fayl' ? '#/dastur' : null;
+  return a === 'fayl' || a === 'kursgacha' ? '#/dastur' : null;
 }
 
 const app = document.getElementById('s-app');

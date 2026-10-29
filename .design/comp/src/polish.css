@@ -261,3 +261,4 @@ html.hid .bgp path{animation-play-state:paused}
 .folder:has(>.f-flag) .f-note{max-width:calc(100% - 44px)}
 @container (min-width:900px){.f-flag{right:calc(27 * var(--u));bottom:calc(34 * var(--u));width:calc(34 * var(--u));height:calc(34 * var(--u))}.folder:has(>.f-flag) .f-note{max-width:calc(100% - 56px)}}
 .fx.c-cream{--p1:#fff;--p2:#EDE8C9;--p3:#DAD4AD}
+.ex-wrap .prep-more{margin:24px 0 0}

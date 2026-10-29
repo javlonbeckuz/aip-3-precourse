@@ -450,6 +450,10 @@
  "prep.3.a0": "Download Warp",
  "prep.3.a1": "Claude Code guide",
  "prep.3.foot": "If the install fails, send a screenshot of the error to your mentor. Mentors help at the end of Lesson 01.",
- "prep.btn": "Preparation {d}/4",
- "prep.btn_aria": "Preparation, {d}/4 done"
+ "prep.btn": "Before the first lesson",
+ "prep.btn_aria": "Before the first lesson",
+ "pre.label": "Materials before the course",
+ "pre.sub": "Infrastructure and HEAD platforms",
+ "pre.lede": "Materials you need before the course starts, and links to the other HEAD learning platforms.",
+ "setup.title": "Setup and preparation"
 }

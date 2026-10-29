@@ -364,6 +364,7 @@ a.play:active .play-circ{transform:scale(.96)}
 .c-night{--f-bg:var(--state-locked);--f-ink:var(--white)}
 .c-orange{--f-bg:var(--orange);--f-ink:var(--black)}
 .c-course{--f-bg:var(--white);--f-ink:var(--black)}
+.c-claude{--f-bg:#D97757;--f-ink:var(--black)}
 .c-cream{--f-bg:var(--cream);--f-ink:var(--black)}
 .c-emerald{--f-bg:var(--emerald);--f-ink:var(--white)}
 .f-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
@@ -1064,6 +1065,7 @@ html.hid .bgp path{animation-play-state:paused}
 @container (min-width:900px){.f-flag{right:calc(27 * var(--u));bottom:calc(34 * var(--u));width:calc(34 * var(--u));height:calc(34 * var(--u))}
 .folder:has(>.f-flag) .f-note{max-width:calc(100% - 56px)}}
 .fx.c-cream{--p1:#fff;--p2:#EDE8C9;--p3:#DAD4AD}
+.ex-wrap .prep-more{margin:24px 0 0}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}

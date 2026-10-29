@@ -385,7 +385,11 @@ const I18N = {uz: {
   'prep.3.a0': 'Warpʼni yuklab olish',
   'prep.3.a1': 'Claude Code qoʻllanmasi',
   'prep.3.foot': 'Oʻrnatish chiqmasa, xatoning skrinshotini mentoringizga yuboring. 01-dars oxirida mentorlar yordam beradi.',
-  'prep.btn': 'Tayyorgarlik {d}/4', 'prep.btn_aria': 'Tayyorgarlik, {d}/4 bajarildi',
+  'prep.btn': 'Birinchi darsgacha', 'prep.btn_aria': 'Birinchi darsgacha',
+  'pre.label': 'Kursgacha materiallar',
+  'pre.sub': 'Infratuzilma va HEAD platformalari',
+  'pre.lede': 'Kurs boshlanishidan oldin kerak boʻladigan materiallar va HEADʼning boshqa oʻquv platformalariga havolalar.',
+  'setup.title': 'Oʻrnatish va tayyorgarlik',
 }, ru: /*RU*/{
   "common.close": "Закрыть",
   "common.back": "Назад",
@@ -834,8 +838,12 @@ const I18N = {uz: {
   "prep.3.a0": "Скачать Warp",
   "prep.3.a1": "Руководство по Claude Code",
   "prep.3.foot": "Если установка не получилась, отправьте скриншот ошибки своему ментору. В конце урока 01 менторы помогут.",
-  "prep.btn": "Подготовка {d}/4",
-  "prep.btn_aria": "Подготовка, выполнено {d}/4"
+  "prep.btn": "До первого урока",
+  "prep.btn_aria": "До первого урока",
+  "pre.label": "Материалы до курса",
+  "pre.sub": "Инфраструктура и платформы HEAD",
+  "pre.lede": "Материалы, которые нужны до начала курса, и ссылки на другие учебные платформы HEAD.",
+  "setup.title": "Установка и подготовка"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1280,8 +1288,12 @@ const I18N = {uz: {
   "prep.3.a0": "Download Warp",
   "prep.3.a1": "Claude Code guide",
   "prep.3.foot": "If the install fails, send a screenshot of the error to your mentor. Mentors help at the end of Lesson 01.",
-  "prep.btn": "Preparation {d}/4",
-  "prep.btn_aria": "Preparation, {d}/4 done"
+  "prep.btn": "Before the first lesson",
+  "prep.btn_aria": "Before the first lesson",
+  "pre.label": "Materials before the course",
+  "pre.sub": "Infrastructure and HEAD platforms",
+  "pre.lede": "Materials you need before the course starts, and links to the other HEAD learning platforms.",
+  "setup.title": "Setup and preparation"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
