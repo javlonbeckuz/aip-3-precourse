@@ -52,7 +52,7 @@ test('login: success payload, cookie flags in production and dev', async (t) => 
   assert.equal(r.status, 200);
   assert.deepEqual(Object.keys(r.json).sort(), ['lang', 'lessons', 'live', 'ok', 'progress', 'schedule', 'student']);
   assert.deepEqual(r.json.student, { id: 'XM', fullName: 'Student', firstName: 'Student', mentor: 'Xurshid Maroziqov', group: 'shanba' });
-  assert.equal(r.json.lessons.length, 7);
+  assert.equal(r.json.lessons.length, 8);
   assert.deepEqual(r.json.progress, { t: {}, sl: {} });
   assert.match(r.setCookie, /^__Host-aip_session=[A-Za-z0-9_-]{40,}; Path=\/; HttpOnly; SameSite=Lax; Max-Age=86400; Secure$/);
   assert.match(r.headers.get('cache-control'), /no-store/);
@@ -188,9 +188,9 @@ test('gating: live lesson follows the dates, liveOverride pins it', async (t) =>
   assert.deepEqual(await live(), { n: 3, override: null });
   a.clock.t = Date.parse('2026-10-03T10:00:00+05:00');
   assert.equal((await live()).n, 4);
-  a.clock.t = Date.parse('2026-10-17T10:00:00+05:00');
-  assert.equal((await live()).n, 6);
-  a.clock.t = Date.parse('2026-10-24T10:00:00+05:00'); // lesson 6 stays live for liveDays (7)
+  a.clock.t = Date.parse('2026-10-24T10:00:00+05:00');
+  assert.equal((await live()).n, 7);
+  a.clock.t = Date.parse('2026-10-31T10:00:00+05:00'); // lesson 7 stays live for liveDays (7)
   assert.equal((await live()).n, 0);
   const sched = path.join(dir, 'schedule.json');
   fs.writeFileSync(sched, JSON.stringify({ ...JSON.parse(fs.readFileSync(sched, 'utf8')), liveOverride: 2 }));
@@ -366,14 +366,14 @@ test('review column opens every lesson early; a client cannot set it', async (t)
   createStudent(a.db, { fullName: 'Oddiy Talaba', grp: 'shanba', id: 'REG', allowShort: true });
   const xm = await a.login('XM'), reg = await a.login('REG');
   a.db.prepare("UPDATE students SET review = 0 WHERE id = 'XM'").run();
-  for (const c of [xm, reg]) for (const n of [3, 4, 6]) assert.equal((await c.get('/api/aip/lesson/' + n)).json.lesson.open, false, String(n));
+  for (const c of [xm, reg]) for (const n of [3, 4, 7]) assert.equal((await c.get('/api/aip/lesson/' + n)).json.lesson.open, false, String(n));
   for (const c of [xm, reg]) assert.equal((await c.put('/api/aip/progress', { key: 'u4', value: 1 })).json.error.code, 'bad_key');
   assert.equal((await xm.get('/api/aip/lesson/3/slide/1')).status, 403);
   a.db.prepare("UPDATE students SET review = 1 WHERE id = 'XM'").run();
-  for (const n of [1, 2, 3, 4, 5, 6]) assert.equal((await xm.get('/api/aip/lesson/' + n)).json.lesson.open, true, String(n)); // empty lessons too
+  for (const n of [1, 2, 3, 4, 5, 6, 7]) assert.equal((await xm.get('/api/aip/lesson/' + n)).json.lesson.open, true, String(n)); // empty lessons too
   assert.equal((await xm.get('/api/aip/lesson/3/slide/1')).status, 200);
   assert.equal((await reg.get('/api/aip/lesson/3/slide/1')).status, 403);
-  assert.equal((await reg.get('/api/aip/lesson/6')).json.lesson.open, false);
+  assert.equal((await reg.get('/api/aip/lesson/7')).json.lesson.open, false);
 });
 
 test('empty lessons (no parts yet) open on their date, and stay shut with no group or TBA dates', async (t) => {
@@ -389,7 +389,7 @@ test('empty lessons (no parts yet) open on their date, and stay shut with no gro
   a.clock.t = Date.parse('2026-10-03T10:00:00+05:00');
   assert.equal((await l4(xm)).open, true);
   assert.equal((await l4(nog)).open, false);
-  assert.equal((await xm.get('/api/aip/me')).json.lessons[6].open, false); // lesson 6 is two weeks away
+  assert.equal((await xm.get('/api/aip/me')).json.lessons[7].open, false); // lesson 7 is three weeks away
   const tba = tbaContent(t, (s) => { s.groups.shanba = null; });
   const b = await startApp(t, { now: '2027-01-01T12:00', contentDir: tba });
   assert.equal((await (await b.login('XM')).get('/api/aip/lesson/4')).json.lesson.open, false);
@@ -438,7 +438,7 @@ function tbaContent(t, mut) {
   return dir;
 }
 
-test('gating: dates TBA lock lessons 1-6 even when release says "open"; prep stays open', async (t) => {
+test('gating: dates TBA lock lessons 1-7 even when release says "open"; prep stays open', async (t) => {
   const contentDir = tbaContent(t, (s) => { s.groups.shanba = null; s.release = { 1: { slides: 'open', vazifa: 'open' }, 2: { slides: 'open' }, 4: { kit: 'open' } }; });
   const a = await startApp(t, { now: '2027-01-01T12:00', contentDir });
   createStudent(a.db, { fullName: 'Yakshanba Talaba', grp: 'yakshanba', id: 'SUN', allowShort: true });
@@ -449,10 +449,10 @@ test('gating: dates TBA lock lessons 1-6 even when release says "open"; prep sta
     const s = c.session;
     assert.equal(s.live.n, 0, id);
     assert.equal(s.schedule.shanba, null);
-    assert.deepEqual(s.schedule.starts, { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null });
+    assert.deepEqual(s.schedule.starts, { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null });
     assert.equal(s.lessons[0].open, true);
     assert.equal(s.lessons[0].prep.items.length, 4);
-    for (const n of [1, 2, 3, 4, 5, 6]) {
+    for (const n of [1, 2, 3, 4, 5, 6, 7]) {
       assert.equal(s.lessons[n].open, false, `${id} lesson ${n}`);
       assert.equal(s.lessons[n].start, null);
       for (const p of Object.values(s.lessons[n].parts)) assert.deepEqual(p, { open: false, opensAt: null });
@@ -467,7 +467,7 @@ test('gating: dates TBA lock lessons 1-6 even when release says "open"; prep sta
   a.db.prepare("UPDATE students SET review = 1 WHERE id = 'SUN'").run();
   const sunR = (await a.login('SUN')).session; // a group with dates: review = 1 opens every lesson
   assert.equal(sunR.lessons[3].parts.slides.open, true);
-  assert.equal(sunR.lessons[6].open, true);
+  assert.equal(sunR.lessons[7].open, true);
 });
 
 test('gating: liveOverride cannot make a no-group or TBA student live', async (t) => {
@@ -480,17 +480,21 @@ test('gating: liveOverride cannot make a no-group or TBA student live', async (t
   assert.equal((await a.login('SUN')).session.live.n, 2);
 });
 
-test('shipped schedule.json: 6 dates at 10:00, nothing in lessons 1-6 opens before that group\'s lesson 1 (or everything is shut when TBA)', () => {
+test('shipped schedule.json: 7 entries (Kirish TBA), nothing in lessons 1-7 opens before that group\'s lesson 1 (or everything is shut when TBA)', () => {
   const real = path.resolve(import.meta.dirname, '..', 'content');
   const c = createContent({ dir: real, now: () => 0 });
   c.validateAll();
   const sch = c.schedule();
   for (const g of ['shanba', 'yakshanba', null]) {
     const start = sch.groups[g] ? sch.groups[g][0] : NaN;
-    if (sch.groups[g]) assert.equal(sch.groups[g].length, 6);
-    for (const n of [1, 2, 3, 4, 5, 6]) for (const part of ['slides', 'amaliyot', 'kit', 'vazifa', 'start']) {
+    if (sch.groups[g]) {
+      assert.equal(sch.groups[g].length, 7);
+      assert.deepEqual(sch.groups[g].map((t) => Number.isNaN(t)), [false, true, false, false, false, false, false]); // lesson 2 (Kirish) is TBA
+      assert.ok(sch.groups[g].filter(Number.isFinite).every((t) => new Date(t + 5 * 3600e3).toISOString().slice(11, 16) === '10:00'));
+    }
+    for (const n of [1, 2, 3, 4, 5, 6, 7]) for (const part of ['slides', 'amaliyot', 'kit', 'vazifa', 'start']) {
       const at = c.opensAt(n, part, g);
-      if (Number.isNaN(start)) assert.ok(Number.isNaN(at), `${g} ${n}.${part} must stay shut while dates are TBA`);
+      if (Number.isNaN(start) || (n === 2 && g)) assert.ok(Number.isNaN(at), `${g} ${n}.${part} must stay shut while dates are TBA`);
       else assert.ok(at >= start, `${g} ${n}.${part} opens before lesson 1`);
     }
     assert.equal(c.opensAt(0, 'prep', g), 0); // precourse is always open

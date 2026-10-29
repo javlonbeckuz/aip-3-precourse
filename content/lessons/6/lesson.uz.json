@@ -1,16 +1,16 @@
 {
   "n": 6,
-  "title": "Natijalar va demo kuni",
-  "subtitle": "Baseline va farq, vazifa narxi, ROI, qaror, build yoki buy, demo",
-  "summary": "Pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaymiz va davom ettirish, oʻzgartirish yoki toʻxtatishni hal qilamiz. Keyin natijani taqdim etasiz. Kit 5 B: yakuniy raqamlar.",
+  "title": "Agentni yaxshilash",
+  "subtitle": "Xatolar jurnali, test toʻplami, cron, eskalatsiya, xavfsizlik, Kit 5 B",
+  "summary": "Pilotning birinchi haftasidagi xatolar boʻyicha agentni tuzatamiz. Jadval boʻyicha hisobot, eskalatsiya va xavfsizlik qoidalarini qoʻshamiz. Kit 5 B: 1-hafta.",
   "topics": [
-    "Baseline va farq",
-    "Bitta vazifa narxi",
-    "Topilgan pul",
-    "ROI",
-    "Davom, oʻzgartirish yoki toʻxtatish",
-    "Build, buy yoki open source",
-    "Demo"
+    "Builder va assistent",
+    "Cron",
+    "Eskalatsiya",
+    "Test toʻplami",
+    "Prompt injection",
+    "Maʼlumotlar tartibi",
+    "Kit 5 B"
   ],
   "slideCount": 0,
   "slideKind": "image",

@@ -1,16 +1,16 @@
 {
   "n": 3,
-  "title": "API и MCP",
-  "subtitle": "API, ключи, MCP, frontend и backend, system prompt, Kit 3",
-  "summary": "Разбиваем выбранный процесс на шаги и пишем инструкцию агента. Затем подключаем первую версию агента к реальным системам. Kit 3: перераспределяем работу.",
+  "title": "Claude Code",
+  "subtitle": "Harness, CLAUDE.md, Plan mode, PRD, Skill, Kit 2",
+  "summary": "Осваиваем Claude Code на своих файлах Kit 1: папка компании, CLAUDE.md, план и PRD. Kit 2: выбираем, с какого процесса начать.",
   "topics": [
-    "API",
-    "API-ключ и .env",
-    "MCP и connector",
-    "Frontend и backend",
-    "Open source",
-    "System prompt",
-    "Агент v0",
-    "Kit 3"
+    "Harness",
+    "Claude Code",
+    "Папка компании",
+    "CLAUDE.md",
+    "Plan mode",
+    "PRD",
+    "Skill",
+    "Kit 2"
   ]
 }

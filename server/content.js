@@ -4,9 +4,9 @@ import path from 'node:path';
 import { GROUPS } from './db.js';
 
 export const LANGS = ['uz', 'ru', 'en'];
-export const LESSON_COUNT = 6;
+export const LESSON_COUNT = 7;
 export const PARTS = ['slides', 'amaliyot', 'kit', 'vazifa', 'prep'];
-const BLOCKS = ['amaliyot', 'kit', 'vazifa']; // {text, groups[{title, note?, files[{slug, name, size}]}]} in the UZ lesson file
+const BLOCKS = ['amaliyot', 'kit', 'vazifa']; // {text, groups[{title, note?, files[{slug, name, size}], prompts?[{id, title, target?, text}]}]} in the UZ lesson file
 const NUMS = Array.from({ length: LESSON_COUNT }, (_, i) => i + 1);
 const isLessonNo = (d) => /^(0|[1-9]\d*)$/.test(d) && Number(d) <= LESSON_COUNT; // lesson 0 (prep) + 1..LESSON_COUNT; "07" and "10" are no lessons
 const SLUG_RE = /^[a-z0-9-]{1,80}$/; // what the doc route accepts
@@ -35,13 +35,16 @@ export function parseSchedule(raw) {
     const a = raw.groups?.[g];
     if (a === null) { groups[g] = null; continue; } // dates to follow
     if (!Array.isArray(a) || a.length !== LESSON_COUNT) bad(`groups.${g} needs ${LESSON_COUNT} lesson start times or null`);
-    groups[g] = a.map((s) => { const t = parseTime(s); if (Number.isNaN(t)) bad(`groups.${g}: bad time "${s}"`); return t; });
-    if (groups[g].some((t, i) => i && t <= groups[g][i - 1])) bad(`groups.${g} must be increasing`);
+    // an entry may be null: that one lesson's date is to follow (NaN here, fail-closed everywhere)
+    groups[g] = a.map((s) => { if (s === null) return NaN; const t = parseTime(s); if (Number.isNaN(t)) bad(`groups.${g}: bad time "${s}"`); return t; });
+    const dated = groups[g].filter(Number.isFinite);
+    if (dated.some((t, i) => i && t <= dated[i - 1])) bad(`groups.${g} must be increasing`);
   }
   const liveDays = raw.liveDays ?? 7;
   if (typeof liveDays !== 'number' || !(liveDays > 0 && liveDays <= 60)) bad('liveDays must be a number from 1 to 60');
   const lo = raw.liveOverride ?? null;
   if (lo !== null && !NUMS.includes(lo)) bad(`liveOverride must be null or 1-${LESSON_COUNT}`);
+  if (lo !== null && GROUPS.some((g) => groups[g] && Number.isNaN(groups[g][lo - 1]))) bad(`liveOverride ${lo} points at a lesson whose date is to follow`);
   const release = {};
   for (const [n, parts] of Object.entries(raw.release ?? {})) {
     if (!isLessonNo(n)) bad(`release: unknown lesson "${n}"`);
@@ -66,7 +69,7 @@ function parseSpec(spec, anchor, bad = (m) => { throw new Error(m); }) {
 
 // Startup / reload check of one lesson file: no `file` key anywhere (server paths leaked in 2.0), unique slugs.
 export function validateLesson(L, name = 'lesson') {
-  const slugs = new Set();
+  const slugs = new Set(), promptIds = new Set(); // prompt ids are the progress key p:l{n}:{id}, so unique per lesson
   (function walk(o) {
     if (Array.isArray(o)) return o.forEach(walk);
     if (!o || typeof o !== 'object') return;
@@ -77,6 +80,11 @@ export function validateLesson(L, name = 'lesson') {
     }
     Object.values(o).forEach(walk);
   })(L);
+  for (const part of BLOCKS) for (const g of L[part]?.groups ?? []) for (const p of g.prompts ?? []) {
+    if (typeof p.id !== 'string' || !/^[A-Za-z0-9]{1,8}$/.test(p.id) || typeof p.text !== 'string' || !p.text) throw new Error(`${name}: ${part} has a bad prompt ${JSON.stringify(p.id)} (id 1-8 letters or digits, text required)`);
+    if (promptIds.has(p.id)) throw new Error(`${name}: duplicate prompt id "${p.id}"`);
+    promptIds.add(p.id);
+  }
   for (const part of BLOCKS) for (const g of L[part]?.groups ?? []) for (const f of g.files ?? []) {
     const w = `${name}: ${part} file ${JSON.stringify(f.slug)}`;
     if (typeof f.slug !== 'string' || !SLUG_RE.test(f.slug)) throw new Error(`${name}: ${part} has a bad file slug ${JSON.stringify(f.slug)} (a-z, 0-9, -, up to 80)`);
@@ -110,7 +118,7 @@ export function createContent({ dir, now = () => Date.now() }) {
   }
 
   const schedule = () => readJson(path.join(dir, 'schedule.json'), parseSchedule);
-  // only lesson folders 0-6 that really contain lesson.uz.json
+  // only lesson folders 0-7 that really contain lesson.uz.json
   const lessonNumbers = () => fs.readdirSync(path.join(dir, 'lessons'))
     .filter((d) => isLessonNo(d) && fs.existsSync(path.join(dir, 'lessons', d, 'lesson.uz.json'))).map(Number).sort((a, b) => a - b);
 
@@ -123,6 +131,8 @@ export function createContent({ dir, now = () => Date.now() }) {
   function validateAll() {
     schedule();
     for (const n of lessonNumbers()) for (const l of LANGS) lesson(n, l);
+    // a lesson with slides but no stills serves the placeholder svg: drop the stills in before the date is set
+    for (const n of lessonNumbers()) if (lesson(n).slideCount > 0 && !['.webp', '.jpg', '.png'].some((e) => fs.existsSync(path.join(dir, 'lessons', String(n), 'slides', `1${e}`)))) console.warn(`content: WARNING lesson ${n} has slideCount ${lesson(n).slideCount} but no slide stills (lessons/${n}/slides/1.webp): students would see placeholder slides`);
     for (const need of [0, ...NUMS]) if (!lessonNumbers().includes(need)) throw new Error(`content: lesson ${need} is missing`);
   }
 
@@ -130,7 +140,8 @@ export function createContent({ dir, now = () => Date.now() }) {
 
   // ms when a part opens for this group; `review` (students.review) opens every lesson at once, but only for a group with dates
   function opensAt(n, part, group, review = false) {
-    if (n > 0 && !(GROUPS.includes(group) && schedule().groups[group])) return NaN; // no group or dates TBA: lessons 1-6 stay shut, even with release "open" or the review flag
+    if (n > 0 && !(GROUPS.includes(group) && schedule().groups[group])) return NaN; // no group or dates TBA: lessons 1-7 stay shut, even with release "open" or the review flag
+    if (n > 0 && Number.isNaN(start(group, n))) return NaN; // this one lesson's date is TBA: same, review included
     if (review && n > 0) return 0;
     const spec = schedule().release[n]?.[part] ?? (part === 'prep' ? 'open' : '+0h');
     return parseSpec(spec, start(group, n));
@@ -143,9 +154,10 @@ export function createContent({ dir, now = () => Date.now() }) {
     const s = schedule(), t = now();
     let computed = 0;
     for (let n = LESSON_COUNT; n >= 1; n--) {
-      if (t < start(group, n)) continue;
-      const end = n === LESSON_COUNT ? start(group, n) + s.liveDays * UNITS.d : start(group, n + 1);
-      computed = t < end ? n : 0;
+      if (!(t >= start(group, n))) continue; // not started yet, or a TBA date (NaN)
+      // live until the next dated lesson starts; the last one for liveDays
+      const next = NUMS.filter((m) => m > n).map((m) => start(group, m)).find(Number.isFinite);
+      computed = t < (next ?? start(group, n) + s.liveDays * UNITS.d) ? n : 0;
       break;
     }
     return { n: s.groups[group] ? (s.liveOverride ?? computed) : 0, override: s.liveOverride };

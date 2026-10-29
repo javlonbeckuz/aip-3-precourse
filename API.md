@@ -13,8 +13,8 @@ All times are ISO 8601 with the Tashkent offset, e.g. `2026-09-12T10:00:00+05:00
 
 ```
 student  { id, fullName, firstName, mentor, group: "shanba"|"yakshanba"|null }   // group is null until an admin picks one; the phone is never in this payload
-schedule { sessions: 6, shanba: "2026-11-21"|null, yakshanba: "2026-11-22"|null, group, starts: { "1": iso|null, ... "6": iso|null } }   // starts = this student's group; null = date to follow
-live     { n: 0..6, override: null|1..6 }      // n = the live lesson for this student's group (0 = none); override = pinned by schedule.json
+schedule { sessions: 7, shanba: "2026-11-21"|null, yakshanba: "2026-11-22"|null, group, starts: { "1": iso|null, ... "7": iso|null } }   // starts = this student's group; null = date to follow (the whole group, or just that lesson)
+live     { n: 0..7, override: null|1..7 }      // n = the live lesson for this student's group (0 = none); override = pinned by schedule.json
 progress { t: { "<tick key>": 1 }, sl: { "1": 12 } }              // sl[lesson] = highest slide reached, 1-based
 file     { slug, name, size }                   // no server path, ever; size = integer number of bytes
 ```
@@ -35,15 +35,16 @@ file     { slug, name, size }                   // no server path, ever; size = 
   prep     -> prep { intro, items[{ brand, title, note, steps[], actions[{label,url,quiet?}], footnote? }],
                      more?: { title, note, links[{ title, note, url }] } }   // more = extra links under the checklist; absent = hide the section; not counted as prep items
 }
-block    { text, groups[{ title, note?, files[file] }] }   // text = paragraphs separated by a blank line; a part exists when it has text or at least one group
+block    { text, groups[{ title, note?, files[file], prompts?[{ id, title, target?, text }] }] }   // prompts: copy rows, Uzbek text in every language (lang="uz-Latn"); ids are 1-8 letters/digits, unique per lesson; they travel only inside an open block   // text = paragraphs separated by a blank line; a part exists when it has text or at least one group
 // A lesson with no parts yet ("empty": has all false) has parts: {} and open = true from its start time on (review: at once). Show "materials soon".
 // Title, subtitle, summary and topics follow ?lang= / the lang cookie; blocks and slides never do. prep follows the language (lesson 0).
 ```
 
 Notes for the frontend:
 - A locked part has NO content fields in the payload, only `parts.<part>.opensAt`. Show "opens on ...".
-- Dates to follow: while a group's dates are not decided (`groups.<g>: null` in schedule.json), and for a student with no group, lessons 1-6 stay locked, `start`/`date`/`opensAt`/`schedule.starts.*`/`schedule.<group>` are `null` (show "date to follow"), and `live.n` is 0. Lesson 0 (prep) is still open. A 403 `locked` then carries `error.opensAt: null`.
-- Lesson 0 (prep) is open at once. Lessons 1-6 ship with all `has.*` false until their content is added: show the colour card and "materials soon" (see the empty-lesson note above).
+- Dates to follow: while a group's dates are not decided (`groups.<g>: null` in schedule.json), and for a student with no group, lessons 1-7 stay locked, `start`/`date`/`opensAt`/`schedule.starts.*`/`schedule.<group>` are `null` (show "date to follow"), and `live.n` is 0. Lesson 0 (prep) is still open. A 403 `locked` then carries `error.opensAt: null`.
+- One lesson can be TBA inside a dated group (`null` in that group's array; shipped: lesson 2 "Kirish"). It behaves like the group case for that lesson only: `start`/`date`/`opensAt` null, every part locked, never live, and `review` does not open it. Other lessons are unaffected. `starts["2"]` is null.
+- Lesson 0 (prep) is open at once. Lessons 1 and 3-7 ship with all `has.*` false until their content is added: show the colour card and "materials soon" (see the empty-lesson note above). Lesson 2 (Kirish, the 2.0 lesson) has slides (78, placeholder svg until stills land), amaliyot and vazifa with prompts, and no kit.
 - Kit is not counted in progress. The counted units are: slides reached (`sl:{n} >= slideCount`), the `f:am{n}` tick, the `f:v{n}` tick.
 - `prep.intro` contains the placeholder `{sana}`; fill it with `lessons[1].date` formatted. When `lessons[1].date` is null (dates to follow) do not fill it in; use the "date to follow" text instead.
 - File URL: `/api/aip/lesson/{n}/doc/{slug}`.
@@ -87,9 +88,9 @@ Body `{ "key": "...", "value": ... }` (only these two fields). One key per call;
 | Key | Value | Meaning |
 |---|---|---|
 | `prep:{0-99}` | `1` set, `0`/`null` clear | prep item ticked |
-| `p:{page}:{id}` | same | prompt marked. `page`: any `[a-z0-9]{1,8}`. The 2.0 pages (`01`..`06`, `v1`, `lib`, `h01`..`h10`) are legacy: still accepted, nothing in 3.0 uses them; `id`: `P1`, `12`, ... (`[a-z0-9]{1,8}` and `[A-Za-z0-9]{1,8}`) |
+| `p:{page}:{id}` | same | prompt marked. `page`: any `[a-z0-9]{1,8}`; lesson prompts use `l{n}` with the prompt id from the payload (`p:l2:P1`, `p:l2:01P1`): copying a prompt sets it; these ticks are not counted as units. The 2.0 pages (`01`..`06`, `v1`, `lib`, `h01`..`h10`) are legacy: still accepted, nothing in 3.0 uses them; `id`: `P1`, `12`, ... (`[a-z0-9]{1,8}` and `[A-Za-z0-9]{1,8}`) |
 | `x:{name}` | same | end toggle "Bajarildi" (`x:01`, `x:h04`) |
-| `f:{name}` | same | manual finish: `f:am{n}` (amaliyot) and `f:v{n}` (vazifa), n = 1..6 |
+| `f:{name}` | same | manual finish: `f:am{n}` (amaliyot) and `f:v{n}` (vazifa), n = 1..7 |
 | `sl:{1-9}` | integer 0..1000 | slide high-water mark, 1-based (the number of the furthest slide seen); the server keeps the maximum and never lowers it |
 
 There is no client-writable unlock switch: the early opening of every lesson is the server-side `students.review` flag, set by hand in the DB (README). `u4` is rejected as `bad_key`.

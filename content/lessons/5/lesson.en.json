@@ -1,15 +1,16 @@
 {
   "n": 5,
-  "title": "Improve the agent",
-  "subtitle": "Error log, test set, cron, escalation, security, Kit 5 B",
-  "summary": "We fix the agent using the mistakes from pilot week 1. We add a scheduled report, escalation and security rules. Kit 5 B: week 1.",
+  "title": "Ship it",
+  "subtitle": "VPS, domain, DNS, Git, the pilot plan, Kit 5 A, Kit 4",
+  "summary": "We move the agent from the laptop to a server that runs 24/7. We write the pilot plan and prepare the talk with staff. Kit 5 A and Kit 4.",
   "topics": [
-    "Builder vs assistant",
-    "Cron jobs",
-    "Escalation",
-    "Test set",
-    "Prompt injection",
-    "Data governance",
-    "Kit 5 B"
+    "Local vs server",
+    "VPS",
+    "Domain and DNS",
+    "Git and GitHub",
+    "Pilot",
+    "Success and stop condition",
+    "Kit 5 A",
+    "Kit 4"
   ]
 }

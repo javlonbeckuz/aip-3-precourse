@@ -188,18 +188,18 @@ test('files: aborted download closes the file; big clips stream; ranges; headers
 });
 
 // ---------- content
-test('content: only lesson folders 0-6 that contain lesson.uz.json', async (t) => {
+test('content: only lesson folders 0-7 that contain lesson.uz.json', async (t) => {
   const dir = tmpCopy(t);
   fs.cpSync(path.join(dir, 'lessons/1'), path.join(dir, 'lessons/7'), { recursive: true });
   fs.cpSync(path.join(dir, 'lessons/1'), path.join(dir, 'lessons/abc'), { recursive: true });
   fs.cpSync(path.join(dir, 'lessons/1'), path.join(dir, 'lessons/2.bak'), { recursive: true });
-  fs.mkdirSync(path.join(dir, 'lessons/8')); // no lesson.uz.json
-  assert.deepEqual(createContent({ dir }).lessonNumbers(), [0, 1, 2, 3, 4, 5, 6]);
+  fs.mkdirSync(path.join(dir, 'lessons/9')); // no lesson.uz.json
+  assert.deepEqual(createContent({ dir }).lessonNumbers(), [0, 1, 2, 3, 4, 5, 6, 7]);
   const a = await startApp(t, { now: AFTER, contentDir: dir });
   const c = await a.login('XM');
-  assert.deepEqual(c.session.lessons.map((l) => l.n), [0, 1, 2, 3, 4, 5, 6]);
-  assert.equal((await c.get('/api/aip/lesson/7')).status, 404);
+  assert.deepEqual(c.session.lessons.map((l) => l.n), [0, 1, 2, 3, 4, 5, 6, 7]);
   assert.equal((await c.get('/api/aip/lesson/8')).status, 404);
+  assert.equal((await c.get('/api/aip/lesson/9')).status, 404);
 });
 
 test('content: a "file" key or a duplicate slug anywhere in a lesson stops startup', (t) => {
@@ -255,6 +255,86 @@ test('shipped lesson 0: Warp steps 1 and 2 end with ":" (the SPA adds the instal
   }
 });
 
+test('content: a null entry makes the date of one lesson TBA; the dated ones must still increase', () => {
+  const T = ['2026-09-13T10:00', null, '2026-09-27T10:00', '2026-10-04T10:00', '2026-10-11T10:00', '2026-10-18T10:00', '2026-10-25T10:00'];
+  const base = { timezone: 'Asia/Tashkent', groups: { shanba: T, yakshanba: null } };
+  const p = parseSchedule(base);
+  assert.deepEqual(p.groups.shanba.map((x) => Number.isNaN(x)), [false, true, false, false, false, false, false]);
+  const swap = [...T]; swap[0] = '2026-10-30T10:00'; // dated entries out of order around the gap
+  assert.throws(() => parseSchedule({ ...base, groups: { shanba: swap, yakshanba: null } }), /increasing/);
+  assert.throws(() => parseSchedule({ ...base, groups: { shanba: [...T.slice(0, 1), 'soon', ...T.slice(2)], yakshanba: null } }), /bad time/);
+  assert.doesNotThrow(() => parseSchedule({ ...base, liveOverride: 3 }));
+  assert.throws(() => parseSchedule({ ...base, liveOverride: 2 }), /date is to follow/); // a TBA lesson cannot be pinned live
+});
+
+test('content: a TBA lesson inside a dated group is locked, never live, and review cannot open it', (t) => {
+  const dir = tmpCopy(t);
+  const f = path.join(dir, 'schedule.json');
+  const S = JSON.parse(fs.readFileSync(f, 'utf8'));
+  S.groups.shanba[1] = null;
+  S.release = { 2: { slides: 'open', vazifa: '2020-01-01T00:00' } };
+  fs.writeFileSync(f, JSON.stringify(S));
+  let now = Date.parse('2026-09-19T12:00:00+05:00'); // the day lesson 2 used to be
+  const c = createContent({ dir, now: () => now });
+  for (const review of [false, true]) for (const part of ['slides', 'amaliyot', 'vazifa', 'start']) {
+    assert.ok(Number.isNaN(c.opensAt(2, part, 'shanba', review)), `${part} ${review}`);
+    assert.equal(c.partOpen(2, part, 'shanba', review), false);
+  }
+  const v = c.lessonView(2, 'uz', 'shanba', true);
+  assert.deepEqual([v.open, v.start, v.date], [false, null, null]);
+  for (const p of Object.values(v.parts)) assert.deepEqual(p, { open: false, opensAt: null });
+  assert.ok(!('amaliyot' in v) && !('vazifa' in v));
+  assert.equal(c.scheduleView('shanba').starts[2], null);
+  assert.equal(c.live('shanba').n, 1); // lesson 1 stays live until lesson 3 starts, nothing is live for 2
+  now = Date.parse('2026-09-26T10:00:00+05:00');
+  assert.equal(c.live('shanba').n, 3);
+  assert.equal(c.partOpen(3, 'slides', 'shanba', false), true); // its neighbours are untouched
+  assert.equal(c.lessonView(2, 'uz', 'yakshanba').start, '2026-09-20T10:00:00+05:00'); // the other group keeps its date
+});
+
+test('content: prompts pass through in open blocks only; the shipped Kirish files all exist', async (t) => {
+  const a = await startApp(t, { now: '2026-09-19T09:59' });
+  const c = await a.login('XM');
+  const locked = await c.get('/api/aip/lesson/2', { raw: true });
+  assert.ok(!locked.text.includes('"prompts"') && !locked.text.includes('Birinchi hafta rejasi'));
+  a.clock.t = Date.parse('2026-09-19T10:00:00+05:00');
+  const L = (await c.get('/api/aip/lesson/2')).json.lesson;
+  const pg = L.vazifa.groups.filter((g) => g.prompts);
+  assert.deepEqual(pg.map((g) => g.prompts.length), [8, 5]);
+  assert.ok(L.amaliyot.groups.some((g) => g.prompts?.length === 4 && g.prompts[0].id === '01P1'));
+  const ids = [...L.amaliyot.groups, ...L.vazifa.groups].flatMap((g) => (g.prompts ?? []).map((p) => p.id));
+  assert.equal(new Set(ids).size, ids.length);
+  assert.equal(L.slideCount, 78);
+  for (const id of ids) assert.equal((await c.put('/api/aip/progress', { key: 'p:l2:' + id, value: 1 })).status, 200, id); // copy = done
+  assert.equal((await c.put('/api/aip/progress', { key: 'p:l2:toolongid1', value: 1 })).status, 400);
+  const real = createContent({ dir: REAL_CONTENT });
+  const files = [...L.amaliyot.groups, ...L.vazifa.groups].flatMap((g) => g.files);
+  assert.ok(files.length > 30);
+  for (const f of files) assert.ok(real.docFile(2, f.slug), f.slug);
+  assert.ok(!JSON.stringify(L.vazifa).includes('sources')); // 2.0 prompt "sources" are dropped
+});
+
+test('content: a lesson with slideCount but no stills logs a startup warning', (t) => {
+  const warn = t.mock.method(console, 'warn', () => {});
+  createContent({ dir: REAL_CONTENT }).validateAll();
+  assert.ok(warn.mock.calls.some((x) => /lesson 2 has slideCount 78 but no slide stills/.test(x.arguments[0])));
+  const dir = tmpCopy(t);
+  fs.mkdirSync(path.join(dir, 'lessons/2/slides'), { recursive: true });
+  fs.writeFileSync(path.join(dir, 'lessons/2/slides/1.webp'), 'x');
+  warn.mock.resetCalls();
+  createContent({ dir }).validateAll();
+  assert.ok(!warn.mock.calls.some((x) => /lesson 2 has slideCount/.test(x.arguments[0])));
+});
+
+test('content: bad prompts stop startup', () => {
+  const mk = (p) => ({ n: 1, vazifa: { text: '', groups: [{ title: 'g', files: [], prompts: p }] } });
+  assert.doesNotThrow(() => validateLesson(mk([{ id: 'P1', title: 'a', text: 'x' }, { id: 'P2', text: 'y' }])));
+  assert.throws(() => validateLesson(mk([{ id: '', text: 'x' }])), /bad prompt/);
+  assert.throws(() => validateLesson(mk([{ id: 'toolongid1', text: 'x' }])), /bad prompt/);
+  assert.throws(() => validateLesson(mk([{ id: 'P1', text: '' }])), /bad prompt/);
+  assert.throws(() => validateLesson(mk([{ id: 'P1', text: 'x' }, { id: 'P1', text: 'y' }])), /duplicate prompt id/);
+});
+
 test('content: loose times are NaN; a bad schedule fails at startup', (t) => {
   for (const s of ['2026-9-12', '12 Sep 2026', '2026-02-30', '2026-09-12 10:00', '2026-09-12T10', 'tomorrow', '', null, '2026-09-12T10:00+5']) assert.ok(Number.isNaN(parseTime(s)), String(s));
   assert.equal(parseTime('2026-09-12T10:00'), Date.parse('2026-09-12T10:00:00+05:00'));
@@ -269,11 +349,12 @@ test('content: loose times are NaN; a bad schedule fails at startup', (t) => {
   assert.throws(bad((s) => { s.release = { 1: { vazifa: '2026-9-1' } }; return s; }), /bad opening time/);
   assert.throws(bad((s) => { s.liveDays = -3; return s; }), /liveDays/);
   assert.throws(bad((s) => { s.liveDays = 'seven'; return s; }), /liveDays/);
-  assert.throws(bad((s) => { s.groups.shanba = s.groups.shanba.slice(0, 4); return s; }), /needs 6/); // the 2.0 shape (4 lessons)
+  assert.throws(bad((s) => { s.groups.shanba = s.groups.shanba.slice(0, 4); return s; }), /needs 7/); // the 2.0 shape (4 lessons)
+  assert.throws(bad((s) => { s.groups.shanba = s.groups.shanba.slice(0, 6); return s; }), /needs 7/); // the 6-lesson shape
   assert.throws(bad((s) => { s.release = { 1: { kitob: 'open' } }; return s; }), /unknown part "kitob"/);
-  assert.throws(bad((s) => { s.release = { 7: { kit: 'open' } }; return s; }), /unknown lesson/);
-  assert.doesNotThrow(bad((s) => { s.release = { 6: { kit: '+1h' } }; s.liveOverride = 6; return s; }));
-  assert.throws(bad((s) => { s.liveOverride = 7; return s; }), /liveOverride/);
+  assert.throws(bad((s) => { s.release = { 8: { kit: 'open' } }; return s; }), /unknown lesson/);
+  assert.doesNotThrow(bad((s) => { s.release = { 7: { kit: '+1h' } }; s.liveOverride = 7; return s; }));
+  assert.throws(bad((s) => { s.liveOverride = 8; return s; }), /liveOverride/);
   assert.throws(bad((s) => { s.liveOverride = 0; return s; }), /liveOverride/);
 });
 
@@ -458,13 +539,13 @@ test('doc route: a locked slug answers exactly like an unknown slug (404), so na
   assert.equal((await c.get('/api/aip/lesson/1/doc/hw-kompaniya')).status, 404); // open, but the file is not there
 });
 
-test('content: groups.<g> = null means dates TBA; anything else but 6 increasing times is still refused', (t) => {
+test('content: groups.<g> = null means dates TBA; anything else but 7 increasing entries is still refused', (t) => {
   const base = { timezone: 'Asia/Tashkent', groups: { shanba: null, yakshanba: null }, liveOverride: null };
   const p = parseSchedule(base);
   assert.deepEqual(p.groups, { shanba: null, yakshanba: null });
-  assert.doesNotThrow(() => parseSchedule({ ...base, groups: { shanba: null, yakshanba: ['2026-09-13T10:00', '2026-09-20T10:00', '2026-09-27T10:00', '2026-10-04T10:00', '2026-10-11T10:00', '2026-10-18T10:00'] } }));
-  const T = ['2026-09-13T10:00', '2026-09-20T10:00', '2026-09-27T10:00', '2026-10-04T10:00', '2026-10-11T10:00', '2026-10-18T10:00'];
-  for (const bad of [undefined, [], T.slice(0, 4), T.slice(0, 5), [...T, '2026-10-25T10:00'], [...T].reverse(), 'soon', {}, 0, false]) assert.throws(() => parseSchedule({ ...base, groups: { shanba: bad, yakshanba: null } }), /schedule\.json/, String(bad));
+  assert.doesNotThrow(() => parseSchedule({ ...base, groups: { shanba: null, yakshanba: ['2026-09-13T10:00', '2026-09-20T10:00', '2026-09-27T10:00', '2026-10-04T10:00', '2026-10-11T10:00', '2026-10-18T10:00', '2026-10-25T10:00'] } }));
+  const T = ['2026-09-13T10:00', '2026-09-20T10:00', '2026-09-27T10:00', '2026-10-04T10:00', '2026-10-11T10:00', '2026-10-18T10:00', '2026-10-25T10:00'];
+  for (const bad of [undefined, [], T.slice(0, 4), T.slice(0, 6), [...T, '2026-11-01T10:00'], [...T].reverse(), 'soon', {}, 0, false]) assert.throws(() => parseSchedule({ ...base, groups: { shanba: bad, yakshanba: null } }), /schedule\.json/, String(bad));
   assert.throws(() => parseSchedule({ ...base, groups: { shanba: null } }), /yakshanba/); // a missing group is not "TBA"
   t.mock.method(console, 'error', () => {});
 });

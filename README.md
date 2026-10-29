@@ -74,7 +74,7 @@ The bot uses long polling, so no webhook or public URL is needed. Do not run two
 
 Commands (Uzbek UI, admins only; everyone else gets a polite refusal and a `bot: refused user <id>` log line):
 - `/new` (alias `/new_user`): full name, then phone, then group (Shanba / Yakshanba buttons), then mentor (buttons of previous mentors, or type one). The phone is the duplicate key: a number that is already registered shows the existing student's card instead of making a second one. Replies "Talaba yaratildi" with name, phone, group, mentor, ID and portal, then a second message you can forward to the student (portal URL + ID).
-- `/find <text>`: by name, ID or phone (4+ digits); shows phone, group, mentor, created date, last login, "Tayyorgarlik k/4 | darslar n/6 bajarilgan".
+- `/find <text>`: by name, ID or phone (4+ digits); shows phone, group, mentor, created date, last login, "Tayyorgarlik k/4 | darslar n/7 bajarilgan".
 - `/edit <ID> ism|telefon|guruh|mentor <value>`: fixes one field (`mentor -` clears the mentor). A phone that belongs to another student is refused.
 - `/list [shanba|yakshanba|yangi]`: 10 per page with Oldingi/Keyingi buttons; `yangi` = students who have no group yet.
 - `/start`, `/help`, `/cancel`.
@@ -85,7 +85,7 @@ There is no blocking or broadcasting. To deactivate a student (the API then answ
 ```
 node -e "const {DatabaseSync}=require('node:sqlite');const d=new DatabaseSync(process.env.DATA_DIR+'/aip.db');d.exec('PRAGMA busy_timeout=5000');d.exec(\"UPDATE students SET active=0 WHERE id='AIP-XXXXXX'\")"
 ```
-Same with `UPDATE students SET review=1 WHERE id='AIP-XXXXXX'` for the review flag (opens all 6 lessons early; clients cannot set it. It never beats TBA dates or a missing group).
+Same with `UPDATE students SET review=1 WHERE id='AIP-XXXXXX'` for the review flag (opens all 7 lessons early; clients cannot set it. It never beats TBA dates or a missing group).
 
 ## Timed releases: `content/schedule.json`
 
@@ -96,14 +96,14 @@ Same with `UPDATE students SET review=1 WHERE id='AIP-XXXXXX'` for the review fl
               "yakshanba": ["2026-11-22T10:00", "2026-11-29T10:00", "2026-12-06T10:00", "2026-12-13T10:00", "2026-12-20T10:00", "2026-12-27T10:00"] },
   "liveOverride": null,
   "liveDays": 7,
-  "release": { "1": { "vazifa": "+3h" }, "6": { "kit": "2026-12-26T09:00" } }
+  "release": { "1": { "vazifa": "+3h" }, "7": { "kit": "2026-12-26T09:00" } }
 }
 ```
 
-- **Dates to follow**: `"shanba": null` means the dates are not decided (the shipped file has all 6 dates). For that group, and for any student with no group, lessons 1-6 stay locked whatever `release` says (and even with the `review` flag), the app shows "date to follow", `live` is 0, and lesson 0 (the precourse) stays open. `liveOverride` cannot change this.
-- `groups.<g>[i]` is the start of lesson i+1 for that group. Times without a zone are Asia/Tashkent (UTC+5, no DST). Every group needs exactly 6 times. The shipped start is 10:00.
-- `liveOverride`: `null`, or 1-6 to pin the live lesson. It only changes `live`; it does not open anything.
-- `liveDays`: lesson 6 stays "live" this many days after its start. Lessons 1-5 are live until the next lesson starts.
+- **Dates to follow**: `"shanba": null` means the dates are not decided (the shipped file has dates for both groups, except lesson 2, see below). For that group, and for any student with no group, lessons 1-7 stay locked whatever `release` says (and even with the `review` flag), the app shows "date to follow", `live` is 0, and lesson 0 (the precourse) stays open. `liveOverride` cannot change this.
+- `groups.<g>[i]` is the start of lesson i+1 for that group. Times without a zone are Asia/Tashkent (UTC+5, no DST). Every group needs exactly 7 entries (lesson 1..7); an entry may be `null`: that one lesson's date is to follow. Lesson 2 (Kirish) is `null` in both groups now. A `null` lesson is locked for everyone (review included), never live, and shows "date to follow"; the other entries must still increase. To announce it, put a time in that slot. The shipped start is 10:00.
+- `liveOverride`: `null`, or 1-7 (not a lesson whose date is `null`) to pin the live lesson. It only changes `live`; it does not open anything.
+- `liveDays`: lesson 7 stays "live" this many days after its start. Every other lesson is live until the next dated lesson starts.
 - `release.<lesson>.<part>`: when that part opens. Parts: `slides`, `amaliyot`, `kit`, `vazifa`, `prep` (anything else, such as the dropped `kitob`, stops startup). Value is `open`, a relative offset from that group's lesson start (`+0h`, `+3h`, `-2d`, `+30m`), or an absolute time. Lesson 0 offsets are relative to lesson 1's start.
 - Defaults: `prep` is `open`; every other part is `+0h`.
 - The server enforces it: locked parts are absent from payloads (only `opensAt`), and slide, clip and prep-pdf endpoints answer 403 `locked`, and the doc endpoint answers 404 for a locked file.
@@ -112,8 +112,8 @@ Same with `UPDATE students SET review=1 WHERE id='AIP-XXXXXX'` for the review fl
 
 ### Filling in the dates
 
-1. Edit `content/schedule.json`: replace `null` with the six lesson start times of each group, increasing, e.g. `"shanba": ["2026-11-21T10:00", ..., "2026-12-26T10:00"]`. Add `release` offsets only where a part should open later than its lesson start (`"1": { "vazifa": "+3h" }`); with no entry every part opens at the start. Lesson 1 never opens before the start.
-2. Run `node --test` (it checks the shipped file: nothing in lessons 1-6 may open before that group's lesson 1).
+1. Edit `content/schedule.json`: replace `null` with the seven lesson start times of each group, increasing, e.g. `"shanba": ["2026-11-21T10:00", ..., "2026-12-26T10:00"]`. Before you set the date of Kirish (lesson 2), drop its 78 slide stills into `content/lessons/2/slides/` (`1.webp` .. `78.webp`): the server logs a startup WARNING for every lesson with `slideCount > 0` and no stills, and students would see placeholder slides. Add `release` offsets only where a part should open later than its lesson start (`"1": { "vazifa": "+3h" }`); with no entry every part opens at the start. Lesson 1 never opens before the start.
+2. Run `node --test` (it checks the shipped file: nothing in lessons 1-7 may open, and lesson 2 is `null` before that group's lesson 1).
 3. Content is baked into the image, so the change goes live with a deploy (`railway up`, about a minute).
 
 The precourse links (`prep.more` in `content/lessons/0/lesson.{uz,ru,en}.json`, shape in API.md) are filled in the same way; while the key is absent the section stays hidden.
@@ -138,9 +138,9 @@ Abuse limits of the endpoint: 10 failed keys per 10 minutes per client (then 429
 
 ## Content format
 
-`content/lessons/{n}/lesson.{uz,ru,en}.json` (n = 0..6). A missing language falls back to `uz`. Edits are picked up without a restart.
+`content/lessons/{n}/lesson.{uz,ru,en}.json` (n = 0..7). A missing language falls back to `uz`. Edits are picked up without a restart.
 
-The `ru` and `en` files hold only `n`, `title`, `subtitle`, `summary`, `topics` (and `prep` for lesson 0). Everything else is read from the `uz` file, whatever the language. Lessons 1-6 ship with titles only, so they show "materials soon" until a part is added.
+The `ru` and `en` files hold only `n`, `title`, `subtitle`, `summary`, `topics` (and `prep` for lesson 0). Everything else is read from the `uz` file, whatever the language. Lessons 1 and 3-7 ship with titles only, so they show "materials soon" until a part is added. Lesson 2 (Kirish) is the 2.0 lesson converted to blocks: slides (78), amaliyot (guide + 7 exercises, each a group with files and prompts) and vazifa (sources, guide, two prompt groups). Its files are the 2.0 `.placeholder` stand-ins.
 
 Example (shortened) `lesson.uz.json` of a lesson with all parts:
 
@@ -156,6 +156,7 @@ Example (shortened) `lesson.uz.json` of a lesson with all parts:
 
 - A part exists if it has content: slides (`slideCount > 0`); amaliyot, kit and vazifa (a block with `text` or at least one group; `null` = none); prep (`prep`, lesson 0 only).
 - Every file object has a unique `slug` (per lesson), the real `name` (it is the download name, students save the files into their company folder) and a `size`. There is no path field.
+- A group may also carry `prompts: [{ id, title, target?, text }]` (id: 1-8 letters or digits, unique per lesson; text stays Uzbek). The SPA shows them as copy rows and writes `p:l{n}:{id}` on copy. Startup rejects a bad or duplicate prompt.
 - Day 4 holds two groups in its Kit block ("Kit 5 A", "Kit 4 A/B"). Kit is not counted in progress.
 
 ### Where the files go
@@ -169,7 +170,7 @@ Example (shortened) `lesson.uz.json` of a lesson with all parts:
 
 ### Placeholders
 
-A missing file falls back to `<name>.placeholder` next to the real name (`files/kit1-forma.md.placeholder`). **To publish the real file, drop it at the name without `.placeholder`; it wins automatically.** Slides: until stills exist `/slide/{i}` serves a generated SVG. Clips return 404 until `clips/` has files. There are no placeholders in `content/` right now. The tests use `server/fixtures/lessons/{1,3}` (laid over a copy of `content/` by `tmpCopy`).
+A missing file falls back to `<name>.placeholder` next to the real name (`files/kit1-forma.md.placeholder`). **To publish the real file, drop it at the name without `.placeholder`; it wins automatically.** Slides: until stills exist `/slide/{i}` serves a generated SVG. Clips return 404 until `clips/` has files. The only placeholders in `content/` are the 38 files of lesson 2 (Kirish); the 2.0 originals are not available. The tests use `server/fixtures/lessons/{1,3}` (laid over a copy of `content/` by `tmpCopy`).
 
 The 2.0 lessons are archived in `.design/archive-2.0/` (not in the Docker image).
 

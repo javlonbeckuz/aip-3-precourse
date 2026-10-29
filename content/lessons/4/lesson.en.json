@@ -1,16 +1,16 @@
 {
   "n": 4,
-  "title": "Ship it",
-  "subtitle": "VPS, domain, DNS, Git, the pilot plan, Kit 5 A, Kit 4",
-  "summary": "We move the agent from the laptop to a server that runs 24/7. We write the pilot plan and prepare the talk with staff. Kit 5 A and Kit 4.",
+  "title": "API and MCP",
+  "subtitle": "APIs, keys, MCP, frontend and backend, system prompt, Kit 3",
+  "summary": "We split the chosen process into steps and write the agent's instructions. Then we connect the first version of the agent to real systems. Kit 3: redistributing the work.",
   "topics": [
-    "Local vs server",
-    "VPS",
-    "Domain and DNS",
-    "Git and GitHub",
-    "Pilot",
-    "Success and stop condition",
-    "Kit 5 A",
-    "Kit 4"
+    "API",
+    "API keys and .env",
+    "MCP and connectors",
+    "Frontend and backend",
+    "Open source",
+    "System prompt",
+    "Agent v0",
+    "Kit 3"
   ]
 }

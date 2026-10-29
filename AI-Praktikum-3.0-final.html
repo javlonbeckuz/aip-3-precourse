@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&family=Golos+Text:wght@400;500;600&family=Martian+Mono:wdth,wght@87.5..100,400..500&display=swap">
 <style>:root{
   
-  --black:#000; --white:#fff; --blue:#0A14FC; --grey:#E0E0E0; --yellow:#FDC959; --lilac:#B4A1D1; --danger:#FF6B5E; --orange:#FF7A2F; --emerald:#0B7A55;
+  --black:#000; --white:#fff; --blue:#0A14FC; --grey:#E0E0E0; --yellow:#FDC959; --lilac:#B4A1D1; --danger:#FF6B5E; --orange:#FF7A2F; --emerald:#0B7A55; --cyan:#33CBEA;
   
   --surface-0:#000; --surface-1:#161616;
   --text-1:#FFF; --text-2:#A6A6A6; --text-3:#8A8A90;
@@ -135,6 +135,7 @@ a.play:active .play-circ{transform:scale(.96)}
 .c-dark{--f-bg:var(--state-locked);--f-ink:var(--text-2)}
 .c-night{--f-bg:var(--state-locked);--f-ink:var(--white)}
 .c-orange{--f-bg:var(--orange);--f-ink:var(--black)}
+.c-cyan{--f-bg:var(--cyan);--f-ink:var(--black)}
 .c-emerald{--f-bg:var(--emerald);--f-ink:var(--white)}
 .f-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .f-label{font:500 13px/1.35 var(--font-body);text-transform:uppercase;max-width:18em}
@@ -155,6 +156,7 @@ button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
 .gt-blue{--gt-fill:var(--blue);--gt-ink:var(--white);--gt-ink2:rgb(255 255 255 / .85);--gt-line:rgb(255 255 255 / .3)}
 .gt-dark{--gt-fill:var(--state-locked);--gt-ink:var(--white);--gt-ink2:rgb(255 255 255 / .8);--gt-line:rgb(255 255 255 / .25)}
 .gt-orange{--gt-fill:var(--orange);--gt-ink:var(--black);--gt-ink2:rgb(0 0 0 / .85);--gt-line:rgb(0 0 0 / .3)}
+.gt-cyan{--gt-fill:var(--cyan);--gt-ink:var(--black);--gt-ink2:rgb(0 0 0 / .85);--gt-line:rgb(0 0 0 / .3)}
 .gt-emerald{--gt-fill:var(--emerald);--gt-ink:var(--white);--gt-ink2:var(--white);--gt-line:rgb(255 255 255 / .4)}
 .gt .p-list,.gt .p-list li{border-color:var(--gt-line)}
 .gt .xo{color:var(--gt-ink2)}
@@ -199,8 +201,7 @@ button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
 @container (min-width:900px){.page-head{grid-template-columns:1fr auto;align-items:end;padding:calc(62 * var(--u)) calc(61 * var(--u)) calc(20 * var(--u)) calc(66 * var(--u))}
 .grid3{grid-template-columns:repeat(12,1fr);gap:calc(28 * var(--u)) calc(16 * var(--u));padding:calc(40 * var(--u)) calc(61 * var(--u)) calc(64 * var(--u)) calc(66 * var(--u))}
 .grid3 .folder{min-height:calc(260 * var(--u))}
-.grid3>li{grid-column:span 4}
-.grid3>li:nth-child(n+4){grid-column:span 3}}
+.grid3>li{grid-column:span 3}}
 .prog{display:flex;align-items:center;gap:16px;justify-self:start}
 .ring{position:relative;flex:none;width:88px;aspect-ratio:1}
 .ring svg{display:block;width:100%;height:100%;transform:rotate(-90deg);fill:none}
@@ -764,6 +765,29 @@ html.hid .bgp path{animation-play-state:paused}
 @media (hover:hover) and (pointer:fine){.gt a.ef-row:hover .ef-dl{background:var(--gt-ink);color:var(--gt-fill)}}
 .gt :focus-visible{outline-color:var(--gt-ink)}
 .gt .grp+.grp{margin-top:20px}
+.gt .s1{background:none;color:var(--gt-ink);padding:0;margin-top:12px}
+.gt .s1::after{display:none}
+.gt .s1 ol{margin-top:12px;border-top-color:var(--gt-ink);max-width:none}
+.gt .s1 li{border-bottom-color:var(--gt-line);padding:18px 0 20px}
+.gt .s1 .no{font:500 13px/1.3 var(--font-mono);letter-spacing:0}
+.gt .s1 .tt{font-size:16px}
+.gt .s1 .tx,.gt .s1 .s1-rule{font-size:15px;color:var(--gt-ink)}
+.gt .s1 .to,.gt .s1 .to.strong{color:var(--gt-ink2);font-size:14px}
+.gt .s1 .cp{color:var(--gt-ink)}
+.gt .s1 .cp-c{width:44px;height:44px;border-color:var(--gt-ink)}
+.gt .s1 .cp.flash .cp-c{background:var(--gt-ink);color:var(--gt-fill)}
+@media (hover:hover) and (pointer:fine){.gt .s1 .cp:hover .cp-c{background:var(--gt-ink);color:var(--gt-fill)}}
+.gt .s1 .chip,.gt .s1 .chip.off{color:var(--gt-ink)}
+.gt .s1 .chip::before{border-color:var(--gt-ink)}
+.gt .s1 .chip:not(.off)::before{background-color:var(--gt-ink)}
+.gt-blue .s1 .chip:not(.off)::before,.gt-dark .s1 .chip:not(.off)::before,.gt-emerald .s1 .chip:not(.off)::before{background-image:var(--ck-b)}
+@container (min-width:900px){.gt .s1 li{grid-template-columns:minmax(0,1fr) auto;gap:8px 24px;padding:22px 0 24px}
+.gt .s1 .no{grid-row:1;grid-column:1}
+.gt .s1 .body{grid-row:2;grid-column:1/-1}
+.gt .s1 .cpw{grid-column:2}
+.gt .s1 .tt{font-size:18px}
+.gt .s1 .tx{font-size:16px}
+.gt .s1 .cp-c{width:48px;height:48px}}
 .soon-card{min-height:196px;gap:16px}
 .soon-t{max-width:24ch;font:500 20px/1.35 var(--font-body)}
 @container (min-width:900px){.soon-card{align-self:start;min-height:calc(300 * var(--u))}
@@ -772,6 +796,7 @@ html.hid .bgp path{animation-play-state:paused}
 .gt-tab .lkd svg{display:none}
 .gt-tab .ok{gap:3px}
 .gt-tab .ok svg{width:10px;height:10px}}
+.gt-tall .gt-pane[inert]{max-height:0;overflow:hidden;padding:0}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}
@@ -829,7 +854,7 @@ body:not(.solo) .s1 .lib-bar{top:45px}
   <button type="button" data-go="type" aria-pressed="false">Shrift</button>
   <button type="button" data-go="all" aria-pressed="false">Hammasi</button>
   <select id="jump" aria-label="Ekranga oʻtish (barcha yoʻllar)"><option value="">Ekranga oʻtish…</option></select>
-  <select id="today" aria-label="Demo sana"><option value="">Sana…</option><option value="before">Kursdan oldin · 14-noyabr</option><option value="day1">1-dars kuni · 21-noyabr</option><option value="story">3-dars · 5-dekabr</option><option value="over">Kurs tugadi · 5-yanvar</option></select>
+  <select id="today" aria-label="Demo sana"><option value="">Sana…</option><option value="before">Kursdan oldin · 14-noyabr</option><option value="day1">01-dars kuni · 21-noyabr</option><option value="story">04-dars · 5-dekabr</option><option value="over">Kurs tugadi · 5-yanvar</option></select>
   <button type="button" id="rst">Reset demo</button>
   <button type="button" id="w375" aria-pressed="false">375 px</button>
 </nav>
@@ -1245,13 +1270,13 @@ const I18N = {uz: {
   'common.sr_download': 'Yuklab olish: ', 'common.sr_external': ' (yangi oynada ochiladi)', 'common.sample_file': 'namuna fayl', 'common.unknown_size': 'oʻlchami nomaʼlum', 'common.guide': 'Qoʻllanma', 'common.bonus': 'bonus',
   'common.extra': 'qoʻshimcha',
   'unit.sl': 'Slaydlar', 'unit.am': 'Amaliyot', 'unit.vz': 'Vazifa', 'unit.kt': 'Kit', 'unit.am_n': 'Amaliyot {num}', 'unit.hermes': 'Hermes {id}',
-  'lesson.n': '{n}-dars', 'lesson.label': '{n}-dars · {date}', 'lesson.label0': '0-dars · tayyorgarlik', 'lesson.meta': '{date} · {d}/{t} bajarildi',
+  'lesson.n': '{n}-dars', 'lesson.label': '{n}-dars · {date}', 'lesson.label0': 'Tayyorgarlik', 'lesson.meta': '{date} · {d}/{t} bajarildi',
   'steps': '{d}/{t} bajarildi', 'kind.video': 'video', 'kind.image': 'rasm',
   // --- dates (month table is in code; these are the patterns)
   'date.fmt': '{d}-{m}', 'date.until': '{date}gacha', 'date.opens': '{date}da ochiladi',
   // --- nav, menu, popup, toast, sheet, live announcements
   'nav.label': 'Boʻlimlar', 'nav.home': 'Dastur', 'nav.homebtn': 'Bosh sahifa', 'menu.label': 'Menyu', 'lang.label': 'Til',
-  'menu.id': 'Shaxsiy ID', 'menu.group': 'Guruh', 'menu.group_value': 'Shanba guruhi', 'menu.course': 'Kurs', 'menu.course_value': '6 dars · 21 noy – 26 dek', 'menu.logout': 'Chiqish',
+  'menu.id': 'Shaxsiy ID', 'menu.group': 'Guruh', 'menu.group_value': 'Shanba guruhi', 'menu.course': 'Kurs', 'menu.course_value': '7 dars · 21 noy – 26 dek', 'menu.logout': 'Chiqish',
   'popup.label': 'Yangi dars', 'popup.k': 'Yangi dars ochildi', 'popup.title': '3-dars · Skill va agentlar', 'popup.open': 'Darsni ochish', 'popup.live': 'Yangi dars ochildi: 3-dars, Skill va agentlar.',
   'toast.done': '{no} bajarildi', 'toast.undo': 'Bekor qilish', 'toast.notfound': 'Sahifa topilmadi',
   'lock.title': '{n}-dars {date}da ochiladi.', 'lock.desc': 'Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.',
@@ -1266,11 +1291,11 @@ const I18N = {uz: {
   'lesson.0.card': 'Oʻrnatish va\ntayyorgarlik',
   'lesson.1.title': 'AI qanday ishlaydi', 'lesson.1.card': 'AI qanday\nishlaydi', 'lesson.1.lede': 'Avval oʻz biznesingiz uchun birinchi vositani yasaymiz. Keyin AI qayerda ishlashi, token va kontekst nima ekani, qaysi modelni tanlashni koʻramiz. Kit 1: ish qayerga ketadi.',
   
-  'lesson.2.title': 'Claude Code', 'lesson.2.card': 'Claude\nCode', 'lesson.2.lede': 'Claude Codeʼni oʻz Kit 1 fayllaringizda oʻrganamiz: kompaniya papkasi, CLAUDE.md, reja va PRD. Kit 2: qaysi jarayondan boshlashni tanlaymiz.',
+  'lesson.2.title': 'Kirish', 'lesson.2.card': 'Kirish', 'lesson.2.lede': 'AI aslida nima ekanini, modellar qanday ishlashini va kontekst nega hamma narsani hal qilishini koʻramiz. Amaliyot: NotebookLM.',
   
-  'lesson.3.title': 'API va MCP', 'lesson.3.card': 'API va\nMCP', 'lesson.3.lede': 'Tanlangan jarayonni qadamlarga ajratamiz va agent yoʻriqnomasini yozamiz. Keyin agentning birinchi versiyasini haqiqiy tizimlarga ulaymiz. Kit 3: ishni qayta taqsimlash.',
+  'lesson.3.title': 'Claude Code', 'lesson.3.card': 'Claude\nCode', 'lesson.3.lede': 'Claude Codeʼni oʻz Kit 1 fayllaringizda oʻrganamiz: kompaniya papkasi, CLAUDE.md, reja va PRD. Kit 2: qaysi jarayondan boshlashni tanlaymiz.',
   
-  'lesson.4.title': 'Ishga tushirish', 'lesson.4.card': 'Ishga\ntushirish', 'lesson.4.lede': 'Agentni noutbukdan 24/7 ishlaydigan serverga koʻchiramiz. Pilot rejasini yozamiz va xodimlar bilan suhbatga tayyorlanamiz. Kit 5 A va Kit 4.',
+  'lesson.4.title': 'API va MCP', 'lesson.4.card': 'API va\nMCP', 'lesson.4.lede': 'Tanlangan jarayonni qadamlarga ajratamiz va agent yoʻriqnomasini yozamiz. Keyin agentning birinchi versiyasini haqiqiy tizimlarga ulaymiz. Kit 3: ishni qayta taqsimlash.',
   
   'c.sect.g': 'Biznes gʻoyalar', 'c.sect.t': 'Tanqidiy fikrlash', 'c.sect.s': 'Savdo va muzokaralar', 'c.sect.r': 'Reklama va kreativ', 'c.sect.o': 'Oʻrganish',
   'c.am1.title': 'Korxona bilimini ishga soling', 'c.hermes.caution': 'Kalit, token va parolni hech qachon chatga yozmang.',
@@ -1318,9 +1343,9 @@ const I18N = {uz: {
   
   
   'lesson.1.sub': 'AI qatlamlari, token, kontekst, modellar, NotebookLM, Kit 1',
-  'lesson.2.sub': 'Harness, CLAUDE.md, Plan mode, PRD, Skill, Kit 2',
-  'lesson.3.sub': 'API, kalitlar, MCP, frontend va backend, system prompt, Kit 3',
-  'lesson.4.sub': 'VPS, domen, DNS, Git, pilot rejasi, Kit 5 A, Kit 4',
+  'lesson.2.sub': 'AI nima, modellar, Context, RAG, NotebookLM',
+  'lesson.3.sub': 'Harness, CLAUDE.md, Plan mode, PRD, Skill, Kit 2',
+  'lesson.4.sub': 'API, kalitlar, MCP, frontend va backend, system prompt, Kit 3',
   
   'vz1.g2_note': '8 ta asosiy va 5 ta qoʻshimcha prompt. Har birini nusxalab, NotebookLMʼga qoʻyasiz.',
   'vz1.g3_note': 'Vazifaning yozma qoʻllanmasi: mashq tartibi va nimaga eʼtibor berish kerakligi.',
@@ -1394,7 +1419,7 @@ const I18N = {uz: {
   'lock.title_tba': '{n}-dars sanasi keyinroq eʼlon qilinadi.',
   'prep.intro_tba': 'Birinchi dars sanasini shu yerda eʼlon qilamiz. Roʻyxatni hozirdan tayyorlab qoʻying: hammasi 30 daqiqacha vaqt oladi.',
   'prep.end_tba': 'Tayyorsiz. Birinchi dars sanasi shu yerda chiqadi.',
-  'menu.course_tba': '6 dars, sanasi keyinroq',
+  'menu.course_tba': '{n} dars, sanasi keyinroq',
   'menu.group_none': 'Guruh hali tanlanmagan',
   'prep.more.dflt': 'Oʻrganishda davom eting',
   'prep.lede_done': '4 qadamning hammasi bajarildi. Kerak boʻlsa, istalgan kartani qayta oching.',
@@ -1450,61 +1475,61 @@ const I18N = {uz: {
   'title.lesson': '{n}-dars · {title}', 'title.ex': '{num} · {title}', 'title.vz': 'Vazifa · {n}-dars', 'title.am': 'Amaliyot · {n}-dars', 'title.pick': '03 · Bittasini tanlang', 'title.vzsheet': 'Vazifa promptlari',
   'title.site': 'AI Praktikum 3.0', 'title.gate': 'Kirish', 'title.type': 'Shrift', 'title.all': 'Hammasi',
   // --- 3.0: six lessons, Kit, empty-lesson state
-  'lesson.1.t0': 'AI qatlamlari',
-  'lesson.1.t1': 'Maʼlumot qayerga ketadi',
-  'lesson.1.t2': 'LLM va token',
-  'lesson.1.t3': 'Kontekst oynasi',
-  'lesson.1.t4': 'Model darajalari',
-  'lesson.1.t5': 'Frontier va open-weight',
-  'lesson.1.t6': 'Gallyutsinatsiya',
-  'lesson.1.t7': 'NotebookLM',
-  'lesson.1.t8': 'Kit 1',
-  'lesson.2.t0': 'Harness',
-  'lesson.2.t1': 'Claude Code',
-  'lesson.2.t2': 'Kompaniya papkasi',
-  'lesson.2.t3': 'CLAUDE.md',
-  'lesson.2.t4': 'Plan mode',
-  'lesson.2.t5': 'PRD',
-  'lesson.2.t6': 'Skill',
-  'lesson.2.t7': 'Kit 2',
-  'lesson.3.t0': 'API',
-  'lesson.3.t1': 'API kaliti va .env',
-  'lesson.3.t2': 'MCP va connector',
-  'lesson.3.t3': 'Frontend va backend',
-  'lesson.3.t4': 'Open source',
-  'lesson.3.t5': 'System prompt',
-  'lesson.3.t6': 'Agent v0',
-  'lesson.3.t7': 'Kit 3',
-  'lesson.4.t0': 'Lokal va server',
-  'lesson.4.t1': 'VPS',
-  'lesson.4.t2': 'Domen va DNS',
-  'lesson.4.t3': 'Git va GitHub',
-  'lesson.4.t4': 'Pilot',
-  'lesson.4.t5': 'Muvaffaqiyat va toʻxtash sharti',
-  'lesson.4.t6': 'Kit 5 A',
-  'lesson.4.t7': 'Kit 4',
-  'lesson.5.title': 'Agentni yaxshilash',
-  'lesson.5.sub': 'Xatolar jurnali, test toʻplami, cron, eskalatsiya, xavfsizlik, Kit 5 B',
-  'lesson.5.lede': 'Pilotning birinchi haftasidagi xatolar boʻyicha agentni tuzatamiz. Jadval boʻyicha hisobot, eskalatsiya va xavfsizlik qoidalarini qoʻshamiz. Kit 5 B: 1-hafta.',
-  'lesson.5.card': 'Agentni\nyaxshilash',
-  'lesson.5.t0': 'Builder va assistent',
-  'lesson.5.t1': 'Cron',
-  'lesson.5.t2': 'Eskalatsiya',
-  'lesson.5.t3': 'Test toʻplami',
-  'lesson.5.t4': 'Prompt injection',
-  'lesson.5.t5': 'Maʼlumotlar tartibi',
-  'lesson.5.t6': 'Kit 5 B',
-  'lesson.6.title': 'Natijalar va demo kuni',
-  'lesson.6.sub': 'Baseline va farq, vazifa narxi, ROI, qaror, build yoki buy, demo',
-  'lesson.6.lede': 'Pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaymiz va davom ettirish, oʻzgartirish yoki toʻxtatishni hal qilamiz. Keyin natijani taqdim etasiz. Kit 5 B: yakuniy raqamlar.',
-  'lesson.6.card': 'Natijalar va\ndemo kuni',
-  'lesson.6.t0': 'Baseline va farq',
-  'lesson.6.t1': 'Bitta vazifa narxi',
-  'lesson.6.t2': 'Topilgan pul',
-  'lesson.6.t3': 'ROI',
-  'lesson.6.t4': 'Davom, oʻzgartirish yoki toʻxtatish',
-  'lesson.6.t5': 'Build, buy yoki open source',
-  'lesson.6.t6': 'Demo',
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  'lesson.5.title': 'Ishga tushirish',
+  'lesson.5.sub': 'VPS, domen, DNS, Git, pilot rejasi, Kit 5 A, Kit 4',
+  'lesson.5.lede': 'Agentni noutbukdan 24/7 ishlaydigan serverga koʻchiramiz. Pilot rejasini yozamiz va xodimlar bilan suhbatga tayyorlanamiz. Kit 5 A va Kit 4.',
+  'lesson.5.card': 'Ishga\ntushirish',
+  
+  
+  
+  
+  
+  
+  
+  'lesson.6.title': 'Agentni yaxshilash',
+  'lesson.6.sub': 'Xatolar jurnali, test toʻplami, cron, eskalatsiya, xavfsizlik, Kit 5 B',
+  'lesson.6.lede': 'Pilotning birinchi haftasidagi xatolar boʻyicha agentni tuzatamiz. Jadval boʻyicha hisobot, eskalatsiya va xavfsizlik qoidalarini qoʻshamiz. Kit 5 B: 1-hafta.',
+  'lesson.6.card': 'Agentni\nyaxshilash',
+  
+  
+  
+  
+  
+  
+  
   'prep.0.s0': 'Darsga oʻz noutbukingiz bilan keling. Praktikum boshdan-oxir amaliy.',
   'prep.0.s1': 'Administrator huquqi borligini tekshiring: dastur oʻrnata olishingiz kerak. Ish kompyuteri boʻlsa, IT boʻlimidan soʻrang.',
   'prep.0.s2': 'Diskda kamida 5 GB boʻsh joy qoldiring.',
@@ -1536,6 +1561,62 @@ const I18N = {uz: {
   'amf.off': 'Amaliyot bajarildi',
   'amf.aria': 'Amaliyot bajarildi deb belgilash',
   'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi',
+  'lesson.1.t0': 'AI qatlamlari',
+  'lesson.1.t1': 'Maʼlumot qayerga ketadi',
+  'lesson.1.t2': 'LLM va token',
+  'lesson.1.t3': 'Kontekst oynasi',
+  'lesson.1.t4': 'Model darajalari',
+  'lesson.1.t5': 'Frontier va open-weight',
+  'lesson.1.t6': 'Gallyutsinatsiya',
+  'lesson.1.t7': 'NotebookLM',
+  'lesson.1.t8': 'Kit 1',
+  'lesson.2.t0': 'AI nima',
+  'lesson.2.t1': 'Modellar',
+  'lesson.2.t2': 'Context',
+  'lesson.2.t3': 'RAG',
+  'lesson.2.t4': 'NotebookLM',
+  'lesson.3.t0': 'Harness',
+  'lesson.3.t1': 'Claude Code',
+  'lesson.3.t2': 'Kompaniya papkasi',
+  'lesson.3.t3': 'CLAUDE.md',
+  'lesson.3.t4': 'Plan mode',
+  'lesson.3.t5': 'PRD',
+  'lesson.3.t6': 'Skill',
+  'lesson.3.t7': 'Kit 2',
+  'lesson.4.t0': 'API',
+  'lesson.4.t1': 'API kaliti va .env',
+  'lesson.4.t2': 'MCP va connector',
+  'lesson.4.t3': 'Frontend va backend',
+  'lesson.4.t4': 'Open source',
+  'lesson.4.t5': 'System prompt',
+  'lesson.4.t6': 'Agent v0',
+  'lesson.4.t7': 'Kit 3',
+  'lesson.5.t0': 'Lokal va server',
+  'lesson.5.t1': 'VPS',
+  'lesson.5.t2': 'Domen va DNS',
+  'lesson.5.t3': 'Git va GitHub',
+  'lesson.5.t4': 'Pilot',
+  'lesson.5.t5': 'Muvaffaqiyat va toʻxtash sharti',
+  'lesson.5.t6': 'Kit 5 A',
+  'lesson.5.t7': 'Kit 4',
+  'lesson.6.t0': 'Builder va assistent',
+  'lesson.6.t1': 'Cron',
+  'lesson.6.t2': 'Eskalatsiya',
+  'lesson.6.t3': 'Test toʻplami',
+  'lesson.6.t4': 'Prompt injection',
+  'lesson.6.t5': 'Maʼlumotlar tartibi',
+  'lesson.6.t6': 'Kit 5 B',
+  'lesson.7.title': 'Natijalar va demo kuni',
+  'lesson.7.sub': 'Baseline va farq, vazifa narxi, ROI, qaror, build yoki buy, demo',
+  'lesson.7.lede': 'Pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaymiz va davom ettirish, oʻzgartirish yoki toʻxtatishni hal qilamiz. Keyin natijani taqdim etasiz. Kit 5 B: yakuniy raqamlar.',
+  'lesson.7.card': 'Natijalar va\ndemo kuni',
+  'lesson.7.t0': 'Baseline va farq',
+  'lesson.7.t1': 'Bitta vazifa narxi',
+  'lesson.7.t2': 'Topilgan pul',
+  'lesson.7.t3': 'ROI',
+  'lesson.7.t4': 'Davom, oʻzgartirish yoki toʻxtatish',
+  'lesson.7.t5': 'Build, buy yoki open source',
+  'lesson.7.t6': 'Demo',
 }, ru: /*RU*/{
   "common.close": "Закрыть",
   "common.back": "Назад",
@@ -1562,7 +1643,7 @@ const I18N = {uz: {
   "unit.hermes": "Hermes {id}",
   "lesson.n": "Урок {n}",
   "lesson.label": "Урок {n} · {date}",
-  "lesson.label0": "Урок 0 · подготовка",
+  "lesson.label0": "Подготовка",
   "lesson.meta": "{date} · выполнено {d}/{t}",
   "steps": "выполнено {d}/{t}",
   "kind.video": "видео",
@@ -1579,7 +1660,7 @@ const I18N = {uz: {
   "menu.group": "Группа",
   "menu.group_value": "Субботняя группа",
   "menu.course": "Курс",
-  "menu.course_value": "6 уроков · 21 нояб. – 26 дек.",
+  "menu.course_value": "7 уроков · 21 нояб. – 26 дек.",
   "menu.logout": "Выйти",
   "popup.label": "Новый урок",
   "popup.k": "Открыт новый урок",
@@ -1616,15 +1697,15 @@ const I18N = {uz: {
   "lesson.1.title": "Как работает AI",
   "lesson.1.card": "Как работает\nAI",
   "lesson.1.lede": "Сначала делаем первый инструмент для своего бизнеса. Потом разбираем, где работает AI, что такое токен и контекст и какую модель выбрать. Kit 1: куда уходит работа.",
-  "lesson.2.title": "Claude Code",
-  "lesson.2.card": "Claude\nCode",
-  "lesson.2.lede": "Осваиваем Claude Code на своих файлах Kit 1: папка компании, CLAUDE.md, план и PRD. Kit 2: выбираем, с какого процесса начать.",
-  "lesson.3.title": "API и MCP",
-  "lesson.3.card": "API и\nMCP",
-  "lesson.3.lede": "Разбиваем выбранный процесс на шаги и пишем инструкцию агента. Затем подключаем первую версию агента к реальным системам. Kit 3: перераспределяем работу.",
-  "lesson.4.title": "Запуск в работу",
-  "lesson.4.card": "Запуск\nв работу",
-  "lesson.4.lede": "Переносим агента с ноутбука на сервер, который работает 24/7. Пишем план пилота и готовимся к разговору с сотрудниками. Kit 5 A и Kit 4.",
+  "lesson.2.title": "Введение",
+  "lesson.2.card": "Введение",
+  "lesson.2.lede": "Разберём, что такое AI на самом деле, как работают модели и почему контекст решает всё. Практика: NotebookLM.",
+  "lesson.3.title": "Claude Code",
+  "lesson.3.card": "Claude\nCode",
+  "lesson.3.lede": "Осваиваем Claude Code на своих файлах Kit 1: папка компании, CLAUDE.md, план и PRD. Kit 2: выбираем, с какого процесса начать.",
+  "lesson.4.title": "API и MCP",
+  "lesson.4.card": "API и\nMCP",
+  "lesson.4.lede": "Разбиваем выбранный процесс на шаги и пишем инструкцию агента. Затем подключаем первую версию агента к реальным системам. Kit 3: перераспределяем работу.",
   "home.title": "Программа",
   "home.lessons": "Уроки",
   "home.ring.label": "Полностью пройденные уроки",
@@ -1804,9 +1885,9 @@ const I18N = {uz: {
   "title.type": "Шрифт",
   "title.all": "Все экраны",
   "lesson.1.sub": "Слои AI, токены, контекст, модели, NotebookLM, Kit 1",
-  "lesson.2.sub": "Harness, CLAUDE.md, Plan mode, PRD, Skill, Kit 2",
-  "lesson.3.sub": "API, ключи, MCP, frontend и backend, system prompt, Kit 3",
-  "lesson.4.sub": "VPS, домен, DNS, Git, план пилота, Kit 5 A, Kit 4",
+  "lesson.2.sub": "Что такое AI, модели, Context, RAG, NotebookLM",
+  "lesson.3.sub": "Harness, CLAUDE.md, Plan mode, PRD, Skill, Kit 2",
+  "lesson.4.sub": "API, ключи, MCP, frontend и backend, system prompt, Kit 3",
   "vz1.g2_note": "8 основных и 5 дополнительных промптов. Копируйте каждый и вставляйте в NotebookLM.",
   "vz1.g3_note": "Письменное руководство к заданию: порядок упражнения и на что обращать внимание.",
   "vz1.g2_cta": "Открыть промпты",
@@ -1888,64 +1969,17 @@ const I18N = {uz: {
   "lock.title_tba": "Дату урока {n} объявим позже.",
   "prep.intro_tba": "Дату первого занятия мы объявим здесь. Подготовьте этот список уже сейчас: всё займёт около 30 минут.",
   "prep.end_tba": "Вы готовы. Дата первого занятия появится здесь.",
-  "menu.course_tba": "6 уроков, даты позже",
+  "menu.course_tba": "{n} уроков, даты позже",
   "menu.group_none": "Группа пока не выбрана",
   "prep.more.dflt": "Продолжайте учиться",
-  "lesson.1.t0": "Слои AI",
-  "lesson.1.t1": "Куда уходят данные",
-  "lesson.1.t2": "LLM и токены",
-  "lesson.1.t3": "Контекстное окно",
-  "lesson.1.t4": "Уровни моделей",
-  "lesson.1.t5": "Frontier и open-weight",
-  "lesson.1.t6": "Галлюцинации",
-  "lesson.1.t7": "NotebookLM",
-  "lesson.1.t8": "Kit 1",
-  "lesson.2.t0": "Harness",
-  "lesson.2.t1": "Claude Code",
-  "lesson.2.t2": "Папка компании",
-  "lesson.2.t3": "CLAUDE.md",
-  "lesson.2.t4": "Plan mode",
-  "lesson.2.t5": "PRD",
-  "lesson.2.t6": "Skill",
-  "lesson.2.t7": "Kit 2",
-  "lesson.3.t0": "API",
-  "lesson.3.t1": "API-ключ и .env",
-  "lesson.3.t2": "MCP и connector",
-  "lesson.3.t3": "Frontend и backend",
-  "lesson.3.t4": "Open source",
-  "lesson.3.t5": "System prompt",
-  "lesson.3.t6": "Агент v0",
-  "lesson.3.t7": "Kit 3",
-  "lesson.4.t0": "Локально и на сервере",
-  "lesson.4.t1": "VPS",
-  "lesson.4.t2": "Домен и DNS",
-  "lesson.4.t3": "Git и GitHub",
-  "lesson.4.t4": "Пилот",
-  "lesson.4.t5": "Критерии успеха и стоп-условие",
-  "lesson.4.t6": "Kit 5 A",
-  "lesson.4.t7": "Kit 4",
-  "lesson.5.title": "Улучшаем агента",
-  "lesson.5.sub": "Журнал ошибок, тесты, cron, эскалация, безопасность, Kit 5 B",
-  "lesson.5.lede": "Исправляем агента по ошибкам первой недели пилота. Добавляем отчёт по расписанию, эскалацию и правила безопасности. Kit 5 B: неделя 1.",
-  "lesson.5.card": "Улучшаем\nагента",
-  "lesson.5.t0": "Builder и ассистент",
-  "lesson.5.t1": "Cron",
-  "lesson.5.t2": "Эскалация",
-  "lesson.5.t3": "Тестовый набор",
-  "lesson.5.t4": "Prompt injection",
-  "lesson.5.t5": "Порядок в данных",
-  "lesson.5.t6": "Kit 5 B",
-  "lesson.6.title": "Итоги и демо-день",
-  "lesson.6.sub": "Baseline и разница, цена задачи, ROI, решение, build или buy, демо",
-  "lesson.6.lede": "Считаем, что пилот изменил во времени, деньгах и ошибках, и решаем: продолжить, изменить или остановить. Потом показываем результат. Kit 5 B: итоговые цифры.",
-  "lesson.6.card": "Итоги и\nдемо-день",
-  "lesson.6.t0": "Baseline и разница",
-  "lesson.6.t1": "Цена одной задачи",
-  "lesson.6.t2": "Найденные деньги",
-  "lesson.6.t3": "ROI",
-  "lesson.6.t4": "Продолжить, изменить или остановить",
-  "lesson.6.t5": "Build, buy или open source",
-  "lesson.6.t6": "Демо",
+  "lesson.5.title": "Запуск в работу",
+  "lesson.5.sub": "VPS, домен, DNS, Git, план пилота, Kit 5 A, Kit 4",
+  "lesson.5.lede": "Переносим агента с ноутбука на сервер, который работает 24/7. Пишем план пилота и готовимся к разговору с сотрудниками. Kit 5 A и Kit 4.",
+  "lesson.5.card": "Запуск\nв работу",
+  "lesson.6.title": "Улучшаем агента",
+  "lesson.6.sub": "Журнал ошибок, тесты, cron, эскалация, безопасность, Kit 5 B",
+  "lesson.6.lede": "Исправляем агента по ошибкам первой недели пилота. Добавляем отчёт по расписанию, эскалацию и правила безопасности. Kit 5 B: неделя 1.",
+  "lesson.6.card": "Улучшаем\nагента",
   "prep.0.s0": "Приходите на занятие со своим ноутбуком. Практикум от начала до конца практический.",
   "prep.0.s1": "Проверьте, что у вас есть права администратора: вам нужно устанавливать программы. Если компьютер рабочий, спросите в IT-отделе.",
   "prep.0.s2": "Оставьте на диске не менее 5 ГБ свободного места.",
@@ -1977,7 +2011,63 @@ const I18N = {uz: {
   "amf.off": "Практика выполнена",
   "amf.aria": "Отметить практику выполненной",
   "prep.cmd_copy": "Скопировать команду",
-  "toast.cmd_copied": "Команда скопирована"
+  "toast.cmd_copied": "Команда скопирована",
+  "lesson.1.t0": "Слои AI",
+  "lesson.1.t1": "Куда уходят данные",
+  "lesson.1.t2": "LLM и токены",
+  "lesson.1.t3": "Контекстное окно",
+  "lesson.1.t4": "Уровни моделей",
+  "lesson.1.t5": "Frontier и open-weight",
+  "lesson.1.t6": "Галлюцинации",
+  "lesson.1.t7": "NotebookLM",
+  "lesson.1.t8": "Kit 1",
+  "lesson.2.t0": "Что такое AI",
+  "lesson.2.t1": "Модели",
+  "lesson.2.t2": "Context",
+  "lesson.2.t3": "RAG",
+  "lesson.2.t4": "NotebookLM",
+  "lesson.3.t0": "Harness",
+  "lesson.3.t1": "Claude Code",
+  "lesson.3.t2": "Папка компании",
+  "lesson.3.t3": "CLAUDE.md",
+  "lesson.3.t4": "Plan mode",
+  "lesson.3.t5": "PRD",
+  "lesson.3.t6": "Skill",
+  "lesson.3.t7": "Kit 2",
+  "lesson.4.t0": "API",
+  "lesson.4.t1": "API-ключ и .env",
+  "lesson.4.t2": "MCP и connector",
+  "lesson.4.t3": "Frontend и backend",
+  "lesson.4.t4": "Open source",
+  "lesson.4.t5": "System prompt",
+  "lesson.4.t6": "Агент v0",
+  "lesson.4.t7": "Kit 3",
+  "lesson.5.t0": "Локально и на сервере",
+  "lesson.5.t1": "VPS",
+  "lesson.5.t2": "Домен и DNS",
+  "lesson.5.t3": "Git и GitHub",
+  "lesson.5.t4": "Пилот",
+  "lesson.5.t5": "Критерии успеха и стоп-условие",
+  "lesson.5.t6": "Kit 5 A",
+  "lesson.5.t7": "Kit 4",
+  "lesson.6.t0": "Builder и ассистент",
+  "lesson.6.t1": "Cron",
+  "lesson.6.t2": "Эскалация",
+  "lesson.6.t3": "Тестовый набор",
+  "lesson.6.t4": "Prompt injection",
+  "lesson.6.t5": "Порядок в данных",
+  "lesson.6.t6": "Kit 5 B",
+  "lesson.7.title": "Итоги и демо-день",
+  "lesson.7.sub": "Baseline и разница, цена задачи, ROI, решение, build или buy, демо",
+  "lesson.7.lede": "Считаем, что пилот изменил во времени, деньгах и ошибках, и решаем: продолжить, изменить или остановить. Потом показываем результат. Kit 5 B: итоговые цифры.",
+  "lesson.7.card": "Итоги и\nдемо-день",
+  "lesson.7.t0": "Baseline и разница",
+  "lesson.7.t1": "Цена одной задачи",
+  "lesson.7.t2": "Найденные деньги",
+  "lesson.7.t3": "ROI",
+  "lesson.7.t4": "Продолжить, изменить или остановить",
+  "lesson.7.t5": "Build, buy или open source",
+  "lesson.7.t6": "Демо"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -2004,7 +2094,7 @@ const I18N = {uz: {
   "unit.hermes": "Hermes {id}",
   "lesson.n": "Lesson {n}",
   "lesson.label": "Lesson {n} · {date}",
-  "lesson.label0": "Lesson 0 · preparation",
+  "lesson.label0": "Preparation",
   "lesson.meta": "{date} · {d}/{t} done",
   "steps": "{d}/{t} done",
   "kind.video": "video",
@@ -2021,7 +2111,7 @@ const I18N = {uz: {
   "menu.group": "Group",
   "menu.group_value": "Saturday group",
   "menu.course": "Course",
-  "menu.course_value": "6 lessons · 21 Nov – 26 Dec",
+  "menu.course_value": "7 lessons · 21 Nov – 26 Dec",
   "menu.logout": "Sign out",
   "popup.label": "New lesson",
   "popup.k": "New lesson is open",
@@ -2056,15 +2146,15 @@ const I18N = {uz: {
   "lesson.1.title": "How AI works",
   "lesson.1.card": "How AI\nworks",
   "lesson.1.lede": "First you build a tool for your own business. Then we see where AI runs, what tokens and context are, and which model to pick. Kit 1: where the work goes.",
-  "lesson.2.title": "Claude Code",
-  "lesson.2.card": "Claude\nCode",
-  "lesson.2.lede": "You learn Claude Code on your own Kit 1 files: the company folder, CLAUDE.md, a plan and a PRD. Kit 2: pick the process to start with.",
-  "lesson.3.title": "API and MCP",
-  "lesson.3.card": "API and\nMCP",
-  "lesson.3.lede": "We split the chosen process into steps and write the agent's instructions. Then we connect the first version of the agent to real systems. Kit 3: redistributing the work.",
-  "lesson.4.title": "Ship it",
-  "lesson.4.card": "Ship\nit",
-  "lesson.4.lede": "We move the agent from the laptop to a server that runs 24/7. We write the pilot plan and prepare the talk with staff. Kit 5 A and Kit 4.",
+  "lesson.2.title": "Introduction",
+  "lesson.2.card": "Introduction",
+  "lesson.2.lede": "We look at what AI actually is, how models work, and why context decides everything. Practice: NotebookLM.",
+  "lesson.3.title": "Claude Code",
+  "lesson.3.card": "Claude\nCode",
+  "lesson.3.lede": "You learn Claude Code on your own Kit 1 files: the company folder, CLAUDE.md, a plan and a PRD. Kit 2: pick the process to start with.",
+  "lesson.4.title": "API and MCP",
+  "lesson.4.card": "API and\nMCP",
+  "lesson.4.lede": "We split the chosen process into steps and write the agent's instructions. Then we connect the first version of the agent to real systems. Kit 3: redistributing the work.",
   "home.title": "Program",
   "home.lessons": "Lessons",
   "home.ring.label": "Lessons fully completed",
@@ -2244,9 +2334,9 @@ const I18N = {uz: {
   "title.type": "Typeface",
   "title.all": "All screens",
   "lesson.1.sub": "AI layers, tokens, context, models, NotebookLM, Kit 1",
-  "lesson.2.sub": "Harness, CLAUDE.md, Plan mode, PRD, Skills, Kit 2",
-  "lesson.3.sub": "APIs, keys, MCP, frontend and backend, system prompt, Kit 3",
-  "lesson.4.sub": "VPS, domain, DNS, Git, the pilot plan, Kit 5 A, Kit 4",
+  "lesson.2.sub": "What AI is, models, Context, RAG, NotebookLM",
+  "lesson.3.sub": "Harness, CLAUDE.md, Plan mode, PRD, Skills, Kit 2",
+  "lesson.4.sub": "APIs, keys, MCP, frontend and backend, system prompt, Kit 3",
   "vz1.g2_note": "8 core and 5 extra prompts. Copy each one and paste it into NotebookLM.",
   "vz1.g3_note": "The written guide to the task: the order of the exercise and what to pay attention to.",
   "vz1.g2_cta": "Open the prompts",
@@ -2326,64 +2416,17 @@ const I18N = {uz: {
   "lock.title_tba": "The date of lesson {n} will be announced later.",
   "prep.intro_tba": "We will post the date of the first lesson here. Get this list ready now: it takes about 30 minutes in all.",
   "prep.end_tba": "You're ready. The date of the first lesson will appear here.",
-  "menu.course_tba": "6 lessons, dates to follow",
+  "menu.course_tba": "{n} lessons, dates to follow",
   "menu.group_none": "Group not set yet",
   "prep.more.dflt": "Keep learning",
-  "lesson.1.t0": "AI layers",
-  "lesson.1.t1": "Where your data goes",
-  "lesson.1.t2": "LLMs and tokens",
-  "lesson.1.t3": "Context window",
-  "lesson.1.t4": "Model tiers",
-  "lesson.1.t5": "Frontier vs open-weight",
-  "lesson.1.t6": "Hallucination",
-  "lesson.1.t7": "NotebookLM",
-  "lesson.1.t8": "Kit 1",
-  "lesson.2.t0": "Harness",
-  "lesson.2.t1": "Claude Code",
-  "lesson.2.t2": "Company folder",
-  "lesson.2.t3": "CLAUDE.md",
-  "lesson.2.t4": "Plan mode",
-  "lesson.2.t5": "PRD",
-  "lesson.2.t6": "Skills",
-  "lesson.2.t7": "Kit 2",
-  "lesson.3.t0": "API",
-  "lesson.3.t1": "API keys and .env",
-  "lesson.3.t2": "MCP and connectors",
-  "lesson.3.t3": "Frontend and backend",
-  "lesson.3.t4": "Open source",
-  "lesson.3.t5": "System prompt",
-  "lesson.3.t6": "Agent v0",
-  "lesson.3.t7": "Kit 3",
-  "lesson.4.t0": "Local vs server",
-  "lesson.4.t1": "VPS",
-  "lesson.4.t2": "Domain and DNS",
-  "lesson.4.t3": "Git and GitHub",
-  "lesson.4.t4": "Pilot",
-  "lesson.4.t5": "Success and stop condition",
-  "lesson.4.t6": "Kit 5 A",
-  "lesson.4.t7": "Kit 4",
-  "lesson.5.title": "Improve the agent",
-  "lesson.5.sub": "Error log, test set, cron, escalation, security, Kit 5 B",
-  "lesson.5.lede": "We fix the agent using the mistakes from pilot week 1. We add a scheduled report, escalation and security rules. Kit 5 B: week 1.",
-  "lesson.5.card": "Improve\nthe agent",
-  "lesson.5.t0": "Builder vs assistant",
-  "lesson.5.t1": "Cron jobs",
-  "lesson.5.t2": "Escalation",
-  "lesson.5.t3": "Test set",
-  "lesson.5.t4": "Prompt injection",
-  "lesson.5.t5": "Data governance",
-  "lesson.5.t6": "Kit 5 B",
-  "lesson.6.title": "Results and demo day",
-  "lesson.6.sub": "Baseline and delta, cost per task, ROI, the decision, build or buy, demo",
-  "lesson.6.lede": "We work out what the pilot changed in time, money and errors, and decide to continue, change or stop. Then you present it. Kit 5 B: final numbers.",
-  "lesson.6.card": "Results and\ndemo day",
-  "lesson.6.t0": "Baseline and delta",
-  "lesson.6.t1": "Cost per task",
-  "lesson.6.t2": "Money found",
-  "lesson.6.t3": "ROI",
-  "lesson.6.t4": "Continue, change or stop",
-  "lesson.6.t5": "Build, buy or open source",
-  "lesson.6.t6": "Demo",
+  "lesson.5.title": "Ship it",
+  "lesson.5.sub": "VPS, domain, DNS, Git, the pilot plan, Kit 5 A, Kit 4",
+  "lesson.5.lede": "We move the agent from the laptop to a server that runs 24/7. We write the pilot plan and prepare the talk with staff. Kit 5 A and Kit 4.",
+  "lesson.5.card": "Ship\nit",
+  "lesson.6.title": "Improve the agent",
+  "lesson.6.sub": "Error log, test set, cron, escalation, security, Kit 5 B",
+  "lesson.6.lede": "We fix the agent using the mistakes from pilot week 1. We add a scheduled report, escalation and security rules. Kit 5 B: week 1.",
+  "lesson.6.card": "Improve\nthe agent",
   "prep.0.s0": "Bring your own laptop to the lessons. The whole practicum is hands-on.",
   "prep.0.s1": "Check that you have admin rights: you need to install programs. If it is a work computer, ask your IT team.",
   "prep.0.s2": "Keep at least 5 GB of free disk space.",
@@ -2415,7 +2458,63 @@ const I18N = {uz: {
   "amf.off": "Practice done",
   "amf.aria": "Mark the practice as done",
   "prep.cmd_copy": "Copy the command",
-  "toast.cmd_copied": "Command copied"
+  "toast.cmd_copied": "Command copied",
+  "lesson.1.t0": "AI layers",
+  "lesson.1.t1": "Where your data goes",
+  "lesson.1.t2": "LLMs and tokens",
+  "lesson.1.t3": "Context window",
+  "lesson.1.t4": "Model tiers",
+  "lesson.1.t5": "Frontier vs open-weight",
+  "lesson.1.t6": "Hallucination",
+  "lesson.1.t7": "NotebookLM",
+  "lesson.1.t8": "Kit 1",
+  "lesson.2.t0": "What AI is",
+  "lesson.2.t1": "Models",
+  "lesson.2.t2": "Context",
+  "lesson.2.t3": "RAG",
+  "lesson.2.t4": "NotebookLM",
+  "lesson.3.t0": "Harness",
+  "lesson.3.t1": "Claude Code",
+  "lesson.3.t2": "Company folder",
+  "lesson.3.t3": "CLAUDE.md",
+  "lesson.3.t4": "Plan mode",
+  "lesson.3.t5": "PRD",
+  "lesson.3.t6": "Skills",
+  "lesson.3.t7": "Kit 2",
+  "lesson.4.t0": "API",
+  "lesson.4.t1": "API keys and .env",
+  "lesson.4.t2": "MCP and connectors",
+  "lesson.4.t3": "Frontend and backend",
+  "lesson.4.t4": "Open source",
+  "lesson.4.t5": "System prompt",
+  "lesson.4.t6": "Agent v0",
+  "lesson.4.t7": "Kit 3",
+  "lesson.5.t0": "Local vs server",
+  "lesson.5.t1": "VPS",
+  "lesson.5.t2": "Domain and DNS",
+  "lesson.5.t3": "Git and GitHub",
+  "lesson.5.t4": "Pilot",
+  "lesson.5.t5": "Success and stop condition",
+  "lesson.5.t6": "Kit 5 A",
+  "lesson.5.t7": "Kit 4",
+  "lesson.6.t0": "Builder vs assistant",
+  "lesson.6.t1": "Cron jobs",
+  "lesson.6.t2": "Escalation",
+  "lesson.6.t3": "Test set",
+  "lesson.6.t4": "Prompt injection",
+  "lesson.6.t5": "Data governance",
+  "lesson.6.t6": "Kit 5 B",
+  "lesson.7.title": "Results and demo day",
+  "lesson.7.sub": "Baseline and delta, cost per task, ROI, the decision, build or buy, demo",
+  "lesson.7.lede": "We work out what the pilot changed in time, money and errors, and decide to continue, change or stop. Then you present it. Kit 5 B: final numbers.",
+  "lesson.7.card": "Results and\ndemo day",
+  "lesson.7.t0": "Baseline and delta",
+  "lesson.7.t1": "Cost per task",
+  "lesson.7.t2": "Money found",
+  "lesson.7.t3": "ROI",
+  "lesson.7.t4": "Continue, change or stop",
+  "lesson.7.t5": "Build, buy or open source",
+  "lesson.7.t6": "Demo"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
@@ -2501,20 +2600,20 @@ const I18N_KEY_NOTES = { // key-specific context (checked before the prefix rule
   'common.sr_done': 'screen-reader-only suffix after a tick (not visible)', 'common.sr_download': 'screen-reader-only prefix on file rows (not visible)', 'common.sr_external': 'screen-reader-only suffix on links that open a new window (not visible)',
   'common.sample_file': 'small grey line under a placeholder file name', 'common.unknown_size': 'file size line on the file screen when the size is unknown', 'common.guide': 'group heading (small UPPERCASE) for the guide file, ≤ 20 chars',
   'common.bonus': 'small word under a Hermes card title (bonus card)', 'common.extra': 'small word under an exercise title (extra, not counted); lower case',
-  'lesson.n': 'lesson number label used in headlines, e.g. "3-dars" (UPPERCASE, wide font, ≤ 10 chars)', 'lesson.label': 'small UPPERCASE card label, e.g. "3-dars · 26-sentabr"; {date} is built from the month table',
+  'lesson.n': 'lesson number label used in headlines, e.g. "03-dars" (zero-padded, UPPERCASE, wide font, ≤ 10 chars)', 'lesson.label': 'small UPPERCASE card label, e.g. "03-dars · 28-noyabr"; {date} is built from the month table',
   'lesson.label0': 'small UPPERCASE label of the prep card', 'lesson.meta': 'one line under the back link: lesson · date · progress, 13px UPPERCASE, ≤ 38 chars',
   'steps': 'progress unit "3/6 steps" (2.0 says "qadam"); the noun follows the TOTAL ({t}), so ru needs one/few/many', 'kind.video': 'what the slides are: "video"', 'kind.image': 'what the slides are: "images" (2.0 says "rasm")',
   'date.fmt': 'date pattern: {d} day, {m} month name (month names are a table in code, already translated); uz = "12-sentabr", ru "12 сентября", en "12 September"', 'date.until': 'pattern "{date}gacha" = "by {date}" (a deadline), e.g. "до 12 сентября"', 'date.opens': 'pattern "opens on {date}" for the locked card, ≤ 28 chars at 320 px',
   'gate.title': 'login heading over the photo; \\n = line break; UPPERCASE wide font, ≤ 12 chars per line at 390 px', 'gate.label': 'label above the ID field (12px UPPERCASE mono), ≤ 16 chars', 'gate.submit': 'login button (13px UPPERCASE, letter-spaced), ≤ 10 chars',
   'gate.welcome': 'welcome line on the loader and under the field; {name} is the student first name (keep it)',
-  'home.ring.label': 'aria-label of the progress ring', 'home.ring.valuetext': 'screen-reader text of the ring: "1 of 6 lessons completed."; {d} done, {t} total', 
+  'home.ring.label': 'aria-label of the progress ring', 'home.ring.valuetext': 'screen-reader text of the ring: "1 of 7 lessons completed."; {d} done, {t} total', 
   'home.ring.ps': 'line next to the ring, 17px, ≤ 26 chars (may wrap to 2 lines)', 
   'hero.k': 'small UPPERCASE label on the blue card: "happening now"', 'hero.sub': 'line on the blue card; {i} slides seen of {n}', 'next.k': 'title of the "next step" link under the ring',
   'cta.continue': 'text of the big outline button on a lesson page; {what} is e.g. "Amaliyot 01 · P3 Vaziyatli test" (long: ≤ 46 chars in total, wraps to 2 lines)',
   'note.live_a': 'part 1 of the live-lesson card note: "Now"', 'note.live_b': 'part 2 of the same note: " in progress" (HIDDEN under 360 px, so the note must still make sense without it)', 'note.live_c': 'part 3: " · 0/2 steps"',
   'note.done': 'state note on a finished card, e.g. "Bajarildi · 3/3 qadam"', 'note.open': 'state note on an open card, e.g. "Ochiq · 3/6 qadam"', 'note.prep_todo': 'state note on the prep card while unfinished; {until} = "by 12 September", {steps} = "3/4 steps"',
   'lock.sub': 'subtitle of the locked lesson 4 card (3 lines max): what opens there', 'lock.title': 'title of the bottom sheet on the locked card', 'lock.desc': 'text of the bottom sheet on the locked card',
-  'menu.id': 'row label in the name menu', 'menu.group': 'row label', 'menu.group_value': 'value: the group name ("Saturday group")', 'menu.course': 'row label', 'menu.course_value': 'value: "6 lessons · 21 Nov – 26 Dec" (short month names)', 'menu.logout': 'outline button, ≤ 14 chars', 'menu.label': 'aria-label of the menu button and the menu', 'lang.label': 'aria-label of the language switch',
+  'menu.id': 'row label in the name menu', 'menu.group': 'row label', 'menu.group_value': 'value: the group name ("Saturday group")', 'menu.course': 'row label', 'menu.course_value': 'value: "7 lessons · 21 Nov – 26 Dec" (short month names)', 'menu.logout': 'outline button, ≤ 14 chars', 'menu.label': 'aria-label of the menu button and the menu', 'lang.label': 'aria-label of the language switch',
   'popup.k': 'small label on the new-lesson popup, ≤ 24 chars', 'popup.title': 'popup title, 17px UPPERCASE wide font, ≤ 32 chars', 'popup.open': 'black pill button on the popup, ≤ 16 chars', 'popup.label': 'aria-label of the popup', 'popup.live': 'screen-reader announcement when the popup appears',
   'toast.done': 'toast text; {no} is a prompt number like "P3" or "01", ≤ 24 chars', 'toast.undo': 'toast button (underlined), ≤ 14 chars', 'toast.notfound': 'toast when a link is unknown, ≤ 28 chars',
   'tab.list': 'aria-label of the tab bar of the lesson folder', 'pane.sl.meta': 'small UPPERCASE line, e.g. "78 slides · video"',
@@ -2550,14 +2649,15 @@ function i18nExport(){ // key -> {uz, note}; run in the page: JSON.stringify(i18
 let FILES = {};                                             // slug -> {name,size,ph,url}  (every file row opens #/fayl/{slug}, or downloads from `url` in the app)
 const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const F = (name, size, ph, slugOverride, url) => { const sl = slugOverride || slugify(name); return FILES[sl] = {slug: sl, name, size: size || '', ph: !!ph || !size, url: url || ''}; };
-let LESSONS = {   // d = [day, month] (the shanba group: 21, 28 Nov, 5, 12, 19, 26 Dec); parts: sl slides, am amaliyot, kt kit, vz vazifa (only the parts a lesson really has)
+let LESSONS = {   // d = [day, month] (the shanba group), null = the date is not decided yet (02 Kirish); parts: sl slides, am amaliyot, kt kit, vz vazifa (only the parts a lesson really has)
   0: {d: [21, 11]},
   1: {d: [21, 11], slides: 12, kind: 'image', parts: ['sl', 'am', 'kt', 'vz'], topics: 9},
-  2: {d: [28, 11], slides: 0, parts: [], topics: 8},
-  3: {d: [5, 12], slides: 0, parts: [], topics: 8},
-  4: {d: [12, 12], slides: 0, parts: [], topics: 8},
-  5: {d: [19, 12], slides: 0, parts: [], topics: 7},
-  6: {d: [26, 12], slides: 0, parts: [], topics: 7},
+  2: {d: null, slides: 12, kind: 'image', parts: ['sl', 'am', 'vz'], topics: 5},
+  3: {d: [28, 11], slides: 0, parts: [], topics: 8},
+  4: {d: [5, 12], slides: 0, parts: [], topics: 8},
+  5: {d: [12, 12], slides: 0, parts: [], topics: 8},
+  6: {d: [19, 12], slides: 0, parts: [], topics: 7},
+  7: {d: [26, 12], slides: 0, parts: [], topics: 7},
 };
 
 // ---- lesson 0: prep checklist (4 items: step counts and links only; the words come from the dictionary or the API)
@@ -2575,20 +2675,35 @@ let PREP = {
     groups: [{title: 'Kit 1', files: [{slug: 'kit1-forma', name: 'kit1-forma.md', size: 'MD · 3,2 KB', ph: true}, {slug: 'kit1-skill', name: 'kit1-skill.zip', size: 'ZIP · 18,4 KB', ph: true}]}]},
   vz: {text: 'Namuna matn. Uyda bajariladi: oʻz kompaniyangiz uchun bitta vazifani tanlang va yuqoridagi fayllar bilan ishlang.\n\nYuborish shart emas.',
     groups: [{title: 'Uy vazifasi fayllari', note: 'Avval qoʻllanmani oʻqing.', files: [{slug: 'hw-kompaniya', name: 'hw-kompaniya.pdf', size: 'PDF · 96,0 KB', ph: true}, {slug: 'hw-narxlar', name: 'hw-narxlar.csv', size: 'CSV · 12,0 KB', ph: true}]}]},
-}}}; /*C20:end*/
+},
+  2: {
+    am: {text: 'Namuna matn. Korxona bilimini ishga soling: har mashq uchun alohida notebook oching va faqat oʻsha mashqning fayllarini yuklang.',
+      groups: [{title: 'Qoʻllanma', files: [{slug: 'qollanma', name: 'Talaba_qollanmasi.pdf', size: 'PDF · 37,4 KB', ph: true}]},
+        {title: '01 Yangi xodimga tayanch', note: 'ASOSIY. Namuna matn.', files: [{slug: '01-yoriqnoma', name: '01_Yoriqnoma.pdf', size: 'PDF · 34,2 KB', ph: true}],
+          prompts: [{id: '01P1', title: 'Birinchi hafta rejasi', target: 'Chat', text: 'Namuna matn. [Lavozim] uchun dastlabki 5 ish kuni rejasini tuzing. Har vazifaning manbasini koʻrsating.'},
+            {id: '01P2', title: 'Yodlash kartalari', target: 'Studio → Flashcards → sozlash', text: 'Namuna matn. Yangi xodim bilishi shart boʻlgan 10 ta tushunchani karta qilib bering.'}]},
+        {title: '02 Mahsulotdan suhbatga', files: [], prompts: [{id: '', title: 'Savdo suhbati', target: '', text: 'Namuna matn. Mahsulot maʼlumotidan 5 savollik mijoz suhbatini yozing.'}]}]},
+    vz: {text: 'Namuna matn. Uyda bajariladi: Ravon Uy keysi. Yuborish shart emas.',
+      groups: [{title: 'Manbalar', note: 'Namuna matn.', files: [{slug: 'manba-1', name: 'Ravon_Uy_hisobot.pdf', size: 'PDF · 1,2 MB', ph: true}, {slug: 'manba-2', name: 'Savdo_jadvali.csv', size: 'CSV · 48,0 KB', ph: true}]},
+        {title: 'Asosiy mashq', note: 'Birma-bir, NotebookLMʼda.', files: [], prompts: [{id: 'P1', title: 'Hisobot xulosasi', target: '', text: 'Namuna matn. Hisobotdan 3 ta asosiy xulosa chiqaring.'}, {id: 'P2', title: 'Xavflar', target: '', text: 'Namuna matn. Eng katta 3 xavfni sanab bering.'}]}]},
+  }
+}}; /*C20:end*/
 const PREP_CMDS = {3: {1: 'curl -fsSL https://claude.ai/install.sh | bash', 2: 'irm https://claude.ai/install.ps1 | iex'}};   // prep item 4: step index -> the command shown (and copyable) under that step
 let PARTS = {};   // lesson number -> {am|kt|vz: {text, groups: [{title, note, files}]}}: the shape the lesson page reads
 const FC = (f, ph, slug) => f ? F(f.name, f.size, ph, slug || f.slug, f.url) : null;   // file from the demo / API: name + size (+ url in the app), never a server path
 function buildData(){
   FILES = {}; PARTS = {};
-  Object.entries((C20 && C20.parts) || {}).forEach(([n, o]) => { PARTS[n] = {}; Object.entries(o).forEach(([k, b]) => {
-    PARTS[n][k] = {text: b.text || '', groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', files: (g.files || []).map(f => FC(f, f.ph))}))}; }); });
+  Object.entries((C20 && C20.parts) || {}).forEach(([n, o]) => { PARTS[n] = {}; const used = new Set();   // progress ids of the prompt rows: unique inside a lesson, 1-8 letters or digits ("P{index}" when the id is empty)
+    Object.entries(o).forEach(([k, b]) => {
+      PARTS[n][k] = {text: b.text || '', groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', files: (g.files || []).map(f => FC(f, f.ph)),
+        prompts: (g.prompts || []).map((q, j) => { const id = (String(q.id || '').replace(/[^A-Za-z0-9]/g, '') || 'P' + (j + 1)).slice(0, 8); let kid = id, c = 2; while (used.has(kid)) kid = id.slice(0, 6) + c++; used.add(kid);
+          return {id: q.id || '', kid, title: q.title || '', target: q.target || '', text: q.text || ''}; })}))}; }); });
 }
 let SAMPLE_FILES = true, C20_TRANSLATED = false;   // prototype: the demo files are marked samples; the real app has none
 buildData();
 
 /*SEED:begin*/
-// ---- demo student progress (the one story, 5 Dec: lesson 0 done, lesson 1 = slides and practice done, homework left; lessons 2 and 3 are open but empty, 4-6 locked)
+// ---- demo student progress (the one story, 5 Dec: prep done, lesson 01 = slides and practice done, homework left; 02 Kirish has no date, 03 and 04 are open but empty, 05-07 locked)
 const SEED = {t: {}, sl: {1: 12}};
 ['prep:0', 'prep:1', 'prep:2', 'prep:3', 'f:am1'].forEach(k => SEED.t[k] = 1);
 /*SEED:end*/
@@ -2597,7 +2712,8 @@ const SEED = {t: {}, sl: {1: 12}};
 function registerContent(){
   const set = (k, v) => { if (typeof v === 'string') I18N.uz[k] = v; };
   Object.entries(PARTS).forEach(([n, o]) => Object.entries(o).forEach(([k, b]) => {
-    set(`c.p.${n}.${k}.text`, b.text); b.groups.forEach((g, i) => { set(`c.p.${n}.${k}.g${i}`, g.title); set(`c.p.${n}.${k}.g${i}.n`, g.note); }); }));
+    set(`c.p.${n}.${k}.text`, b.text); b.groups.forEach((g, i) => { set(`c.p.${n}.${k}.g${i}`, g.title); set(`c.p.${n}.${k}.g${i}.n`, g.note);
+      g.prompts.forEach((q, j) => { const pk = `c.p.${n}.${k}.g${i}.p${j}`; set(pk + '.t', q.title); set(pk + '.w', q.target); set(pk + '.x', q.text); }); }); }));
 }
 
 // ===================== PROTOTYPE: state, logic, templates, router (all UI text comes from t() / T() / cx(), see proto_i18n.js) =====================
@@ -2616,18 +2732,18 @@ const S = {
 S.load();
 registerContent();
 //#STATE:end
-// each lesson has ONE fixed colour whatever its state (state = words + icons in the note, never colour); yellow also stays the progress ring. Emerald (lesson 6) is an identity colour, never a success colour
-const LCOL = ['yellow', 'lilac', 'grey', 'blue', 'dark', 'orange', 'emerald'];
+// each lesson has ONE fixed colour whatever its state (state = words + icons in the note, never colour); yellow also stays the progress ring. Emerald (lesson 06) is an identity colour, never a success colour; colours follow the card's position (cyan is 07)
+const LCOL = ['yellow', 'lilac', 'grey', 'blue', 'dark', 'orange', 'emerald', 'cyan'];
 const LN = () => Object.keys(LESSONS).map(Number).filter(n => n > 0).sort((a, b) => a - b);   // the lesson numbers 1..N come from the data (the API in the app)
 const colCls = n => LCOL[n] === 'dark' ? 'c-night' : 'c-' + LCOL[n];   // an unlocked dark lesson keeps its dark identity, with normal (white) ink
 //#GATE:begin   (the app replaces this block: the server says which lesson is live and which parts are open, see app_state.js)
-// ---- which lesson is live / open / locked comes from the group's dates against "today". Demo today: ?today=YYYY-MM-DD, else the story date (lesson 3 live, 4-6 locked)
+// ---- which lesson is live / open / locked comes from the group's dates against "today". Demo today: ?today=YYYY-MM-DD, else the story date (lesson 04 live, 05-07 locked; 02 Kirish has no date yet)
 const DAY = 864e5, utc = (d, m) => Date.UTC(2026, m - 1, d), isoMs = x => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(x || ''); return m ? Date.UTC(+m[1], +m[2] - 1, +m[3]) : null; };
 const TODAY_PRESETS = {before: '2026-11-14', day1: '2026-11-21', story: '2026-12-05', over: '2027-01-05'};
 let TODAY = isoMs(new URLSearchParams(location.search).get('today')) ?? isoMs(TODAY_PRESETS.story);
-const lessonAt = n => utc(...LESSONS[n].d);
+const lessonAt = n => LESSONS[n].d ? utc(...LESSONS[n].d) : Infinity;   // a lesson without a date (Kirish) never opens
 const courseStarted = () => TODAY >= lessonAt(1);
-const liveLesson = () => { const ns = LN(); for (let i = ns.length - 1; i >= 0; i--) { const n = ns[i]; if (TODAY >= lessonAt(n)) return TODAY < (i === ns.length - 1 ? lessonAt(n) + 7 * DAY : lessonAt(ns[i + 1])) ? n : 0; } return 0; };   // a lesson is live from its date until the next one's (the last one: one week)
+const liveLesson = () => { const ns = LN().filter(n => LESSONS[n].d); for (let i = ns.length - 1; i >= 0; i--) { const n = ns[i]; if (TODAY >= lessonAt(n)) return TODAY < (i === ns.length - 1 ? lessonAt(n) + 7 * DAY : lessonAt(ns[i + 1])) ? n : 0; } return 0; };   // a lesson is live from its date until the next one's (the last one: one week)
 const isLocked = n => n >= 1 && TODAY < lessonAt(n);
 const partLock = (n, p) => null;   // prototype: every part of an open lesson is open. The app returns the opening time (iso) of a part that is still locked.
 //#GATE:end
@@ -2662,7 +2778,7 @@ const ring = () => [LN().filter(n => !isLocked(n) && (lDone(n) || (allDone() && 
 function nextOf(n){
   const u = units(n).find(x => !x.done); if (!u) return null;
   const what = esc(u.label) + (u.kind === 'sl' ? ` · ${S.sl(n)} / ${LESSONS[n].slides}` : '');   // what / label are HTML; started = the target already has progress ("continue" vs "start")
-  return {what, label: `${T('lesson.n', {n})} · ${what}`, href: u.href, started: u.kind === 'sl' && S.sl(n) > 0};
+  return {what, label: `${T('lesson.n', {n: num2(n)})} · ${what}`, href: u.href, started: u.kind === 'sl' && S.sl(n) > 0};
 }
 const nextStep = () => { const live = liveLesson();
   if (courseStarted() && PREP.items.length > 3) { const i = [1, 2, 3].find(j => !S.has('prep:' + j)); if (i != null) return {href: '#/dars/0', label: T('next.prep', {title: HT(T(`prep.${i}.title`))})}; }   // the Google account, Claude and Warp are what lesson 1 needs
@@ -2717,11 +2833,11 @@ function homePage(){
   const [rd, rt] = ring(), ns = nextStep(), live = liveLesson(), pre = !courseStarted(), k = prepCount();
   const cardHTML = n => {
     const tab = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`, arrow = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
-    const label = n === 0 ? T('lesson.label0') : T('lesson.label', {n, date: lessonDate(n)});
+    const label = n === 0 ? T('lesson.label0') : T('lesson.label', {n: num2(n), date: lessonDate(n)});
     let note, href = `#/dars/${n}`;
     if (n === 0) { note = k === 4 ? `${I('check', 14)}${T('note.done', {d: 4, t: 4, pl: 4})}` : courseStarted() ? T('note.open', {d: k, t: 4, pl: 4}) : !LESSONS[0].d ? T('prep.cnt', {d: k, pl: 4}) : T('note.prep_todo', {until: t('date.until', {date: lessonDate(0)}), d: k, pl: 4}); }
     else if (isLocked(n)) {   // before its date: the lesson keeps its own colour, with a lock and the date (once, in the note)
-      return `<li class="g-${LCOL[n]}"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${T('lesson.n', {n})}</span></span>
+      return `<li class="g-${LCOL[n]}"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${T('lesson.n', {n: num2(n)})}</span></span>
         <span class="f-row"><span><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-sub">${T(`lesson.${n}.sub`)}</span></span><span class="f-note">${I('lock', 14)}${T(LESSONS[n].d ? 'date.opens' : 'date.tba', {date: lessonDate(n)})}</span></span></button></li>`;
     } else {
       const [d, tt] = lProg(n);
@@ -2739,7 +2855,7 @@ function homePage(){
   let hero = '', cta = '', headCol = LCOL[0];
   if (pre) {   // before lesson 1: the prep card is the hero, and the one next step is the first open prep item
     const first = PREP.items.findIndex((_, i) => !S.has('prep:' + i));
-    hero = `<a class="folder flatc c-yellow now-card" href="#/dars/0"><span class="f-top"><span class="f-label">${k === 4 ? `${T('prep.ready')}<br>${T('lesson.label', {n: 1, date: lessonDate(1)})}` : LESSONS[0].d ? `${T('lesson.label0')}<br>${T('date.until', {date: lessonDate(0)})}` : T('lesson.label0')}</span>${arrowH}</span>
+    hero = `<a class="folder flatc c-yellow now-card" href="#/dars/0"><span class="f-top"><span class="f-label">${k === 4 ? `${T('prep.ready')}<br>${T('lesson.label', {n: num2(1), date: lessonDate(1)})}` : LESSONS[0].d ? `${T('lesson.label0')}<br>${T('date.until', {date: lessonDate(0)})}` : T('lesson.label0')}</span>${arrowH}</span>
         <span><span class="f-title">${T('prep.title')}</span><span class="f-sub">${T('prep.cnt', {d: k, pl: 4})}</span></span></a>`;
     if (first >= 0) cta = pill(`${T('next.k')} · ${T('next.prep', {title: HT(T(`prep.${first}.title`))})}`, '#/dars/0');
     else if (PREP.more) cta = pill(`${T('next.k')} · ${T('prep.more.title')}`, '#/dars/0?p=more');
@@ -2747,7 +2863,7 @@ function homePage(){
     const [d, tt] = lProg(live), L = LESSONS[live], s = S.sl(live);
     const nxl = nextOf(live), slSub = !L.slides ? stepsText(d, tt) : s === 0 ? T('hero.sub_start', {n: L.slides}) : s >= L.slides ? T('hero.sub_seen', {n: L.slides}) : T('hero.sub', {i: s, n: L.slides}), sub = tt === 0 ? T('lesson.soon') : nxl && !/\/slayd\//.test(nxl.href) ? nxl.what : slSub, href = nxl ? nxl.href : `#/dars/${live}`;   // the hero opens today's next step ("continue" only when something was seen)
     headCol = LCOL[live];
-    hero = `<a class="folder flatc ${colCls(live)} now-card" href="${href}"><span class="f-top"><span class="f-label">${T('hero.k')}<br>${T('lesson.label', {n: live, date: lessonDate(live)})}</span>${arrowH}</span>
+    hero = `<a class="folder flatc ${colCls(live)} now-card" href="${href}"><span class="f-top"><span class="f-label">${T('hero.k')}<br>${T('lesson.label', {n: num2(live), date: lessonDate(live)})}</span>${arrowH}</span>
         <span><span class="f-title">${T(`lesson.${live}.card`)}</span><span class="f-sub">${sub}</span></span></a>`;
   }
   if (!pre && ns) cta = pill(`${T(live ? 'next.k_backlog' : 'next.k')} · ${ns.label}`, ns.href);
@@ -2849,15 +2965,21 @@ function initPrep(root){
 }
 document.addEventListener('visibilitychange', () => document.documentElement.classList.toggle('hid', document.hidden));
 
-// ---- lessons 1-6: the gooey folder with only the parts the lesson really has (Slaydlar / Amaliyot / Kit / Vazifa)
+// ---- lessons 1-7: the gooey folder with only the parts the lesson really has (Slaydlar / Amaliyot / Kit / Vazifa)
 const partWhen = iso => /^\d{4}-\d\d-\d\dT\d\d:\d\d/.test(iso || '') ? {date: fmtDate(+iso.slice(8, 10), +iso.slice(5, 7)), time: iso.slice(11, 16)} : {date: '…', time: '…'};   // iso with the Tashkent offset: its own date and clock time
 const lockedPane = iso => `<p class="p-label">${T('part.locked')}</p><div><p class="p-sub">${T('part.opens', partWhen(iso))}</p></div>`;
 const tabOfHref = h => { const m = /[?&]tab=(sl|am|kt|vz)\b/.exec(h || ''); return m ? m[1] : /\/slayd\//.test(h || '') ? 'sl' : null; };
+// prompt copy rows of a group (the 2.0 rows): copy = done, written as p:l{n}:{id}; the text stays Uzbek (lang="uz-Latn" inside a ru/en page). Not counted in the lesson's units
+function promptList(n, gkey, g){
+  const lis = g.prompts.map((q, j) => { const k = `${gkey}.p${j}`, text = cu(`${k}.x`);
+    return pli({i: j, pid: q.kid, no: q.id || 'P' + (j + 1), key: `p:l${n}:${q.kid}`, title: cu(`${k}.t`), titleH: cuh(`${k}.t`), where: q.target, whereH: q.target ? cuh(`${k}.w`) : '', lbl: 'lbl.where', text, textH: cxh(`${k}.x`, I18N.uz[`${k}.x`], x => mark(esc(x)))}); }).join('');
+  return `<div class="s1">${g.prompts.some(q => hasBracket(q.text)) ? `<p class="s1-rule">${T('ex.rule')}</p>` : ''}<ol>${lis}</ol></div>`;
+}
 // Amaliyot / Kit / Vazifa share one pane: paragraphs, then file groups (title + note + rows); Amaliyot and Vazifa end with a tick
 function blockPane(n, p){
   const b = (PARTS[n] || {})[p] || {text: '', groups: []}, key = `c.p.${n}.${p}`;
   const text = b.text ? cu(`${key}.text`).split(/\n\s*\n/).map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`).join('') : '';
-  const groups = b.groups.map((g, i) => group(cuh(`${key}.g${i}`), g.files.map(f => fileRow(f)).join(''), '', g.note ? cuh(`${key}.g${i}.n`) : '')).join('');
+  const groups = b.groups.map((g, i) => group(cuh(`${key}.g${i}`), g.files.map(f => fileRow(f)).join(''), '', g.note ? cuh(`${key}.g${i}.n`) : '', g.prompts.length ? promptList(n, `${key}.g${i}`, g) : '')).join('');
   const end = p === 'am' ? endb('f:am' + n, S.has('f:am' + n), 'amf.on', 'amf.off', '', 'amf.aria') : p === 'vz' ? endb('f:v' + n, S.has('f:v' + n), 'vzf.on', 'vzf.off', '', 'vzf.aria') : '';
   return `<p class="p-label">${T('unit.' + p)}</p>${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${groups ? `<div class="ex-files">${groups}</div>` : ''}${end ? `<div class="gt-foot end">${end}</div>` : ''}`;
 }
@@ -2874,14 +2996,15 @@ function lessonPage(n, tab){
   const tabs = tabsDef.map((x, i) => `<button class="gt-tab" role="tab" type="button" id="dg-t${i}" aria-controls="dg-p${i}" aria-selected="${i === 0}" data-l="${esc(x.label)}"${i ? ' tabindex="-1"' : ''}>${x.lock ? `<span class="lkd">${I('lock', 12)}${esc(x.label)}</span>` : x.done ? `<span class="ok">${I('check', 12)}${esc(x.label)}<span class="sr-only">${T('common.sr_done')}</span></span>` : esc(x.label)}</button>`).join('');
   const panes = tabsDef.map((x, i) => `<div class="gt-pane" role="tabpanel" id="dg-p${i}" aria-labelledby="dg-t${i}"${i ? ' inert' : ''}>${x.lock ? lockedPane(x.lock) : pane[x.p]()}</div>`).join('');
   const title = ltitle(n);   // no hero CTA pill: each folder tab already carries its part's own action (user, 2026-10-17)
+  const tall = Object.values(PARTS[n] || {}).some(b => b.groups.some(g => g.prompts.length));   // prompt lists make a pane very long: the other panes must not keep that height
   const side = empty   // no materials yet: the lesson's own colour card says so, instead of an empty folder
     ? `<div class="folder flatc ${colCls(n)} soon-card"><span class="f-label">${esc(lessonDate(n))}</span><p class="soon-t">${T('lesson.soon')}</p></div>`
-    : `<div class="gt gt-${LCOL[n]} g-${LCOL[n]}" id="dg" style="--n:${tabsDef.length}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
+    : `<div class="gt gt-${LCOL[n]} g-${LCOL[n]}${tall ? ' gt-tall' : ''}" id="dg" style="--n:${tabsDef.length}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
       <div class="gt-tabs" role="tablist" aria-label="${esc(t('tab.list'))}">${tabs}</div><div class="gt-body">${panes}</div></div>`;
-  return {screen: 'dars', tab: Math.max(0, L.parts.indexOf(tab)), tag: `#/dars/${n} · ` + t('tag.lesson', {n, parts: L.parts.length}), title: t('title.lesson', {n, title}), html: nav('d') + `
+  return {screen: 'dars', tab: Math.max(0, L.parts.indexOf(tab)), tag: `#/dars/${n} · ` + t('tag.lesson', {n: num2(n), parts: L.parts.length}), title: t('title.lesson', {n: num2(n), title}), html: nav('d') + `
     <div class="hero"><div class="hero-l">
       ${dlh('#/dastur', T('nav.home'), tt ? T('lesson.meta', {n, date: lessonDate(n), d, t: tt, pl: tt}) : esc(lessonDate(n)))}
-      <h1 class="headline${title.split(' ').some(w => w.length >= 11) ? ' long' : ''}"><span class="ln">${T('lesson.n', {n})}</span><span class="ln">${esc(title)}</span></h1>
+      <h1 class="headline${title.split(' ').some(w => w.length >= 11) ? ' long' : ''}"><span class="ln">${T('lesson.n', {n: num2(n)})}</span><span class="ln">${esc(title)}</span></h1>
       <p class="lsub">${T(`lesson.${n}.sub`)}</p>
       <p class="lede">${T(`lesson.${n}.lede`)}</p>
     </div>
@@ -2894,10 +3017,10 @@ function slPage(n, i){
   const topic = t(`lesson.${n}.t${Math.min(L.topics - 1, Math.floor((i - 1) / N * L.topics))}`);
   const prev = i > 1 ? `#/dars/${n}/slayd/${i - 1}` : '', next = i < N ? `#/dars/${n}/slayd/${i + 1}` : '';
   const nums = Array.from({length: N}, (_, k) => `<a href="#/dars/${n}/slayd/${k + 1}"${k + 1 === i ? ' aria-current="true"' : ''}>${k + 1}</a>`).join('');
-  return {screen: 'slayd', tag: `#/dars/${n}/slayd/${i} · ` + t('tag.slide', {n: N}), title: t('sl.doc_title', {i, n: N, n_dars: t('lesson.n', {n})}), html: `
+  return {screen: 'slayd', tag: `#/dars/${n}/slayd/${i} · ` + t('tag.slide', {n: N}), title: t('sl.doc_title', {i, n: N, n_dars: t('lesson.n', {n: num2(n)})}), html: `
     <div class="slv"><div class="slv-bar"><a class="slv-x" href="#/dars/${n}">${I('back')}${T('sl.close')}</a><h1 class="slv-ct" tabindex="-1">${i} / ${N}</h1>
         <button class="slv-all" type="button" data-sheet="slides-sheet" aria-haspopup="dialog" aria-expanded="false" aria-controls="slides-sheet">${T('sl.all')}</button></div>
-      <div class="slv-stage" data-sl="${i}" data-n="${n}" data-max="${N}"><div class="slv-ph"><span class="slv-num">${num2(i)}</span><span class="slv-t">${T('sl.topic', {n, topic})}</span>
+      <div class="slv-stage" data-sl="${i}" data-n="${n}" data-max="${N}"><div class="slv-ph"><span class="slv-num">${num2(i)}</span><span class="slv-t">${T('sl.topic', {n: num2(n), topic})}</span>
         <span class="ns">${T('sl.ph')}</span><span class="slv-note">${T('sl.note')}</span></div></div>
       <div class="slv-foot">${prev ? `<a class="slv-btn" data-slnav="prev" href="${prev}" aria-label="${esc(t('sl.prev'))}">${I('back', 20)}</a>` : `<span class="slv-btn off" aria-hidden="true">${I('back', 20)}</span>`}
         <span class="slv-seen">${i === N ? `${I('check', 14)}<span class="sw">${T('sl.seen')}</span>` : ''}</span>
@@ -3021,7 +3144,7 @@ function refreshCounts(){ document.querySelectorAll('[data-cnt]').forEach(el => 
 // the locked-lesson sheet (static markup in the page): its title and text depend on which lesson was tapped; applyStatic re-renders them with these parameters on a language switch
 function lockSheet(n){
   const sh = document.getElementById('lock-sheet'), ti = sh.querySelector('#ls-t'), de = sh.querySelector('.sheet-d');
-  ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n, date: lessonDate(n)}); de.dataset.i18n = 'lock.desc_n';
+  ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n: num2(n), date: lessonDate(n)}); de.dataset.i18n = 'lock.desc_n';
   applyStatic(sh); okina(sh); return sh;
 }
 const openLockSheet = n => lockSheet(n).showModal();

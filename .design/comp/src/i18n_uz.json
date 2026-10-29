@@ -117,15 +117,15 @@
  "lesson.n": {
   "uz": "{n}-dars",
   "translate": true,
-  "note": "lesson number label used in headlines, e.g. \"3-dars\" (UPPERCASE, wide font, ≤ 10 chars) · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+  "note": "lesson number label used in headlines, e.g. \"03-dars\" (zero-padded, UPPERCASE, wide font, ≤ 10 chars) · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "lesson.label": {
   "uz": "{n}-dars · {date}",
   "translate": true,
-  "note": "small UPPERCASE card label, e.g. \"3-dars · 26-sentabr\"; {date} is built from the month table · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+  "note": "small UPPERCASE card label, e.g. \"03-dars · 28-noyabr\"; {date} is built from the month table · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "lesson.label0": {
-  "uz": "0-dars · tayyorgarlik",
+  "uz": "Tayyorgarlik",
   "translate": true,
   "note": "small UPPERCASE label of the prep card"
  },
@@ -210,9 +210,9 @@
   "note": "row label"
  },
  "menu.course_value": {
-  "uz": "6 dars · 21 noy – 26 dek",
+  "uz": "7 dars · 21 noy – 26 dek",
   "translate": true,
-  "note": "value: \"6 lessons · 21 Nov – 26 Dec\" (short month names)"
+  "note": "value: \"7 lessons · 21 Nov – 26 Dec\" (short month names)"
  },
  "menu.logout": {
   "uz": "Chiqish",
@@ -375,47 +375,47 @@
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.2.title": {
-  "uz": "Claude Code",
+  "uz": "Kirish",
   "translate": true,
   "note": "lesson title in the lesson-page headline (UPPERCASE, wide font; wraps on spaces), ≤ 16 chars"
  },
  "lesson.2.card": {
-  "uz": "Claude\nCode",
+  "uz": "Kirish",
   "translate": true,
-  "note": "the lesson title on the home card, \\n = line break, ≤ 14 chars per line (UPPERCASE, wide font) · \\n = line break"
+  "note": "the lesson title on the home card, \\n = line break, ≤ 14 chars per line (UPPERCASE, wide font)"
  },
  "lesson.2.lede": {
-  "uz": "Claude Codeʼni oʻz Kit 1 fayllaringizda oʻrganamiz: kompaniya papkasi, CLAUDE.md, reja va PRD. Kit 2: qaysi jarayondan boshlashni tanlaymiz.",
+  "uz": "AI aslida nima ekanini, modellar qanday ishlashini va kontekst nega hamma narsani hal qilishini koʻramiz. Amaliyot: NotebookLM.",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.3.title": {
-  "uz": "API va MCP",
+  "uz": "Claude Code",
   "translate": true,
   "note": "lesson title in the lesson-page headline (UPPERCASE, wide font; wraps on spaces), ≤ 16 chars"
  },
  "lesson.3.card": {
-  "uz": "API va\nMCP",
+  "uz": "Claude\nCode",
   "translate": true,
   "note": "the lesson title on the home card, \\n = line break, ≤ 14 chars per line (UPPERCASE, wide font) · \\n = line break"
  },
  "lesson.3.lede": {
-  "uz": "Tanlangan jarayonni qadamlarga ajratamiz va agent yoʻriqnomasini yozamiz. Keyin agentning birinchi versiyasini haqiqiy tizimlarga ulaymiz. Kit 3: ishni qayta taqsimlash.",
+  "uz": "Claude Codeʼni oʻz Kit 1 fayllaringizda oʻrganamiz: kompaniya papkasi, CLAUDE.md, reja va PRD. Kit 2: qaysi jarayondan boshlashni tanlaymiz.",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.4.title": {
-  "uz": "Ishga tushirish",
+  "uz": "API va MCP",
   "translate": true,
   "note": "lesson title in the lesson-page headline (UPPERCASE, wide font; wraps on spaces), ≤ 16 chars"
  },
  "lesson.4.card": {
-  "uz": "Ishga\ntushirish",
+  "uz": "API va\nMCP",
   "translate": true,
   "note": "the lesson title on the home card, \\n = line break, ≤ 14 chars per line (UPPERCASE, wide font) · \\n = line break"
  },
  "lesson.4.lede": {
-  "uz": "Agentni noutbukdan 24/7 ishlaydigan serverga koʻchiramiz. Pilot rejasini yozamiz va xodimlar bilan suhbatga tayyorlanamiz. Kit 5 A va Kit 4.",
+  "uz": "Tanlangan jarayonni qadamlarga ajratamiz va agent yoʻriqnomasini yozamiz. Keyin agentning birinchi versiyasini haqiqiy tizimlarga ulaymiz. Kit 3: ishni qayta taqsimlash.",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
@@ -477,7 +477,7 @@
  "home.ring.valuetext": {
   "uz": "{t} darsdan {d} tasi toʻliq bajarilgan.",
   "translate": true,
-  "note": "screen-reader text of the ring: \"1 of 6 lessons completed.\"; {d} done, {t} total · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+  "note": "screen-reader text of the ring: \"1 of 7 lessons completed.\"; {d} done, {t} total · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "home.ring.ps": {
   "uz": "Toʻliq bajarilgan darslar",
@@ -640,17 +640,17 @@
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.2.sub": {
-  "uz": "Harness, CLAUDE.md, Plan mode, PRD, Skill, Kit 2",
+  "uz": "AI nima, modellar, Context, RAG, NotebookLM",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.3.sub": {
-  "uz": "API, kalitlar, MCP, frontend va backend, system prompt, Kit 3",
+  "uz": "Harness, CLAUDE.md, Plan mode, PRD, Skill, Kit 2",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.4.sub": {
-  "uz": "VPS, domen, DNS, Git, pilot rejasi, Kit 5 A, Kit 4",
+  "uz": "API, kalitlar, MCP, frontend va backend, system prompt, Kit 3",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
@@ -1010,9 +1010,9 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "menu.course_tba": {
-  "uz": "6 dars, sanasi keyinroq",
+  "uz": "{n} dars, sanasi keyinroq",
   "translate": true,
-  "note": "name menu (dropdown under the student name); row label or value, short"
+  "note": "name menu (dropdown under the student name); row label or value, short · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "menu.group_none": {
   "uz": "Guruh hali tanlanmagan",
@@ -1714,280 +1714,45 @@
   "translate": true,
   "note": "browser tab title, ≤ 40 chars"
  },
- "lesson.1.t0": {
-  "uz": "AI qatlamlari",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.1.t1": {
-  "uz": "Maʼlumot qayerga ketadi",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.1.t2": {
-  "uz": "LLM va token",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.1.t3": {
-  "uz": "Kontekst oynasi",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.1.t4": {
-  "uz": "Model darajalari",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.1.t5": {
-  "uz": "Frontier va open-weight",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.1.t6": {
-  "uz": "Gallyutsinatsiya",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.1.t7": {
-  "uz": "NotebookLM",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.1.t8": {
-  "uz": "Kit 1",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.2.t0": {
-  "uz": "Harness",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.2.t1": {
-  "uz": "Claude Code",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.2.t2": {
-  "uz": "Kompaniya papkasi",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.2.t3": {
-  "uz": "CLAUDE.md",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.2.t4": {
-  "uz": "Plan mode",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.2.t5": {
-  "uz": "PRD",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.2.t6": {
-  "uz": "Skill",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.2.t7": {
-  "uz": "Kit 2",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.3.t0": {
-  "uz": "API",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.3.t1": {
-  "uz": "API kaliti va .env",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.3.t2": {
-  "uz": "MCP va connector",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.3.t3": {
-  "uz": "Frontend va backend",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.3.t4": {
-  "uz": "Open source",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.3.t5": {
-  "uz": "System prompt",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.3.t6": {
-  "uz": "Agent v0",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.3.t7": {
-  "uz": "Kit 3",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.4.t0": {
-  "uz": "Lokal va server",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.4.t1": {
-  "uz": "VPS",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.4.t2": {
-  "uz": "Domen va DNS",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.4.t3": {
-  "uz": "Git va GitHub",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.4.t4": {
-  "uz": "Pilot",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.4.t5": {
-  "uz": "Muvaffaqiyat va toʻxtash sharti",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.4.t6": {
-  "uz": "Kit 5 A",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.4.t7": {
-  "uz": "Kit 4",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
  "lesson.5.title": {
-  "uz": "Agentni yaxshilash",
+  "uz": "Ishga tushirish",
   "translate": true,
   "note": "lesson title in the lesson-page headline (UPPERCASE, wide font; wraps on spaces), ≤ 16 chars"
  },
  "lesson.5.sub": {
-  "uz": "Xatolar jurnali, test toʻplami, cron, eskalatsiya, xavfsizlik, Kit 5 B",
+  "uz": "VPS, domen, DNS, Git, pilot rejasi, Kit 5 A, Kit 4",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.5.lede": {
-  "uz": "Pilotning birinchi haftasidagi xatolar boʻyicha agentni tuzatamiz. Jadval boʻyicha hisobot, eskalatsiya va xavfsizlik qoidalarini qoʻshamiz. Kit 5 B: 1-hafta.",
+  "uz": "Agentni noutbukdan 24/7 ishlaydigan serverga koʻchiramiz. Pilot rejasini yozamiz va xodimlar bilan suhbatga tayyorlanamiz. Kit 5 A va Kit 4.",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.5.card": {
-  "uz": "Agentni\nyaxshilash",
+  "uz": "Ishga\ntushirish",
   "translate": true,
   "note": "the lesson title on the home card, \\n = line break, ≤ 14 chars per line (UPPERCASE, wide font) · \\n = line break"
  },
- "lesson.5.t0": {
-  "uz": "Builder va assistent",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.5.t1": {
-  "uz": "Cron",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.5.t2": {
-  "uz": "Eskalatsiya",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.5.t3": {
-  "uz": "Test toʻplami",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.5.t4": {
-  "uz": "Prompt injection",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.5.t5": {
-  "uz": "Maʼlumotlar tartibi",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.5.t6": {
-  "uz": "Kit 5 B",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
  "lesson.6.title": {
-  "uz": "Natijalar va demo kuni",
+  "uz": "Agentni yaxshilash",
   "translate": true,
   "note": "lesson title in the lesson-page headline (UPPERCASE, wide font; wraps on spaces), ≤ 16 chars"
  },
  "lesson.6.sub": {
-  "uz": "Baseline va farq, vazifa narxi, ROI, qaror, build yoki buy, demo",
+  "uz": "Xatolar jurnali, test toʻplami, cron, eskalatsiya, xavfsizlik, Kit 5 B",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.6.lede": {
-  "uz": "Pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaymiz va davom ettirish, oʻzgartirish yoki toʻxtatishni hal qilamiz. Keyin natijani taqdim etasiz. Kit 5 B: yakuniy raqamlar.",
+  "uz": "Pilotning birinchi haftasidagi xatolar boʻyicha agentni tuzatamiz. Jadval boʻyicha hisobot, eskalatsiya va xavfsizlik qoidalarini qoʻshamiz. Kit 5 B: 1-hafta.",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.6.card": {
-  "uz": "Natijalar va\ndemo kuni",
+  "uz": "Agentni\nyaxshilash",
   "translate": true,
   "note": "the lesson title on the home card, \\n = line break, ≤ 14 chars per line (UPPERCASE, wide font) · \\n = line break"
- },
- "lesson.6.t0": {
-  "uz": "Baseline va farq",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.6.t1": {
-  "uz": "Bitta vazifa narxi",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.6.t2": {
-  "uz": "Topilgan pul",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.6.t3": {
-  "uz": "ROI",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.6.t4": {
-  "uz": "Davom, oʻzgartirish yoki toʻxtatish",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.6.t5": {
-  "uz": "Build, buy yoki open source",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lesson.6.t6": {
-  "uz": "Demo",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "prep.0.s0": {
   "uz": "Darsga oʻz noutbukingiz bilan keling. Praktikum boshdan-oxir amaliy.",
@@ -2149,6 +1914,286 @@
   "translate": true,
   "note": "undo toast at the bottom; ≤ 28 chars"
  },
+ "lesson.1.t0": {
+  "uz": "AI qatlamlari",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.1.t1": {
+  "uz": "Maʼlumot qayerga ketadi",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.1.t2": {
+  "uz": "LLM va token",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.1.t3": {
+  "uz": "Kontekst oynasi",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.1.t4": {
+  "uz": "Model darajalari",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.1.t5": {
+  "uz": "Frontier va open-weight",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.1.t6": {
+  "uz": "Gallyutsinatsiya",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.1.t7": {
+  "uz": "NotebookLM",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.1.t8": {
+  "uz": "Kit 1",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.2.t0": {
+  "uz": "AI nima",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.2.t1": {
+  "uz": "Modellar",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.2.t2": {
+  "uz": "Context",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.2.t3": {
+  "uz": "RAG",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.2.t4": {
+  "uz": "NotebookLM",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t0": {
+  "uz": "Harness",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t1": {
+  "uz": "Claude Code",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t2": {
+  "uz": "Kompaniya papkasi",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t3": {
+  "uz": "CLAUDE.md",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t4": {
+  "uz": "Plan mode",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t5": {
+  "uz": "PRD",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t6": {
+  "uz": "Skill",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.3.t7": {
+  "uz": "Kit 2",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.t0": {
+  "uz": "API",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.t1": {
+  "uz": "API kaliti va .env",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.t2": {
+  "uz": "MCP va connector",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.t3": {
+  "uz": "Frontend va backend",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.t4": {
+  "uz": "Open source",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.t5": {
+  "uz": "System prompt",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.t6": {
+  "uz": "Agent v0",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.4.t7": {
+  "uz": "Kit 3",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.5.t0": {
+  "uz": "Lokal va server",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.5.t1": {
+  "uz": "VPS",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.5.t2": {
+  "uz": "Domen va DNS",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.5.t3": {
+  "uz": "Git va GitHub",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.5.t4": {
+  "uz": "Pilot",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.5.t5": {
+  "uz": "Muvaffaqiyat va toʻxtash sharti",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.5.t6": {
+  "uz": "Kit 5 A",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.5.t7": {
+  "uz": "Kit 4",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.6.t0": {
+  "uz": "Builder va assistent",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.6.t1": {
+  "uz": "Cron",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.6.t2": {
+  "uz": "Eskalatsiya",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.6.t3": {
+  "uz": "Test toʻplami",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.6.t4": {
+  "uz": "Prompt injection",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.6.t5": {
+  "uz": "Maʼlumotlar tartibi",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.6.t6": {
+  "uz": "Kit 5 B",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.7.title": {
+  "uz": "Natijalar va demo kuni",
+  "translate": true,
+  "note": "lesson title in the lesson-page headline (UPPERCASE, wide font; wraps on spaces), ≤ 16 chars"
+ },
+ "lesson.7.sub": {
+  "uz": "Baseline va farq, vazifa narxi, ROI, qaror, build yoki buy, demo",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.7.lede": {
+  "uz": "Pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaymiz va davom ettirish, oʻzgartirish yoki toʻxtatishni hal qilamiz. Keyin natijani taqdim etasiz. Kit 5 B: yakuniy raqamlar.",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.7.card": {
+  "uz": "Natijalar va\ndemo kuni",
+  "translate": true,
+  "note": "the lesson title on the home card, \\n = line break, ≤ 14 chars per line (UPPERCASE, wide font) · \\n = line break"
+ },
+ "lesson.7.t0": {
+  "uz": "Baseline va farq",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.7.t1": {
+  "uz": "Bitta vazifa narxi",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.7.t2": {
+  "uz": "Topilgan pul",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.7.t3": {
+  "uz": "ROI",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.7.t4": {
+  "uz": "Davom, oʻzgartirish yoki toʻxtatish",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.7.t5": {
+  "uz": "Build, buy yoki open source",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "lesson.7.t6": {
+  "uz": "Demo",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
  "c.p.1.am.text": {
   "uz": "Namuna matn. Amaliyot darsda bajariladi: yoʻriqnomani oching, fayllarni yuklab oling va oʻz biznesingiz uchun birinchi vositani yasang.\n\nTayyor boʻlgach, pastdagi belgini bosing.",
   "translate": false,
@@ -2201,6 +2246,141 @@
  },
  "c.p.1.vz.g0.n": {
   "uz": "Avval qoʻllanmani oʻqing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.text": {
+  "uz": "Namuna matn. Korxona bilimini ishga soling: har mashq uchun alohida notebook oching va faqat oʻsha mashqning fayllarini yuklang.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g0": {
+  "uz": "Qoʻllanma",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g0.n": {
+  "uz": "",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g1": {
+  "uz": "01 Yangi xodimga tayanch",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g1.n": {
+  "uz": "ASOSIY. Namuna matn.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g1.p0.t": {
+  "uz": "Birinchi hafta rejasi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g1.p0.w": {
+  "uz": "Chat",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g1.p0.x": {
+  "uz": "Namuna matn. [Lavozim] uchun dastlabki 5 ish kuni rejasini tuzing. Har vazifaning manbasini koʻrsating.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g1.p1.t": {
+  "uz": "Yodlash kartalari",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g1.p1.w": {
+  "uz": "Studio → Flashcards → sozlash",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g1.p1.x": {
+  "uz": "Namuna matn. Yangi xodim bilishi shart boʻlgan 10 ta tushunchani karta qilib bering.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g2": {
+  "uz": "02 Mahsulotdan suhbatga",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g2.n": {
+  "uz": "",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g2.p0.t": {
+  "uz": "Savdo suhbati",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g2.p0.w": {
+  "uz": "",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.am.g2.p0.x": {
+  "uz": "Namuna matn. Mahsulot maʼlumotidan 5 savollik mijoz suhbatini yozing.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.vz.text": {
+  "uz": "Namuna matn. Uyda bajariladi: Ravon Uy keysi. Yuborish shart emas.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.vz.g0": {
+  "uz": "Manbalar",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.vz.g0.n": {
+  "uz": "Namuna matn.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.vz.g1": {
+  "uz": "Asosiy mashq",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.vz.g1.n": {
+  "uz": "Birma-bir, NotebookLMʼda.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.vz.g1.p0.t": {
+  "uz": "Hisobot xulosasi",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.vz.g1.p0.w": {
+  "uz": "",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.vz.g1.p0.x": {
+  "uz": "Namuna matn. Hisobotdan 3 ta asosiy xulosa chiqaring.",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.vz.g1.p1.t": {
+  "uz": "Xavflar",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.vz.g1.p1.w": {
+  "uz": "",
+  "translate": false,
+  "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
+ },
+ "c.p.2.vz.g1.p1.x": {
+  "uz": "Namuna matn. Eng katta 3 xavfni sanab bering.",
   "translate": false,
   "note": "CONTENT from 2.0 (prompts, exercise notes, library, Hermes cards): Uzbek only in 2.0, so it is NOT translated unless asked"
  }

@@ -88,7 +88,7 @@ s=s[:a]+'''<nav class="comp-bar" aria-label="Komp ekranlari">
   <button type="button" data-go="type" aria-pressed="false">Shrift</button>
   <button type="button" data-go="all" aria-pressed="false">Hammasi</button>
   <select id="jump" aria-label="Ekranga oʻtish (barcha yoʻllar)"><option value="">Ekranga oʻtish…</option></select>
-  <select id="today" aria-label="Demo sana"><option value="">Sana…</option><option value="before">Kursdan oldin · 14-noyabr</option><option value="day1">1-dars kuni · 21-noyabr</option><option value="story">3-dars · 5-dekabr</option><option value="over">Kurs tugadi · 5-yanvar</option></select>
+  <select id="today" aria-label="Demo sana"><option value="">Sana…</option><option value="before">Kursdan oldin · 14-noyabr</option><option value="day1">01-dars kuni · 21-noyabr</option><option value="story">04-dars · 5-dekabr</option><option value="over">Kurs tugadi · 5-yanvar</option></select>
   <button type="button" id="rst">Reset demo</button>
   <button type="button" id="w375" aria-pressed="false">375 px</button>
 </nav>'''+s[b:]

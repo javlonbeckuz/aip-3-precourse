@@ -1,16 +1,13 @@
 {
   "n": 2,
-  "title": "Claude Code",
-  "subtitle": "Harness, CLAUDE.md, Plan mode, PRD, Skills, Kit 2",
-  "summary": "You learn Claude Code on your own Kit 1 files: the company folder, CLAUDE.md, a plan and a PRD. Kit 2: pick the process to start with.",
+  "title": "Introduction",
+  "subtitle": "What AI is, models, Context, RAG, NotebookLM",
+  "summary": "We look at what AI actually is, how models work, and why context decides everything. Practice: NotebookLM.",
   "topics": [
-    "Harness",
-    "Claude Code",
-    "Company folder",
-    "CLAUDE.md",
-    "Plan mode",
-    "PRD",
-    "Skills",
-    "Kit 2"
+    "What AI is",
+    "Models",
+    "Context",
+    "RAG",
+    "NotebookLM"
   ]
 }

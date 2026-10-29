@@ -235,13 +235,13 @@ const I18N = {uz: {
   'common.sr_download': 'Yuklab olish: ', 'common.sr_external': ' (yangi oynada ochiladi)', 'common.sample_file': 'namuna fayl', 'common.unknown_size': 'oʻlchami nomaʼlum', 'common.guide': 'Qoʻllanma', 'common.bonus': 'bonus',
   'common.extra': 'qoʻshimcha',
   'unit.sl': 'Slaydlar', 'unit.am': 'Amaliyot', 'unit.vz': 'Vazifa', 'unit.kt': 'Kit', 'unit.am_n': 'Amaliyot {num}', 'unit.hermes': 'Hermes {id}',
-  'lesson.n': '{n}-dars', 'lesson.label': '{n}-dars · {date}', 'lesson.label0': '0-dars · tayyorgarlik', 'lesson.meta': '{date} · {d}/{t} bajarildi',
+  'lesson.n': '{n}-dars', 'lesson.label': '{n}-dars · {date}', 'lesson.label0': 'Tayyorgarlik', 'lesson.meta': '{date} · {d}/{t} bajarildi',
   'steps': '{d}/{t} bajarildi', 'kind.video': 'video', 'kind.image': 'rasm',
   // --- dates (month table is in code; these are the patterns)
   'date.fmt': '{d}-{m}', 'date.until': '{date}gacha', 'date.opens': '{date}da ochiladi',
   // --- nav, menu, popup, toast, sheet, live announcements
   'nav.label': 'Boʻlimlar', 'nav.home': 'Dastur', 'nav.homebtn': 'Bosh sahifa', 'menu.label': 'Menyu', 'lang.label': 'Til',
-  'menu.id': 'Shaxsiy ID', 'menu.group': 'Guruh', 'menu.group_value': 'Shanba guruhi', 'menu.course': 'Kurs', 'menu.course_value': '6 dars · 21 noy – 26 dek', 'menu.logout': 'Chiqish',
+  'menu.id': 'Shaxsiy ID', 'menu.group': 'Guruh', 'menu.group_value': 'Shanba guruhi', 'menu.course': 'Kurs', 'menu.course_value': '7 dars · 21 noy – 26 dek', 'menu.logout': 'Chiqish',
   'popup.label': 'Yangi dars', 'popup.k': 'Yangi dars ochildi', 'popup.title': '3-dars · Skill va agentlar', 'popup.open': 'Darsni ochish', 'popup.live': 'Yangi dars ochildi: 3-dars, Skill va agentlar.',
   'toast.done': '{no} bajarildi', 'toast.undo': 'Bekor qilish', 'toast.notfound': 'Sahifa topilmadi',
   'lock.title': '{n}-dars {date}da ochiladi.', 'lock.desc': 'Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.',
@@ -256,11 +256,11 @@ const I18N = {uz: {
   'lesson.0.card': 'Oʻrnatish va\ntayyorgarlik',
   'lesson.1.card': 'AI qanday\nishlaydi', 
   
-  'lesson.2.card': 'Claude\nCode', 
+  'lesson.2.card': 'Kirish', 
   
-  'lesson.3.card': 'API va\nMCP', 
+  'lesson.3.card': 'Claude\nCode', 
   
-  'lesson.4.card': 'Ishga\ntushirish', 
+  'lesson.4.card': 'API va\nMCP', 
   
   
   
@@ -384,7 +384,7 @@ const I18N = {uz: {
   'lock.title_tba': '{n}-dars sanasi keyinroq eʼlon qilinadi.',
   'prep.intro_tba': 'Birinchi dars sanasini shu yerda eʼlon qilamiz. Roʻyxatni hozirdan tayyorlab qoʻying: hammasi 30 daqiqacha vaqt oladi.',
   'prep.end_tba': 'Tayyorsiz. Birinchi dars sanasi shu yerda chiqadi.',
-  'menu.course_tba': '6 dars, sanasi keyinroq',
+  'menu.course_tba': '{n} dars, sanasi keyinroq',
   'menu.group_none': 'Guruh hali tanlanmagan',
   'prep.more.dflt': 'Oʻrganishda davom eting',
   'prep.lede_done': '4 qadamning hammasi bajarildi. Kerak boʻlsa, istalgan kartani qayta oching.',
@@ -476,7 +476,7 @@ const I18N = {uz: {
   
   
   
-  'lesson.5.card': 'Agentni\nyaxshilash',
+  'lesson.5.card': 'Ishga\ntushirish',
   
   
   
@@ -487,7 +487,7 @@ const I18N = {uz: {
   
   
   
-  'lesson.6.card': 'Natijalar va\ndemo kuni',
+  'lesson.6.card': 'Agentni\nyaxshilash',
   
   
   
@@ -526,6 +526,62 @@ const I18N = {uz: {
   'amf.off': 'Amaliyot bajarildi',
   'amf.aria': 'Amaliyot bajarildi deb belgilash',
   'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi',
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  'lesson.7.card': 'Natijalar va\ndemo kuni',
+  
+  
+  
+  
+  
+  
+  
 }, ru: /*RU*/{
   "common.close": "Закрыть",
   "common.back": "Назад",
@@ -552,7 +608,7 @@ const I18N = {uz: {
   "unit.hermes": "Hermes {id}",
   "lesson.n": "Урок {n}",
   "lesson.label": "Урок {n} · {date}",
-  "lesson.label0": "Урок 0 · подготовка",
+  "lesson.label0": "Подготовка",
   "lesson.meta": "{date} · выполнено {d}/{t}",
   "steps": "выполнено {d}/{t}",
   "kind.video": "видео",
@@ -569,7 +625,7 @@ const I18N = {uz: {
   "menu.group": "Группа",
   "menu.group_value": "Субботняя группа",
   "menu.course": "Курс",
-  "menu.course_value": "6 уроков · 21 нояб. – 26 дек.",
+  "menu.course_value": "7 уроков · 21 нояб. – 26 дек.",
   "menu.logout": "Выйти",
   "popup.label": "Новый урок",
   "popup.k": "Открыт новый урок",
@@ -604,9 +660,9 @@ const I18N = {uz: {
   "gate.err.notfound": "Такой ID не найден. Уточните его у своего ментора.",
   "lesson.0.card": "Установка и\nподготовка",
   "lesson.1.card": "Как работает\nAI",
-  "lesson.2.card": "Claude\nCode",
-  "lesson.3.card": "API и\nMCP",
-  "lesson.4.card": "Запуск\nв работу",
+  "lesson.2.card": "Введение",
+  "lesson.3.card": "Claude\nCode",
+  "lesson.4.card": "API и\nMCP",
   "home.title": "Программа",
   "home.lessons": "Уроки",
   "home.ring.label": "Полностью пройденные уроки",
@@ -845,11 +901,11 @@ const I18N = {uz: {
   "lock.title_tba": "Дату урока {n} объявим позже.",
   "prep.intro_tba": "Дату первого занятия мы объявим здесь. Подготовьте этот список уже сейчас: всё займёт около 30 минут.",
   "prep.end_tba": "Вы готовы. Дата первого занятия появится здесь.",
-  "menu.course_tba": "6 уроков, даты позже",
+  "menu.course_tba": "{n} уроков, даты позже",
   "menu.group_none": "Группа пока не выбрана",
   "prep.more.dflt": "Продолжайте учиться",
-  "lesson.5.card": "Улучшаем\nагента",
-  "lesson.6.card": "Итоги и\nдемо-день",
+  "lesson.5.card": "Запуск\nв работу",
+  "lesson.6.card": "Улучшаем\nагента",
   "lesson.soon": "Материалы скоро появятся здесь.",
   "note.soon": "Открыт · материалы скоро",
   "units.am": "практика",
@@ -857,7 +913,8 @@ const I18N = {uz: {
   "amf.off": "Практика выполнена",
   "amf.aria": "Отметить практику выполненной",
   "prep.cmd_copy": "Скопировать команду",
-  "toast.cmd_copied": "Команда скопирована"
+  "toast.cmd_copied": "Команда скопирована",
+  "lesson.7.card": "Итоги и\nдемо-день",
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -884,7 +941,7 @@ const I18N = {uz: {
   "unit.hermes": "Hermes {id}",
   "lesson.n": "Lesson {n}",
   "lesson.label": "Lesson {n} · {date}",
-  "lesson.label0": "Lesson 0 · preparation",
+  "lesson.label0": "Preparation",
   "lesson.meta": "{date} · {d}/{t} done",
   "steps": "{d}/{t} done",
   "kind.video": "video",
@@ -901,7 +958,7 @@ const I18N = {uz: {
   "menu.group": "Group",
   "menu.group_value": "Saturday group",
   "menu.course": "Course",
-  "menu.course_value": "6 lessons · 21 Nov – 26 Dec",
+  "menu.course_value": "7 lessons · 21 Nov – 26 Dec",
   "menu.logout": "Sign out",
   "popup.label": "New lesson",
   "popup.k": "New lesson is open",
@@ -934,9 +991,9 @@ const I18N = {uz: {
   "gate.err.notfound": "This ID wasn’t found. Check it with your mentor.",
   "lesson.0.card": "Setup and\npreparation",
   "lesson.1.card": "How AI\nworks",
-  "lesson.2.card": "Claude\nCode",
-  "lesson.3.card": "API and\nMCP",
-  "lesson.4.card": "Ship\nit",
+  "lesson.2.card": "Introduction",
+  "lesson.3.card": "Claude\nCode",
+  "lesson.4.card": "API and\nMCP",
   "home.title": "Program",
   "home.lessons": "Lessons",
   "home.ring.label": "Lessons fully completed",
@@ -1173,11 +1230,11 @@ const I18N = {uz: {
   "lock.title_tba": "The date of lesson {n} will be announced later.",
   "prep.intro_tba": "We will post the date of the first lesson here. Get this list ready now: it takes about 30 minutes in all.",
   "prep.end_tba": "You're ready. The date of the first lesson will appear here.",
-  "menu.course_tba": "6 lessons, dates to follow",
+  "menu.course_tba": "{n} lessons, dates to follow",
   "menu.group_none": "Group not set yet",
   "prep.more.dflt": "Keep learning",
-  "lesson.5.card": "Improve\nthe agent",
-  "lesson.6.card": "Results and\ndemo day",
+  "lesson.5.card": "Ship\nit",
+  "lesson.6.card": "Improve\nthe agent",
   "lesson.soon": "The materials will appear here soon.",
   "note.soon": "Open · materials soon",
   "units.am": "practice",
@@ -1185,7 +1242,8 @@ const I18N = {uz: {
   "amf.off": "Practice done",
   "amf.aria": "Mark the practice as done",
   "prep.cmd_copy": "Copy the command",
-  "toast.cmd_copied": "Command copied"
+  "toast.cmd_copied": "Command copied",
+  "lesson.7.card": "Results and\ndemo day",
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
@@ -1243,14 +1301,15 @@ function applyStatic(root = document){
 let FILES = {};                                             // slug -> {name,size,ph,url}  (every file row opens #/fayl/{slug}, or downloads from `url` in the app)
 const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const F = (name, size, ph, slugOverride, url) => { const sl = slugOverride || slugify(name); return FILES[sl] = {slug: sl, name, size: size || '', ph: !!ph || !size, url: url || ''}; };
-let LESSONS = {   // d = [day, month] (the shanba group: 21, 28 Nov, 5, 12, 19, 26 Dec); parts: sl slides, am amaliyot, kt kit, vz vazifa (only the parts a lesson really has)
+let LESSONS = {   // d = [day, month] (the shanba group), null = the date is not decided yet (02 Kirish); parts: sl slides, am amaliyot, kt kit, vz vazifa (only the parts a lesson really has)
   0: {d: [21, 11]},
   1: {d: [21, 11], slides: 12, kind: 'image', parts: ['sl', 'am', 'kt', 'vz'], topics: 9},
-  2: {d: [28, 11], slides: 0, parts: [], topics: 8},
-  3: {d: [5, 12], slides: 0, parts: [], topics: 8},
-  4: {d: [12, 12], slides: 0, parts: [], topics: 8},
-  5: {d: [19, 12], slides: 0, parts: [], topics: 7},
-  6: {d: [26, 12], slides: 0, parts: [], topics: 7},
+  2: {d: null, slides: 12, kind: 'image', parts: ['sl', 'am', 'vz'], topics: 5},
+  3: {d: [28, 11], slides: 0, parts: [], topics: 8},
+  4: {d: [5, 12], slides: 0, parts: [], topics: 8},
+  5: {d: [12, 12], slides: 0, parts: [], topics: 8},
+  6: {d: [19, 12], slides: 0, parts: [], topics: 7},
+  7: {d: [26, 12], slides: 0, parts: [], topics: 7},
 };
 
 // ---- lesson 0: prep checklist (4 items: step counts and links only; the words come from the dictionary or the API)
@@ -1264,8 +1323,11 @@ let PARTS = {};   // lesson number -> {am|kt|vz: {text, groups: [{title, note, f
 const FC = (f, ph, slug) => f ? F(f.name, f.size, ph, slug || f.slug, f.url) : null;   // file from the demo / API: name + size (+ url in the app), never a server path
 function buildData(){
   FILES = {}; PARTS = {};
-  Object.entries((C20 && C20.parts) || {}).forEach(([n, o]) => { PARTS[n] = {}; Object.entries(o).forEach(([k, b]) => {
-    PARTS[n][k] = {text: b.text || '', groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', files: (g.files || []).map(f => FC(f, f.ph))}))}; }); });
+  Object.entries((C20 && C20.parts) || {}).forEach(([n, o]) => { PARTS[n] = {}; const used = new Set();   // progress ids of the prompt rows: unique inside a lesson, 1-8 letters or digits ("P{index}" when the id is empty)
+    Object.entries(o).forEach(([k, b]) => {
+      PARTS[n][k] = {text: b.text || '', groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', files: (g.files || []).map(f => FC(f, f.ph)),
+        prompts: (g.prompts || []).map((q, j) => { const id = (String(q.id || '').replace(/[^A-Za-z0-9]/g, '') || 'P' + (j + 1)).slice(0, 8); let kid = id, c = 2; while (used.has(kid)) kid = id.slice(0, 6) + c++; used.add(kid);
+          return {id: q.id || '', kid, title: q.title || '', target: q.target || '', text: q.text || ''}; })}))}; }); });
 }
 let SAMPLE_FILES = false, C20_TRANSLATED = false;   // prototype: the demo files are marked samples; the real app has none
 buildData();
@@ -1276,7 +1338,8 @@ buildData();
 function registerContent(){
   const set = (k, v) => { if (typeof v === 'string') I18N.uz[k] = v; };
   Object.entries(PARTS).forEach(([n, o]) => Object.entries(o).forEach(([k, b]) => {
-    set(`c.p.${n}.${k}.text`, b.text); b.groups.forEach((g, i) => { set(`c.p.${n}.${k}.g${i}`, g.title); set(`c.p.${n}.${k}.g${i}.n`, g.note); }); }));
+    set(`c.p.${n}.${k}.text`, b.text); b.groups.forEach((g, i) => { set(`c.p.${n}.${k}.g${i}`, g.title); set(`c.p.${n}.${k}.g${i}.n`, g.note);
+      g.prompts.forEach((q, j) => { const pk = `c.p.${n}.${k}.g${i}.p${j}`; set(pk + '.t', q.title); set(pk + '.w', q.target); set(pk + '.x', q.text); }); }); }));
 }
 
 // ===================== PROTOTYPE: state, logic, templates, router (all UI text comes from t() / T() / cx(), see proto_i18n.js) =====================
@@ -1358,7 +1421,8 @@ function makeC20(by){   // the open blocks of each lesson (Amaliyot, Kit, Vazifa
     if (l.n < 1) continue;
     for (const [k, key] of [['am', 'amaliyot'], ['kt', 'kit'], ['vz', 'vazifa']]) {
       const b = l[key]; if (!b || typeof b !== 'object') continue;
-      (parts[l.n] ??= {})[k] = {text: b.text || '', groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', files: (g.files || []).map(f => fo(l.n, f))}))};
+      (parts[l.n] ??= {})[k] = {text: b.text || '', groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', files: (g.files || []).map(f => fo(l.n, f)),
+        prompts: (Array.isArray(g.prompts) ? g.prompts : []).map(q => ({id: sid(q.id), title: q.title || '', target: q.target || '', text: q.text || ''}))}))};
     }
   }
   return {parts};
@@ -1406,8 +1470,8 @@ function applyMe(j, uz){
   S.set(j.progress); applyLessons(j.lessons, uz && uz.lessons, j.lang); scheduleRecheck();
 }
 
-// each lesson has ONE fixed colour whatever its state (state = words + icons in the note, never colour); yellow also stays the progress ring. Emerald (lesson 6) is an identity colour, never a success colour
-const LCOL = ['yellow', 'lilac', 'grey', 'blue', 'dark', 'orange', 'emerald'];
+// each lesson has ONE fixed colour whatever its state (state = words + icons in the note, never colour); yellow also stays the progress ring. Emerald (lesson 06) is an identity colour, never a success colour; colours follow the card's position (cyan is 07)
+const LCOL = ['yellow', 'lilac', 'grey', 'blue', 'dark', 'orange', 'emerald', 'cyan'];
 const LN = () => Object.keys(LESSONS).map(Number).filter(n => n > 0).sort((a, b) => a - b);   // the lesson numbers 1..N come from the data (the API in the app)
 const colCls = n => LCOL[n] === 'dark' ? 'c-night' : 'c-' + LCOL[n];   // an unlocked dark lesson keeps its dark identity, with normal (white) ink
 
@@ -1441,7 +1505,7 @@ const ring = () => [LN().filter(n => !isLocked(n) && (lDone(n) || (allDone() && 
 function nextOf(n){
   const u = units(n).find(x => !x.done); if (!u) return null;
   const what = esc(u.label) + (u.kind === 'sl' ? ` · ${S.sl(n)} / ${LESSONS[n].slides}` : '');   // what / label are HTML; started = the target already has progress ("continue" vs "start")
-  return {what, label: `${T('lesson.n', {n})} · ${what}`, href: u.href, started: u.kind === 'sl' && S.sl(n) > 0};
+  return {what, label: `${T('lesson.n', {n: num2(n)})} · ${what}`, href: u.href, started: u.kind === 'sl' && S.sl(n) > 0};
 }
 const nextStep = () => { const live = liveLesson();
   if (courseStarted() && PREP.items.length > 3) { const i = [1, 2, 3].find(j => !S.has('prep:' + j)); if (i != null) return {href: '#/dars/0', label: T('next.prep', {title: HT(T(`prep.${i}.title`))})}; }   // the Google account, Claude and Warp are what lesson 1 needs
@@ -1496,11 +1560,11 @@ function homePage(){
   const [rd, rt] = ring(), ns = nextStep(), live = liveLesson(), pre = !courseStarted(), k = prepCount();
   const cardHTML = n => {
     const tab = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`, arrow = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
-    const label = n === 0 ? T('lesson.label0') : T('lesson.label', {n, date: lessonDate(n)});
+    const label = n === 0 ? T('lesson.label0') : T('lesson.label', {n: num2(n), date: lessonDate(n)});
     let note, href = `#/dars/${n}`;
     if (n === 0) { note = k === 4 ? `${I('check', 14)}${T('note.done', {d: 4, t: 4, pl: 4})}` : courseStarted() ? T('note.open', {d: k, t: 4, pl: 4}) : !LESSONS[0].d ? T('prep.cnt', {d: k, pl: 4}) : T('note.prep_todo', {until: t('date.until', {date: lessonDate(0)}), d: k, pl: 4}); }
     else if (isLocked(n)) {   // before its date: the lesson keeps its own colour, with a lock and the date (once, in the note)
-      return `<li class="g-${LCOL[n]}"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${T('lesson.n', {n})}</span></span>
+      return `<li class="g-${LCOL[n]}"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${T('lesson.n', {n: num2(n)})}</span></span>
         <span class="f-row"><span><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-sub">${T(`lesson.${n}.sub`)}</span></span><span class="f-note">${I('lock', 14)}${T(LESSONS[n].d ? 'date.opens' : 'date.tba', {date: lessonDate(n)})}</span></span></button></li>`;
     } else {
       const [d, tt] = lProg(n);
@@ -1518,7 +1582,7 @@ function homePage(){
   let hero = '', cta = '', headCol = LCOL[0];
   if (pre) {   // before lesson 1: the prep card is the hero, and the one next step is the first open prep item
     const first = PREP.items.findIndex((_, i) => !S.has('prep:' + i));
-    hero = `<a class="folder flatc c-yellow now-card" href="#/dars/0"><span class="f-top"><span class="f-label">${k === 4 ? `${T('prep.ready')}<br>${T('lesson.label', {n: 1, date: lessonDate(1)})}` : LESSONS[0].d ? `${T('lesson.label0')}<br>${T('date.until', {date: lessonDate(0)})}` : T('lesson.label0')}</span>${arrowH}</span>
+    hero = `<a class="folder flatc c-yellow now-card" href="#/dars/0"><span class="f-top"><span class="f-label">${k === 4 ? `${T('prep.ready')}<br>${T('lesson.label', {n: num2(1), date: lessonDate(1)})}` : LESSONS[0].d ? `${T('lesson.label0')}<br>${T('date.until', {date: lessonDate(0)})}` : T('lesson.label0')}</span>${arrowH}</span>
         <span><span class="f-title">${T('prep.title')}</span><span class="f-sub">${T('prep.cnt', {d: k, pl: 4})}</span></span></a>`;
     if (first >= 0) cta = pill(`${T('next.k')} · ${T('next.prep', {title: HT(T(`prep.${first}.title`))})}`, '#/dars/0');
     else if (PREP.more) cta = pill(`${T('next.k')} · ${T('prep.more.title')}`, '#/dars/0?p=more');
@@ -1526,7 +1590,7 @@ function homePage(){
     const [d, tt] = lProg(live), L = LESSONS[live], s = S.sl(live);
     const nxl = nextOf(live), slSub = !L.slides ? stepsText(d, tt) : s === 0 ? T('hero.sub_start', {n: L.slides}) : s >= L.slides ? T('hero.sub_seen', {n: L.slides}) : T('hero.sub', {i: s, n: L.slides}), sub = tt === 0 ? T('lesson.soon') : nxl && !/\/slayd\//.test(nxl.href) ? nxl.what : slSub, href = nxl ? nxl.href : `#/dars/${live}`;   // the hero opens today's next step ("continue" only when something was seen)
     headCol = LCOL[live];
-    hero = `<a class="folder flatc ${colCls(live)} now-card" href="${href}"><span class="f-top"><span class="f-label">${T('hero.k')}<br>${T('lesson.label', {n: live, date: lessonDate(live)})}</span>${arrowH}</span>
+    hero = `<a class="folder flatc ${colCls(live)} now-card" href="${href}"><span class="f-top"><span class="f-label">${T('hero.k')}<br>${T('lesson.label', {n: num2(live), date: lessonDate(live)})}</span>${arrowH}</span>
         <span><span class="f-title">${T(`lesson.${live}.card`)}</span><span class="f-sub">${sub}</span></span></a>`;
   }
   if (!pre && ns) cta = pill(`${T(live ? 'next.k_backlog' : 'next.k')} · ${ns.label}`, ns.href);
@@ -1609,15 +1673,21 @@ function initPrep(root){
 }
 document.addEventListener('visibilitychange', () => document.documentElement.classList.toggle('hid', document.hidden));
 
-// ---- lessons 1-6: the gooey folder with only the parts the lesson really has (Slaydlar / Amaliyot / Kit / Vazifa)
+// ---- lessons 1-7: the gooey folder with only the parts the lesson really has (Slaydlar / Amaliyot / Kit / Vazifa)
 const partWhen = iso => /^\d{4}-\d\d-\d\dT\d\d:\d\d/.test(iso || '') ? {date: fmtDate(+iso.slice(8, 10), +iso.slice(5, 7)), time: iso.slice(11, 16)} : {date: '…', time: '…'};   // iso with the Tashkent offset: its own date and clock time
 const lockedPane = iso => `<p class="p-label">${T('part.locked')}</p><div><p class="p-sub">${T('part.opens', partWhen(iso))}</p></div>`;
 const tabOfHref = h => { const m = /[?&]tab=(sl|am|kt|vz)\b/.exec(h || ''); return m ? m[1] : /\/slayd\//.test(h || '') ? 'sl' : null; };
+// prompt copy rows of a group (the 2.0 rows): copy = done, written as p:l{n}:{id}; the text stays Uzbek (lang="uz-Latn" inside a ru/en page). Not counted in the lesson's units
+function promptList(n, gkey, g){
+  const lis = g.prompts.map((q, j) => { const k = `${gkey}.p${j}`, text = cu(`${k}.x`);
+    return pli({i: j, pid: q.kid, no: q.id || 'P' + (j + 1), key: `p:l${n}:${q.kid}`, title: cu(`${k}.t`), titleH: cuh(`${k}.t`), where: q.target, whereH: q.target ? cuh(`${k}.w`) : '', lbl: 'lbl.where', text, textH: cxh(`${k}.x`, I18N.uz[`${k}.x`], x => mark(esc(x)))}); }).join('');
+  return `<div class="s1">${g.prompts.some(q => hasBracket(q.text)) ? `<p class="s1-rule">${T('ex.rule')}</p>` : ''}<ol>${lis}</ol></div>`;
+}
 // Amaliyot / Kit / Vazifa share one pane: paragraphs, then file groups (title + note + rows); Amaliyot and Vazifa end with a tick
 function blockPane(n, p){
   const b = (PARTS[n] || {})[p] || {text: '', groups: []}, key = `c.p.${n}.${p}`;
   const text = b.text ? cu(`${key}.text`).split(/\n\s*\n/).map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`).join('') : '';
-  const groups = b.groups.map((g, i) => group(cuh(`${key}.g${i}`), g.files.map(f => fileRow(f)).join(''), '', g.note ? cuh(`${key}.g${i}.n`) : '')).join('');
+  const groups = b.groups.map((g, i) => group(cuh(`${key}.g${i}`), g.files.map(f => fileRow(f)).join(''), '', g.note ? cuh(`${key}.g${i}.n`) : '', g.prompts.length ? promptList(n, `${key}.g${i}`, g) : '')).join('');
   const end = p === 'am' ? endb('f:am' + n, S.has('f:am' + n), 'amf.on', 'amf.off', '', 'amf.aria') : p === 'vz' ? endb('f:v' + n, S.has('f:v' + n), 'vzf.on', 'vzf.off', '', 'vzf.aria') : '';
   return `<p class="p-label">${T('unit.' + p)}</p>${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${groups ? `<div class="ex-files">${groups}</div>` : ''}${end ? `<div class="gt-foot end">${end}</div>` : ''}`;
 }
@@ -1634,14 +1704,15 @@ function lessonPage(n, tab){
   const tabs = tabsDef.map((x, i) => `<button class="gt-tab" role="tab" type="button" id="dg-t${i}" aria-controls="dg-p${i}" aria-selected="${i === 0}" data-l="${esc(x.label)}"${i ? ' tabindex="-1"' : ''}>${x.lock ? `<span class="lkd">${I('lock', 12)}${esc(x.label)}</span>` : x.done ? `<span class="ok">${I('check', 12)}${esc(x.label)}<span class="sr-only">${T('common.sr_done')}</span></span>` : esc(x.label)}</button>`).join('');
   const panes = tabsDef.map((x, i) => `<div class="gt-pane" role="tabpanel" id="dg-p${i}" aria-labelledby="dg-t${i}"${i ? ' inert' : ''}>${x.lock ? lockedPane(x.lock) : pane[x.p]()}</div>`).join('');
   const title = ltitle(n);   // no hero CTA pill: each folder tab already carries its part's own action (user, 2026-10-17)
+  const tall = Object.values(PARTS[n] || {}).some(b => b.groups.some(g => g.prompts.length));   // prompt lists make a pane very long: the other panes must not keep that height
   const side = empty   // no materials yet: the lesson's own colour card says so, instead of an empty folder
     ? `<div class="folder flatc ${colCls(n)} soon-card"><span class="f-label">${esc(lessonDate(n))}</span><p class="soon-t">${T('lesson.soon')}</p></div>`
-    : `<div class="gt gt-${LCOL[n]} g-${LCOL[n]}" id="dg" style="--n:${tabsDef.length}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
+    : `<div class="gt gt-${LCOL[n]} g-${LCOL[n]}${tall ? ' gt-tall' : ''}" id="dg" style="--n:${tabsDef.length}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
       <div class="gt-tabs" role="tablist" aria-label="${esc(t('tab.list'))}">${tabs}</div><div class="gt-body">${panes}</div></div>`;
-  return {screen: 'dars', tab: Math.max(0, L.parts.indexOf(tab)), tag: `#/dars/${n} · ` + t('tag.lesson', {n, parts: L.parts.length}), title: t('title.lesson', {n, title}), html: nav('d') + `
+  return {screen: 'dars', tab: Math.max(0, L.parts.indexOf(tab)), tag: `#/dars/${n} · ` + t('tag.lesson', {n: num2(n), parts: L.parts.length}), title: t('title.lesson', {n: num2(n), title}), html: nav('d') + `
     <div class="hero"><div class="hero-l">
       ${dlh('#/dastur', T('nav.home'), tt ? T('lesson.meta', {n, date: lessonDate(n), d, t: tt, pl: tt}) : esc(lessonDate(n)))}
-      <h1 class="headline${title.split(' ').some(w => w.length >= 11) ? ' long' : ''}"><span class="ln">${T('lesson.n', {n})}</span><span class="ln">${esc(title)}</span></h1>
+      <h1 class="headline${title.split(' ').some(w => w.length >= 11) ? ' long' : ''}"><span class="ln">${T('lesson.n', {n: num2(n)})}</span><span class="ln">${esc(title)}</span></h1>
       <p class="lsub">${T(`lesson.${n}.sub`)}</p>
       <p class="lede">${T(`lesson.${n}.lede`)}</p>
     </div>
@@ -1654,7 +1725,7 @@ function slPage(n, i){
   const topic = t(`lesson.${n}.t${Math.min(L.topics - 1, Math.floor((i - 1) / N * L.topics))}`);
   const prev = i > 1 ? `#/dars/${n}/slayd/${i - 1}` : '', next = i < N ? `#/dars/${n}/slayd/${i + 1}` : '';
   const nums = Array.from({length: N}, (_, k) => `<a href="#/dars/${n}/slayd/${k + 1}"${k + 1 === i ? ' aria-current="true"' : ''}>${k + 1}</a>`).join('');
-  return {screen: 'slayd', tag: `#/dars/${n}/slayd/${i} · ` + t('tag.slide', {n: N}), title: t('sl.doc_title', {i, n: N, n_dars: t('lesson.n', {n})}), html: `
+  return {screen: 'slayd', tag: `#/dars/${n}/slayd/${i} · ` + t('tag.slide', {n: N}), title: t('sl.doc_title', {i, n: N, n_dars: t('lesson.n', {n: num2(n)})}), html: `
     <div class="slv"><div class="slv-bar"><a class="slv-x" href="#/dars/${n}">${I('back')}${T('sl.close')}</a><h1 class="slv-ct" tabindex="-1">${i} / ${N}</h1>
         <button class="slv-all" type="button" data-sheet="slides-sheet" aria-haspopup="dialog" aria-expanded="false" aria-controls="slides-sheet">${T('sl.all')}</button></div>
       <div class="slv-stage" data-sl="${i}" data-n="${n}" data-max="${N}">${slideStage(n, i)}</div>
@@ -1765,7 +1836,7 @@ function refreshCounts(){ document.querySelectorAll('[data-cnt]').forEach(el => 
 // the locked-lesson sheet (static markup in the page): its title and text depend on which lesson was tapped; applyStatic re-renders them with these parameters on a language switch
 function lockSheet(n){
   const sh = document.getElementById('lock-sheet'), ti = sh.querySelector('#ls-t'), de = sh.querySelector('.sheet-d');
-  ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n, date: lessonDate(n)}); de.dataset.i18n = 'lock.desc_n';
+  ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n: num2(n), date: lessonDate(n)}); de.dataset.i18n = 'lock.desc_n';
   applyStatic(sh); okina(sh); return sh;
 }
 const openLockSheet = n => lockSheet(n).showModal();
@@ -1821,7 +1892,7 @@ function fillMenu(){
   const s = SESS.student, $ = id => document.getElementById(id);
   $('nm-name').textContent = s.fullName; $('nm-id').textContent = s.id;
   $('nm-group').textContent = t('menu.group_' + (s.group || 'none'));
-  $('nm-course').textContent = LESSONS[1].d ? t('menu.course_range', {n: SESS.schedule.sessions, from: lessonDate(1), to: lessonDate(LN().at(-1))}) : t('menu.course_tba');
+  $('nm-course').textContent = LESSONS[1].d ? t('menu.course_range', {n: LN().length, pl: LN().length, from: lessonDate(1), to: lessonDate(LN().filter(n => LESSONS[n].d).at(-1))}) : t('menu.course_tba', {n: LN().length, pl: LN().length});
   okina($('nmenu'));
 }
 async function logout(){
@@ -1893,7 +1964,7 @@ function slideStage(n, i){
   if (i < LESSONS[n].slides) new Image().src = `${base}/slide/${i + 1}`;   // the next still is on its way before the tap
   const L = LESSONS[n], topic = t(`lesson.${n}.t${Math.min(L.topics - 1, Math.floor((i - 1) / L.slides * L.topics))}`);
   // loading: the placeholder layout (number and topic) stays under the image, which fades in on load; error: a message with a retry
-  return `<div class="slv-ph"><span class="slv-num">${num2(i)}</span><span class="slv-t">${T('sl.topic', {n, topic})}</span></div>
+  return `<div class="slv-ph"><span class="slv-num">${num2(i)}</span><span class="slv-t">${T('sl.topic', {n: num2(n), topic})}</span></div>
     <div class="slv-media" role="img" aria-label="${esc(t('sl.img', {i, topic}))}" data-src="${base}/slide/${i}"><img src="${base}/slide/${i}" alt="" draggable="false">${vid ? `<video src="${base}/clip/${i}?q=1080" muted playsinline autoplay loop disablepictureinpicture></video>` : ''}</div>
     <div class="slv-err" hidden role="alert"><span>${T('sl.error')}</span><button type="button" class="slv-retry">${T('sl.retry')}</button></div>`;
 }

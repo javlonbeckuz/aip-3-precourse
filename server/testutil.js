@@ -23,8 +23,8 @@ export function tmpCopy(t, dir = REAL_CONTENT, { fixtures = true } = {}) {
     sch.release = {};
     sch.liveOverride = null;
     // the gating tests run on these fixed dates (weekly, Saturday and Sunday groups), not the shipped ones
-    sch.groups = { shanba: ['2026-09-12', '2026-09-19', '2026-09-26', '2026-10-03', '2026-10-10', '2026-10-17'].map((x) => x + 'T10:00'),
-      yakshanba: ['2026-09-13', '2026-09-20', '2026-09-27', '2026-10-04', '2026-10-11', '2026-10-18'].map((x) => x + 'T10:00') };
+    sch.groups = { shanba: ['2026-09-12', '2026-09-19', '2026-09-26', '2026-10-03', '2026-10-10', '2026-10-17', '2026-10-24'].map((x) => x + 'T10:00'),
+      yakshanba: ['2026-09-13', '2026-09-20', '2026-09-27', '2026-10-04', '2026-10-11', '2026-10-18', '2026-10-25'].map((x) => x + 'T10:00') };
     fs.writeFileSync(sp, JSON.stringify(sch));
   }
   t.after(() => fs.rmSync(d, { recursive: true, force: true }));

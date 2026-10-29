@@ -1,21 +1,476 @@
 {
   "n": 2,
-  "title": "Claude Code",
-  "subtitle": "Harness, CLAUDE.md, Plan mode, PRD, Skill, Kit 2",
-  "summary": "Claude Codeʼni oʻz Kit 1 fayllaringizda oʻrganamiz: kompaniya papkasi, CLAUDE.md, reja va PRD. Kit 2: qaysi jarayondan boshlashni tanlaymiz.",
+  "title": "Kirish",
+  "subtitle": "AI nima, modellar, Context, RAG, NotebookLM",
+  "summary": "AI aslida nima ekanini, modellar qanday ishlashini va kontekst nega hamma narsani hal qilishini koʻramiz. Amaliyot: NotebookLM.",
   "topics": [
-    "Harness",
-    "Claude Code",
-    "Kompaniya papkasi",
-    "CLAUDE.md",
-    "Plan mode",
-    "PRD",
-    "Skill",
-    "Kit 2"
+    "AI nima",
+    "Modellar",
+    "Context",
+    "RAG",
+    "NotebookLM"
   ],
-  "slideCount": 0,
-  "slideKind": "image",
-  "amaliyot": null,
+  "slideCount": 78,
+  "slideKind": "video",
+  "amaliyot": {
+    "text": "Korxona bilimini ishga soling.\n\nHR, savdo, servis yoki ombor va marketing uchun amaliy natijalar.\n\nHar mashq uchun alohida notebook oching.\n\nFaqat oʻsha mashqning Manbaalar fayllarini yuklang.\n\nAvval Yoʻriqnomani oching, mashq nimadan iboratligi oʻsha yerda.",
+    "groups": [
+      {
+        "title": "Qoʻllanma",
+        "files": [
+          {
+            "slug": "qollanma",
+            "name": "Talaba_qollanmasi.pdf",
+            "size": 38284
+          },
+          {
+            "slug": "sinov",
+            "name": "Biznesimda_7_kunlik_sinov.pdf",
+            "size": 32438
+          }
+        ]
+      },
+      {
+        "title": "01 Yangi xodimga tayanch",
+        "note": "ASOSIY. Birinchi hafta rejasi, yodlash kartalari va bilimni tekshiruvchi test.",
+        "files": [
+          {
+            "slug": "01-hr-onboarding-yoriqnoma",
+            "name": "01_Yoriqnoma.pdf",
+            "size": 35017
+          },
+          {
+            "slug": "01-hr-onboarding-promptlar-pdf",
+            "name": "02_Promptlar.pdf",
+            "size": 37919
+          },
+          {
+            "slug": "01-hr-onboarding-m1",
+            "name": "Ichki mehnat tartibi qoidalari.pdf",
+            "size": 215646
+          },
+          {
+            "slug": "01-hr-onboarding-m2",
+            "name": "Onboarding qo'llanmasi.pdf",
+            "size": 198861
+          }
+        ],
+        "prompts": [
+          {
+            "id": "01P1",
+            "title": "Birinchi hafta rejasi",
+            "target": "Chat",
+            "text": "Sovuq Zanjir Servisga yangi savdo menejeri keldi. Tanlangan manbalar asosida uni dastlabki 5 ish kunida ishga oʻrgatish rejasini tuzing. Jadvalda har kunning mavzusi, amaliy vazifasi, masʼuli va xodim oʻrganganini qanday koʻrsatishini yozing. Har vazifaning manbasi va sahifasini koʻrsating. Birinchi kun, Bitrix24 va 1C, mahsulotlar, savdo, servis va hujjatlar bilan tanishuvni qamrang. Siz qoʻshgan tekshirish usullarini \"oʻquv taklifi\" deb belgilang. Hujjatda koʻrsatilmagan vakolat, muddat yoki natija talabini oʻzingizdan qoʻshmang. Qoʻllanma bilan rasmiy qoida zid boʻlsa, qatʼiy xulosa bermay xodimlar bilan ishlash boʻlimi aniqlashtirishi kerakligini yozing. Javob oʻzbek lotin yozuvida boʻlsin."
+          },
+          {
+            "id": "01P2",
+            "title": "Yodlash kartalari",
+            "target": "Studio → Flashcards → sozlash",
+            "text": "Yangi savdo menejeri uchun qisqa kartalar yarating. Mavzular: birinchi kun; birinchi hafta; kimga murojaat qilish; Bitrix24 va 1C vazifasi; parollarni saqlash; mijozga vaʼda berishdan oldin manbani tekshirish. Har kartada bitta savol va qisqa javob boʻlsin. Faqat aniq, manbada tasdiqlangan faktlar. Taʼtil, mehnat huquqi yoki hujjatlar oʻrtasida ziddiyatli qoida haqida karta tuzmang. Oʻzbek lotin yozuvida yozing."
+          },
+          {
+            "id": "01P3",
+            "title": "Vaziyatli test",
+            "target": "Studio → Quiz → sozlash",
+            "text": "Yangi savdo menejeri uchun vaziyatli test yarating. \"Mahsulot kodini qayerdan topaman?\", \"Servis boʻyicha kimga murojaat qilaman?\", \"Parolni hamkasbga bersam boʻladimi?\", \"Mijozga muddat aytishdan oldin nima qilaman?\" kabi ish vaziyatlarini qamrang. Har savolda bitta asosli javob boʻlsin. Javob izohi manbaga tayanishi kerak. Taʼtil va hujjatlar oʻrtasidagi ziddiyatlarni testga kiritmang. Oʻzbek lotin yozuvida yozing."
+          },
+          {
+            "id": "01P4",
+            "title": "Studio oʻrniga matn",
+            "target": "Chat (Studio ishlamasa)",
+            "text": "Tanlangan manbalardan yangi savdo menejeri uchun 5 ta savol-javob kartasi va 5 ta vaziyatli test tuzing. Testda 3 tadan variant boʻlsin. Toʻgʻri javoblar va manba izohlarini eng oxirida alohida \"Oʻqituvchi tekshiradi\" boʻlimiga joylang. Taʼtil va ziddiyatli qoidalarni ishlatmang. Oʻzbek lotin yozuvida yozing."
+          }
+        ]
+      },
+      {
+        "title": "02 Mahsulotdan suhbatga",
+        "note": "ASOSIY. Mijozga tushunarli qisqa taqdimot va uchta ehtiyojni aniqlash savoli.",
+        "files": [
+          {
+            "slug": "02-savdo-yoriqnoma",
+            "name": "01_Yoriqnoma.pdf",
+            "size": 34853
+          },
+          {
+            "slug": "02-savdo-promptlar-pdf",
+            "name": "02_Promptlar.pdf",
+            "size": 34376
+          },
+          {
+            "slug": "02-savdo-m1",
+            "name": "Mijoz keyslari (tasdiqlangan).pdf",
+            "size": 201858
+          },
+          {
+            "slug": "02-savdo-m2",
+            "name": "Narxlar_2026.csv",
+            "size": 2303
+          },
+          {
+            "slug": "02-savdo-m3",
+            "name": "Narxlar_izohi.pdf",
+            "size": 32724
+          },
+          {
+            "slug": "02-savdo-x1",
+            "name": "Narxlar ro'yxati.xlsx",
+            "size": 7536
+          }
+        ],
+        "prompts": [
+          {
+            "id": "02P1",
+            "title": "Taqdimot uchun dalillar",
+            "target": "Chat",
+            "text": "Kafe egasi uchun qisqa savdo taqdimotiga tayyorlanyapman. Bon Appetit keysining oʻzini va 01.06.2026 narxlar roʻyxatini ishlating. 1) Mijoz muammosi, yechim va natijani manbasi bilan ajrating. 2) SZ-650 va KP-6 uchun kod, nom, QQS bilan narx, narx sanasi va montaj shartini jadvalda bering. 3) Yangi mijozdan soʻraladigan 3 ta ehtiyoj savolini taklif qiling. Keysdagi natijani yangi mijozga vaʼda qilmang. Manbada yoʻq texnik afzallik, chegirma, ombor qoldigʻi yoki yetkazish muddatini oʻylab topmang. Fakt va savdo taklifini ajrating. Oʻzbek lotin yozuvida yozing."
+          },
+          {
+            "id": "02P2",
+            "title": "Qisqa savdo taqdimoti",
+            "target": "Studio → Slide Deck → sozlash",
+            "text": "Kafe egasi uchun taxminan 5 slaydlik qisqa savdo taqdimoti yarating. 1: kafe oshxonalaridagi turli uskunalar muammosi. 2: Bon Appetitda yagona oshxona standarti qanday joriy qilingan. 3: faqat shu keys natijasi - taom tayyorlash 18 daqiqadan 12 daqiqaga; haftasiga taxminan 10 soat tejalishi bosh oshpaz bahosi ekanini yozing. 4: 01.06.2026 roʻyxatidan SZ-650 va KP-6 narxlari, QQS bilan, montaj alohida; bu tayyor loyiha smetasi emas. 5: yangi mijozga 3 ta ehtiyoj savoli va joyni koʻrib chiqishni kelishish taklifi. Har slaydda bitta asosiy fikr. Kam matn, sodda chiziqli ikonka, qora fon, och matn. Yangi mijozga shu natijani kafolatlamang. Har muhim fakt yonida manba nomi/sahifasi yoki mahsulot kodini koʻrsating. \"Oʻquv qoralamasi\" belgisi boʻlsin. Oʻzbek lotin yozuvida yozing."
+          }
+        ]
+      },
+      {
+        "title": "03A Operator nima qiladi?",
+        "note": "03B BILAN BIRIDAN BIRI. Operator uchun murojaat qabul qilish yoʻriqnomasi va koʻp soʻraladigan savollarga javoblar.",
+        "files": [
+          {
+            "slug": "03a-servis-yoriqnoma",
+            "name": "01_Yoriqnoma.pdf",
+            "size": 34989
+          },
+          {
+            "slug": "03a-servis-promptlar-pdf",
+            "name": "02_Promptlar.pdf",
+            "size": 34391
+          },
+          {
+            "slug": "03a-servis-m1",
+            "name": "Servis reglamenti.pdf",
+            "size": 193718
+          },
+          {
+            "slug": "03a-servis-m2",
+            "name": "Texnik qo'llanma SZ-400.pdf",
+            "size": 339236
+          }
+        ],
+        "prompts": [
+          {
+            "id": "03AP1",
+            "title": "Murojaatni qabul qilish",
+            "target": "Chat",
+            "text": "Oʻquv vaziyati: Samarqanddagi mijoz SZ-400 ekranida E07 chiqqanini aytdi. Men servis operatoriman, texnik emasman. Tanlangan manbalardan operator soʻrashi kerak boʻlgan maʼlumotlar, qayd qilish joyi, servisga topshirish va mijozga aytiladigan muddatni toping. Muddat qachondan hisoblanishini aniq yozing. Toʻlov/kafolat holati nomaʼlum boʻlsa, uni tekshiriladigan savol sifatida qoldiring. Har qoidaga manba va sahifa/band bering. Texnik qoʻllanmada mutaxassis uchun yozilgan taʼmirlashni mijozga tavsiya qilmang. Sovutish gazi (R290) bilan ishlash yoki elektr qismlarini ochish va tuzatish boʻyicha yoʻl-yoʻriq bermang. Operator javobini oʻzbek lotin yozuvida tuzing."
+          },
+          {
+            "id": "03AP2",
+            "title": "Operator yoʻriqnomasi",
+            "target": "Studio → Reports → Create your own",
+            "text": "SZSning yangi servis operatori uchun bir sahifalik ish yoʻriqnomasi tayyorlang. Boʻlimlar: 1) mijozdan olinadigan maʼlumotlar; 2) murojaatni qayd qilish; 3) servisga topshirish; 4) mijozga muddatni tushuntirish; 5) javobi manbada yoʻq boʻlsa nima qilish. Oxirida muddat, diagnostika, ehtiyot qism va kafolat boʻyicha 4 ta savol va ularga qisqa javob boʻlsin. Barcha javoblar tanlangan manbalarga tayansin, manba/sahifa koʻrsatilsin. Kafolatdan keyingi diagnostika bilan barcha taʼmirni bir narx deb aytmang. Bu operator materiali: sovutgichning elektr yoki sovutish tizimini ochish va taʼmirlash boʻyicha koʻrsatma bermang. Manbada yoʻq vaʼda qoʻshmang. Oʻzbek lotin yozuvida yozing."
+          }
+        ]
+      },
+      {
+        "title": "03B Buyurtma yoʻlini koʻring",
+        "note": "03A BILAN BIRIDAN BIRI. Mind Map orqali mavzular xaritasi va joʻnatishdan oldingi tekshiruv roʻyxati.",
+        "files": [
+          {
+            "slug": "03b-ombor-yoriqnoma",
+            "name": "01_Yoriqnoma.pdf",
+            "size": 35239
+          },
+          {
+            "slug": "03b-ombor-promptlar-pdf",
+            "name": "02_Promptlar.pdf",
+            "size": 34793
+          },
+          {
+            "slug": "03b-ombor-m1",
+            "name": "Reglament.pdf",
+            "size": 202941
+          }
+        ],
+        "prompts": [
+          {
+            "id": "03BP1",
+            "title": "Kimdan kimga?",
+            "target": "Chat",
+            "text": "Faqat Reglament.pdf asosida oddiy buyurtmaning savdodan ombor, logistika va qabul qilishgacha boʻlgan yoʻlini tushuntiring. Jadvalda har bosqichni, masʼulini, ish boshlash uchun kerakli maʼlumotni va keyingi boʻlimga nima topshirilishini koʻrsating. Har bosqichning manba bandini yozing. 1Cda hozir sotish mumkin boʻlgan tovar bilan boshqa buyurtma uchun band qilingan tovarni farqlang. Imzolangan shartnomadagi maxsus shartlar boʻyicha istisnoni alohida yozing. Hujjatda masʼul koʻrsatilmagan boʻlsa \"aniqlashtirish kerak\" deb yozing. Toʻlov kuni hisoblanishi boʻyicha bandlar farqlansa, aniq sana chiqarmang, aniqlashtirish uchun ajrating. Oʻzbek lotin yozuvida yozing."
+          },
+          {
+            "id": "03BP2",
+            "title": "Joʻnatishdan oldingi cheklist",
+            "target": "Chat yoki Studio → Reports",
+            "text": "Reglament.pdf asosida savdo va ombor xodimi uchun ixcham cheklist tuzing. Kamida quyidagilarni tekshirsin: mahsulot kodi, soni, manzil, aloqa shaxsi va telefon, montaj zarurati, toʻlov sharti/tasdigʻi, 1Cda sotish mumkin boʻlgan va boshqa buyurtmaga band qilingan tovarlar, mijozga kelishilgan yetkazish sharti. Jadvalda nima tekshirilishi, masʼul, tekshiriladigan hujjat va manba bandini yozing. Har qatorga bajarilganini belgilash uchun joy qoldiring. Manbada mavjud boʻlmagan yangi nazoratni qoʻshsangiz \"taklif\" deb belgilang. Kamchilik boʻlsa kimga aniqlashtirish yuborilishini koʻrsating; manbada belgilanmagan buyruq yoki taqiq yaratmang. Bu oʻquv andozasi, haqiqiy buyurtma yoki tizimdagi vazifa emas. Oʻzbek lotin yozuvida yozing."
+          }
+        ]
+      },
+      {
+        "title": "04 Bitta keys, bir necha format",
+        "note": "ASOSIY. Mijoz keysidan bitta infografika; video yoki audio imkoniyatini koʻrish.",
+        "files": [
+          {
+            "slug": "04-marketing-yoriqnoma",
+            "name": "01_Yoriqnoma.pdf",
+            "size": 35478
+          },
+          {
+            "slug": "04-marketing-promptlar-pdf",
+            "name": "02_Promptlar.pdf",
+            "size": 38848
+          },
+          {
+            "slug": "04-marketing-m1",
+            "name": "Mijoz keyslari (tasdiqlangan).pdf",
+            "size": 201858
+          }
+        ],
+        "prompts": [
+          {
+            "id": "04P1",
+            "title": "Kontent uchun faktlar kartasi",
+            "target": "Chat",
+            "text": "Faqat Mijoz keyslari hujjatining Bon Appetit boʻlimidan foydalaning. Kontentga kerakli maʼlumotlarni qisqa yozing: muammo nima edi, nima oʻzgardi, nechta kafe qatnashdi va natija qanday boʻldi? Oʻlchangan natija bilan taxminiy bahoni ajrating, bahoni kim berganini va manba sahifasini koʻrsating. Boshqa mijozlarning raqamlarini qoʻshmang. Hujjatda koʻrsatilmagan daromad, foyda yoki foizni oʻzingizdan hisoblab qoʻshmang. Oxirida mijozga vaʼda qilib boʻlmaydigan bitta umumlashtirishni koʻrsating. Oʻzbek lotin yozuvida yozing."
+          },
+          {
+            "id": "04P2",
+            "title": "Infografika",
+            "target": "Studio → Infographic → sozlash",
+            "text": "Bon Appetit keysidan kafe biznesi egalari uchun bitta vertikal infografika yarating. Tuzilishi: MUAMMO → YECHIM → NATIJA. 6 kafeda turli uskunalardan yagona oshxona standartiga oʻtish koʻrinsin. Asosiy koʻrsatkich: tushlikda taom tayyorlash 18 daqiqadan 12 daqiqaga tushgan. Qoʻshimcha izoh: haftasiga taxminan 10 soat tejalishi bosh oshpaz hisobiga asoslangan. Bu faqat shu keys natijasi, boshqa mijozga kafolat emas. Boshqa keys raqamlari va yangi statistika qoʻshilmang. Qora fon, och matn, ingichka chiziqli ikonka, kam matn, yirik raqamlar. \"Oʻquv namunasi\" va \"Manba: Mijoz keyslari, 3-sahifa\" koʻrinsin. Oʻzbek lotin yozuvida yozing."
+          },
+          {
+            "id": "04P3",
+            "title": "Qisqa video",
+            "target": "Studio → Video Overview → sozlash / qoʻshimcha",
+            "text": "Faqat Bon Appetit haqidagi manba asosida kafe egalari uchun rus tilida qisqa video yarating. Turli oshxona uskunalari qanday muammo tugʻdirganini, 6 kafeda yagona tartib joriy qilinganini va taom tayyorlash vaqti 18 daqiqadan 12 daqiqaga tushganini tushuntiring. Haftasiga taxminan 10 soat tejalishi bosh oshpaz bahosi ekanini ayting. Boshqa mijozlarning natijalarini qoʻshmang va yangi mijozga shu natijani vaʼda qilmang. Sodda chiziqli rasmlardan foydalaning. Bu oʻquv uchun tuzilgan misol ekanini belgilang. Oxirida kafe egasiga \"Oshxonangizda avval qaysi ishga ketayotgan vaqtni oʻlchaysiz?\" degan savolni bering."
+          },
+          {
+            "id": "04P4",
+            "title": "Oʻzbekcha video ssenariysi",
+            "target": "Chat / video uchun zaxira",
+            "text": "Faqat Bon Appetit keysi asosida kafe biznesi egasi uchun 60-90 soniyalik oʻzbekcha video ssenariysi yozing. Har kadrda nima koʻrinishi, ekranga qanday qisqa matn yozilishi va ovozda nima aytilishini jadvalda koʻrsating. Tuzilishi: muammo, 6 kafeda yagona oshxona standarti, natija, yakuniy savol. Taom tayyorlash 18 daqiqadan 12 daqiqaga tushgani va haftasiga taxminan 10 soat tejalishi bosh oshpaz bahosi ekanini aniq ajrating. Boshqa keys raqamlarini qoʻshmang, yangi mijozga aynan shu foydani kafolatlamang. Oʻquv namunasi deb belgilang. Oxirida tekshirish uchun manba sahifasini yozing. Oʻzbek lotin yozuvida, ovoz chiqarib oʻqishga tabiiy gaplar bilan yozing."
+          }
+        ]
+      },
+      {
+        "title": "05 Takliflarni bir jadvalga",
+        "note": "QOʻSHIMCHA. Xarid boʻlimi uchun tekshiriladigan qisqa roʻyxat va taʼminotchiga savollar.",
+        "files": [
+          {
+            "slug": "05-xarid-qoshimcha-yoriqnoma",
+            "name": "01_Yoriqnoma.pdf",
+            "size": 34815
+          },
+          {
+            "slug": "05-xarid-qoshimcha-promptlar-pdf",
+            "name": "02_Promptlar.pdf",
+            "size": 34220
+          },
+          {
+            "slug": "05-xarid-qoshimcha-m1",
+            "name": "Katalog_izohi.pdf",
+            "size": 32907
+          },
+          {
+            "slug": "05-xarid-qoshimcha-m2",
+            "name": "Telefon_takliflari.csv",
+            "size": 1661
+          }
+        ],
+        "prompts": [
+          {
+            "id": "05P1",
+            "title": "Xaridning qisqa roʻyxati",
+            "target": "Studio → Data Table → sozlash",
+            "text": "Korxonamiz uchun bitta ish telefoni tanlayapmiz. Berilgan katalogdan yangi, sotuvda mavjud va kamida 12 oy kafolati bor telefonlarni toping. Narxi 7 million soʻmdan oshmasin. Mos takliflarni eng arzonidan boshlab jadvalda koʻrsating. Jadvalga taklif raqami, brendi, telefon nomi va modeli, xotira hajmi, holati, kafolat muddati, soʻmdagi narxi, qaysi doʻkonda sotilishi, shahar, eʼlon sanasi va yetkazish shartini kiriting. Bir telefon turli sotuvchilarda boʻlsa, har bir taklifni alohida qatorda qoldiring. Faqat talablarimizga mos telefonlarni kiriting. Maʼlumot yetishmasa, \"berilmagan\" deb yozing. Jadval sarlavhalari va izohlarini oʻzbekcha yozing. Bu katalog oʻquv uchun tuzilganini, narxlar haqiqiy savdo taklifi emasligini qayd eting."
+          },
+          {
+            "id": "05P2",
+            "title": "Taʼminotchiga savollar",
+            "target": "Chat",
+            "text": "Telefonni xarid qilishdan oldin sotuvchidan aniqlashtirishimiz kerak boʻlgan 5 savolni yozing. Savollar telefon modeli va xotirasi, yakuniy narx va xarid hujjati, kafolat shartlari, sotuvda borligi hamda yetkazish haqida boʻlsin. Katalogda javobi bor savolni va javobi yetishmayotgan savolni ajrating. \"Sotuvda bor\" belgisi nechta telefon qolganini bildirmasligini hisobga oling. Bu oʻquv katalogi, undagi maʼlumotni haqiqiy sotuvchi tasdigʻi deb olmang. Faqat savollar matnini oʻzbekcha tayyorlang, hech kimga yubormang."
+          }
+        ]
+      },
+      {
+        "title": "06 Rahbar yoʻlda ham tushunsin",
+        "note": "NAMOYISH YOKI UYGA VAZIFA. Bir mavzudagi qisqa audio xulosa va rahbar aniqlashtiradigan savollar.",
+        "files": [
+          {
+            "slug": "06-rahbar-audio-qoshimcha-yoriqnoma",
+            "name": "01_Yoriqnoma.pdf",
+            "size": 34673
+          },
+          {
+            "slug": "06-rahbar-audio-qoshimcha-promptlar-pdf",
+            "name": "02_Promptlar.pdf",
+            "size": 34023
+          },
+          {
+            "slug": "06-rahbar-audio-qoshimcha-m1",
+            "name": "Kengayish rejasi, Samarqand filiali.pdf",
+            "size": 225085
+          }
+        ],
+        "prompts": [
+          {
+            "id": "06P1",
+            "title": "Rahbar uchun yozma xulosa",
+            "target": "Chat",
+            "text": "Samarqand filiali kengayish rejasi asosida rahbar uchun 150 soʻzgacha qisqa xulosa yozing. Rejaning maqsadini, hozirgi holatni, rejalashtirilgan ishlarni va ochiq qolgan masalalarni tushuntiring. Oxirida uchrashuvda aniqlashtirish kerak boʻlgan 3 savolni yozing. Kelajak rejasini bajarilgan ish deb yozmang. Har asosiy daʼvoga manba sahifasi/bandi bering. Oʻzbek lotin yozuvida yozing."
+          },
+          {
+            "id": "06P2",
+            "title": "Qisqa audio xulosa",
+            "target": "Studio → Audio Overview → Brief / ruscha audio",
+            "text": "Samarqand filiali kengayish rejasi asosida korxona rahbari uchun rus tilida qisqa audio xulosa yarating. Rejaning maqsadi, hujjatda tasdiqlangan holat, hali rejalashtirilayotgan ishlar va qaror oldidan ochiq qolgan savollarni tushuntiring. Kelajakdagi taxminlarni erishilgan natija deb aytmang. Hujjatda koʻrsatilmagan tasdiqni oʻzingizdan qoʻshmang. Oxirida rahbar uchrashuvda berishi kerak boʻlgan 3 savolni ayting. Bu oʻquv uchun tuzilgan misol ekanini belgilang."
+          }
+        ]
+      }
+    ]
+  },
   "kit": null,
-  "vazifa": null
+  "vazifa": {
+    "text": "Har bir promptni nusxalab, NotebookLMʼga qoʻying. Tartib bilan yuring: har biri oldingisining javobiga tayanadi.\n\nFaqat Manbaalar papkasidagi 7 faylni NotebookLM manbaasi sifatida yuklang.\n\nBu promptlarni manbaa sifatida yuklamang, ular savol, manbaa emas.\n\nHar promptdan oldin faqat kerakli manbalarni belgilang, qolganlarining belgisini olib tashlang (oʻchirmang).\n\nBarcha kompaniya maʼlumotlari toʻqima, mashq uchun yozilgan. Oʻquv sanasi: 12.09.2026.",
+    "groups": [
+      {
+        "title": "Manbalar",
+        "note": "Yetti fayl, toʻqima kompaniyaning hujjatlari. Shularni NotebookLMʼga manba sifatida yuklang, boshqa hech narsani emas. Fayl nomlarini oʻzgartirmang, promptlar ularga nom bilan murojaat qiladi.",
+        "files": [
+          {
+            "slug": "hw-kompaniya",
+            "name": "01_Kompaniya.pdf",
+            "size": 21620
+          },
+          {
+            "slug": "hw-narxlar",
+            "name": "02_Amaldagi_narxlar.csv",
+            "size": 1222
+          },
+          {
+            "slug": "hw-yetkazish",
+            "name": "03_Yetkazish_qoidalari.pdf",
+            "size": 21493
+          },
+          {
+            "slug": "hw-reklama",
+            "name": "04_Reklama_qoralamasi.pdf",
+            "size": 21270
+          },
+          {
+            "slug": "hw-eski-narxlar",
+            "name": "05_Eski_narxlar.csv",
+            "size": 934
+          },
+          {
+            "slug": "hw-buyurtmalar",
+            "name": "06_Buyurtmalar.csv",
+            "size": 3329
+          },
+          {
+            "slug": "hw-yigilish",
+            "name": "07_Yigilish_qaydi.txt",
+            "size": 1652
+          },
+          {
+            "slug": "hw-manbaalar",
+            "name": "Manbaalar.zip",
+            "size": 60748
+          }
+        ]
+      },
+      {
+        "title": "Talaba qoʻllanmasi",
+        "note": "Vazifaning yozma qoʻllanmasi: mashq tartibi va nimaga eʼtibor berish kerakligi.",
+        "files": [
+          {
+            "slug": "hw-qollanma",
+            "name": "Talaba_qollanmasi.pdf",
+            "size": 26309
+          }
+        ]
+      },
+      {
+        "title": "Asosiy mashq",
+        "note": "Sakkizta prompt, birma-bir.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "P1",
+            "title": "Bitta manbali javob",
+            "text": "Faqat 03_Yetkazish_qoidalari manbasidan foydalaning. Omborda bor mahsulotni Toshkent viloyatiga standart yetkazish muddati qancha? Javobni bir jumlada, tegishli band iqtibosi bilan bering."
+          },
+          {
+            "id": "P2",
+            "title": "Narxni tekshirish",
+            "text": "02_Amaldagi_narxlar.csv jadvalidagi K1 qatorini 04_Reklama_qoralamasi hujjatidagi narx bilan solishtiring. Jadval ustunlari: reklamadagi daʼvo, amaldagi qoida, ikkala manbadan iqtibos, tuzatish. CSVdagi mahsulot_kodi, holat va amal_boshlanishi ustunlarini hamda reklamaning tasdiq holatini hisobga oling."
+          },
+          {
+            "id": "P3",
+            "title": "Vaʼda va jarayon",
+            "text": "03_Yetkazish_qoidalari va 04_Reklama_qoralamasi hujjatlarini solishtiring. \"Barcha buyurtmalar 24 soatda\" vaʼdasi qaysi shartlarga mos kelmaydi? Har ikki manbadan iqtibos keltiring. Haqiqiy zidlikni ruxsat etilgan istisnodan ajrating."
+          },
+          {
+            "id": "P4",
+            "title": "Istisnoni tekshirish",
+            "text": "03_Yetkazish_qoidalari va 06_Buyurtmalar manbalarini tanlang. RU-001 buyurtmasi 18 soatda yetkazilgan. Bu standart muddatga zidmi yoki ruxsat etilgan tezkor xizmatmi? Hudud, ombordagi mavjudlik, tasdiq vaqti va rahbar tasdigʻini tekshiring. Yetishmagan dalil boʻlsa ayting."
+          },
+          {
+            "id": "P5",
+            "title": "Yetishmagan maʼlumot",
+            "text": "Faqat 07_Yigilish_qaydi manbasiga tayangan holda, qoʻshimcha kuryer bitta yetkazish uchun qancha olishini aniqlang. Maʼlumot yoʻq boʻlsa summani taxmin qilmang. Kimdan qanday hujjat olish kerakligini yozing."
+          },
+          {
+            "id": "P6",
+            "title": "Qaror sinovi",
+            "text": "Oʻquv vaziyatida bugun 12.09.2026. 14-sentyabrda \"barcha buyurtmalarni 24 soatda yetkazamiz\" kampaniyasini boshlash taklifini baholang. Jadval: qoʻllovchi dalil, qarshi dalil, nomaʼlum jihat, manba. Dalil boʻlmasa eʼtiroz ham, maqtov ham toʻqimang. Yakunda mavjud holat, shartlarni oʻzgartirish yoki kutish variantini asoslang."
+          },
+          {
+            "id": "P7",
+            "title": "Rahbar uchun bir sahifa",
+            "text": "Ravon Uy rahbari uchun 300 soʻzgacha qaror brifi tayyorlang. Tuzilma: qaror savoli; tavsiya; 3 ta manbali topilma; hal qilinmagan savol; masʼul, muddat va tekshirish mezoni koʻrsatilgan keyingi harakatlar. Fakt, taklif va taxminni ajrating. Faqat tanlangan asl hujjatlardan foydalaning."
+          },
+          {
+            "id": "P8",
+            "title": "Mijoz uchun FAQ",
+            "text": "Faqat 02_Amaldagi_narxlar.csv jadvali va 03_Yetkazish_qoidalari hujjatidan foydalaning. Mijozlar uchun 5 ta qisqa savol-javob yozing: K1 narxi, shahar muddati, viloyat muddati, 24 soat xizmatining barcha shartlari, yetkazish toʻlovi. Tekshirish uchun har javobga manba iqtibosini qoʻshing. Mijozga tayyor nusxada ichki xodim ismini keltirmang."
+          }
+        ]
+      },
+      {
+        "title": "Qoʻshimcha",
+        "note": "Vaqt qolsa yoki uyda ishlash uchun.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "Q1",
+            "title": "Yashirin taxmin",
+            "text": "07_Yigilish_qaydi hujjatidagi kuniga 30 ta buyurtma taxminini tekshiring. Qaysi dalil bor, qaysi dalil yetishmaydi? Taxmin notoʻgʻri boʻlsa qanday oqibat bor? Uni tekshirish usulini taklif qiling. Asossiz ehtimol yoki foiz yozmang."
+          },
+          {
+            "id": "Q2",
+            "title": "Vaqt va vakolat",
+            "text": "02_Amaldagi_narxlar.csv, 04_Reklama_qoralamasi va 05_Eski_narxlar.csv boʻyicha K1 narxi tarixini tuzing. Yozilgan sana, amal qilish davri, tasdiq holati va oʻrnini bosgan hujjatni koʻrsating. Bugungi narxni eng yangi fayl sanasiga qarab tanlamang."
+          },
+          {
+            "id": "Q3",
+            "title": "Mijoz nigohi",
+            "text": "04_Reklama_qoralamasi va 03_Yetkazish_qoidalari asosida mijoz notoʻgʻri tushunishi mumkin boʻlgan jumlalarni toping. Har biriga iqtibos va aniqroq matn taklif qiling. Matnda isbotlanmagan aldov niyatini taxmin qilmang."
+          },
+          {
+            "id": "Q4",
+            "title": "Kelishmovchilik sababi",
+            "text": "04_Reklama_qoralamasi va 07_Yigilish_qaydi boʻyicha marketing va operatsiya qarashlari nima uchun farq qilishini tahlil qiling. Dalil, davr, maqsad va taxminni ajrating. Har sababga manba yoki \"tasdiqlanmagan\" belgisi qoʻying."
+          },
+          {
+            "id": "Q5",
+            "title": "Muvozanatli tanqid",
+            "text": "Keyingi xulosamni manbalar asosida tekshiring: qoʻllovchi dalil, qarshi dalil, noaniqlik va qayta koʻrish sharti. Xulosaga faqat dalil boʻlsa eʼtiroz bildiring. Manbada yoʻq dalilni toʻqimang."
+          }
+        ]
+      }
+    ]
+  }
 }

@@ -1,16 +1,16 @@
 {
   "n": 3,
-  "title": "API and MCP",
-  "subtitle": "APIs, keys, MCP, frontend and backend, system prompt, Kit 3",
-  "summary": "We split the chosen process into steps and write the agent's instructions. Then we connect the first version of the agent to real systems. Kit 3: redistributing the work.",
+  "title": "Claude Code",
+  "subtitle": "Harness, CLAUDE.md, Plan mode, PRD, Skills, Kit 2",
+  "summary": "You learn Claude Code on your own Kit 1 files: the company folder, CLAUDE.md, a plan and a PRD. Kit 2: pick the process to start with.",
   "topics": [
-    "API",
-    "API keys and .env",
-    "MCP and connectors",
-    "Frontend and backend",
-    "Open source",
-    "System prompt",
-    "Agent v0",
-    "Kit 3"
+    "Harness",
+    "Claude Code",
+    "Company folder",
+    "CLAUDE.md",
+    "Plan mode",
+    "PRD",
+    "Skills",
+    "Kit 2"
   ]
 }

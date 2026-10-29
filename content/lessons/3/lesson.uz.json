@@ -1,17 +1,17 @@
 {
   "n": 3,
-  "title": "API va MCP",
-  "subtitle": "API, kalitlar, MCP, frontend va backend, system prompt, Kit 3",
-  "summary": "Tanlangan jarayonni qadamlarga ajratamiz va agent yoʻriqnomasini yozamiz. Keyin agentning birinchi versiyasini haqiqiy tizimlarga ulaymiz. Kit 3: ishni qayta taqsimlash.",
+  "title": "Claude Code",
+  "subtitle": "Harness, CLAUDE.md, Plan mode, PRD, Skill, Kit 2",
+  "summary": "Claude Codeʼni oʻz Kit 1 fayllaringizda oʻrganamiz: kompaniya papkasi, CLAUDE.md, reja va PRD. Kit 2: qaysi jarayondan boshlashni tanlaymiz.",
   "topics": [
-    "API",
-    "API kaliti va .env",
-    "MCP va connector",
-    "Frontend va backend",
-    "Open source",
-    "System prompt",
-    "Agent v0",
-    "Kit 3"
+    "Harness",
+    "Claude Code",
+    "Kompaniya papkasi",
+    "CLAUDE.md",
+    "Plan mode",
+    "PRD",
+    "Skill",
+    "Kit 2"
   ],
   "slideCount": 0,
   "slideKind": "image",

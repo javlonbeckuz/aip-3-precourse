@@ -1,17 +1,17 @@
 {
   "n": 4,
-  "title": "Ishga tushirish",
-  "subtitle": "VPS, domen, DNS, Git, pilot rejasi, Kit 5 A, Kit 4",
-  "summary": "Agentni noutbukdan 24/7 ishlaydigan serverga koʻchiramiz. Pilot rejasini yozamiz va xodimlar bilan suhbatga tayyorlanamiz. Kit 5 A va Kit 4.",
+  "title": "API va MCP",
+  "subtitle": "API, kalitlar, MCP, frontend va backend, system prompt, Kit 3",
+  "summary": "Tanlangan jarayonni qadamlarga ajratamiz va agent yoʻriqnomasini yozamiz. Keyin agentning birinchi versiyasini haqiqiy tizimlarga ulaymiz. Kit 3: ishni qayta taqsimlash.",
   "topics": [
-    "Lokal va server",
-    "VPS",
-    "Domen va DNS",
-    "Git va GitHub",
-    "Pilot",
-    "Muvaffaqiyat va toʻxtash sharti",
-    "Kit 5 A",
-    "Kit 4"
+    "API",
+    "API kaliti va .env",
+    "MCP va connector",
+    "Frontend va backend",
+    "Open source",
+    "System prompt",
+    "Agent v0",
+    "Kit 3"
   ],
   "slideCount": 0,
   "slideKind": "image",

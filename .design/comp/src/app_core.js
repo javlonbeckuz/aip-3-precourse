@@ -25,7 +25,7 @@ function fillMenu(){
   const s = SESS.student, $ = id => document.getElementById(id);
   $('nm-name').textContent = s.fullName; $('nm-id').textContent = s.id;
   $('nm-group').textContent = t('menu.group_' + (s.group || 'none'));
-  $('nm-course').textContent = LESSONS[1].d ? t('menu.course_range', {n: SESS.schedule.sessions, from: lessonDate(1), to: lessonDate(LN().at(-1))}) : t('menu.course_tba');
+  $('nm-course').textContent = LESSONS[1].d ? t('menu.course_range', {n: LN().length, pl: LN().length, from: lessonDate(1), to: lessonDate(LN().filter(n => LESSONS[n].d).at(-1))}) : t('menu.course_tba', {n: LN().length, pl: LN().length});
   okina($('nmenu'));
 }
 async function logout(){
@@ -97,7 +97,7 @@ function slideStage(n, i){
   if (i < LESSONS[n].slides) new Image().src = `${base}/slide/${i + 1}`;   // the next still is on its way before the tap
   const L = LESSONS[n], topic = t(`lesson.${n}.t${Math.min(L.topics - 1, Math.floor((i - 1) / L.slides * L.topics))}`);
   // loading: the placeholder layout (number and topic) stays under the image, which fades in on load; error: a message with a retry
-  return `<div class="slv-ph"><span class="slv-num">${num2(i)}</span><span class="slv-t">${T('sl.topic', {n, topic})}</span></div>
+  return `<div class="slv-ph"><span class="slv-num">${num2(i)}</span><span class="slv-t">${T('sl.topic', {n: num2(n), topic})}</span></div>
     <div class="slv-media" role="img" aria-label="${esc(t('sl.img', {i, topic}))}" data-src="${base}/slide/${i}"><img src="${base}/slide/${i}" alt="" draggable="false">${vid ? `<video src="${base}/clip/${i}?q=1080" muted playsinline autoplay loop disablepictureinpicture></video>` : ''}</div>
     <div class="slv-err" hidden role="alert"><span>${T('sl.error')}</span><button type="button" class="slv-retry">${T('sl.retry')}</button></div>`;
 }

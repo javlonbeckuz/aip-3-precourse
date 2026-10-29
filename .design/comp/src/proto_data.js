@@ -6,14 +6,15 @@
 let FILES = {};                                             // slug -> {name,size,ph,url}  (every file row opens #/fayl/{slug}, or downloads from `url` in the app)
 const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const F = (name, size, ph, slugOverride, url) => { const sl = slugOverride || slugify(name); return FILES[sl] = {slug: sl, name, size: size || '', ph: !!ph || !size, url: url || ''}; };
-let LESSONS = {   // d = [day, month] (the shanba group: 21, 28 Nov, 5, 12, 19, 26 Dec); parts: sl slides, am amaliyot, kt kit, vz vazifa (only the parts a lesson really has)
+let LESSONS = {   // d = [day, month] (the shanba group), null = the date is not decided yet (02 Kirish); parts: sl slides, am amaliyot, kt kit, vz vazifa (only the parts a lesson really has)
   0: {d: [21, 11]},
   1: {d: [21, 11], slides: 12, kind: 'image', parts: ['sl', 'am', 'kt', 'vz'], topics: 9},
-  2: {d: [28, 11], slides: 0, parts: [], topics: 8},
-  3: {d: [5, 12], slides: 0, parts: [], topics: 8},
-  4: {d: [12, 12], slides: 0, parts: [], topics: 8},
-  5: {d: [19, 12], slides: 0, parts: [], topics: 7},
-  6: {d: [26, 12], slides: 0, parts: [], topics: 7},
+  2: {d: null, slides: 12, kind: 'image', parts: ['sl', 'am', 'vz'], topics: 5},
+  3: {d: [28, 11], slides: 0, parts: [], topics: 8},
+  4: {d: [5, 12], slides: 0, parts: [], topics: 8},
+  5: {d: [12, 12], slides: 0, parts: [], topics: 8},
+  6: {d: [19, 12], slides: 0, parts: [], topics: 7},
+  7: {d: [26, 12], slides: 0, parts: [], topics: 7},
 };
 
 // ---- lesson 0: prep checklist (4 items: step counts and links only; the words come from the dictionary or the API)
@@ -31,20 +32,35 @@ let PREP = {
     groups: [{title: 'Kit 1', files: [{slug: 'kit1-forma', name: 'kit1-forma.md', size: 'MD · 3,2 KB', ph: true}, {slug: 'kit1-skill', name: 'kit1-skill.zip', size: 'ZIP · 18,4 KB', ph: true}]}]},
   vz: {text: 'Namuna matn. Uyda bajariladi: oʻz kompaniyangiz uchun bitta vazifani tanlang va yuqoridagi fayllar bilan ishlang.\n\nYuborish shart emas.',
     groups: [{title: 'Uy vazifasi fayllari', note: 'Avval qoʻllanmani oʻqing.', files: [{slug: 'hw-kompaniya', name: 'hw-kompaniya.pdf', size: 'PDF · 96,0 KB', ph: true}, {slug: 'hw-narxlar', name: 'hw-narxlar.csv', size: 'CSV · 12,0 KB', ph: true}]}]},
-}}}; /*C20:end*/
+},
+  2: {
+    am: {text: 'Namuna matn. Korxona bilimini ishga soling: har mashq uchun alohida notebook oching va faqat oʻsha mashqning fayllarini yuklang.',
+      groups: [{title: 'Qoʻllanma', files: [{slug: 'qollanma', name: 'Talaba_qollanmasi.pdf', size: 'PDF · 37,4 KB', ph: true}]},
+        {title: '01 Yangi xodimga tayanch', note: 'ASOSIY. Namuna matn.', files: [{slug: '01-yoriqnoma', name: '01_Yoriqnoma.pdf', size: 'PDF · 34,2 KB', ph: true}],
+          prompts: [{id: '01P1', title: 'Birinchi hafta rejasi', target: 'Chat', text: 'Namuna matn. [Lavozim] uchun dastlabki 5 ish kuni rejasini tuzing. Har vazifaning manbasini koʻrsating.'},
+            {id: '01P2', title: 'Yodlash kartalari', target: 'Studio → Flashcards → sozlash', text: 'Namuna matn. Yangi xodim bilishi shart boʻlgan 10 ta tushunchani karta qilib bering.'}]},
+        {title: '02 Mahsulotdan suhbatga', files: [], prompts: [{id: '', title: 'Savdo suhbati', target: '', text: 'Namuna matn. Mahsulot maʼlumotidan 5 savollik mijoz suhbatini yozing.'}]}]},
+    vz: {text: 'Namuna matn. Uyda bajariladi: Ravon Uy keysi. Yuborish shart emas.',
+      groups: [{title: 'Manbalar', note: 'Namuna matn.', files: [{slug: 'manba-1', name: 'Ravon_Uy_hisobot.pdf', size: 'PDF · 1,2 MB', ph: true}, {slug: 'manba-2', name: 'Savdo_jadvali.csv', size: 'CSV · 48,0 KB', ph: true}]},
+        {title: 'Asosiy mashq', note: 'Birma-bir, NotebookLMʼda.', files: [], prompts: [{id: 'P1', title: 'Hisobot xulosasi', target: '', text: 'Namuna matn. Hisobotdan 3 ta asosiy xulosa chiqaring.'}, {id: 'P2', title: 'Xavflar', target: '', text: 'Namuna matn. Eng katta 3 xavfni sanab bering.'}]}]},
+  }
+}}; /*C20:end*/
 const PREP_CMDS = {3: {1: 'curl -fsSL https://claude.ai/install.sh | bash', 2: 'irm https://claude.ai/install.ps1 | iex'}};   // prep item 4: step index -> the command shown (and copyable) under that step
 let PARTS = {};   // lesson number -> {am|kt|vz: {text, groups: [{title, note, files}]}}: the shape the lesson page reads
 const FC = (f, ph, slug) => f ? F(f.name, f.size, ph, slug || f.slug, f.url) : null;   // file from the demo / API: name + size (+ url in the app), never a server path
 function buildData(){
   FILES = {}; PARTS = {};
-  Object.entries((C20 && C20.parts) || {}).forEach(([n, o]) => { PARTS[n] = {}; Object.entries(o).forEach(([k, b]) => {
-    PARTS[n][k] = {text: b.text || '', groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', files: (g.files || []).map(f => FC(f, f.ph))}))}; }); });
+  Object.entries((C20 && C20.parts) || {}).forEach(([n, o]) => { PARTS[n] = {}; const used = new Set();   // progress ids of the prompt rows: unique inside a lesson, 1-8 letters or digits ("P{index}" when the id is empty)
+    Object.entries(o).forEach(([k, b]) => {
+      PARTS[n][k] = {text: b.text || '', groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', files: (g.files || []).map(f => FC(f, f.ph)),
+        prompts: (g.prompts || []).map((q, j) => { const id = (String(q.id || '').replace(/[^A-Za-z0-9]/g, '') || 'P' + (j + 1)).slice(0, 8); let kid = id, c = 2; while (used.has(kid)) kid = id.slice(0, 6) + c++; used.add(kid);
+          return {id: q.id || '', kid, title: q.title || '', target: q.target || '', text: q.text || ''}; })}))}; }); });
 }
 let SAMPLE_FILES = true, C20_TRANSLATED = false;   // prototype: the demo files are marked samples; the real app has none
 buildData();
 
 /*SEED:begin*/
-// ---- demo student progress (the one story, 5 Dec: lesson 0 done, lesson 1 = slides and practice done, homework left; lessons 2 and 3 are open but empty, 4-6 locked)
+// ---- demo student progress (the one story, 5 Dec: prep done, lesson 01 = slides and practice done, homework left; 02 Kirish has no date, 03 and 04 are open but empty, 05-07 locked)
 const SEED = {t: {}, sl: {1: 12}};
 ['prep:0', 'prep:1', 'prep:2', 'prep:3', 'f:am1'].forEach(k => SEED.t[k] = 1);
 /*SEED:end*/
@@ -53,5 +69,6 @@ const SEED = {t: {}, sl: {1: 12}};
 function registerContent(){
   const set = (k, v) => { if (typeof v === 'string') I18N.uz[k] = v; };
   Object.entries(PARTS).forEach(([n, o]) => Object.entries(o).forEach(([k, b]) => {
-    set(`c.p.${n}.${k}.text`, b.text); b.groups.forEach((g, i) => { set(`c.p.${n}.${k}.g${i}`, g.title); set(`c.p.${n}.${k}.g${i}.n`, g.note); }); }));
+    set(`c.p.${n}.${k}.text`, b.text); b.groups.forEach((g, i) => { set(`c.p.${n}.${k}.g${i}`, g.title); set(`c.p.${n}.${k}.g${i}.n`, g.note);
+      g.prompts.forEach((q, j) => { const pk = `c.p.${n}.${k}.g${i}.p${j}`; set(pk + '.t', q.title); set(pk + '.w', q.target); set(pk + '.x', q.text); }); }); }));
 }
