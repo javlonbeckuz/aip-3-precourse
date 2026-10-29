@@ -1604,6 +1604,9 @@ function homePage(){
     }
     return `<li class="g-${LCOL[n]} fo"><a class="folder ${colCls(n)}" href="${href}">${tab}<span class="f-top"><span class="f-label">${label}</span>${arrow}</span><span class="f-row"><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-note">${note}</span></span></a>${fxH(colCls(n))}</li>`;
   };
+  // after the start: the same big course folder, open (no tilt), with the lesson folders inside it as a grid; Tayyorgarlik stays outside, after it
+  const bigFolder = () => `<li class="kurs"><div class="folder c-course kfolder" role="group" aria-label="${esc(t('course.label', {n: RN().length, pl: RN().length}))}"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+        <span class="f-top"><span class="f-label">${T('course.label', {n: RN().length, pl: RN().length})}</span></span><ul class="grid3 kin">${LN().map(cardHTML).join('')}</ul></div></li>`;
   let ringPrev = null; try { ringPrev = sessionStorage.getItem('aip3.ring'); sessionStorage.setItem('aip3.ring', rd); } catch (e) {}
   const ringUp = ringPrev !== null && rd > +ringPrev, ringFrom = ringUp ? +ringPrev / rt * 100 : 0;   // animate only a rise, from where it was
   const arrowH = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
@@ -1634,7 +1637,7 @@ function homePage(){
       ${hero}${cta}
     </div>
     <h2 class="sr-only">${T('home.lessons')}</h2>
-    <ul class="grid3 lessons${pre ? ' pre' : ''}">${pre ? cardHTML(0) + courseCard() : [...LN(), 0].map(cardHTML).join('')}</ul>`};
+    <ul class="grid3 lessons${pre ? ' pre' : ' started'}">${pre ? cardHTML(0) + courseCard() : bigFolder() + cardHTML(0)}</ul>`};
 }
 
 // ---- lesson 0: prep checklist

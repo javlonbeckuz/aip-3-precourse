@@ -820,6 +820,14 @@ html.hid .bgp path{animation-play-state:paused}
 .sl-n{grid-row:span 2;font:500 13px/1.5 var(--font-body);text-transform:uppercase;color:var(--text-2);min-width:5.2em}
 .sl-t{font:500 16px/1.3 var(--font-body)}
 .sl-d{font:400 14px/1.3 var(--font-body);color:var(--text-2)}
+.kfolder{justify-content:flex-start;gap:18px;min-height:0;padding:22px 16px 26px}
+.kfolder>.f-top{padding:0 6px}
+.grid3.kin{padding:0;gap:12px}
+.kfolder .folder.c-grey{outline:1px solid #BDBDBD;outline-offset:-1px}
+@container (min-width:900px){.grid3 .kfolder{min-height:0;padding:calc(31 * var(--u)) calc(27 * var(--u)) calc(34 * var(--u));gap:calc(24 * var(--u))}
+.grid3.kin{padding:0;gap:calc(28 * var(--u)) calc(16 * var(--u))}
+.grid3.started>li.kurs{grid-column:1/-1}
+.grid3.started>li:not(.kurs){grid-column:span 6}}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}
@@ -2900,6 +2908,9 @@ function homePage(){
     }
     return `<li class="g-${LCOL[n]} fo"><a class="folder ${colCls(n)}" href="${href}">${tab}<span class="f-top"><span class="f-label">${label}</span>${arrow}</span><span class="f-row"><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-note">${note}</span></span></a>${fxH(colCls(n))}</li>`;
   };
+  // after the start: the same big course folder, open (no tilt), with the lesson folders inside it as a grid; Tayyorgarlik stays outside, after it
+  const bigFolder = () => `<li class="kurs"><div class="folder c-course kfolder" role="group" aria-label="${esc(t('course.label', {n: RN().length, pl: RN().length}))}"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>
+        <span class="f-top"><span class="f-label">${T('course.label', {n: RN().length, pl: RN().length})}</span></span><ul class="grid3 kin">${LN().map(cardHTML).join('')}</ul></div></li>`;
   let ringPrev = null; try { ringPrev = sessionStorage.getItem('aip3.ring'); sessionStorage.setItem('aip3.ring', rd); } catch (e) {}
   const ringUp = ringPrev !== null && rd > +ringPrev, ringFrom = ringUp ? +ringPrev / rt * 100 : 0;   // animate only a rise, from where it was
   const arrowH = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
@@ -2930,7 +2941,7 @@ function homePage(){
       ${hero}${cta}
     </div>
     <h2 class="sr-only">${T('home.lessons')}</h2>
-    <ul class="grid3 lessons${pre ? ' pre' : ''}">${pre ? cardHTML(0) + courseCard() : [...LN(), 0].map(cardHTML).join('')}</ul>`};
+    <ul class="grid3 lessons${pre ? ' pre' : ' started'}">${pre ? cardHTML(0) + courseCard() : bigFolder() + cardHTML(0)}</ul>`};
 }
 
 // ---- lesson 0: prep checklist

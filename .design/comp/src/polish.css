@@ -241,3 +241,14 @@ html.hid .bgp path{animation-play-state:paused}
 .sheet-l li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 14px;padding:10px 0;border-top:1px solid #3F3F3F}
 .sl-n{grid-row:span 2;font:500 13px/1.5 var(--font-body);text-transform:uppercase;color:var(--text-2);min-width:5.2em}
 .sl-t{font:500 16px/1.3 var(--font-body)}.sl-d{font:400 14px/1.3 var(--font-body);color:var(--text-2)}
+
+/* ---- the open course folder (after the start): the same white folder as the closed one, the lesson folders inside it. White keeps every card's own colour true (dark 03 stands out, cyan and lilac stay distinct); the grey card gets a 1px edge so it does not melt into the white. It does not tilt */
+.kfolder{justify-content:flex-start;gap:18px;min-height:0;padding:22px 16px 26px}
+.kfolder>.f-top{padding:0 6px}
+.grid3.kin{padding:0;gap:12px}
+.kfolder .folder.c-grey{outline:1px solid #BDBDBD;outline-offset:-1px}
+@container (min-width:900px){
+  .grid3 .kfolder{min-height:0;padding:calc(31 * var(--u)) calc(27 * var(--u)) calc(34 * var(--u));gap:calc(24 * var(--u))}
+  .grid3.kin{padding:0;gap:calc(28 * var(--u)) calc(16 * var(--u))}
+  .grid3.started>li.kurs{grid-column:1/-1}.grid3.started>li:not(.kurs){grid-column:span 6}
+}
