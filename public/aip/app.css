@@ -360,7 +360,7 @@ a.play:active .play-circ{transform:scale(.96)}
 .c-lilac{--f-bg:var(--state-open);--f-ink:var(--ink)}
 .c-yellow{--f-bg:var(--you);--f-ink:var(--ink)}
 .c-grey{--f-bg:var(--state-done);--f-ink:var(--ink)}
-.c-dark{--f-bg:var(--state-locked);--f-ink:var(--text-2)}
+.c-dark{--f-bg:var(--state-locked);--f-ink:var(--white)}
 .c-night{--f-bg:var(--state-locked);--f-ink:var(--white)}
 .c-orange{--f-bg:var(--orange);--f-ink:var(--black)}
 .c-course{--f-bg:#002EFF;--f-ink:var(--white)}

@@ -412,7 +412,7 @@ const I18N = {uz: {
   'pick.meta': 'Mashq 03', 'pick.group': 'Tanlang', 'pick.title': 'Bittasini tanlang: A yoki B', 'pick.lede': 'Ikkitadan bittasini tanlang. Bittasi bajarilsa, mashq bajarilgan hisoblanadi; ikkinchisi ixtiyoriy.', 'pick.done_sfx': ' · bajarildi',
   'ex.meta': 'Mashq {num}', 'ex.meta_extra': 'Mashq {num} · {extra}', 'ex.back': 'Amaliyot', 'ex.back_pick': '03 · Bittasini tanlang',
   'ex.g1': '1 · Avval oʻqing', 'ex.g2': '2 · NotebookLMʼga yuklang', 
-  'ex.k': 'Promptlar · {d}/{t} bajarildi', 'ex.rule': '[Qavslar] ichini oʻzingiz toʻldirasiz.', 'lbl.where': 'Qayerga:', 'lc.ph': 'Promptlar', 'lc.show': 'Matnni koʻrish', 'lc.hide': 'Matnni yashirish', 'ex.pdf': 'PDF varianti · {size}',
+  'ex.k': 'Promptlar · {d}/{t} bajarildi', 'ex.rule': '[Qavslar] ichini oʻzingiz toʻldirasiz.', 'lbl.where': 'Qayerga:', 'lc.ph': 'Promptlar', 'lesson.extra': 'Qoʻshimcha dars', 'lc.show': 'Matnni koʻrish', 'lc.hide': 'Matnni yashirish', 'ex.pdf': 'PDF varianti · {size}',
   'end.done': 'Bajarildi', 'end.mark': 'Bajarildi deb belgilash', 'ex.next': 'Keyingi mashq\n{num} · {title}', 'ex.index': 'Amaliyot\nsahifasi',
   // --- library (lesson 2)
   'lib.meta': 'Amaliyot', 'lib.title': 'Prompt kutubxonasi', 'lib.lede': '47 ta tayyor prompt, 5 boʻlimda. Ishingizga mos boʻlimni tanlang.', 'lib.search': 'Prompt qidirish',
@@ -957,7 +957,8 @@ const I18N = {uz: {
   "pre.open": "Открыть",
   "lc.show": "Показать текст",
   "lc.hide": "Скрыть текст",
-  "lc.ph": "Промпты"
+  "lc.ph": "Промпты",
+  "lesson.extra": "Дополнительный урок"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1296,7 +1297,8 @@ const I18N = {uz: {
   "pre.open": "Open",
   "lc.show": "Show text",
   "lc.hide": "Hide text",
-  "lc.ph": "Prompts"
+  "lc.ph": "Prompts",
+  "lesson.extra": "Extra lesson"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
@@ -1531,7 +1533,8 @@ const lnum = n => LESSONS[n].num;   // the curriculum number 1..N, or null: Tayy
 const RN = () => LN().filter(n => lnum(n) != null);   // the numbered lessons: only these count in the ring, the course size and the all-done check
 const lnT = n => lnum(n) == null ? ltitle(n) : t('lesson.n', {n: num2(lnum(n))});   // "01-dars" / "Урок 01" / "Lesson 01", or "Kirish"
 const lnH = n => esc(lnT(n));
-const lessonLabel = n => lnum(n) == null ? `${esc(ltitle(n))} · ${esc(lessonDate(n))}` : T('lesson.label', {n: num2(lnum(n)), date: lessonDate(n)});
+const lessonLabel = n => lnum(n) == null ? `${T('lesson.extra')} · ${esc(lessonDate(n))}`   // Kirish: "Qoʻshimcha dars", never its own name twice (the card title already says it)
+   : T('lesson.label', {n: num2(lnum(n)), date: lessonDate(n)});
 const colCls = n => LCOL[n] === 'dark' ? 'c-night' : 'c-' + LCOL[n];   // an unlocked dark lesson keeps its dark identity, with normal (white) ink
 
 
@@ -1630,7 +1633,7 @@ function homePage(){
     let note, href = `#/dars/${n}`;
     if (n === 0) { note = k === 4 ? `${I('check', 14)}${T('note.done', {d: 4, t: 4, pl: 4})}` : courseStarted() ? T('note.open', {d: k, t: 4, pl: 4}) : !LESSONS[0].d ? T('prep.cnt', {d: k, pl: 4}) : T('note.prep_todo', {until: t('date.until', {date: lessonDate(0)}), d: k, pl: 4}); }
     else if (isLocked(n)) {   // before its date: the lesson keeps its own colour, with a lock and the date (once, in the note)
-      return `<li class="g-${LCOL[n]} fo"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${lnH(n)}</span></span>
+      return `<li class="g-${LCOL[n]} fo"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${lnum(n) == null ? T('lesson.extra') : lnH(n)}</span></span>
         <span class="f-row"><span><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-sub">${T(`lesson.${n}.sub`)}</span></span><span class="f-note">${I('lock', 14)}${T(LESSONS[n].d ? 'date.opens' : 'date.tba', {date: lessonDate(n)})}</span></span>${flagH(n)}</button>${fxH('c-' + LCOL[n])}</li>`;
     } else {
       const [d, tt] = lProg(n);

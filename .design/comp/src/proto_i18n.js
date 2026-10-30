@@ -188,7 +188,7 @@ const I18N = {uz: {
   'pick.meta': 'Mashq 03', 'pick.group': 'Tanlang', 'pick.title': 'Bittasini tanlang: A yoki B', 'pick.lede': 'Ikkitadan bittasini tanlang. Bittasi bajarilsa, mashq bajarilgan hisoblanadi; ikkinchisi ixtiyoriy.', 'c.ex.extra_06': 'Namoyish yoki uyga vazifa', 'pick.done_sfx': ' · bajarildi',
   'ex.meta': 'Mashq {num}', 'ex.meta_extra': 'Mashq {num} · {extra}', 'ex.back': 'Amaliyot', 'ex.back_pick': '03 · Bittasini tanlang',
   'ex.g1': '1 · Avval oʻqing', 'ex.g2': '2 · NotebookLMʼga yuklang', 
-  'ex.k': 'Promptlar · {d}/{t} bajarildi', 'ex.rule': '[Qavslar] ichini oʻzingiz toʻldirasiz.', 'lbl.where': 'Qayerga:', 'lc.ph': 'Promptlar', 'lc.show': 'Matnni koʻrish', 'lc.hide': 'Matnni yashirish', 'ex.pdf': 'PDF varianti · {size}',
+  'ex.k': 'Promptlar · {d}/{t} bajarildi', 'ex.rule': '[Qavslar] ichini oʻzingiz toʻldirasiz.', 'lbl.where': 'Qayerga:', 'lc.ph': 'Promptlar', 'lesson.extra': 'Qoʻshimcha dars', 'lc.show': 'Matnni koʻrish', 'lc.hide': 'Matnni yashirish', 'ex.pdf': 'PDF varianti · {size}',
   'end.done': 'Bajarildi', 'end.mark': 'Bajarildi deb belgilash', 'ex.next': 'Keyingi mashq\n{num} · {title}', 'ex.index': 'Amaliyot\nsahifasi',
   // --- library (lesson 2)
   'lib.meta': 'Amaliyot', 'lib.title': 'Prompt kutubxonasi', 'lib.lede': '47 ta tayyor prompt, 5 boʻlimda. Ishingizga mos boʻlimni tanlang.', 'lib.search': 'Prompt qidirish',
@@ -851,7 +851,8 @@ const I18N = {uz: {
   "pre.open": "Открыть",
   "lc.show": "Показать текст",
   "lc.hide": "Скрыть текст",
-  "lc.ph": "Промпты"
+  "lc.ph": "Промпты",
+  "lesson.extra": "Дополнительный урок"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1308,7 +1309,8 @@ const I18N = {uz: {
   "pre.open": "Open",
   "lc.show": "Show text",
   "lc.hide": "Hide text",
-  "lc.ph": "Prompts"
+  "lc.ph": "Prompts",
+  "lesson.extra": "Extra lesson"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
