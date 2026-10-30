@@ -70,7 +70,7 @@ function nextOf(n){
   return {what, label: `${lnH(n)} · ${what}`, href: u.href, started: u.kind === 'sl' && S.sl(n) > 0};
 }
 const nextStep = () => { const live = liveLesson();
-  if (courseStarted() && PREP.items.length > 3) { const i = [1, 2, 3].find(j => !S.has('prep:' + j)); if (i != null) return {href: '#/dars/0', label: T('next.prep', {title: HT(T(`prep.${i}.title`))})}; }   // the Google account, Claude and Warp are what lesson 1 needs
+  if (courseStarted()) { const i = PREP.items.findIndex((_, j) => j > 0 && !S.has('prep:' + j)); if (i > 0) return {href: '#/dars/0', label: T('next.prep', {title: HT(T(`prep.${i}.title`))})}; }   // every setup card after the computer (Google, Visa, Claude) is what lesson 1 needs, however many there are (audit S3-1)
   return LN().filter(n => !isLocked(n) && n !== live).map(nextOf).find(Boolean) || null; }; // the live lesson is the hero card, so it is not repeated here
 // live counters shown on the open page ("k/t"): one formatter for the templates and for refreshCounts()
 function cntText(type){

@@ -611,7 +611,7 @@ const I18N = {uz: {
   
   'prep.btn': 'Birinchi darsgacha', 'prep.btn_aria': 'Birinchi darsgacha',
   'pre.label': 'Kursgacha materiallar',
-  'pre.sub': 'Infratuzilma va foydali platformalar',
+  'pre.sub': 'Prompt mashqi va NotebookLM video darsi',
   'pre.lede': 'Kurs boshlanishidan oldin kerak boʻladigan materiallar va foydali oʻquv platformalariga havolalar.',
   'setup.title': 'Oʻrnatish va tayyorgarlik',
   'pre.open': 'Ochish',
@@ -948,7 +948,7 @@ const I18N = {uz: {
   "prep.btn": "До первого урока",
   "prep.btn_aria": "До первого урока",
   "pre.label": "Материалы до курса",
-  "pre.sub": "Инфраструктура и полезные платформы",
+  "pre.sub": "Тренировка промптов и видеоурок по NotebookLM",
   "pre.lede": "Материалы, которые нужны до начала курса, и ссылки на полезные учебные платформы.",
   "setup.title": "Установка и подготовка",
   "pre.code_copy": "Скопировать промокод",
@@ -1286,7 +1286,7 @@ const I18N = {uz: {
   "prep.btn": "Before the first lesson",
   "prep.btn_aria": "Before the first lesson",
   "pre.label": "Materials before the course",
-  "pre.sub": "Infrastructure and useful platforms",
+  "pre.sub": "Prompt practice and a NotebookLM video lesson",
   "pre.lede": "Materials you need before the course starts, and links to useful learning platforms.",
   "setup.title": "Setup and preparation",
   "pre.code_copy": "Copy the promo code",
@@ -1568,7 +1568,7 @@ function nextOf(n){
   return {what, label: `${lnH(n)} · ${what}`, href: u.href, started: u.kind === 'sl' && S.sl(n) > 0};
 }
 const nextStep = () => { const live = liveLesson();
-  if (courseStarted() && PREP.items.length > 3) { const i = [1, 2, 3].find(j => !S.has('prep:' + j)); if (i != null) return {href: '#/dars/0', label: T('next.prep', {title: HT(T(`prep.${i}.title`))})}; }   // the Google account, Claude and Warp are what lesson 1 needs
+  if (courseStarted()) { const i = PREP.items.findIndex((_, j) => j > 0 && !S.has('prep:' + j)); if (i > 0) return {href: '#/dars/0', label: T('next.prep', {title: HT(T(`prep.${i}.title`))})}; }   // every setup card after the computer (Google, Visa, Claude) is what lesson 1 needs, however many there are (audit S3-1)
   return LN().filter(n => !isLocked(n) && n !== live).map(nextOf).find(Boolean) || null; }; // the live lesson is the hero card, so it is not repeated here
 // live counters shown on the open page ("k/t"): one formatter for the templates and for refreshCounts()
 function cntText(type){
