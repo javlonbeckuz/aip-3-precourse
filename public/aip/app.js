@@ -527,7 +527,7 @@ const I18N = {uz: {
   'amf.on': 'Amaliyot bajarildi',
   'amf.off': 'Amaliyot bajarildi',
   'amf.aria': 'Amaliyot bajarildi deb belgilash',
-  'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi', 'pre.code_copy': 'Promokodni nusxalash', 'pre.code': 'Promokod', 'pre.in_video': 'Videoda', 'toast.code_copied': 'Promokod nusxalandi',
+  'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi', 'pre.code_copy': 'Promokodni nusxalash', 'pre.code': 'Promokod', 'pre.in_video': 'Videoda', 'vp.player': 'Video pleer', 'vp.full': 'Toʻliq ekran', 'vp.vol': 'Ovoz balandligi', 'vp.mute': 'Ovozni oʻchirish', 'vp.unmute': 'Ovozni yoqish', 'vp.back': '10 soniya orqaga', 'vp.fwd': '10 soniya oldinga', 'vp.play': 'Ijro etish', 'vp.pause': 'Pauza', 'vp.pos': 'Video holati', 'toast.code_copied': 'Promokod nusxalandi',
   
   
   
@@ -962,7 +962,17 @@ const I18N = {uz: {
   "prep.left#few": "Осталось {n} шага: {titles}.",
   "prep.left#many": "Осталось {n} шагов: {titles}.",
   "prep.left#other": "Осталось {n} шага: {titles}.",
-  "lesson.extra_s": "Доп. урок"
+  "lesson.extra_s": "Доп. урок",
+  "vp.player": "Видеоплеер",
+  "vp.full": "Полный экран",
+  "vp.vol": "Громкость",
+  "vp.mute": "Выключить звук",
+  "vp.unmute": "Включить звук",
+  "vp.back": "Назад на 10 секунд",
+  "vp.fwd": "Вперёд на 10 секунд",
+  "vp.play": "Воспроизвести",
+  "vp.pause": "Пауза",
+  "vp.pos": "Позиция видео"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1304,7 +1314,17 @@ const I18N = {uz: {
   "prep.left": "{n} steps left: {titles}.",
   "prep.left#one": "{n} step left: {titles}.",
   "prep.left#other": "{n} steps left: {titles}.",
-  "lesson.extra_s": "Extra"
+  "lesson.extra_s": "Extra",
+  "vp.player": "Video player",
+  "vp.full": "Full screen",
+  "vp.vol": "Volume",
+  "vp.mute": "Mute",
+  "vp.unmute": "Unmute",
+  "vp.back": "Back 10 seconds",
+  "vp.fwd": "Forward 10 seconds",
+  "vp.play": "Play",
+  "vp.pause": "Pause",
+  "vp.pos": "Video position"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
@@ -1513,7 +1533,7 @@ function applyLessons(ls, lsUz, lang){
 const pts = x => Array.isArray(x.points) ? x.points.filter(p => typeof p === 'string' && p).slice(0, 6) : [];   // the "Videoda" points of a video row (at most 6)
   const vid = x => typeof x.video === 'string' && /^[a-z0-9-]{1,40}$/.test(x.video) ? x.video : null;   // a video served by the portal (content/lessons/0/video/<slug>.mp4)
   const mo = pr && pr.more, ml = mo && Array.isArray(mo.links) ? mo.links.filter(x => x && (/^https:\/\//.test(x.url) || vid(x))) : [];   // learning platforms and videos: never counted as prep
-  PREP.more = ml.length ? {links: ml.map(x => ({url: /^https:\/\//.test(x.url) ? x.url : null, video: vid(x) ? `${API}/prep/video/${vid(x)}` : null, code: typeof x.code === 'string' && /^[A-Za-z0-9_-]{1,32}$/.test(x.code) ? x.code : null, points: pts(x).length}))} : null;   // code = an optional promo code shown with a copy button
+  PREP.more = ml.length ? {links: ml.map(x => ({url: /^https:\/\//.test(x.url) ? x.url : null, video: vid(x) ? `${API}/prep/video/${vid(x)}` : null, poster: vid(x) ? `${API}/prep/poster/${vid(x)}` : null, code: typeof x.code === 'string' && /^[A-Za-z0-9_-]{1,32}$/.test(x.code) ? x.code : null, points: pts(x).length}))} : null;   // code = an optional promo code shown with a copy button
   if (PREP.more) {
     const dflt = (I18N[lang] || I18N.uz)['prep.more.dflt'] || I18N.uz['prep.more.dflt'];   // the payload's language, not the UI's: never a blank heading or pill
     D['prep.more.title'] = mo.title || dflt; D['prep.more.note'] = mo.note || '';
@@ -1710,8 +1730,60 @@ const iaDesc = i => t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.
 const iaCard = (l, i) => l.code
   ? `<div class="ia-card"><span class="ia-k">${esc(t(`prep.more.${i}.cl`) || t('pre.code'))}</span><code class="ia-code">${esc(l.code)}</code><button class="cmd-cp ia-cpb" type="button" data-cmd="${esc(l.code)}" data-toast="toast.code_copied" aria-label="${esc(t('pre.code_copy'))}">${I('copy', 18)}${T('common.copy')}</button></div>`
   : l.points ? `<div class="ia-card"><span class="ia-k">${T('pre.in_video')}</span><ol class="ia-pts">${Array.from({length: l.points}, (_, j) => `<li>${esc(t(`prep.more.${i}.p${j}`))}</li>`).join('')}</ol></div>` : '';
+// vanilla port of the pasted React VideoPlayer: same controls, idle hide, seek flash, hover time, keyboard; Uzbek labels; no native controls (so no Download menu)
+const VP_I = {
+  play: '<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>',
+  pause: '<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg>',
+  back: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4h4"/><text x="12" y="15.5" text-anchor="middle" font-size="7.5" fill="currentColor" stroke="none" font-family="sans-serif" font-weight="600">10</text></svg>',
+  fwd: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v4h-4"/><text x="12" y="15.5" text-anchor="middle" font-size="7.5" fill="currentColor" stroke="none" font-family="sans-serif" font-weight="600">10</text></svg>',
+  full: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>',
+  vol: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 19V5L7.5 9.5z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg>',
+  mute: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 19V5L7.5 9.5z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>',
+};
+const vpTime = s => { s = Math.max(0, Math.floor(s || 0)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+function vpMount(host){
+  host.innerHTML = `<section class="vp" tabindex="0" aria-label="${esc(t('vp.player'))}" aria-keyshortcuts="Space K J L ArrowLeft ArrowRight M F">
+    <video preload="metadata" playsinline controlslist="nodownload noplaybackrate" disablepictureinpicture disableremoteplayback poster="${esc(host.dataset.poster)}" src="${esc(host.dataset.src)}"></video><div class="vp-shade"></div>
+    <div class="vp-top"><button class="vp-b vp-fs" type="button" aria-label="${esc(t('vp.full'))}">${VP_I.full}</button>
+      <div class="vp-vol"><input class="vp-vr" type="range" min="0" max="1" step="0.01" value="0.7" aria-label="${esc(t('vp.vol'))}"><button class="vp-b vp-mute" type="button" aria-label="${esc(t('vp.mute'))}"><span class="vp-ic"><span class="i-on">${VP_I.vol}</span><span class="i-off off">${VP_I.mute}</span></span></button></div></div>
+    <div class="vp-mid"><button class="vp-b vp-skip" type="button" data-d="-10" aria-label="${esc(t('vp.back'))}">${VP_I.back}</button><span class="vp-flash" aria-hidden="true"></span>
+      <button class="vp-b vp-play" type="button" aria-label="${esc(t('vp.play'))}"><span class="vp-ic"><span class="i-p">${VP_I.play}</span><span class="i-z off">${VP_I.pause}</span></span><span class="ring"></span></button>
+      <button class="vp-b vp-skip" type="button" data-d="10" aria-label="${esc(t('vp.fwd'))}">${VP_I.fwd}</button></div>
+    <div class="vp-bot">${host.dataset.sub ? `<p class="vp-sub">${esc(host.dataset.sub)}</p>` : ''}<h3 class="vp-t">${esc(host.dataset.title)}</h3>
+      <div class="vp-track"><span class="vp-tip" hidden></span><input class="vp-prog" type="range" min="0" max="0" step="0.1" value="0" aria-label="${esc(t('vp.pos'))}"></div>
+      <div class="vp-times"><span class="vp-cur">0:00</span><span class="vp-dur">0:00</span></div></div></section>`;
+  const $ = s => host.querySelector(s), box = $('.vp'), v = $('video'), prog = $('.vp-prog'), vr = $('.vp-vr'), tip = $('.vp-tip');
+  let idleT = 0, vol = 0.7; v.volume = vol;
+  box.addEventListener('contextmenu', e => e.preventDefault());   // no "Save video as..."
+  const wake = () => { delete box.dataset.idle; clearTimeout(idleT); if (!v.paused) idleT = setTimeout(() => { box.dataset.idle = ''; }, 2200); };
+  const paint = () => { const d = v.duration || 0, t = v.currentTime || 0; prog.max = d; prog.value = t; prog.style.setProperty('--p', (d ? t / d * 100 : 0) + '%'); prog.setAttribute('aria-valuetext', `${vpTime(t)} / ${vpTime(d)}`); $('.vp-cur').textContent = vpTime(t); $('.vp-dur').textContent = vpTime(d); };
+  const playing = () => { const on = !v.paused; $('.i-p').classList.toggle('off', on); $('.i-z').classList.toggle('off', !on); $('.vp-play').setAttribute('aria-label', on ? t('vp.pause') : t('vp.play')); const r = $('.ring'); r.classList.remove('go'); void r.offsetWidth; r.classList.add('go'); wake(); };
+  const toggle = () => { v.paused ? v.play() : v.pause(); };
+  const seekBy = s => { v.currentTime = Math.max(0, Math.min(v.duration || 0, v.currentTime + s)); const f = $('.vp-flash'); f.textContent = s > 0 ? `+${s}s` : `${s}s`; f.classList.remove('go'); void f.offsetWidth; f.classList.add('go'); wake(); };
+  const setVol = x => { vol = x; v.volume = x; v.muted = x === 0; vr.value = x; vr.style.setProperty('--p', x * 100 + '%'); $('.i-on').classList.toggle('off', x === 0); $('.i-off').classList.toggle('off', x !== 0); $('.vp-mute').setAttribute('aria-label', x === 0 ? t('vp.unmute') : t('vp.mute')); };
+  let lastVol = 0.7;
+  const fullscreen = async () => { try { document.fullscreenElement === box ? await document.exitFullscreen() : await box.requestFullscreen(); } catch {} };
+  v.addEventListener('timeupdate', paint); v.addEventListener('loadedmetadata', paint); v.addEventListener('play', playing); v.addEventListener('pause', playing);
+  v.addEventListener('click', toggle);
+  $('.vp-play').addEventListener('click', toggle);
+  host.querySelectorAll('.vp-skip').forEach(b => b.addEventListener('click', () => seekBy(+b.dataset.d)));
+  $('.vp-fs').addEventListener('click', fullscreen);
+  $('.vp-mute').addEventListener('click', () => { if (vol > 0) { lastVol = vol; setVol(0); } else setVol(lastVol || 0.7); });
+  vr.addEventListener('input', () => setVol(+vr.value));
+  prog.addEventListener('input', () => { v.currentTime = +prog.value; paint(); });
+  prog.addEventListener('pointermove', e => { const r = prog.getBoundingClientRect(), k = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)); tip.hidden = false; tip.style.left = k * r.width + 'px'; tip.textContent = vpTime(k * (v.duration || 0)); });
+  prog.addEventListener('pointerleave', () => { tip.hidden = true; });
+  box.addEventListener('pointermove', wake); box.addEventListener('focusin', wake);
+  box.addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey || e.target === vr) return;
+    const k = e.key.toLowerCase(), act = {' ': toggle, k: toggle, arrowleft: () => seekBy(-10), j: () => seekBy(-10), arrowright: () => seekBy(10), l: () => seekBy(10), m: () => $('.vp-mute').click(), f: fullscreen}[k];
+    if (!act || (e.target.tagName === 'BUTTON' && (k === ' ' || k === 'enter'))) return;
+    e.preventDefault(); act(); wake();
+  });
+  setVol(vol); paint();
+}
 const iaBody = (l, i) => { const card = iaCard(l, i);
-  const left = l.video ? `<video class="ia-vid" controls preload="metadata" playsinline src="${esc(l.video)}"></video>${iaDesc(i)}`
+  const left = l.video ? `<div class="vp-host" data-src="${esc(l.video)}" data-poster="${esc(l.poster || '')}" data-title="${esc(t(`prep.more.${i}.t`))}" data-sub="${esc(t(`prep.more.${i}.s`))}"></div>${iaDesc(i)}`
     : `${iaDesc(i)}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a>`;
   return `<div class="ia-c${card ? ' has-card' : ''}${l.code ? ' has-code' : ''}"><div class="ia-l">${left}</div>${card}</div>`; };
 const iaRow = (l, i) => `<li class="ia-row" data-i="${i}"><button class="ia-hd" type="button" id="ia-h${i}" aria-expanded="false" aria-controls="ia-p${i}"><span class="ia-ic" aria-hidden="true">${I(l.video ? 'play' : 'ne', 18)}</span><span class="ia-no">${num2(i + 1)}</span><span class="ia-tt"><span class="ia-t">${esc(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.s`) ? `<span class="ia-s">${esc(t(`prep.more.${i}.s`))}</span>` : ''}</span><i class="ia-chv" aria-hidden="true"></i></button><div class="ia-p" id="ia-p${i}" role="region" aria-labelledby="ia-h${i}"><div class="ia-in"><div class="ia-body">${iaBody(l, i)}</div></div></div></li>`;
@@ -1901,6 +1973,7 @@ function mount(el, page){
   convertLinks(el); okina(el); markMissing(el);
   const dg = el.querySelector('#dg'); if (dg) { initGT(dg); if (page.tab > 0) { dg.dataset.instant = '1'; dg.querySelectorAll('.gt-tab')[page.tab]?.click(); delete dg.dataset.instant; } }   // ?tab=vz|kt|am|sl opens that folder tab
   if (el.querySelector('#deck')) initPrep(el);
+  el.querySelectorAll('.vp-host').forEach(vpMount);   // the custom video player (no native controls, so no Download menu)
   const ia = el.querySelector('.ia'); if (ia) { ia.classList.add('ia-still'); iaPaint(ia); requestAnimationFrame(() => requestAnimationFrame(() => ia.classList.remove('ia-still'))); }   // the first paint does not animate
 }
 let firstRender = true, byClick = false, slFocus = '';

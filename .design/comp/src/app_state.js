@@ -107,7 +107,7 @@ function applyLessons(ls, lsUz, lang){
 const pts = x => Array.isArray(x.points) ? x.points.filter(p => typeof p === 'string' && p).slice(0, 6) : [];   // the "Videoda" points of a video row (at most 6)
   const vid = x => typeof x.video === 'string' && /^[a-z0-9-]{1,40}$/.test(x.video) ? x.video : null;   // a video served by the portal (content/lessons/0/video/<slug>.mp4)
   const mo = pr && pr.more, ml = mo && Array.isArray(mo.links) ? mo.links.filter(x => x && (/^https:\/\//.test(x.url) || vid(x))) : [];   // learning platforms and videos: never counted as prep
-  PREP.more = ml.length ? {links: ml.map(x => ({url: /^https:\/\//.test(x.url) ? x.url : null, video: vid(x) ? `${API}/prep/video/${vid(x)}` : null, code: typeof x.code === 'string' && /^[A-Za-z0-9_-]{1,32}$/.test(x.code) ? x.code : null, points: pts(x).length}))} : null;   // code = an optional promo code shown with a copy button
+  PREP.more = ml.length ? {links: ml.map(x => ({url: /^https:\/\//.test(x.url) ? x.url : null, video: vid(x) ? `${API}/prep/video/${vid(x)}` : null, poster: vid(x) ? `${API}/prep/poster/${vid(x)}` : null, code: typeof x.code === 'string' && /^[A-Za-z0-9_-]{1,32}$/.test(x.code) ? x.code : null, points: pts(x).length}))} : null;   // code = an optional promo code shown with a copy button
   if (PREP.more) {
     const dflt = (I18N[lang] || I18N.uz)['prep.more.dflt'] || I18N.uz['prep.more.dflt'];   // the payload's language, not the UI's: never a blank heading or pill
     D['prep.more.title'] = mo.title || dflt; D['prep.more.note'] = mo.note || '';

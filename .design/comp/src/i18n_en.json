@@ -465,5 +465,15 @@
   "one": "{n} step left: {titles}.",
   "other": "{n} steps left: {titles}."
  },
- "lesson.extra_s": "Extra"
+ "lesson.extra_s": "Extra",
+ "vp.player": "Video player",
+ "vp.full": "Full screen",
+ "vp.vol": "Volume",
+ "vp.mute": "Mute",
+ "vp.unmute": "Unmute",
+ "vp.back": "Back 10 seconds",
+ "vp.fwd": "Forward 10 seconds",
+ "vp.play": "Play",
+ "vp.pause": "Pause",
+ "vp.pos": "Video position"
 }

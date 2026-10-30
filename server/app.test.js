@@ -320,6 +320,12 @@ test('prep video: login needed, streams with Range, unknown slug 404', async (t)
   // the page's player may load it, a browser tab opening the link may not
   assert.equal((await c.get('/api/aip/prep/video/demo', { headers: { 'Sec-Fetch-Dest': 'video', Range: 'bytes=0-9' } })).status, 206);
   assert.equal((await c.get('/api/aip/prep/video/demo', { headers: { 'Sec-Fetch-Dest': 'document' } })).status, 403);
+  // the poster (first frame) for the player
+  fs.writeFileSync(path.join(dir, 'lessons', '0', 'video', 'demo.jpg'), Buffer.alloc(50, 1));
+  const p = await c.get('/api/aip/prep/poster/demo');
+  assert.deepEqual([p.status, p.headers.get('content-type')], [200, 'image/jpeg']);
+  assert.equal((await c.get('/api/aip/prep/poster/nope')).status, 404);
+  assert.equal((await a.client().get('/api/aip/prep/poster/demo')).status, 401);
 });
 
 test('language: lesson metadata is translated, the parts always come from the Uzbek file', async (t) => {

@@ -1784,6 +1784,56 @@
   "translate": true,
   "note": "UI text"
  },
+ "vp.player": {
+  "uz": "Video pleer",
+  "translate": true,
+  "note": "UI text"
+ },
+ "vp.full": {
+  "uz": "Toʻliq ekran",
+  "translate": true,
+  "note": "UI text"
+ },
+ "vp.vol": {
+  "uz": "Ovoz balandligi",
+  "translate": true,
+  "note": "UI text"
+ },
+ "vp.mute": {
+  "uz": "Ovozni oʻchirish",
+  "translate": true,
+  "note": "UI text"
+ },
+ "vp.unmute": {
+  "uz": "Ovozni yoqish",
+  "translate": true,
+  "note": "UI text"
+ },
+ "vp.back": {
+  "uz": "10 soniya orqaga",
+  "translate": true,
+  "note": "UI text"
+ },
+ "vp.fwd": {
+  "uz": "10 soniya oldinga",
+  "translate": true,
+  "note": "UI text"
+ },
+ "vp.play": {
+  "uz": "Ijro etish",
+  "translate": true,
+  "note": "UI text"
+ },
+ "vp.pause": {
+  "uz": "Pauza",
+  "translate": true,
+  "note": "UI text"
+ },
+ "vp.pos": {
+  "uz": "Video holati",
+  "translate": true,
+  "note": "UI text"
+ },
  "toast.code_copied": {
   "uz": "Promokod nusxalandi",
   "translate": true,

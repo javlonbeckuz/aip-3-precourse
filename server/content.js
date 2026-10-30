@@ -226,6 +226,7 @@ export function createContent({ dir, now = () => Date.now() }) {
   }
   const clipFile = (n, i, q) => { const abs = path.join(lessonDir(n), 'clips', `${i}-${q}.mp4`); return fs.existsSync(abs) ? { abs, type: 'video/mp4' } : null; };
   // a video of the prep page (Birinchi darsgacha): content/lessons/0/video/<slug>.mp4, kept out of git (too big)
+  const prepPoster = (slug) => { const abs = path.join(lessonDir(0), 'video', `${slug}.jpg`); return /^[a-z0-9-]{1,40}$/.test(slug) && fs.existsSync(abs) ? { abs, type: 'image/jpeg' } : null; };   // its first frame for the player
   const prepVideo = (slug) => { const abs = path.join(lessonDir(0), 'video', `${slug}.mp4`); return /^[a-z0-9-]{1,40}$/.test(slug) && fs.existsSync(abs) ? { abs, type: 'video/mp4' } : null; };
   const prepFile = (lang) => { const abs = path.join(dir, 'prep', `prep-${lang}.pdf`); return fs.existsSync(abs) ? { abs, name: `prep-${lang}.pdf` } : null; };
 
@@ -249,5 +250,5 @@ export function createContent({ dir, now = () => Date.now() }) {
       done: NUMS.filter((n) => numbered(n) && lessons[n][1] && lessons[n][0] === lessons[n][1] && !shut[n]).length };
   }
 
-  return { schedule, validateAll, has: (n) => hasPart(lesson(n)), lesson, lessonNumbers, partOpen, opensAt, isOpen, live, scheduleView, lessonView, lessonsView, docPart, docFile, slideFile, clipFile, prepFile, prepVideo, summary, now };
+  return { schedule, validateAll, has: (n) => hasPart(lesson(n)), lesson, lessonNumbers, partOpen, opensAt, isOpen, live, scheduleView, lessonView, lessonsView, docPart, docFile, slideFile, clipFile, prepFile, prepVideo, prepPoster, summary, now };
 }

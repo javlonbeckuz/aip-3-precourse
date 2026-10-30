@@ -301,7 +301,7 @@ const I18N = {uz: {
   'amf.on': 'Amaliyot bajarildi',
   'amf.off': 'Amaliyot bajarildi',
   'amf.aria': 'Amaliyot bajarildi deb belgilash',
-  'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi', 'pre.code_copy': 'Promokodni nusxalash', 'pre.code': 'Promokod', 'pre.in_video': 'Videoda', 'toast.code_copied': 'Promokod nusxalandi',
+  'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi', 'pre.code_copy': 'Promokodni nusxalash', 'pre.code': 'Promokod', 'pre.in_video': 'Videoda', 'vp.player': 'Video pleer', 'vp.full': 'Toʻliq ekran', 'vp.vol': 'Ovoz balandligi', 'vp.mute': 'Ovozni oʻchirish', 'vp.unmute': 'Ovozni yoqish', 'vp.back': '10 soniya orqaga', 'vp.fwd': '10 soniya oldinga', 'vp.play': 'Ijro etish', 'vp.pause': 'Pauza', 'vp.pos': 'Video holati', 'toast.code_copied': 'Promokod nusxalandi',
   'lesson.1.t0': 'AI qatlamlari',
   'lesson.1.t1': 'Maʼlumot qayerga ketadi',
   'lesson.1.t2': 'LLM va token',
@@ -854,7 +854,17 @@ const I18N = {uz: {
   "prep.left#few": "Осталось {n} шага: {titles}.",
   "prep.left#many": "Осталось {n} шагов: {titles}.",
   "prep.left#other": "Осталось {n} шага: {titles}.",
-  "lesson.extra_s": "Доп. урок"
+  "lesson.extra_s": "Доп. урок",
+  "vp.player": "Видеоплеер",
+  "vp.full": "Полный экран",
+  "vp.vol": "Громкость",
+  "vp.mute": "Выключить звук",
+  "vp.unmute": "Включить звук",
+  "vp.back": "Назад на 10 секунд",
+  "vp.fwd": "Вперёд на 10 секунд",
+  "vp.play": "Воспроизвести",
+  "vp.pause": "Пауза",
+  "vp.pos": "Позиция видео"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1314,7 +1324,17 @@ const I18N = {uz: {
   "prep.left": "{n} steps left: {titles}.",
   "prep.left#one": "{n} step left: {titles}.",
   "prep.left#other": "{n} steps left: {titles}.",
-  "lesson.extra_s": "Extra"
+  "lesson.extra_s": "Extra",
+  "vp.player": "Video player",
+  "vp.full": "Full screen",
+  "vp.vol": "Volume",
+  "vp.mute": "Mute",
+  "vp.unmute": "Unmute",
+  "vp.back": "Back 10 seconds",
+  "vp.fwd": "Forward 10 seconds",
+  "vp.play": "Play",
+  "vp.pause": "Pause",
+  "vp.pos": "Video position"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
