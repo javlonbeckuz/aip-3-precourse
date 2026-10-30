@@ -10,5 +10,23 @@
     "part": "vazifa",
     "promptId": "V3P2",
     "newText": "Quyida [xodim ismi], [lavozimi] bilan intervyu matni va Kit 1 B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [kit1-b-vazifalar.md faylining toʻliq matni]\nIntervyu: [intervyu matni]"
+  },
+  {
+    "n": 3,
+    "part": "amaliyot",
+    "promptId": "04P1",
+    "newText": "kit1-interviews papkasidagi barcha B shakllarini oʻqing. Ulardan 8 tagacha jarayonni ajrating.\nHar jarayonni Kit 2 A shaklidagi A.2-A.7 mezonlari boʻyicha baholang: kit2-scoring/kit2-a-baholash.md (Kit tabidan yuklab olingan shakl).\nHar baho yonida qaysi fayl va qatorga tayanganingizni yozing. Maʼlumot yetmasa, bahoni [?] bilan belgilang.\nValue va Ease ni shakldagi qoida boʻyicha hisoblang.\nJadvalni kit2-scoring/scoring.md ga saqlang."
+  },
+  {
+    "n": 3,
+    "part": "amaliyot",
+    "promptId": "08P1",
+    "newText": "Kit 1 promptidan kit1 nomli skill yarating.\nSkill intervyu matnini olib, Kit 1 B shakli jadvalini tuzsin va natijani kit1-interviews papkasiga xodim ismi bilan .md fayl qilib saqlasin.\nSkill qachon ishlatilishini tepadagi tavsifda aniq yozing.\n\nKit 1 prompti:\n[01-dars Kit tabidagi \"Kit 1 prompti: B shakli\" matni]"
+  },
+  {
+    "n": 5,
+    "part": "amaliyot",
+    "promptId": "05P1",
+    "newText": "kit3-agent/instructions.md va kit5-pilot/baseline.md ni oʻqing.\nKit 5 A shakli (A.1-A.9) boʻyicha pilot rejasi qoralamasini tuzing: kit5-pilot/kit5-a-reja.md (Kit tabidan yuklab olingan shakl).\nRejada boʻlsin: bitta raqamli maqsad; boshlanish va tugash sanasi; qamrov; agent nima qila oladi va nima qila olmaydi; muvaffaqiyat mezoni; toʻxtash sharti; kim tekshiradi; haftalik koʻrib chiqish vaqti.\nMaqsad baseline raqamidan kelib chiqsin. Bilmagan joyni toʻldirmang, menga savol bering.\nkit5-pilot/plan.md ga saqlang."
   }
 ]

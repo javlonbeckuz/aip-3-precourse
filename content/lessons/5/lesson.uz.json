@@ -85,7 +85,7 @@
             "id": "05P1",
             "title": "Pilot rejasi qoralamasi",
             "target": "Claude Code",
-            "text": "kit3-agent/instructions.md va kit5-pilot/baseline.md ni oʻqing.\nKit 5 A shakli (A.1-A.9) boʻyicha pilot rejasi qoralamasini tuzing: [Kit 5 shakli fayli].\nRejada boʻlsin: bitta raqamli maqsad; boshlanish va tugash sanasi; qamrov; agent nima qila oladi va nima qila olmaydi; muvaffaqiyat mezoni; toʻxtash sharti; kim tekshiradi; haftalik koʻrib chiqish vaqti.\nMaqsad baseline raqamidan kelib chiqsin. Bilmagan joyni toʻldirmang, menga savol bering.\nkit5-pilot/plan.md ga saqlang."
+            "text": "kit3-agent/instructions.md va kit5-pilot/baseline.md ni oʻqing.\nKit 5 A shakli (A.1-A.9) boʻyicha pilot rejasi qoralamasini tuzing: kit5-pilot/kit5-a-reja.md (Kit tabidan yuklab olingan shakl).\nRejada boʻlsin: bitta raqamli maqsad; boshlanish va tugash sanasi; qamrov; agent nima qila oladi va nima qila olmaydi; muvaffaqiyat mezoni; toʻxtash sharti; kim tekshiradi; haftalik koʻrib chiqish vaqti.\nMaqsad baseline raqamidan kelib chiqsin. Bilmagan joyni toʻldirmang, menga savol bering.\nkit5-pilot/plan.md ga saqlang."
           }
         ]
       },

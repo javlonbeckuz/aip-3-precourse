@@ -84,7 +84,7 @@
             "id": "04P1",
             "title": "Jarayonlarni baholash",
             "target": "Claude Code",
-            "text": "kit1-interviews papkasidagi barcha B shakllarini oʻqing. Ulardan 8 tagacha jarayonni ajrating.\nHar jarayonni Kit 2 A shaklidagi A.2-A.7 mezonlari boʻyicha baholang: [Kit 2 shakli fayli].\nHar baho yonida qaysi fayl va qatorga tayanganingizni yozing. Maʼlumot yetmasa, bahoni [?] bilan belgilang.\nValue va Ease ni shakldagi qoida boʻyicha hisoblang.\nJadvalni kit2-scoring/scoring.md ga saqlang."
+            "text": "kit1-interviews papkasidagi barcha B shakllarini oʻqing. Ulardan 8 tagacha jarayonni ajrating.\nHar jarayonni Kit 2 A shaklidagi A.2-A.7 mezonlari boʻyicha baholang: kit2-scoring/kit2-a-baholash.md (Kit tabidan yuklab olingan shakl).\nHar baho yonida qaysi fayl va qatorga tayanganingizni yozing. Maʼlumot yetmasa, bahoni [?] bilan belgilang.\nValue va Ease ni shakldagi qoida boʻyicha hisoblang.\nJadvalni kit2-scoring/scoring.md ga saqlang."
           },
           {
             "id": "04P2",
@@ -148,7 +148,7 @@
             "id": "08P1",
             "title": "/kit1 skill",
             "target": "Claude Code",
-            "text": "Kit 1 promptidan kit1 nomli skill yarating.\nSkill intervyu matnini olib, Kit 1 B shakli jadvalini tuzsin va natijani kit1-interviews papkasiga xodim ismi bilan .md fayl qilib saqlasin.\nSkill qachon ishlatilishini tepadagi tavsifda aniq yozing.\n\nKit 1 prompti:\n[Kit 1 prompti matni]"
+            "text": "Kit 1 promptidan kit1 nomli skill yarating.\nSkill intervyu matnini olib, Kit 1 B shakli jadvalini tuzsin va natijani kit1-interviews papkasiga xodim ismi bilan .md fayl qilib saqlasin.\nSkill qachon ishlatilishini tepadagi tavsifda aniq yozing.\n\nKit 1 prompti:\n[01-dars Kit tabidagi \"Kit 1 prompti: B shakli\" matni]"
           },
           {
             "id": "08P2",

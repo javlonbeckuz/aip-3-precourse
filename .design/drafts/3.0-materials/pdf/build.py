@@ -152,7 +152,7 @@ def kit1():
             "<b>Intervyu, A shakli.</b> Darsda hamkasb bilan 5 daqiqalik mashq qiling. Uyda bitta boʻlimdan 2-3 xodim bilan 20-30 daqiqa suhbatlashing. Yozishdan oldin rozilik matnini ovoz chiqarib oʻqing, telefonda yozishni faqat xodim rozi boʻlgandan keyin boshlang. A.1 dan A.7 gacha savollarni ketma-ket bering, har biriga aniq hayotiy misol soʻrang. Yakka ishlaydigan egalar va jamoasi yoʻq rahbarlar oʻzini yoki boʻlim boshligʻini intervyu qiladi.",
             "<b>Transkripsiya.</b> Audioni Geminiʼga yuklang va transkripsiya promptini qoʻying. Matnni bir marta oʻqing, ism va raqamlarni toʻgʻrilang. Matndagi har raqamni audio bilan solishtiring: transkripsiya oʻzbekcha raqamlarda adashadi, \"bir uch-toʻrt yuz ming\" 1 300 000 boʻlib qoladi. Matnni kit1-&lt;ism&gt;-transkript.md nomi bilan saqlang.",
             "<b>B shakli.</b> Kit 1 prompti intervyu matnidan B shakli jadvalini tuzadi. Jadvalni xodimga koʻrsating: daqiqa va chastotani u tuzatsin, [?] belgilari qolmasin.",
-            "<b>Soat va belgi.</b> Haftalik soatlarni jamlang: B.4 = B.2 × B.3 / 60. Har vazifaga B.9 belgisini qoʻying: A agent, R robot, I inson, B birgalikda. Har xodimni alohida .md faylga saqlang, masalan kit1-dilnoza.md, va ikkinchi darsga olib keling.",
+            "<b>Soat va belgi.</b> Haftalik soatlarni jamlang: B.4 = B.2 × B.3 / 60. Har vazifaga B.9 belgisini qoʻying: A agent, R robot (AIʼsiz avtomatika: formula, skript yoki oddiy bot), I inson, B birgalikda. Har xodimni alohida .md faylga saqlang, masalan kit1-dilnoza.md, va ikkinchi darsga olib keling.",
         ],
         "kamida 2 ta B shakli .md faylda va ularda [?] qolmagan.",
         [consent_box(), prompt_box(prompt(1, "K1P1")), prompt_box(prompt(1, "K1P2"))],
@@ -201,7 +201,7 @@ def kit1():
                   "B.4 = B.2 × B.3 / 60.",
                   "B.7: Q qoida (har safar bir xil), F fikr (tajriba kerak).",
                   "B.8: past, oʻrta, yuqori.",
-                  "B.9: A agent, R robot, I inson, B birgalikda.",
+                  "B.9: A agent, R robot (AIʼsiz avtomatika: formula, skript yoki oddiy bot), I inson, B birgalikda.",
                   "Taxmin qilingan raqam yonida [?] turadi. Xodim tuzatgandan keyin [?] ni oʻchiring.",
                   "Faylni kit1-&lt;ism&gt;.md nomi bilan saqlang, masalan kit1-dilnoza.md. Ikkinchi darsda u kompaniya/kit1-interviews/ papkasiga tushadi."])
         + '<div><h3 style="margin-top:2mm">Tekshirilgan raqamlar</h3>'
@@ -306,7 +306,7 @@ def kit3():
         "Tanlangan jarayonni qadamma-qadam yozing, ertaga har qadamni kim bajarishini belgilang va agent koʻrsatmalarini tuzing.",
         [
             "<b>Qadamlar, A shakli.</b> Kit 2 da tanlangan jarayonni boshidan oxirigacha yozing, bir qatorda bitta harakat. A.3 ga uni bugun kim qilishini yozing.",
-            "<b>Ertaga kim.</b> A.4 ga ertaga kim qilishini belgilang: A agent, R robot, I inson. A.5-A.7 ga kim tekshirishi, kim qaror qilishi va kim javobgarligini yozing. Bitta katak boʻsh boʻlsa, jarayon hali tayyor emas. Agent oʻz qadamini oʻzi tekshirmaydi.",
+            "<b>Ertaga kim.</b> A.4 ga ertaga kim qilishini belgilang: A agent, R robot (AIʼsiz avtomatika: formula, skript yoki oddiy bot), I inson. A.5-A.7 ga kim tekshirishi, kim qaror qilishi va kim javobgarligini yozing. Bitta katak boʻsh boʻlsa, jarayon hali tayyor emas. Agent oʻz qadamini oʻzi tekshirmaydi.",
             "<b>Haqiqiy holat.</b> Oʻtgan haftadagi bitta haqiqiy holatni jadval boʻyicha boshidan oxirigacha yuritib chiqing. Hech qaysi qadam tushib qolmaganini tekshiring.",
             "<b>Koʻrsatmalar, B shakli.</b> A shaklida agentga (A) berilgan qadamlarni B ga yigʻing va B.1-B.10 ni toʻldiring. B.3 dagi har manbaga ulanish yoʻlini belgilang: API, MCP, eksport fayli yoki qoʻlda qadam. Toʻldirilgan A va B ni kit3-agent papkasiga saqlang, Claude Codeʼda Kit 3 promptini yoki /kit3 ni ishga tushiring. Topilgan egasiz qadamlar va istisno holatlarni koʻrib chiqing, kerakligini B ga qoʻshing.",
             "<b>Xodimlar tekshiruvi va imzo.</b> instructions.md ni agent bilan ishlaydigan xodimlarga koʻrsating: istisno holatlarni ular biladi. Ular aytgan har istisnoni B.6 ga qoʻshing: holat, kimga, qanday. B.10 ga imzo, sana va keyingi koʻrib chiqish sanasini qoʻying.",
@@ -327,7 +327,7 @@ def kit3():
         + '<div class="cols">'
         + legend(["Jarayonni boshidan oxirigacha yozing, bir qatorda bitta harakat.",
                   "A.3: bu qadamni bugun kim qiladi.",
-                  "A.4: ertaga kim qiladi. A agent, R robot, I inson.",
+                  "A.4: ertaga kim qiladi. A agent, R robot (AIʼsiz avtomatika: formula, skript yoki oddiy bot), I inson.",
                   "A.5-A.7: kim tekshiradi, kim qaror qiladi, kim javobgar. Bitta katak boʻsh qolsa, jarayon hali tayyor emas."])
         + legend(["Oʻtgan haftadagi bitta haqiqiy holatni jadval boʻyicha boshidan oxirigacha yuritib chiqing. Hech qaysi qadam tushib qolmaganini tekshiring.",
                   "<b>Agent hech qachon oʻz qadamini oʻzi tekshirmaydi.</b>",

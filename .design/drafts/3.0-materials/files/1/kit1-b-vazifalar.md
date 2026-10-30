@@ -7,7 +7,7 @@ Bitta xodim, bitta shakl. Jadvalni Kit 1 prompti transkriptdan tuzadi, keyin xod
 - B.4 = B.2 × B.3 / 60.
 - B.7: Q qoida (har safar bir xil), F fikr (tajriba kerak).
 - B.8: past, oʻrta, yuqori.
-- B.9: A agent, R robot, I inson, B birgalikda.
+- B.9: A agent, R robot (AIʼsiz avtomatika: formula, skript yoki oddiy bot), I inson, B birgalikda.
 - Taxmin qilingan raqam yonida [?] turadi. Xodim tuzatgandan keyin [?] ni oʻchiring.
 
 | Maydon | Javob |

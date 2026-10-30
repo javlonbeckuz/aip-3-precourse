@@ -4,7 +4,7 @@ Kit 2 da tanlangan jarayonni qadamma-qadam yozing va ertaga har qadamni kim qili
 
 - Jarayonni boshidan oxirigacha yozing, bir qatorda bitta harakat.
 - A.3: bu qadamni bugun kim qiladi.
-- A.4: ertaga kim qiladi. A agent, R robot, I inson.
+- A.4: ertaga kim qiladi. A agent, R robot (AIʼsiz avtomatika: formula, skript yoki oddiy bot), I inson.
 - A.5-A.7: kim tekshiradi, kim qaror qiladi, kim javobgar. Bitta katak boʻsh qolsa, jarayon hali tayyor emas.
 - Oʻtgan haftadagi bitta haqiqiy holatni jadval boʻyicha boshidan oxirigacha yuritib chiqing. Hech qaysi qadam tushib qolmaganini tekshiring.
 - Agent hech qachon oʻz qadamini oʻzi tekshirmaydi.

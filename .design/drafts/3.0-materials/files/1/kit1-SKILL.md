@@ -21,7 +21,7 @@ Siz kompaniya papkasida (`kompaniya/`) ishlaysiz. Vazifa: bitta xodim bilan inte
 4. B.4 = B.2 × B.3 / 60, soatda, bir xonali kasrgacha.
 5. B.5 maʼlumot qayerdan keladi, B.6 natija kimga ketadi: matndan.
 6. B.7: Q qoida (har safar bir xil) yoki F fikr (tajriba kerak). B.8 xatoning narxi: past, oʻrta, yuqori.
-7. B.9 ni taklif sifatida qoʻying: A agent, R robot, I inson, B birgalikda. Yakuniy belgini foydalanuvchi qoʻyadi.
+7. B.9 ni taklif sifatida qoʻying: A agent, R robot (AIʼsiz avtomatika: formula, skript yoki oddiy bot), I inson, B birgalikda. Yakuniy belgini foydalanuvchi qoʻyadi.
 8. Har raqamni transkriptdagi soʻz bilan solishtiring. Transkripsiya oʻzbekcha raqamlarda adashadi: "bir uch-toʻrt yuz ming" 1 300 000 boʻlib qoladi, aslida bu taxminan 300-400 ming. Raqam va soʻz mos kelmasa yoki matnda aniq raqam yoʻq boʻlsa, raqam yoniga [?] qoʻying.
 
 ## Natija
