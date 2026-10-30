@@ -275,30 +275,36 @@ html.hid .bgp path{animation-play-state:paused}
 .prep-more .ef-mt{font-family:var(--font-body);font-size:15px;line-height:1.45;letter-spacing:0;text-transform:none}
 .pre-code{margin-top:4px}.pre-code .pc-l{font:600 14px/1 var(--font-body);opacity:.7;white-space:nowrap}
 
-/* ---- Birinchi darsgacha cards (Protokol 57): a yellow visual, title, description, promo row, open pill. The visual is 75% of the full column at 1440; flat colours, motion = stroke-dashoffset and the centre ring's opacity/transform only */
-.kgs{display:grid;gap:40px;margin-top:16px}
-.kg{display:grid;gap:16px;align-content:start}
-.kg-tx{display:grid;gap:16px;align-content:center;min-width:0}
-.kg-vis{display:block;width:100%;height:auto;border-radius:14px;background:#FDC959}
-.kg-no{margin:8px 0 -10px;font:500 13px/1.35 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
-.kg-t{margin:0;font:500 22px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase}
-.kg-d{margin:0;max-width:62ch;font:400 16px/1.5 var(--font-body);color:var(--text-2);text-wrap:pretty}
-.kg .cmd{margin-top:0}
-.kg-open{margin-top:4px}
-.kg-dash{stroke-dasharray:40 160;stroke-dashoffset:0;animation:kg-run 4s linear infinite}
-@keyframes kg-run{to{stroke-dashoffset:-200}}
-.kg-ring{transform-box:fill-box;transform-origin:center;animation:kg-pulse 2.4s ease-out infinite}
-@keyframes kg-pulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.28);opacity:0}}
-@media (prefers-reduced-motion:reduce){.kg-dash{animation:none;stroke-dashoffset:-30}.kg-ring{animation:none;opacity:.3}}
-
-/* Birinchi darsgacha: the card is one side-by-side unit under the page hero (visual left, text right, centred against it); phones stack with a shorter visual */
+/* ---- Birinchi darsgacha (user, 2026-10-30): an accordion of Poʻlat rows (a port of IconAccordion). The open row lifts into its own pill (8px margins), the rows next to it round the corners that meet it; springy timing; the panel grows from 0 with a short blur */
 .ex-wrap:has(>.kg-wrap){max-width:none}
 .ex-wrap .kg-wrap{margin:8px 0 0}
-.kg-vis{height:210px}
-@container (min-width:900px){
-  .kg:has(>.kg-vis){grid-template-columns:calc(520 * var(--u)) minmax(0,calc(640 * var(--u)));column-gap:calc(40 * var(--u));align-items:center}
-  .kg-vis{height:auto}
-}
+.ia{--r:20px;--sp:cubic-bezier(.34,1.32,.5,1);margin:16px 0 0;padding:0;list-style:none}
+.ia-row{position:relative;overflow:hidden;margin-block:0;border-radius:0;background:var(--slate);color:var(--white);transition:margin-block .45s var(--sp),border-radius .45s var(--sp)}
+.ia-row+.ia-row{box-shadow:inset 0 1px 0 rgb(255 255 255 / .2)}
+.ia-row.rt{border-top-left-radius:var(--r);border-top-right-radius:var(--r)}
+.ia-row.rb{border-bottom-left-radius:var(--r);border-bottom-right-radius:var(--r)}
+.ia-row.open,.ia-row.open+.ia-row{box-shadow:none}
+.ia-row.open{margin-block:8px}
+.ia-hd{display:grid;grid-template-columns:40px 36px minmax(0,1fr) 20px;gap:0 14px;align-items:center;width:100%;min-height:72px;padding:12px 20px;text-align:left;color:inherit;cursor:pointer}
+.ia-hd:hover{background:rgb(255 255 255 / .06)}
+.ia-hd:focus-visible{outline:2px solid var(--white);outline-offset:-4px;border-radius:var(--r)}
+.ia-ic{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--white);color:var(--slate)}
+.ia-no{font:500 13px/1 var(--font-mono)}
+.ia-t{display:block;font:500 18px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.ia-s{display:block;margin-top:3px;font:400 14px/1.35 var(--font-body);color:rgb(255 255 255 / .8)}
+.ia-chv{justify-self:end;width:10px;height:10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);transition:transform .3s var(--ease)}
+.ia-row.open .ia-chv{transform:rotate(-135deg) translate(-2px,-2px)}
+.ia-p{display:grid;grid-template-rows:0fr;opacity:0;filter:blur(2px);transition:grid-template-rows .45s cubic-bezier(.3,1.1,.4,1),opacity .3s ease,filter .3s ease}
+.ia-row.open .ia-p{grid-template-rows:1fr;opacity:1;filter:blur(0)}
+.ia-in{overflow:hidden;min-height:0}
+.ia-body{display:grid;gap:16px;justify-items:start;max-width:860px;padding:4px 20px 24px 110px}
+.ia .kg-d{margin:0;max-width:62ch;font:400 16px/1.5 var(--font-body);color:rgb(255 255 255 / .88);text-wrap:pretty}
+.ia .cmd{margin-top:0;border-color:rgb(255 255 255 / .5);color:var(--white)}
+.ia .pill-cta{color:var(--white)}
+.ia-vid{display:block;width:100%;aspect-ratio:16/9;border-radius:14px;background:#000}
+.ia-still .ia-row,.ia-still .ia-p,.ia-still .ia-chv{transition:none}
+@container (max-width:599px){.ia-hd{grid-template-columns:36px minmax(0,1fr) 18px;padding:12px 16px}.ia-no{display:none}.ia-ic{width:36px;height:36px}.ia-body{padding:0 16px 20px}.ia-t{font-size:16px}}
+@media (prefers-reduced-motion:reduce){.ia-row,.ia-p,.ia-chv{transition:none}}
 /* ---- lesson page, W1 (user, 2026-10-30): a compact header (back link + date on one line, the title on one line), then the folder across the whole page */
 .lhd{padding:24px 16px 0}
 .lhd .dl-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px;margin:0}

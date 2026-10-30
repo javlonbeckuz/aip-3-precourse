@@ -259,6 +259,13 @@ export function createApp(cfg) {
       if (!f) throw fail(404, 'not_found', 'No such file');
       sendFile(req, res, f.abs, { name: f.name });
     }],
+    ['GET|HEAD', /^\/api\/aip\/prep\/video\/([a-z0-9-]{1,40})$/, (req, res, url, m) => {
+      const s = needStudent(req);
+      gate(s, 0, 'prep');
+      const f = content.prepVideo(m[1]);
+      if (!f) throw fail(404, 'not_found', 'No such video');
+      sendFile(req, res, f.abs, { type: f.type, cache: MEDIA_CACHE });   // Range requests: the player can seek
+    }],
     ['GET', /^\/api\/aip\/prep\/pdf$/, (req, res, url) => {
       const s = needStudent(req);
       gate(s, 0, 'prep');

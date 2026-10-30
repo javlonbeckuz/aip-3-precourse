@@ -92,14 +92,20 @@
       }
     ],
     "more": {
-      "title": "Learn to write prompts",
-      "note": "Practise on this platform before the course starts.",
+      "title": "Practice and a video lesson",
       "links": [
         {
           "title": "Protokol 57",
           "note": "A prompt-writing practice platform: 57 protocols, and AI scores each of your prompts from 0 to 100. Free for Praktikum students: enter the promo code at checkout. The platform is in Uzbek.",
           "url": "https://p57.uz/",
-          "code": "PRAKTIKUM3"
+          "code": "PRAKTIKUM3",
+          "sub": "Prompt-writing practice, free with the promo code"
+        },
+        {
+          "title": "NotebookLM: a company knowledge base",
+          "sub": "Video lesson, 20 minutes",
+          "note": "You record short interviews with department heads, upload the recordings to NotebookLM and ask about company rules: when a discount is allowed, how salary and KPI are calculated. The video also shows how to get answers with their source and how to build a quiz for staff. The video is in Uzbek.",
+          "video": "notebooklm"
         }
       ]
     }

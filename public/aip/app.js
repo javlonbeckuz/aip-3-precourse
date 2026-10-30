@@ -1502,12 +1502,13 @@ function applyLessons(ls, lsUz, lang){
     D['prep.intro'] = pr.intro.replace('{sana}', '{date}');
     pr.items.forEach((it, i) => { D[`prep.${i}.title`] = it.title; D[`prep.${i}.note`] = it.note; it.steps.forEach((s, j) => { D[`prep.${i}.s${j}`] = s; }); acts(it).forEach((a, j) => { D[`prep.${i}.a${j}`] = a.label; }); if (it.footnote) D[`prep.${i}.foot`] = it.footnote; });
   }
-  const mo = pr && pr.more, ml = mo && Array.isArray(mo.links) ? mo.links.filter(x => x && /^https:\/\//.test(x.url)) : [];   // external learning platforms: links only, never counted as prep
-  PREP.more = ml.length ? {links: ml.map(x => ({url: x.url, code: typeof x.code === 'string' && /^[A-Za-z0-9_-]{1,32}$/.test(x.code) ? x.code : null, visual: x.visual === true}))} : null;   // code = an optional promo code shown with a copy button
+  const vid = x => typeof x.video === 'string' && /^[a-z0-9-]{1,40}$/.test(x.video) ? x.video : null;   // a video served by the portal (content/lessons/0/video/<slug>.mp4)
+  const mo = pr && pr.more, ml = mo && Array.isArray(mo.links) ? mo.links.filter(x => x && (/^https:\/\//.test(x.url) || vid(x))) : [];   // learning platforms and videos: never counted as prep
+  PREP.more = ml.length ? {links: ml.map(x => ({url: /^https:\/\//.test(x.url) ? x.url : null, video: vid(x) ? `${API}/prep/video/${vid(x)}` : null, code: typeof x.code === 'string' && /^[A-Za-z0-9_-]{1,32}$/.test(x.code) ? x.code : null}))} : null;   // code = an optional promo code shown with a copy button
   if (PREP.more) {
     const dflt = (I18N[lang] || I18N.uz)['prep.more.dflt'] || I18N.uz['prep.more.dflt'];   // the payload's language, not the UI's: never a blank heading or pill
     D['prep.more.title'] = mo.title || dflt; D['prep.more.note'] = mo.note || '';
-    ml.forEach((x, i) => { D[`prep.more.${i}.t`] = x.title || x.url; D[`prep.more.${i}.n`] = x.note || ''; });
+    ml.forEach((x, i) => { D[`prep.more.${i}.t`] = x.title || x.url || ''; D[`prep.more.${i}.s`] = x.sub || ''; D[`prep.more.${i}.n`] = x.note || ''; });
   }
   const byUz = {}; (lsUz || ls).forEach(l => byUz[l.n] = l);   // course material is Uzbek in every UI language
   C20 = makeC20(byUz); buildData();
@@ -1699,29 +1700,31 @@ function prepPage(){
     `<section class="prep" aria-label="${esc(t('prep.list.k'))}"><ol class="deck" id="deck" style="--cols:${deckCols(open)}">${cards}</ol></section>
       <div class="prep-end" id="prep-end"${prepCount() === 4 ? '' : ' hidden'}><p class="pe-t">${T(courseStarted() ? 'prep.end_after' : LESSONS[1].d ? 'prep.end_before' : 'prep.end_tba', {date: lessonDate(1)})}</p><a class="play" href="#/dastur"><span>${T('prep.end_back')}</span><span class="play-circ">${I('next', 20)}</span></a></div>`)};
 }
-// the Protokol 57 card (one per link of "Birinchi darsgacha"): a yellow visual (centre tile, six AI-tool marks, thin lines with a travelling dash), title, description, promo code, and the open pill. The visual is decorative; the title carries the meaning
-const KG_TILES = [['L', 70, 70, 'claude'], ['L', 70, 205, 'openai'], ['L', 70, 340, 'gemini'], ['R', 494, 70, 'notebooklm'], ['R', 494, 205, 'deepseek'], ['R', 494, 340, 'qwen']];
-const kgPath = ([s, x, y]) => {   // from the centre tile to a tile's inner edge, with rounded L-bends
-  const left = s === 'L', sx = left ? 246 : 318, ex = left ? 98 : 466, d = left ? 1 : -1, bx = left ? 150 : 414;
-  if (y === 205) return `M${sx} 205H${ex}`;
-  const up = y < 205, sy = up ? 195 : 215, r = 10;
-  return `M${sx} ${sy}H${bx + d * r}Q${bx} ${sy} ${bx} ${sy + (up ? -r : r)}V${y + (up ? r : -r)}Q${bx} ${y} ${bx - d * r} ${y}H${ex}`;
-};
-const kgVisual = () => `<svg class="kg-vis" viewBox="0 20 564 370" aria-hidden="true" focusable="false">
-  ${KG_TILES.map(t => `<path d="${kgPath(t)}" fill="none" stroke="#000" stroke-width="1.5" stroke-opacity=".45"/>`).join('')}
-  ${KG_TILES.map((t, i) => `<path class="kg-dash" pathLength="200" style="animation-delay:-${((i * 1.3) % 4).toFixed(1)}s" d="${kgPath(t)}" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round"/>`).join('')}
-  ${KG_TILES.map(([, x, y, k]) => `<rect x="${x - 28}" y="${y - 28}" width="56" height="56" rx="14" fill="#000"/><use href="#i-lg-${k}" x="${x - 15}" y="${y - 15}" width="30" height="30" style="color:#FDC959"/>`).join('')}
-  <rect class="kg-ring" x="238" y="161" width="88" height="88" rx="22" fill="none" stroke="#000" stroke-width="2"/><rect x="246" y="169" width="72" height="72" rx="18" fill="#000"/>
-  <text x="282" y="214" text-anchor="middle" font-size="24" style="font-family:var(--font-mono);font-weight:500" fill="#FDC959">P57</text></svg>`;
-const kgCard = (l, i) => `<article class="kg">${i === 0 || l.visual ? kgVisual() : ''}<div class="kg-tx"><span class="kg-no">${num2(i + 1)}</span><h2 class="kg-t">${esc(t(`prep.more.${i}.t`))}</h2>${t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : ''}${l.code ? `<div class="cmd pre-code"><span class="pc-l">${T('pre.code')}</span><code tabindex="0" aria-label="${esc(l.code)}">${esc(l.code)}</code><button class="cmd-cp" type="button" data-cmd="${esc(l.code)}" data-toast="toast.code_copied" aria-label="${esc(t('pre.code_copy'))}">${I('copy', 20)}</button></div>` : ''}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a></div></article>`;
-// "Birinchi darsgacha": the materials before the course (infrastructure, links to HEAD's other learning platforms); nothing yet = the "soon" line
+// "Birinchi darsgacha" as an accordion (user, 2026-10-30; a port of IconAccordion): one Poʻlat row per link or video; the open row lifts into its own pill and the rows next to it round the corners that meet it
+let iaOpen = 0;
+const iaBody = (l, i) => l.video
+  ? `<video class="ia-vid" controls preload="metadata" playsinline src="${esc(l.video)}"></video>${t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : ''}`
+  : `${t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : ''}${l.code ? `<div class="cmd pre-code"><span class="pc-l">${T('pre.code')}</span><code tabindex="0" aria-label="${esc(l.code)}">${esc(l.code)}</code><button class="cmd-cp" type="button" data-cmd="${esc(l.code)}" data-toast="toast.code_copied" aria-label="${esc(t('pre.code_copy'))}">${I('copy', 20)}</button></div>` : ''}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a>`;
+const iaRow = (l, i) => `<li class="ia-row" data-i="${i}"><button class="ia-hd" type="button" id="ia-h${i}" aria-expanded="false" aria-controls="ia-p${i}"><span class="ia-ic" aria-hidden="true">${I(l.video ? 'play' : 'ne', 18)}</span><span class="ia-no">${num2(i + 1)}</span><span class="ia-tt"><span class="ia-t">${esc(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.s`) ? `<span class="ia-s">${esc(t(`prep.more.${i}.s`))}</span>` : ''}</span><i class="ia-chv" aria-hidden="true"></i></button><div class="ia-p" id="ia-p${i}" role="region" aria-labelledby="ia-h${i}"><div class="ia-in"><div class="ia-body">${iaBody(l, i)}</div></div></div></li>`;
+function iaPaint(ul){
+  const rows = [...ul.children], last = rows.length - 1, a = iaOpen;
+  rows.forEach((r, i) => { const open = a === i;
+    r.classList.toggle('open', open);
+    r.classList.toggle('rt', i === 0 || open || (a !== null && i === a + 1));
+    r.classList.toggle('rb', i === last || open || (a !== null && i === a - 1));
+    r.querySelector('.ia-hd').setAttribute('aria-expanded', open);
+    r.querySelector('.ia-p').inert = !open;
+    if (!open) r.querySelectorAll('video').forEach(v => v.pause()); });   // a closed row never keeps playing
+}
+document.addEventListener('click', e => { const h = e.target.closest('.ia-hd'); if (!h) return; const i = +h.parentNode.dataset.i; iaOpen = iaOpen === i ? null : i; iaPaint(h.closest('.ia')); });
+// "Birinchi darsgacha": the materials before the course (links to learning platforms, videos); nothing yet = the "soon" line
 function prePage(){
   const m = PREP.more;
-  const rows = m ? m.links.map(kgCard).join('') : '';
+  if (m && iaOpen !== null && iaOpen >= m.links.length) iaOpen = 0;
   return {screen: 'ex', tag: '#/kursgacha', title: t('prep.title'), html: nav('pre') + wrap(`
       ${dlh('#/dastur', T('nav.home'), T('pre.label'))}
       <h1 class="headline ex-h">${T('prep.title')}</h1><p class="lede">${T('pre.lede')}</p>
-      ${m ? `<div class="kg-wrap"><h2 class="ef-h">${T('prep.more.title')}</h2>${t('prep.more.note') ? `<p class="ef-hint">${T('prep.more.note')}</p>` : ''}<div class="kgs">${rows}</div></div>` : `<p class="lede pre-soon">${T('lesson.soon')}</p>`}`)};
+      ${m ? `<div class="kg-wrap"><h2 class="ef-h">${T('prep.more.title')}</h2>${t('prep.more.note') ? `<p class="ef-hint">${T('prep.more.note')}</p>` : ''}<ul class="ia">${m.links.map(iaRow).join('')}</ul></div>` : `<p class="lede pre-soon">${T('lesson.soon')}</p>`}`)};
 }
 // the accordion: first unchecked card open, checking opens the next (focus follows), a live region says what happened; the pictures only move while on screen and while the tab is visible
 let prepIO = null, prepOpen = null, prepFresh = true, liveTimer = 0;
@@ -1889,6 +1892,7 @@ function mount(el, page){
   convertLinks(el); okina(el); markMissing(el);
   const dg = el.querySelector('#dg'); if (dg) { initGT(dg); if (page.tab > 0) { dg.dataset.instant = '1'; dg.querySelectorAll('.gt-tab')[page.tab]?.click(); delete dg.dataset.instant; } }   // ?tab=vz|kt|am|sl opens that folder tab
   if (el.querySelector('#deck')) initPrep(el);
+  const ia = el.querySelector('.ia'); if (ia) { ia.classList.add('ia-still'); iaPaint(ia); requestAnimationFrame(() => requestAnimationFrame(() => ia.classList.remove('ia-still'))); }   // the first paint does not animate
 }
 let firstRender = true, byClick = false, slFocus = '';
 const mem = {};      // hash -> {y, from}: coming back (browser Back) restores the scroll position and focuses the link we came from

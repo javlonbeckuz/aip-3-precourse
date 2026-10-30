@@ -14,7 +14,7 @@ export const FIXTURES = path.resolve(import.meta.dirname, 'fixtures');
 // content gets server/fixtures laid over it (lesson 1 with all parts and files, lesson 3 with 40 slides); { fixtures: false } skips that.
 export function tmpCopy(t, dir = REAL_CONTENT, { fixtures = true } = {}) {
   const d = fs.mkdtempSync(path.join(os.tmpdir(), 'aip-'));
-  if (dir) fs.cpSync(dir, d, { recursive: true });
+  if (dir) fs.cpSync(dir, d, { recursive: true, filter: (src) => !src.endsWith('.mp4') });   // the prep videos are hundreds of MB: never copied per test
   if (dir === REAL_CONTENT && fixtures) fs.cpSync(FIXTURES, d, { recursive: true });
   // tests assume the default gating; the live schedule may have its time lock switched off ('release' all 'open')
   const sp = path.join(d, 'schedule.json');

@@ -304,6 +304,21 @@ test('prep pdf: language picks the file, bad language falls back to uz', async (
   assert.match((await c.get('/api/aip/prep/pdf?lang=xx')).headers.get('content-disposition'), /prep-uz\.pdf/);
 });
 
+test('prep video: login needed, streams with Range, unknown slug 404', async (t) => {
+  const dir = tmpCopy(t);
+  fs.mkdirSync(path.join(dir, 'lessons', '0', 'video'), { recursive: true });
+  fs.writeFileSync(path.join(dir, 'lessons', '0', 'video', 'demo.mp4'), Buffer.alloc(1000, 7));
+  const a = await startApp(t, { now: BEFORE, contentDir: dir });
+  assert.equal((await a.client().get('/api/aip/prep/video/demo')).status, 401);
+  const c = await a.login('XM');
+  const r = await c.get('/api/aip/prep/video/demo', { headers: { Range: 'bytes=10-19' } });
+  assert.equal(r.status, 206);
+  assert.equal(r.headers.get('content-range'), 'bytes 10-19/1000');
+  assert.equal(r.headers.get('content-type'), 'video/mp4');
+  assert.equal((await c.get('/api/aip/prep/video/nope')).status, 404);
+  assert.equal((await c.get('/api/aip/prep/video/..%2Fx')).status, 404);
+});
+
 test('language: lesson metadata is translated, the parts always come from the Uzbek file', async (t) => {
   const a = await startApp(t, { now: AFTER });
   const c = await a.login('XM');

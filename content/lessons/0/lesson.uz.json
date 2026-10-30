@@ -92,14 +92,20 @@
       }
     ],
     "more": {
-      "title": "Prompt yozishni oʻrganing",
-      "note": "Kurs boshlanguncha shu platformada mashq qiling.",
+      "title": "Mashq va video dars",
       "links": [
         {
           "title": "Protokol 57",
           "note": "Prompt yozishni mashq qilish platformasi: 57 ta protokol, har bir promptingizga AI 0 dan 100 gacha baho beradi. Praktikum talabalari uchun bepul: toʻlov paytida promokodni kiriting.",
           "url": "https://p57.uz/",
-          "code": "PRAKTIKUM3"
+          "code": "PRAKTIKUM3",
+          "sub": "Prompt yozishni mashq qilish, promokod bilan bepul"
+        },
+        {
+          "title": "NotebookLM: kompaniya bilim bazasi",
+          "sub": "Video dars, 20 daqiqa",
+          "note": "Boʻlim rahbarlari bilan qisqa intervyu yozib olasiz, yozuvlarni NotebookLMʼga yuklaysiz va kompaniya qoidalari haqida savol berasiz: chegirma qachon beriladi, oylik va KPI qanday hisoblanadi. Videoda javobni manbasi bilan olish va xodimlar uchun test yaratish ham koʻrsatilgan.",
+          "video": "notebooklm"
         }
       ]
     }

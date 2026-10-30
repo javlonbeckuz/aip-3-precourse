@@ -850,26 +850,39 @@ html.hid .bgp path{animation-play-state:paused}
 .prep-more .ef-mt{font-family:var(--font-body);font-size:15px;line-height:1.45;letter-spacing:0;text-transform:none}
 .pre-code{margin-top:4px}
 .pre-code .pc-l{font:600 14px/1 var(--font-body);opacity:.7;white-space:nowrap}
-.kgs{display:grid;gap:40px;margin-top:16px}
-.kg{display:grid;gap:16px;align-content:start}
-.kg-tx{display:grid;gap:16px;align-content:center;min-width:0}
-.kg-vis{display:block;width:100%;height:auto;border-radius:14px;background:#FDC959}
-.kg-no{margin:8px 0 -10px;font:500 13px/1.35 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
-.kg-t{margin:0;font:500 22px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase}
-.kg-d{margin:0;max-width:62ch;font:400 16px/1.5 var(--font-body);color:var(--text-2);text-wrap:pretty}
-.kg .cmd{margin-top:0}
-.kg-open{margin-top:4px}
-.kg-dash{stroke-dasharray:40 160;stroke-dashoffset:0;animation:kg-run 4s linear infinite}
-@keyframes kg-run{to{stroke-dashoffset:-200}}
-.kg-ring{transform-box:fill-box;transform-origin:center;animation:kg-pulse 2.4s ease-out infinite}
-@keyframes kg-pulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.28);opacity:0}}
-@media (prefers-reduced-motion:reduce){.kg-dash{animation:none;stroke-dashoffset:-30}
-.kg-ring{animation:none;opacity:.3}}
 .ex-wrap:has(>.kg-wrap){max-width:none}
 .ex-wrap .kg-wrap{margin:8px 0 0}
-.kg-vis{height:210px}
-@container (min-width:900px){.kg:has(>.kg-vis){grid-template-columns:calc(520 * var(--u)) minmax(0,calc(640 * var(--u)));column-gap:calc(40 * var(--u));align-items:center}
-.kg-vis{height:auto}}
+.ia{--r:20px;--sp:cubic-bezier(.34,1.32,.5,1);margin:16px 0 0;padding:0;list-style:none}
+.ia-row{position:relative;overflow:hidden;margin-block:0;border-radius:0;background:var(--slate);color:var(--white);transition:margin-block .45s var(--sp),border-radius .45s var(--sp)}
+.ia-row+.ia-row{box-shadow:inset 0 1px 0 rgb(255 255 255 / .2)}
+.ia-row.rt{border-top-left-radius:var(--r);border-top-right-radius:var(--r)}
+.ia-row.rb{border-bottom-left-radius:var(--r);border-bottom-right-radius:var(--r)}
+.ia-row.open,.ia-row.open+.ia-row{box-shadow:none}
+.ia-row.open{margin-block:8px}
+.ia-hd{display:grid;grid-template-columns:40px 36px minmax(0,1fr) 20px;gap:0 14px;align-items:center;width:100%;min-height:72px;padding:12px 20px;text-align:left;color:inherit;cursor:pointer}
+@media (hover:hover) and (pointer:fine){.ia-hd:hover{background:rgb(255 255 255 / .06)}}
+.ia-hd:focus-visible{outline:2px solid var(--white);outline-offset:-4px;border-radius:var(--r)}
+.ia-ic{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--white);color:var(--slate)}
+.ia-no{font:500 13px/1 var(--font-mono)}
+.ia-t{display:block;font:500 18px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase}
+.ia-s{display:block;margin-top:3px;font:400 14px/1.35 var(--font-body);color:rgb(255 255 255 / .8)}
+.ia-chv{justify-self:end;width:10px;height:10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);transition:transform .3s var(--ease)}
+.ia-row.open .ia-chv{transform:rotate(-135deg) translate(-2px,-2px)}
+.ia-p{display:grid;grid-template-rows:0fr;opacity:0;filter:blur(2px);transition:grid-template-rows .45s cubic-bezier(.3,1.1,.4,1),opacity .3s ease,filter .3s ease}
+.ia-row.open .ia-p{grid-template-rows:1fr;opacity:1;filter:blur(0)}
+.ia-in{overflow:hidden;min-height:0}
+.ia-body{display:grid;gap:16px;justify-items:start;max-width:860px;padding:4px 20px 24px 110px}
+.ia .kg-d{margin:0;max-width:62ch;font:400 16px/1.5 var(--font-body);color:rgb(255 255 255 / .88);text-wrap:pretty}
+.ia .cmd{margin-top:0;border-color:rgb(255 255 255 / .5);color:var(--white)}
+.ia .pill-cta{color:var(--white)}
+.ia-vid{display:block;width:100%;aspect-ratio:16/9;border-radius:14px;background:#000}
+.ia-still .ia-row,.ia-still .ia-p,.ia-still .ia-chv{transition:none}
+@container (max-width:599px){.ia-hd{grid-template-columns:36px minmax(0,1fr) 18px;padding:12px 16px}
+.ia-no{display:none}
+.ia-ic{width:36px;height:36px}
+.ia-body{padding:0 16px 20px}
+.ia-t{font-size:16px}}
+@media (prefers-reduced-motion:reduce){.ia-row,.ia-p,.ia-chv{transition:none}}
 .lhd{padding:24px 16px 0}
 .lhd .dl-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px;margin:0}
 .lhd .dl-h .eyebrow{margin:0}
@@ -961,12 +974,6 @@ body:not(.solo) .s1 .lib-bar{top:45px}
   <symbol id="i-copy" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M13 7V4.5A1.5 1.5 0 0011.5 3h-7A1.5 1.5 0 003 4.5v7A1.5 1.5 0 004.5 13H7"/></symbol>
   <symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5l3.5 3.5 7.5-8.5"/></symbol>
   <symbol id="i-start" viewBox="0 0 100 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 30V4.5M5 6h15v10H5M10 6v10M15 6v10M5 11h15M95 30V4.5M95 6H80v10h15M90 6v10M85 6v10M95 11H80"/><path d="M5 6h5v5H5zM15 6h5v5h-5zM10 11h5v5h-5zM95 6h-5v5h5zM85 6h-5v5h5zM90 11h-5v5h5z" fill="currentColor" stroke="none"/></symbol>
-  <symbol id="i-lg-claude" viewBox="0 0 28 28" fill="currentColor"><path d="M5.488 18.62L11.004 15.54L11.088 15.26L11.004 15.12H10.724L9.8 15.064L6.664 14.98L3.92 14.84L1.26 14.7L0.588 14.56L0 13.72L0.056 13.3L0.616 12.936L1.428 12.992L3.192 13.132L5.852 13.3L7.784 13.412L10.64 13.748H11.088L11.144 13.552L11.004 13.44L10.892 13.328L8.12 11.48L5.152 9.52L3.584 8.372L2.744 7.812L2.324 7.252L2.156 6.076L2.912 5.236L3.948 5.32L4.2 5.376L5.236 6.188L7.476 7.896L10.36 10.08L10.78 10.416L10.948 10.304L10.976 10.22L10.78 9.912L9.24 7L7.56 4.088L6.804 2.884L6.608 2.156C6.524 1.876 6.496 1.596 6.496 1.316L7.336 0.14L7.84 0L9.016 0.168L9.464 0.56L10.192 2.24L11.34 4.844L13.16 8.372L13.72 9.436L14 10.388L14.084 10.668H14.28V10.528L14.42 8.512L14.7 6.076L14.98 2.94L15.064 2.044L15.512 0.98L16.352 0.42L17.08 0.728L17.64 1.54L17.556 2.044L17.248 4.2L16.52 7.588L16.1 9.884H16.352L16.632 9.576L17.78 8.064L19.712 5.656L20.552 4.676L21.56 3.64L22.204 3.136H23.408L24.276 4.452L23.884 5.824L22.652 7.392L21.616 8.708L20.132 10.696L19.236 12.292L19.32 12.404H19.516L22.876 11.676L24.668 11.368L26.796 11.004L27.776 11.452L27.888 11.9L27.496 12.852L25.2 13.412L22.512 13.972L18.508 14.896L18.452 14.924L18.508 15.008L20.3 15.176L21.084 15.232H22.988L26.516 15.512L27.44 16.072L27.972 16.828L27.888 17.388L26.46 18.116L24.556 17.668L20.076 16.604L18.564 16.24H18.34V16.352L19.628 17.612L21.952 19.712L24.92 22.428L25.06 23.1L24.696 23.66L24.304 23.604L21.728 21.644L20.72 20.804L18.48 18.9H18.34V19.096L18.844 19.852L21.588 23.968L21.728 25.228L21.532 25.62L20.804 25.9L20.048 25.732L18.424 23.492L16.744 20.972L15.428 18.676L15.288 18.788L14.476 27.244L14.112 27.664L13.272 28L12.572 27.44L12.18 26.6L12.572 24.864L13.02 22.624L13.384 20.832L13.72 18.62L13.916 17.892V17.836H13.72L12.04 20.16L9.52 23.604L7.504 25.732L7.028 25.928L6.188 25.508L6.272 24.724L6.72 24.08L9.52 20.496L11.2 18.284L12.32 16.996L12.292 16.856H12.208L4.816 21.672L3.5 21.84L2.94 21.28L2.996 20.44L3.276 20.16L5.516 18.62H5.488Z"/></symbol>
-  <symbol id="i-lg-openai" viewBox="0 0 24 24" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></symbol>
-  <symbol id="i-lg-gemini" viewBox="0 0 24 24" fill="currentColor"><path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></symbol>
-  <symbol id="i-lg-notebooklm" viewBox="0 0 24 24" fill="currentColor"><path d="M11.999 3.201C5.372 3.201 0 8.528 0 15.101V20.8h2.212v-.568c0-2.666 2.178-4.827 4.866-4.827 2.688 0 4.866 2.16 4.866 4.827v.568h2.212v-.568c0-3.877-3.17-7.019-7.078-7.019A7.075 7.075 0 0 0 2.992 14.5a7.355 7.355 0 0 1 6.568-4.016c4.057 0 7.347 3.264 7.347 7.287V20.8h2.212V17.77c0-5.235-4.28-9.481-9.56-9.481a9.563 9.563 0 0 0-6.217 2.28A9.795 9.795 0 0 1 12 5.393c5.406 0 9.788 4.346 9.788 9.707V20.8H24V15.1c-.001-6.573-5.373-11.9-12.001-11.9Z"/></symbol>
-  <symbol id="i-lg-deepseek" viewBox="0 0 24 24" fill="currentColor"><path d="M2.2 12.3c0-4 3.5-6.9 8.2-6.9 2.1 0 4 .5 5.4 1.5.8-1 2-1.6 3.4-1.8l-.6 2.4c1.2 1.2 1.9 2.8 1.9 4.6 0 1.2-.3 2.2-.9 3.1l1.9 2.5-3-.4c-1.4.9-3.2 1.4-5.2 1.4-1.7 0-3.3-.4-4.6-1.1L6.2 20l.1-3.2c-2.5-1-4.1-2.6-4.1-4.5z"/><circle cx="6.9" cy="10.4" r="1.1" fill="#000"/></symbol>
-  <symbol id="i-lg-qwen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6l8.1 4.7v9.4L12 21.4l-8.1-4.7V7.3z"/><path d="M12.6 12.7l3.6 3.6"/></symbol>
   <symbol id="i-flag" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 30V4.5M9 6h17v12H9M14.7 6v12M20.3 6v12M9 12h17"/><path d="M9 6h5.7v6H9zM20.3 6H26v6h-5.7zM14.7 12h5.6v6h-5.6z" fill="currentColor" stroke="none"/></symbol>
   <symbol id="i-lock" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="12" height="8.5" rx="1.5"/><path d="M7 9V6.5a3 3 0 016 0V9"/></symbol>
   <symbol id="i-send" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2.5L2 9l5.6 2L15 5.5 9.6 12.4l6 5.1z"/></symbol>
@@ -3121,29 +3128,31 @@ function prepPage(){
     `<section class="prep" aria-label="${esc(t('prep.list.k'))}"><ol class="deck" id="deck" style="--cols:${deckCols(open)}">${cards}</ol></section>
       <div class="prep-end" id="prep-end"${prepCount() === 4 ? '' : ' hidden'}><p class="pe-t">${T(courseStarted() ? 'prep.end_after' : LESSONS[1].d ? 'prep.end_before' : 'prep.end_tba', {date: lessonDate(1)})}</p><a class="play" href="#/dastur"><span>${T('prep.end_back')}</span><span class="play-circ">${I('next', 20)}</span></a></div>`)};
 }
-// the Protokol 57 card (one per link of "Birinchi darsgacha"): a yellow visual (centre tile, six AI-tool marks, thin lines with a travelling dash), title, description, promo code, and the open pill. The visual is decorative; the title carries the meaning
-const KG_TILES = [['L', 70, 70, 'claude'], ['L', 70, 205, 'openai'], ['L', 70, 340, 'gemini'], ['R', 494, 70, 'notebooklm'], ['R', 494, 205, 'deepseek'], ['R', 494, 340, 'qwen']];
-const kgPath = ([s, x, y]) => {   // from the centre tile to a tile's inner edge, with rounded L-bends
-  const left = s === 'L', sx = left ? 246 : 318, ex = left ? 98 : 466, d = left ? 1 : -1, bx = left ? 150 : 414;
-  if (y === 205) return `M${sx} 205H${ex}`;
-  const up = y < 205, sy = up ? 195 : 215, r = 10;
-  return `M${sx} ${sy}H${bx + d * r}Q${bx} ${sy} ${bx} ${sy + (up ? -r : r)}V${y + (up ? r : -r)}Q${bx} ${y} ${bx - d * r} ${y}H${ex}`;
-};
-const kgVisual = () => `<svg class="kg-vis" viewBox="0 20 564 370" aria-hidden="true" focusable="false">
-  ${KG_TILES.map(t => `<path d="${kgPath(t)}" fill="none" stroke="#000" stroke-width="1.5" stroke-opacity=".45"/>`).join('')}
-  ${KG_TILES.map((t, i) => `<path class="kg-dash" pathLength="200" style="animation-delay:-${((i * 1.3) % 4).toFixed(1)}s" d="${kgPath(t)}" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round"/>`).join('')}
-  ${KG_TILES.map(([, x, y, k]) => `<rect x="${x - 28}" y="${y - 28}" width="56" height="56" rx="14" fill="#000"/><use href="#i-lg-${k}" x="${x - 15}" y="${y - 15}" width="30" height="30" style="color:#FDC959"/>`).join('')}
-  <rect class="kg-ring" x="238" y="161" width="88" height="88" rx="22" fill="none" stroke="#000" stroke-width="2"/><rect x="246" y="169" width="72" height="72" rx="18" fill="#000"/>
-  <text x="282" y="214" text-anchor="middle" font-size="24" style="font-family:var(--font-mono);font-weight:500" fill="#FDC959">P57</text></svg>`;
-const kgCard = (l, i) => `<article class="kg">${i === 0 || l.visual ? kgVisual() : ''}<div class="kg-tx"><span class="kg-no">${num2(i + 1)}</span><h2 class="kg-t">${esc(t(`prep.more.${i}.t`))}</h2>${t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : ''}${l.code ? `<div class="cmd pre-code"><span class="pc-l">${T('pre.code')}</span><code tabindex="0" aria-label="${esc(l.code)}">${esc(l.code)}</code><button class="cmd-cp" type="button" data-cmd="${esc(l.code)}" data-toast="toast.code_copied" aria-label="${esc(t('pre.code_copy'))}">${I('copy', 20)}</button></div>` : ''}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a></div></article>`;
-// "Birinchi darsgacha": the materials before the course (infrastructure, links to HEAD's other learning platforms); nothing yet = the "soon" line
+// "Birinchi darsgacha" as an accordion (user, 2026-10-30; a port of IconAccordion): one Poʻlat row per link or video; the open row lifts into its own pill and the rows next to it round the corners that meet it
+let iaOpen = 0;
+const iaBody = (l, i) => l.video
+  ? `<video class="ia-vid" controls preload="metadata" playsinline src="${esc(l.video)}"></video>${t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : ''}`
+  : `${t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : ''}${l.code ? `<div class="cmd pre-code"><span class="pc-l">${T('pre.code')}</span><code tabindex="0" aria-label="${esc(l.code)}">${esc(l.code)}</code><button class="cmd-cp" type="button" data-cmd="${esc(l.code)}" data-toast="toast.code_copied" aria-label="${esc(t('pre.code_copy'))}">${I('copy', 20)}</button></div>` : ''}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a>`;
+const iaRow = (l, i) => `<li class="ia-row" data-i="${i}"><button class="ia-hd" type="button" id="ia-h${i}" aria-expanded="false" aria-controls="ia-p${i}"><span class="ia-ic" aria-hidden="true">${I(l.video ? 'play' : 'ne', 18)}</span><span class="ia-no">${num2(i + 1)}</span><span class="ia-tt"><span class="ia-t">${esc(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.s`) ? `<span class="ia-s">${esc(t(`prep.more.${i}.s`))}</span>` : ''}</span><i class="ia-chv" aria-hidden="true"></i></button><div class="ia-p" id="ia-p${i}" role="region" aria-labelledby="ia-h${i}"><div class="ia-in"><div class="ia-body">${iaBody(l, i)}</div></div></div></li>`;
+function iaPaint(ul){
+  const rows = [...ul.children], last = rows.length - 1, a = iaOpen;
+  rows.forEach((r, i) => { const open = a === i;
+    r.classList.toggle('open', open);
+    r.classList.toggle('rt', i === 0 || open || (a !== null && i === a + 1));
+    r.classList.toggle('rb', i === last || open || (a !== null && i === a - 1));
+    r.querySelector('.ia-hd').setAttribute('aria-expanded', open);
+    r.querySelector('.ia-p').inert = !open;
+    if (!open) r.querySelectorAll('video').forEach(v => v.pause()); });   // a closed row never keeps playing
+}
+document.addEventListener('click', e => { const h = e.target.closest('.ia-hd'); if (!h) return; const i = +h.parentNode.dataset.i; iaOpen = iaOpen === i ? null : i; iaPaint(h.closest('.ia')); });
+// "Birinchi darsgacha": the materials before the course (links to learning platforms, videos); nothing yet = the "soon" line
 function prePage(){
   const m = PREP.more;
-  const rows = m ? m.links.map(kgCard).join('') : '';
+  if (m && iaOpen !== null && iaOpen >= m.links.length) iaOpen = 0;
   return {screen: 'ex', tag: '#/kursgacha', title: t('prep.title'), html: nav('pre') + wrap(`
       ${dlh('#/dastur', T('nav.home'), T('pre.label'))}
       <h1 class="headline ex-h">${T('prep.title')}</h1><p class="lede">${T('pre.lede')}</p>
-      ${m ? `<div class="kg-wrap"><h2 class="ef-h">${T('prep.more.title')}</h2>${t('prep.more.note') ? `<p class="ef-hint">${T('prep.more.note')}</p>` : ''}<div class="kgs">${rows}</div></div>` : `<p class="lede pre-soon">${T('lesson.soon')}</p>`}`)};
+      ${m ? `<div class="kg-wrap"><h2 class="ef-h">${T('prep.more.title')}</h2>${t('prep.more.note') ? `<p class="ef-hint">${T('prep.more.note')}</p>` : ''}<ul class="ia">${m.links.map(iaRow).join('')}</ul></div>` : `<p class="lede pre-soon">${T('lesson.soon')}</p>`}`)};
 }
 // the accordion: first unchecked card open, checking opens the next (focus follows), a live region says what happened; the pictures only move while on screen and while the tab is visible
 let prepIO = null, prepOpen = null, prepFresh = true, liveTimer = 0;
@@ -3321,6 +3330,7 @@ function mount(el, page){
   okina(el); markMissing(el);
   const dg = el.querySelector('#dg'); if (dg) { initGT(dg); if (page.tab > 0) { dg.dataset.instant = '1'; dg.querySelectorAll('.gt-tab')[page.tab]?.click(); delete dg.dataset.instant; } }   // ?tab=vz|kt|am|sl opens that folder tab
   if (el.querySelector('#deck')) initPrep(el);
+  const ia = el.querySelector('.ia'); if (ia) { ia.classList.add('ia-still'); iaPaint(ia); requestAnimationFrame(() => requestAnimationFrame(() => ia.classList.remove('ia-still'))); }   // the first paint does not animate
 }
 let firstRender = true, byClick = false, slFocus = '';
 const mem = {};      // hash -> {y, from}: coming back (browser Back) restores the scroll position and focuses the link we came from
