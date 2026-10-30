@@ -119,6 +119,19 @@ body{background:#000;margin:0}
 .w-hr{display:grid;gap:10px;margin-top:16px}
 @container (min-width:900px){.w-top{padding:calc(28 * var(--u)) calc(50 * var(--u)) 0 calc(66 * var(--u))}.w-h1{margin-top:calc(18 * var(--u));font-size:calc(56 * var(--u));white-space:nowrap}.w-hr{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 calc(48 * var(--u));margin-top:calc(20 * var(--u))}.w-wrap{padding-top:calc(36 * var(--u))}}
 @container (max-width:899px){.w-h1 .w-n{display:block}}
+/* prompt row with an inline "Matnni koʻrish" opener */
+.pc2{cursor:default}
+.pc2 .cpb{cursor:pointer;color:var(--gt-ink)}
+.pc2 .pvd{grid-column:2/-1;margin:-2px 0 4px}
+.pc2 .pvd>summary{display:inline-flex;align-items:center;gap:8px;min-height:32px;cursor:pointer;list-style:none;font:500 13px/1.3 var(--font-body);text-decoration:underline;text-underline-offset:3px}
+.pc2 .pvd>summary::-webkit-details-marker{display:none}
+.pc2 .pvd .pv-h,.pc2 .pvd[open] .pv-s{display:none}
+.pc2 .pvd[open] .pv-h{display:inline}
+.pc2 .chv{width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translate(-1px,-1px)}
+.pc2 .pvd[open] .chv{transform:rotate(-135deg) translate(-1px,-1px)}
+.pc2 .ptx{margin:6px 0 8px;padding:12px 14px;border:1px solid var(--gt-line);border-radius:10px;font:400 14.5px/1.55 var(--font-body);white-space:pre-line}
+.pc2 .ph{padding:0 2px;border-radius:3px;background:color-mix(in srgb,currentColor 12%,transparent)}
+@container (max-width:599px){.pc2 .pvd{grid-column:1/-1}}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <filter id="goo-tabs"><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter>
@@ -169,8 +182,11 @@ const hmeta = h => [h.prompts.length ? `${h.prompts.length} prompt` : 'amaliy is
 const intro = t => t.split(/\n\s*\n/).map(p => `<p class="lc-intro">${esc(p)}</p>`).join('');
 const prompt = p => `<div class="lc-pr" data-open="0"><span class="pt">${esc(p.title)}</span><span class="pw">${esc(p.target || '')}</span><span class="cpb" aria-hidden="true">${I('copy')}</span><button class="tg" type="button">Matnni koʻrish</button><p class="tx">${esc(p.text)}</p></div>`.replace('Matnni koʻrish', uz('Matnni koʻrish'));
 const stepsH = e => `${e.intro ? `<p class="lc-lead">${esc(e.intro)}</p>` : ''}${e.steps.length ? `<ol class="lc-steps">${e.steps.map(s => `<li>${esc(s)}</li>`).join('')}</ol>` : ''}${e.ready ? `<p class="lc-ready"><b>Tayyor, agar</b>${esc(e.ready)}</p>` : ''}${e.prompts.map(prompt).join('')}`;
-const pc2 = p => `<button class="pc2" type="button"><span class="no">${esc(p.id)}</span><span><span class="t">${esc(p.title)}</span><span class="w">${esc(p.target || '')}</span></span><span class="cpb">${I('copy')}</span></button>`;
-const pcs = ps => ps.length ? `<div class="pcs"><p class="pcs-h">Promptlar</p>${ps.map(pc2).join('')}</div>` : '';
+// one prompt: number, name, target, copy button; "Matnni koʻrish" opens the full text right below (native <details>)
+const phl = s => esc(s).replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
+const pc2 = (p, open) => `<div class="pc2"><span class="no">${esc(p.id)}</span><span><span class="t">${esc(p.title)}</span><span class="w">${esc(p.target || '')}</span></span><button class="cpb" type="button" aria-label="Nusxalash">${I('copy')}</button><details class="pvd"${open ? ' open' : ''}><summary><span class="pv-s">${uz('Matnni koʻrish')}</span><span class="pv-h">Yashirish</span><i class="chv"></i></summary><p class="ptx">${phl(p.text)}</p></details></div>`;
+let firstOpen = true;   // the first prompt on each frame starts open, so the preview shows what an opened prompt looks like
+const pcs = ps => ps.length ? `<div class="pcs"><p class="pcs-h">Promptlar</p>${ps.map(p => { const o = firstOpen; firstOpen = false; return pc2(p, o); }).join('')}</div>` : '';
 const steps = e => `${e.intro ? `<p class="lead">${esc(e.intro)}</p>` : ''}${e.steps.length ? `<ol class="stp">${e.steps.map(s => `<li>${esc(s)}</li>`).join('')}</ol>` : ''}${e.ready ? `<p class="rdy"><b>Tayyor, agar</b>${esc(e.ready)}</p>` : ''}`;
 const wIntro = t => `<div class="w-intro">${t.split(/\n\s*\n/).map(p => `<p>${esc(p)}</p>`).join('')}</div>`;
 // W1: everything on one wide page: each exercise one row, steps left, prompts right
@@ -193,10 +209,11 @@ const frame = (pane, tab) => `<div class="frame" data-h><div class="site">
     <div class="w-wrap"><div class="gt gt-lilac g-lilac" style="--n:2;--i:${tab === 'am' ? 0 : 1}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
       <div class="gt-tabs" role="tablist"><button class="gt-tab" role="tab" type="button" aria-selected="${tab === 'am'}">Amaliyot</button><button class="gt-tab" role="tab" type="button" aria-selected="${tab === 'vz'}">Vazifa</button></div>
       <div class="gt-body"><div class="gt-pane" role="tabpanel"><div>${pane}</div><div class="gt-foot end"><button class="endb" type="button" aria-pressed="false">${tab === 'am' ? 'Amaliyot bajarildi' : 'Vazifa bajarildi'}</button></div></div></div></div></div></main></div></div>`;
+const fr = f => { firstOpen = true; return f(); };
 const OPTS = [
-  ['W1', 'Hammasi bir sahifada, uch ustun', 'Papka butun sahifa enida. Har mashq bitta qator: chapda raqam va nom, oʻrtada qadamlar, oʻngda promptlar. Hech narsa yashirilmaydi.', [['am', W1_am()], ['vz', W1_vz()]]],
-  ['W2', 'Raqamli tugmalar, ikki ustun', 'Tepada mashq tugmalari (raqam va nom). Bitta mashq koʻrinadi: chapda qadamlar, oʻngda promptlar.', [['am', W2_am(0)], ['vz', W2_vz(0)]]],
-  ['W3', 'Chap menyu', 'Chapda mashqlar roʻyxati, oʻngda tanlangan mashq. Hujjat saytlari kabi.', [['am', W3_am(0)], ['vz', W3_vz(0)]]],
+  ['W1', 'Hammasi bir sahifada, uch ustun', 'Papka butun sahifa enida. Har mashq bitta qator: chapda raqam va nom, oʻrtada qadamlar, oʻngda promptlar. Hech narsa yashirilmaydi.', [['am', fr(() => W1_am())], ['vz', fr(() => W1_vz())]]],
+  ['W2', 'Raqamli tugmalar, ikki ustun', 'Tepada mashq tugmalari (raqam va nom). Bitta mashq koʻrinadi: chapda qadamlar, oʻngda promptlar.', [['am', fr(() => W2_am(0))], ['vz', fr(() => W2_vz(0))]]],
+  ['W3', 'Chap menyu', 'Chapda mashqlar roʻyxati, oʻngda tanlangan mashq. Hujjat saytlari kabi.', [['am', fr(() => W3_am(0))], ['vz', fr(() => W3_vz(0))]]],
 ];
 document.getElementById('out').innerHTML = OPTS.map(([k, n, d, frames]) => `<section class="lc-opt" id="o${k}"><p class="lc-name">Variant ${k}: ${uz(n)}<small>${uz(d)}</small></p>${frames.map(([tab, pane]) => `<p class="lc-h">${k}-${tab === 'am' ? 'Amaliyot' : 'Vazifa'}</p>${frame(pane, tab)}`).join('')}</section>`).join('');
 document.addEventListener('click', e => { if (e.target.closest('a[href="#"]')) e.preventDefault(); });
