@@ -463,5 +463,6 @@
  "lc.show": "Show text",
  "lc.hide": "Hide text",
  "lc.ph": "Prompts",
- "lesson.extra": "Extra lesson"
+ "lesson.extra": "Extra lesson",
+ "pre.in_video": "In the video"
 }

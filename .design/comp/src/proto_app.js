@@ -223,9 +223,15 @@ function prepPage(){
 }
 // "Birinchi darsgacha" as an accordion (user, 2026-10-30; a port of IconAccordion): one Poʻlat row per link or video; the open row lifts into its own pill and the rows next to it round the corners that meet it
 let iaOpen = 0;
-const iaBody = (l, i) => l.video
-  ? `<video class="ia-vid" controls preload="metadata" playsinline src="${esc(l.video)}"></video>${t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : ''}`
-  : `${t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : ''}${l.code ? `<div class="cmd pre-code"><span class="pc-l">${T('pre.code')}</span><code tabindex="0" aria-label="${esc(l.code)}">${esc(l.code)}</code><button class="cmd-cp" type="button" data-cmd="${esc(l.code)}" data-toast="toast.code_copied" aria-label="${esc(t('pre.code_copy'))}">${I('copy', 20)}</button></div>` : ''}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a>`;
+// style C (user, 2026-10-30): the main thing on the right in a dashed card (a link's promo code as a coupon, a video's "Videoda" points); description and the video or the open pill on the left
+const iaDesc = i => t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : '';
+const iaCard = (l, i) => l.code
+  ? `<div class="ia-card"><span class="ia-k">${esc(t(`prep.more.${i}.cl`) || t('pre.code'))}</span><code class="ia-code">${esc(l.code)}</code><button class="cmd-cp ia-cpb" type="button" data-cmd="${esc(l.code)}" data-toast="toast.code_copied" aria-label="${esc(t('pre.code_copy'))}">${I('copy', 18)}${T('common.copy')}</button></div>`
+  : l.points ? `<div class="ia-card"><span class="ia-k">${T('pre.in_video')}</span><ol class="ia-pts">${Array.from({length: l.points}, (_, j) => `<li>${esc(t(`prep.more.${i}.p${j}`))}</li>`).join('')}</ol></div>` : '';
+const iaBody = (l, i) => { const card = iaCard(l, i);
+  const left = l.video ? `<video class="ia-vid" controls preload="metadata" playsinline src="${esc(l.video)}"></video>${iaDesc(i)}`
+    : `${iaDesc(i)}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a>`;
+  return `<div class="ia-c${card ? ' has-card' : ''}"><div class="ia-l">${left}</div>${card}</div>`; };
 const iaRow = (l, i) => `<li class="ia-row" data-i="${i}"><button class="ia-hd" type="button" id="ia-h${i}" aria-expanded="false" aria-controls="ia-p${i}"><span class="ia-ic" aria-hidden="true">${I(l.video ? 'play' : 'ne', 18)}</span><span class="ia-no">${num2(i + 1)}</span><span class="ia-tt"><span class="ia-t">${esc(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.s`) ? `<span class="ia-s">${esc(t(`prep.more.${i}.s`))}</span>` : ''}</span><i class="ia-chv" aria-hidden="true"></i></button><div class="ia-p" id="ia-p${i}" role="region" aria-labelledby="ia-h${i}"><div class="ia-in"><div class="ia-body">${iaBody(l, i)}</div></div></div></li>`;
 function iaPaint(ul){
   const rows = [...ul.children], last = rows.length - 1, a = iaOpen;

@@ -301,7 +301,7 @@ const I18N = {uz: {
   'amf.on': 'Amaliyot bajarildi',
   'amf.off': 'Amaliyot bajarildi',
   'amf.aria': 'Amaliyot bajarildi deb belgilash',
-  'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi', 'pre.code_copy': 'Promokodni nusxalash', 'pre.code': 'Promokod', 'toast.code_copied': 'Promokod nusxalandi',
+  'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi', 'pre.code_copy': 'Promokodni nusxalash', 'pre.code': 'Promokod', 'pre.in_video': 'Videoda', 'toast.code_copied': 'Promokod nusxalandi',
   'lesson.1.t0': 'AI qatlamlari',
   'lesson.1.t1': 'Maʼlumot qayerga ketadi',
   'lesson.1.t2': 'LLM va token',
@@ -852,7 +852,8 @@ const I18N = {uz: {
   "lc.show": "Показать текст",
   "lc.hide": "Скрыть текст",
   "lc.ph": "Промпты",
-  "lesson.extra": "Дополнительный урок"
+  "lesson.extra": "Дополнительный урок",
+  "pre.in_video": "В видео"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1310,7 +1311,8 @@ const I18N = {uz: {
   "lc.show": "Show text",
   "lc.hide": "Hide text",
   "lc.ph": "Prompts",
-  "lesson.extra": "Extra lesson"
+  "lesson.extra": "Extra lesson",
+  "pre.in_video": "In the video"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive

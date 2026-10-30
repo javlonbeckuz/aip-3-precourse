@@ -99,13 +99,20 @@
           "note": "A prompt-writing practice platform: 57 protocols, and AI scores each of your prompts from 0 to 100. Free for Praktikum students: enter the promo code at checkout. The platform is in Uzbek.",
           "url": "https://p57.uz/",
           "code": "PRAKTIKUM3",
-          "sub": "Prompt-writing practice, free with the promo code"
+          "sub": "Prompt-writing practice, free with the promo code",
+          "codeLabel": "Promo code, 100% off"
         },
         {
           "title": "NotebookLM: a company knowledge base",
           "sub": "Video lesson, 20 minutes",
           "note": "You record short interviews with department heads, upload the recordings to NotebookLM and ask about company rules: when a discount is allowed, how salary and KPI are calculated. The video also shows how to get answers with their source and how to build a quiz for staff. The video is in Uzbek.",
-          "video": "notebooklm"
+          "video": "notebooklm",
+          "points": [
+            "Interviews with department heads",
+            "Uploading the recordings to NotebookLM",
+            "Answers with their source",
+            "A quiz for staff"
+          ]
         }
       ]
     }

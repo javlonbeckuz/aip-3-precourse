@@ -525,7 +525,7 @@ const I18N = {uz: {
   'amf.on': 'Amaliyot bajarildi',
   'amf.off': 'Amaliyot bajarildi',
   'amf.aria': 'Amaliyot bajarildi deb belgilash',
-  'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi', 'pre.code_copy': 'Promokodni nusxalash', 'pre.code': 'Promokod', 'toast.code_copied': 'Promokod nusxalandi',
+  'prep.cmd_copy': 'Buyruqni nusxalash', 'toast.cmd_copied': 'Buyruq nusxalandi', 'pre.code_copy': 'Promokodni nusxalash', 'pre.code': 'Promokod', 'pre.in_video': 'Videoda', 'toast.code_copied': 'Promokod nusxalandi',
   
   
   
@@ -958,7 +958,8 @@ const I18N = {uz: {
   "lc.show": "Показать текст",
   "lc.hide": "Скрыть текст",
   "lc.ph": "Промпты",
-  "lesson.extra": "Дополнительный урок"
+  "lesson.extra": "Дополнительный урок",
+  "pre.in_video": "В видео"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1298,7 +1299,8 @@ const I18N = {uz: {
   "lc.show": "Show text",
   "lc.hide": "Hide text",
   "lc.ph": "Prompts",
-  "lesson.extra": "Extra lesson"
+  "lesson.extra": "Extra lesson",
+  "pre.in_video": "In the video"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
@@ -1504,13 +1506,14 @@ function applyLessons(ls, lsUz, lang){
     D['prep.intro'] = pr.intro.replace('{sana}', '{date}');
     pr.items.forEach((it, i) => { D[`prep.${i}.title`] = it.title; D[`prep.${i}.note`] = it.note; it.steps.forEach((s, j) => { D[`prep.${i}.s${j}`] = s; }); acts(it).forEach((a, j) => { D[`prep.${i}.a${j}`] = a.label; }); if (it.footnote) D[`prep.${i}.foot`] = it.footnote; });
   }
+const pts = x => Array.isArray(x.points) ? x.points.filter(p => typeof p === 'string' && p).slice(0, 6) : [];   // the "Videoda" points of a video row (at most 6)
   const vid = x => typeof x.video === 'string' && /^[a-z0-9-]{1,40}$/.test(x.video) ? x.video : null;   // a video served by the portal (content/lessons/0/video/<slug>.mp4)
   const mo = pr && pr.more, ml = mo && Array.isArray(mo.links) ? mo.links.filter(x => x && (/^https:\/\//.test(x.url) || vid(x))) : [];   // learning platforms and videos: never counted as prep
-  PREP.more = ml.length ? {links: ml.map(x => ({url: /^https:\/\//.test(x.url) ? x.url : null, video: vid(x) ? `${API}/prep/video/${vid(x)}` : null, code: typeof x.code === 'string' && /^[A-Za-z0-9_-]{1,32}$/.test(x.code) ? x.code : null}))} : null;   // code = an optional promo code shown with a copy button
+  PREP.more = ml.length ? {links: ml.map(x => ({url: /^https:\/\//.test(x.url) ? x.url : null, video: vid(x) ? `${API}/prep/video/${vid(x)}` : null, code: typeof x.code === 'string' && /^[A-Za-z0-9_-]{1,32}$/.test(x.code) ? x.code : null, points: pts(x).length}))} : null;   // code = an optional promo code shown with a copy button
   if (PREP.more) {
     const dflt = (I18N[lang] || I18N.uz)['prep.more.dflt'] || I18N.uz['prep.more.dflt'];   // the payload's language, not the UI's: never a blank heading or pill
     D['prep.more.title'] = mo.title || dflt; D['prep.more.note'] = mo.note || '';
-    ml.forEach((x, i) => { D[`prep.more.${i}.t`] = x.title || x.url || ''; D[`prep.more.${i}.s`] = x.sub || ''; D[`prep.more.${i}.n`] = x.note || ''; });
+    ml.forEach((x, i) => { D[`prep.more.${i}.t`] = x.title || x.url || ''; D[`prep.more.${i}.s`] = x.sub || ''; D[`prep.more.${i}.n`] = x.note || ''; D[`prep.more.${i}.cl`] = x.codeLabel || ''; pts(x).forEach((p, j) => { D[`prep.more.${i}.p${j}`] = p; }); });
   }
   const byUz = {}; (lsUz || ls).forEach(l => byUz[l.n] = l);   // course material is Uzbek in every UI language
   C20 = makeC20(byUz); buildData();
@@ -1705,9 +1708,15 @@ function prepPage(){
 }
 // "Birinchi darsgacha" as an accordion (user, 2026-10-30; a port of IconAccordion): one Poʻlat row per link or video; the open row lifts into its own pill and the rows next to it round the corners that meet it
 let iaOpen = 0;
-const iaBody = (l, i) => l.video
-  ? `<video class="ia-vid" controls preload="metadata" playsinline src="${esc(l.video)}"></video>${t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : ''}`
-  : `${t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : ''}${l.code ? `<div class="cmd pre-code"><span class="pc-l">${T('pre.code')}</span><code tabindex="0" aria-label="${esc(l.code)}">${esc(l.code)}</code><button class="cmd-cp" type="button" data-cmd="${esc(l.code)}" data-toast="toast.code_copied" aria-label="${esc(t('pre.code_copy'))}">${I('copy', 20)}</button></div>` : ''}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a>`;
+// style C (user, 2026-10-30): the main thing on the right in a dashed card (a link's promo code as a coupon, a video's "Videoda" points); description and the video or the open pill on the left
+const iaDesc = i => t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : '';
+const iaCard = (l, i) => l.code
+  ? `<div class="ia-card"><span class="ia-k">${esc(t(`prep.more.${i}.cl`) || t('pre.code'))}</span><code class="ia-code">${esc(l.code)}</code><button class="cmd-cp ia-cpb" type="button" data-cmd="${esc(l.code)}" data-toast="toast.code_copied" aria-label="${esc(t('pre.code_copy'))}">${I('copy', 18)}${T('common.copy')}</button></div>`
+  : l.points ? `<div class="ia-card"><span class="ia-k">${T('pre.in_video')}</span><ol class="ia-pts">${Array.from({length: l.points}, (_, j) => `<li>${esc(t(`prep.more.${i}.p${j}`))}</li>`).join('')}</ol></div>` : '';
+const iaBody = (l, i) => { const card = iaCard(l, i);
+  const left = l.video ? `<video class="ia-vid" controls preload="metadata" playsinline src="${esc(l.video)}"></video>${iaDesc(i)}`
+    : `${iaDesc(i)}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a>`;
+  return `<div class="ia-c${card ? ' has-card' : ''}"><div class="ia-l">${left}</div>${card}</div>`; };
 const iaRow = (l, i) => `<li class="ia-row" data-i="${i}"><button class="ia-hd" type="button" id="ia-h${i}" aria-expanded="false" aria-controls="ia-p${i}"><span class="ia-ic" aria-hidden="true">${I(l.video ? 'play' : 'ne', 18)}</span><span class="ia-no">${num2(i + 1)}</span><span class="ia-tt"><span class="ia-t">${esc(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.s`) ? `<span class="ia-s">${esc(t(`prep.more.${i}.s`))}</span>` : ''}</span><i class="ia-chv" aria-hidden="true"></i></button><div class="ia-p" id="ia-p${i}" role="region" aria-labelledby="ia-h${i}"><div class="ia-in"><div class="ia-body">${iaBody(l, i)}</div></div></div></li>`;
 function iaPaint(ul){
   const rows = [...ul.children], last = rows.length - 1, a = iaOpen;

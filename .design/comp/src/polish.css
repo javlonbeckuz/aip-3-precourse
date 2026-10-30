@@ -296,13 +296,21 @@ html.hid .bgp path{animation-play-state:paused}
 .ia-p{display:grid;grid-template-rows:0fr;opacity:0;filter:blur(2px);transition:grid-template-rows .45s cubic-bezier(.3,1.1,.4,1),opacity .3s ease,filter .3s ease}
 .ia-row.open .ia-p{grid-template-rows:1fr;opacity:1;filter:blur(0)}
 .ia-in{overflow:hidden;min-height:0}
-.ia-body{display:grid;gap:16px;justify-items:start;max-width:860px;padding:4px 20px 24px 124px}   /* starts exactly under the row title (20 + 40 icon + 14 + 36 number + 14) */
+.ia-body{padding:4px 20px 24px 124px}   /* starts exactly under the row title (20 + 40 icon + 14 + 36 number + 14) */
+.ia-c{display:grid;gap:20px}
+.ia-l{display:grid;gap:16px;justify-items:start;align-content:start;min-width:0}
+.ia-card{display:grid;gap:8px;justify-items:start;align-content:start;align-self:start;padding:20px 22px;border:1.5px dashed rgb(255 255 255 / .55);border-radius:16px;background:rgb(255 255 255 / .06)}
+.ia-k{font:500 12px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.04em;color:rgb(255 255 255 / .8)}
+.ia-code{font:500 32px/1.1 var(--font-mono);letter-spacing:.04em;color:var(--white);overflow-wrap:anywhere}
+.ia-cpb{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:4px;padding:0 18px;border-radius:999px;background:var(--white);color:var(--slate);font:500 14px/1 var(--font-body)}
+.ia-pts{display:grid;gap:8px;margin:4px 0 0;padding-left:20px;list-style:decimal;font:400 15px/1.4 var(--font-body)}
+@container (min-width:900px){.ia-c.has-card{grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:48px}}
 .ia .kg-d{margin:0;max-width:62ch;font:400 16px/1.5 var(--font-body);color:rgb(255 255 255 / .88);text-wrap:pretty}
 .ia .cmd{margin-top:0;border-color:rgb(255 255 255 / .5);color:var(--white)}
 .ia .pill-cta{color:var(--white)}
 .ia-vid{display:block;width:100%;aspect-ratio:16/9;border-radius:14px;background:#000}
 .ia-still .ia-row,.ia-still .ia-p,.ia-still .ia-chv{transition:none}
-@container (max-width:599px){.ia-hd{grid-template-columns:36px minmax(0,1fr) 18px;padding:12px 16px}.ia-no{display:none}.ia-ic{width:36px;height:36px}.ia-body{padding:0 16px 20px}.ia-t{font-size:16px}}
+@container (max-width:599px){.ia-hd{grid-template-columns:36px minmax(0,1fr) 18px;padding:12px 16px}.ia-no{display:none}.ia-ic{width:36px;height:36px}.ia-body{padding:0 16px 20px}.ia-code{font-size:26px}.ia-t{font-size:16px}}
 @media (prefers-reduced-motion:reduce){.ia-row,.ia-p,.ia-chv{transition:none}}
 /* ---- lesson page, W1 (user, 2026-10-30): a compact header (back link + date on one line, the title on one line), then the folder across the whole page */
 .lhd{padding:24px 16px 0}

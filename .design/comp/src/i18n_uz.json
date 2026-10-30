@@ -1794,6 +1794,11 @@
   "translate": true,
   "note": "UI text"
  },
+ "pre.in_video": {
+  "uz": "Videoda",
+  "translate": true,
+  "note": "UI text"
+ },
  "toast.code_copied": {
   "uz": "Promokod nusxalandi",
   "translate": true,
