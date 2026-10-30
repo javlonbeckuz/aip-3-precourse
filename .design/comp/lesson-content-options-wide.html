@@ -132,6 +132,15 @@ body{background:#000;margin:0}
 .pc2 .ptx{margin:6px 0 8px;padding:12px 14px;border:1px solid var(--gt-line);border-radius:10px;font:400 14.5px/1.55 var(--font-body);white-space:pre-line}
 .pc2 .ph{padding:0 2px;border-radius:3px;background:color-mix(in srgb,currentColor 12%,transparent)}
 @container (max-width:599px){.pc2 .pvd{grid-column:1/-1}}
+/* candidate colours for lesson 01 */
+.gt-slate{--gt-fill:#4F6475;--gt-ink:#fff;--gt-ink2:rgb(255 255 255 / .82);--gt-line:rgb(255 255 255 / .3)}
+.gt-cyan{--gt-fill:#00A3C4;--gt-ink:#000;--gt-ink2:rgb(0 0 0 / .8);--gt-line:rgb(0 0 0 / .3)}
+.gt-brick{--gt-fill:#A8432C;--gt-ink:#fff;--gt-ink2:rgb(255 255 255 / .85);--gt-line:rgb(255 255 255 / .3)}
+.gt-olive{--gt-fill:#6B7A3A;--gt-ink:#fff;--gt-ink2:rgb(255 255 255 / .85);--gt-line:rgb(255 255 255 / .3)}
+.sw-slate{background:#4F6475}.sw-cyan{background:#00A3C4}.sw-brick{background:#A8432C}.sw-olive{background:#6B7A3A}
+.cbar{flex-direction:column;align-items:stretch;gap:6px}
+.cb-r{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.cb-o{opacity:.85}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <filter id="goo-tabs"><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter>
@@ -217,13 +226,17 @@ const OPTS = [
 ];
 document.getElementById('out').innerHTML = OPTS.map(([k, n, d, frames]) => `<section class="lc-opt" id="o${k}"><p class="lc-name">Variant ${k}: ${uz(n)}<small>${uz(d)}</small></p>${frames.map(([tab, pane]) => `<p class="lc-h">${k}-${tab === 'am' ? 'Amaliyot' : 'Vazifa'}</p>${frame(pane, tab)}`).join('')}</section>`).join('');
 document.addEventListener('click', e => { if (e.target.closest('a[href="#"]')) e.preventDefault(); });
-// colour switcher: every lesson folder colour (01 lilac ... 06 cream)
-const COLS = [['lilac', '01-dars'], ['grey', 'Kirish'], ['blue', '02-dars'], ['dark', '03-dars'], ['orange', '04-dars'], ['emerald', '05-dars'], ['cream', '06-dars']];
+// colour switcher. Row 1: candidate colours for lesson 01 (replacing lilac). Row 2: the colours the other lessons already have
+const NEW = [['slate', 'Poʻlat'], ['cyan', 'Moviy-yashil'], ['brick', 'Gʻisht'], ['olive', 'Zaytun']];
+const COLS = [['grey', 'Kirish'], ['blue', '02-dars'], ['dark', '03-dars'], ['orange', '04-dars'], ['emerald', '05-dars'], ['cream', '06-dars']];
+const btn = ([c, l], on) => '<button type="button" data-c="' + c + '" class="' + (on ? 'on' : '') + '"><i class="sw sw-' + c + '"></i>' + uz(l) + '</button>';
 const bar = document.createElement('div'); bar.className = 'cbar';
-bar.innerHTML = '<span>Rang:</span>' + COLS.map(([c, l], i) => `<button type="button" data-c="${c}" class="${i ? '' : 'on'}"><i class="sw sw-${c}"></i>${l}</button>`).join('');
+bar.innerHTML = '<div class="cb-r"><span>01-dars uchun yangi rang:</span>' + NEW.map((x, i) => btn(x, !i)).join('') + '</div><div class="cb-r cb-o"><span>Boshqa darslar:</span>' + COLS.map(x => btn(x)).join('') + '</div>';
 document.body.prepend(bar);
+const ALL = /\b(gt|g)-(lilac|grey|blue|dark|orange|emerald|cream|slate|cyan|brick|olive)\b/g;
+const paint = c => document.querySelectorAll('.gt').forEach(g => { g.className = g.className.replace(ALL, (m, q) => q + '-' + c); });
+paint('slate');
 bar.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
-  bar.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
-  document.querySelectorAll('.gt').forEach(g => { g.className = g.className.replace(/\b(gt|g)-(lilac|grey|blue|dark|orange|emerald|cream)\b/g, (m, p) => `${p}-${b.dataset.c}`); }); });
+  bar.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); paint(b.dataset.c); });
 
 </script></body></html>
