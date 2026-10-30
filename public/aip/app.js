@@ -1408,7 +1408,14 @@ function vpMount(host){
   const seekBy = s => { v.currentTime = Math.max(0, Math.min(v.duration || 0, v.currentTime + s)); const f = $('.vp-flash'); f.textContent = s > 0 ? `+${s}s` : `${s}s`; f.classList.remove('go'); void f.offsetWidth; f.classList.add('go'); wake(); };
   const setVol = x => { vol = x; v.volume = x; v.muted = x === 0; vr.value = x; vr.style.setProperty('--p', x * 100 + '%'); $('.i-on').classList.toggle('off', x === 0); $('.i-off').classList.toggle('off', x !== 0); $('.vp-mute').setAttribute('aria-label', x === 0 ? t('vp.unmute') : t('vp.mute')); };
   let lastVol = 0.7;
-  const fullscreen = async () => { try { document.fullscreenElement === box ? await document.exitFullscreen() : await box.requestFullscreen(); } catch {} };
+  // while the box is fullscreen the page loses its height and the browser clamps the scroll to the top; put it back on exit (button, F or Esc)
+  let fsY = null;
+  const fullscreen = async () => { try {
+    if (document.fullscreenElement === box) return void await document.exitFullscreen();
+    fsY = scrollY;
+    if (box.requestFullscreen) await box.requestFullscreen(); else v.webkitEnterFullscreen?.();   // iPhone Safari: only the video itself can go fullscreen
+  } catch {} };
+  box.addEventListener('fullscreenchange', () => { if (document.fullscreenElement || fsY == null) return; const y = fsY; fsY = null; requestAnimationFrame(() => requestAnimationFrame(() => scrollTo(0, y))); box.focus({preventScroll: true}); });
   v.addEventListener('timeupdate', paint); v.addEventListener('loadedmetadata', paint); v.addEventListener('play', playing); v.addEventListener('pause', playing);
   v.addEventListener('click', toggle);
   $('.vp-play').addEventListener('click', toggle);
@@ -1470,7 +1477,12 @@ function initPrep(root){
       if (!o) $('.ill', c).classList.remove('enter'); });
     deck.style.setProperty('--cols', deckCols(open)); $('#prep-end').hidden = count() < prepTotal(); refreshCounts();
   }
-  const toggleOpen = i => { open = open === i ? -1 : i; prepOpen = open; paint(); if (open === i) play(i); };
+  // opening or ticking a card reflows the deck (the open card collapses, --cols changes): keep the card the student touched where it was on screen
+  // near the page end a collapse makes the page shorter and the browser clamps the scroll, so add just that much space below (gone on the next route)
+  const site = $('.site'), topOf = c => c.getBoundingClientRect().top, hold = (c, t0) => {
+    site.style.paddingBottom = ''; scrollBy(0, topOf(c) - t0);
+    const r = Math.round(topOf(c) - t0); if (r > 0) { site.style.paddingBottom = `calc(${getComputedStyle(site).paddingBottom} + ${r}px)`; scrollBy(0, r); } };
+  const toggleOpen = i => { const t0 = topOf(cards[i]); open = open === i ? -1 : i; prepOpen = open; paint(); hold(cards[i], t0); if (open === i) play(i); };
   cards.forEach((c, i) => {
     $('.hd', c).addEventListener('click', () => toggleOpen(i));
     c.addEventListener('click', e => { if (!e.target.closest('button,a') && !c.classList.contains('open')) toggleOpen(i); });   // the empty area of a closed card acts as its header button
@@ -1480,7 +1492,7 @@ function initPrep(root){
       if (!was) { c.classList.add('just'); setTimeout(() => c.classList.remove('just'), 600); open = (open >= 0 && open !== i && !S.has('prep:' + open)) ? open : nextFrom(i); }
       else open = i;
       prepOpen = open;
-      const after = () => { paint(); if (open >= 0 && open !== prev) { play(open); $('.hd', cards[open]).focus(); } };
+      const t0 = topOf(c), after = () => { paint(); hold(c, t0); if (open >= 0 && open !== prev) { play(open); $('.hd', cards[open]).focus(); } };
       if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(after); else after();   // the cards slide to their new places
       live.textContent = ''; clearTimeout(liveTimer); liveTimer = setTimeout(() => live.textContent = t(was ? 'live.prep_undone' : 'live.prep_done', {title: t(`prep.${i}.title`), d: count(), t: prepTotal(), pl: prepTotal()}), 30);
     });
