@@ -2,7 +2,7 @@
 
 User decisions (2026-10-30):
 - Kit tab: on the page (steps, consent script, AI prompt with copy) plus forms A/B as downloadable .md files.
-- Terms: a new "Atamalar" tab per lesson (term, plain explanation, why an owner cares; live terms first).
+- Terms: an "Atamalar" tab was drafted, then removed by the user the same day (no glossary on the portal).
 - Extras: Claude Code skills /kit1-/kit5 (SKILL.md downloads), company folder starter (lesson 02), vendor checklist (lesson 06).
 - Not now: the 10 habits page.
 
@@ -23,8 +23,6 @@ Sources: .design/drafts/3.0-materials/source/curriculum.md, kits_uz_latn.txt (2.
 Stages
 1. Drafts (agents, Uzbek, no AI slop) -> .design/drafts/3.0-materials/
    a. kits: kit-<n>.json blocks, files/<n>/*.md forms, skills/kitN/SKILL.md, vendor checklist, fixes for "[shakl matni]".
-   b. terms: atamalar-<n>.json, company folder starter (CLAUDE.md template).
+   b. company folder starter (CLAUDE.md template).
 2. Review page for the user (Uzbek). Approval before anything enters content/.
-3. Server: new optional part "atamalar" (backend agent, in parallel with 1).
-4. Atamalar tab UI: mockup first (user rule), then build.
-5. Place approved content + files, build, gates (tests, reviewer), commit locally. Never deploy.
+3. Place approved content + files, build, gates (tests, reviewer), commit locally. Never deploy.
