@@ -15,7 +15,7 @@ S.load();
 registerContent();
 //#STATE:end
 // each lesson has ONE fixed colour whatever its state (state = words + icons in the note, never colour); the setup folder (Tayyorgarlik) is Claude orange; yellow stays the progress ring and the pre-course hero. Emerald (lesson 06) is an identity colour, never a success colour; colours follow the card's position (cream is 07)
-const LCOL = ['claude', 'lilac', 'grey', 'blue', 'dark', 'orange', 'emerald', 'cream'];
+const LCOL = ['claude', 'slate', 'grey', 'blue', 'dark', 'orange', 'emerald', 'cream'];
 const LN = () => Object.keys(LESSONS).map(Number).filter(n => n > 0).sort((a, b) => a - b);   // the lesson numbers 1..N come from the data (the API in the app)
 const lnum = n => LESSONS[n].num;   // the curriculum number 1..N, or null: Tayyorgarlik and Kirish have none (their label is their short name)
 const RN = () => LN().filter(n => lnum(n) != null);   // the numbered lessons: only these count in the ring, the course size and the all-done check
@@ -301,21 +301,21 @@ function noteParts(s){
   const ps = n.split(/\s*(?=\b\d\)\s)/), lead = /^\d\)\s/.test(ps[0]) ? '' : ps.shift();
   return {tag, lead: (lead || '').trim(), steps: ps.map(x => x.replace(/^\d\)\s*/, '').trim()).filter(Boolean), ready};
 }
-// one group = one accordion row (native <details>): number, title and a short meta line; the first row starts open
+// one group = one wide row (W1): big number + title on the left, steps in the middle, files and prompts on the right; nothing is folded except the prompt texts
 function groupRow(n, key, g, i){
   const gk = `${key}.g${i}`, m = /^(\d+[A-Z]?)\.?\s+(.+)$/.exec(cu(gk)), no = m ? (/^\d+$/.test(m[1]) ? num2(+m[1]) : m[1]) : '', title = m ? m[2] : cu(gk);
   const np = noteParts(g.note ? cu(`${gk}.n`) : ''), lg = cxFb(`${gk}.n`) || cxFb(gk) ? ' lang="uz-Latn"' : '';
-  const meta = [np.steps.length && t('lc.steps', {n: np.steps.length, pl: np.steps.length}), g.files.length && t('lc.files', {n: g.files.length, pl: g.files.length}), g.prompts.length && t('lc.prompts', {n: g.prompts.length, pl: g.prompts.length}), np.tag].filter(Boolean).join(' · ');
-  const body = `${np.lead ? `<p class="lc-lead">${esc(np.lead)}</p>` : ''}${np.steps.length ? `<ol class="lc-steps">${np.steps.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="lc-ready"><b>Tayyor, agar</b>${esc(np.ready)}</p>` : ''}${g.files.length ? `<div class="ex-files"><ul>${g.files.map(f => fileRow(f)).join('')}</ul></div>` : ''}${g.prompts.length ? promptList(n, gk, g, true) : ''}`;
-  return `<details class="lc-row"${i ? '' : ' open'}><summary class="lc-sum"${lg}><span class="lc-no">${esc(no)}</span><span><span class="lc-tt">${esc(title)}</span>${meta ? `<span class="lc-meta">${esc(meta)}</span>` : ''}</span><span class="lc-chev" aria-hidden="true"></span></summary><div class="lc-body"${lg}>${body}</div></details>`;
+  const mid = `${np.lead ? `<p class="w1-lead">${esc(np.lead)}</p>` : ''}${np.steps.length ? `<ol class="w1-steps">${np.steps.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="w1-ready"><b>Tayyor, agar</b> ${esc(np.ready)}</p>` : ''}`;
+  const right = `${g.files.length ? `<div class="ex-files"><ul>${g.files.map(f => fileRow(f)).join('')}</ul></div>` : ''}${g.prompts.length ? `<p class="w1-h">${T('lc.ph')}</p>${promptList(n, gk, g, true)}` : ''}`;
+  return `<section class="w1-row"${lg}><div class="w1-l">${no ? `<span class="w1-no">${esc(no)}</span>` : ''}<h3 class="w1-tt">${esc(title)}</h3>${np.tag ? `<span class="w1-tag">${esc(np.tag)}</span>` : ''}</div><div class="w1-m">${mid}</div><div class="w1-r">${right}</div></section>`;
 }
-// Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups as accordion rows; Amaliyot and Vazifa end with a tick
+// Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups as wide rows; Amaliyot and Vazifa end with a tick
 function blockPane(n, p){
   const b = (PARTS[n] || {})[p] || {text: '', groups: []}, key = `c.p.${n}.${p}`;
   const text = b.text ? cu(`${key}.text`).split(/\n\s*\n/).map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`).join('') : '';
   const groups = b.groups.map((g, i) => groupRow(n, key, g, i)).join('');
   const end = p === 'am' ? endb('f:am' + n, S.has('f:am' + n), 'amf.on', 'amf.off', '', 'amf.aria') : p === 'vz' ? endb('f:v' + n, S.has('f:v' + n), 'vzf.on', 'vzf.off', '', 'vzf.aria') : '';
-  return `<p class="p-label">${T('unit.' + p)}</p>${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${groups ? `<div class="lc">${groups}</div>` : ''}${end ? `<div class="gt-foot end">${end}</div>` : ''}`;
+  return `<p class="p-label">${T('unit.' + p)}</p>${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${groups ? `<div class="w1">${groups}</div>` : ''}${end ? `<div class="gt-foot end">${end}</div>` : ''}`;
 }
 function lessonPage(n, tab){
   tab = tab || tabOfHref((nextOf(n) || {}).href);   // no ?tab: the tab with today's work
@@ -331,18 +331,17 @@ function lessonPage(n, tab){
   const panes = tabsDef.map((x, i) => `<div class="gt-pane" role="tabpanel" id="dg-p${i}" aria-labelledby="dg-t${i}"${i ? ' inert' : ''}>${x.lock ? lockedPane(x.lock) : pane[x.p]()}</div>`).join('');
   const title = ltitle(n);   // no hero CTA pill: each folder tab already carries its part's own action (user, 2026-10-17)
   const tall = Object.values(PARTS[n] || {}).some(b => b.groups.some(g => g.prompts.length));   // prompt lists make a pane very long: the other panes must not keep that height
-  const side = empty   // no materials yet: the lesson's own colour card says so, instead of an empty folder
-    ? `<div class="folder flatc ${colCls(n)} soon-card"><span class="f-label">${esc(lessonDate(n))}</span><p class="soon-t">${T('lesson.soon')}</p></div>`
-    : `<div class="gt gt-${LCOL[n]} g-${LCOL[n]}${tall ? ' gt-tall' : ''}" id="dg" style="--n:${tabsDef.length}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
-      <div class="gt-tabs" role="tablist" aria-label="${esc(t('tab.list'))}">${tabs}</div><div class="gt-body">${panes}</div></div>`;
+  const side = empty   // no materials yet: a card says so, instead of an empty folder
+    ? `<div class="folder flatc c-slate soon-card"><span class="f-label">${esc(lessonDate(n))}</span><p class="soon-t">${T('lesson.soon')}</p></div>`
+    : `<div class="gt gt-slate g-slate${tall ? ' gt-tall' : ''}" id="dg" style="--n:${tabsDef.length}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
+      <div class="gt-tabs" role="tablist" aria-label="${esc(t('tab.list'))}">${tabs}</div><div class="gt-body">${panes}</div></div>`;   // every lesson folder inside a lesson page is Poʻlat (user, 2026-10-30); the home cards keep each lesson's own colour
   return {screen: 'dars', tab: Math.max(0, L.parts.indexOf(tab)), tag: `#/dars/${n} · ` + t('tag.lesson', {n: lnT(n), parts: L.parts.length}), title: lnum(n) == null ? title : t('title.lesson', {n: num2(lnum(n)), title}), html: nav('d') + `
-    <div class="hero"><div class="hero-l">
+    <div class="lhd">
       ${dlh('#/dastur', T('nav.home'), tt ? T('lesson.meta', {n, date: lessonDate(n), d, t: tt, pl: tt}) : esc(lessonDate(n)))}
-      <h1 class="headline${title.split(' ').some(w => w.length >= 11) ? ' long' : ''}">${lnum(n) == null ? '' : `<span class="ln">${lnH(n)}</span>`}<span class="ln">${esc(title)}</span></h1>
-      <p class="lsub">${T(`lesson.${n}.sub`)}</p>
-      <p class="lede">${T(`lesson.${n}.lede`)}</p>
+      <h1 class="lh1">${lnum(n) == null ? '' : `<span class="ln">${lnH(n)}</span> `}<span class="ln">${esc(title)}</span></h1>
+      <div class="lhr"><p class="lsub">${T(`lesson.${n}.sub`)}</p><p class="lede">${T(`lesson.${n}.lede`)}</p></div>
     </div>
-    ${side}</div>`};
+    <div class="lwrap">${side}</div>`};   // W1 (user, 2026-10-30): a compact one-line header, then the folder across the whole page
 }
 
 // ---- slides: a simple viewer (2.0 route /slaydlar): the slide images were never available, so every slide is a marked "namuna" stage

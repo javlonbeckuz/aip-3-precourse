@@ -153,7 +153,7 @@ button.ef-row{width:100%;text-align:left;color:inherit;font:inherit}
 /* done = copied: the title gets the check; the Vazifa mark inside the coloured folder panes follows the pane's ink */
 .s1 li.done .tt:not(:has(.acc))::before{content:"✓ ";font-weight:600}/* library rows already get theirs from .acc::before */
 .gt .endb,.gt .endb[aria-pressed="true"]{color:inherit}
-.gt-blue .endb[aria-pressed="true"]::before,.gt-dark .endb[aria-pressed="true"]::before,.gt-emerald .endb[aria-pressed="true"]::before{background-image:var(--ck-b)}
+.gt-blue .endb[aria-pressed="true"]::before,.gt-dark .endb[aria-pressed="true"]::before,.gt-emerald .endb[aria-pressed="true"]::before,.gt-slate .endb[aria-pressed="true"]::before{background-image:var(--ck-b)}
 /* long tokens (URLs, paths) never run off the screen; the copy circle stays at the top of its row */
 .s1 .tx{overflow-wrap:anywhere}
 .s1 .cpw{align-self:start}
