@@ -395,7 +395,7 @@ test('empty lessons (no parts yet) open on their date, and stay shut with no gro
   // every shipped lesson has parts now: empty lesson 4 in a temp copy to keep testing the empty state
   const dir = tmpCopy(t, undefined, { fixtures: false });
   const f4 = path.join(dir, 'lessons/4/lesson.uz.json');
-  fs.writeFileSync(f4, JSON.stringify({ ...JSON.parse(fs.readFileSync(f4, 'utf8')), amaliyot: null, vazifa: null }));
+  fs.writeFileSync(f4, JSON.stringify({ ...JSON.parse(fs.readFileSync(f4, 'utf8')), amaliyot: null, kit: null, vazifa: null }));
   const a = await startApp(t, { now: '2026-10-03T09:59', contentDir: dir });
   createStudent(a.db, { fullName: 'Guruhsiz Talaba', id: 'NOG', allowShort: true });
   const xm = await a.login('XM'), nog = await a.login('NOG');

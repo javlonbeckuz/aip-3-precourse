@@ -1,0 +1,14 @@
+[
+  {
+    "n": 1,
+    "part": "amaliyot",
+    "promptId": "05P2",
+    "newText": "Quyida xodim bilan intervyu matni va Kit 1 B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [kit1-b-vazifalar.md faylining toʻliq matni]\nIntervyu: [intervyu matni]"
+  },
+  {
+    "n": 1,
+    "part": "vazifa",
+    "promptId": "V3P2",
+    "newText": "Quyida [xodim ismi], [lavozimi] bilan intervyu matni va Kit 1 B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [kit1-b-vazifalar.md faylining toʻliq matni]\nIntervyu: [intervyu matni]"
+  }
+]

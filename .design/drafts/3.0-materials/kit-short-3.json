@@ -1,0 +1,67 @@
+{
+  "kit": {
+    "text": "Kit 2 pilot uchun bitta jarayon tanlaydi, Kit 5 esa agentgacha boʻlgan raqamlarni yozishni boshlaydi.",
+    "groups": [
+      {
+        "title": "01 Kit 2: Qaysi jarayondan boshlaymiz",
+        "note": "Claude Code Kit 1 fayllaridan 8 tagacha jarayonni baholaydi, mezonlar va shkala PDFda. 1) kit2-SKILL.md ni .claude/skills/kit2/SKILL.md qilib saqlang. 2) A shaklini kit2-scoring papkasiga qoʻying, /kit2 yoki promptni ishga tushiring. 3) Har bahoni manbasi bilan tekshiring, keragini tuzating. Tayyor, agar: kit2-scoring/scoring.md da har bahoning manbasi bor.",
+        "files": [
+          {
+            "slug": "kit2-pdf",
+            "name": "Kit2_Qaysi_jarayondan_boshlaymiz.pdf",
+            "size": 0
+          },
+          {
+            "slug": "kit2-a-baholash",
+            "name": "kit2-a-baholash.md",
+            "size": 0
+          },
+          {
+            "slug": "kit2-b-matritsa",
+            "name": "kit2-b-matritsa.md",
+            "size": 0
+          },
+          {
+            "slug": "kit2-skill",
+            "name": "kit2-SKILL.md",
+            "size": 0
+          }
+        ],
+        "prompts": [
+          {
+            "id": "K2P1",
+            "title": "Kit 2 prompti: baholash",
+            "target": "Claude Code",
+            "text": "kit1-interviews papkasidagi barcha B shakllarini oʻqing. Ulardan 8 tagacha jarayonni ajrating. Jarayon: boshlanishi va natijasi bor vazifalar zanjiri.\nHar jarayonni kit2-scoring/kit2-a-baholash.md dagi A.2-A.7 mezonlari boʻyicha 1 dan 5 gacha baholang. Shkala shakl ostida.\nHar baho yonida qaysi fayl va qatorga tayanganingizni yozing. Maʼlumot yetmasa, bahoni [?] bilan belgilang. Fayllarda yoʻq raqam qoʻshmang.\nValue = A.2 + A.3 + A.7. Ease = A.4 + A.5 + A.6.\nKeyin baholardagi qarama-qarshiliklarni roʻyxat qiling, jarayonlarni Value va Ease boʻyicha tartiblang, birinchi pilot uchun bitta nomzodni va nimalar xato ketishi mumkinligini yozing.\nJadvalni kit2-scoring/scoring.md ga saqlang."
+          }
+        ]
+      },
+      {
+        "title": "02 Matritsa va tanlov",
+        "note": "Value/Ease matritsasining yuqori oʻng kvadratidan birinchi pilot uchun bitta jarayon tanlanadi. 1) Claude Codeʼdan kit2-scoring/matrix.html ni yasashni soʻrang. 2) Yuqori oʻng kvadratdan bitta jarayon tanlang. 3) B.1-B.3 ni toʻldiring, tanlovni CLAUDE.md ga yozing. Tayyor, agar: tanlov boʻlim boshligʻi bilan kelishilgan.",
+        "files": []
+      },
+      {
+        "title": "03 Kit 5: Pilot va hisob-kitob",
+        "note": "Baseline: agentgacha boʻlgan toʻrt raqam, ularsiz demo kunida faqat taassurot qoladi. 1) kit5-SKILL.md ni .claude/skills/kit5/SKILL.md qilib saqlang. 2) Tarix bor joyda oxirgi 2-4 haftani /kit5 baseline bilan oling. 3) Tarixi yoʻq raqamlarni 5 ish kuni jonli yozing. Tayyor, agar: kit5-pilot/baseline.md da toʻrt raqam va manbasi bor.",
+        "files": [
+          {
+            "slug": "kit5-pdf",
+            "name": "Kit5_Pilot_va_hisob-kitob.pdf",
+            "size": 0
+          },
+          {
+            "slug": "kit5-b-raqamlar",
+            "name": "kit5-b-raqamlar.md",
+            "size": 0
+          },
+          {
+            "slug": "kit5-skill",
+            "name": "kit5-SKILL.md",
+            "size": 0
+          }
+        ]
+      }
+    ]
+  }
+}

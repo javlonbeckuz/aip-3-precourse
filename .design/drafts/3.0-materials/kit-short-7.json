@@ -1,0 +1,65 @@
+{
+  "kit": {
+    "text": "Kit 5 yakuni: pilot natijasini hisoblab, davom ettirish, oʻzgartirish yoki toʻxtatish qarorini qabul qilasiz.",
+    "groups": [
+      {
+        "title": "01 Kit 5: Yakuniy raqamlar",
+        "note": "Oʻzgarish: oxirgi toʻldirilgan hafta va Agentgacha ustuni orasidagi farq. 1) Har qatorga Oʻzgarish ustunini yozing. 2) B.12 = B.9 + B.10 + B.11 ni hisoblang. 3) Topilgan pul qatorini jamlang. Tayyor, agar: har qatorda Agentgacha, haftalar va oʻzgarish bor.",
+        "files": [
+          {
+            "slug": "kit5-pdf",
+            "name": "Kit5_Pilot_va_hisob-kitob.pdf",
+            "size": 0
+          },
+          {
+            "slug": "kit5-b-raqamlar",
+            "name": "kit5-b-raqamlar.md",
+            "size": 0
+          }
+        ]
+      },
+      {
+        "title": "02 Qaror",
+        "note": "Pilotning uchta halol natijasi bor: davom ettirish, oʻzgartirish yoki toʻxtatish. 1) Kit 5 promptini yoki /kit5 qaror ni ishga tushiring. 2) Natijani A.6 mezonlari va A.7 toʻxtash sharti bilan solishtiring. 3) Bitta qarorni belgilang, sababini bir gapda yozing. Tayyor, agar: qaror va sababi Kit 5 B da yozilgan.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "K5P1",
+            "title": "Kit 5 prompti: qaror",
+            "target": "Claude",
+            "text": "Quyida mening pilot rejam (Kit 5 A) va haftalik raqamlarim (Kit 5 B).\nBarcha xarajatlarni (B.9-B.12) hisobga olgan holda Agentgacha ustuniga nisbatan oʻzgarishni hisoblang. Topilgan pulni alohida qator qilib koʻrsating.\nA.6 muvaffaqiyat mezonlari va A.7 toʻxtash shartini band-band tekshiring. Jadval: mezon, rejadagi qiymat, haqiqiy qiymat, bajarildimi.\nKeyin dangal ayting: davom ettiramizmi, oʻzgartiramizmi yoki toʻxtatamizmi. Sababini bir gapda yozing.\nRaqamni faqat shu matndan oling. Yetishmagan raqamni roʻyxat qiling, oʻzingizdan qoʻshmang.\n\nKit 5 A: [kit5-pilot/plan.md matni]\nKit 5 B: [kit5-pilot/results.md matni]"
+          }
+        ]
+      },
+      {
+        "title": "03 Kit 4: Xodimlar oʻsishi",
+        "note": "Oʻquv vazifasining birinchi 2 haftalik tekshiruvi. 1) Har xodim bilan B.6 natijasini koʻring. 2) Kerak boʻlsa, B.3 mezonlarini oʻzgartiring. 3) Keyingi koʻnikmalarni rejalashtiring. Tayyor, agar: har xodimga B.6 natijasi yozilgan.",
+        "files": []
+      },
+      {
+        "title": "04 Sotuvchi cheklisti",
+        "note": "Kimdir sizga AI agent sotmoqchi boʻlganda ishlating, bozor narxi 2 000-5 000 dollar. 1) Sakkizta savolni sotuvchiga yozma bering. 2) Javoblarni promptda cheklist bilan solishtiring. 3) Maʼlumot qaysi mamlakatda saqlanishini yozma oling. Tayyor, agar: har savolga yozma javob bor.",
+        "files": [
+          {
+            "slug": "cheklist-pdf",
+            "name": "Sotuvchi_cheklisti.pdf",
+            "size": 0
+          },
+          {
+            "slug": "sotuvchi-cheklist",
+            "name": "sotuvchi-cheklist.md",
+            "size": 0
+          }
+        ],
+        "prompts": [
+          {
+            "id": "K7P1",
+            "title": "Taklifni cheklist bilan tekshirish",
+            "target": "Claude",
+            "text": "Quyida sotuvchining AI agent taklifi va sotuvchi cheklisti.\nHar savol uchun yozing: taklifda javob bormi; javob \"yaxshi javob\"ga yaqinmi yoki \"xavfli belgi\"ga; taklifdan iqtibos.\nTaklifda javob boʻlmasa, \"javob yoʻq\" deb yozing va sotuvchiga beriladigan aniq savolni tuzing.\nTaklifda yoʻq narx, model yoki shart qoʻshmang.\n\nCheklist: [sotuvchi-cheklist.md matni]\nTaklif: [sotuvchi taklifi matni]"
+          }
+        ]
+      }
+    ]
+  }
+}

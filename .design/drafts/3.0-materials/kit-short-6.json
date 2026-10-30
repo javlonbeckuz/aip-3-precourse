@@ -1,0 +1,41 @@
+{
+  "kit": {
+    "text": "Kit 5 B pilot raqamlarini har hafta baseline bilan solishtiradi, bugun 1-hafta ustunini koʻrasiz.",
+    "groups": [
+      {
+        "title": "01 Kit 5: 1-hafta raqamlari",
+        "note": "Har hafta ustuni baseline bilan bir xil usulda hisoblanadi. 1) /kit5 hafta 1 ni yoki promptni ishga tushiring. 2) 1-hafta ustunini Agentgacha ustuni bilan solishtiring. 3) Farqi katta raqamning sababini yozing. Tayyor, agar: har raqamning manbasi yozilgan.",
+        "files": [
+          {
+            "slug": "kit5-pdf",
+            "name": "Kit5_Pilot_va_hisob-kitob.pdf",
+            "size": 0
+          },
+          {
+            "slug": "kit5-b-raqamlar",
+            "name": "kit5-b-raqamlar.md",
+            "size": 0
+          }
+        ],
+        "prompts": [
+          {
+            "id": "K5P1",
+            "title": "1-hafta tahlili",
+            "target": "Claude Code",
+            "text": "kit5-pilot papkasidagi baseline.md, results.md va errors.md ni oʻqing.\n1-hafta raqamlarini Agentgacha ustuni bilan yonma-yon jadvalda koʻrsating: metrika, Agentgacha, 1-hafta, farq.\nB.7 tekshirish soatini kunlar boʻyicha yozing va kamaygan yoki kamaymaganini ayting: [kunlik tekshirish soatlari].\nHar raqam qayerdan olinganini yozing. Faylda yoʻq raqam qoʻshmang, katakni boʻsh qoldiring."
+          }
+        ]
+      },
+      {
+        "title": "02 Xatolar va ruxsatlar",
+        "note": "B.13 dagi har xato instructions.md dagi oʻzgarishga va yangi testga aylanadi. 1) Har yozuvga qaysi qoida oʻzgarganini yozing. 2) B.7 tekshirish soati kamayganini koʻring. 3) Mentor bilan ruxsat qarorini oling va A.5 ga yozing. Tayyor, agar: B.13 toʻldirilgan, ruxsat qarori yozilgan.",
+        "files": []
+      },
+      {
+        "title": "03 Uyda: 2-hafta va topilgan pul",
+        "note": "Topilgan pul: pilot olib kelgan yoki saqlab qolgan pul. 1) 2-hafta ustunini B.7 bilan birga toʻldiring. 2) Xarajatlarni yozing: B.9, B.10 va B.11. 3) Topilgan pulni sana, dalil va summa bilan yozing. Tayyor, agar: 2-hafta, B.9-B.11 va topilgan pul toʻldirilgan.",
+        "files": []
+      }
+    ]
+  }
+}

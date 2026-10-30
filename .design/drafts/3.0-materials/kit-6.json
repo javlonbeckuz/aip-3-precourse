@@ -1,0 +1,37 @@
+{
+  "kit": {
+    "text": "Kit 5 B shakli pilot raqamlarini har hafta baseline bilan solishtiradi. Bugun 1-hafta ustunini koʻrib chiqasiz va xatolar jurnalidagi har yozuvni tuzatishga aylantirasiz.\n\nUyda 2-hafta ustunini, xarajatlarni va topilgan pulni toʻldirasiz.",
+    "groups": [
+      {
+        "title": "01 Kit 5 B: 1-hafta ustuni",
+        "note": "DARSDA. Har hafta ustuni baseline bilan bir xil usulda hisoblanadi. Claude Codeʼda /kit5 hafta 1 yoki quyidagi promptni ishlating. 1) 1-hafta ustunini stolda Agentgacha ustuni bilan solishtiring. 2) Farqi katta raqamning sababini yozing. 3) Raqam yetmasa, katakni boʻsh qoldiring va sababini yozing. Tayyor, agar: 1-hafta ustuni toʻldirilgan va har raqamning manbasi bor.",
+        "files": [
+          { "slug": "kit5-b-raqamlar", "name": "kit5-b-raqamlar.md", "size": 0 }
+        ],
+        "prompts": [
+          {
+            "id": "K5P1",
+            "title": "1-hafta tahlili",
+            "target": "Claude Code",
+            "text": "kit5-pilot papkasidagi baseline.md, results.md va errors.md ni oʻqing.\n1-hafta raqamlarini Agentgacha ustuni bilan yonma-yon jadvalda koʻrsating: metrika, Agentgacha, 1-hafta, farq.\nB.7 tekshirish soatini kunlar boʻyicha yozing va kamaygan yoki kamaymaganini ayting: [kunlik tekshirish soatlari].\nHar raqam qayerdan olinganini yozing. Faylda yoʻq raqam qoʻshmang, katakni boʻsh qoldiring."
+          }
+        ]
+      },
+      {
+        "title": "02 B.13: xatolar jurnali",
+        "note": "DARSDA VA UYGA. Har yozuvda toʻrt narsa: sana, nima boʻldi, kim topdi, nimani oʻzgartirdik. 1) Agentning har xatosini shu kuni B.13 ga yozing. 2) Darsda har yozuvni instructions.md dagi oʻzgarishga va yangi testga aylantiring. 3) \"Nimani oʻzgartirdik\" ustuniga aynan qaysi qoida oʻzgarganini yozing. Tayyor, agar: B.13 dagi har yozuvda \"nimani oʻzgartirdik\" toʻldirilgan.",
+        "files": []
+      },
+      {
+        "title": "03 B.7 va ruxsatlar",
+        "note": "DARSDA. B.7: xodimlar agent ishini tekshirishga sarflagan soat. 1) Birinchi haftadagi B.7 ni koʻring va tekshirish vaqti kamayganini yoki kamaymaganini yozing. 2) Mentor bilan qaror qiling: agent hali faqat qoralama tayyorlaydi yoki bitta qadamda ruxsat kengayadi. 3) Faqat kelishilgan oʻzgarishni qoʻllang va uni Kit 5 A ning A.5 bandiga yozing. Tayyor, agar: ruxsat boʻyicha qaror yozilgan.",
+        "files": []
+      },
+      {
+        "title": "04 2-hafta, xarajatlar va topilgan pul",
+        "note": "UYGA. Topilgan pul: pilot olib kelgan yoki saqlab qolgan pul. Mahalliy maoshlarda tejalgan soatlar koʻpincha vositaning oylik narxidan kichik chiqadi, hamkorlarni odatda shu qator ishontiradi. 1) 2-hafta ustunini B.7 bilan birga toʻldiring. 2) Xarajatlarni yozing: B.9 obunalar, B.10 sozlash, B.11 tekshirish soatlari × soatlik stavka. 3) Topilgan pul jadvaliga har holatni sana, dalil va summa bilan yozing: zarar qilishidan oldin ushlangan xatolar, endi yoʻqolmayotgan murojaatlar, tezroq yigʻilgan pul. Summa nomaʼlum boʻlsa, \"summa aniqlanmagan\" deb yozing. Tayyor, agar: 2-hafta ustuni, B.9-B.11 va topilgan pul jadvali toʻldirilgan.",
+        "files": []
+      }
+    ]
+  }
+}

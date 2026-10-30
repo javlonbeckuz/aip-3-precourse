@@ -1,0 +1,44 @@
+{
+  "kit": {
+    "text": "Kit 2 \"Qaysi jarayondan boshlaymiz\": jarayonlarni bir xil mezonlarda baholaydi va birinchi pilot uchun bittasini tanlaydi: qiymati yuqori, boshlash oson, xatosi arzon.\n\nBugun Claude Code Kit 1 fayllaridan baholash jadvali va Value/Ease matritsasini tuzadi. Uyda tanlovni boʻlim boshligʻi bilan kelishasiz va Kit 5 uchun baseline, yaʼni agentgacha boʻlgan raqamlarni yozishni boshlaysiz.",
+    "groups": [
+      {
+        "title": "01 A shakli: jarayonlarni baholash",
+        "note": "DARSDA. Jarayon: boshlanishi va natijasi bor vazifalar zanjiri, masalan \"mijoz soʻrovidan to yozilgan sinov darsigacha\". 1) Kit 1 B fayllarini kit1-interviews papkasiga, A shaklini kit2-scoring papkasiga qoʻying. 2) Claude Codeʼda Kit 2 promptini yoki /kit2 ni ishga tushiring. 3) Har bahoni manbasi bilan tekshiring va rozi boʻlmaganini tuzating. 4) Value = A.2 + A.3 + A.7, Ease = A.4 + A.5 + A.6, har biri 3 dan 15 gacha. Tayyor, agar: kit2-scoring/scoring.md da 8 tagacha jarayon bor va har bahoning manbasi yozilgan.",
+        "files": [
+          { "slug": "kit2-a-baholash", "name": "kit2-a-baholash.md", "size": 0 }
+        ],
+        "prompts": [
+          {
+            "id": "K2P1",
+            "title": "Kit 2 prompti: baholash",
+            "target": "Claude Code",
+            "text": "kit1-interviews papkasidagi barcha B shakllarini oʻqing. Ulardan 8 tagacha jarayonni ajrating. Jarayon: boshlanishi va natijasi bor vazifalar zanjiri.\nHar jarayonni kit2-scoring/kit2-a-baholash.md dagi A.2-A.7 mezonlari boʻyicha 1 dan 5 gacha baholang. Shkala shakl ostida.\nHar baho yonida qaysi fayl va qatorga tayanganingizni yozing. Maʼlumot yetmasa, bahoni [?] bilan belgilang. Fayllarda yoʻq raqam qoʻshmang.\nValue = A.2 + A.3 + A.7. Ease = A.4 + A.5 + A.6.\nKeyin baholardagi qarama-qarshiliklarni roʻyxat qiling, jarayonlarni Value va Ease boʻyicha tartiblang, birinchi pilot uchun bitta nomzodni va nimalar xato ketishi mumkinligini yozing.\nJadvalni kit2-scoring/scoring.md ga saqlang."
+          }
+        ]
+      },
+      {
+        "title": "02 B shakli: Value/Ease matritsasi",
+        "note": "DARSDA VA UYGA. Gorizontal oʻq Ease, vertikal oʻq Value, har jarayon raqamli nuqta. 1) Claude Codeʼdan matritsani kit2-scoring/matrix.html qilib yasashni soʻrang va brauzerda oching. 2) Uyda baholarni boʻlim boshligʻi bilan koʻrib chiqing: egalar odatda maʼlumot qanchalik tartibsizligini kam baholaydi. 3) Yuqori oʻng kvadratdan bitta jarayon tanlang. 4) B.1 tanlangan jarayon, B.2 nega aynan shu, B.3 hozir nimani qilmaymiz bandlarini toʻldiring va tanlovni CLAUDE.md ga yozing. Tayyor, agar: B.1-B.3 toʻldirilgan va boʻlim boshligʻi bilan kelishilgan.",
+        "files": [
+          { "slug": "kit2-b-matritsa", "name": "kit2-b-matritsa.md", "size": 0 }
+        ]
+      },
+      {
+        "title": "03 Kit 5 B: baseline",
+        "note": "UYGA. Baseline: agentgacha boʻlgan raqamlar. Ular boʻlmasa, demo kunida faqat taassurot qoladi. Kit 5 A shakli toʻrtinchi darsda toʻldiriladi. 1) Tanlangan jarayon boʻyicha toʻrt raqamni yozing: B.1 bajarilgan murojaatlar, B.2 oʻrtacha daqiqa, B.3 xatolar, B.4 takroriy murojaatlar. 2) Tarix bor joyda oxirgi 2-4 haftani Claude Code bilan oling: Telegram chat eksporti, Excel, CRM. 3) Tarixi yoʻq raqamlarni 5 ish kuni jonli yozing. 4) Natijani Kit 5 B ning Agentgacha ustuniga bir haftalik raqam qilib yozing. Tayyor, agar: kit5-pilot/baseline.md da toʻrt raqam va har birining manbasi bor.",
+        "files": [
+          { "slug": "kit5-b-raqamlar", "name": "kit5-b-raqamlar.md", "size": 0 }
+        ]
+      },
+      {
+        "title": "04 Claude Code skillari: /kit2 va /kit5",
+        "note": "DARSDA. Darsda /kit1 ni oʻzingiz yasaysiz, /kit2 va /kit5 tayyor holda shu yerda. /kit5 baseline, reja, haftalik raqamlar va qaror uchun pilot oxirigacha ishlatiladi. Oʻrnatishdan oldin fayllarni ochib oʻqing. 1) Kompaniya papkasida .claude/skills/kit2 va .claude/skills/kit5 papkalarini yarating. 2) kit2-SKILL.md ni kit2 papkasiga, kit5-SKILL.md ni kit5 papkasiga SKILL.md nomi bilan saqlang. 3) Claude Codeʼni qayta oching va / menyusini tekshiring. 4) Ishlatish: /kit2, keyin uyda /kit5 baseline. Tayyor, agar: ikkala skill / menyusida koʻrinadi.",
+        "files": [
+          { "slug": "kit2-skill", "name": "kit2-SKILL.md", "size": 0 },
+          { "slug": "kit5-skill", "name": "kit5-SKILL.md", "size": 0 }
+        ]
+      }
+    ]
+  }
+}

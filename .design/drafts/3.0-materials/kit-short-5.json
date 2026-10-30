@@ -1,0 +1,70 @@
+{
+  "kit": {
+    "text": "Kit 5 A pilot rejasini yozadi, Kit 4 agent yoqilgach xodimlar nima bilan band boʻlishini belgilaydi.",
+    "groups": [
+      {
+        "title": "01 Kit 5: Pilot rejasi",
+        "note": "Pilot: 2-4 haftalik haqiqiy sinov, bitta raqamli maqsad va aniq toʻxtash sharti bilan. 1) Mentor bilan A.1-A.9 ni toʻldiring yoki /kit5 reja ni ishlating. 2) A.2 maqsadi baseline dan chiqqan bitta raqam boʻlsin. 3) Rejani promptda tekshiring va topilganini tuzating. Tayyor, agar: reja kit5-pilot/plan.md da saqlangan.",
+        "files": [
+          {
+            "slug": "kit5-pdf",
+            "name": "Kit5_Pilot_va_hisob-kitob.pdf",
+            "size": 0
+          },
+          {
+            "slug": "kit5-a-reja",
+            "name": "kit5-a-reja.md",
+            "size": 0
+          }
+        ],
+        "prompts": [
+          {
+            "id": "K5P1",
+            "title": "Rejani tekshirish",
+            "target": "Claude Code",
+            "text": "kit5-pilot/plan.md (Kit 5 A) va kit5-pilot/baseline.md ni oʻqing.\nHar bandni tekshiring: A.2 bitta raqammi va baseline raqamidan chiqadimi; A.3 2-4 hafta ichidami; A.5 kit3-agent/instructions.md dagi B.4 va B.5 ga mos keladimi; A.6 va A.7 raqam bilan oʻlchanadimi; A.8 da aniq odam va tekshirish chastotasi bormi.\nJadval: band, hozirgi matn, muammo, tuzatish taklifi.\nRejani oʻzingiz oʻzgartirmang. Fayllarda yoʻq raqam qoʻshmang."
+          }
+        ]
+      },
+      {
+        "title": "02 Kit 4: Yangi rollar",
+        "note": "Agent yoqilishidan oldin har xodimning yangi roli va oʻquv vazifasi tayyor boʻladi. 1) A shaklida har xodimning eng kuchli koʻnikmasini misol bilan yozing. 2) Har xodimga B shaklini toʻldiring, B.4 ga haqiqiy namunalarni yozing. 3) /kit4 ni yoki Kit 4 promptini ishga tushiring. Tayyor, agar: har xodimga mezonli oʻquv vazifasi bor.",
+        "files": [
+          {
+            "slug": "kit4-pdf",
+            "name": "Kit4_Yangi_rollar.pdf",
+            "size": 0
+          },
+          {
+            "slug": "kit4-a-konikmalar",
+            "name": "kit4-a-konikmalar.md",
+            "size": 0
+          },
+          {
+            "slug": "kit4-b-oquv-vazifasi",
+            "name": "kit4-b-oquv-vazifasi.md",
+            "size": 0
+          },
+          {
+            "slug": "kit4-skill",
+            "name": "kit4-SKILL.md",
+            "size": 0
+          }
+        ],
+        "prompts": [
+          {
+            "id": "K4P1",
+            "title": "Kit 4 prompti: mezon va mashq",
+            "target": "Claude Code",
+            "text": "kit4-people/skills-map.md, kit4-people/[xodim ismi]-training.md (Kit 4 B) va namunalarni oʻqing: [namuna fayllari].\nB.3 mezonlarini aniq qiling: har mezon \"ha\" yoki \"yoʻq\" deb tekshiriladigan boʻlsin.\nFaqat shu namunalardan foydalanib xodim uchun qisqa mashq tuzing. Yangi namuna toʻqimang.\nIkki haftadan keyin natijani qanday oʻlchashni B.6 uchun taklif qiling.\nB.8 va B.9 ni toʻldirmang, ular suhbatdan keyin yoziladi."
+          }
+        ]
+      },
+      {
+        "title": "03 Uyda: Kit 4 suhbati",
+        "note": "Suhbat agent yoqilishidan oldin boʻladi, hech qachon keyin emas. 1) Har xodim bilan 15 daqiqa gaplashing: nima oʻzgaradi, nima oʻzgarmaydi. 2) Xavotirlarni B.8 ga, kelishuvni B.9 ga yozing. 3) Shundan keyin agentni cheklangan ruxsatlar bilan yoqing. Tayyor, agar: har xodim bilan suhbat oʻtgan.",
+        "files": []
+      }
+    ]
+  }
+}

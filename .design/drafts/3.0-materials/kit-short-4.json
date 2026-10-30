@@ -1,0 +1,51 @@
+{
+  "kit": {
+    "text": "Kit 3 tanlangan jarayonni qadamlarga ajratadi va agent koʻrsatmalarini, yaʼni system promptni tuzadi.",
+    "groups": [
+      {
+        "title": "01 Kit 3: Ishni qayta taqsimlash",
+        "note": "Agent oʻz qadamini oʻzi tekshirmaydi, bitta katak boʻsh boʻlsa, jarayon tayyor emas. 1) A shaklida jarayonni yozing, bir qatorda bitta harakat. 2) A.4 ga ertaga kim qilishini belgilang: A, R yoki I. 3) Oʻtgan haftadagi bitta haqiqiy holatni jadval boʻyicha yuriting. Tayyor, agar: boʻsh katak yoʻq, bitta haqiqiy holat yuritilgan.",
+        "files": [
+          {
+            "slug": "kit3-pdf",
+            "name": "Kit3_Ishni_qayta_taqsimlash.pdf",
+            "size": 0
+          },
+          {
+            "slug": "kit3-a-qadamlar",
+            "name": "kit3-a-qadamlar.md",
+            "size": 0
+          },
+          {
+            "slug": "kit3-b-korsatmalar",
+            "name": "kit3-b-korsatmalar.md",
+            "size": 0
+          },
+          {
+            "slug": "kit3-skill",
+            "name": "kit3-SKILL.md",
+            "size": 0
+          }
+        ]
+      },
+      {
+        "title": "02 Agent koʻrsatmalari",
+        "note": "Claude Code B shaklidan agentning system promptini yozadi, /kit3 ni oʻrnatish PDFda. 1) B.1-B.10 ni toʻldiring, A va B ni kit3-agent papkasiga saqlang. 2) /kit3 ni yoki Kit 3 promptini ishga tushiring. 3) Topilgan egasiz qadam va istisnolarni B ga qoʻshing. Tayyor, agar: kit3-agent/instructions.md da manbalar, cheklovlar va eskalatsiya bor.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "K3P1",
+            "title": "Kit 3 prompti: tekshiruv va system prompt",
+            "target": "Claude Code",
+            "text": "kit3-agent papkasidagi Kit 3 A (kit3-a-qadamlar.md) va B (kit3-b-korsatmalar.md) ni oʻqing.\n1) Tekshiring: egasiz qadamlar (A.7 boʻsh), agent oʻzini oʻzi tekshiradigan qadamlar, boʻsh kataklar, xavfli ruxsatlar (pul oʻtkazish, mijozga yozish, maʼlumot oʻchirish) va odamga oʻtishi kerak, lekin B.6 da yoʻq holatlar. Har topilmani qadam yoki band raqami bilan roʻyxat qiling.\n2) B.3 dagi har manba uchun ulanish yoʻli belgilanganmi: API, MCP, eksport yoki qoʻlda. Belgilanmaganini [?] bilan koʻrsating.\n3) B ni agent uchun aniq system prompt qilib qayta yozing. B da yoʻq qoida qoʻshmang. Takliflaringizni alohida roʻyxatda bering, men tasdiqlayman.\nNatijani kit3-agent/instructions.md ga saqlang."
+          }
+        ]
+      },
+      {
+        "title": "03 Uyda: xodimlar tekshiruvi",
+        "note": "Istisno holatlarni agent bilan ishlaydigan xodimlar biladi. 1) instructions.md ni shu xodimlarga koʻrsating. 2) Ular aytgan har istisnoni B.6 ga qoʻshing. 3) 3 ta yaxshi va 3 ta yomon haqiqiy namuna yigʻing. Tayyor, agar: B imzolangan va sanasi qoʻyilgan.",
+        "files": []
+      }
+    ]
+  }
+}

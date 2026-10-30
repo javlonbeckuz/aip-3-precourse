@@ -1,0 +1,432 @@
+BIZNESDA AI’NI
+QO‘LLASH
+AMALIY QO‘LLANMA
+Kompaniyangizdagi bitta jarayonni «vaqt qayerga
+ketyapti» holatidan sun’iy intellekt ishtirokidagi
+o‘lchanadigan sinovgacha olib chiqish uchun 5 ta
+to‘plam.
+Tuzuvchi:
+XURSHID MAROZIQOV
+
+=====PAGE=====
+MUNDARIJA
+03
+TO‘PLAM 1
+ISH QAYERGA KETYAPTI?
+Xodimlar bilan gaplashib, ishlarini yozing
+06
+TO‘PLAM 2
+QAYSI JARAYONDAN BOSHLAYMIZ?
+Jarayonni baholab, ilk sinovni tanlang
+09
+TO‘PLAM 3
+ISHNI QAYTA TAQSIMLASH
+Qadamlarni taqsimlab, sun’iy intellekt vazifasini yozing
+12
+TO‘PLAM 4
+XODIMLARNI YANGI ROLGA TAYYORLASH
+Ko‘nikmalarni moslab, o‘quv vazifasini bering
+15
+TO‘PLAM 5
+SINOV VA HISOB-KITOB
+Sinovni boshlab, vaqt, pul va xatoni sanang
+FOYDALANISH TARTIBI
+To‘plamlarni ketma-ket, har bir jarayon uchun alohida bajaring. Har bir to‘plamning
+birinchi sahifasida yo‘riqnoma, undan keyin esa bo‘sh shakllar berilgan. Ularni
+jamoangiz bilan qog‘ozda to‘ldiring, so‘ngra to‘ldirilgan shakllarni to‘plamning
+birinchi sahifasidagi so‘rov bilan birga Claude, ChatGPT yoki Gemini’ga bering.
+
+=====PAGE=====
+ISH QAYERGA
+KETYAPTI?
+Sun’iy intellektga vazifa berishdan oldin, odamlaringiz haﬅa
+davomida qaysi vazifaga qancha vaqt sarﬂayotganini aniq
+toping.
+1. Bitta bo‘lim va 3-5 ta xodimni tanlang. Ularga maqsadni dangal tushuntiring: maqsadingiz ularning ishini
+tortib olish emas, jarayonni xaritaga tushirish. Odamlar ishini yo‘qotishdan qo‘rqib, asl holatni yashirishadi.
+2. Har bir xodim bilan hozirgi ish jarayoni, ya’ni A holati bo‘yicha 20-30 daqiqa suhbatlashing. Boshlashdan
+oldin, rozilik matnini ovoz chiqarib o‘qing va faqat ular rozi bo‘lgandan keyin telefoningizda yozishni
+boshlang. Yettita savolni ketma-ket bering va har doim aniq hayotiy misol so‘rang.
+3. Audioni matnga o‘giring. Audioni AI dasturiga (Claude, ChatGPT yoki Gemini) yuklang va o‘zbek tilida
+so‘zma-so‘z transkript qilishni so‘rang. Uni bir marta o‘qib chiqing va ismlar, raqamlarni to‘g‘rilang.
+4. Transkriptni shu chatga pastdagi so‘rov bilan birga joylang. AI sizga vazifalar ro‘yxatini B shaklidagi
+ustunlarda qaytaradi. Uni B shakliga ko‘chiring va xodimga ko‘rsating: ular daqiqalar va takrorlanish sonini
+to‘g‘rilashadi.
+5. Haﬅalik soatlarni qo‘shib chiqing. Oxirgi ustunda bu vazifani ertaga kim qilishi kerakligini belgilang: S sun’iy
+intellekt, I inson, B birga. To‘ldirilgan shakllarni To‘plam 2 ga olib o‘ting.
+YOZISHDAN OLDIN OVOZ CHIQARIB O‘QING
+«Suhbatimizni yozib olyapman, shunda ishingizdagi muhim detallarni o‘tkazib yubormayman. Bu yozuv va uning
+matnini faqat men hamda men foydalanadigan AI vositasi ko‘radi. Bu sizning ishingizga baho berish emas.
+Rozimisiz?»
+AI CHAT UCHUN SO‘ROV
+Bu xodim bilan qilingan suhbat transkripti. Ular aytgan har bir vazifani quyidagi ustunlari bor jadvalga tushiring:
+vazifa, haﬅasiga necha marta, har safar necha daqiqa, ma’lumot qayerdan keladi, natija kimga ketadi, qoida yoki
+ﬁkr, xatoning narxi. Taxmin qilingan raqamlarni [?] bilan belgilang.
+Tuzuvchi:
+XURSHID MAROZIQOV
+
+=====PAGE=====
+A XODIM BILAN SUHBAT
+TO‘PL AM 1 / 5
+ISH QAYERGA KE T YAPT I?
+Xodim Lavozim Sana Suhbat oldi Yozib olishga rozilik olindi
+A.1 Odatdagi bir ish kuningiz qanday o‘tadi, ishga kelganingizdan to ketguningizgacha aytib bering.
+A.2 Haﬅa davomida eng ko‘p vaqtingizni oladigan uchta vazifa qaysi? Har biriga taxminan necha daqiqa ketadi?
+A.3 Qaysi vazifalarni har doim bir xil bajarasiz? Menga oxirgisini ko‘rsating.
+A.4 Qayerda ma’lumot kutib qolasiz yoki bir narsani boshqalardan qayta-qayta so‘raysiz?
+A.5 Eng ko‘p xatolar qayerda bo‘ladi? Ularni kim sezadi va bu xatolar qanchaga tushadi?
+A.6 Qaysi ishingiz sizning tajribangizni talab qiladi, ya’ni yangi kelgan xodim uni birinchi oyida eplay olmaydi?
+A.7 Agar ertaga sizga yordamchi berishsa, birinchi bo‘lib qaysi vazifani unga topshirardingiz?
+Tuzuvchi: Xurshid Maroziqov · Praktikum 2.0 sahifa 2
+
+=====PAGE=====
+B VAZIFALAR RO‘YXATI
+TO‘PL AM 1 / 5
+ISH QAYERGA KE T YAPT I?
+Xodim Lavozim Bo‘lim Sana
+B.1
+Vazifa (fe’l bilan)
+B.2
+Haﬅasiga
+marta
+B.3
+Daqiqa/safar
+B.4
+Haﬅalik soat
+B.5
+Ma’lumot keladi
+B.6
+Natija ketadi
+B.7
+Qoida Q / Fikr
+F
+B.8
+Xatoning narxi
+B.9
+Ertaga S/I/B
+Haﬅasiga jami soat
+B.4 = B.2 x B.3 / 60. B.8: past, o‘rta, yuqori. B.9: S sun’iy intellekt, I inson, B birga.
+Tuzuvchi: Xurshid Maroziqov · Praktikum 2.0 sahifa 3
+
+=====PAGE=====
+QAYSI
+JARAYONDAN
+BOSHLAYMIZ?
+Jarayonlarni bir xil mezonlarda baholang va birinchi sinov
+(pilot) uchun bittasini tanlang: qiymati yuqori, boshlash
+oson, xatosi arzon bo‘lsin.
+1. To‘plam 1 varaqlaridan 8 tagacha jarayonni A shakliga yozib chiqing. Jarayon - bu boshlanishi va
+natijasi bor vazifalar zanjiri, masalan «mijoz so‘rovidan to yozilgan sinov darsigacha».
+2. Har bir jarayonni oltita mezon bo‘yicha 1 dan 5 gacha baholang. Shkala jadval ostida berilgan.
+Buni yolg‘iz o‘zingiz emas, bo‘lim boshlig‘i bilan birga qiling: biznes egasi odatda ma’lumotlar
+qanchalik tartibsiz ekanini bilmaydi.
+3. Qiymat (A.2 + A.3 + A.7) va Osonlik (A.4 + A.5 + A.6) ni hisoblang. Har biri 3 va 15 oralig‘ida bo‘lishi
+kerak.
+4. Har bir jarayonni B shaklidagi panjaraga bitta nuqta qilib tushiring, gorizontal bo‘yicha Osonlik,
+vertikal bo‘yicha Qiymat. Nuqta yoniga uning raqamini yozing.
+5. Yuqori o‘ng kvadratdan bitta jarayonni tanlang. Nega aynan shuni tanlaganingizni va hozir
+nimani qilmayotganingizni yozing. Buni To‘plam 3 ga olib o‘ting.
+AI CHAT UCHUN SO‘ROV
+Bu mening jarayonlarni baholash jadvalim. Baholardagi qarama-qarshiliklarni tekshiring, jarayonlarni
+Qiymat va Osonlik bo‘yicha tartiblang, va birinchi bo‘lib qaysi birini sinovdan o‘tkazish kerakligini,
+nimalar xato ketishi mumkinligini ayting.
+Tuzuvchi:
+XURSHID MAROZIQOV
+
+=====PAGE=====
+A JARAYONLARNI BAHOLASH
+TO‘PL AM 2 / 5
+QAYSI JARAYON DAN BO SH L AYM IZ?
+Bo‘lim Baholadi Sana
+A.1
+Jarayon (boshlash - natija)
+A.2
+Takrorlanishi
+A.3
+Ketadigan
+vaqt
+A.4
+Aniq qoidasi
+bor
+A.5
+Ma’lumot
+raqamli
+A.6
+Xatosi arzon
+A.7
+Mijoz sezadi
+A.8
+Qiymat
+A.9
+Osonlik
+1
+2
+3
+4
+5
+6
+7
+8
+A.2 1 oyda bir marta
+5 kunda ko‘p marta
+A.3 1 haﬅasiga bir necha daqiqa
+5 haﬅasiga 10 soatdan ko‘p
+A.4 1 har bir holat har xil
+5 har doim bir xil qadamlar
+A.5 1 qog‘ozda yoki odamlar yodida
+5 allaqachon tizim yoki jadvalda
+A.6 1 xato pul yoki ishonchni yo‘qotadi
+5 sezish va to‘g‘rilash oson
+A.7 1 faqat ichki jarayon
+5 mijoz buni kutib turadi
+Tuzuvchi: Xurshid Maroziqov · Praktikum 2.0 sahifa 2
+
+=====PAGE=====
+B QIYMAT VA OSONLIK
+TO‘PL AM 2 / 5
+QAYSI JARAYON DAN BO SH L AYM IZ?
+Bo‘lim Sana
+3
+3
+4
+4
+5
+5
+6
+6
+7
+7
+8
+8
+9
+9
+10
+10
+11
+11
+12
+12
+13
+13
+14
+14
+15
+15
+Foydali, puxta reja kerak Birinchi sinov
+Hozircha tegmang Oson, lekin foydasi kichik
+Osonlik (A.9)
+Qiymat (A.8)
+B.1 Tanlangan jarayon
+B.2 Nega aynan shu
+B.3 Hozir nimani qilmayapmiz
+Tuzuvchi: Xurshid Maroziqov · Praktikum 2.0 sahifa 3
+
+=====PAGE=====
+ISHNI QAYTA
+TAQSIMLASH
+Tanlangan jarayonni qadamma-qadam chizib chiqing,
+ertaga har bir qadamni kim qilishini hal qiling va sun’iy
+intellektning ish yo‘riqnomasi va chegaralarini yozing.
+1. A shaklida jarayonni boshidan oxirigacha yozing, har bir qatorga bitta harakat. Bugun ustuniga
+uni hozir kim qilishini yozing. O‘tgan haﬅadagi bitta real holatni eslab, hech qaysi qadam qolib
+ketmaganini tekshiring.
+2. Ertaga har bir qadamni kim qilishini belgilang: S sun’iy intellekt, I inson. Keyin natijani kim
+tekshirishini, kim qaror qabul qilishini va kim javobgar bo‘lishini yozing. Agar bitta katak bo‘sh
+qolsa, demak jarayon hali tayyor emas.
+3. Sun’iy intellekt bajaradigan qadamlarni B shaklidagi ish yo‘riqnomasiga yig‘ing. U o‘zi nima qila
+olishini, nimalarni umuman qilmasligi kerakligini va qachon ishni odamga topshirishi kerakligini
+yozing.
+4. B shaklini sun’iy intellekt bilan birga ishlaydigan xodimlarga ko‘rsating. Istisno holatlarni ular
+bilishadi. Hamma istisnolarni B.6 ga qo‘shing.
+5. B shaklini imzolang va sana qo‘ying. To‘ldirilgan shakl - bu sun’iy intellektning yo‘riqnomasi: uni
+AI dasturiga tizim yo‘riqnomasi (system prompt) sifatida joylang.
+AI CHAT UCHUN SO‘ROV
+Bu mening jarayon jadvalim va sun’iy intellekt yo‘riqnomasi. Egasiz qadamlarni, xavﬂi ruxsatlarni va
+odamga o‘tishi kerak bo‘lgan holatlarni toping, so‘ngra B shaklini sun’iy intellekt uchun aniq tizim
+yo‘riqnomasi (system prompt) qilib qayta yozib bering.
+Tuzuvchi:
+XURSHID MAROZIQOV
+
+=====PAGE=====
+A JARAYON QADAMLARI: BUGUN VA ERTAGA
+TO‘PL AM 3 / 5
+ISH N I QAY TA TAQSI M L ASH
+Jarayon Boshlanadi Tugaydi Jarayon egasi
+A.1
+Qadam (bitta harakat)
+A.2
+Ma’lumot
+A.3
+Bugun: kim
+A.4
+Ertaga S / I
+A.5
+Kim tekshiradi
+A.6
+Kim qaror qiladi
+A.7
+Kim javobgar
+A.8
+Izoh: kutish, xatolar
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+A.4: S sun’iy intellekt, I inson. Sun’iy intellekt hech qachon o‘z qadamini o‘zi tekshirmaydi.
+Tuzuvchi: Xurshid Maroziqov · Praktikum 2.0 sahifa 2
+
+=====PAGE=====
+B SUN’IY INTELLEKT ISH YO‘RIQNOMASI
+TO‘PL AM 3 / 5
+ISH N I QAY TA TAQSI M L ASH
+Sun’iy intellekt nomi Jarayon
+B.1 Rol: sun’iy intellekt nima uchun kerakligi, bitta gapda
+B.2 Javobgar rahbar
+B.3 Ishlatishi mumkin bo‘lgan manbalar (hujjatlar, narxlar, CRM, jadval)
+B.4 O‘zi mustaqil qila oladigan harakatlar
+B.5 Hech qachon qilmaydigan ishlar
+B.6 Qachon odamga uzatadi ... (holat - kimga - qanday)
+B.7 Har bir harakatdan so‘ng nimalarni yozib qo‘yadi
+B.8 Ohang va til
+B.9 Sifat mezoni: yaxshi javob bu ...
+B.10 Tasdiqladi, sana, keyingi ko‘rib chiqish sanasi
+Tuzuvchi: Xurshid Maroziqov · Praktikum 2.0 sahifa 3
+
+=====PAGE=====
+XODIMLARNI
+YANGI ROLGA
+TAYYORLASH
+Har bir xodimning eng kuchli qobiliyatini yangi ish
+taqsimotidagi mos joyga qo‘ying va «AI’ni o‘rgan» o‘rniga
+aniq tekshirish mumkin bo‘lgan vazifa bering.
+1. A shakliga To‘plam 3 dagi jarayonda ishi o‘zgarayotgan har bir xodimni yozing. Ularning eng kuchli
+qobiliyatini o‘z ishidan olingan real misol bilan yozing.
+2. Bu qobiliyat ertaga qayerda ishlashini hal qiling. Mijozning chalkash gapidan asosiy ehtiyojni ajrata
+oladigan yaxshi sotuvchi sun’iy intellektga to‘g‘ri topshiriq bera oladi. Ehtiyotkor muharrir esa sun’iy
+intellekt yozgan narsani tekshira oladi.
+3. Hech narsa o‘zgarishidan oldin har bir xodim bilan 15 daqiqa suhbatlashing. Ularga nima o‘zgarishini,
+nima o‘zgarishsiz qolishini va bundan buyon nimalarni tekshirishini tushuntiring. Ularning savol va
+xavotirlarini B shakliga yozing.
+4. Har bir xodim uchun B shaklida bitta mashg‘ulot vazifasini to‘ldiring: qanday natijani tekshiradi, qaysi
+mezonlarga asosan va qaysi misollar ustida. Real ishdan 3 ta yaxshi va 3 ta yomon misol yig‘ing.
+5. Muddatni va o‘sishni qanday o‘lchashni kelishib oling. Ikki haﬅadan so‘ng xodim bilan natijani ko‘rib
+chiqing va agar kerak bo‘lsa, mezonlarni o‘zgartiring.
+AI CHAT UCHUN SO‘ROV
+Bu mening qobiliyatlar xaritam va bitta mashg‘ulot vazifasi. Tekshirish mezonlarini aniq qiling, mening
+biznesimdan olingan misollar bilan qisqa mashq tuzing va ikki haﬅadan so‘ng natijani qanday o‘lchashni
+ayting.
+Tuzuvchi:
+XURSHID MAROZIQOV
+
+=====PAGE=====
+A QOBILIYATLAR XARITASI
+TO‘PL AM 4 / 5
+XODI M L ARN I YANGI ROLGA TAY YORL ASH
+Bo‘lim Jarayon Sana
+A.1
+Xodim
+A.2
+Eng kuchli qobiliyati (real misol)
+A.3
+Bugungi asosiy ishi
+A.4
+Yangi taqsimotdagi joyi
+A.5
+Yangi nazorat vazifasi
+A.6
+O‘qish
+kerakmi
+Tuzuvchi: Xurshid Maroziqov · Praktikum 2.0 sahifa 2
+
+=====PAGE=====
+B MASHG‘ULOT VAZIFASI
+TO‘PL AM 4 / 5
+XODI M L ARN I YANGI ROLGA TAY YORL ASH
+Xodim Menejer Sana
+B.1 Nimani tekshiradi (qanday natijani)
+B.2 Nega aynan u: qaysi qobiliyat ishlatiladi
+B.3 Mezonlar: to‘g‘ri natija bu ... / xato natija bu ...
+B.4 Misollar: 3 ta yaxshi va 3 ta yomon, manbasi
+B.5 Muddat
+B.6 O‘sishni qanday o‘lchaymiz
+B.7 Natijani kim ko‘rib chiqadi
+B.8 Suhbatdan: uning savollari va xavotirlari
+B.9 Nima deb kelishdik
+Tuzuvchi: Xurshid Maroziqov · Praktikum 2.0 sahifa 3
+
+=====PAGE=====
+SINOV VA HISOB-
+KITOB
+Aniq chegaralangan 2-4 haﬅalik sinov (pilot) o‘tkazing va
+faqat sun’iy intellektning tezligini emas, balki pul va
+vaqtda nima o‘zgarganini hisoblang.
+1. Sun’iy intellekt ishlashni boshlashidan oldin bo‘lim boshlig‘i bilan A shaklini to‘ldiring: aniq bitta
+raqamli maqsad, sanalar, u nima qila olishi va olmasligi, va qachon sinovni to‘xtatish sharti.
+2. Bir haﬅa sun’iy intellektsiz ishlab, boshlang‘ich holatni o‘lchang va B shaklidagi «Sun’iy
+intellektgacha» ustuniga yozing. Boshlang‘ich raqam bo‘lmasa, sizda faqat taassurot qoladi.
+3. Birinchi haﬅada cheklangan ruxsatlar bilan boshlang va har bir javobni tekshiring. Sun’iy
+intellektning har bir xatosini B shaklidagi xatolar jurnaliga yozib boring - kim topgani va
+yo‘riqnomada nimani o‘zgartirganingiz bilan.
+4. Har haﬅa B shaklining bitta ustunini to‘ldiring. Xarajatlarni qo‘shing: obuna, integratsiya va
+odamlarning sun’iy intellektni tekshirishga sarﬂagan soatlari.
+5. Oxirida natijani A shaklidagi muvaﬀaqiyat va to‘xtatish mezonlari bilan solishtiring va bitta
+qarorni belgilang: davom etish, o‘zgartirish yoki to‘xtatish. Sababini bir gap bilan yozing.
+AI CHAT UCHUN SO‘ROV
+Bu mening sinov rejam va haﬅalik raqamlarim. Barcha xarajatlarni hisobga olgan holda boshlang‘ich
+holatga nisbatan o‘zgarishni hisoblang, to‘xtatish mezonlarini tekshiring va dangal ayting: davom
+etaylikmi, o‘zgartiraylikmi yoki to‘xtataylikmi.
+Tuzuvchi:
+XURSHID MAROZIQOV
+
+=====PAGE=====
+A SINOV REJASI
+TO‘PL AM 5 / 5
+SI NOV VA H ISOB-KI TOB
+Jarayon Sinov egasi Sana
+A.1 Jarayon va sun’iy intellekt
+A.2 Maqsad, bitta raqamda (... dan ... gacha)
+A.3 Sanalar: boshlanishi - tugashi (2-4 haﬅa)
+A.4 Qamrov: qaysi mijozlar, so‘rovlar yoki buyurtmalar
+A.5 Chegaralar: sun’iy intellekt qila oladi / qila olmaydi
+A.6 Muvaﬀaqiyat mezonlari
+A.7 To‘xtatish sharti: agar ... bo‘lsa, darhol to‘xtatamiz
+A.8 Sun’iy intellekt javoblarini kim va qanchalik tez-tez tekshiradi
+A.9 Haﬅalik ko‘rib chiqish: kun, vaqt, kim qatnashadi
+Tuzuvchi: Xurshid Maroziqov · Praktikum 2.0 sahifa 2
+
+=====PAGE=====
+B SINOV RAQAMLARI
+TO‘PL AM 5 / 5
+SI NOV VA H ISOB-KI TOB
+Jarayon Sinov sanalari
+Metrika
+Sun’iy
+intellektgacha 1-haﬅa 2-haﬅa 3-haﬅa 4-haﬅa O‘zgarish
+B.1 Bajarilgan so‘rovlar
+B.2 O‘rtacha vaqt, daqiqa
+B.3 Xato javoblar
+B.4 Takroriy so‘rovlar
+B.5 To‘liq hal qilingan so‘rovlar
+B.6 Yopilgan bitim yoki
+buyurtmalar
+B.7 Tekshirishga ketgan xodim
+soati
+B.8 Mijoz shikoyatlari
+XARAJATLAR
+B.9 Obuna
+B.10 Integratsiya va sozlash
+B.11 Tekshirish soati x soatbay haq
+B.12 Jami
+XATOLAR JURNALI
+B.13
+Sana Nima bo‘ldi Kim topdi Nimani o‘zgartirdik
+QAROR
+Davom etish O‘zgartirish To‘xtatish
+Sababi
+Tuzuvchi: Xurshid Maroziqov · Praktikum 2.0 sahifa 3

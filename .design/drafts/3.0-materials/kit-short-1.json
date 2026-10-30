@@ -1,0 +1,57 @@
+{
+  "kit": {
+    "text": "Kit 1 xodimlar haftasiga qaysi ishga qancha vaqt sarflashini topadi: bugun juftlikda mashq, uyda 2-3 intervyu.",
+    "groups": [
+      {
+        "title": "01 Kit 1: Ish qayerga ketadi",
+        "note": "Rozilik matni, A shakli savollari va toʻliq yoʻriqnoma PDFda. 1) Hamkasb bilan juft boʻling, rozilik matnini ovoz chiqarib oʻqing. 2) A.1-A.7 savollari bilan 5 daqiqalik intervyuni yozib oling. Tayyor, agar: telefoningizda mashq yozuvi bor.",
+        "files": [
+          {
+            "slug": "kit1-pdf",
+            "name": "Kit1_Ish_qayerga_ketadi.pdf",
+            "size": 0
+          },
+          {
+            "slug": "kit1-a-suhbat",
+            "name": "kit1-a-suhbat.md",
+            "size": 0
+          },
+          {
+            "slug": "kit1-b-vazifalar",
+            "name": "kit1-b-vazifalar.md",
+            "size": 0
+          },
+          {
+            "slug": "kit1-skill",
+            "name": "kit1-SKILL.md",
+            "size": 0
+          }
+        ]
+      },
+      {
+        "title": "02 Matn va B shakli",
+        "note": "Transkripsiya oʻzbekcha raqamlarda adashadi: \"bir uch-toʻrt yuz ming\" 1 300 000 boʻlib qoladi. 1) Audioni Geminiʼga yuklang va transkripsiya promptini qoʻying. 2) Matnga Kit 1 promptini qoʻllang va B shaklini oling. 3) Jadvaldagi har raqamni audio bilan solishtiring. Tayyor, agar: har raqam audio bilan tekshirilgan.",
+        "files": [],
+        "prompts": [
+          {
+            "id": "K1P1",
+            "title": "Transkripsiya",
+            "target": "Gemini",
+            "text": "Ilova qilingan audio yozuvni oʻzbek tilida soʻzma-soʻz matnga aylantiring.\nSuhbatdoshlarni \"Soʻrovchi\" va \"[xodim ismi]\" deb ajrating.\nHar raqam, summa va vaqtni eshitilganidek soʻz bilan ham yozing, masalan: 300 000 (\"uch yuz ming\").\nTushunarsiz joyni [?] bilan belgilang, oʻzingizdan toʻldirmang."
+          },
+          {
+            "id": "K1P2",
+            "title": "Kit 1 prompti: B shakli",
+            "target": "Claude",
+            "text": "Quyida [xodim ismi], [lavozimi] bilan intervyu matni va Kit 1 B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [kit1-b-vazifalar.md faylining toʻliq matni]\nIntervyu: [intervyu matni]"
+          }
+        ]
+      },
+      {
+        "title": "03 Uyda: 2-3 intervyu",
+        "note": "Bitta boʻlimdan 2-3 xodim bilan 20-30 daqiqa gaplashing, jamoa boʻlmasa oʻzingizni intervyu qiling. 1) Jamoaga ayting: ishni xaritaga tushiramiz, odamlarni almashtirmaymiz. 2) Har B shaklini xodimga koʻrsating, u raqamlarni tuzatsin. 3) Har xodimni alohida .md faylga saqlang, masalan kit1-dilnoza.md. Tayyor, agar: kamida 2 ta B shakli .md faylda.",
+        "files": []
+      }
+    ]
+  }
+}
