@@ -244,11 +244,10 @@ test('summary: a lesson with a locked part is not done, even with every unit tic
   assert.equal(c.summary(p, 'shanba').done, 1);
 });
 
-test('shipped lesson 0: three setup cards, no Warp card (removed by the user on 2026-10-30)', () => {
+test('shipped lesson 0: four setup cards with Visa before Claude, no Warp card (user, 2026-10-30)', () => {
   for (const lg of ['uz', 'ru', 'en']) {
     const items = JSON.parse(fs.readFileSync(path.join(REAL_CONTENT, 'lessons/0', `lesson.${lg}.json`), 'utf8')).prep.items;
-    assert.equal(items.length, 3, lg);
-    assert.ok(!items.some((it) => it.brand === 'warp'), lg);
+    assert.deepEqual(items.map((it) => it.brand), ['device', 'google', 'visa', 'claude'], lg);
   }
 });
 

@@ -6,6 +6,7 @@
   "topics": [
     "Computer",
     "Google account",
+    "A Visa card",
     "Claude"
   ],
   "slideCount": 0,
@@ -43,13 +44,24 @@
         ]
       },
       {
+        "brand": "visa",
+        "title": "A Visa card",
+        "note": "You need it to pay for Claude Pro. Uzcard and Humo do not work.",
+        "steps": [
+          "Get an international Visa or Mastercard from your bank.",
+          "The card needs a dollar account with online payments enabled.",
+          "Keep at least $20 on it: Pro costs $20 a month."
+        ],
+        "actions": []
+      },
+      {
         "brand": "claude",
         "title": "Claude subscription",
         "note": "The main tool of the practicum. You need at least the Pro plan, and we recommend Max from Lesson 02.",
         "steps": [
           "Go to claude.ai and sign up with \"Continue with Google\".",
           "In Settings → Billing choose the Pro plan. It costs $20 a month.",
-          "Pay with an international Visa or Mastercard. The card needs a dollar balance and online payments switched on. Uzcard and Humo do not work.",
+          "Pay with the Visa or Mastercard from card 03.",
           "Install the Claude app from claude.ai/download and sign in with the same account."
         ],
         "actions": [

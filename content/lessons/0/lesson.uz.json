@@ -6,6 +6,7 @@
   "topics": [
     "Kompyuter",
     "Google akkaunt",
+    "Visa karta",
     "Claude"
   ],
   "slideCount": 0,
@@ -43,13 +44,24 @@
         ]
       },
       {
+        "brand": "visa",
+        "title": "Visa karta",
+        "note": "Claude Pro obunasini toʻlash uchun kerak. Uzcard va Humo ishlamaydi.",
+        "steps": [
+          "Bankingizdan xalqaro Visa yoki Mastercard oching.",
+          "Kartada dollar hisobi va onlayn toʻlov yoqilgan boʻlsin.",
+          "Kartada kamida $20 boʻlsin: Pro tarifi oyiga $20."
+        ],
+        "actions": []
+      },
+      {
         "brand": "claude",
         "title": "Claude obunasi",
         "note": "Praktikumning asosiy vositasi. Kamida Pro tarifi kerak, 02-darsdan Max tavsiya etiladi.",
         "steps": [
           "claude.ai ga kiring va «Continue with Google» orqali roʻyxatdan oʻting.",
           "Settings → Billing boʻlimida Pro tarifini tanlang. Narxi oyiga $20.",
-          "Toʻlov xalqaro Visa yoki Mastercard bilan. Kartada dollar hisobi va onlayn toʻlov yoqilgan boʻlsin. Uzcard va Humo ishlamaydi.",
+          "Toʻlovni 03-kartadagi Visa yoki Mastercard bilan qiling.",
           "claude.ai/download sahifasidan Claude dasturini oʻrnating va oʻsha akkaunt bilan kiring."
         ],
         "actions": [
