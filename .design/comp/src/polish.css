@@ -296,7 +296,7 @@ html.hid .bgp path{animation-play-state:paused}
 .ia-p{display:grid;grid-template-rows:0fr;opacity:0;filter:blur(2px);transition:grid-template-rows .45s cubic-bezier(.3,1.1,.4,1),opacity .3s ease,filter .3s ease}
 .ia-row.open .ia-p{grid-template-rows:1fr;opacity:1;filter:blur(0)}
 .ia-in{overflow:hidden;min-height:0}
-.ia-body{display:grid;gap:16px;justify-items:start;max-width:860px;padding:4px 20px 24px 110px}
+.ia-body{display:grid;gap:16px;justify-items:start;max-width:860px;padding:4px 20px 24px 124px}   /* starts exactly under the row title (20 + 40 icon + 14 + 36 number + 14) */
 .ia .kg-d{margin:0;max-width:62ch;font:400 16px/1.5 var(--font-body);color:rgb(255 255 255 / .88);text-wrap:pretty}
 .ia .cmd{margin-top:0;border-color:rgb(255 255 255 / .5);color:var(--white)}
 .ia .pill-cta{color:var(--white)}
