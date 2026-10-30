@@ -111,6 +111,14 @@ body{background:#000;margin:0}
 .cbar button.on{border-color:#fff;background:#fff;color:#000}
 .cbar .sw{width:14px;height:14px;border-radius:50%;box-shadow:inset 0 0 0 1px rgb(255 255 255 / .3)}
 .sw-lilac{background:var(--lilac)}.sw-grey{background:var(--grey)}.sw-blue{background:var(--blue)}.sw-dark{background:var(--state-locked)}.sw-orange{background:var(--orange)}.sw-emerald{background:var(--emerald)}.sw-cream{background:var(--cream)}
+/* compact header: back link and date on one line at the top, the title on one line */
+.w-top{padding:20px 16px 0}
+.w-dl{display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px;margin:0}
+.w-dl .eyebrow{margin:0}
+.w-h1{margin:16px 0 0;font:500 clamp(28px,8cqi,40px)/1.1 var(--font-display);font-stretch:125%;text-transform:uppercase;letter-spacing:-.01em;color:var(--white);text-wrap:balance}
+.w-hr{display:grid;gap:10px;margin-top:16px}
+@container (min-width:900px){.w-top{padding:calc(28 * var(--u)) calc(50 * var(--u)) 0 calc(66 * var(--u))}.w-h1{margin-top:calc(18 * var(--u));font-size:calc(56 * var(--u));white-space:nowrap}.w-hr{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 calc(48 * var(--u));margin-top:calc(20 * var(--u))}.w-wrap{padding-top:calc(36 * var(--u))}}
+@container (max-width:899px){.w-h1 .w-n{display:block}}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <filter id="goo-tabs"><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter>
@@ -176,8 +184,8 @@ const W3_am = (k = 0) => { const e = exs[k]; return `${wIntro(AM.text)}<div clas
 const FOLDER = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l2 2.5h8.5A1.5 1.5 0 0 1 21 9v8.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/></svg>';
 const frame = (pane, tab) => `<div class="frame" data-h><div class="site">
   <header class="nav"><nav class="nav-links"><a class="home-btn" href="#">${I('home')}</a></nav><span class="wordmark">AI Praktikum 3.0</span><div class="nav-r"><a class="prep-btn" href="#"><span class="pb-ic">${FOLDER}</span><span class="pb-t">Birinchi darsgacha</span></a><button class="nav-name" type="button">Student</button><button class="menu-btn" type="button" aria-label="Menyu">${I('menu')}</button></div></header>
-  <main><div class="hero w-hero"><div class="hero-l"><div class="dl-h"><a class="eyebrow" href="#">${I('back', 16)}Dastur</a><p class="dl-m">21-noyabr · 0/2 bajarildi</p></div>
-    <h1 class="headline"><span class="ln">01-dars</span><span class="ln">AI qanday ishlaydi</span></h1></div><div class="w-hr"><p class="lsub">${esc(DATA.subtitle)}</p><p class="lede">${esc(DATA.summary)}</p></div></div>
+  <main><div class="w-top"><div class="dl-h w-dl"><a class="eyebrow" href="#">${I('back', 16)}Dastur</a><p class="dl-m">21-noyabr · 0/2 bajarildi</p></div>
+    <h1 class="w-h1"><span class="w-n">01-dars</span> AI qanday ishlaydi</h1><div class="w-hr"><p class="lsub">${esc(DATA.subtitle)}</p><p class="lede">${esc(DATA.summary)}</p></div></div>
     <div class="w-wrap"><div class="gt gt-lilac g-lilac" style="--n:2;--i:${tab === 'am' ? 0 : 1}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
       <div class="gt-tabs" role="tablist"><button class="gt-tab" role="tab" type="button" aria-selected="${tab === 'am'}">Amaliyot</button><button class="gt-tab" role="tab" type="button" aria-selected="${tab === 'vz'}">Vazifa</button></div>
       <div class="gt-body"><div class="gt-pane" role="tabpanel"><div>${pane}</div><div class="gt-foot end"><button class="endb" type="button" aria-pressed="false">${tab === 'am' ? 'Amaliyot bajarildi' : 'Vazifa bajarildi'}</button></div></div></div></div></div></main></div></div>`;
