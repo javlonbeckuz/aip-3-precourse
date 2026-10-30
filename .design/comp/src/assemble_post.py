@@ -1,6 +1,6 @@
 import re
-LANG_BTNS = '<button type="button" data-lang="uz" lang="uz" aria-current="true">UZ<span class="sr-only"> · Oʻzbekcha</span></button><button type="button" data-lang="ru" lang="ru">RU<span class="sr-only"> · Русский</span></button><button type="button" data-lang="en" lang="en">EN<span class="sr-only"> · English</span></button>'
-OLD_LANG = '<a href="#" aria-current="true" lang="uz">UZ<span class="sr-only"> · Oʻzbekcha</span></a><a href="#" lang="ru">RU<span class="sr-only"> · Русский</span></a><a href="#" lang="en">EN<span class="sr-only"> · English</span></a>'
+LANG_BTNS = '<button type="button" data-lang="uz" lang="uz" aria-current="true">UZ<span class="sr-only"> · Oʻzbekcha</span></button><button type="button" data-lang="ru" lang="ru">RU<span class="sr-only"> · Русский</span></button>'
+OLD_LANG = '<a href="#" aria-current="true" lang="uz">UZ<span class="sr-only"> · Oʻzbekcha</span></a><a href="#" lang="ru">RU<span class="sr-only"> · Русский</span></a>'
 
 CSS = r'''
 /* ===== i18n + reviewer fixes ===== */

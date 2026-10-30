@@ -1,4 +1,4 @@
-# Self-check for i18n_ru.json / i18n_en.json against i18n_uz.json. Run: python -I i18n_check.py
+# Self-check for i18n_ru.json against i18n_uz.json. Run: python -I i18n_check.py
 import json, os, re, sys
 sys.stdout.reconfigure(encoding="utf-8")
 H = os.path.dirname(os.path.abspath(__file__))
@@ -9,17 +9,16 @@ assert not any(k.startswith("c.") for k in want)
 PARAM = re.compile(r"\{(\w+)\}")
 BANNED = re.compile(r"unlock|seamless|journey|elevate|empower|dive in|let's|let’s|supercharge|harness(?:ing)? the|game.changer|cutting.edge|"
                     r"откройте для себя|погруз|раскройте потенциал|уникальн|инновацион|please|пожалуйста|\bsimply\b|\bjust\b|\beasily\b|просто|—|[\U0001F300-\U0001FAFF]", re.I)
-SAMPLE = {"ru": {"date": "26 сентября", "until": "до 12 сентября", "steps": "3/4 шага"},
-          "en": {"date": "26 September", "until": "by 12 September", "steps": "3/4 steps"}}
+SAMPLE = {"ru": {"date": "26 сентября", "until": "до 12 сентября", "steps": "3/4 шага"}}
 COMMON = {"n": "3", "d": "3", "t": "6", "i": "14", "num": "01", "no": "P3", "id": "07", "pid": "P6", "kind": "video", "total": "40", "size": "37,0 KB"}
-FORMS = {"ru": {"one", "few", "many", "other"}, "en": {"one", "other"}}
+FORMS = {"ru": {"one", "few", "many", "other"}}
 bad = 0
 def err(*a):
     global bad; bad += 1; print("FAIL", *a)
 # dictionary text is plain text: t() output is escaped by the caller, and T() escapes it again. A raw < > & or " in a value is a markup mistake.
 for k, v in uz.items():
     if v["translate"] and re.search(r'[<>&"]', v["uz"]): err("uz", k, "raw <>&\" in value")
-for lang in ("ru", "en"):
+for lang in ("ru",):
     d = load(f"i18n_{lang}.json")
     if set(d) != want: err(lang, "missing", sorted(want - set(d)), "extra", sorted(set(d) - want))
     plural = 0
@@ -41,7 +40,7 @@ for lang in ("ru", "en"):
                 lim = int(m.group(1))
                 filled = PARAM.sub(lambda x: {**COMMON, **SAMPLE[lang]}.get(x.group(1), x.group(0)), s)
                 lines = filled.split("\n") if "per line" in note else [filled.replace("\n", " ")]
-                ufill = PARAM.sub(lambda x: {**COMMON, **SAMPLE['en']}.get(x.group(1), x.group(0)), src)
+                ufill = PARAM.sub(lambda x: {**COMMON, **SAMPLE['ru']}.get(x.group(1), x.group(0)), src)
                 if max(len(l) for l in (ufill.split("\n") if "per line" in note else [ufill.replace("\n", " ")])) > lim: continue  # uz itself exceeds: limit belongs to a sibling key
                 over = [l for l in lines if len(l) > lim]
                 if over: err(lang, k, f, f"over {lim}:", [(l, len(l)) for l in over])

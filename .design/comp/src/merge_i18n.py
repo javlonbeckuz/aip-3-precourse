@@ -1,4 +1,4 @@
-# Merge i18n_ru.json / i18n_en.json into proto_i18n.js (I18N.ru / I18N.en). Re-runnable. Nested plural objects {one,few,many,other}
+# Merge i18n_ru.json into proto_i18n.js (I18N.ru). Re-runnable. Nested plural objects {one,few,many,other}
 # become the flat keys the runtime reads: "key" (= the "other" form, used when no plural count is passed) and "key#one" / "key#few" / ...
 import json, re, os
 H = os.path.dirname(os.path.abspath(__file__))
@@ -12,7 +12,7 @@ def flat(d):
             for f, txt in v.items(): out[f'{k}#{f}'] = txt
         else: out[k] = v
     return out
-for lang in ('ru', 'en'):
+for lang in ('ru',):
     d = json.load(open(os.path.join(H, f'i18n_{lang}.json'), encoding='utf-8'))
     f = flat(d)
     body = '{\n' + ',\n'.join(f'  {json.dumps(k, ensure_ascii=False)}: {json.dumps(v, ensure_ascii=False)}' for k, v in f.items()) + '\n}'

@@ -1,7 +1,7 @@
 # One-command build:  python build.py [--app]   (--app also builds the real SPA into public/aip/, see build_app.py)   (from anywhere; every path is relative to this file)
-#   gen_prep_pdf.py ../files/prep-{uz,ru,en}.pdf -> the PREP_PDF block of proto_data.js (embedded, so the single file still downloads the guide)
+#   gen_prep_pdf.py ../files/prep-{uz,ru}.pdf -> the PREP_PDF block of proto_data.js (embedded, so the single file still downloads the guide)
 #   gen_uz.mjs      I18N.uz (+ c.* content) -> i18n_uz.json, so the check never goes stale
-#   merge_i18n.py   i18n_ru.json / i18n_en.json -> I18N.ru / I18N.en inside proto_i18n.js
+#   merge_i18n.py   i18n_ru.json -> I18N.ru inside proto_i18n.js
 #   assemble.py     index.pre-proto.html + proto_*.js (+ assemble_post.py) -> ../index.html
 #   export_final.py ../index.html -> <project root>/AI-Praktikum-3.0-final.html (single file, image inlined)
 #   i18n_check.py   RU/EN against UZ (keys, {params}, plural forms, line breaks, length limits, banned words, [<>&"])

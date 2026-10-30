@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { GROUPS } from './db.js';
 
-export const LANGS = ['uz', 'ru', 'en'];
+export const LANGS = ['uz', 'ru'];
 export const LESSON_COUNT = 7;
 export const PARTS = ['slides', 'amaliyot', 'kit', 'vazifa', 'prep'];
 const BLOCKS = ['amaliyot', 'kit', 'vazifa']; // {text, groups[{title, note?, files[{slug, name, size}], prompts?[{id, title, target?, text}]}]} in the UZ lesson file

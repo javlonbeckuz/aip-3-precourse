@@ -94,9 +94,8 @@ const nav = active => `<header class="nav">
   <span class="wordmark">AI Praktikum 3.0</span>
   <div class="nav-r">${prepBtn(active)}<button class="nav-name" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu">${esc(STUDENT)}</button><button class="menu-btn" type="button" aria-label="${esc(t('menu.label'))}" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu">${I('menu', 20)}</button></div>
 </header>`;
-const sizeT = z => LANG === 'en' ? z.replace(/(\d),(\d)/g, '$1.$2') : z;   // file sizes are stored with the Uzbek/Russian decimal comma; English reads 21.1 KB
-const fsize = f => f.size ? sizeT(f.size) : t('common.sample_file');
-const fileMeta = (f, extra) => [extra ? `<span class="sent">${extra.html ?? esc(extra)}</span>` : '', f.size ? esc(sizeT(f.size)) : ''].filter(Boolean).join(' · ');
+const fsize = f => f.size || t('common.sample_file');
+const fileMeta = (f, extra) => [extra ? `<span class="sent">${extra.html ?? esc(extra)}</span>` : '', f.size ? esc(f.size) : ''].filter(Boolean).join(' · ');
 const fa = f => f.url ? `href="${esc(f.url)}" target="_blank" rel="noopener noreferrer"` : `href="#/fayl/${f.slug}"`;   // the prototype opens a file page, the app downloads from the API
 const fileRow = (f, extra) => `<li><a class="ef-row" ${fa(f)}><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${wbr(f.name)}${f.ph ? NSTAG() : ''}</span>${fileMeta(f, extra) ? `<span class="ef-mt">${fileMeta(f, extra)}</span>` : ''}</span><span class="ef-dl">${I('down', 18)}</span></a></li>`;
 const rowLink = (href, name, meta, markHTML) => `<li><a class="ef-row" href="${href}"><span><span class="ef-nm">${name}</span>${meta ? `<span class="ef-mt sent">${meta}</span>` : ''}</span><span class="xm">${markHTML || ''}${I('next')}</span></a></li>`;
@@ -179,7 +178,7 @@ function prepFileRow(){
   if (!p) return fileRow(F('prep-' + LANG + '.pdf'), t('prep.pdf'));   // TODO: no prep-xx.pdf in comp/files yet: a sample row
   const name = `prep-${p.lang}.pdf`;
   const tag = p.url ? `a class="ef-row" href="${p.url}" download="${name}"` : 'button class="ef-row" type="button"';   // embedded PDF = a button (no dead href)
-  return `<li><${tag} data-pdf="${p.lang}" data-name="${name}"><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${T('prep.guide_name')}</span><span class="ef-mt">${T('prep.pdf_meta', {size: sizeT(p.size)})}</span></span><span class="ef-dl">${I('down', 18)}</span></${tag.split(' ')[0]}></li>`;
+  return `<li><${tag} data-pdf="${p.lang}" data-name="${name}"><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${T('prep.guide_name')}</span><span class="ef-mt">${T('prep.pdf_meta', {size: p.size})}</span></span><span class="ef-dl">${I('down', 18)}</span></${tag.split(' ')[0]}></li>`;
 }
 const pdfUrls = {};
 document.addEventListener('click', e => {   // embedded PDF: build the file from the base64 text on click (the single HTML file has no neighbours to link to)
@@ -360,7 +359,7 @@ function groupRow(n, key, g, i){
   const gk = `${key}.g${i}`, m = /^(\d+[A-Z]?)\.?\s+(.+)$/.exec(cu(gk)), no = m ? (/^\d+$/.test(m[1]) ? num2(+m[1]) : m[1]) : '', title = m ? m[2] : cu(gk);
   const np = noteParts(g.note ? cu(`${gk}.n`) : ''), lg = cxFb(`${gk}.n`) || cxFb(gk) ? ' lang="uz-Latn"' : '';
   const steps = `${np.lead ? `<p class="m3-lead">${esc(np.lead)}</p>` : ''}${np.steps.length ? `<ol class="m3-steps">${np.steps.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="m3-ready">Tayyor, agar ${esc(np.ready)}</p>` : ''}`;
-  const files = g.files.length ? `<div class="fchips">${g.files.map(f => `<a class="fchip" ${fa(f)}><span class="sr-only">${T('common.sr_download')}</span>${I('down', 16)}<span>${wbr(f.name)}</span>${f.size ? `<span class="fz">${esc(sizeT(f.size))}</span>` : ''}</a>`).join('')}</div>` : '';
+  const files = g.files.length ? `<div class="fchips">${g.files.map(f => `<a class="fchip" ${fa(f)}><span class="sr-only">${T('common.sr_download')}</span>${I('down', 16)}<span>${wbr(f.name)}</span>${f.size ? `<span class="fz">${esc(f.size)}</span>` : ''}</a>`).join('')}</div>` : '';
   return `<section class="m3"${lg}><span class="m3-dot" aria-hidden="true">${esc(no)}</span><div class="m3-b"><h3 class="m3-t">${esc(title)}</h3>${steps}${files}${g.prompts.length ? chipList(n, gk, g) : ''}</div></section>`;
 }
 // Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups as roadmap stops; Amaliyot and Vazifa end with a tick
@@ -421,7 +420,7 @@ function filePage(sl){
   return {screen: 'ex', tag: `#/fayl/${sl} · ` + t('tag.file'), title: f.name, html: nav('d') + wrap(`
     ${dlh(esc(prevHash || '#/dastur'), T('common.back'), T('file.meta'))}
     <h1 class="headline ex-h" style="font-size:clamp(24px,6.5cqi,40px);overflow-wrap:anywhere">${esc(f.name)}</h1>
-    <p class="lede">${esc(f.size ? sizeT(f.size) : t('common.unknown_size'))}${f.ph ? NSTAG() : ''}</p>
+    <p class="lede">${esc(f.size || t('common.unknown_size'))}${f.ph ? NSTAG() : ''}</p>
     <p class="ef-hint">${T('file.hint')}</p>`)};
 }
 //#PROTO:end filepage

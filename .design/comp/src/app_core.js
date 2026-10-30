@@ -71,7 +71,7 @@ async function doLogin(c){
 }
 
 // ---- language: the cookie the API reads, then a refetch (platform text comes translated), no reload
-function cookieLang(){ const m = /(?:^|; )aip_lang=(uz|ru|en)/.exec(document.cookie); return m ? m[1] : 'uz'; }   // a function declaration: LANG reads it before this file's own lines run
+function cookieLang(){ const m = /(?:^|; )aip_lang=(uz|ru)/.exec(document.cookie); return m ? m[1] : 'uz'; }   // a function declaration: LANG reads it before this file's own lines run
 async function setLang(l){
   if (!LANGS.includes(l) || l === LANG) return;
   const old = LANG, seq = ++langSeq, r0 = ROUTE(), st = langSnapshot();

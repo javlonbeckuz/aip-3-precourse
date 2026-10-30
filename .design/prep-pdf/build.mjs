@@ -1,4 +1,4 @@
-// Prints the lesson-0 setup guide PDFs (content/prep/prep-{uz,ru,en}.pdf) from the real data:
+// Prints the lesson-0 setup guide PDFs (content/prep/prep-{uz,ru}.pdf) from the real data:
 //   text  = content/lessons/0/lesson.{lang}.json -> prep.intro + prep.items (not prep.more)
 //   art   = PREP_ART in .design/comp/src/proto_data.js (same order as the cards)
 //   fonts = public/aip/fonts (local, no network)
@@ -14,7 +14,6 @@ const CHROME = process.env.CHROME || 'C:/Program Files/Google/Chrome/Application
 const UI = {
   uz: { lang: 'uz-Latn', meta: '0-dars · tayyorgarlik', title: 'Birinchi darsgacha', all30: 'Hammasi 30 daqiqa', date: '21-noyabr (shanba guruhi) yoki 22-noyabr (yakshanba guruhi)' },
   ru: { lang: 'ru', meta: 'Урок 0 · подготовка', title: 'До первого урока', all30: 'Всё займёт около 30 минут', date: '21 ноября (группа субботы) или 22 ноября (группа воскресенья)' },
-  en: { lang: 'en', meta: 'Lesson 0 · preparation', title: 'Before the first lesson', all30: 'About 30 minutes in all', date: '21 November (Saturday group) or 22 November (Sunday group)' },
 };
 const data = readFileSync(join(ROOT, '.design/comp/src/proto_data.js'), 'utf8');
 const ART = JSON.parse(data.match(/\/\*ART:begin\*\/ const PREP_ART = (\[.*?\]); \/\*ART:end\*\//s)[1]);

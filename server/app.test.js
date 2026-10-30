@@ -339,9 +339,8 @@ test('language: lesson metadata is translated, the parts always come from the Uz
   assert.equal(ru.amaliyot.text, uz.amaliyot.text);
   assert.equal(ru.slideCount, uz.slideCount);
   assert.notEqual(ru.topics[0], uz.topics[0]);
-  const en = (await c.get('/api/aip/lesson/1?lang=en')).json.lesson;
-  assert.equal(en.title, 'How AI works');
-  assert.deepEqual(en.vazifa, uz.vazifa);
+  const en = (await c.get('/api/aip/lesson/1?lang=en')).json.lesson;   // English was removed (user, 2026-10-30): falls back to Uzbek
+  assert.equal(en.title, uz.title);
 });
 
 // ---------- progress

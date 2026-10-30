@@ -245,14 +245,14 @@ test('summary: a lesson with a locked part is not done, even with every unit tic
 });
 
 test('shipped lesson 0: four setup cards with Visa before Claude, no Warp card (user, 2026-10-30)', () => {
-  for (const lg of ['uz', 'ru', 'en']) {
+  for (const lg of ['uz', 'ru']) {
     const items = JSON.parse(fs.readFileSync(path.join(REAL_CONTENT, 'lessons/0', `lesson.${lg}.json`), 'utf8')).prep.items;
     assert.deepEqual(items.map((it) => it.brand), ['device', 'google', 'visa', 'claude'], lg);
   }
 });
 
 test('shipped lesson 0 names lessons in the padded form (01-dars, Lesson 01), never 1-dars', () => {
-  for (const lg of ['uz', 'ru', 'en']) {
+  for (const lg of ['uz', 'ru']) {
     const txt = fs.readFileSync(path.join(REAL_CONTENT, 'lessons/0', `lesson.${lg}.json`), 'utf8');
     assert.doesNotMatch(txt, /\b[1-7]-dars/, lg);
     assert.doesNotMatch(txt, /\b[1-7]-го занятия|\b[Ll]esson [1-7]\b|занятия/, lg);
@@ -271,7 +271,7 @@ test('shipped content: lessons 1 and 3-7 have amaliyot, kit and vazifa (no slide
     for (const f of L.kit.groups.flatMap((g) => g.files)) assert.ok(c.docFile(n, f.slug), `${n}: kit file ${f.name} missing`);
     const ids = [...L.amaliyot.groups, ...L.kit.groups, ...L.vazifa.groups].flatMap((g) => (g.prompts ?? []).map((p) => p.id));
     assert.equal(new Set(ids).size, ids.length, `${n}: prompt ids`);
-    for (const lg of ['ru', 'en']) assert.deepEqual(Object.keys(c.lesson(n, lg)).sort(), ['n', 'subtitle', 'summary', 'title', 'topics'], `${n} ${lg} stays meta-only`);
+    for (const lg of ['ru']) assert.deepEqual(Object.keys(c.lesson(n, lg)).sort(), ['n', 'subtitle', 'summary', 'title', 'topics'], `${n} ${lg} stays meta-only`);
   }
 });
 

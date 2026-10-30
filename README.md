@@ -9,7 +9,7 @@ server/    fixtures/lessons/{1,3} (test-only lesson overlay)
            index.js (http, routes, static) db.js (SQLite, migrations, students, progress)
            auth.js (ids, sessions, cookies, rate limit) content.js (content files, schedule, gating)
            bot.js (admin bot) migrations/*.sql   *.test.js
-content/   schedule.json  lessons/{n}/lesson.{uz,ru,en}.json  lessons/{n}/files/  prep/prep-{lang}.pdf
+content/   schedule.json  lessons/{n}/lesson.{uz,ru}.json  lessons/{n}/files/  prep/prep-{lang}.pdf
 public/    the SPA (stage 2). Shell: public/aip/index.html, else public/index.html
 scripts/   shell.test.js (SPA shell checks)
 ```
@@ -116,7 +116,7 @@ Same with `UPDATE students SET review=1 WHERE id='AIP-XXXXXX'` for the review fl
 2. Run `node --test` (it checks the shipped file: nothing in lessons 1-7 may open, and lesson 2 is `null` before that group's lesson 1).
 3. Content is baked into the image, so the change goes live with a deploy (`railway up`, about a minute).
 
-The precourse links (`prep.more` in `content/lessons/0/lesson.{uz,ru,en}.json`, shape in API.md) are filled in the same way; while the key is absent the section stays hidden.
+The precourse links (`prep.more` in `content/lessons/0/lesson.{uz,ru}.json`, shape in API.md) are filled in the same way; while the key is absent the section stays hidden.
 
 ### Before a deploy: back up the database
 
@@ -138,9 +138,9 @@ Abuse limits of the endpoint: 10 failed keys per 10 minutes per client (then 429
 
 ## Content format
 
-`content/lessons/{n}/lesson.{uz,ru,en}.json` (n = 0..7). A missing language falls back to `uz`. Edits are picked up without a restart.
+`content/lessons/{n}/lesson.{uz,ru}.json` (n = 0..7). A missing language falls back to `uz`. Edits are picked up without a restart.
 
-The `ru` and `en` files hold only `n`, `title`, `subtitle`, `summary`, `topics` (and `prep` for lesson 0). Everything else is read from the `uz` file, whatever the language. Lessons 1 and 3-7 ship with amaliyot and vazifa blocks (Uzbek only, no files yet, prompts with a `target`), no slides and no kit. A lesson with no part at all shows "materials soon". Lesson 2 (Kirish) is the 2.0 lesson converted to blocks: slides (78), amaliyot (guide + 7 exercises, each a group with files and prompts) and vazifa (sources, guide, two prompt groups). Its files are the 2.0 `.placeholder` stand-ins.
+The `ru` files hold only `n`, `title`, `subtitle`, `summary`, `topics` (and `prep` for lesson 0). Everything else is read from the `uz` file, whatever the language. Lessons 1 and 3-7 ship with amaliyot and vazifa blocks (Uzbek only, no files yet, prompts with a `target`), no slides and no kit. A lesson with no part at all shows "materials soon". Lesson 2 (Kirish) is the 2.0 lesson converted to blocks: slides (78), amaliyot (guide + 7 exercises, each a group with files and prompts) and vazifa (sources, guide, two prompt groups). Its files are the 2.0 `.placeholder` stand-ins.
 
 Example (shortened) `lesson.uz.json` of a lesson with all parts:
 
@@ -167,7 +167,7 @@ Example (shortened) `lesson.uz.json` of a lesson with all parts:
 | Lesson downloads | `content/lessons/{n}/files/` | `<slug><ext>`, ext from the file's `name`, e.g. `kit1-forma.md` |
 | Slide stills | `content/lessons/{n}/slides/` | `1.webp` .. `N.webp` (`.jpg` / `.png` also work), 1-based |
 | Slide clips (video lessons) | `content/lessons/{n}/clips/` | `{i}-1080.mp4`, `{i}-2160.mp4` |
-| Prep checklist PDFs | `content/prep/` | `prep-uz.pdf`, `prep-ru.pdf`, `prep-en.pdf` |
+| Prep checklist PDFs | `content/prep/` | `prep-uz.pdf`, `prep-ru.pdf` |
 
 ### Placeholders
 

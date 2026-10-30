@@ -87,7 +87,7 @@ def drop_key(m):
     if STRIP.match(m.group(1).split('#')[0]): removed[0] += 1; return ''
     return m.group(0)
 seg = re.sub(r"'([\w.#]+)': '(?:[^'\\]|\\.)*',? ?", drop_key, seg)                      # the uz dictionary: packed single-quoted entries
-seg = re.sub(r'\n[ \t]*"([\w.#]+)": "(?:[^"\\]|\\.)*",?(?=\n)', drop_key, seg)          # ru / en: one JSON-style entry per line
+seg = re.sub(r'\n[ \t]*"([\w.#]+)": "(?:[^"\\]|\\.)*",?(?=\n)', drop_key, seg)          # ru: one JSON-style entry per line
 left = re.findall(r"""['"](c\.[\w.]+|prep\.\d\.[\w.]+|prep\.intro|lesson\.\d\.(?:title|sub|lede|t\d+))['"]\s*:""", seg)
 assert removed[0] > 200 and not left, ('strip', removed[0], left[:5])
 js = js[:i] + seg + js[j:]
