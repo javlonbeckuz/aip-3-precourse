@@ -519,15 +519,20 @@
   "translate": true,
   "note": "text of the big outline button on a lesson page; {what} is e.g. \"Amaliyot 01 · P3 Vaziyatli test\" (long: ≤ 46 chars in total, wraps to 2 lines) · keep {params} as they are"
  },
- "note.prep_todo": {
-  "uz": "{until} · {d}/{t} bajarildi",
+ "note.prep_open": {
+  "uz": "Qadamlar: {d}/{t}",
   "translate": true,
-  "note": "state note on the prep card while unfinished; {until} = \"by 12 September\", {steps} = \"3/4 steps\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+  "note": "bottom-right state note on a lesson card (14px UPPERCASE); the pieces are joined, ≤ 28 chars in total at 320 px · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "note.prep_done": {
+  "uz": "Hamma qadamlar bajarildi",
+  "translate": true,
+  "note": "bottom-right state note on a lesson card (14px UPPERCASE); the pieces are joined, ≤ 28 chars in total at 320 px"
  },
  "note.done": {
-  "uz": "Bajarildi · {d}/{t}",
+  "uz": "Amaliyot va vazifa bajarildi",
   "translate": true,
-  "note": "state note on a finished card, e.g. \"Bajarildi · 3/3 qadam\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+  "note": "state note on a finished card, e.g. \"Bajarildi · 3/3 qadam\""
  },
  "note.live_a": {
   "uz": "Hozir",
@@ -539,13 +544,8 @@
   "translate": true,
   "note": "part 2 of the same note: \" in progress\" (HIDDEN under 360 px, so the note must still make sense without it)"
  },
- "note.live_c": {
-  "uz": " · {d}/{t} bajarildi",
-  "translate": true,
-  "note": "part 3: \" · 0/2 steps\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
- },
  "note.open": {
-  "uz": "Ochiq · {d}/{t} bajarildi",
+  "uz": "Amaliyot va vazifa: {d}/{t}",
   "translate": true,
   "note": "state note on an open card, e.g. \"Ochiq · 3/6 qadam\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -670,9 +670,9 @@
   "note": "screen-reader announcement (aria-live), not visible; full sentence · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "prep.pdf_meta": {
-  "uz": "PDF · {n} slayd · {size}",
+  "uz": "PDF, {size}",
   "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · keep {params} as they are"
  },
  "hero.sub_start": {
   "uz": "Slaydlar · {n} ta · boshlash",
@@ -685,7 +685,7 @@
   "note": "home screen · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "next.prep": {
-  "uz": "Tayyorgarlik · {title}",
+  "uz": "Oʻrnatish, {title}",
   "translate": true,
   "note": "home screen · keep {params} as they are"
  },
@@ -775,7 +775,7 @@
   "note": "book / slide viewer / file screens"
  },
  "gate.help": {
-  "uz": "ID ni kiriting",
+  "uz": "IDʼingizni kiriting",
   "translate": true,
   "note": "login screen (white text over a photo)"
  },
@@ -1735,7 +1735,7 @@
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "note.soon": {
-  "uz": "Ochiq · materiallar tez orada",
+  "uz": "Materiallar tez orada",
   "translate": true,
   "note": "bottom-right state note on a lesson card (14px UPPERCASE); the pieces are joined, ≤ 28 chars in total at 320 px"
  },
@@ -2070,7 +2070,7 @@
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "course.label": {
-  "uz": "Kurs · {n} dars",
+  "uz": "Kurs: {n} ta dars",
   "translate": true,
   "note": "UI text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -2221,6 +2221,26 @@
  },
  "pre.sub": {
   "uz": "Prompt mashqi va NotebookLM video darsi",
+  "translate": true,
+  "note": "UI text"
+ },
+ "lesson.extra_s": {
+  "uz": "Qoʻshimcha",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
+ "home.starts": {
+  "uz": "Kurs {date}da boshlanadi",
+  "translate": true,
+  "note": "home screen · keep {params} as they are"
+ },
+ "prep.left": {
+  "uz": "Yana {n} ta qadam qoldi: {titles}.",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "pre.lede_late": {
+  "uz": "Kurs davomida ham foydali: mashq platformasi va video dars.",
   "translate": true,
   "note": "UI text"
  },

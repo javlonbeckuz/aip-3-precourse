@@ -317,6 +317,9 @@ test('prep video: login needed, streams with Range, unknown slug 404', async (t)
   assert.equal(r.headers.get('content-type'), 'video/mp4');
   assert.equal((await c.get('/api/aip/prep/video/nope')).status, 404);
   assert.equal((await c.get('/api/aip/prep/video/..%2Fx')).status, 404);
+  // the page's player may load it, a browser tab opening the link may not
+  assert.equal((await c.get('/api/aip/prep/video/demo', { headers: { 'Sec-Fetch-Dest': 'video', Range: 'bytes=0-9' } })).status, 206);
+  assert.equal((await c.get('/api/aip/prep/video/demo', { headers: { 'Sec-Fetch-Dest': 'document' } })).status, 403);
 });
 
 test('language: lesson metadata is translated, the parts always come from the Uzbek file', async (t) => {

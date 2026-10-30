@@ -53,7 +53,9 @@ function onGidInput(e){
     gid.value = next;
     if (pos < v.length) { const np = Math.min(idCode(v.slice(0, pos)).length, next.length); gid.setSelectionRange(np, np); } // mid-string edit: keep the caret
   }
-  gateMsg(['gate.help']); if (idCode(gid.value).length === 6) tryLogin();
+  const cc = idCode(gid.value);
+  if (cc && !ID_CHARS.test(cc)) gateMsg(['gate.err.badchars'], 'err'); else gateMsg(['gate.help']);   // the bad-character hint shows while typing (audit S1-3)
+  if (cc.length === 6) tryLogin();
 }
 gid.addEventListener('input', onGidInput);
 gid.addEventListener('compositionend', () => onGidInput());
@@ -271,7 +273,7 @@ const I18N = {uz: {
   'hero.k': 'Hozir davom etmoqda', 'hero.sub': 'Slaydlar {i} / {n} · davom etish',
   'next.k': 'Keyingi qadam', 'next.ex_prompt': 'Mashq {num} · {pid} {title}', 'next.ex': 'Mashq {num}', 'next.pick': 'Mashq 03 · {num} {title}',
   'next.vz': 'Vazifa · {pid}', 'next.sl': 'Slaydlar · {i} / {total}', 'cta.continue': 'Davom etish: {what}',
-  'note.prep_todo': '{until} · {d}/{t} bajarildi', 'note.done': 'Bajarildi · {d}/{t}', 'note.live_a': 'Hozir', 'note.live_b': ' davom etmoqda', 'note.live_c': ' · {d}/{t} bajarildi', 'note.open': 'Ochiq · {d}/{t} bajarildi',
+  'note.prep_open': 'Qadamlar: {d}/{t}', 'note.prep_done': 'Hamma qadamlar bajarildi', 'note.done': 'Amaliyot va vazifa bajarildi', 'note.live_a': 'Hozir', 'note.live_b': ' davom etmoqda', 'note.open': 'Amaliyot va vazifa: {d}/{t}',
   // --- prep (lesson 0)
   'prep.title': 'Birinchi darsgacha',
   'prep.meta': 'Tayyorgarlik',
@@ -318,10 +320,10 @@ const I18N = {uz: {
   
   'live.prep_done': '{title} bajarildi · {d}/{t}',
   'live.prep_undone': '{title}: belgi olib tashlandi · {d}/{t} tayyor',
-  'prep.pdf_meta': 'PDF · {n} slayd · {size}',
+  'prep.pdf_meta': 'PDF, {size}',
   'hero.sub_start': 'Slaydlar · {n} ta · boshlash',
   'hero.sub_seen': 'Slaydlar koʻrildi · {n} / {n}',
-  'next.prep': 'Tayyorgarlik · {title}',
+  'next.prep': 'Oʻrnatish, {title}',
   'cta.start': 'Boshlash: {what}',
   'lock.desc_n': 'Slaydlar, amaliyot, kit va vazifa dars kuni shu yerda chiqadi.',
   'lib.back': 'Boʻlimlar',
@@ -339,7 +341,7 @@ const I18N = {uz: {
   'end.mark_card': 'Karta bajarildi',
   'prep.steps_n': '{n} ta qadam',
   'book.lat_name': 'Lotin yozuvida',
-  'gate.help': 'ID ni kiriting',
+  'gate.help': 'IDʼingizni kiriting',
   'prep.intro_late': 'Birinchi dars {date} kuni boʻldi. Shu roʻyxatni imkon qadar tezroq tayyorlab qoʻying. Hammasi 30 daqiqacha vaqt oladi.',
   'part.locked': 'Hozircha yopiq',
   'part.opens': '{date}, {time} da ochiladi',
@@ -520,7 +522,7 @@ const I18N = {uz: {
   
   
   'lesson.soon': 'Materiallar tez orada shu yerda chiqadi.',
-  'note.soon': 'Ochiq · materiallar tez orada',
+  'note.soon': 'Materiallar tez orada',
   'units.am': 'amaliyot',
   'amf.on': 'Amaliyot bajarildi',
   'amf.off': 'Amaliyot bajarildi',
@@ -582,7 +584,7 @@ const I18N = {uz: {
   
   
   
-  'course.label': 'Kurs · {n} dars',
+  'course.label': 'Kurs: {n} ta dars',
   'course.title': 'Barcha darslar',
   'course.sheet_t': 'Kurs: {n} ta dars',
   
@@ -612,7 +614,7 @@ const I18N = {uz: {
   'prep.btn': 'Birinchi darsgacha', 'prep.btn_aria': 'Birinchi darsgacha',
   'pre.label': 'Kursgacha materiallar',
   'pre.sub': 'Prompt mashqi va NotebookLM video darsi',
-  'pre.lede': 'Kurs boshlanishidan oldin kerak boʻladigan materiallar va foydali oʻquv platformalariga havolalar.',
+  'lesson.extra_s': 'Qoʻshimcha', 'home.starts': 'Kurs {date}da boshlanadi', 'prep.left': 'Yana {n} ta qadam qoldi: {titles}.', 'pre.lede_late': 'Kurs davomida ham foydali: mashq platformasi va video dars.', 'pre.lede': 'Kurs boshlanishidan oldin kerak boʻladigan materiallar va foydali oʻquv platformalariga havolalar.',
   'setup.title': 'Oʻrnatish va tayyorgarlik',
   'pre.open': 'Ochish',
 }, ru: /*RU*/{
@@ -708,12 +710,10 @@ const I18N = {uz: {
   "next.vz": "Задание · {pid}",
   "next.sl": "Слайды · {i} / {total}",
   "cta.continue": "Продолжить: {what}",
-  "note.prep_todo": "{until} · выполнено {d}/{t}",
-  "note.done": "Выполнено · {d}/{t}",
+  "note.done": "Практика и задание выполнены",
   "note.live_a": "Сейчас",
   "note.live_b": " идёт",
-  "note.live_c": " · выполнено {d}/{t}",
-  "note.open": "Открыт · выполнено {d}/{t}",
+  "note.open": "Практика и задание: {d}/{t}",
   "prep.title": "До первого урока",
   "prep.meta": "Подготовка",
   "prep.cnt": "{d}/{t} выполнено",
@@ -856,14 +856,10 @@ const I18N = {uz: {
   "title.all": "Все экраны",
   "live.prep_done": "{title}: выполнено · {d}/{t}",
   "live.prep_undone": "{title}: отметка снята · {d}/{t} готово",
-  "prep.pdf_meta": "PDF · {n} слайда · {size}",
-  "prep.pdf_meta#one": "PDF · {n} слайд · {size}",
-  "prep.pdf_meta#few": "PDF · {n} слайда · {size}",
-  "prep.pdf_meta#many": "PDF · {n} слайдов · {size}",
-  "prep.pdf_meta#other": "PDF · {n} слайда · {size}",
+  "prep.pdf_meta": "PDF, {size}",
   "hero.sub_start": "Слайды · {n} · начать",
   "hero.sub_seen": "Слайды просмотрены · {n} / {n}",
-  "next.prep": "Подготовка · {title}",
+  "next.prep": "Установка, {title}",
   "cta.start": "Начать: {what}",
   "lock.desc_n": "Слайды, практика, kit и задание появятся здесь в день урока.",
   "lib.back": "Разделы",
@@ -934,7 +930,7 @@ const I18N = {uz: {
   "lesson.5.card": "Запуск\nв работу",
   "lesson.6.card": "Улучшаем\nагента",
   "lesson.soon": "Материалы скоро появятся здесь.",
-  "note.soon": "Открыт · материалы скоро",
+  "note.soon": "Материалы скоро",
   "units.am": "практика",
   "amf.on": "Практика выполнена",
   "amf.off": "Практика выполнена",
@@ -942,7 +938,7 @@ const I18N = {uz: {
   "prep.cmd_copy": "Скопировать команду",
   "toast.cmd_copied": "Команда скопирована",
   "lesson.7.card": "Итоги и\nдемо-день",
-  "course.label": "Курс · {n} уроков",
+  "course.label": "Курс: {n} уроков",
   "course.title": "Все уроки",
   "course.sheet_t": "Курс: {n} уроков",
   "prep.btn": "До первого урока",
@@ -956,7 +952,17 @@ const I18N = {uz: {
   "pre.code": "Промокод",
   "pre.open": "Открыть",
   "lesson.extra": "Дополнительный урок",
-  "pre.in_video": "В видео"
+  "pre.in_video": "В видео",
+  "note.prep_open": "Шаги: {d}/{t}",
+  "note.prep_done": "Все шаги выполнены",
+  "home.starts": "Курс начнётся {date}",
+  "pre.lede_late": "Полезно и во время курса: тренажёр промптов и видеоурок.",
+  "prep.left": "Осталось {n} шага: {titles}.",
+  "prep.left#one": "Остался {n} шаг: {titles}.",
+  "prep.left#few": "Осталось {n} шага: {titles}.",
+  "prep.left#many": "Осталось {n} шагов: {titles}.",
+  "prep.left#other": "Осталось {n} шага: {titles}.",
+  "lesson.extra_s": "Доп. урок"
 }/*ENDRU*/, en: /*EN*/{
   "common.close": "Close",
   "common.back": "Back",
@@ -1048,12 +1054,10 @@ const I18N = {uz: {
   "next.vz": "Homework · {pid}",
   "next.sl": "Slides · {i} / {total}",
   "cta.continue": "Continue: {what}",
-  "note.prep_todo": "{until} · {d}/{t} done",
-  "note.done": "Done · {d}/{t}",
+  "note.done": "Practice and homework done",
   "note.live_a": "Now",
   "note.live_b": " in progress",
-  "note.live_c": " · {d}/{t} done",
-  "note.open": "Open · {d}/{t} done",
+  "note.open": "Practice and homework: {d}/{t}",
   "prep.title": "Before the first lesson",
   "prep.meta": "Preparation",
   "prep.cnt": "{d}/{t} done",
@@ -1196,12 +1200,10 @@ const I18N = {uz: {
   "title.all": "All screens",
   "live.prep_done": "{title}: done · {d}/{t}",
   "live.prep_undone": "{title}: mark removed · {d}/{t} done",
-  "prep.pdf_meta": "PDF · {n} slides · {size}",
-  "prep.pdf_meta#one": "PDF · {n} slide · {size}",
-  "prep.pdf_meta#other": "PDF · {n} slides · {size}",
+  "prep.pdf_meta": "PDF, {size}",
   "hero.sub_start": "Slides · {n} · start",
   "hero.sub_seen": "Slides seen · {n} / {n}",
-  "next.prep": "Preparation · {title}",
+  "next.prep": "Setup, {title}",
   "cta.start": "Start: {what}",
   "lock.desc_n": "The slides, practice, kit and homework will appear here on the day of the lesson.",
   "lib.back": "Sections",
@@ -1272,7 +1274,7 @@ const I18N = {uz: {
   "lesson.5.card": "Ship\nit",
   "lesson.6.card": "Improve\nthe agent",
   "lesson.soon": "The materials will appear here soon.",
-  "note.soon": "Open · materials soon",
+  "note.soon": "Materials soon",
   "units.am": "practice",
   "amf.on": "Practice done",
   "amf.off": "Practice done",
@@ -1280,7 +1282,7 @@ const I18N = {uz: {
   "prep.cmd_copy": "Copy the command",
   "toast.cmd_copied": "Command copied",
   "lesson.7.card": "Results and\ndemo day",
-  "course.label": "Course · {n} lessons",
+  "course.label": "Course: {n} lessons",
   "course.title": "All lessons",
   "course.sheet_t": "Course: {n} lessons",
   "prep.btn": "Before the first lesson",
@@ -1294,7 +1296,15 @@ const I18N = {uz: {
   "pre.code": "Promo code",
   "pre.open": "Open",
   "lesson.extra": "Extra lesson",
-  "pre.in_video": "In the video"
+  "pre.in_video": "In the video",
+  "note.prep_open": "Steps: {d}/{t}",
+  "note.prep_done": "All steps done",
+  "home.starts": "The course starts on {date}",
+  "pre.lede_late": "Useful during the course too: a practice platform and a video lesson.",
+  "prep.left": "{n} steps left: {titles}.",
+  "prep.left#one": "{n} step left: {titles}.",
+  "prep.left#other": "{n} steps left: {titles}.",
+  "lesson.extra_s": "Extra"
 }/*ENDEN*/};
 const LANGS = ['uz', 'ru', 'en'], HTML_LANG = {uz: 'uz-Latn', ru: 'ru', en: 'en'};
 const MONTHS = { // lesson dates (the demo group meets 12, 19, 26 Sep and 3 Oct); ru = genitive
@@ -1564,8 +1574,8 @@ const ring = () => [RN().filter(n => !isLocked(n) && (lDone(n) || (allDone() && 
 // first unfinished item of a lesson, with a precise label and target ("Keyingi qadam"); `what` is the label without the lesson prefix
 function nextOf(n){
   const u = units(n).find(x => !x.done); if (!u) return null;
-  const what = esc(u.label) + (u.kind === 'sl' ? ` · ${S.sl(n)} / ${LESSONS[n].slides}` : '');   // what / label are HTML; started = the target already has progress ("continue" vs "start")
-  return {what, label: `${lnH(n)} · ${what}`, href: u.href, started: u.kind === 'sl' && S.sl(n) > 0};
+  const what = esc(u.label) + (u.kind === 'sl' ? `: ${S.sl(n)} / ${LESSONS[n].slides}` : '');   // what / label are HTML; started = the target already has progress ("continue" vs "start")
+  return {what, label: `${lnH(n)}, ${what}`, href: u.href, started: u.kind === 'sl' && S.sl(n) > 0};
 }
 const nextStep = () => { const live = liveLesson();
   if (courseStarted()) { const i = PREP.items.findIndex((_, j) => j > 0 && !S.has('prep:' + j)); if (i > 0) return {href: '#/dars/0', label: T('next.prep', {title: HT(T(`prep.${i}.title`))})}; }   // every setup card after the computer (Google, Visa, Claude) is what lesson 1 needs, however many there are (audit S3-1)
@@ -1619,17 +1629,17 @@ function homePage(){
     : lnum(n) === 1 ? '<svg class="f-flag f-start" viewBox="0 0 100 34" aria-hidden="true"><use href="#i-start"/><text x="50" y="15.5" text-anchor="middle">START</text></svg>' : '';   // its twin on lesson 01: two flags with START between
   const cardHTML = n => {
     const tab = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`, arrow = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
-    const label = n === 0 ? T('lesson.label0') : lessonLabel(n);
+    const label = n === 0 ? (!courseStarted() && LESSONS[0].d ? T('date.until', {date: lessonDate(0)}) : T('lesson.label0')) : lessonLabel(n);   // before the course the date stands alone (the title already says what it is)
     let note, href = `#/dars/${n}`;
-    if (n === 0) { const pt = prepTotal(); note = k === pt ? `${I('check', 14)}${T('note.done', {d: pt, t: pt, pl: pt})}` : courseStarted() ? T('note.open', {d: k, t: pt, pl: pt}) : !LESSONS[0].d ? T('prep.cnt', {d: k, t: pt, pl: pt}) : T('note.prep_todo', {until: t('date.until', {date: lessonDate(0)}), d: k, t: pt, pl: pt}); }
+    if (n === 0) { const pt = prepTotal(); note = k === pt ? `${I('check', 14)}${T('note.prep_done')}` : T('note.prep_open', {d: k, t: pt, pl: pt}); }
     else if (isLocked(n)) {   // before its date: the lesson keeps its own colour, with a lock and the date (once, in the note)
       return `<li class="g-${LCOL[n]} fo"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${lnum(n) == null ? T('lesson.extra') : lnH(n)}</span></span>
         <span class="f-row"><span><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-sub">${T(`lesson.${n}.sub`)}</span></span><span class="f-note">${I('lock', 14)}${T(LESSONS[n].d ? 'date.opens' : 'date.tba', {date: lessonDate(n)})}</span></span>${flagH(n)}</button>${fxH('c-' + LCOL[n])}</li>`;
     } else {
       const [d, tt] = lProg(n);
       if (tt === 0) note = T('note.soon');   // an open lesson whose materials are not in yet
-      else if (lDone(n)) note = `${I('check', 14)}${T('note.done', {d: tt, t: tt, pl: tt})}`;
-      else if (n === live) note = `<span class="dot" aria-hidden="true"></span><span>${T('note.live_a')}<span class="nw2">${T('note.live_b')}</span>${T('note.live_c', {d, t: tt, pl: tt})}</span>`;
+      else if (lDone(n)) note = `${I('check', 14)}${T('note.done')}`;
+      else if (n === live) note = `<span class="dot" aria-hidden="true"></span><span>${T('note.live_a')}<span class="nw2">${T('note.live_b')}</span></span>`;
       else note = T('note.open', {d, t: tt, pl: tt});
     }
     return `<li class="g-${LCOL[n]} fo"><a class="folder ${colCls(n)}" href="${href}">${tab}<span class="f-top"><span class="f-label">${label}</span>${arrow}</span><span class="f-row"><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-note">${note}</span></span>${flagH(n)}</a>${fxH(colCls(n))}</li>`;
@@ -1641,10 +1651,10 @@ function homePage(){
   let hero = '', cta = '', headCol = LCOL[0];
   if (pre) {   // before lesson 1: the prep card is the hero, and the one next step is the first open prep item
     const first = PREP.items.findIndex((_, i) => !S.has('prep:' + i));
-    hero = `<a class="folder flatc c-yellow now-card" href="#/kursgacha"><span class="f-top"><span class="f-label">${T('pre.label')}${LESSONS[0].d ? `<br>${T('date.until', {date: lessonDate(0)})}` : ''}</span>${arrowH}</span>
+    hero = `<a class="folder flatc c-yellow now-card" href="#/kursgacha"><span class="f-top"><span class="f-label">${LESSONS[0].d ? T('date.until', {date: lessonDate(0)}) : T('pre.label')}</span>${arrowH}</span>
         <span><span class="f-title">${T('prep.title')}</span><span class="f-sub">${T('pre.sub')}</span></span></a>`;
-    if (first >= 0) cta = pill(`${T('next.k')} · ${T('next.prep', {title: HT(T(`prep.${first}.title`))})}`, '#/dars/0');
-    else if (PREP.more) cta = pill(`${T('next.k')} · ${T('prep.more.title')}`, '#/kursgacha');
+    if (first >= 0) cta = pill(`${T('next.k')}: ${T('next.prep', {title: HT(T(`prep.${first}.title`))})}`, '#/dars/0');
+    else if (PREP.more) cta = pill(`${T('next.k')}: ${T('prep.more.title')}`, '#/kursgacha');
   } else if (live) {
     const [d, tt] = lProg(live), L = LESSONS[live], s = S.sl(live);
     const nxl = nextOf(live), slSub = !L.slides ? stepsText(d, tt) : s === 0 ? T('hero.sub_start', {n: L.slides}) : s >= L.slides ? T('hero.sub_seen', {n: L.slides}) : T('hero.sub', {i: s, n: L.slides}), sub = tt === 0 ? T('lesson.soon') : nxl && !/\/slayd\//.test(nxl.href) ? nxl.what : slSub, href = nxl ? nxl.href : `#/dars/${live}`;   // the hero opens today's next step ("continue" only when something was seen)
@@ -1652,15 +1662,15 @@ function homePage(){
     hero = `<a class="folder flatc ${colCls(live)} now-card" href="${href}"><span class="f-top"><span class="f-label">${T('hero.k')}<br>${lessonLabel(live)}</span>${arrowH}</span>
         <span><span class="f-title">${T(`lesson.${live}.card`)}</span><span class="f-sub">${sub}</span></span></a>`;
   }
-  if (!pre && ns) cta = pill(`${T(live ? 'next.k_backlog' : 'next.k')} · ${ns.label}`, ns.href);
+  if (!pre && ns) cta = pill(`${T(live ? 'next.k_backlog' : 'next.k')}: ${ns.label}`, ns.href);
   else if (!pre && !live && allDone()) cta = pill(T('next.all_done'), `#/dars/${LN().filter(n => lProg(n)[1] > 0).at(-1)}`);   // the whole course is done: say so, and point at what is still open
   return {screen: 'dastur', tag: '#/dastur · ' + t('tag.home'), title: t('home.title'), html: nav('home') + `
     <div class="page-head main-head g-${headCol}${hero ? '' : ' nohero'}">
       <h1 class="sr-only">${T('home.title')}</h1>
-      <div class="prog" role="progressbar" aria-label="${esc(t('home.ring.label'))}" aria-valuemin="0" aria-valuemax="${rt}" aria-valuenow="${rd}" aria-valuetext="${esc(t('home.ring.valuetext', {d: rd, t: rt, pl: rt}) + '')}">
+      ${pre ? (LESSONS[1].d ? `<div class="prog prog-pre"><span class="pt"><span class="ps">${T('home.starts', {date: lessonDate(1)})}</span></span></div>` : '') : `      <div class="prog" role="progressbar" aria-label="${esc(t('home.ring.label'))}" aria-valuemin="0" aria-valuemax="${rt}" aria-valuenow="${rd}" aria-valuetext="${esc(t('home.ring.valuetext', {d: rd, t: rt, pl: rt}) + '')}">
         <span class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="rt" cx="50" cy="50" r="42"/>${rd ? `<circle class="rp${ringUp ? ' up' : ''}" cx="50" cy="50" r="42" pathLength="100" style="stroke-dasharray:${rd / rt * 100} 100;--from:${ringFrom}"/>` : ''}</svg><span class="pv">${rd}/${rt}</span></span>
         <span class="pt"><span class="ps">${T('home.ring.ps')}</span></span>
-      </div>
+      </div>`}
       ${hero}${cta}
     </div>
     <h2 class="sr-only">${T('home.lessons')}</h2>
@@ -1678,7 +1688,7 @@ function prepPage(){
   const cards = PREP.items.map((it, i) => {
     const d = done[i], o = i === open, acts = it.actions || [];
     const ext = `<span class="sr-only"> ${T('common.sr_external')}</span>`;
-    return `<li class="folder flatc c-yellow pc${o ? ' open' : ''}${d ? ' done' : ''}" id="pc${i}" data-i="${i}" style="--vt:pc${i}"><button class="hd" type="button" id="ph${i}" aria-expanded="${o}" aria-controls="pb${i}" aria-labelledby="pt${i}" aria-describedby="pn${i}"><span class="no">${num2(i + 1)}</span><span class="f-title" id="pt${i}">${T(`prep.${i}.title`)}</span><span class="pic">${PREP_ART[i]}</span><span class="nt" id="pn${i}">${T(`prep.${i}.note`)}<span class="stp">${T('prep.steps_n', {n: it.steps, pl: it.steps})}<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></button>
+    return `<li class="folder flatc c-claude pc${o ? ' open' : ''}${d ? ' done' : ''}" id="pc${i}" data-i="${i}" style="--vt:pc${i}"><button class="hd" type="button" id="ph${i}" aria-expanded="${o}" aria-controls="pb${i}" aria-labelledby="pt${i}" aria-describedby="pn${i}"><span class="no">${num2(i + 1)}</span><span class="f-title" id="pt${i}">${T(`prep.${i}.title`)}</span><span class="pic">${PREP_ART[i]}</span><span class="nt" id="pn${i}">${T(`prep.${i}.note`)}<span class="stp">${T('prep.steps_n', {n: it.steps, pl: it.steps})}<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></button>
       <div class="bd" id="pb${i}" role="region" aria-labelledby="pt${i}"${o ? '' : ' hidden'}><ol class="steps">${Array.from({length: it.steps}, (_, j) => `<li>${T(`prep.${i}.s${j}`)}${cmdRow(i, j)}</li>`).join('')}</ol>
         ${acts.length ? `<div class="acts">${acts.map((a, j) => a.quiet
           ? `<a class="pc-lk" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${T(`prep.${i}.a${j}`)}${I('ne', 18)}${ext}</a>`
@@ -1687,8 +1697,8 @@ function prepPage(){
       <div class="pf"><button class="chip${d ? '' : ' off'}" type="button" aria-pressed="${d}" aria-label="${esc(t('common.mark_done'))}" aria-describedby="pt${i}"><span class="cl">${T('common.done')}</span></button></div></li>`;
   }).join('');
   return {screen: 'ex', tag: '#/dars/0 · ' + t('tag.prep'), title: t('setup.title'), html: nav('prep') + wrap(`
-      ${dlh('#/dastur', T('nav.home'), `${T('prep.meta')} · ${cnt('prep')}`)}
-      <h1 class="headline ex-h">${T('setup.title')}</h1><p class="lede">${prepCount() === prepTotal() ? T('prep.lede_done') : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>
+      ${dlh('#/dastur', T('nav.home'), `${T('prep.meta')}: ${cnt('prep')}`)}
+      <h1 class="headline ex-h">${T('setup.title')}</h1><p class="lede">${prepCount() === prepTotal() ? T('prep.lede_done') : courseStarted() && prepTotal() - prepCount() <= 2 ? T('prep.left', {n: prepTotal() - prepCount(), pl: prepTotal() - prepCount(), titles: PREP.items.map((_, i) => S.has('prep:' + i) ? '' : t(`prep.${i}.title`)).filter(Boolean).join(', ')}) : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>
       <div class="ex-files"><section class="grp"><h2 class="ef-h">${T('common.guide')}</h2><ul>${prepFileRow()}</ul></section></div>`,
     `<section class="prep" aria-label="${esc(t('prep.list.k'))}"><ol class="deck" id="deck" style="--cols:${deckCols(open)}">${cards}</ol></section>
       <div class="prep-end" id="prep-end"${prepCount() === prepTotal() ? '' : ' hidden'}><p class="pe-t">${T(courseStarted() ? 'prep.end_after' : LESSONS[1].d ? 'prep.end_before' : 'prep.end_tba', {date: lessonDate(1)})}</p><a class="play" href="#/dastur"><span>${T('prep.end_back')}</span><span class="play-circ">${I('next', 20)}</span></a></div>`)};
@@ -1703,7 +1713,7 @@ const iaCard = (l, i) => l.code
 const iaBody = (l, i) => { const card = iaCard(l, i);
   const left = l.video ? `<video class="ia-vid" controls preload="metadata" playsinline src="${esc(l.video)}"></video>${iaDesc(i)}`
     : `${iaDesc(i)}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a>`;
-  return `<div class="ia-c${card ? ' has-card' : ''}"><div class="ia-l">${left}</div>${card}</div>`; };
+  return `<div class="ia-c${card ? ' has-card' : ''}${l.code ? ' has-code' : ''}"><div class="ia-l">${left}</div>${card}</div>`; };
 const iaRow = (l, i) => `<li class="ia-row" data-i="${i}"><button class="ia-hd" type="button" id="ia-h${i}" aria-expanded="false" aria-controls="ia-p${i}"><span class="ia-ic" aria-hidden="true">${I(l.video ? 'play' : 'ne', 18)}</span><span class="ia-no">${num2(i + 1)}</span><span class="ia-tt"><span class="ia-t">${esc(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.s`) ? `<span class="ia-s">${esc(t(`prep.more.${i}.s`))}</span>` : ''}</span><i class="ia-chv" aria-hidden="true"></i></button><div class="ia-p" id="ia-p${i}" role="region" aria-labelledby="ia-h${i}"><div class="ia-in"><div class="ia-body">${iaBody(l, i)}</div></div></div></li>`;
 function iaPaint(ul){
   const rows = [...ul.children], last = rows.length - 1, a = iaOpen;
@@ -1722,7 +1732,7 @@ function prePage(){
   if (m && iaOpen !== null && iaOpen >= m.links.length) iaOpen = 0;
   return {screen: 'ex', tag: '#/kursgacha', title: t('prep.title'), html: nav('pre') + wrap(`
       ${dlh('#/dastur', T('nav.home'), T('pre.label'))}
-      <h1 class="headline ex-h">${T('prep.title')}</h1><p class="lede">${T('pre.lede')}</p>
+      <h1 class="headline ex-h">${T('prep.title')}</h1><p class="lede">${T(courseStarted() ? 'pre.lede_late' : 'pre.lede')}</p>
       ${m ? `<div class="kg-wrap"><h2 class="ef-h">${T('prep.more.title')}</h2>${t('prep.more.note') ? `<p class="ef-hint">${T('prep.more.note')}</p>` : ''}<ul class="ia">${m.links.map(iaRow).join('')}</ul></div>` : `<p class="lede pre-soon">${T('lesson.soon')}</p>`}`)};
 }
 // the accordion: first unchecked card open, checking opens the next (focus follows), a live region says what happened; the pictures only move while on screen and while the tab is visible
@@ -1947,7 +1957,7 @@ function lockSheet(n){
   ls.hidden = true; de.hidden = false;
   if (n === 'course') {   // the one course folder: every lesson with its label, title and date ("Sana keyinroq" while it has none)
     ti.dataset.i18n = 'course.sheet_t'; ti.dataset.i18nP = JSON.stringify({n: RN().length, pl: RN().length}); de.hidden = true; ls.hidden = false;
-    ls.innerHTML = LN().map(k => `<li><span class="sl-n">${lnum(k) == null ? '' : lnH(k)}</span><span class="sl-t">${esc(ltitle(k))}</span><span class="sl-d">${LESSONS[k].d ? esc(lessonDate(k)) : T('date.tba')}</span></li>`).join('');
+    ls.innerHTML = LN().map(k => `<li><span class="sl-n">${lnum(k) == null ? T('lesson.extra_s') : lnH(k)}</span><span class="sl-t">${esc(ltitle(k))}</span><span class="sl-d">${LESSONS[k].d ? esc(lessonDate(k)) : T('date.tba')}</span></li>`).join('');
     applyStatic(sh); okina(sh); return sh;
   }
   ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n: lnT(n), date: lessonDate(n)}); de.dataset.i18n = 'lock.desc_n';
@@ -2112,8 +2122,7 @@ document.addEventListener('pointerup', e => {
 
 // ---- the prep guide PDF of the current language comes from the API
 function prepFileRow(){
-  const name = `prep-${LANG}.pdf`;
-  return `<li><a class="ef-row" href="${API}/prep/pdf?lang=${LANG}" target="_blank" rel="noopener noreferrer"><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${T('prep.guide_name')}</span><span class="ef-mt">${name} · ${T('prep.pdf')}</span></span><span class="ef-dl">${I('down', 18)}</span></a></li>`;
+  return `<li><a class="ef-row" href="${API}/prep/pdf?lang=${LANG}" target="_blank" rel="noopener noreferrer"><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${T('prep.guide_name')}</span><span class="ef-mt">${T('prep.pdf')}</span></span><span class="ef-dl">${I('down', 18)}</span></a></li>`;
 }
 
 // ===================== boot =====================

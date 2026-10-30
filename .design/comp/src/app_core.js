@@ -131,8 +131,7 @@ document.addEventListener('pointerup', e => {
 
 // ---- the prep guide PDF of the current language comes from the API
 function prepFileRow(){
-  const name = `prep-${LANG}.pdf`;
-  return `<li><a class="ef-row" href="${API}/prep/pdf?lang=${LANG}" target="_blank" rel="noopener noreferrer"><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${T('prep.guide_name')}</span><span class="ef-mt">${name} · ${T('prep.pdf')}</span></span><span class="ef-dl">${I('down', 18)}</span></a></li>`;
+  return `<li><a class="ef-row" href="${API}/prep/pdf?lang=${LANG}" target="_blank" rel="noopener noreferrer"><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${T('prep.guide_name')}</span><span class="ef-mt">${T('prep.pdf')}</span></span><span class="ef-dl">${I('down', 18)}</span></a></li>`;
 }
 
 // ===================== boot =====================

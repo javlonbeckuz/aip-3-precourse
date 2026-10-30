@@ -94,7 +94,7 @@ function openMenu(t){
     rep("if (q.get('id')) { gid.value = q.get('id'); gid.dispatchEvent(new Event('input')); }\n", "")
     rep("go('dastur', true); ldr.hidden = true;", "document.body.append(ldr); go('dastur'); endLoader(ldr);")
     rep(' placeholder="7KQ2XM"', '')
-    rep('<p class="mx-help help" id="gid-h" aria-live="polite"></p>', '<p class="mx-help help" id="gid-h" aria-live="polite" data-i18n="gate.help">ID ni kiriting</p>')
+    rep('<p class="mx-help help" id="gid-h" aria-live="polite"></p>', '<p class="mx-help help" id="gid-h" aria-live="polite" data-i18n="gate.help">IDʼingizni kiriting</p>')
     s = s.replace('gateMsg(helpText)', "gateMsg(['gate.help'])")
     rep('showNewLesson(); }, 1800);', 'showNewLesson(); }, 700);   // the demo loader: production shows it only while the request is pending')
     rep("c.innerHTML = on ? CHECK + 'Bajarildi' : 'Bajarildi deb belgilash';", "c.innerHTML = on ? CHECK + esc(t('common.done')) : esc(t('common.mark_done'));")

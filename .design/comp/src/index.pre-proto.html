@@ -816,7 +816,9 @@ function onGidInput(e){
     gid.value = next;
     if (pos < v.length) { const np = Math.min(idCode(v.slice(0, pos)).length, next.length); gid.setSelectionRange(np, np); } // mid-string edit: keep the caret
   }
-  gateMsg(helpText); if (idCode(gid.value).length === 6) tryLogin();
+  const cc = idCode(gid.value);
+  if (cc && !ID_CHARS.test(cc)) gateMsg('ID’da 0, 1, I, L va O bo‘lmaydi. Qayta tekshiring.', 'err'); else gateMsg(helpText);   // the bad-character hint shows while typing (audit S1-3)
+  if (cc.length === 6) tryLogin();
 }
 gid.addEventListener('input', onGidInput);
 gid.addEventListener('compositionend', () => onGidInput());

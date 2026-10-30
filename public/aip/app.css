@@ -1165,6 +1165,21 @@ html.hid .bgp path{animation-play-state:paused}
 .gt .s1.pchips .cp-c{width:auto;height:auto;border:0;background:none}
 .gt .s1.pchips .to{margin:12px 0 0;font:400 14px/1.4 var(--font-body);color:var(--gt-ink2)}
 .gt .s1.pchips .tx{margin:6px 0 4px;padding:12px 14px;border:1px solid var(--gt-line);border-radius:10px;font:400 16px/1.6 var(--font-body);white-space:pre-line;color:var(--gt-ink)}
+#s-app[data-screen="dastur"] :is(.f-label,.f-note,.nw2){font-size:15px}
+#s-app[data-screen="dastur"] .f-start text{font-size:13.5px}
+#s-app[data-screen="dastur"] .f-start{width:100px}
+#s-app[data-screen="dastur"] .folder:has(>.f-start) .f-note{max-width:calc(100% - 116px)}
+@container (min-width:900px){#s-app[data-screen="dastur"] .f-start{width:max(100px,calc(100 * var(--u)))}
+#s-app[data-screen="dastur"] .folder:has(>.f-start) .f-note{max-width:calc(100% - 136px)}}
+#s-app[data-screen="ex"] :is(.dl-m,.eyebrow,.ef-h,.ia-k,.ia-s){font-size:15px}
+#gid-h{font-size:15px;text-shadow:0 1px 2px #000,0 0 6px #000,0 0 12px #000,0 0 24px rgb(0 0 0 / .9)}
+#s-app[data-screen="ex"] :is(.lede,.dl-h,.ef-hint,.headline),#s-app[data-screen="dastur"] .prog .pt{position:relative;z-index:1;text-shadow:0 0 8px #000,0 0 16px #000}
+.prog-pre .ps{display:block;max-width:20em}
+.pill-ink .pc-c{color:var(--f-bg)}
+.ia-ic{background:none;color:var(--white);border:1.5px solid rgb(255 255 255 / .5)}
+@container (max-width:599px){.ia-c.has-code .ia-card{order:-1}}
+#s-app[data-screen="ex"] .ex-files .ef-mt{font-size:15px}
+.sl-n{min-width:8em}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}

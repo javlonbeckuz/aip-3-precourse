@@ -262,6 +262,10 @@ export function createApp(cfg) {
     ['GET|HEAD', /^\/api\/aip\/prep\/video\/([a-z0-9-]{1,40})$/, (req, res, url, m) => {
       const s = needStudent(req);
       gate(s, 0, 'prep');
+      // only the page's own player may load it: opening the link in a tab (Sec-Fetch-Dest: document) to save the file is refused.
+      // ponytail: browsers that send no Sec-Fetch-Dest still get it; this stops the easy save, not a determined copier
+      const dest = req.headers['sec-fetch-dest'];
+      if (dest && dest !== 'video' && dest !== 'empty') throw fail(403, 'forbidden', 'Video plays inside the portal only');
       const f = content.prepVideo(m[1]);
       if (!f) throw fail(404, 'not_found', 'No such video');
       sendFile(req, res, f.abs, { type: f.type, cache: MEDIA_CACHE });   // Range requests: the player can seek
