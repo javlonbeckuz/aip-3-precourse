@@ -329,38 +329,34 @@ html.hid .bgp path{animation-play-state:paused}
   .lwrap .gt-pane .pane-text{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px calc(48 * var(--u))}
   .lwrap .gt-pane .pane-text p+p{margin-top:0}
 }
-/* one row per exercise: number + title | steps | files + prompts */
-.w1{margin-top:24px}
-.w1-row{display:grid;gap:14px;padding:26px 0;border-top:1.5px solid var(--gt-ink);color:var(--gt-ink)}
-.w1-no{display:block;margin-bottom:10px;font:400 64px/.8 var(--font-display);font-stretch:125%;letter-spacing:-.03em}
-.w1-tt{font:500 18px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase;text-wrap:balance}
-.w1-tag{display:block;margin-top:6px;font:500 12px/1.3 var(--font-mono);letter-spacing:.02em}
-.w1-lead{margin:0 0 10px;font:400 15px/1.5 var(--font-body);max-width:62ch}
-.w1-steps{display:grid;gap:6px;margin:0 0 12px;padding-left:20px;list-style:decimal;font:400 15px/1.45 var(--font-body);max-width:62ch}
-.w1-ready{font:400 14px/1.45 var(--font-body);max-width:62ch}
-.w1-ready b,.w1-h{font:500 12px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
-.w1-h{margin:0 0 6px}
-.w1-m:empty,.w1-r:empty{display:none}
-.w1-r .ex-files+.w1-h{margin-top:16px}
-@container (min-width:900px){.w1-row{grid-template-columns:calc(300 * var(--u)) minmax(0,1fr) calc(440 * var(--u));gap:0 calc(40 * var(--u));padding:32px 0}.w1-m:empty,.w1-r:empty{display:block}.w1-no{font-size:80px}}
-/* compact prompt rows in the right column: number | name + target | copy circle; "Matnni koʻrish" opens the full text below */
-.w1-r .s1{margin-top:0}
-.w1-r .s1 .s1-rule{margin-bottom:6px;font-size:13px}
-.w1-r .s1 ol{margin-top:0;border-top:1px solid var(--gt-line)}
-.w1-r .s1 li,.gt .w1-r .s1 li{grid-template-columns:52px minmax(0,1fr) auto;gap:0 10px;align-items:start;padding:8px 0;content-visibility:visible}
-.w1-r .s1 .no,.gt .w1-r .s1 .no{grid-row:1;grid-column:1;padding-top:13px;font:500 12px/1.3 var(--font-mono)}
-.w1-r .s1 .body,.gt .w1-r .s1 .body{grid-row:1;grid-column:2;gap:2px;padding-top:9px}
-.w1-r .s1 .cpw,.gt .w1-r .s1 .cpw{grid-row:1;grid-column:3}
-.w1-r .s1 .tt,.gt .w1-r .s1 .tt{font:500 15px/1.3 var(--font-body);font-stretch:100%;text-transform:none}
-.w1-r .s1 .to,.gt .w1-r .s1 .to.strong{font-size:12.5px}
-.w1-r .s1 .cpl{display:none}
-.w1-r .s1 .cp{min-width:0}
-.gt .w1-r .s1 .cp-c{width:44px;height:44px}
-.gt .txd>summary{display:inline-flex;align-items:center;gap:8px;min-height:32px;cursor:pointer;list-style:none;font:500 13px/1.3 var(--font-body);text-decoration:underline;text-underline-offset:3px;color:var(--gt-ink)}
-.gt .txd>summary::-webkit-details-marker{display:none}
-.gt .txd>summary::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translate(-1px,-1px)}
-.gt .txd[open]>summary::after{transform:rotate(-135deg) translate(-1px,-1px)}
-.gt .txd .tx-h,.gt .txd[open] .tx-s{display:none}
-.gt .txd[open] .tx-h{display:inline}
-.gt .txd .tx{margin:6px 0 4px;padding:12px 14px;border:1px solid var(--gt-line);border-radius:10px;font-size:14.5px;line-height:1.55}
-.w1-r .s1 .txd{margin:0 -54px 0 -62px}   /* the opened text spans the whole column, under the number and the copy button too */
+/* the groups as a roadmap (M3, user 2026-10-30): a numbered dot on a thin line, then title, steps, file chips and prompt chips; larger text ("font sizes are small") */
+.lwrap .gt-pane .pane-text p{font-size:17px;line-height:1.55}
+.m3s{margin-top:28px}
+.m3{position:relative;display:grid;grid-template-columns:36px minmax(0,1fr);gap:0 16px;padding-bottom:32px;color:var(--gt-ink)}
+.m3::before{content:"";position:absolute;left:17px;top:40px;bottom:4px;width:1.5px;background:var(--gt-line)}
+.m3:last-child{padding-bottom:8px}.m3:last-child::before{display:none}
+.m3-dot{display:grid;place-items:center;width:36px;height:36px;border:1.5px solid var(--gt-ink);border-radius:50%;font:500 12px/1 var(--font-mono)}
+.m3-b{min-width:0;max-width:860px}
+.m3-t{margin:6px 0 12px;font:500 22px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase;text-wrap:balance}
+.m3-lead{margin:0 0 10px;font:400 17px/1.55 var(--font-body);max-width:62ch}
+.m3-steps{display:grid;gap:6px;margin:0 0 10px;padding-left:22px;list-style:decimal;font:400 17px/1.5 var(--font-body);max-width:62ch}
+.m3-ready{margin:0;font:400 16px/1.5 var(--font-body);color:var(--gt-ink2);max-width:62ch}
+.fchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.fchip{display:inline-flex;align-items:center;gap:8px;max-width:100%;min-height:44px;padding:0 16px;border:1px solid var(--gt-line);border-radius:999px;color:var(--gt-ink);text-decoration:none;font:500 15px/1.2 var(--font-body)}
+.fchip:hover{background:rgb(255 255 255 / .08)}
+.fchip svg{flex:none}.fchip .fz{font-weight:400;font-size:13px;color:var(--gt-ink2)}
+.gt .s1.pchips{display:flex;flex-wrap:wrap;gap:8px;max-width:none;margin:14px 0 0;padding:0;border:0;list-style:none}
+.gt .s1.pchips li{display:block;flex:0 1 auto;max-width:100%;padding:0;border:0;content-visibility:visible}
+.gt .s1.pchips li:has(.pchip[open]){flex-basis:100%}
+.pchip>summary{display:inline-flex;align-items:center;gap:10px;max-width:100%;min-height:46px;padding:4px 5px 4px 16px;border:1px solid var(--gt-line);border-radius:999px;background:rgb(255 255 255 / .06);cursor:pointer;list-style:none}
+.pchip>summary::-webkit-details-marker{display:none}
+.pchip>summary:hover{background:rgb(255 255 255 / .1)}
+.gt .s1.pchips .no,.gt .s1.pchips .cpl{display:none}
+.gt .s1.pchips .tt{font:500 16px/1.25 var(--font-body);font-stretch:100%;text-transform:none}
+.gt .s1.pchips li.done .tt::before{content:"✓ "}
+.gt .s1.pchips .tt::after{content:none}
+.gt .s1.pchips li.done .pchip>summary{border-color:var(--gt-ink)}
+.gt .s1.pchips .cp{display:grid;place-items:center;flex:none;min-width:0;width:36px;height:36px;border-radius:50%;background:rgb(255 255 255 / .16);color:var(--gt-ink)}
+.gt .s1.pchips .cp-c{width:auto;height:auto;border:0;background:none}
+.gt .s1.pchips .to{margin:12px 0 0;font:400 14px/1.4 var(--font-body);color:var(--gt-ink2)}
+.gt .s1.pchips .tx{margin:6px 0 4px;padding:12px 14px;border:1px solid var(--gt-line);border-radius:10px;font:400 16px/1.6 var(--font-body);white-space:pre-line;color:var(--gt-ink)}

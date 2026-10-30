@@ -93,14 +93,6 @@ const nav = active => `<header class="nav">
   <span class="wordmark">AI Praktikum 3.0</span>
   <div class="nav-r">${prepBtn(active)}<button class="nav-name" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu">${esc(STUDENT)}</button><button class="menu-btn" type="button" aria-label="${esc(t('menu.label'))}" aria-haspopup="dialog" aria-expanded="false" aria-controls="nmenu">${I('menu', 20)}</button></div>
 </header>`;
-// one prompt row of the lilac list: copy = done (+ undo), a "Qayerga:" / "Manba:" target, the full text; ticks persist in S
-// o.title / o.text are plain (data-t, aria, copy); o.titleH / o.whereH / o.textH are the escaped HTML of the same values
-function pli(o){
-  const done = S.has(o.key);
-  return `<li class="${done ? 'done' : ''}${o.no === '' ? ' nonum' : ''}" data-i="${o.i}" data-pid="${o.pid}" data-key="${o.key}" data-t="${esc(o.title)}"><span class="no" aria-hidden="true">${o.no}</span>
-    <div class="body"><h3 class="tt" tabindex="-1">${o.titleH}${o.ph ? NSTAG() : ''}</h3>${o.where ? `<p class="to strong"><b>${T(o.lbl)}</b> ${o.whereH}</p>` : ''}${o.fold ? `<details class="txd"><summary><span class="tx-s">${T('lc.show')}</span><span class="tx-h">${T('lc.hide')}</span></summary><p class="tx" data-raw="${esc(o.text)}">${o.textH}</p></details>` : `<p class="tx" data-raw="${esc(o.text)}">${o.textH}</p>`}</div>
-    <div class="cpw"><button class="cp" type="button" aria-label="${esc(t('common.copy_aria', {title: o.title}))}"><span class="cp-c">${I('copy', 20)}</span><span class="cpl">${T('common.copy')}</span></button></div></li>`;
-}
 const sizeT = z => LANG === 'en' ? z.replace(/(\d),(\d)/g, '$1.$2') : z;   // file sizes are stored with the Uzbek/Russian decimal comma; English reads 21.1 KB
 const fsize = f => f.size ? sizeT(f.size) : t('common.sample_file');
 const fileMeta = (f, extra) => [extra ? `<span class="sent">${extra.html ?? esc(extra)}</span>` : '', f.size ? esc(sizeT(f.size)) : ''].filter(Boolean).join(' · ');
@@ -296,12 +288,12 @@ document.addEventListener('visibilitychange', () => document.documentElement.cla
 const partWhen = iso => /^\d{4}-\d\d-\d\dT\d\d:\d\d/.test(iso || '') ? {date: fmtDate(+iso.slice(8, 10), +iso.slice(5, 7)), time: iso.slice(11, 16)} : {date: '…', time: '…'};   // iso with the Tashkent offset: its own date and clock time
 const lockedPane = iso => `<p class="p-label">${T('part.locked')}</p><div><p class="p-sub">${T('part.opens', partWhen(iso))}</p></div>`;
 const tabOfHref = h => { const m = /[?&]tab=(sl|am|kt|vz)\b/.exec(h || ''); return m ? m[1] : /\/slayd\//.test(h || '') ? 'sl' : null; };
-// prompt copy rows of a group (the 2.0 rows): copy = done, written as p:l{n}:{id}; the text stays Uzbek (lang="uz-Latn" inside a ru/en page). Not counted in the lesson's units
-function promptList(n, gkey, g, fold){
-  const lis = g.prompts.map((q, j) => { const k = `${gkey}.p${j}`, text = cu(`${k}.x`);
-    return pli({fold,i: j, pid: q.kid, no: q.id || 'P' + (j + 1), key: `p:l${n}:${q.kid}`, title: cu(`${k}.t`), titleH: cuh(`${k}.t`), where: q.target, whereH: q.target ? cuh(`${k}.w`) : '', lbl: 'lbl.where', text, textH: cxh(`${k}.x`, I18N.uz[`${k}.x`], x => mark(esc(x)))}); }).join('');
-  return `<div class="s1">${g.prompts.some(q => hasBracket(q.text)) ? `<p class="s1-rule">${T('ex.rule')}</p>` : ''}<ol>${lis}</ol></div>`;
+// prompt chips (M3, user 2026-10-30): the title on a pill with a copy button; tapping the pill opens "Qayerga" and the full text. Same li / .no / .tx[data-raw] / .cp hooks as the old lilac rows, so copy = done (p:l{n}:{id}), the toast and undo work unchanged. The text stays Uzbek. Not counted in the lesson's units
+function chipList(n, gkey, g){
+  return `<ol class="s1 pchips">${g.prompts.map((q, j) => { const k = `${gkey}.p${j}`, key = `p:l${n}:${q.kid}`, title = cu(`${k}.t`);
+    return `<li class="${S.has(key) ? 'done' : ''}" data-i="${j}" data-pid="${q.kid}" data-key="${key}" data-t="${esc(title)}"><details class="pchip"><summary><span class="no">${esc(q.id || 'P' + (j + 1))}</span><span class="tt">${cuh(`${k}.t`)}</span><button class="cp" type="button" aria-label="${esc(t('common.copy_aria', {title}))}"><span class="cp-c">${I('copy', 16)}</span><span class="cpl">${T('common.copy')}</span></button></summary>${q.target ? `<p class="to"><b>${T('lbl.where')}</b> ${cuh(`${k}.w`)}</p>` : ''}<p class="tx" data-raw="${esc(cu(`${k}.x`))}">${cxh(`${k}.x`, I18N.uz[`${k}.x`], x => mark(esc(x)))}</p></details></li>`; }).join('')}</ol>`;
 }
+document.addEventListener('click', e => { if (e.target.closest('.pchip summary .cp, .pchip summary .toast')) e.preventDefault(); });   // copying (or undoing) never opens or closes the chip
 // a group note "ASOSIY. lead 1) a 2) b Tayyor, agar: c" -> {tag, lead, steps, ready}: display only, the stored text never changes
 function noteParts(s){
   let n = String(s || '').trim(), tag = '', ready = '';
@@ -310,21 +302,21 @@ function noteParts(s){
   const ps = n.split(/\s*(?=\b\d\)\s)/), lead = /^\d\)\s/.test(ps[0]) ? '' : ps.shift();
   return {tag, lead: (lead || '').trim(), steps: ps.map(x => x.replace(/^\d\)\s*/, '').trim()).filter(Boolean), ready};
 }
-// one group = one wide row (W1): big number + title on the left, steps in the middle, files and prompts on the right; nothing is folded except the prompt texts
+// one group = one stop on the roadmap (M3, user 2026-10-30): the number in a dot on the line, then title, steps, file chips and prompt chips
 function groupRow(n, key, g, i){
   const gk = `${key}.g${i}`, m = /^(\d+[A-Z]?)\.?\s+(.+)$/.exec(cu(gk)), no = m ? (/^\d+$/.test(m[1]) ? num2(+m[1]) : m[1]) : '', title = m ? m[2] : cu(gk);
   const np = noteParts(g.note ? cu(`${gk}.n`) : ''), lg = cxFb(`${gk}.n`) || cxFb(gk) ? ' lang="uz-Latn"' : '';
-  const mid = `${np.lead ? `<p class="w1-lead">${esc(np.lead)}</p>` : ''}${np.steps.length ? `<ol class="w1-steps">${np.steps.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="w1-ready"><b>Tayyor, agar</b> ${esc(np.ready)}</p>` : ''}`;
-  const right = `${g.files.length ? `<div class="ex-files"><ul>${g.files.map(f => fileRow(f)).join('')}</ul></div>` : ''}${g.prompts.length ? `<p class="w1-h">${T('lc.ph')}</p>${promptList(n, gk, g, true)}` : ''}`;
-  return `<section class="w1-row"${lg}><div class="w1-l">${no ? `<span class="w1-no">${esc(no)}</span>` : ''}<h3 class="w1-tt">${esc(title)}</h3>${np.tag ? `<span class="w1-tag">${esc(np.tag)}</span>` : ''}</div><div class="w1-m">${mid}</div><div class="w1-r">${right}</div></section>`;
+  const steps = `${np.lead ? `<p class="m3-lead">${esc(np.lead)}</p>` : ''}${np.steps.length ? `<ol class="m3-steps">${np.steps.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="m3-ready">Tayyor, agar ${esc(np.ready)}</p>` : ''}`;
+  const files = g.files.length ? `<div class="fchips">${g.files.map(f => `<a class="fchip" ${fa(f)}><span class="sr-only">${T('common.sr_download')}</span>${I('down', 16)}<span>${wbr(f.name)}</span>${f.size ? `<span class="fz">${esc(sizeT(f.size))}</span>` : ''}</a>`).join('')}</div>` : '';
+  return `<section class="m3"${lg}><span class="m3-dot" aria-hidden="true">${esc(no)}</span><div class="m3-b"><h3 class="m3-t">${esc(title)}</h3>${steps}${files}${g.prompts.length ? chipList(n, gk, g) : ''}</div></section>`;
 }
-// Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups as wide rows; Amaliyot and Vazifa end with a tick
+// Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups as roadmap stops; Amaliyot and Vazifa end with a tick
 function blockPane(n, p){
   const b = (PARTS[n] || {})[p] || {text: '', groups: []}, key = `c.p.${n}.${p}`;
   const text = b.text ? cu(`${key}.text`).split(/\n\s*\n/).map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`).join('') : '';
   const groups = b.groups.map((g, i) => groupRow(n, key, g, i)).join('');
   const end = p === 'am' ? endb('f:am' + n, S.has('f:am' + n), 'amf.on', 'amf.off', '', 'amf.aria') : p === 'vz' ? endb('f:v' + n, S.has('f:v' + n), 'vzf.on', 'vzf.off', '', 'vzf.aria') : '';
-  return `<p class="p-label">${T('unit.' + p)}</p>${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${groups ? `<div class="w1">${groups}</div>` : ''}${end ? `<div class="gt-foot end">${end}</div>` : ''}`;
+  return `<p class="p-label">${T('unit.' + p)}</p>${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${groups ? `<div class="m3s">${groups}</div>` : ''}${end ? `<div class="gt-foot end">${end}</div>` : ''}`;
 }
 function lessonPage(n, tab){
   tab = tab || tabOfHref((nextOf(n) || {}).href);   // no ?tab: the tab with today's work

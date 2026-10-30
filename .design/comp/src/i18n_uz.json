@@ -1329,25 +1329,10 @@
   "translate": true,
   "note": "bold label before the paste target, e.g. \"Where:\""
  },
- "lc.ph": {
-  "uz": "Promptlar",
-  "translate": true,
-  "note": "UI text"
- },
  "lesson.extra": {
   "uz": "Qoʻshimcha dars",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
- "lc.show": {
-  "uz": "Matnni koʻrish",
-  "translate": true,
-  "note": "UI text"
- },
- "lc.hide": {
-  "uz": "Matnni yashirish",
-  "translate": true,
-  "note": "UI text"
  },
  "ex.pdf": {
   "uz": "PDF varianti · {size}",

@@ -188,7 +188,7 @@ const I18N = {uz: {
   'pick.meta': 'Mashq 03', 'pick.group': 'Tanlang', 'pick.title': 'Bittasini tanlang: A yoki B', 'pick.lede': 'Ikkitadan bittasini tanlang. Bittasi bajarilsa, mashq bajarilgan hisoblanadi; ikkinchisi ixtiyoriy.', 'c.ex.extra_06': 'Namoyish yoki uyga vazifa', 'pick.done_sfx': ' · bajarildi',
   'ex.meta': 'Mashq {num}', 'ex.meta_extra': 'Mashq {num} · {extra}', 'ex.back': 'Amaliyot', 'ex.back_pick': '03 · Bittasini tanlang',
   'ex.g1': '1 · Avval oʻqing', 'ex.g2': '2 · NotebookLMʼga yuklang', 
-  'ex.k': 'Promptlar · {d}/{t} bajarildi', 'ex.rule': '[Qavslar] ichini oʻzingiz toʻldirasiz.', 'lbl.where': 'Qayerga:', 'lc.ph': 'Promptlar', 'lesson.extra': 'Qoʻshimcha dars', 'lc.show': 'Matnni koʻrish', 'lc.hide': 'Matnni yashirish', 'ex.pdf': 'PDF varianti · {size}',
+  'ex.k': 'Promptlar · {d}/{t} bajarildi', 'ex.rule': '[Qavslar] ichini oʻzingiz toʻldirasiz.', 'lbl.where': 'Qayerga:', 'lesson.extra': 'Qoʻshimcha dars', 'ex.pdf': 'PDF varianti · {size}',
   'end.done': 'Bajarildi', 'end.mark': 'Bajarildi deb belgilash', 'ex.next': 'Keyingi mashq\n{num} · {title}', 'ex.index': 'Amaliyot\nsahifasi',
   // --- library (lesson 2)
   'lib.meta': 'Amaliyot', 'lib.title': 'Prompt kutubxonasi', 'lib.lede': '47 ta tayyor prompt, 5 boʻlimda. Ishingizga mos boʻlimni tanlang.', 'lib.search': 'Prompt qidirish',
@@ -849,9 +849,6 @@ const I18N = {uz: {
   "toast.code_copied": "Промокод скопирован",
   "pre.code": "Промокод",
   "pre.open": "Открыть",
-  "lc.show": "Показать текст",
-  "lc.hide": "Скрыть текст",
-  "lc.ph": "Промпты",
   "lesson.extra": "Дополнительный урок",
   "pre.in_video": "В видео"
 }/*ENDRU*/, en: /*EN*/{
@@ -1308,9 +1305,6 @@ const I18N = {uz: {
   "toast.code_copied": "Promo code copied",
   "pre.code": "Promo code",
   "pre.open": "Open",
-  "lc.show": "Show text",
-  "lc.hide": "Hide text",
-  "lc.ph": "Prompts",
   "lesson.extra": "Extra lesson",
   "pre.in_video": "In the video"
 }/*ENDEN*/};
