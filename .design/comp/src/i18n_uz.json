@@ -520,7 +520,7 @@
   "note": "text of the big outline button on a lesson page; {what} is e.g. \"Amaliyot 01 · P3 Vaziyatli test\" (long: ≤ 46 chars in total, wraps to 2 lines) · keep {params} as they are"
  },
  "note.prep_todo": {
-  "uz": "{until} · {d}/4 bajarildi",
+  "uz": "{until} · {d}/{t} bajarildi",
   "translate": true,
   "note": "state note on the prep card while unfinished; {until} = \"by 12 September\", {steps} = \"3/4 steps\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -560,7 +560,7 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.cnt": {
-  "uz": "{d}/4 bajarildi",
+  "uz": "{d}/{t} bajarildi",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -660,12 +660,12 @@
   "note": "homework (Vazifa) screens"
  },
  "live.prep_done": {
-  "uz": "{title} bajarildi · {d}/4",
+  "uz": "{title} bajarildi · {d}/{t}",
   "translate": true,
   "note": "screen-reader announcement (aria-live), not visible; full sentence · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "live.prep_undone": {
-  "uz": "{title}: belgi olib tashlandi · {d}/4 tayyor",
+  "uz": "{title}: belgi olib tashlandi · {d}/{t} tayyor",
   "translate": true,
   "note": "screen-reader announcement (aria-live), not visible; full sentence · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -995,7 +995,7 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.lede_done": {
-  "uz": "4 qadamning hammasi bajarildi. Kerak boʻlsa, istalgan kartani qayta oching.",
+  "uz": "Hamma qadamlar bajarildi. Kerak boʻlsa, istalgan kartani qayta oching.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },

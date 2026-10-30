@@ -244,14 +244,11 @@ test('summary: a lesson with a locked part is not done, even with every unit tic
   assert.equal(c.summary(p, 'shanba').done, 1);
 });
 
-test('shipped lesson 0: Warp steps 1 and 2 end with ":" (the SPA adds the install commands as copy rows)', () => {
-  for (const lg of ['uz', 'ru', 'en']) { // PREP_CMDS in .design/comp/src/proto_data.js is keyed by item 3, steps 1 and 2
-    const item = JSON.parse(fs.readFileSync(path.join(REAL_CONTENT, 'lessons/0', `lesson.${lg}.json`), 'utf8')).prep.items[3];
-    assert.equal(item.brand, 'warp');
-    for (const i of [1, 2]) {
-      assert.ok(item.steps[i].endsWith(':'), `${lg} step ${i}`);
-      assert.doesNotMatch(item.steps[i], /install\.(sh|ps1)/, `${lg} step ${i}`);
-    }
+test('shipped lesson 0: three setup cards, no Warp card (removed by the user on 2026-10-30)', () => {
+  for (const lg of ['uz', 'ru', 'en']) {
+    const items = JSON.parse(fs.readFileSync(path.join(REAL_CONTENT, 'lessons/0', `lesson.${lg}.json`), 'utf8')).prep.items;
+    assert.equal(items.length, 3, lg);
+    assert.ok(!items.some((it) => it.brand === 'warp'), lg);
   }
 });
 

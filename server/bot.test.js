@@ -115,7 +115,7 @@ test('bot: /find by name and ID, with progress line', async (t) => {
   assert.match(card, /Mentor: Xurshid Maroziqov/);
   assert.match(card, /Yaratilgan: \d{4}-\d\d-\d\d/);
   assert.match(card, /Oxirgi kirish: 2026-09-12 10:30/);
-  assert.match(card, /Tayyorgarlik 3\/4 \| darslar 1\/6 bajarilgan/); // lesson 3 = its 40 slides; Kirish is not numbered, so /6
+  assert.match(card, /Tayyorgarlik 3\/3 \| darslar 1\/6 bajarilgan/); // lesson 3 = its 40 slides; Kirish is not numbered, so /6
   assert.ok(!card.includes('Sardor'));
   await bot.onUpdate(msg(`/find ${s.id.toLowerCase()}`));
   assert.ok(texts(calls).at(-1).includes(s.id));

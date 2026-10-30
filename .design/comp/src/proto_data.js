@@ -45,7 +45,7 @@ let PREP = {
         {title: 'Asosiy mashq', note: 'Birma-bir, NotebookLMʼda.', files: [], prompts: [{id: 'P1', title: 'Hisobot xulosasi', target: '', text: 'Namuna matn. Hisobotdan 3 ta asosiy xulosa chiqaring.'}, {id: 'P2', title: 'Xavflar', target: '', text: 'Namuna matn. Eng katta 3 xavfni sanab bering.'}]}]},
   }
 }}; /*C20:end*/
-const PREP_CMDS = {3: {1: 'curl -fsSL https://claude.ai/install.sh | bash', 2: 'irm https://claude.ai/install.ps1 | iex'}};   // prep item 4: step index -> the command shown (and copyable) under that step
+const PREP_CMDS = {};   // prep item -> {step index: an install command shown (and copyable) under that step}; empty since the Warp card was removed (2026-10-30)
 let PARTS = {};   // lesson number -> {am|kt|vz: {text, groups: [{title, note, files}]}}: the shape the lesson page reads
 const FC = (f, ph, slug) => f ? F(f.name, f.size, ph, slug || f.slug, f.url) : null;   // file from the demo / API: name + size (+ url in the app), never a server path
 function buildData(){

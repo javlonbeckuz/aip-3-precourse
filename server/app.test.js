@@ -157,7 +157,7 @@ test('gating: prep is open at once; nothing locked leaks in login payload', asyn
   const c = await a.login('XM');
   const s = c.session;
   assert.equal(s.lessons[0].open, true);
-  assert.equal(s.lessons[0].prep.items.length, 4);
+  assert.equal(s.lessons[0].prep.items.length, 3); // Warp card removed by the user (2026-10-30)
   assert.equal(s.live.n, 0);
   const locked = JSON.stringify(s.lessons.slice(1));
   for (const leak of ['hw-kompaniya', 'kit1-forma', 'Vazifa matni', 'Talaba_qollanmasi', 'slug', '"groups"']) assert.ok(!locked.includes(leak), leak);
@@ -468,7 +468,7 @@ test('gating: dates TBA lock lessons 1-7 even when release says "open"; prep sta
     assert.equal(s.schedule.shanba, null);
     assert.deepEqual(s.schedule.starts, { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null });
     assert.equal(s.lessons[0].open, true);
-    assert.equal(s.lessons[0].prep.items.length, 4);
+    assert.equal(s.lessons[0].prep.items.length, 3); // Warp card removed by the user (2026-10-30)
     for (const n of [1, 2, 3, 4, 5, 6, 7]) {
       assert.equal(s.lessons[n].open, false, `${id} lesson ${n}`);
       assert.equal(s.lessons[n].start, null);

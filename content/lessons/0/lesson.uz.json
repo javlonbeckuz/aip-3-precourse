@@ -6,8 +6,7 @@
   "topics": [
     "Kompyuter",
     "Google akkaunt",
-    "Claude",
-    "Warp va Claude Code"
+    "Claude"
   ],
   "slideCount": 0,
   "slideKind": "image",
@@ -65,30 +64,6 @@
           }
         ],
         "footnote": "02-darsdan Claude Code koʻp ishlatiladi va Pro limiti tez tugashi mumkin. Shunda Max tarifiga oʻting (oyiga $100 dan)."
-      },
-      {
-        "brand": "warp",
-        "title": "Warp va Claude Code",
-        "note": "Claude Code Warp terminalida ishlaydi. Oʻrnating va bir marta ochib koʻring.",
-        "steps": [
-          "warp.dev saytidan Warpʼni yuklab oling va oʻrnating.",
-          "Mac: Warpʼni oching va kiriting:",
-          "Windows: Warpʼni oching va kiriting:",
-          "claude deb yozing va Enter bosing. Brauzer ochiladi: Claude akkauntingiz bilan kiring.",
-          "Claude Code salomingizga javob bersa, hammasi tayyor."
-        ],
-        "actions": [
-          {
-            "label": "Warpʼni yuklab olish",
-            "url": "https://www.warp.dev/"
-          },
-          {
-            "label": "Claude Code qoʻllanmasi",
-            "url": "https://code.claude.com/docs/en/quickstart",
-            "quiet": true
-          }
-        ],
-        "footnote": "Oʻrnatish chiqmasa, xatoning skrinshotini mentoringizga yuboring. 01-dars oxirida mentorlar yordam beradi."
       }
     ],
     "more": {

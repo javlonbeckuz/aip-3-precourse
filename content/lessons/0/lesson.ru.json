@@ -6,8 +6,7 @@
   "topics": [
     "Компьютер",
     "Google-аккаунт",
-    "Claude",
-    "Warp и Claude Code"
+    "Claude"
   ],
   "slideCount": 0,
   "slideKind": "image",
@@ -65,30 +64,6 @@
           }
         ],
         "footnote": "С урока 02 Claude Code используется много, и лимит Pro может быстро закончиться. Тогда переходите на Max (от $100 в месяц)."
-      },
-      {
-        "brand": "warp",
-        "title": "Warp и Claude Code",
-        "note": "Claude Code работает в терминале Warp. Установите его и один раз запустите.",
-        "steps": [
-          "Скачайте Warp с сайта warp.dev и установите.",
-          "Mac: откройте Warp и введите:",
-          "Windows: откройте Warp и введите:",
-          "Напишите claude и нажмите Enter. Откроется браузер: войдите в свой аккаунт Claude.",
-          "Если Claude Code ответил на приветствие, всё готово."
-        ],
-        "actions": [
-          {
-            "label": "Скачать Warp",
-            "url": "https://www.warp.dev/"
-          },
-          {
-            "label": "Руководство по Claude Code",
-            "url": "https://code.claude.com/docs/en/quickstart",
-            "quiet": true
-          }
-        ],
-        "footnote": "Если установка не получилась, отправьте скриншот ошибки своему ментору. В конце урока 01 менторы помогут."
       }
     ],
     "more": {

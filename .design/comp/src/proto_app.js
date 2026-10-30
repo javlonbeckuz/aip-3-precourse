@@ -48,6 +48,7 @@ const ltitle = n => t(`lesson.${n}.title`);
 
 // ---- progress model: the units of a lesson are the parts it really has: slides (all seen), Amaliyot (one tick), Vazifa (one tick). Kit is a folder of files and is not counted
 const slDone = n => S.sl(n) >= LESSONS[n].slides;
+const prepTotal = () => PREP.items.length;   // the setup cards come from the content (4 until 2026-10-30, Warp removed by the user)
 const prepCount = () => PREP.items.filter((_, i) => S.has('prep:' + i)).length;
 const slHref = n => `#/dars/${n}/slayd/${S.sl(n) === 0 || slDone(n) ? 1 : S.sl(n)}`;
 const partOpen = (n, p) => !partLock(n, p);
@@ -73,7 +74,7 @@ const nextStep = () => { const live = liveLesson();
   return LN().filter(n => !isLocked(n) && n !== live).map(nextOf).find(Boolean) || null; }; // the live lesson is the hero card, so it is not repeated here
 // live counters shown on the open page ("k/t"): one formatter for the templates and for refreshCounts()
 function cntText(type){
-  if (type === 'prep') return t('prep.cnt', {d: prepCount(), pl: 4});
+  if (type === 'prep') return t('prep.cnt', {d: prepCount(), t: prepTotal(), pl: prepTotal()});
   return '';
 }
 const cnt = (type, id = '') => `<span data-cnt="${type}${id ? ':' + id : ''}">${esc(cntText(type, id))}</span>`;
@@ -122,7 +123,7 @@ function homePage(){
     const tab = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`, arrow = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
     const label = n === 0 ? T('lesson.label0') : lessonLabel(n);
     let note, href = `#/dars/${n}`;
-    if (n === 0) { note = k === 4 ? `${I('check', 14)}${T('note.done', {d: 4, t: 4, pl: 4})}` : courseStarted() ? T('note.open', {d: k, t: 4, pl: 4}) : !LESSONS[0].d ? T('prep.cnt', {d: k, pl: 4}) : T('note.prep_todo', {until: t('date.until', {date: lessonDate(0)}), d: k, pl: 4}); }
+    if (n === 0) { const pt = prepTotal(); note = k === pt ? `${I('check', 14)}${T('note.done', {d: pt, t: pt, pl: pt})}` : courseStarted() ? T('note.open', {d: k, t: pt, pl: pt}) : !LESSONS[0].d ? T('prep.cnt', {d: k, t: pt, pl: pt}) : T('note.prep_todo', {until: t('date.until', {date: lessonDate(0)}), d: k, t: pt, pl: pt}); }
     else if (isLocked(n)) {   // before its date: the lesson keeps its own colour, with a lock and the date (once, in the note)
       return `<li class="g-${LCOL[n]} fo"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${lnum(n) == null ? T('lesson.extra') : lnH(n)}</span></span>
         <span class="f-row"><span><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-sub">${T(`lesson.${n}.sub`)}</span></span><span class="f-note">${I('lock', 14)}${T(LESSONS[n].d ? 'date.opens' : 'date.tba', {date: lessonDate(n)})}</span></span>${flagH(n)}</button>${fxH('c-' + LCOL[n])}</li>`;
@@ -191,7 +192,7 @@ document.addEventListener('click', e => {   // embedded PDF: build the file from
 const PREP_CMD = (i, j) => (PREP_CMDS[i] || {})[j] || '';   // an install command shown under its step: a mono row with its own copy button (copying ticks nothing)
 const cmdRow = (i, j) => { const c = PREP_CMD(i, j); return c ? `<div class="cmd"><code tabindex="0" aria-label="${esc(c)}">${esc(c)}</code><button class="cmd-cp" type="button" data-cmd="${esc(c)}" aria-label="${esc(t('prep.cmd_copy'))}">${I('copy', 20)}</button></div>` : ''; };
 document.addEventListener('click', async e => { const b = e.target.closest('.cmd-cp'); if (!b) return; flashToast((await copy(b.dataset.cmd)) ? (b.dataset.toast || 'toast.cmd_copied') : 'toast.copy_failed'); });
-const deckCols = open => open < 0 ? 'repeat(4,minmax(0,1fr))' : PREP.items.map((_, i) => i === open ? '2fr' : '1fr').join(' ');
+const deckCols = open => open < 0 ? `repeat(${prepTotal()},minmax(0,1fr))` : PREP.items.map((_, i) => i === open ? '2fr' : '1fr').join(' ');
 function prepPage(){
   const done = PREP.items.map((_, i) => S.has('prep:' + i)), open = prepOpen ?? done.indexOf(false);
   prepFresh = prepOpen === null; prepOpen = open;   // a language switch re-renders: the open card stays and its picture does not replay
@@ -208,10 +209,10 @@ function prepPage(){
   }).join('');
   return {screen: 'ex', tag: '#/dars/0 · ' + t('tag.prep'), title: t('setup.title'), html: nav('prep') + wrap(`
       ${dlh('#/dastur', T('nav.home'), `${T('prep.meta')} · ${cnt('prep')}`)}
-      <h1 class="headline ex-h">${T('setup.title')}</h1><p class="lede">${prepCount() === 4 ? T('prep.lede_done') : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>
+      <h1 class="headline ex-h">${T('setup.title')}</h1><p class="lede">${prepCount() === prepTotal() ? T('prep.lede_done') : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>
       <div class="ex-files"><section class="grp"><h2 class="ef-h">${T('common.guide')}</h2><ul>${prepFileRow()}</ul></section></div>`,
     `<section class="prep" aria-label="${esc(t('prep.list.k'))}"><ol class="deck" id="deck" style="--cols:${deckCols(open)}">${cards}</ol></section>
-      <div class="prep-end" id="prep-end"${prepCount() === 4 ? '' : ' hidden'}><p class="pe-t">${T(courseStarted() ? 'prep.end_after' : LESSONS[1].d ? 'prep.end_before' : 'prep.end_tba', {date: lessonDate(1)})}</p><a class="play" href="#/dastur"><span>${T('prep.end_back')}</span><span class="play-circ">${I('next', 20)}</span></a></div>`)};
+      <div class="prep-end" id="prep-end"${prepCount() === prepTotal() ? '' : ' hidden'}><p class="pe-t">${T(courseStarted() ? 'prep.end_after' : LESSONS[1].d ? 'prep.end_before' : 'prep.end_tba', {date: lessonDate(1)})}</p><a class="play" href="#/dastur"><span>${T('prep.end_back')}</span><span class="play-circ">${I('next', 20)}</span></a></div>`)};
 }
 // "Birinchi darsgacha" as an accordion (user, 2026-10-30; a port of IconAccordion): one Poʻlat row per link or video; the open row lifts into its own pill and the rows next to it round the corners that meet it
 let iaOpen = 0;
@@ -260,7 +261,7 @@ function initPrep(root){
       $('.hd', c).setAttribute('aria-expanded', o); $('.bd', c).hidden = !o;
       ch.setAttribute('aria-pressed', d[i]); ch.classList.toggle('off', !d[i]);
       if (!o) $('.ill', c).classList.remove('enter'); });
-    deck.style.setProperty('--cols', deckCols(open)); $('#prep-end').hidden = count() < 4; refreshCounts();
+    deck.style.setProperty('--cols', deckCols(open)); $('#prep-end').hidden = count() < prepTotal(); refreshCounts();
   }
   const toggleOpen = i => { open = open === i ? -1 : i; prepOpen = open; paint(); if (open === i) play(i); };
   cards.forEach((c, i) => {
@@ -274,7 +275,7 @@ function initPrep(root){
       prepOpen = open;
       const after = () => { paint(); if (open >= 0 && open !== prev) { play(open); $('.hd', cards[open]).focus(); } };
       if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(after); else after();   // the cards slide to their new places
-      live.textContent = ''; clearTimeout(liveTimer); liveTimer = setTimeout(() => live.textContent = t(was ? 'live.prep_undone' : 'live.prep_done', {title: t(`prep.${i}.title`), d: count(), pl: 4}), 30);
+      live.textContent = ''; clearTimeout(liveTimer); liveTimer = setTimeout(() => live.textContent = t(was ? 'live.prep_undone' : 'live.prep_done', {title: t(`prep.${i}.title`), d: count(), t: prepTotal(), pl: prepTotal()}), 30);
     });
   });
   if (prepIO) prepIO.disconnect();

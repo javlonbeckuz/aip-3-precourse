@@ -6,8 +6,7 @@
   "topics": [
     "Computer",
     "Google account",
-    "Claude",
-    "Warp and Claude Code"
+    "Claude"
   ],
   "slideCount": 0,
   "slideKind": "image",
@@ -65,30 +64,6 @@
           }
         ],
         "footnote": "From Lesson 02 you use Claude Code a lot, and the Pro limit can run out fast. Then switch to Max (from $100 a month)."
-      },
-      {
-        "brand": "warp",
-        "title": "Warp and Claude Code",
-        "note": "Claude Code runs in the Warp terminal. Install it and open it once.",
-        "steps": [
-          "Download Warp from warp.dev and install it.",
-          "Mac: open Warp and type:",
-          "Windows: open Warp and type:",
-          "Type claude and press Enter. A browser opens: sign in with your Claude account.",
-          "If Claude Code answers your greeting, you are ready."
-        ],
-        "actions": [
-          {
-            "label": "Download Warp",
-            "url": "https://www.warp.dev/"
-          },
-          {
-            "label": "Claude Code guide",
-            "url": "https://code.claude.com/docs/en/quickstart",
-            "quiet": true
-          }
-        ],
-        "footnote": "If the install fails, send a screenshot of the error to your mentor. Mentors help at the end of Lesson 01."
       }
     ],
     "more": {

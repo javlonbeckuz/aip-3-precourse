@@ -271,11 +271,11 @@ const I18N = {uz: {
   'hero.k': 'Hozir davom etmoqda', 'hero.sub': 'Slaydlar {i} / {n} · davom etish',
   'next.k': 'Keyingi qadam', 'next.ex_prompt': 'Mashq {num} · {pid} {title}', 'next.ex': 'Mashq {num}', 'next.pick': 'Mashq 03 · {num} {title}',
   'next.vz': 'Vazifa · {pid}', 'next.sl': 'Slaydlar · {i} / {total}', 'cta.continue': 'Davom etish: {what}',
-  'note.prep_todo': '{until} · {d}/4 bajarildi', 'note.done': 'Bajarildi · {d}/{t}', 'note.live_a': 'Hozir', 'note.live_b': ' davom etmoqda', 'note.live_c': ' · {d}/{t} bajarildi', 'note.open': 'Ochiq · {d}/{t} bajarildi',
+  'note.prep_todo': '{until} · {d}/{t} bajarildi', 'note.done': 'Bajarildi · {d}/{t}', 'note.live_a': 'Hozir', 'note.live_b': ' davom etmoqda', 'note.live_c': ' · {d}/{t} bajarildi', 'note.open': 'Ochiq · {d}/{t} bajarildi',
   // --- prep (lesson 0)
   'prep.title': 'Birinchi darsgacha',
   'prep.meta': 'Tayyorgarlik',
-  'prep.cnt': '{d}/4 bajarildi',
+  'prep.cnt': '{d}/{t} bajarildi',
   'prep.pdf': 'PDF yuklab olish',
   'prep.list.k': 'Tayyorgarlik · 4 ta band',
   'prep.list.rule': 'Har bir bandni bajarganingizdan keyin belgilang.',
@@ -316,8 +316,8 @@ const I18N = {uz: {
   
   
   
-  'live.prep_done': '{title} bajarildi · {d}/4',
-  'live.prep_undone': '{title}: belgi olib tashlandi · {d}/4 tayyor',
+  'live.prep_done': '{title} bajarildi · {d}/{t}',
+  'live.prep_undone': '{title}: belgi olib tashlandi · {d}/{t} tayyor',
   'prep.pdf_meta': 'PDF · {n} slayd · {size}',
   'hero.sub_start': 'Slaydlar · {n} ta · boshlash',
   'hero.sub_seen': 'Slaydlar koʻrildi · {n} / {n}',
@@ -387,7 +387,7 @@ const I18N = {uz: {
   'menu.course_tba': '{n} dars, sanasi keyinroq',
   'menu.group_none': 'Guruh hali tanlanmagan',
   'prep.more.dflt': 'Oʻrganishda davom eting',
-  'prep.lede_done': '4 qadamning hammasi bajarildi. Kerak boʻlsa, istalgan kartani qayta oching.',
+  'prep.lede_done': 'Hamma qadamlar bajarildi. Kerak boʻlsa, istalgan kartani qayta oching.',
   'sl.img': '{i}-slayd: {topic}',
   // --- lesson page: tabs and panes
   'tab.list': 'Dars boʻlimlari',
@@ -708,7 +708,7 @@ const I18N = {uz: {
   "next.vz": "Задание · {pid}",
   "next.sl": "Слайды · {i} / {total}",
   "cta.continue": "Продолжить: {what}",
-  "note.prep_todo": "{until} · выполнено {d}/4",
+  "note.prep_todo": "{until} · выполнено {d}/{t}",
   "note.done": "Выполнено · {d}/{t}",
   "note.live_a": "Сейчас",
   "note.live_b": " идёт",
@@ -716,7 +716,7 @@ const I18N = {uz: {
   "note.open": "Открыт · выполнено {d}/{t}",
   "prep.title": "До первого урока",
   "prep.meta": "Подготовка",
-  "prep.cnt": "{d}/4 выполнено",
+  "prep.cnt": "{d}/{t} выполнено",
   "prep.pdf": "Скачать PDF",
   "prep.list.k": "Подготовка · 4 пункта",
   "prep.list.rule": "Отмечайте каждый пункт, когда выполните его.",
@@ -854,8 +854,8 @@ const I18N = {uz: {
   "title.gate": "Вход",
   "title.type": "Шрифт",
   "title.all": "Все экраны",
-  "live.prep_done": "{title}: выполнено · {d}/4",
-  "live.prep_undone": "{title}: отметка снята · {d}/4 готово",
+  "live.prep_done": "{title}: выполнено · {d}/{t}",
+  "live.prep_undone": "{title}: отметка снята · {d}/{t} готово",
   "prep.pdf_meta": "PDF · {n} слайда · {size}",
   "prep.pdf_meta#one": "PDF · {n} слайд · {size}",
   "prep.pdf_meta#few": "PDF · {n} слайда · {size}",
@@ -922,7 +922,7 @@ const I18N = {uz: {
   "prep.end_before": "Вы готовы. Первое занятие: {date}.",
   "prep.end_after": "Подготовка завершена.",
   "prep.end_back": "Вернуться к программе",
-  "prep.lede_done": "Все 4 шага выполнены. При необходимости откройте любую карточку снова.",
+  "prep.lede_done": "Все шаги выполнены. При необходимости откройте любую карточку снова.",
   "sl.img": "Слайд {i}: {topic}",
   "date.tba": "Дата будет позже",
   "lock.title_tba": "{n}: дату объявим позже.",
@@ -1048,7 +1048,7 @@ const I18N = {uz: {
   "next.vz": "Homework · {pid}",
   "next.sl": "Slides · {i} / {total}",
   "cta.continue": "Continue: {what}",
-  "note.prep_todo": "{until} · {d}/4 done",
+  "note.prep_todo": "{until} · {d}/{t} done",
   "note.done": "Done · {d}/{t}",
   "note.live_a": "Now",
   "note.live_b": " in progress",
@@ -1056,7 +1056,7 @@ const I18N = {uz: {
   "note.open": "Open · {d}/{t} done",
   "prep.title": "Before the first lesson",
   "prep.meta": "Preparation",
-  "prep.cnt": "{d}/4 done",
+  "prep.cnt": "{d}/{t} done",
   "prep.pdf": "Download PDF",
   "prep.list.k": "Preparation · 4 items",
   "prep.list.rule": "Mark each item once you’ve done it.",
@@ -1194,8 +1194,8 @@ const I18N = {uz: {
   "title.gate": "Sign in",
   "title.type": "Typeface",
   "title.all": "All screens",
-  "live.prep_done": "{title}: done · {d}/4",
-  "live.prep_undone": "{title}: mark removed · {d}/4 done",
+  "live.prep_done": "{title}: done · {d}/{t}",
+  "live.prep_undone": "{title}: mark removed · {d}/{t} done",
   "prep.pdf_meta": "PDF · {n} slides · {size}",
   "prep.pdf_meta#one": "PDF · {n} slide · {size}",
   "prep.pdf_meta#other": "PDF · {n} slides · {size}",
@@ -1260,7 +1260,7 @@ const I18N = {uz: {
   "prep.end_before": "You're ready. The first lesson is on {date}.",
   "prep.end_after": "Preparation is complete.",
   "prep.end_back": "Back to the program",
-  "prep.lede_done": "All 4 steps are done. Open any card again if you need it.",
+  "prep.lede_done": "All steps are done. Open any card again if you need it.",
   "sl.img": "Slide {i}: {topic}",
   "date.tba": "Date to follow",
   "lock.title_tba": "{n}: the date will be announced later.",
@@ -1369,7 +1369,7 @@ let PREP = {items: []};   // from the API (lesson 0)
 /*ART:begin*/ const PREP_ART = ["<svg class=\"ill\" viewBox=\"0 0 300 300\" aria-hidden=\"true\" focusable=\"false\"><rect class=\"s\" x=\"18\" y=\"204\" width=\"264\" height=\"26\" rx=\"10\" fill=\"#E0E0E0\"/><path d=\"M122 204h56v4a8 8 0 0 1-8 8h-40a8 8 0 0 1-8-8z\" fill=\"#000\"/><g class=\"l-lid\"><rect x=\"46\" y=\"48\" width=\"208\" height=\"156\" rx=\"14\" fill=\"#000\"/><rect x=\"58\" y=\"60\" width=\"184\" height=\"132\" rx=\"6\" fill=\"#0A14FC\"/><rect class=\"s\" x=\"70\" y=\"72\" width=\"160\" height=\"108\" rx=\"8\" fill=\"#fff\"/><rect x=\"84\" y=\"86\" width=\"70\" height=\"8\" rx=\"4\" fill=\"#E0E0E0\"/><rect x=\"84\" y=\"100\" width=\"44\" height=\"8\" rx=\"4\" fill=\"#E0E0E0\"/><text x=\"84\" y=\"138\" font-size=\"22\" fill=\"#000\">5 GB</text><rect x=\"191.2\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#E0E0E0\"/><rect x=\"204.6\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#E0E0E0\"/><rect x=\"84.0\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"97.4\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"110.8\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"124.2\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"137.6\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"151.0\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"164.4\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><rect x=\"177.8\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#000\"/><g class=\"l-free\"><rect x=\"191.2\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#FDC959\" stroke=\"#000\" stroke-width=\"3\"/><rect x=\"204.6\" y=\"148\" width=\"11\" height=\"20\" rx=\"3\" fill=\"#FDC959\" stroke=\"#000\" stroke-width=\"3\"/></g></g><g transform=\"translate(278 22)\"><g class=\"badge\"><circle r=\"16\" fill=\"#000\"/><path d=\"M-7 0.5l5 5 9-10\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g></svg>", "<svg class=\"ill\" viewBox=\"0 0 300 300\" aria-hidden=\"true\" focusable=\"false\"><g class=\"g-card\"><rect class=\"s\" x=\"92\" y=\"22\" width=\"116\" height=\"150\" rx=\"12\" fill=\"#E0E0E0\"/><rect x=\"108\" y=\"40\" width=\"72\" height=\"9\" rx=\"4.5\" fill=\"#000\"/><rect x=\"108\" y=\"56\" width=\"48\" height=\"9\" rx=\"4.5\" fill=\"#000\"/><rect x=\"108\" y=\"82\" width=\"84\" height=\"24\" rx=\"12\" fill=\"#0A14FC\"/><g class=\"g-tick\"><path d=\"M141 94l6 6 12-12\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g><g class=\"g-env\"><rect class=\"s\" x=\"66\" y=\"130\" width=\"168\" height=\"142\" rx=\"22\" fill=\"#fff\"/><path d=\"M150.0 160.0A40 40 0 0 0 113.7 183.1\" fill=\"none\" stroke=\"#EA4335\" stroke-width=\"26\"/><path d=\"M113.7 183.1A40 40 0 0 0 115.4 220.0\" fill=\"none\" stroke=\"#FBBC04\" stroke-width=\"26\"/><path d=\"M115.4 220.0A40 40 0 0 0 178.3 228.3\" fill=\"none\" stroke=\"#34A853\" stroke-width=\"26\"/><path d=\"M178.3 228.3A40 40 0 0 0 190.0 201.4\" fill=\"none\" stroke=\"#4285F4\" stroke-width=\"26\"/><path d=\"M150.0 160.0A40 40 0 0 1 181.5 175.4\" fill=\"none\" stroke=\"#4285F4\" stroke-width=\"26\"/><rect x=\"150\" y=\"187\" width=\"53\" height=\"26\" fill=\"#4285F4\"/></g><g transform=\"translate(278 22)\"><g class=\"badge\"><circle r=\"16\" fill=\"#000\"/><path d=\"M-7 0.5l5 5 9-10\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g></svg>", "<svg class=\"ill\" viewBox=\"0 0 300 300\" aria-hidden=\"true\" focusable=\"false\"><g class=\"c-win\"><rect x=\"32\" y=\"44\" width=\"236\" height=\"204\" rx=\"14\" fill=\"#000\"/><circle cx=\"50\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><circle cx=\"64\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><circle cx=\"78\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><path d=\"M38 70h224v164a8 8 0 0 1-8 8H46a8 8 0 0 1-8-8z\" fill=\"#fff\"/><rect x=\"146\" y=\"82\" width=\"104\" height=\"30\" rx=\"15\" fill=\"#000\"/><rect x=\"162\" y=\"93\" width=\"62\" height=\"8\" rx=\"4\" fill=\"#fff\"/><g class=\"c-reply\"><rect class=\"s\" x=\"48\" y=\"128\" width=\"52\" height=\"52\" rx=\"13\" fill=\"#D97757\"/><polygon points=\"74.0,132.0 75.8,147.2 83.0,138.4 78.9,149.1 93.1,143.0 80.8,152.2 93.0,154.0 80.8,155.8 93.1,165.0 78.9,158.9 83.0,169.6 75.8,160.8 74.0,176.0 72.2,160.8 64.5,170.5 69.1,158.9 54.9,165.0 67.2,155.8 56.0,154.0 67.2,152.2 54.9,143.0 69.1,149.1 64.5,137.5 72.2,147.2\" fill=\"#fff\"/><rect x=\"112\" y=\"130\" width=\"128\" height=\"12\" rx=\"6\" fill=\"#E0E0E0\"/><rect x=\"112\" y=\"150\" width=\"108\" height=\"12\" rx=\"6\" fill=\"#E0E0E0\"/><rect x=\"112\" y=\"170\" width=\"72\" height=\"12\" rx=\"6\" fill=\"#E0E0E0\"/></g><rect x=\"54\" y=\"204\" width=\"192\" height=\"26\" rx=\"13\" fill=\"#E0E0E0\"/><circle cx=\"231\" cy=\"217\" r=\"8\" fill=\"#000\"/></g><g transform=\"translate(278 22)\"><g class=\"badge\"><circle r=\"16\" fill=\"#000\"/><path d=\"M-7 0.5l5 5 9-10\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g></svg>", "<svg class=\"ill\" viewBox=\"0 0 300 300\" aria-hidden=\"true\" focusable=\"false\"><g class=\"w-win\"><rect x=\"32\" y=\"44\" width=\"236\" height=\"204\" rx=\"14\" fill=\"#000\"/><circle cx=\"50\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><circle cx=\"64\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><circle cx=\"78\" cy=\"57\" r=\"4\" fill=\"#E0E0E0\"/><path d=\"M38 70h224v164a8 8 0 0 1-8 8H46a8 8 0 0 1-8-8z\" fill=\"#0A14FC\"/><path d=\"M52 83l9 9-9 9\" fill=\"none\" stroke=\"#FDC959\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"72\" y=\"98\" font-size=\"19\" fill=\"#fff\">claude</text><g class=\"w-reply\"><rect class=\"s\" x=\"50\" y=\"120\" width=\"200\" height=\"100\" rx=\"12\" fill=\"#fff\"/><rect x=\"66\" y=\"140\" width=\"150\" height=\"11\" rx=\"5.5\" fill=\"#E0E0E0\"/><rect x=\"66\" y=\"162\" width=\"112\" height=\"11\" rx=\"5.5\" fill=\"#E0E0E0\"/><rect x=\"66\" y=\"184\" width=\"132\" height=\"11\" rx=\"5.5\" fill=\"#E0E0E0\"/></g></g><g transform=\"translate(278 22)\"><g class=\"badge\"><circle r=\"16\" fill=\"#000\"/><path d=\"M-7 0.5l5 5 9-10\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></g></svg>"]; /*ART:end*/   // the four animated pictures of prep option C (UI, not content)
 
 let C20 = {};   // filled from GET /me (app_state.js): the bundle holds no lesson text
-const PREP_CMDS = {3: {1: 'curl -fsSL https://claude.ai/install.sh | bash', 2: 'irm https://claude.ai/install.ps1 | iex'}};   // prep item 4: step index -> the command shown (and copyable) under that step
+const PREP_CMDS = {};   // prep item -> {step index: an install command shown (and copyable) under that step}; empty since the Warp card was removed (2026-10-30)
 let PARTS = {};   // lesson number -> {am|kt|vz: {text, groups: [{title, note, files}]}}: the shape the lesson page reads
 const FC = (f, ph, slug) => f ? F(f.name, f.size, ph, slug || f.slug, f.url) : null;   // file from the demo / API: name + size (+ url in the app), never a server path
 function buildData(){
@@ -1546,6 +1546,7 @@ const ltitle = n => t(`lesson.${n}.title`);
 
 // ---- progress model: the units of a lesson are the parts it really has: slides (all seen), Amaliyot (one tick), Vazifa (one tick). Kit is a folder of files and is not counted
 const slDone = n => S.sl(n) >= LESSONS[n].slides;
+const prepTotal = () => PREP.items.length;   // the setup cards come from the content (4 until 2026-10-30, Warp removed by the user)
 const prepCount = () => PREP.items.filter((_, i) => S.has('prep:' + i)).length;
 const slHref = n => `#/dars/${n}/slayd/${S.sl(n) === 0 || slDone(n) ? 1 : S.sl(n)}`;
 const partOpen = (n, p) => !partLock(n, p);
@@ -1571,7 +1572,7 @@ const nextStep = () => { const live = liveLesson();
   return LN().filter(n => !isLocked(n) && n !== live).map(nextOf).find(Boolean) || null; }; // the live lesson is the hero card, so it is not repeated here
 // live counters shown on the open page ("k/t"): one formatter for the templates and for refreshCounts()
 function cntText(type){
-  if (type === 'prep') return t('prep.cnt', {d: prepCount(), pl: 4});
+  if (type === 'prep') return t('prep.cnt', {d: prepCount(), t: prepTotal(), pl: prepTotal()});
   return '';
 }
 const cnt = (type, id = '') => `<span data-cnt="${type}${id ? ':' + id : ''}">${esc(cntText(type, id))}</span>`;
@@ -1620,7 +1621,7 @@ function homePage(){
     const tab = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`, arrow = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
     const label = n === 0 ? T('lesson.label0') : lessonLabel(n);
     let note, href = `#/dars/${n}`;
-    if (n === 0) { note = k === 4 ? `${I('check', 14)}${T('note.done', {d: 4, t: 4, pl: 4})}` : courseStarted() ? T('note.open', {d: k, t: 4, pl: 4}) : !LESSONS[0].d ? T('prep.cnt', {d: k, pl: 4}) : T('note.prep_todo', {until: t('date.until', {date: lessonDate(0)}), d: k, pl: 4}); }
+    if (n === 0) { const pt = prepTotal(); note = k === pt ? `${I('check', 14)}${T('note.done', {d: pt, t: pt, pl: pt})}` : courseStarted() ? T('note.open', {d: k, t: pt, pl: pt}) : !LESSONS[0].d ? T('prep.cnt', {d: k, t: pt, pl: pt}) : T('note.prep_todo', {until: t('date.until', {date: lessonDate(0)}), d: k, t: pt, pl: pt}); }
     else if (isLocked(n)) {   // before its date: the lesson keeps its own colour, with a lock and the date (once, in the note)
       return `<li class="g-${LCOL[n]} fo"><button class="folder c-${LCOL[n]}" type="button" aria-haspopup="dialog" data-sheet="lock-sheet" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${lnum(n) == null ? T('lesson.extra') : lnH(n)}</span></span>
         <span class="f-row"><span><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-sub">${T(`lesson.${n}.sub`)}</span></span><span class="f-note">${I('lock', 14)}${T(LESSONS[n].d ? 'date.opens' : 'date.tba', {date: lessonDate(n)})}</span></span>${flagH(n)}</button>${fxH('c-' + LCOL[n])}</li>`;
@@ -1670,7 +1671,7 @@ function homePage(){
 const PREP_CMD = (i, j) => (PREP_CMDS[i] || {})[j] || '';   // an install command shown under its step: a mono row with its own copy button (copying ticks nothing)
 const cmdRow = (i, j) => { const c = PREP_CMD(i, j); return c ? `<div class="cmd"><code tabindex="0" aria-label="${esc(c)}">${esc(c)}</code><button class="cmd-cp" type="button" data-cmd="${esc(c)}" aria-label="${esc(t('prep.cmd_copy'))}">${I('copy', 20)}</button></div>` : ''; };
 document.addEventListener('click', async e => { const b = e.target.closest('.cmd-cp'); if (!b) return; flashToast((await copy(b.dataset.cmd)) ? (b.dataset.toast || 'toast.cmd_copied') : 'toast.copy_failed'); });
-const deckCols = open => open < 0 ? 'repeat(4,minmax(0,1fr))' : PREP.items.map((_, i) => i === open ? '2fr' : '1fr').join(' ');
+const deckCols = open => open < 0 ? `repeat(${prepTotal()},minmax(0,1fr))` : PREP.items.map((_, i) => i === open ? '2fr' : '1fr').join(' ');
 function prepPage(){
   const done = PREP.items.map((_, i) => S.has('prep:' + i)), open = prepOpen ?? done.indexOf(false);
   prepFresh = prepOpen === null; prepOpen = open;   // a language switch re-renders: the open card stays and its picture does not replay
@@ -1687,10 +1688,10 @@ function prepPage(){
   }).join('');
   return {screen: 'ex', tag: '#/dars/0 · ' + t('tag.prep'), title: t('setup.title'), html: nav('prep') + wrap(`
       ${dlh('#/dastur', T('nav.home'), `${T('prep.meta')} · ${cnt('prep')}`)}
-      <h1 class="headline ex-h">${T('setup.title')}</h1><p class="lede">${prepCount() === 4 ? T('prep.lede_done') : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>
+      <h1 class="headline ex-h">${T('setup.title')}</h1><p class="lede">${prepCount() === prepTotal() ? T('prep.lede_done') : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>
       <div class="ex-files"><section class="grp"><h2 class="ef-h">${T('common.guide')}</h2><ul>${prepFileRow()}</ul></section></div>`,
     `<section class="prep" aria-label="${esc(t('prep.list.k'))}"><ol class="deck" id="deck" style="--cols:${deckCols(open)}">${cards}</ol></section>
-      <div class="prep-end" id="prep-end"${prepCount() === 4 ? '' : ' hidden'}><p class="pe-t">${T(courseStarted() ? 'prep.end_after' : LESSONS[1].d ? 'prep.end_before' : 'prep.end_tba', {date: lessonDate(1)})}</p><a class="play" href="#/dastur"><span>${T('prep.end_back')}</span><span class="play-circ">${I('next', 20)}</span></a></div>`)};
+      <div class="prep-end" id="prep-end"${prepCount() === prepTotal() ? '' : ' hidden'}><p class="pe-t">${T(courseStarted() ? 'prep.end_after' : LESSONS[1].d ? 'prep.end_before' : 'prep.end_tba', {date: lessonDate(1)})}</p><a class="play" href="#/dastur"><span>${T('prep.end_back')}</span><span class="play-circ">${I('next', 20)}</span></a></div>`)};
 }
 // "Birinchi darsgacha" as an accordion (user, 2026-10-30; a port of IconAccordion): one Poʻlat row per link or video; the open row lifts into its own pill and the rows next to it round the corners that meet it
 let iaOpen = 0;
@@ -1739,7 +1740,7 @@ function initPrep(root){
       $('.hd', c).setAttribute('aria-expanded', o); $('.bd', c).hidden = !o;
       ch.setAttribute('aria-pressed', d[i]); ch.classList.toggle('off', !d[i]);
       if (!o) $('.ill', c).classList.remove('enter'); });
-    deck.style.setProperty('--cols', deckCols(open)); $('#prep-end').hidden = count() < 4; refreshCounts();
+    deck.style.setProperty('--cols', deckCols(open)); $('#prep-end').hidden = count() < prepTotal(); refreshCounts();
   }
   const toggleOpen = i => { open = open === i ? -1 : i; prepOpen = open; paint(); if (open === i) play(i); };
   cards.forEach((c, i) => {
@@ -1753,7 +1754,7 @@ function initPrep(root){
       prepOpen = open;
       const after = () => { paint(); if (open >= 0 && open !== prev) { play(open); $('.hd', cards[open]).focus(); } };
       if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(after); else after();   // the cards slide to their new places
-      live.textContent = ''; clearTimeout(liveTimer); liveTimer = setTimeout(() => live.textContent = t(was ? 'live.prep_undone' : 'live.prep_done', {title: t(`prep.${i}.title`), d: count(), pl: 4}), 30);
+      live.textContent = ''; clearTimeout(liveTimer); liveTimer = setTimeout(() => live.textContent = t(was ? 'live.prep_undone' : 'live.prep_done', {title: t(`prep.${i}.title`), d: count(), t: prepTotal(), pl: prepTotal()}), 30);
     });
   });
   if (prepIO) prepIO.disconnect();
