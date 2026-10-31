@@ -99,7 +99,7 @@ Limits: body 256 bytes, 600 keys per student, 240 writes per minute. Errors: 400
 
 ## CRM integration
 
-For the developers of the HEAD CRM. Call this endpoint when a student's **first payment** is received (any amount; normally 3,000,000 so'm). **The CRM makes the student's login ID** (rules below) and sends it; the portal stores it, answers with the student's ID and notifies the admins in Telegram. The CRM does not need to know the group: the admins set it from a button. Until then the student sees the course dates of the group that starts first (21-noyabr) and every lesson stays locked.
+For the developers of the HEAD CRM. **The CRM is connected to the portal directly**: the admin Telegram bot is paused (2026-10-31), so the CRM is the only way students are made, and the CRM gives each student their ID. Call this endpoint when a student's **first payment** is received (any amount; normally 3,000,000 so'm). **The CRM makes the student's login ID** (rules below) and sends it; the portal stores it and answers with it. Send the student's group (`shanba` or `yakshanba`) as soon as you know it, on the first call or later (see "Setting the group later"): **a student with no group sees the course dates but never gets a lesson opened**. Until the group is set the portal shows the dates of the group that starts first (21-noyabr).
 
 ### ID rules
 
@@ -107,9 +107,9 @@ For the developers of the HEAD CRM. Call this endpoint when a student's **first 
 - Alphabet (31 characters): `23456789ABCDEFGHJKMNPQRSTUVWXYZ`. No `0`, `1`, `I`, `L`, `O`: they are easy to confuse when a student types the ID.
 - Upper case. The portal accepts lower case and stores it upper case.
 - Random: pick each character with a cryptographic random generator (`crypto.randomInt(31)` in Node, `secrets.choice` in Python). Never derive it from the phone, the name, a counter or a date: the ID is the student's password.
-- One ID per person, for good. The phone number is the identity: if the portal already knows the phone, it keeps the ID it has. It sends that ID back only when you sent the same ID (a retry). If you sent another ID the answer has **no** `id`: the phone is registered under a different ID, so do not give the student the ID you made. The admins get a Telegram card with the real ID and give it to you. (The portal never turns a phone number into a login ID: the ID is the student's password.)
+- One ID per person, for good. The phone number is the identity: if the portal already knows the phone, it keeps the ID it has. It sends that ID back only when you sent the same ID. If you sent another ID the answer has **no** `id`: the phone already has the ID you made the first time, so look it up in your own records and do not give the student the new one. (The portal never turns a phone number into a login ID: the ID is the student's password.)
 - If the ID is already taken by another student the portal answers **409 `id_taken`**: make a new random ID and send again (same body otherwise). With 31^6 = 887 million IDs this almost never happens.
-- The admins' bot (`/new`) makes IDs by the same rules, so both sources share one pool; the 409 keeps them apart.
+- The admins' bot (`/new`, paused for now) makes IDs by the same rules, so both sources share one pool; the 409 keeps them apart.
 - Students log in with the full ID (`AIP-7KQ2XM`) or just the 6 characters (`7KQ2XM`).
 
 ```
@@ -136,10 +136,10 @@ Responses (all JSON). The success bodies never carry a name or phone. They carry
 
 | Status | Body | When |
 |---|---|---|
-| 201 | `{ "ok": true, "created": true, "id": "AIP-7KQ2XM" }` | new phone: student created with this ID, admins notified |
-| 200 | `{ "ok": true, "created": false, "id": "AIP-7KQ2XM" }` or `{ "ok": true, "created": false }` | this phone is already known: nothing changed. With `id`: you sent the student's own ID (a retry), all good. Without `id`: the phone has another ID than the one you sent (or you sent none); the admins get the real ID in Telegram, store that one. If that student is deactivated, or the CRM sent a different name than the one on file, the admins get a "repeat payment" notice to look at (still 200). A plain retry with the same name is silent, and the same student is reported at most once a day (20 notices an hour overall). |
-| 400 | `{ "error": { "code": "...", "message": "..." } }`, code one of `bad_id`, `bad_name`, `bad_phone`, `bad_group`, `bad_mentor`, `bad_json`, `unknown_field` | invalid input. Invisible formatting characters (zero-width, bidi marks) in a name or mentor are removed, control characters are refused. A refused request alerts the admins (at most one alert per 10 minutes, so check the CRM's own log for others); fix and resend. |
-| 409 | `id_taken` | the ID belongs to another student: make a new ID and send again. Also alerts the admins (same limit as 400), in case the CRM does not retry. |
+| 201 | `{ "ok": true, "created": true, "id": "AIP-7KQ2XM" }` | new phone: student created with this ID. Give the student this ID. |
+| 200 | `{ "ok": true, "created": false, "id": "AIP-7KQ2XM", "group": "shanba" }` or `{ "ok": true, "created": false }` | this phone is already known. With `id` (you sent the student's own ID): if you also sent a `group`, it is set or changed, and `group` is the group now on file (`null` = none). Without `id`: the phone has another ID than the one you sent (or you sent none); nothing changed. |
+| 400 | `{ "error": { "code": "...", "message": "..." } }`, code one of `bad_id`, `bad_name`, `bad_phone`, `bad_group`, `bad_mentor`, `bad_json`, `unknown_field` | invalid input. Invisible formatting characters (zero-width, bidi marks) in a name or mentor are removed, control characters are refused. A refused request raises an alert (in Telegram while the bot runs, otherwise in the server log; at most one per 10 minutes, so check the CRM's own log for others); fix and resend. |
+| 409 | `id_taken` | the ID belongs to another student: make a new ID and send again. |
 | 401 | `unauthorized` | missing or wrong key (the scheme is exactly `Bearer`) |
 | 404 | `not_found` | the portal has no integration key configured (every method on `/api/int/*`) |
 | 405 | `method_not_allowed` | any method but POST on this path |
@@ -149,6 +149,20 @@ Responses (all JSON). The success bodies never carry a name or phone. They carry
 
 Retrying is safe: the phone number is the identity, so a repeated or timed-out call returns 200 instead of making a second student. **Retry 429 and 5xx** (and network errors) with the same body, after `Retry-After` or with exponential backoff. On **409 `id_taken`** send again with a **new** ID. **Do not retry any other 4xx**: fix the request (or the key) first.
 
+### Setting the group later
+
+Send the same call again with the student's phone, **their ID** and `group`. The answer is 200 with the group now on file. Changing it later works the same way. With another ID, nothing changes.
+
+```
+curl -sS -X POST https://<portal host>/api/int/students -H "Authorization: Bearer $INTEGRATION_KEY" -H "Content-Type: application/json" \
+  -d '{"id":"AIP-7KQ2XM","fullName":"Ali Valiyev","phone":"+998 90 123 45 67","group":"yakshanba"}'
+# -> 200 {"ok":true,"created":false,"id":"AIP-7KQ2XM","group":"yakshanba"}
+```
+
+While the bot is paused, the portal's alerts (refused requests, many new students in an hour) only go to the server log.
+
+### Example
+
 ```
 curl -sS -X POST https://<portal host>/api/int/students \
   -H "Authorization: Bearer $INTEGRATION_KEY" \
@@ -156,7 +170,7 @@ curl -sS -X POST https://<portal host>/api/int/students \
   -d '{"id":"AIP-7KQ2XM","fullName":"Ali Valiyev","phone":"+998 90 123 45 67"}'
 ```
 
-The admins' own flow (bot `/new`) also refuses a phone that is already registered, so the same person never gets two IDs.
+The admins' own flow (bot `/new`, paused) also refuses a phone that is already registered, so the same person never gets two IDs.
 
 ## Other
 

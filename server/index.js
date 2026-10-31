@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pipeline } from 'node:stream';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { openDb, getStudent, getStudentByPhone, createStudent, normPhone, studentRef, squash, fold, touchLogin, publicStudent, getProgress, putProgress, HttpError, FULL_ID } from './db.js';
+import { openDb, getStudent, getStudentByPhone, createStudent, updateStudent, normPhone, studentRef, squash, fold, touchLogin, publicStudent, getProgress, putProgress, HttpError, FULL_ID } from './db.js';
 import * as auth from './auth.js';
 import { createContent, parseTime, isoTashkent, LANGS } from './content.js';
 
@@ -198,7 +198,11 @@ export function createApp(cfg) {
       }
       // a known phone keeps its first ID. It is echoed only when the CRM already sent that same ID: otherwise the key would be a phone -> login lookup.
       // Another ID: no ID in the answer, the admins get the card with the real one.
-      return json(res, 200, id && id === have.id ? { ok: true, created: false, id } : { ok: true, created: false });
+      if (!id || id !== have.id) return json(res, 200, { ok: true, created: false });
+      // phone + the student's own ID: the CRM may set or change the group (the admin bot that used to do it is paused, 2026-10-31)
+      const g = v('group').trim();
+      if (g && g !== have.grp) { updateStudent(db, have.id, { grp: g }); console.log(`integration: group set for ${studentRef(db, have.id)}`); }
+      return json(res, 200, { ok: true, created: false, id, group: getStudent(db, have.id).grp });
     }
     let st;
     try { st = createStudent(db, { id, fullName: v('fullName'), phone, grp: v('group').trim() || null, mentor: v('mentor'), createdBy: 0 }); } // 0 = made by the CRM; clean() validates the rest
@@ -224,6 +228,7 @@ export function createApp(cfg) {
       const key = auth.ipKey(ip);
       const wait = guard.check(key, Date.now(), auth.ipKey48(ip));
       if (wait) throw fail(429, 'rate_limited', 'Too many attempts, try again later', { retryAfter: wait });
+      if (auth.lookalike(body.id)) throw fail(400, 'bad_id', 'IDs have no 0, 1, I, L or O');   // never a match, so not counted
       const cands = auth.idCandidates(body.id);
       if (!cands.length) { guard.fail(key); throw fail(400, 'bad_id', 'Enter your ID'); }
       const s = cands.map((c) => getStudent(db, c)).find(Boolean);

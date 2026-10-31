@@ -130,7 +130,16 @@ test('integration endpoint: the CRM makes the ID (AIP- and 6 of the alphabet); t
   assert.deepEqual(seen.at(-1), ['AIP-7KQ2XM', { inactive: false, crmName: null, crmId: 'AIP-ABCDEF' }]);   // the admins get the card with the real ID
   // the same ID again (a retry): it is echoed, the CRM already has it
   const r4 = await c.post(URL_, { id: 'AIP-7KQ2XM', fullName: 'Ali Valiyev', phone: '901234567' }, auth());
-  assert.deepEqual([r4.status, r4.json], [200, { ok: true, created: false, id: 'AIP-7KQ2XM' }]);
+  assert.deepEqual([r4.status, r4.json], [200, { ok: true, created: false, id: 'AIP-7KQ2XM', group: null }]);
+  // with the bot paused the CRM sets the group: same phone + the student's own ID + group
+  const g1 = await c.post(URL_, { id: 'AIP-7KQ2XM', fullName: 'Ali Valiyev', phone: '901234567', group: 'yakshanba' }, auth());
+  assert.deepEqual([g1.status, g1.json], [200, { ok: true, created: false, id: 'AIP-7KQ2XM', group: 'yakshanba' }]);
+  const g2 = await c.post(URL_, { id: 'AIP-7KQ2XM', fullName: 'Ali Valiyev', phone: '901234567', group: 'shanba' }, auth());   // changed later
+  assert.equal(g2.json.group, 'shanba');
+  assert.equal((await c.post(URL_, { id: 'AIP-7KQ2XM', fullName: 'Ali Valiyev', phone: '901234567', group: 'juma' }, auth())).json.error.code, 'bad_group');
+  // another ID cannot change it
+  await c.post(URL_, { id: 'AIP-ABCDEF', fullName: 'Ali Valiyev', phone: '901234567', group: 'yakshanba' }, auth());
+  assert.equal(db.prepare("SELECT grp FROM students WHERE id = 'AIP-7KQ2XM'").get().grp, 'shanba');
   assert.equal(db.prepare("SELECT count(*) n FROM students WHERE id = 'AIP-ABCDEF'").get().n, 0);
   // IDs outside the rule: 400 bad_id, nothing made (0 O 1 I L are not in the alphabet; 7 characters; no prefix)
   for (const id of ['AIP-7KQ2X0', 'AIP-7KQ2XO', 'AIP-7KQ2XI', 'AIP-7KQ2XL', 'AIP-7KQ2X1', 'AIP-7KQ2XMH', 'AIP-7KQ2X', '7KQ2XM', 'XM', 'aip-ſſſſſſ', 'AIP-7KQ2XＭ', 12345678]) {

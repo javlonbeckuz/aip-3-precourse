@@ -75,7 +75,7 @@ test('limiter: ipKey groups IPv6 by /64', () => {
 test('limiter: failed attempts only, window resets, hard cap evicts the oldest', () => {
   const g = loginGuard();
   const t0 = 1_000_000;
-  for (let i = 0; i < 9; i++) { assert.equal(g.check('a', t0), 0); g.fail('a', t0); }
+  for (let i = 0; i < 29; i++) { assert.equal(g.check('a', t0), 0); g.fail('a', t0); }   // 30 per 10 min per client
   assert.equal(g.check('a', t0), 0);
   g.fail('a', t0);
   assert.equal(g.check('a', t0 + 1000), 599);
@@ -111,15 +111,15 @@ test('limiter: global budget tightens to 1/min per key, alerts once, never hard-
 
 test('limiter over HTTP: IPv6 /64 shares a budget, global trip raises the alert', async (t) => {
   const e = quiet(t);
-  const a = await startApp(t, { now: BEFORE, env: { TRUST_PROXY: '1' }, cfg: { loginBudget: 12 } });
+  const a = await startApp(t, { now: BEFORE, env: { TRUST_PROXY: '1' }, cfg: { loginBudget: 12, loginMaxFail: 10 } });
   const alerts = [];
   a.app.setAlert((m) => alerts.push(m));
   const c = a.client();
-  for (let i = 0; i < 10; i++) assert.equal((await c.post('/api/aip/login', { id: 'NOPE99' }, xff(`2001:db8:1:2:${i}::${i + 1}`))).status, 401);
+  for (let i = 0; i < 10; i++) assert.equal((await c.post('/api/aip/login', { id: 'NQPE99' }, xff(`2001:db8:1:2:${i}::${i + 1}`))).status, 401);
   assert.equal((await c.post('/api/aip/login', { id: 'XM' }, xff('2001:db8:1:2:abcd::1'))).status, 429); // same /64
   assert.equal((await c.post('/api/aip/login', { id: 'XM' }, xff('2001:db8:1:3::1'))).status, 200); // another /64
   assert.equal(alerts.length, 0);
-  for (let i = 0; i < 2; i++) await c.post('/api/aip/login', { id: 'NOPE99' }, xff(`198.51.100.${i}`));
+  for (let i = 0; i < 2; i++) await c.post('/api/aip/login', { id: 'NQPE99' }, xff(`198.51.100.${i}`));
   assert.equal(alerts.length, 1);
   assert.match(alerts[0], /failed logins/);
   assert.ok(e.mock.calls.some((x) => String(x.arguments[0]).startsWith('ALERT')));
@@ -534,11 +534,11 @@ test('bot: API calls carry a timeout signal; notifyAdmins reaches every admin', 
 });
 
 // ---------- round 3
-test('limiter race: 30 concurrent bad logins from one client get at most 10 401s', async (t) => {
+test('limiter race: 50 concurrent bad logins from one client get at most 30 401s', async (t) => {
   const a = await startApp(t, { now: BEFORE });
-  const rs = await Promise.all(Array.from({ length: 30 }, () => fetch(`${a.base}/api/aip/login`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: 'NOPE99' }) })));
+  const rs = await Promise.all(Array.from({ length: 50 }, () => fetch(`${a.base}/api/aip/login`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: 'NQPE99' }) })));
   const codes = rs.map((r) => r.status);
-  assert.ok(codes.filter((c) => c === 401).length <= 10, codes.join());
+  assert.ok(codes.filter((c) => c === 401).length <= 30, codes.join());
   assert.equal(codes.filter((c) => c === 429).length, 20);
 });
 
@@ -546,7 +546,7 @@ test('limiter race: slow bodies cannot pass the check together', async (t) => {
   const a = await startApp(t, { now: BEFORE });
   const net = await import('node:net');
   const port = a.app.server.address().port;
-  const body = JSON.stringify({ id: 'NOPE99' });
+  const body = JSON.stringify({ id: 'NQPE99' });
   const open = () => new Promise((resolve) => {
     const sock = net.connect(port, '127.0.0.1');
     let data = '';
@@ -555,8 +555,8 @@ test('limiter race: slow bodies cannot pass the check together', async (t) => {
     sock.write(['POST /api/aip/login HTTP/1.1', 'Host: x', 'Content-Type: application/json', `Content-Length: ${body.length}`, 'Connection: close', '', ''].join('\r\n'));
     setTimeout(() => sock.write(body), 300); // every body arrives after every request has started
   });
-  const outs = await Promise.all(Array.from({ length: 25 }, open));
-  assert.ok(outs.filter((o) => o.startsWith('HTTP/1.1 401')).length <= 10, outs.map((o) => o.slice(0, 15)).join('|'));
+  const outs = await Promise.all(Array.from({ length: 45 }, open));
+  assert.ok(outs.filter((o) => o.startsWith('HTTP/1.1 401')).length <= 30, outs.map((o) => o.slice(0, 15)).join('|'));
   assert.ok(outs.filter((o) => o.startsWith('HTTP/1.1 429')).length >= 15);
 });
 

@@ -10,11 +10,19 @@ export const cookieName = (prod) => (prod ? COOKIE_PROD : COOKIE_DEV);
 
 // "aip-k3m9xz", "AIP K3M9XZ", "k3m9xz" -> candidate ids to try, in order
 export function idCandidates(raw) {
-  const s = String(raw ?? '').trim().toUpperCase();
+  const s = String(raw ?? '').replace(/\s+/g, '').toUpperCase();   // "AIP-3E7 KFB": spaces anywhere are dropped (load test, 2026-10-31)
   if (!s || s.length > 24 || !/^[A-Z0-9 _-]+$/.test(s)) return [];
   const m = /^AIP[-_ ]*(.*)$/.exec(s);
   if (m) return m[1] ? [...new Set([`AIP-${m[1]}`, s, m[1]])] : [];
   return [s, `AIP-${s}`];
+}
+
+// 0 1 I L O are not in the ID alphabet (db.js ID_ALPHABET): an ID typed with one of them can never match, so the login answers
+// bad_id with a hint and does not count it as a failed attempt (a classroom on one Wi-Fi must not lock itself out over look-alikes)
+export function lookalike(raw) {
+  const s = String(raw ?? '').replace(/\s+/g, '').toUpperCase(), m = /^AIP[-_]*(.*)$/.exec(s);
+  const b = m ? m[1] : s;
+  return b.length === 6 && /[01ILO]/.test(b);   // the 6 characters of a real ID; short hand-made ones (XM) are left alone
 }
 
 const sha = (t) => createHash('sha256').update(t).digest('hex');
@@ -65,10 +73,10 @@ export function windowLimiter(max, windowMs, cap = 10000) {
   return { wait, add, hit: (k, now = Date.now()) => wait(k, now) || (add(k, now), 0), prune: (now = Date.now()) => { for (const [k, e] of m) if (e.resetAt <= now) m.delete(k); }, get size() { return m.size; } };
 }
 
-// Login guard: only FAILED attempts count per key (10 per 10 min). A global failure budget (300 per hour)
+// Login guard: only FAILED attempts count per key (30 per 10 min: one classroom shares one IP). A global failure budget (300 per hour)
 // does not lock anyone out; when it trips, every key is held to 1 attempt per minute until the hour ends,
 // and onTrip fires (log + admin alert).
-export function loginGuard({ maxFail = 10, failWindow = 600e3, budget = 300, budgetWindow = 3600e3, onTrip = () => {} } = {}) {
+export function loginGuard({ maxFail = 30, failWindow = 600e3, budget = 300, budgetWindow = 3600e3, onTrip = () => {} } = {}) {
   const fails = windowLimiter(maxFail, failWindow);
   const slow = windowLimiter(1, 60e3);
   let g = { count: 0, resetAt: 0, tripped: false };

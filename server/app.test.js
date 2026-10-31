@@ -37,7 +37,8 @@ test('ids: format, alphabet, uniqueness, collision retry, hand-made ids', () => 
 
 test('ids: tolerant AIP- prefix', () => {
   assert.deepEqual(idCandidates('aip-k3m9xz'), ['AIP-K3M9XZ', 'K3M9XZ']);
-  assert.deepEqual(idCandidates(' AIP K3M9XZ '), ['AIP-K3M9XZ', 'AIP K3M9XZ', 'K3M9XZ']);
+  assert.deepEqual(idCandidates(' AIP K3M9XZ '), ['AIP-K3M9XZ', 'AIPK3M9XZ', 'K3M9XZ']);
+  assert.deepEqual(idCandidates('AIP-3E7 KFB')[0], 'AIP-3E7KFB');   // a space inside is dropped
   assert.deepEqual(idCandidates('k3m9xz'), ['K3M9XZ', 'AIP-K3M9XZ']);
   assert.deepEqual(idCandidates('xm'), ['XM', 'AIP-XM']);
   assert.deepEqual(idCandidates('../etc'), []);
@@ -69,11 +70,11 @@ test('login: errors (unknown, inactive, bad body, origin)', async (t) => {
   createStudent(a.db, { fullName: 'Off Student', grp: 'shanba', id: 'OFF', allowShort: true });
   a.db.prepare("UPDATE students SET active = 0 WHERE id = 'OFF'").run();
   const c = a.client();
-  let r = await c.post('/api/aip/login', { id: 'NOPE99' });
+  let r = await c.post('/api/aip/login', { id: 'NQPE99' });
   assert.deepEqual([r.status, r.json.error.code], [401, 'invalid_id']);
   r = await c.post('/api/aip/login', { id: 'off' });
   assert.deepEqual([r.status, r.json.error.code], [401, 'invalid_id']); // same answer as an unknown id
-  assert.equal(r.json.error.message, (await c.post('/api/aip/login', { id: 'NOPE98' })).json.error.message);
+  assert.equal(r.json.error.message, (await c.post('/api/aip/login', { id: 'NQPE98' })).json.error.message);
   assert.equal(c.cookie, '');
   r = await c.post('/api/aip/login', { id: 'XM', admin: true });
   assert.deepEqual([r.status, r.json.error.code], [400, 'unknown_field']);
@@ -94,11 +95,13 @@ test('login: oversized body is refused', async (t) => {
   assert.equal((await a.client().post('/api/aip/login', { id: 'x'.repeat(5000) })).status, 413);
 });
 
-test('login: only failed attempts count (10 per 10 min per client)', async (t) => {
+test('login: only failed attempts count (30 per 10 min per client); look-alike letters are not counted', async (t) => {
   const a = await startApp(t, { now: BEFORE });
   const c = a.client();
   for (let i = 0; i < 25; i++) assert.equal((await c.post('/api/aip/login', { id: 'XM' })).status, 200); // successes are free
-  for (let i = 0; i < 10; i++) assert.equal((await c.post('/api/aip/login', { id: 'NOPE99' })).status, 401);
+  for (let i = 0; i < 40; i++) assert.equal((await c.post('/api/aip/login', { id: 'AIP-3E7KF' + 'I1OL0'[i % 5] })).status, 400); // never an ID: hint, not counted
+  assert.equal((await c.post('/api/aip/login', { id: 'xm' })).status, 200);
+  for (let i = 0; i < 30; i++) assert.equal((await c.post('/api/aip/login', { id: 'NQPE99' })).status, 401);
   const r = await c.post('/api/aip/login', { id: 'XM' });
   assert.deepEqual([r.status, r.json.error.code], [429, 'rate_limited']);
   assert.ok(Number(r.headers.get('retry-after')) > 0);

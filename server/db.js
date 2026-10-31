@@ -18,7 +18,7 @@ export function openDb(dataDir, { seedDemo = false, xmAdmin = false } = {}) {
   const file = dataDir === ':memory:' ? ':memory:' : path.join(dataDir, 'aip.db');
   if (dataDir !== ':memory:') fs.mkdirSync(dataDir, { recursive: true });
   const db = new DatabaseSync(file);
-  db.exec('PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON; PRAGMA busy_timeout = 5000;');
+  db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA foreign_keys = ON; PRAGMA busy_timeout = 5000;');   // NORMAL is safe with WAL (a power cut may drop the last write, never corrupts); 300 logins at once went from 3.5 s to well under 1 s
   migrate(db);
   seed(db, seedDemo, xmAdmin);
   return db;
