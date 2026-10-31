@@ -1367,7 +1367,7 @@ function prepPage(){
       <div class="prep-end" id="prep-end"${prepCount() === prepTotal() ? '' : ' hidden'}><p class="pe-t">${T(courseStarted() ? 'prep.end_after' : LESSONS[1].d ? 'prep.end_before' : 'prep.end_tba', {date: lessonDate(1)})}</p><a class="play" href="#/dastur"><span>${T('prep.end_back')}</span><span class="play-circ">${I('next', 20)}</span></a></div>`)};
 }
 // "Birinchi darsgacha" as an accordion (user, 2026-10-30; a port of IconAccordion): one Poʻlat row per link or video; the open row lifts into its own pill and the rows next to it round the corners that meet it
-let iaOpen = 0;
+let iaOpen = null;   // Birinchi darsgacha opens with every row closed (user, 2026-10-31); a language switch keeps the open one
 // style C (user, 2026-10-30): the main thing on the right in a dashed card (a link's promo code as a coupon, a video's "Videoda" points); description and the video or the open pill on the left
 const iaDesc = i => t(`prep.more.${i}.n`) ? `<p class="kg-d">${esc(t(`prep.more.${i}.n`))}</p>` : '';
 const iaCard = (l, i) => l.code
@@ -1451,7 +1451,7 @@ document.addEventListener('click', e => { const h = e.target.closest('.ia-hd'); 
 // "Birinchi darsgacha": the materials before the course (links to learning platforms, videos); nothing yet = the "soon" line
 function prePage(){
   const m = PREP.more;
-  if (m && iaOpen !== null && iaOpen >= m.links.length) iaOpen = 0;
+  if (m && iaOpen >= m.links.length) iaOpen = null;
   return {screen: 'ex', tag: '#/kursgacha', title: t('prep.title'), html: nav('pre') + wrap(`
       ${dlh('#/dastur', T('nav.home'), T('pre.label'))}
       <h1 class="headline ex-h">${T('prep.title')}</h1><p class="lede">${T(courseStarted() ? 'pre.lede_late' : 'pre.lede')}</p>
@@ -1635,7 +1635,7 @@ let firstRender = true, byClick = false, slFocus = '';
 const mem = {};      // hash -> {y, from}: coming back (browser Back) restores the scroll position and focuses the link we came from
 // keep = true (language switch): same page, same place: no scroll, no focus move; setLang puts the state back
 function render(keep){
-  if (!keep) prepOpen = null;
+  if (!keep) prepOpen = iaOpen = null;
   if (toast.parentNode !== document.body) document.body.append(toast);   // the copy toast sits next to its button; a rebuilt page must not take it along
   if (typeof nl !== 'undefined' && !nl.hidden && !/^#\/dastur/.test(ROUTE())) nl.hidden = true;   // the new-lesson popup belongs to home: any other route closes it   // a new visit of the prep page starts with the first open card; a language switch keeps the card
   closeMenu(); toast.hidden = true;
