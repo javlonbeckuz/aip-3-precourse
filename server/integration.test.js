@@ -111,9 +111,11 @@ test('integration endpoint: auth', async (t) => {
   assert.equal((await c.post(URL_, body, { headers: { ...auth().headers, Origin: 'https://evil.example' } })).status, 200); // no Origin check on this route
 });
 
-test('integration endpoint: the CRM makes the ID (AIP- and 6 of the alphabet); taken = 409, a known phone keeps its ID', async (t) => {
-  const { client, db } = await startApp(t, { env: { INTEGRATION_KEY: KEY } });
+test('integration endpoint: the CRM makes the ID (AIP- and 6 of the alphabet); taken = 409, a known phone keeps its ID and gets it back only if the CRM sent it', async (t) => {
+  const { client, db, app } = await startApp(t, { env: { INTEGRATION_KEY: KEY } });
   t.mock.method(console, 'log', () => {}); t.mock.method(console, 'warn', () => {});
+  const seen = [];
+  app.setAnnounce((st, note) => seen.push([st.id, note]));
   const c = client();
   const r1 = await c.post(URL_, { id: 'aip-7kq2xm', fullName: 'Ali Valiyev', phone: '901234567' }, auth());
   assert.deepEqual([r1.status, r1.json], [201, { ok: true, created: true, id: 'AIP-7KQ2XM' }]);   // lower case is fine, stored upper case
@@ -124,7 +126,11 @@ test('integration endpoint: the CRM makes the ID (AIP- and 6 of the alphabet); t
   assert.equal(db.prepare("SELECT count(*) n FROM students WHERE phone = '+998901234568'").get().n, 0);
   // a known phone with a new ID: 200 and the first ID, nothing changes
   const r3 = await c.post(URL_, { id: 'AIP-ABCDEF', fullName: 'Ali Valiyev', phone: '+998 90 123 45 67' }, auth());
-  assert.deepEqual([r3.status, r3.json], [200, { ok: true, created: false, id: 'AIP-7KQ2XM' }]);
+  assert.deepEqual([r3.status, r3.json], [200, { ok: true, created: false }]);   // no ID: the key must not turn a phone into a login
+  assert.deepEqual(seen.at(-1), ['AIP-7KQ2XM', { inactive: false, crmName: null, crmId: 'AIP-ABCDEF' }]);   // the admins get the card with the real ID
+  // the same ID again (a retry): it is echoed, the CRM already has it
+  const r4 = await c.post(URL_, { id: 'AIP-7KQ2XM', fullName: 'Ali Valiyev', phone: '901234567' }, auth());
+  assert.deepEqual([r4.status, r4.json], [200, { ok: true, created: false, id: 'AIP-7KQ2XM' }]);
   assert.equal(db.prepare("SELECT count(*) n FROM students WHERE id = 'AIP-ABCDEF'").get().n, 0);
   // IDs outside the rule: 400 bad_id, nothing made (0 O 1 I L are not in the alphabet; 7 characters; no prefix)
   for (const id of ['AIP-7KQ2X0', 'AIP-7KQ2XO', 'AIP-7KQ2XI', 'AIP-7KQ2XL', 'AIP-7KQ2X1', 'AIP-7KQ2XMH', 'AIP-7KQ2X', '7KQ2XM', 'XM', 12345678]) {
@@ -165,14 +171,14 @@ test('integration endpoint: answers carry the ID, never a name or phone; idempot
   for (const [name, phone] of [['Ali Valiyev', '901234567'], ['ali   VALIYEV', '998901234567'], ['Ali Valiyev', '(90) 123-45-67']]) {
     const r = await c.post(URL_, { fullName: name, phone, group: 'shanba', mentor: 'M' }, auth());
     assert.equal(r.status, 200);
-    assert.deepEqual(r.json, { ok: true, created: false, id: row.id });
+    assert.deepEqual(r.json, { ok: true, created: false });   // no id sent: none echoed
   }
   assert.equal(seen.length, 1);
   assert.deepEqual({ ...db.prepare('SELECT grp, mentor FROM students WHERE id = ?').get(row.id) }, { grp: null, mentor: '' }); // nothing changed
   // another name for a known phone: still 200, but the admins are told
   const r2 = await c.post(URL_, { fullName: 'Someone <Else>', phone: '901234567' }, auth());
-  assert.deepEqual([r2.status, r2.json], [200, { ok: true, created: false, id: row.id }]);
-  assert.deepEqual(seen.at(-1), [row.id, { inactive: false, crmName: 'Someone <Else>' }]);
+  assert.deepEqual([r2.status, r2.json], [200, { ok: true, created: false }]);
+  assert.deepEqual(seen.at(-1), [row.id, { inactive: false, crmName: 'Someone <Else>', crmId: null }]);
   // the same odd retry again, and a deactivation on top: 200, but the admins hear about a student once a day
   for (let k = 0; k < 3; k++) assert.equal((await c.post(URL_, { fullName: 'Someone <Else>', phone: '901234567' }, auth())).status, 200);
   db.prepare('UPDATE students SET active = 0 WHERE id = ?').run(row.id);
@@ -183,7 +189,7 @@ test('integration endpoint: answers carry the ID, never a name or phone; idempot
   const gone = db.prepare("SELECT id FROM students WHERE phone = '+998901234500'").get().id;
   db.prepare('UPDATE students SET active = 0 WHERE id = ?').run(gone);
   assert.equal((await c.post(URL_, { fullName: 'Gone Student', phone: '901234500' }, auth())).status, 200);
-  assert.deepEqual(seen.at(-1), [gone, { inactive: true, crmName: null }]);
+  assert.deepEqual(seen.at(-1), [gone, { inactive: true, crmName: null, crmId: null }]);
   assert.equal(seen.length, 4); // 1 created + 1 odd name + 1 created (Gone) + 1 inactive
   seen.length = 0;
   // group + mentor on a new phone; an empty group is NULL

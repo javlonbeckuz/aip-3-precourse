@@ -189,12 +189,14 @@ export function createApp(cfg) {
       console.log('integration: phone already known'); // no ID
       // a repeat payment for a deactivated student, or under another name, is worth a human look; a plain retry stays silent
       const name = squash(v('fullName'));
-      const differs = fold(name) !== fold(have.full_name);
-      if ((!have.active || differs) && !noticeEach.wait(have.id) && !noticeAll.wait('all')) { // at most one notice per student a day, 20 an hour
+      const differs = fold(name) !== fold(have.full_name), idDiffers = !!id && id !== have.id;
+      if ((!have.active || differs || idDiffers) && !noticeEach.wait(have.id) && !noticeAll.wait('all')) { // at most one notice per student a day, 20 an hour
         noticeEach.add(have.id); noticeAll.add('all');
-        fire(have, { inactive: !have.active, crmName: differs ? name.slice(0, 80) : null });
+        fire(have, { inactive: !have.active, crmName: differs ? name.slice(0, 80) : null, crmId: idDiffers ? id : null });
       }
-      return json(res, 200, { ok: true, created: false, id: have.id });   // a known phone keeps its first ID: the CRM stores this one, not the one it sent
+      // a known phone keeps its first ID. It is echoed only when the CRM already sent that same ID: otherwise the key would be a phone -> login lookup.
+      // Another ID: no ID in the answer, the admins get the card with the real one.
+      return json(res, 200, id && id === have.id ? { ok: true, created: false, id } : { ok: true, created: false });
     }
     const st = createStudent(db, { id, fullName: v('fullName'), phone, grp: v('group').trim() || null, mentor: v('mentor'), createdBy: 0 }); // 0 = made by the CRM; clean() validates the rest
     createCap.add('all');

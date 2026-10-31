@@ -107,7 +107,7 @@ For the developers of the HEAD CRM. Call this endpoint when a student's **first 
 - Alphabet (31 characters): `23456789ABCDEFGHJKMNPQRSTUVWXYZ`. No `0`, `1`, `I`, `L`, `O`: they are easy to confuse when a student types the ID.
 - Upper case. The portal accepts lower case and stores it upper case.
 - Random: pick each character with a cryptographic random generator (`crypto.randomInt(31)` in Node, `secrets.choice` in Python). Never derive it from the phone, the name, a counter or a date: the ID is the student's password.
-- One ID per person, for good. The phone number is the identity: if the portal already knows the phone, it keeps the ID it has and returns it (see 200 below). Store the ID the portal returns, not the one you sent.
+- One ID per person, for good. The phone number is the identity: if the portal already knows the phone, it keeps the ID it has. It sends that ID back only when you sent the same ID (a retry). If you sent another ID the answer has **no** `id`: the phone is registered under a different ID, so do not give the student the ID you made. The admins get a Telegram card with the real ID and give it to you. (The portal never turns a phone number into a login ID: the ID is the student's password.)
 - If the ID is already taken by another student the portal answers **409 `id_taken`**: make a new random ID and send again (same body otherwise). With 31^6 = 887 million IDs this almost never happens.
 - The admins' bot (`/new`) makes IDs by the same rules, so both sources share one pool; the 409 keeps them apart.
 - Students log in with the full ID (`AIP-7KQ2XM`) or just the 6 characters (`7KQ2XM`).
@@ -132,12 +132,12 @@ Body (JSON object, at most 1024 bytes, no other fields):
 
 A field of another type than string is treated as empty, except `id`: a non-string `id` is refused (400 `bad_id`).
 
-Responses (all JSON). The success bodies carry the student's **ID** and nothing else about the student (no name or phone).
+Responses (all JSON). The success bodies never carry a name or phone. They carry the student's ID only when you created it or sent it yourself.
 
 | Status | Body | When |
 |---|---|---|
 | 201 | `{ "ok": true, "created": true, "id": "AIP-7KQ2XM" }` | new phone: student created with this ID, admins notified |
-| 200 | `{ "ok": true, "created": false, "id": "AIP-7KQ2XM" }` | this phone is already known: nothing changed, and `id` is the ID the student already has (it may differ from the one you sent: store this one). If that student is deactivated, or the CRM sent a different name than the one on file, the admins get a "repeat payment" notice to look at (still 200). A plain retry with the same name is silent, and the same student is reported at most once a day (20 notices an hour overall). |
+| 200 | `{ "ok": true, "created": false, "id": "AIP-7KQ2XM" }` or `{ "ok": true, "created": false }` | this phone is already known: nothing changed. With `id`: you sent the student's own ID (a retry), all good. Without `id`: the phone has another ID than the one you sent (or you sent none); the admins get the real ID in Telegram, store that one. If that student is deactivated, or the CRM sent a different name than the one on file, the admins get a "repeat payment" notice to look at (still 200). A plain retry with the same name is silent, and the same student is reported at most once a day (20 notices an hour overall). |
 | 400 | `{ "error": { "code": "...", "message": "..." } }`, code one of `bad_id`, `bad_name`, `bad_phone`, `bad_group`, `bad_mentor`, `bad_json`, `unknown_field` | invalid input. Invisible formatting characters (zero-width, bidi marks) in a name or mentor are removed, control characters are refused. A refused request alerts the admins (at most one alert per 10 minutes, so check the CRM's own log for others); fix and resend. |
 | 409 | `id_taken` | the ID belongs to another student: make a new ID and send again. Also alerts the admins (same limit as 400), in case the CRM does not retry. |
 | 401 | `unauthorized` | missing or wrong key (the scheme is exactly `Bearer`) |

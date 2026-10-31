@@ -249,12 +249,12 @@ export function makeBot({ api, ctx, pollSeconds = 30 }) {
     for (const id of ctx.adminIds) await api('sendMessage', { chat_id: id, text }).catch((e) => console.error('bot:', e.message));
   }
   // A student from the CRM: card + group buttons (only while there is no group) + the forwardable message, to every admin.
-  // note = {inactive, crmName} instead: the CRM reported another payment for a known phone that looks odd (deactivated, or another name); a plain card, no buttons.
+  // note = {inactive, crmName, crmId} instead: the CRM reported another payment for a known phone that looks odd (deactivated, another name, or another ID); a plain card, no buttons.
   // No outbox: a failed send is only logged (masked ID).
   async function announce(s, note = null) {
     let card;
     if (note) {
-      const why = [note.inactive ? 'Bu talaba faol emas (oʻchirilgan).' : null, note.crmName ? `CRM boshqa ism yubordi: ${esc(note.crmName.replace(/[\p{Cc}\p{Cf}\p{Cs}]/gu, ''))}` : null].filter(Boolean).join('\n');
+      const why = [note.inactive ? 'Bu talaba faol emas (oʻchirilgan).' : null, note.crmName ? `CRM boshqa ism yubordi: ${esc(note.crmName.replace(/[\p{Cc}\p{Cf}\p{Cs}]/gu, ''))}` : null, note.crmId ? `CRM boshqa ID yubordi: ${esc(note.crmId)}. Talabaning IDsi pastdagi kartada: CRMga shuni yozing.` : null].filter(Boolean).join('\n');
       card = say(0, `⚠️ Bu telefon bilan qayta toʻlov keldi\n${why}\n\n${studentCard(s, ctx)}`);
     } else card = say(0, createdText('✅ Talaba yaratildi (CRM)', s, ctx), s.grp ? {} : keyboard([GROUPS.map((g) => btn(GROUP_LABEL[g], `sg:${s.id}:${g}`))]));
     for (const id of ctx.adminIds) {
