@@ -1172,7 +1172,7 @@ html.hid .bgp path{animation-play-state:paused}
 .ia-ic{background:none;color:var(--white);border:1.5px solid rgb(255 255 255 / .5)}
 @container (max-width:599px){.ia-c.has-code .ia-l{display:contents}
 .ia-c.has-code .kg-d{order:1}
-.ia-c.has-code .ia-card{order:2}
+.ia-c.has-code .ia-tk{order:2}
 .ia-c.has-code .kg-open{order:3}}
 #s-app[data-screen="ex"] .ex-files .ef-mt{font-size:15px}
 .vp{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:16/9;border-radius:16px;background:#0a0a0a;color:#fff;font:450 14px/1.4 var(--font-body);outline:none;box-shadow:0 0 0 .5px rgb(255 255 255 / .09)}
@@ -1252,6 +1252,11 @@ html.hid .bgp path{animation-play-state:paused}
 .ia .kg-d{font-size:17px}
 .ia .pill-cta{width:100%}
 .ia-code{font-size:30px}}
+.ia-tk{position:relative;align-self:start;--nr:12px}
+.ia-tk .ia-card{-webkit-mask:radial-gradient(circle var(--nr) at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle var(--nr) at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle var(--nr) at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle var(--nr) at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat}
+.ia-tk::before,.ia-tk::after{content:"";position:absolute;top:50%;width:calc(var(--nr) * 2);height:calc(var(--nr) * 2);margin-top:calc(var(--nr) * -1);border:1px solid rgb(255 255 255 / .35);border-radius:50%;pointer-events:none}
+.ia-tk::before{left:calc(var(--nr) * -1);clip-path:inset(0 0 0 50%)}
+.ia-tk::after{right:calc(var(--nr) * -1);clip-path:inset(0 50% 0 0)}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}
