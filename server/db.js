@@ -14,13 +14,13 @@ export class HttpError extends Error {
   constructor(status, code, message, extra) { super(message); this.status = status; this.code = code; this.extra = extra; }
 }
 
-export function openDb(dataDir, { seedDemo = false } = {}) {
+export function openDb(dataDir, { seedDemo = false, xmAdmin = false } = {}) {
   const file = dataDir === ':memory:' ? ':memory:' : path.join(dataDir, 'aip.db');
   if (dataDir !== ':memory:') fs.mkdirSync(dataDir, { recursive: true });
   const db = new DatabaseSync(file);
   db.exec('PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON; PRAGMA busy_timeout = 5000;');
   migrate(db);
-  seed(db, seedDemo);
+  seed(db, seedDemo, xmAdmin);
   return db;
 }
 
@@ -43,9 +43,14 @@ function migrate(db) {
   }
 }
 
-// The 2.0 demo mentor account XM (a 2-letter ID is a guessable door). Seeds it only with SEED_DEMO=1 (re-activating it) and otherwise switches an existing XM row off.
-function seed(db, seedDemo) {
-  if (seedDemo) {
+// XM, the mentor account from 2.0 (log in as XM or AIP-XM). XM_ADMIN (on unless XM_ADMIN=0, user 2026-10-31): always active with review = 1, every dated lesson open early.
+// Otherwise the old demo rule: seeded only with SEED_DEMO=1 (tests, dev), else switched off. A 2-letter ID is a guessable door: see README.
+function seed(db, seedDemo, xmAdmin) {
+  if (xmAdmin) {
+    db.prepare(`INSERT INTO students (id, full_name, first_name, grp, mentor, created_at, review)
+                VALUES ('XM', 'Student', 'Student', 'shanba', 'Xurshid Maroziqov', ?, 1)
+                ON CONFLICT (id) DO UPDATE SET active = 1, review = 1`).run(new Date().toISOString());
+  } else if (seedDemo) {
     db.prepare(`INSERT INTO students (id, full_name, first_name, grp, mentor, created_at)
                 VALUES ('XM', 'Student', 'Student', 'shanba', 'Xurshid Maroziqov', ?)
                 ON CONFLICT (id) DO UPDATE SET active = 1, full_name = 'Student', first_name = 'Student'`).run(new Date().toISOString()); // students see "Student", not a real person's name

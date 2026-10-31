@@ -28,7 +28,8 @@ export function loadConfig(env = process.env) {
     publicDir: path.resolve(env.PUBLIC_DIR || path.join(root, 'public')),
     portalUrl: env.PORTAL_URL || '',
     trust: { hops: hops(env.TRUST_PROXY), cf: env.TRUST_CF === '1' },
-    seedDemo: env.SEED_DEMO === '1', // fail closed: the demo account XM exists only when asked for
+    seedDemo: env.SEED_DEMO === '1', // the plain demo XM (tests, dev); ignored while xmAdmin is on
+    xmAdmin: env.XM_ADMIN !== '0', // XM always logs in with every lesson open (user, 2026-10-31); XM_ADMIN=0 turns it off
     botToken: env.BOT_TOKEN || '',
     adminIds: new Set([...ids(env.ADMIN_TG_IDS)].map(Number).filter(Number.isSafeInteger)),
     integrationKey: env.INTEGRATION_KEY || '', // CRM -> POST /api/int/students; unset = endpoint off (404)
@@ -57,7 +58,7 @@ const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; cha
   '.pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation' };
 
 export function createApp(cfg) {
-  const db = openDb(cfg.dataDir, { seedDemo: cfg.seedDemo });
+  const db = openDb(cfg.dataDir, { seedDemo: cfg.seedDemo, xmAdmin: cfg.xmAdmin });
   const content = createContent({ dir: cfg.contentDir, now: cfg.now ?? Date.now, production: cfg.production });
   content.validateAll();
   let alert = null, announce = null;

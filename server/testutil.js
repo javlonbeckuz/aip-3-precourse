@@ -34,7 +34,7 @@ export function tmpCopy(t, dir = REAL_CONTENT, { fixtures = true } = {}) {
 // opts: { now: 'ISO' | null, production, contentDir, publicDir, env: {...}, cfg: {...overrides} }
 export async function startApp(t, opts = {}) {
   const clock = { t: opts.now ? at(opts.now) : Date.now() };
-  const cfg = loadConfig({ NODE_ENV: opts.production ? 'production' : 'development', DATA_DIR: ':memory:', SEED_DEMO: '1', CONTENT_DIR: opts.contentDir ?? tmpCopy(t),
+  const cfg = loadConfig({ NODE_ENV: opts.production ? 'production' : 'development', DATA_DIR: ':memory:', SEED_DEMO: '1', XM_ADMIN: '0', CONTENT_DIR: opts.contentDir ?? tmpCopy(t),
     PUBLIC_DIR: opts.publicDir ?? '/nonexistent', ...opts.env });
   cfg.dataDir = ':memory:';
   cfg.now = () => clock.t;

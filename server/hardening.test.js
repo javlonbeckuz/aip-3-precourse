@@ -41,6 +41,21 @@ test('XM: fails closed. Seeded only with SEED_DEMO=1 (re-activated), otherwise s
   assert.deepEqual([r.status, r.json.error.code], [401, 'invalid_id']);
 });
 
+test('XM admin (default on, user 2026-10-31): always active with review, in production too; XM and AIP-XM log in and open a dated lesson early', async (t) => {
+  assert.equal(loadConfig({ NODE_ENV: 'production' }).xmAdmin, true);
+  assert.equal(loadConfig({ XM_ADMIN: '0' }).xmAdmin, false);
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'aip-xm-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const db = openDb(dir, { xmAdmin: true });
+  db.prepare("UPDATE students SET active = 0, review = 0 WHERE id = 'XM'").run();   // switched off by hand: the next start turns it back on
+  db.close();
+  assert.deepEqual({ ...openDb(dir, { xmAdmin: true }).prepare("SELECT active, review FROM students WHERE id = 'XM'").get() }, { active: 1, review: 1 });
+  const a = await startApp(t, { production: true, now: BEFORE, env: { SEED_DEMO: '0', XM_ADMIN: '1' } });
+  for (const id of ['XM', 'AIP-XM', 'aip-xm', ' xm ']) assert.equal((await a.client().post('/api/aip/login', { id })).status, 200, id);
+  const c = await a.login('AIP-XM');
+  assert.equal(c.session.lessons.find((l) => l.n === 1).open, true);   // before its date
+});
+
 test('XM: short ids cannot be created unless explicitly allowed', () => {
   const db = openDb(':memory:', { seedDemo: true });
   assert.throws(() => createStudent(db, { fullName: 'Short Id', grp: 'shanba', id: 'AB' }), { code: 'bad_id' });

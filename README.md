@@ -23,7 +23,7 @@ node --test              # all tests (no network, in-memory DB)
 ```
 
 With plain `node` you can load the file with `node --env-file=.env server/index.js`.
-Demo student: ID `XM` (shown as "Student", group shanba) exists only when `SEED_DEMO=1` is set (dev and tests); setting it later re-activates the row. Without it every start switches an existing XM row off. This guard only covers XM: the login itself still accepts any short ID that someone inserted by hand into the database, so do not do that in production (the bot and `createStudent` only make `AIP-XXXXXX` IDs).
+Mentor account: ID `XM` (log in as `XM` or `AIP-XM`, shown as "Student", group shanba). With `XM_ADMIN` on (the default, user 2026-10-31) every start makes it active with `review = 1`, so every lesson that has a date is open early, in production too. Lessons with no date (Kirish while TBA) stay locked even for XM. **XM is a 2-letter ID that 2.0 students know**: anyone who types it sees every lesson. Set `XM_ADMIN=0` to switch it off. With `XM_ADMIN=0` the old demo rule applies: XM exists only when `SEED_DEMO=1` is set (dev and tests), otherwise every start switches it off. This guard only covers XM: the login itself still accepts any short ID that someone inserted by hand into the database, so do not do that in production (the bot and `createStudent` only make `AIP-XXXXXX` IDs).
 
 ### Env vars
 
@@ -38,7 +38,8 @@ Demo student: ID `XM` (shown as "Student", group shanba) exists only when `SEED_
 | `TRUST_PROXY` | 0 | proxies in front of the app, a non-negative integer or the server refuses to start: Railway = 2 (measured 2026-10-19: its X-Forwarded-For carries two hops), Cloudflare + Railway = 3; the client address is the n-th from the right of `X-Forwarded-For` (a one-time warning is logged if a request arrives without it) |
 | `TRUST_CF` | 0 | `1` = prefer `CF-Connecting-IP`. Only with Cloudflare in front of everything (see the Cloudflare note below) |
 | `HOST` | 0.0.0.0 | bind address; use `127.0.0.1` on a droplet behind Caddy |
-| `SEED_DEMO` | unset | `1` = create or re-activate the demo student XM (dev only; unset = XM is off) |
+| `XM_ADMIN` | on | the mentor account XM is always active with every dated lesson open; `0` = off |
+| `SEED_DEMO` | unset | `1` = create or re-activate the demo student XM as a plain student (tests, dev; only while `XM_ADMIN=0`) |
 | `BOT_TOKEN` | empty | admin bot token; empty = bot off |
 | `ADMIN_TG_IDS` | empty | comma-separated Telegram user IDs allowed to use the bot |
 | `INTEGRATION_KEY` | empty | secret (32+ characters, else the server refuses to start) the CRM sends as `Authorization: Bearer <key>` to `POST /api/int/students`; empty = that endpoint answers 404. Generate: `node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"`. See "CRM integration" in API.md |
