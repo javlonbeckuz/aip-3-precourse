@@ -942,7 +942,10 @@ html.hid .bgp path{animation-play-state:paused}
 .prog-pre .ps{display:block;max-width:20em}
 .pill-ink .pc-c{color:var(--f-bg)}
 .ia-ic{background:none;color:var(--white);border:1.5px solid rgb(255 255 255 / .5)}
-@container (max-width:599px){.ia-c.has-code .ia-card{order:-1}}
+@container (max-width:599px){.ia-c.has-code .ia-l{display:contents}
+.ia-c.has-code .kg-d{order:1}
+.ia-c.has-code .ia-card{order:2}
+.ia-c.has-code .kg-open{order:3}}
 #s-app[data-screen="ex"] .ex-files .ef-mt{font-size:15px}
 .vp{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:16/9;border-radius:16px;background:#0a0a0a;color:#fff;font:450 14px/1.4 var(--font-body);outline:none;box-shadow:0 0 0 .5px rgb(255 255 255 / .09)}
 .vp:focus-visible{box-shadow:0 0 0 2px #fff}
@@ -1007,6 +1010,20 @@ html.hid .bgp path{animation-play-state:paused}
 .prep .chip{min-height:34px;padding-left:36px;font-size:16px}
 .prep .chip .cl{font-size:16px}
 .prep .chip::before{width:26px;height:26px;margin-top:-13px;background-size:18px}
+.ia-hd{min-height:84px}
+.ia-t{font-size:22px}
+#s-app[data-screen="ex"] .ia-s{margin-top:4px;font-size:16px}
+.ia .kg-d{max-width:56ch;font-size:18px;line-height:1.55}
+.ia-pts{font-size:17px}
+.ia .pill-cta{width:auto;min-width:240px;max-width:none;margin-top:8px}
+.ia-card{border:1px solid rgb(255 255 255 / .35)}
+.ia-code{font-size:38px}
+@container (min-width:900px){.ia-c.has-card{grid-template-columns:minmax(0,1fr) 380px;gap:56px}
+.ia-body{padding-top:8px;padding-bottom:28px}}
+@container (max-width:599px){.ia-t{font-size:18px}
+.ia .kg-d{font-size:17px}
+.ia .pill-cta{width:100%}
+.ia-code{font-size:30px}}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}
@@ -2820,7 +2837,7 @@ const iaBody = (l, i) => { const card = iaCard(l, i);
   const left = l.video ? `<div class="vp-host" data-src="${esc(l.video)}" data-poster="${esc(l.poster || '')}" data-title="${esc(t(`prep.more.${i}.t`))}" data-sub="${esc(t(`prep.more.${i}.s`))}"></div>${iaDesc(i)}`
     : `${iaDesc(i)}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a>`;
   return `<div class="ia-c${card ? ' has-card' : ''}${l.code ? ' has-code' : ''}"><div class="ia-l">${left}</div>${card}</div>`; };
-const iaRow = (l, i) => `<li class="ia-row" data-i="${i}"><button class="ia-hd" type="button" id="ia-h${i}" aria-expanded="false" aria-controls="ia-p${i}"><span class="ia-ic" aria-hidden="true">${I(l.video ? 'play' : 'ne', 18)}</span><span class="ia-no">${num2(i + 1)}</span><span class="ia-tt"><span class="ia-t">${esc(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.s`) ? `<span class="ia-s">${esc(t(`prep.more.${i}.s`))}</span>` : ''}</span><i class="ia-chv" aria-hidden="true"></i></button><div class="ia-p" id="ia-p${i}" role="region" aria-labelledby="ia-h${i}"><div class="ia-in"><div class="ia-body">${iaBody(l, i)}</div></div></div></li>`;
+const iaRow = (l, i) => `<li class="ia-row" data-i="${i}"><button class="ia-hd" type="button" id="ia-h${i}" aria-expanded="false" aria-controls="ia-p${i}"><span class="ia-ic" aria-hidden="true">${I(l.video ? 'play' : 'ne', 18)}</span><span class="ia-no">${i + 1}</span><span class="ia-tt"><span class="ia-t">${esc(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.s`) ? `<span class="ia-s">${esc(t(`prep.more.${i}.s`))}</span>` : ''}</span><i class="ia-chv" aria-hidden="true"></i></button><div class="ia-p" id="ia-p${i}" role="region" aria-labelledby="ia-h${i}"><div class="ia-in"><div class="ia-body">${iaBody(l, i)}</div></div></div></li>`;
 function iaPaint(ul){
   const rows = [...ul.children], last = rows.length - 1, a = iaOpen;
   rows.forEach((r, i) => { const open = a === i;

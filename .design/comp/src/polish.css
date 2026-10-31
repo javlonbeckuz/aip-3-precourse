@@ -370,8 +370,8 @@ html.hid .bgp path{animation-play-state:paused}
 .pill-ink .pc-c{color:var(--f-bg)}
 /* S5-1: the row icon is a quiet outline, not a white button */
 .ia-ic{background:none;color:var(--white);border:1.5px solid rgb(255 255 255 / .5)}
-/* S5-2: on phones the coupon comes before "Ochish" */
-@container (max-width:599px){.ia-c.has-code .ia-card{order:-1}}
+/* S5-2: on phones the coupon comes before "Ochish": text, coupon, button (option A, 2026-10-31) */
+@container (max-width:599px){.ia-c.has-code .ia-l{display:contents}.ia-c.has-code .kg-d{order:1}.ia-c.has-code .ia-card{order:2}.ia-c.has-code .kg-open{order:3}}
 
 #s-app[data-screen="ex"] .ex-files .ef-mt{font-size:15px}
 
@@ -428,3 +428,10 @@ html.hid .bgp path{animation-play-state:paused}
 /* setup cards: a bigger tick and label (user, 2026-10-31); the hit area stays 44px+ */
 .prep .chip{min-height:34px;padding-left:36px;font-size:16px}.prep .chip .cl{font-size:16px}
 .prep .chip::before{width:26px;height:26px;margin-top:-13px;background-size:18px}
+/* Birinchi darsgacha rows, option A (user, 2026-10-31): bigger type, "Ochish" right under the text, the coupon level with it in a thin solid frame */
+.ia-hd{min-height:84px}.ia-t{font-size:22px}#s-app[data-screen="ex"] .ia-s{margin-top:4px;font-size:16px}
+.ia .kg-d{max-width:56ch;font-size:18px;line-height:1.55}.ia-pts{font-size:17px}
+.ia .pill-cta{width:auto;min-width:240px;max-width:none;margin-top:8px}
+.ia-card{border:1px solid rgb(255 255 255 / .35)}.ia-code{font-size:38px}
+@container (min-width:900px){.ia-c.has-card{grid-template-columns:minmax(0,1fr) 380px;gap:56px}.ia-body{padding-top:8px;padding-bottom:28px}}
+@container (max-width:599px){.ia-t{font-size:18px}.ia .kg-d{font-size:17px}.ia .pill-cta{width:100%}.ia-code{font-size:30px}}
