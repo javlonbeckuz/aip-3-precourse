@@ -2129,11 +2129,6 @@
   "translate": true,
   "note": "UI text"
  },
- "course.sheet_t": {
-  "uz": "Kurs: {n} ta dars",
-  "translate": true,
-  "note": "UI text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
- },
  "prep.0.s0": {
   "uz": "Darsga oʻz noutbukingiz bilan keling. Praktikum boshdan-oxir amaliy.",
   "translate": true,
@@ -2273,11 +2268,6 @@
   "uz": "Prompt mashqi va NotebookLM video darsi",
   "translate": true,
   "note": "UI text"
- },
- "lesson.extra_s": {
-  "uz": "Qoʻshimcha",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "home.starts": {
   "uz": "Kurs {date}da boshlanadi",
