@@ -956,10 +956,9 @@ html.hid .bgp path{animation-play-state:paused}
 @media (hover:hover) and (pointer:fine){.vp-b:hover{background:rgb(0 0 0 / .65)}}
 .vp-b:active{scale:.96}
 .vp-b:focus-visible{outline:2px solid #fff;outline-offset:4px}
-.vp-top,.vp-mid,.vp-bot{transition:opacity .3s cubic-bezier(.23,1,.32,1),translate .3s cubic-bezier(.23,1,.32,1)}
-.vp[data-idle] .vp-top,.vp[data-idle] .vp-mid,.vp[data-idle] .vp-bot{opacity:0;pointer-events:none}
-.vp[data-idle] .vp-top{translate:0 -8px}
-.vp[data-idle] .vp-bot{translate:0 8px}
+.vp-top,.vp-mid,.vp-bot,.vp-shade{transition:opacity .3s cubic-bezier(.23,1,.32,1)}
+.vp .vp-skip{transition:opacity .3s cubic-bezier(.23,1,.32,1),background-color .15s ease,scale .15s ease}
+.vp[data-idle] :is(.vp-top,.vp-mid,.vp-bot,.vp-shade),.vp[data-fresh] :is(.vp-top,.vp-skip,.vp-bot,.vp-shade){opacity:0;pointer-events:none}
 .vp-top{position:absolute;inset:16px 16px auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .vp-fs{width:36px;height:36px}
 .vp-vol{display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;border-radius:8px;background:rgb(0 0 0 / .45)}
@@ -2804,7 +2803,7 @@ function vpMount(host){
   const $ = s => host.querySelector(s), box = $('.vp'), v = $('video'), prog = $('.vp-prog'), vr = $('.vp-vr'), tip = $('.vp-tip');
   let idleT = 0, vol = 0.7; v.volume = vol;
   box.addEventListener('contextmenu', e => e.preventDefault());   // no "Save video as..."
-  const wake = () => { delete box.dataset.idle; clearTimeout(idleT); if (!v.paused) idleT = setTimeout(() => { box.dataset.idle = ''; }, 2200); };
+  const wake = () => { delete box.dataset.idle; clearTimeout(idleT); if (!v.paused) idleT = setTimeout(() => { box.dataset.idle = ''; }, 5000); };   // 5 s without a move or tap while playing: everything fades (user, 2026-10-31)
   const paint = () => { const d = v.duration || 0, t = v.currentTime || 0; prog.max = d; prog.value = t; prog.style.setProperty('--p', (d ? t / d * 100 : 0) + '%'); prog.setAttribute('aria-valuetext', `${vpTime(t)} / ${vpTime(d)}`); $('.vp-cur').textContent = vpTime(t); $('.vp-dur').textContent = vpTime(d); };
   const playing = () => { const on = !v.paused; $('.i-p').classList.toggle('off', on); $('.i-z').classList.toggle('off', !on); $('.vp-play').setAttribute('aria-label', on ? t('vp.pause') : t('vp.play')); const r = $('.ring'); r.classList.remove('go'); void r.offsetWidth; r.classList.add('go'); wake(); };
   const toggle = () => { v.paused ? v.play() : v.pause(); };
@@ -2829,6 +2828,9 @@ function vpMount(host){
   prog.addEventListener('input', () => { v.currentTime = +prog.value; paint(); });
   prog.addEventListener('pointermove', e => { const r = prog.getBoundingClientRect(), k = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)); tip.hidden = false; tip.style.left = k * r.width + 'px'; tip.textContent = vpTime(k * (v.duration || 0)); });
   prog.addEventListener('pointerleave', () => { tip.hidden = true; });
+  box.dataset.fresh = '';   // before the first play only the play button shows over the poster
+  v.addEventListener('play', () => { delete box.dataset.fresh; }, {once: true});
+  box.addEventListener('focusin', e => { if (e.target !== box && !e.target.closest('.vp-play')) delete box.dataset.fresh; });   // a keyboard user tabbing to a control sees the controls
   box.addEventListener('pointermove', wake); box.addEventListener('focusin', wake);
   box.addEventListener('keydown', e => {
     if (e.metaKey || e.ctrlKey || e.altKey || e.target === vr) return;

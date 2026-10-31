@@ -384,9 +384,8 @@ html.hid .bgp path{animation-play-state:paused}
 .vp-b{display:grid;place-items:center;flex:none;border-radius:8px;background:rgb(0 0 0 / .45);color:#fff;cursor:pointer;transition:background-color .15s ease,scale .15s ease}
 .vp-b:hover{background:rgb(0 0 0 / .65)}.vp-b:active{scale:.96}
 .vp-b:focus-visible{outline:2px solid #fff;outline-offset:4px}
-.vp-top,.vp-mid,.vp-bot{transition:opacity .3s cubic-bezier(.23,1,.32,1),translate .3s cubic-bezier(.23,1,.32,1)}
-.vp[data-idle] .vp-top,.vp[data-idle] .vp-mid,.vp[data-idle] .vp-bot{opacity:0;pointer-events:none}
-.vp[data-idle] .vp-top{translate:0 -8px}.vp[data-idle] .vp-bot{translate:0 8px}
+.vp-top,.vp-mid,.vp-bot,.vp-shade{transition:opacity .3s cubic-bezier(.23,1,.32,1)}.vp .vp-skip{transition:opacity .3s cubic-bezier(.23,1,.32,1),background-color .15s ease,scale .15s ease}/* fade only, nothing slides (user, 2026-10-31) */
+.vp[data-idle] :is(.vp-top,.vp-mid,.vp-bot,.vp-shade),.vp[data-fresh] :is(.vp-top,.vp-skip,.vp-bot,.vp-shade){opacity:0;pointer-events:none}
 .vp-top{position:absolute;inset:16px 16px auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .vp-fs{width:36px;height:36px}
 .vp-vol{display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;border-radius:8px;background:rgb(0 0 0 / .45)}

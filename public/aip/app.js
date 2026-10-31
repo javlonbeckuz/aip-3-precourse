@@ -1398,7 +1398,7 @@ function vpMount(host){
   const $ = s => host.querySelector(s), box = $('.vp'), v = $('video'), prog = $('.vp-prog'), vr = $('.vp-vr'), tip = $('.vp-tip');
   let idleT = 0, vol = 0.7; v.volume = vol;
   box.addEventListener('contextmenu', e => e.preventDefault());   // no "Save video as..."
-  const wake = () => { delete box.dataset.idle; clearTimeout(idleT); if (!v.paused) idleT = setTimeout(() => { box.dataset.idle = ''; }, 2200); };
+  const wake = () => { delete box.dataset.idle; clearTimeout(idleT); if (!v.paused) idleT = setTimeout(() => { box.dataset.idle = ''; }, 5000); };   // 5 s without a move or tap while playing: everything fades (user, 2026-10-31)
   const paint = () => { const d = v.duration || 0, t = v.currentTime || 0; prog.max = d; prog.value = t; prog.style.setProperty('--p', (d ? t / d * 100 : 0) + '%'); prog.setAttribute('aria-valuetext', `${vpTime(t)} / ${vpTime(d)}`); $('.vp-cur').textContent = vpTime(t); $('.vp-dur').textContent = vpTime(d); };
   const playing = () => { const on = !v.paused; $('.i-p').classList.toggle('off', on); $('.i-z').classList.toggle('off', !on); $('.vp-play').setAttribute('aria-label', on ? t('vp.pause') : t('vp.play')); const r = $('.ring'); r.classList.remove('go'); void r.offsetWidth; r.classList.add('go'); wake(); };
   const toggle = () => { v.paused ? v.play() : v.pause(); };
@@ -1423,6 +1423,9 @@ function vpMount(host){
   prog.addEventListener('input', () => { v.currentTime = +prog.value; paint(); });
   prog.addEventListener('pointermove', e => { const r = prog.getBoundingClientRect(), k = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)); tip.hidden = false; tip.style.left = k * r.width + 'px'; tip.textContent = vpTime(k * (v.duration || 0)); });
   prog.addEventListener('pointerleave', () => { tip.hidden = true; });
+  box.dataset.fresh = '';   // before the first play only the play button shows over the poster
+  v.addEventListener('play', () => { delete box.dataset.fresh; }, {once: true});
+  box.addEventListener('focusin', e => { if (e.target !== box && !e.target.closest('.vp-play')) delete box.dataset.fresh; });   // a keyboard user tabbing to a control sees the controls
   box.addEventListener('pointermove', wake); box.addEventListener('focusin', wake);
   box.addEventListener('keydown', e => {
     if (e.metaKey || e.ctrlKey || e.altKey || e.target === vr) return;
