@@ -133,7 +133,7 @@ test('integration endpoint: the CRM makes the ID (AIP- and 6 of the alphabet); t
   assert.deepEqual([r4.status, r4.json], [200, { ok: true, created: false, id: 'AIP-7KQ2XM' }]);
   assert.equal(db.prepare("SELECT count(*) n FROM students WHERE id = 'AIP-ABCDEF'").get().n, 0);
   // IDs outside the rule: 400 bad_id, nothing made (0 O 1 I L are not in the alphabet; 7 characters; no prefix)
-  for (const id of ['AIP-7KQ2X0', 'AIP-7KQ2XO', 'AIP-7KQ2XI', 'AIP-7KQ2XL', 'AIP-7KQ2X1', 'AIP-7KQ2XMH', 'AIP-7KQ2X', '7KQ2XM', 'XM', 12345678]) {
+  for (const id of ['AIP-7KQ2X0', 'AIP-7KQ2XO', 'AIP-7KQ2XI', 'AIP-7KQ2XL', 'AIP-7KQ2X1', 'AIP-7KQ2XMH', 'AIP-7KQ2X', '7KQ2XM', 'XM', 'aip-ſſſſſſ', 'AIP-7KQ2XＭ', 12345678]) {
     const r = await c.post(URL_, { id, fullName: 'Bad Id', phone: '901234569' }, auth());
     assert.equal(r.status, 400, String(id));
     assert.equal(r.json.error.code, 'bad_id', String(id));

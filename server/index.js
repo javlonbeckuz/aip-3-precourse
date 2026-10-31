@@ -164,8 +164,9 @@ export function createApp(cfg) {
     const v = (k) => (typeof body[k] === 'string' ? body[k] : '');
     // the CRM makes the ID (API.md "ID rules"); without one the portal makes it, so an older CRM build still works
     if (body.id != null && typeof body.id !== 'string') throw fail(400, 'bad_id', 'id must be a string');
-    const id = v('id').trim().toUpperCase() || null;
-    if (id && !FULL_ID.test(id)) throw fail(400, 'bad_id', 'id must be AIP- and 6 characters from 23456789ABCDEFGHJKMNPQRSTUVWXYZ');
+    const raw = v('id').trim();   // checked before upper-casing, ASCII only: toUpperCase would turn odd letters (U+017F) into valid ones
+    if (raw && !new RegExp(FULL_ID.source, 'i').test(raw)) throw fail(400, 'bad_id', 'id must be AIP- and 6 characters from 23456789ABCDEFGHJKMNPQRSTUVWXYZ');
+    const id = raw.toUpperCase() || null;
     if (!v('phone').trim()) throw fail(400, 'bad_phone', 'phone is required');
     const phone = normPhone(v('phone'));
     if (!phone) throw fail(400, 'bad_phone', 'Phone number is not valid');
@@ -198,7 +199,12 @@ export function createApp(cfg) {
       // Another ID: no ID in the answer, the admins get the card with the real one.
       return json(res, 200, id && id === have.id ? { ok: true, created: false, id } : { ok: true, created: false });
     }
-    const st = createStudent(db, { id, fullName: v('fullName'), phone, grp: v('group').trim() || null, mentor: v('mentor'), createdBy: 0 }); // 0 = made by the CRM; clean() validates the rest
+    let st;
+    try { st = createStudent(db, { id, fullName: v('fullName'), phone, grp: v('group').trim() || null, mentor: v('mentor'), createdBy: 0 }); } // 0 = made by the CRM; clean() validates the rest
+    catch (e) {   // another process made this phone a moment ago (overlapping deploys share the DB): the call did succeed
+      if (e instanceof HttpError && e.code === 'duplicate_phone') return json(res, 200, { ok: true, created: false });
+      throw e;
+    }
     createCap.add('all');
     console.log(`integration: created ${studentRef(db, st.id)}`); // a rowid, never an ID, phone or name
     fire(st, null);

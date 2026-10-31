@@ -134,7 +134,6 @@ export function createContent({ dir, now = () => Date.now(), production = false 
     for (const n of lessonNumbers()) for (const l of LANGS) lesson(n, l);
     // a lesson with slides but no stills serves the placeholder svg: drop the stills in before the date is set
     for (const n of lessonNumbers()) if (lesson(n).slideCount > 0 && !hasStills(n)) console.warn(`content: WARNING lesson ${n} has slideCount ${lesson(n).slideCount} but no slide stills (lessons/${n}/slides/1.webp): students would see placeholder slides`);
-    for (const l of lesson(0).prep?.more?.links ?? []) if (l.video && !prepVideo(l.video)) console.warn();
     for (const l of lesson(0).prep?.more?.links ?? []) if (l.video && !prepVideo(l.video)) console.warn(`content: WARNING video lessons/0/video/${l.video}.mp4 is missing: its row is hidden until the file is uploaded`);
     for (const need of [0, ...NUMS]) if (!lessonNumbers().includes(need)) throw new Error(`content: lesson ${need} is missing`);
   }
@@ -200,7 +199,7 @@ export function createContent({ dir, now = () => Date.now(), production = false 
     return v;
   }
   // a video lesson whose file is not on the server (it is gitignored and uploaded by hand) is left out, never shown as a broken player
-  const prepShown = (p) => (p?.more?.links ? { ...p, more: { ...p.more, links: p.more.links.filter((l) => !l.video || prepVideo(l.video)) } } : p);
+  const prepShown = (p) => (Array.isArray(p?.more?.links) ? { ...p, more: { ...p.more, links: p.more.links.filter((l) => !l?.video || prepVideo(l.video)) } } : p);   // tolerant: a bad live edit must not break login
   const lessonsView = (lang, group, review) => lessonNumbers().map((n) => lessonView(n, lang, group, review));
 
   // ---- files. Every path comes from the lesson JSON or a validated integer, never from the URL.
@@ -237,7 +236,7 @@ export function createContent({ dir, now = () => Date.now(), production = false 
   const prepPoster = (slug) => { const abs = path.join(lessonDir(0), 'video', `${slug}.jpg`); return /^[a-z0-9-]{1,40}$/.test(slug) && fs.existsSync(abs) ? { abs, type: 'image/jpeg' } : null; };   // its first frame for the player
   const prepVideo = (slug) => { const abs = path.join(lessonDir(0), 'video', `${slug}.mp4`); return /^[a-z0-9-]{1,40}$/.test(slug) && fs.existsSync(abs) ? { abs, type: 'video/mp4' } : null; };
   const prepFile = (lang) => { const abs = path.join(dir, 'prep', `prep-${lang}.pdf`); return fs.existsSync(abs) ? { abs, name: `prep-${lang}.pdf` } : null; };
-  const prepPdfSize = (lang) => { const f = prepFile(lang); return f ? fs.statSync(f.abs).size : null; };   // bytes, shown on the guide row (UX audit S4-2)
+  const prepPdfSize = (lang) => { const f = prepFile(lang); try { return f ? fs.statSync(f.abs).size : null; } catch { return null; } };   // bytes, shown on the guide row (UX audit S4-2)
 
   // ---- progress summary: booleans per counted unit (slides, amaliyot tick, vazifa tick). Kit is not counted.
   function units(n, p) {
