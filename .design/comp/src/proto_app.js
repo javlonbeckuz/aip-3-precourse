@@ -331,7 +331,7 @@ function initPrep(root){
     $('.hd', c).addEventListener('click', () => toggleOpen(i));
     c.addEventListener('click', e => { if (!e.target.closest('button,a') && !c.classList.contains('open')) toggleOpen(i); });   // the empty area of a closed card acts as its header button
     $('.chip', c).addEventListener('click', () => {
-      if (!c.classList.contains('open') && !S.has('prep:' + i)) { toggleOpen(i); $('.hd', c).focus(); return; }   // on a closed card the first tap opens it: the steps come before the tick
+      if (!c.classList.contains('open')) { toggleOpen(i); $('.hd', c).focus(); return; }   // on a closed card the first tap only opens it: the steps come before the tick, and a done card is never unticked by a stray tap
       const was = S.has('prep:' + i), prev = open; S.tick('prep:' + i, !was);
       if (!was) { c.classList.add('just'); setTimeout(() => c.classList.remove('just'), 600); open = (open >= 0 && open !== i && !S.has('prep:' + open)) ? open : nextFrom(i); }
       else open = i;

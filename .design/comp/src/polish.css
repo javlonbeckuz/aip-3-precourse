@@ -425,3 +425,6 @@ html.hid .bgp path{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){.f-biglock.shake,.f-note svg.shake{animation:lock-blink 400ms ease}}
 /* the home hero is a folder too (user, 2026-10-31): same tab, paper sheets and tilt as the grid folders; the wrapper takes the grid slot, the folder fills it */
 .now-card.fo{position:relative;display:flex;flex-direction:column}.now-card.fo>.folder{flex:1}
+/* setup cards: a bigger tick and label (user, 2026-10-31); the hit area stays 44px+ */
+.prep .chip{min-height:34px;padding-left:36px;font-size:16px}.prep .chip .cl{font-size:16px}
+.prep .chip::before{width:26px;height:26px;margin-top:-13px;background-size:18px}

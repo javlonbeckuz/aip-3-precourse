@@ -1232,6 +1232,9 @@ html.hid .bgp path{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){.f-biglock.shake,.f-note svg.shake{animation:lock-blink 400ms ease}}
 .now-card.fo{position:relative;display:flex;flex-direction:column}
 .now-card.fo>.folder{flex:1}
+.prep .chip{min-height:34px;padding-left:36px;font-size:16px}
+.prep .chip .cl{font-size:16px}
+.prep .chip::before{width:26px;height:26px;margin-top:-13px;background-size:18px}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}

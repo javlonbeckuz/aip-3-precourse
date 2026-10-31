@@ -1004,6 +1004,9 @@ html.hid .bgp path{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){.f-biglock.shake,.f-note svg.shake{animation:lock-blink 400ms ease}}
 .now-card.fo{position:relative;display:flex;flex-direction:column}
 .now-card.fo>.folder{flex:1}
+.prep .chip{min-height:34px;padding-left:36px;font-size:16px}
+.prep .chip .cl{font-size:16px}
+.prep .chip::before{width:26px;height:26px;margin-top:-13px;background-size:18px}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}
@@ -2865,7 +2868,7 @@ function initPrep(root){
     $('.hd', c).addEventListener('click', () => toggleOpen(i));
     c.addEventListener('click', e => { if (!e.target.closest('button,a') && !c.classList.contains('open')) toggleOpen(i); });   // the empty area of a closed card acts as its header button
     $('.chip', c).addEventListener('click', () => {
-      if (!c.classList.contains('open') && !S.has('prep:' + i)) { toggleOpen(i); $('.hd', c).focus(); return; }   // on a closed card the first tap opens it: the steps come before the tick
+      if (!c.classList.contains('open')) { toggleOpen(i); $('.hd', c).focus(); return; }   // on a closed card the first tap only opens it: the steps come before the tick, and a done card is never unticked by a stray tap
       const was = S.has('prep:' + i), prev = open; S.tick('prep:' + i, !was);
       if (!was) { c.classList.add('just'); setTimeout(() => c.classList.remove('just'), 600); open = (open >= 0 && open !== i && !S.has('prep:' + open)) ? open : nextFrom(i); }
       else open = i;
