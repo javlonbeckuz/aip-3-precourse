@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pipeline } from 'node:stream';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { openDb, getStudent, getStudentByPhone, createStudent, normPhone, studentRef, squash, fold, touchLogin, publicStudent, getProgress, putProgress, HttpError } from './db.js';
+import { openDb, getStudent, getStudentByPhone, createStudent, normPhone, studentRef, squash, fold, touchLogin, publicStudent, getProgress, putProgress, HttpError, FULL_ID } from './db.js';
 import * as auth from './auth.js';
 import { createContent, parseTime, isoTashkent, LANGS } from './content.js';
 
@@ -160,8 +160,12 @@ export function createApp(cfg) {
 
   async function createFromCrm(req, res) {
     const body = await readJson(req, 1024);
-    onlyKeys(body, ['fullName', 'phone', 'group', 'mentor']);
+    onlyKeys(body, ['id', 'fullName', 'phone', 'group', 'mentor']);
     const v = (k) => (typeof body[k] === 'string' ? body[k] : '');
+    // the CRM makes the ID (API.md "ID rules"); without one the portal makes it, so an older CRM build still works
+    if (body.id != null && typeof body.id !== 'string') throw fail(400, 'bad_id', 'id must be a string');
+    const id = v('id').trim().toUpperCase() || null;
+    if (id && !FULL_ID.test(id)) throw fail(400, 'bad_id', 'id must be AIP- and 6 characters from 23456789ABCDEFGHJKMNPQRSTUVWXYZ');
     if (!v('phone').trim()) throw fail(400, 'bad_phone', 'phone is required');
     const phone = normPhone(v('phone'));
     if (!phone) throw fail(400, 'bad_phone', 'Phone number is not valid');
@@ -190,13 +194,13 @@ export function createApp(cfg) {
         noticeEach.add(have.id); noticeAll.add('all');
         fire(have, { inactive: !have.active, crmName: differs ? name.slice(0, 80) : null });
       }
-      return json(res, 200, { ok: true, created: false });
+      return json(res, 200, { ok: true, created: false, id: have.id });   // a known phone keeps its first ID: the CRM stores this one, not the one it sent
     }
-    const st = createStudent(db, { fullName: v('fullName'), phone, grp: v('group').trim() || null, mentor: v('mentor'), createdBy: 0 }); // 0 = made by the CRM; clean() validates the rest
+    const st = createStudent(db, { id, fullName: v('fullName'), phone, grp: v('group').trim() || null, mentor: v('mentor'), createdBy: 0 }); // 0 = made by the CRM; clean() validates the rest
     createCap.add('all');
     console.log(`integration: created ${studentRef(db, st.id)}`); // a rowid, never an ID, phone or name
     fire(st, null);
-    json(res, 201, { ok: true, created: true });
+    json(res, 201, { ok: true, created: true, id: st.id });
   }
 
   // ---- API routes: [method, regex, handler(req, res, url, match)]
@@ -285,7 +289,7 @@ export function createApp(cfg) {
       sendFile(req, res, f.abs, { name: f.name });
     }],
     // CRM -> portal: the first payment is in, make the student (idempotent on the phone). Bearer key, no cookie, no Origin check.
-    // Answers carry no ID, name or phone: the admins forward the ID, the CRM never needs it.
+    // The CRM makes the ID (AIP- and 6 of ID_ALPHABET) and gets the student's ID back; answers never carry a name or phone.
     ['POST', /^\/api\/int\/students$/, async (req, res) => {
       const ip = auth.ipKey(auth.clientIp(req, cfg.trust));
       if (!auth.bearerOk(req.headers.authorization, cfg.integrationKey)) {
@@ -300,7 +304,7 @@ export function createApp(cfg) {
       try { return await createFromCrm(req, res); }
       catch (e) {
         // an authenticated request that fails validation may be a paid buyer who now has no ID: tell a human (once per 10 min, nothing echoed)
-        if (e instanceof HttpError && e.status === 400 && !badReqAlert.hit('all')) raise(`AIP portal: the CRM sent a request that was refused (${e.code}). A student who paid may be missing. Check the CRM log and send the student again.`);
+        if (e instanceof HttpError && (e.status === 400 || e.code === 'id_taken') && !badReqAlert.hit('all')) raise(`AIP portal: the CRM sent a request that was refused (${e.code}). A student who paid may be missing. Check the CRM log and send the student again.`);
         throw e;
       }
     }],

@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 const MIGRATIONS = path.join(path.dirname(fileURLToPath(import.meta.url)), 'migrations');
 export const ID_ALPHABET = '23456789ABCDEFGHJKMNPQRSTUVWXYZ';
 export const GROUPS = ['shanba', 'yakshanba'];
-const FULL_ID = new RegExp(`^AIP-[${ID_ALPHABET}]{6}$`);
+export const FULL_ID = new RegExp(`^AIP-[${ID_ALPHABET}]{6}$`);   // the ID rule, shared with the CRM (API.md): AIP- and 6 of the alphabet above
 
 export class HttpError extends Error {
   constructor(status, code, message, extra) { super(message); this.status = status; this.code = code; this.extra = extra; }
@@ -116,7 +116,10 @@ export function createStudent(db, { fullName, grp = null, mentor = '', phone = n
     try { ins.run(sid, c.fullName, c.fullName.split(' ')[0], c.grp, c.mentor, c.phone, new Date().toISOString(), createdBy); }
     catch (e) { if (/students\.phone/.test(e.message)) dupPhone(db, c.phone); throw e; } // lost a race on the phone
   };
-  if (id) { row(id.toUpperCase()); return getStudent(db, id.toUpperCase()); }
+  if (id) {   // an ID chosen outside (the CRM): taken = 409, the caller makes a new one
+    try { row(id.toUpperCase()); } catch (e) { if (/UNIQUE|PRIMARY/i.test(e.message) && /students\.id/.test(e.message)) throw new HttpError(409, 'id_taken', 'This ID is already in use'); throw e; }
+    return getStudent(db, id.toUpperCase());
+  }
   for (let i = 0; i < 20; i++) { // collisions are ~1 in 887M per pair; retry anyway
     const sid = randomId(rand);
     try { row(sid); return getStudent(db, sid); } catch (e) { if (!/UNIQUE|PRIMARY/i.test(e.message) || !/students\.id/.test(e.message)) throw e; }

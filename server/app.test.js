@@ -304,6 +304,20 @@ test('prep pdf: language picks the file, bad language falls back to uz', async (
   assert.match((await c.get('/api/aip/prep/pdf?lang=xx')).headers.get('content-disposition'), /prep-uz\.pdf/);
 });
 
+test('prep video: a video lesson whose file is not uploaded is left out of the page, not shown broken', async (t) => {
+  const dir = tmpCopy(t);   // tmpCopy skips .mp4, like a git checkout
+  const links = async () => (await (await startApp(t, { now: BEFORE, contentDir: dir })).login('XM')).session.lessons.find((l) => l.n === 0).prep.more.links;
+  const real = JSON.parse(fs.readFileSync(path.join(dir, 'lessons/0/lesson.uz.json'), 'utf8')).prep.more.links;
+  const vids = real.filter((l) => l.video).map((l) => l.video);
+  assert.ok(vids.length);
+  t.mock.method(console, 'warn', () => {});
+  assert.deepEqual((await links()).filter((l) => l.video), []);
+  assert.equal((await links()).length, real.length - vids.length);
+  fs.mkdirSync(path.join(dir, 'lessons/0/video'), { recursive: true });
+  for (const v of vids) fs.writeFileSync(path.join(dir, 'lessons/0/video', `${v}.mp4`), 'x');
+  assert.equal((await links()).length, real.length);
+});
+
 test('prep video: login needed, streams with Range, unknown slug 404', async (t) => {
   const dir = tmpCopy(t);
   fs.mkdirSync(path.join(dir, 'lessons', '0', 'video'), { recursive: true });

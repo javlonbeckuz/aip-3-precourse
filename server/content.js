@@ -134,10 +134,14 @@ export function createContent({ dir, now = () => Date.now(), production = false 
     for (const n of lessonNumbers()) for (const l of LANGS) lesson(n, l);
     // a lesson with slides but no stills serves the placeholder svg: drop the stills in before the date is set
     for (const n of lessonNumbers()) if (lesson(n).slideCount > 0 && !hasStills(n)) console.warn(`content: WARNING lesson ${n} has slideCount ${lesson(n).slideCount} but no slide stills (lessons/${n}/slides/1.webp): students would see placeholder slides`);
+    for (const l of lesson(0).prep?.more?.links ?? []) if (l.video && !prepVideo(l.video)) console.warn();
+    for (const l of lesson(0).prep?.more?.links ?? []) if (l.video && !prepVideo(l.video)) console.warn(`content: WARNING video lessons/0/video/${l.video}.mp4 is missing: its row is hidden until the file is uploaded`);
     for (const need of [0, ...NUMS]) if (!lessonNumbers().includes(need)) throw new Error(`content: lesson ${need} is missing`);
   }
 
   const start = (group, n) => schedule().groups[group]?.[Math.max(n, 1) - 1] ?? NaN; // lesson 0 hangs off lesson 1
+  // a student with no group yet (made by the CRM) is shown the dates of the group that starts first, so the course start reads 21-noyabr; their lessons stay locked
+  const firstGroup = () => { const g = schedule().groups; return Object.keys(g).filter((k) => Number.isFinite(g[k]?.[0])).sort((a, b) => g[a][0] - g[b][0])[0] ?? null; };
 
   // ms when a part opens for this group; `review` (students.review) opens every lesson at once, but only for a group with dates
   function opensAt(n, part, group, review = false) {
@@ -185,16 +189,18 @@ export function createContent({ dir, now = () => Date.now(), production = false 
   function lessonView(n, lang, group, review = false) {
     const T = lesson(n, lang), L = lesson(n, 'uz'), has = hasPart(L);
     const v = { n, num: numOf(n), title: T.title, subtitle: T.subtitle, summary: T.summary, topics: T.topics,
-      start: n ? isoTashkent(start(group, n)) : null, date: n ? dateTashkent(start(group, n)) : null, has, parts: {}, open: false };
+      start: n ? isoTashkent(start(group, n)) : null, date: n ? dateTashkent(start(group ?? firstGroup(), n)) : null, has, parts: {}, open: false };
     for (const part of PARTS.filter((p) => has[p])) {
       const at = opensAt(n, part, group, review), src = part === 'prep' ? T : L;
-      if (isOpen(at)) { v.parts[part] = { open: true }; v.open = true; for (const k of FIELDS[part]) v[k] = src[k]; }
+      if (isOpen(at)) { v.parts[part] = { open: true }; v.open = true; for (const k of FIELDS[part]) v[k] = k === 'prep' ? prepShown(src.prep) : src[k]; }
       else v.parts[part] = { open: false, opensAt: isoTashkent(at) };
     }
     // ponytail: a lesson with no parts yet opens on its day ('start' is no release key, so +0h); review opens it at once
     if (n > 0 && !PARTS.some((p) => has[p])) v.open = isOpen(opensAt(n, 'start', group, review));
     return v;
   }
+  // a video lesson whose file is not on the server (it is gitignored and uploaded by hand) is left out, never shown as a broken player
+  const prepShown = (p) => (p?.more?.links ? { ...p, more: { ...p.more, links: p.more.links.filter((l) => !l.video || prepVideo(l.video)) } } : p);
   const lessonsView = (lang, group, review) => lessonNumbers().map((n) => lessonView(n, lang, group, review));
 
   // ---- files. Every path comes from the lesson JSON or a validated integer, never from the URL.
