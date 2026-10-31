@@ -1257,6 +1257,7 @@ html.hid .bgp path{animation-play-state:paused}
 .ia-tk::before{left:calc(var(--nr) * -1);clip-path:inset(0 0 0 50%)}
 .ia-tk::after{right:calc(var(--nr) * -1);clip-path:inset(0 50% 0 0)}
 .ex-h+.ex-files{margin-top:28px}
+.fo:has(>.folder[data-lock]:not([data-lock="course"])){filter:brightness(.5)}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}

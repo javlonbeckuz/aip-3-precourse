@@ -441,3 +441,5 @@ html.hid .bgp path{animation-play-state:paused}
 .ia-tk::before{left:calc(var(--nr) * -1);clip-path:inset(0 0 0 50%)}.ia-tk::after{right:calc(var(--nr) * -1);clip-path:inset(0 50% 0 0)}
 /* setup page, everything done: no lede under the title (text audit 2026-10-31), so the guide keeps its distance */
 .ex-h+.ex-files{margin-top:28px}
+/* locked lesson folders sit in shadow (user, 2026-10-31): the whole folder, back sheets included, is darkened; the open ones keep full colour. The pre-course "6 ta dars" folder is not dimmed */
+.fo:has(>.folder[data-lock]:not([data-lock="course"])){filter:brightness(.5)}
