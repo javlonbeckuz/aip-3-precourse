@@ -135,6 +135,7 @@ open(os.path.join(OUT, 'index.html'), 'w', encoding='utf-8', newline='\n').write
 open(os.path.join(OUT, 'app.js'), 'w', encoding='utf-8', newline='\n').write(js)
 open(os.path.join(OUT, 'app.css'), 'w', encoding='utf-8', newline='\n').write(css)
 shutil.copyfile(os.path.join(COMP, 'login-pin.webp'), os.path.join(OUT, 'login-pin.webp'))
+shutil.copyfile(os.path.join(COMP, 'bg-adam.webp'), os.path.join(OUT, 'bg-adam.webp'))   # the dithered background after sign-in (tabs.js)
 print('app:', OUT, '| index.html', len(html) // 1024, 'KB, app.js', len(js) // 1024, 'KB, app.css', len(css) // 1024, 'KB')
 import subprocess
 _chk = subprocess.run(['node', '--check', os.path.join(OUT, 'app.js')], capture_output=True, text=True)

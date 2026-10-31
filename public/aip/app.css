@@ -978,15 +978,11 @@ body>.ldr{position:fixed;z-index:60}
 .prep-more{margin:48px 16px}
 @container (min-width:900px){.prep-more{margin-inline:calc(66 * var(--u))}}
 .bgp{display:none;contain:strict;will-change:transform;position:fixed;inset:0;z-index:0;pointer-events:none;color:#fff;opacity:.22;overflow:hidden}
-.bgp svg{position:absolute;inset:0;width:100%;height:100%}
+canvas.bgp{width:100%;height:100%}
 body[data-view="app"] .bgp,body[data-view="dastur"] .bgp,body[data-view="dars"] .bgp,body[data-view="ex"] .bgp{display:block}
 body[data-view="app"],body[data-view="dastur"],body[data-view="dars"],body[data-view="ex"]{background:#000}
 body[data-view="app"] .frame,body[data-view="dastur"] .frame,body[data-view="dars"] .frame,body[data-view="ex"] .frame{background:transparent}
 .frame{position:relative;z-index:1}
-.bgp path{animation:bgp linear infinite}
-@keyframes bgp{0%,100%{stroke-dashoffset:0}50%{stroke-dashoffset:-1}}
-html.hid .bgp path{animation-play-state:paused}
-@media (prefers-reduced-motion:reduce){.bgp path{animation:none!important;stroke-dasharray:none!important}}
 @media (max-width:599px){.bgp{opacity:.2}}
 .s1 li:has(.toast:not([hidden])){content-visibility:visible}
 .gt .pane-text p+p{margin-top:12px}
