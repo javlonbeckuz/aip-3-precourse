@@ -443,3 +443,11 @@ html.hid .bgp path{animation-play-state:paused}
 .ex-h+.ex-files{margin-top:28px}
 /* locked lesson folders sit in shadow (user, 2026-10-31): the whole folder, back sheets included, is darkened; the open ones keep full colour. The pre-course "6 ta dars" folder is not dimmed */
 .fo:has(>.folder[data-lock]:not([data-lock="course"])){filter:brightness(.5)}
+
+/* UX audit S9-1: the name menu row to Birinchi darsgacha, phones only */
+.nm-pre{display:flex;align-items:center;justify-content:center;min-height:48px;margin-top:12px;border-radius:999px;background:var(--yellow);color:var(--black);font:500 16px/1 var(--font-body)}
+.nm-pre[hidden]{display:none}
+@media (min-width:600px){.nm-pre{display:none}}
+/* UX audit S9-2: "Student" opens a menu, so it shows a chevron */
+.nav-name::after{content:"";display:inline-block;width:7px;height:7px;margin-left:9px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-3px) rotate(45deg);transition:transform .2s var(--ease)}
+.nav-name[aria-expanded="true"]::after{transform:translateY(1px) rotate(-135deg)}

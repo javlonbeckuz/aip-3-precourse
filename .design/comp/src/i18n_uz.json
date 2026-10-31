@@ -250,7 +250,7 @@
   "note": "toast when a link is unknown, ≤ 28 chars"
  },
  "lock.title": {
-  "uz": "{n} {date}da ochiladi.",
+  "uz": "{n} {date}da ochiladi",
   "translate": true,
   "note": "title of the bottom sheet on the locked card · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -820,7 +820,7 @@
   "note": "name menu (dropdown under the student name); row label or value, short"
  },
  "menu.course_range": {
-  "uz": "{n} dars · {from} – {to}",
+  "uz": "{from} – {to}, {n} dars",
   "translate": true,
   "note": "name menu (dropdown under the student name); row label or value, short · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -965,7 +965,7 @@
   "note": "shared UI word or pattern; check it fits as a button (≥ 44 px tall, ≤ 18 chars)"
  },
  "lock.title_tba": {
-  "uz": "{n} sanasi keyinroq eʼlon qilinadi.",
+  "uz": "{n} sanasi keyinroq eʼlon qilinadi",
   "translate": true,
   "note": "locked lesson: bottom sheet title / text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },

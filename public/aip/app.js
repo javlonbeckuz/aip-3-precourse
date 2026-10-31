@@ -246,7 +246,7 @@ const I18N = {uz: {
   'menu.id': 'Shaxsiy ID', 'menu.group': 'Guruh', 'menu.group_value': 'Shanba guruhi', 'menu.course': 'Kurs', 'menu.course_value': '7 dars · 21 noy – 26 dek', 'menu.logout': 'Chiqish',
   'popup.label': 'Yangi dars', 'popup.k': 'Yangi dars ochildi', 'popup.open': 'Darsni ochish', 
   'toast.done': '{no} bajarildi', 'toast.undo': 'Bekor qilish', 'toast.notfound': 'Sahifa topilmadi',
-  'lock.title': '{n} {date}da ochiladi.', 'lock.desc': 'Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.',
+  'lock.title': '{n} {date}da ochiladi', 'lock.desc': 'Hermes kartalari va «Biznesda AIʼni qoʻllash» kitobi (lotin va kirill) dars kuni shu yerda chiqadi.',
   'lock.sub': '10 ta Hermes kartasi va kitob: «Biznesda AIʼni qoʻllash» (lotin va kirill)',
   'live.copied_new': 'Nusxalandi: {title}. Bajarildi. Bekor qilish tugmasi pastda.', 'live.copied': 'Nusxalandi: {title}. Bajarildi.', 'live.copy_failed': 'Nusxa olinmadi. Matnni qoʻlda belgilang.',
   'live.marked': '{no} bajarildi.', 'live.unmarked': '{no} bajarildi belgisi olib tashlandi.', 'live.end_on': 'Bajarildi deb belgilandi.', 'live.end_off': 'Belgi olib tashlandi.',
@@ -350,7 +350,7 @@ const I18N = {uz: {
   'toast.save_failed': 'Saqlanmadi. Qayta urinib koʻring.',
   'menu.group_shanba': 'Shanba guruhi',
   'menu.group_yakshanba': 'Yakshanba guruhi',
-  'menu.course_range': '{n} dars · {from} – {to}',
+  'menu.course_range': '{from} – {to}, {n} dars',
   'toast.lang_failed': 'Til oʻzgarmadi. Qayta urinib koʻring.',
   'sl.error': 'Slayd yuklanmadi',
   'sl.retry': 'Qayta urinish',
@@ -383,7 +383,7 @@ const I18N = {uz: {
   'prep.end_after': 'Tayyorgarlik tugadi.',
   'prep.end_back': 'Dasturga qaytish',
   'date.tba': 'Sana keyinroq',
-  'lock.title_tba': '{n} sanasi keyinroq eʼlon qilinadi.',
+  'lock.title_tba': '{n} sanasi keyinroq eʼlon qilinadi',
   'prep.intro_tba': 'Birinchi dars sanasini shu yerda eʼlon qilamiz. Hozirdan tayyorlab qoʻying, hammasi 30 daqiqa.',
   'prep.end_tba': 'Tayyorsiz. Birinchi dars sanasi shu yerda chiqadi.',
   'menu.course_tba': '{n} dars, sanasi keyinroq',
@@ -664,7 +664,7 @@ const I18N = {uz: {
   "toast.done": "{no}: выполнено",
   "toast.undo": "Отменить",
   "toast.notfound": "Страница не найдена",
-  "lock.title": "{n} откроется {date}.",
+  "lock.title": "{n} откроется {date}",
   "lock.desc": "Карточки Hermes и книга «Biznesda AIʼni qoʻllash» (на латинице и кириллице) появятся здесь в день урока.",
   "lock.sub": "10 карточек Hermes и книга «Biznesda AIʼni qoʻllash» (латиница и кириллица)",
   "live.copied_new": "Скопировано: {title}. Выполнено. Отменить можно кнопкой внизу.",
@@ -886,7 +886,7 @@ const I18N = {uz: {
   "toast.save_failed": "Не сохранилось. Попробуйте ещё раз.",
   "menu.group_shanba": "Группа субботы",
   "menu.group_yakshanba": "Группа воскресенья",
-  "menu.course_range": "{n} уроков · {from} – {to}",
+  "menu.course_range": "{from} – {to}, {n} уроков",
   "toast.lang_failed": "Язык не изменился. Попробуйте ещё раз.",
   "sl.error": "Слайд не загрузился",
   "sl.retry": "Повторить",
@@ -916,7 +916,7 @@ const I18N = {uz: {
   "prep.end_back": "Вернуться к программе",
   "sl.img": "Слайд {i}: {topic}",
   "date.tba": "Дата будет позже",
-  "lock.title_tba": "{n}: дату объявим позже.",
+  "lock.title_tba": "{n}: дату объявим позже",
   "prep.intro_tba": "Дату первого занятия объявим здесь. Подготовьтесь уже сейчас, всё займёт 30 минут.",
   "prep.end_tba": "Вы готовы. Дата первого занятия появится здесь.",
   "menu.course_tba": "{n} уроков, даты позже",
@@ -1737,6 +1737,7 @@ function fillMenu(){
   $('nm-name').textContent = s.fullName; $('nm-id').textContent = s.id;
   $('nm-group').textContent = t('menu.group_' + (s.group || 'none'));
   $('nm-course').textContent = LESSONS[1].d ? t('menu.course_range', {n: RN().length, pl: RN().length, from: lessonDate(1), to: lessonDate(LN().filter(n => LESSONS[n].d).at(-1))}) : t('menu.course_tba', {n: RN().length, pl: RN().length});
+  $('nm-pre').hidden = !courseStarted();   // UX audit S9-1: a labelled way to the pre-course page on phones (CSS hides it on wider screens, where the header pill has its words)
   okina($('nmenu'));
 }
 async function logout(){
@@ -1842,7 +1843,7 @@ document.addEventListener('pointerup', e => {
 
 // ---- the prep guide PDF of the current language comes from the API
 function prepFileRow(){
-  return `<li><a class="ef-row" href="${API}/prep/pdf?lang=${LANG}" target="_blank" rel="noopener noreferrer"><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${T('prep.guide_name')}</span><span class="ef-mt">${T('prep.pdf')}</span></span><span class="ef-dl">${I('down', 18)}</span></a></li>`;
+  return `<li><a class="ef-row" href="${API}/prep/pdf?lang=${LANG}" target="_blank" rel="noopener noreferrer"><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${T('prep.guide_name')}</span><span class="ef-mt">${SESS?.prepPdfSize ? T('prep.pdf_meta', {size: Math.round(SESS.prepPdfSize / 1024) + ' KB'}) : T('prep.pdf')}</span></span><span class="ef-dl">${I('down', 18)}</span></a></li>`;
 }
 
 // ===================== boot =====================

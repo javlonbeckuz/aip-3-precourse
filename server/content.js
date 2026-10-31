@@ -95,7 +95,7 @@ export function validateLesson(L, name = 'lesson') {
   return L;
 }
 
-export function createContent({ dir, now = () => Date.now() }) {
+export function createContent({ dir, now = () => Date.now(), production = false }) {
   const cache = new Map(); // abs path -> {mtime, size, data, badMtime}
   const index = new WeakMap(); // lesson object -> Map(slug -> {name, part})
 
@@ -133,7 +133,7 @@ export function createContent({ dir, now = () => Date.now() }) {
     schedule();
     for (const n of lessonNumbers()) for (const l of LANGS) lesson(n, l);
     // a lesson with slides but no stills serves the placeholder svg: drop the stills in before the date is set
-    for (const n of lessonNumbers()) if (lesson(n).slideCount > 0 && !['.webp', '.jpg', '.png'].some((e) => fs.existsSync(path.join(dir, 'lessons', String(n), 'slides', `1${e}`)))) console.warn(`content: WARNING lesson ${n} has slideCount ${lesson(n).slideCount} but no slide stills (lessons/${n}/slides/1.webp): students would see placeholder slides`);
+    for (const n of lessonNumbers()) if (lesson(n).slideCount > 0 && !hasStills(n)) console.warn(`content: WARNING lesson ${n} has slideCount ${lesson(n).slideCount} but no slide stills (lessons/${n}/slides/1.webp): students would see placeholder slides`);
     for (const need of [0, ...NUMS]) if (!lessonNumbers().includes(need)) throw new Error(`content: lesson ${need} is missing`);
   }
 
@@ -171,7 +171,9 @@ export function createContent({ dir, now = () => Date.now() }) {
   }
 
   const blockHas = (b) => !!(b && (b.text || b.groups?.length));
-  const hasPart = (L) => ({ slides: L.slideCount > 0, amaliyot: blockHas(L.amaliyot), kit: blockHas(L.kit), vazifa: blockHas(L.vazifa), prep: !!L.prep });
+  // fail closed (UX audit S8-1): in production a lesson whose slide stills are not uploaded has no slides part, so students see "soon", never placeholder slides
+  const hasStills = (n) => ['.webp', '.jpg', '.png'].some((e) => fs.existsSync(path.join(dir, 'lessons', String(n), 'slides', `1${e}`)));
+  const hasPart = (L) => ({ slides: L.slideCount > 0 && (!production || hasStills(L.n)), amaliyot: blockHas(L.amaliyot), kit: blockHas(L.kit), vazifa: blockHas(L.vazifa), prep: !!L.prep });
   const FIELDS = { slides: ['slideCount', 'slideKind'], amaliyot: ['amaliyot'], kit: ['kit'], vazifa: ['vazifa'], prep: ['prep'] };
 
   // display number: 1.. in order over the lessons that are numbered (lesson.uz.json "numbered" is not false); null for lesson 0 and unnumbered ones (Kirish)
@@ -229,6 +231,7 @@ export function createContent({ dir, now = () => Date.now() }) {
   const prepPoster = (slug) => { const abs = path.join(lessonDir(0), 'video', `${slug}.jpg`); return /^[a-z0-9-]{1,40}$/.test(slug) && fs.existsSync(abs) ? { abs, type: 'image/jpeg' } : null; };   // its first frame for the player
   const prepVideo = (slug) => { const abs = path.join(lessonDir(0), 'video', `${slug}.mp4`); return /^[a-z0-9-]{1,40}$/.test(slug) && fs.existsSync(abs) ? { abs, type: 'video/mp4' } : null; };
   const prepFile = (lang) => { const abs = path.join(dir, 'prep', `prep-${lang}.pdf`); return fs.existsSync(abs) ? { abs, name: `prep-${lang}.pdf` } : null; };
+  const prepPdfSize = (lang) => { const f = prepFile(lang); return f ? fs.statSync(f.abs).size : null; };   // bytes, shown on the guide row (UX audit S4-2)
 
   // ---- progress summary: booleans per counted unit (slides, amaliyot tick, vazifa tick). Kit is not counted.
   function units(n, p) {
@@ -250,5 +253,5 @@ export function createContent({ dir, now = () => Date.now() }) {
       done: NUMS.filter((n) => numbered(n) && lessons[n][1] && lessons[n][0] === lessons[n][1] && !shut[n]).length };
   }
 
-  return { schedule, validateAll, has: (n) => hasPart(lesson(n)), lesson, lessonNumbers, partOpen, opensAt, isOpen, live, scheduleView, lessonView, lessonsView, docPart, docFile, slideFile, clipFile, prepFile, prepVideo, prepPoster, summary, now };
+  return { schedule, validateAll, has: (n) => hasPart(lesson(n)), lesson, lessonNumbers, prepPdfSize, partOpen, opensAt, isOpen, live, scheduleView, lessonView, lessonsView, docPart, docFile, slideFile, clipFile, prepFile, prepVideo, prepPoster, summary, now };
 }

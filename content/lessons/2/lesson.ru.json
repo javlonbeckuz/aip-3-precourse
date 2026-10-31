@@ -1,12 +1,12 @@
 {
   "n": 2,
   "title": "Введение",
-  "subtitle": "Что такое AI, модели, Context, RAG, NotebookLM",
+  "subtitle": "Что такое AI, модели, контекст, RAG, NotebookLM",
   "summary": "Разберём, что такое AI на самом деле, как работают модели и почему контекст решает всё. Практика: NotebookLM.",
   "topics": [
     "Что такое AI",
     "Модели",
-    "Context",
+    "Контекст",
     "RAG",
     "NotebookLM"
   ]

@@ -365,6 +365,15 @@ test('content: a lesson with slideCount but no stills logs a startup warning', (
   assert.ok(!warn.mock.calls.some((x) => /lesson 2 has slideCount/.test(x.arguments[0])));
 });
 
+test('content: in production a lesson without slide stills has no slides part (UX audit S8-1)', (t) => {
+  const dir = tmpCopy(t);
+  assert.equal(createContent({ dir }).has(2).slides, true);   // dev: placeholder slides, to work on the layout
+  assert.equal(createContent({ dir, production: true }).has(2).slides, false);
+  fs.mkdirSync(path.join(dir, 'lessons/2/slides'), { recursive: true });
+  fs.writeFileSync(path.join(dir, 'lessons/2/slides/1.webp'), 'x');
+  assert.equal(createContent({ dir, production: true }).has(2).slides, true);
+});
+
 test('content: bad prompts stop startup', () => {
   const mk = (p) => ({ n: 1, vazifa: { text: '', groups: [{ title: 'g', files: [], prompts: p }] } });
   assert.doesNotThrow(() => validateLesson(mk([{ id: 'P1', title: 'a', text: 'x' }, { id: 'P2', text: 'y' }])));

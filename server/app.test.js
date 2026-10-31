@@ -50,7 +50,7 @@ test('login: success payload, cookie flags in production and dev', async (t) => 
   const c = prod.client();
   const r = await c.post('/api/aip/login', { id: 'xm' });
   assert.equal(r.status, 200);
-  assert.deepEqual(Object.keys(r.json).sort(), ['lang', 'lessons', 'live', 'ok', 'progress', 'schedule', 'student']);
+  assert.deepEqual(Object.keys(r.json).sort(), ['lang', 'lessons', 'live', 'ok', 'prepPdfSize', 'progress', 'schedule', 'student']);
   assert.deepEqual(r.json.student, { id: 'XM', fullName: 'Student', firstName: 'Student', mentor: 'Xurshid Maroziqov', group: 'shanba' });
   assert.equal(r.json.lessons.length, 8);
   assert.deepEqual(r.json.progress, { t: {}, sl: {} });
@@ -485,6 +485,7 @@ test('gating: dates TBA lock lessons 1-7 even when release says "open"; prep sta
     assert.equal((await c.get('/api/aip/lesson/1/slide/1')).status, 403);
     assert.equal((await c.get('/api/aip/lesson/1/doc/hw-kompaniya')).status, 404);
     assert.equal((await c.get('/api/aip/prep/pdf')).status, 200);
+    assert.ok(s.prepPdfSize > 1000);   // the guide row shows "PDF, 363 KB"
   }
   const sun = await a.login('SUN'); // the other group has dates and "open" release: unaffected
   assert.equal(sun.session.lessons[1].parts.slides.open, true);

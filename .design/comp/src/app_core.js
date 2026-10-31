@@ -26,6 +26,7 @@ function fillMenu(){
   $('nm-name').textContent = s.fullName; $('nm-id').textContent = s.id;
   $('nm-group').textContent = t('menu.group_' + (s.group || 'none'));
   $('nm-course').textContent = LESSONS[1].d ? t('menu.course_range', {n: RN().length, pl: RN().length, from: lessonDate(1), to: lessonDate(LN().filter(n => LESSONS[n].d).at(-1))}) : t('menu.course_tba', {n: RN().length, pl: RN().length});
+  $('nm-pre').hidden = !courseStarted();   // UX audit S9-1: a labelled way to the pre-course page on phones (CSS hides it on wider screens, where the header pill has its words)
   okina($('nmenu'));
 }
 async function logout(){
@@ -131,7 +132,7 @@ document.addEventListener('pointerup', e => {
 
 // ---- the prep guide PDF of the current language comes from the API
 function prepFileRow(){
-  return `<li><a class="ef-row" href="${API}/prep/pdf?lang=${LANG}" target="_blank" rel="noopener noreferrer"><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${T('prep.guide_name')}</span><span class="ef-mt">${T('prep.pdf')}</span></span><span class="ef-dl">${I('down', 18)}</span></a></li>`;
+  return `<li><a class="ef-row" href="${API}/prep/pdf?lang=${LANG}" target="_blank" rel="noopener noreferrer"><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${T('prep.guide_name')}</span><span class="ef-mt">${SESS?.prepPdfSize ? T('prep.pdf_meta', {size: Math.round(SESS.prepPdfSize / 1024) + ' KB'}) : T('prep.pdf')}</span></span><span class="ef-dl">${I('down', 18)}</span></a></li>`;
 }
 
 // ===================== boot =====================

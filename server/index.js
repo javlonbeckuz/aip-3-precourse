@@ -58,7 +58,7 @@ const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; cha
 
 export function createApp(cfg) {
   const db = openDb(cfg.dataDir, { seedDemo: cfg.seedDemo });
-  const content = createContent({ dir: cfg.contentDir, now: cfg.now ?? Date.now });
+  const content = createContent({ dir: cfg.contentDir, now: cfg.now ?? Date.now, production: cfg.production });
   content.validateAll();
   let alert = null, announce = null;
   const guard = auth.loginGuard({ maxFail: cfg.loginMaxFail, budget: cfg.loginBudget, onTrip: (n) => {
@@ -114,7 +114,7 @@ export function createApp(cfg) {
 
   function session(student, lang) {
     return { ok: true, lang, student: publicStudent(student), lessons: content.lessonsView(lang, student.grp, review(student)),
-      schedule: content.scheduleView(student.grp), live: content.live(student.grp), progress: getProgress(db, student.id) };
+      schedule: content.scheduleView(student.grp), live: content.live(student.grp), progress: getProgress(db, student.id), prepPdfSize: content.prepPdfSize(lang) };
   }
 
   function lessonNo(m) {
