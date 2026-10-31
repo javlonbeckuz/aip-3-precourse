@@ -1256,6 +1256,7 @@ html.hid .bgp path{animation-play-state:paused}
 .ia-tk::before,.ia-tk::after{content:"";position:absolute;top:50%;width:calc(var(--nr) * 2);height:calc(var(--nr) * 2);margin-top:calc(var(--nr) * -1);border:1px solid rgb(255 255 255 / .35);border-radius:50%;pointer-events:none}
 .ia-tk::before{left:calc(var(--nr) * -1);clip-path:inset(0 0 0 50%)}
 .ia-tk::after{right:calc(var(--nr) * -1);clip-path:inset(0 50% 0 0)}
+.ex-h+.ex-files{margin-top:28px}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}

@@ -565,7 +565,7 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "prep.pdf": {
-  "uz": "PDF yuklab olish",
+  "uz": "PDF",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
@@ -580,7 +580,7 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.intro": {
-  "uz": "Birinchi dars {date}. Shu roʻyxatni oʻshangacha tayyorlab qoʻying. Hammasi 30 daqiqacha vaqt oladi, darsda esa toʻgʻridan-toʻgʻri ishni boshlaymiz.",
+  "uz": "Birinchi dars {date}. Shungacha tayyorlab qoʻying, hammasi 30 daqiqa.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · keep {params} as they are"
  },
@@ -780,7 +780,7 @@
   "note": "login screen (white text over a photo)"
  },
  "prep.intro_late": {
-  "uz": "Birinchi dars {date} kuni boʻldi. Shu roʻyxatni imkon qadar tezroq tayyorlab qoʻying. Hammasi 30 daqiqacha vaqt oladi.",
+  "uz": "Birinchi dars {date} kuni boʻldi. Imkon qadar tezroq tayyorlab qoʻying, hammasi 30 daqiqa.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · keep {params} as they are"
  },
@@ -970,7 +970,7 @@
   "note": "locked lesson: bottom sheet title / text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "prep.intro_tba": {
-  "uz": "Birinchi dars sanasini shu yerda eʼlon qilamiz. Roʻyxatni hozirdan tayyorlab qoʻying: hammasi 30 daqiqacha vaqt oladi.",
+  "uz": "Birinchi dars sanasini shu yerda eʼlon qilamiz. Hozirdan tayyorlab qoʻying, hammasi 30 daqiqa.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
@@ -991,11 +991,6 @@
  },
  "prep.more.dflt": {
   "uz": "Oʻrganishda davom eting",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.lede_done": {
-  "uz": "Hamma qadamlar bajarildi. Kerak boʻlsa, istalgan kartani qayta oching.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
@@ -2119,15 +2114,10 @@
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
- "course.label": {
-  "uz": "Kurs: {n} ta dars",
+ "course.title": {
+  "uz": "{n} ta dars",
   "translate": true,
   "note": "UI text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
- },
- "course.title": {
-  "uz": "Barcha darslar",
-  "translate": true,
-  "note": "UI text"
  },
  "prep.0.s0": {
   "uz": "Darsga oʻz noutbukingiz bilan keling. Praktikum boshdan-oxir amaliy.",
@@ -2281,11 +2271,6 @@
  },
  "pre.lede_late": {
   "uz": "Kurs davomida ham foydali: mashq platformasi va video dars.",
-  "translate": true,
-  "note": "UI text"
- },
- "pre.lede": {
-  "uz": "Kurs boshlanishidan oldin kerak boʻladigan materiallar va foydali oʻquv platformalariga havolalar.",
   "translate": true,
   "note": "UI text"
  },

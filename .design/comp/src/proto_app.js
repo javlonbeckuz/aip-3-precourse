@@ -114,8 +114,8 @@ const nextBlock = (href, key, params) => `<a class="play on-light" href="${href}
 function homePage(){
   const [rd, rt] = ring(), ns = nextStep(), live = liveLesson(), pre = !courseStarted(), k = prepCount();
   const fxH = cls => `<span class="fx ${cls}" aria-hidden="true"><i></i><i></i><i></i></span>`;   // the back panel of the 3D folder: its tab and three paper sheets (they only move on hover, focus and press)
-  const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><svg class="f-biglock" viewBox="0 0 64 64" aria-hidden="true"><path d="M21 29V20a11 11 0 0 1 22 0v9" fill="none" stroke="#000" stroke-width="6"/><rect x="12" y="27" width="40" height="31" rx="6" fill="#000"/><circle cx="32" cy="40" r="4" fill="#002EFF"/><rect x="30" y="41" width="4" height="9" rx="2" fill="#002EFF"/></svg><span class="f-top"><span class="f-label">${T('course.label', {n: RN().length, pl: RN().length})}</span></span>
-        <span class="f-row"><span class="f-title">${T('course.title')}</span><span class="f-note">${I('lock', 14)}${T(LESSONS[1].d ? 'date.opens' : 'date.tba', {date: lessonDate(1)})}</span></span></button>${fxH('c-course')}</li>`;
+  const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><svg class="f-biglock" viewBox="0 0 64 64" aria-hidden="true"><path d="M21 29V20a11 11 0 0 1 22 0v9" fill="none" stroke="#000" stroke-width="6"/><rect x="12" y="27" width="40" height="31" rx="6" fill="#000"/><circle cx="32" cy="40" r="4" fill="#002EFF"/><rect x="30" y="41" width="4" height="9" rx="2" fill="#002EFF"/></svg><span class="f-top"></span>
+        <span class="f-row"><span class="f-title">${T('course.title', {n: RN().length, pl: RN().length})}</span><span class="f-note">${I('lock', 14)}${T(LESSONS[1].d ? 'date.opens' : 'date.tba', {date: lessonDate(1)})}</span></span></button>${fxH('c-course')}</li>`;
   const flagH = n => LCOL[n] === 'cream' ? '<svg class="f-flag" aria-hidden="true"><use href="#i-flag"/></svg>'   // the finish flag of the last lesson: decorative, bottom right, in every state
     : lnum(n) === 1 ? '<svg class="f-flag f-start" viewBox="0 0 100 34" aria-hidden="true"><use href="#i-start"/><text x="50" y="15.5" text-anchor="middle">START</text></svg>' : '';   // its twin on lesson 01: two flags with START between
   const cardHTML = n => {
@@ -208,7 +208,7 @@ function prepPage(){
   }).join('');
   return {screen: 'ex', tag: '#/dars/0 · ' + t('tag.prep'), title: t('setup.title'), html: nav('prep') + wrap(`
       ${dlh('#/dastur', T('nav.home'), `${T('prep.meta')}: ${cnt('prep')}`)}
-      <h1 class="headline ex-h">${T('setup.title')}</h1><p class="lede">${prepCount() === prepTotal() ? T('prep.lede_done') : courseStarted() && prepTotal() - prepCount() <= 2 ? T('prep.left', {n: prepTotal() - prepCount(), pl: prepTotal() - prepCount(), titles: PREP.items.map((_, i) => S.has('prep:' + i) ? '' : t(`prep.${i}.title`)).filter(Boolean).join(', ')}) : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>
+      <h1 class="headline ex-h">${T('setup.title')}</h1>${prepCount() === prepTotal() ? '' : `<p class="lede">${courseStarted() && prepTotal() - prepCount() <= 2 ? T('prep.left', {n: prepTotal() - prepCount(), pl: prepTotal() - prepCount(), titles: PREP.items.map((_, i) => S.has('prep:' + i) ? '' : t(`prep.${i}.title`)).filter(Boolean).join(', ')}) : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>`}
       <div class="ex-files"><section class="grp"><h2 class="ef-h">${T('common.guide')}</h2><ul>${prepFileRow()}</ul></section></div>`,
     `<section class="prep" aria-label="${esc(t('prep.list.k'))}"><ol class="deck" id="deck" style="--cols:${deckCols(open)}">${cards}</ol></section>
       <div class="prep-end" id="prep-end"${prepCount() === prepTotal() ? '' : ' hidden'}><p class="pe-t">${T(courseStarted() ? 'prep.end_after' : LESSONS[1].d ? 'prep.end_before' : 'prep.end_tba', {date: lessonDate(1)})}</p><a class="play" href="#/dastur"><span>${T('prep.end_back')}</span><span class="play-circ">${I('next', 20)}</span></a></div>`)};
@@ -239,7 +239,7 @@ function vpMount(host){
     <div class="vp-mid"><button class="vp-b vp-skip" type="button" data-d="-10" aria-label="${esc(t('vp.back'))}">${VP_I.back}</button><span class="vp-flash" aria-hidden="true"></span>
       <button class="vp-b vp-play" type="button" aria-label="${esc(t('vp.play'))}"><span class="vp-ic"><span class="i-p">${VP_I.play}</span><span class="i-z off">${VP_I.pause}</span></span><span class="ring"></span></button>
       <button class="vp-b vp-skip" type="button" data-d="10" aria-label="${esc(t('vp.fwd'))}">${VP_I.fwd}</button></div>
-    <div class="vp-bot">${host.dataset.sub ? `<p class="vp-sub">${esc(host.dataset.sub)}</p>` : ''}<h3 class="vp-t">${esc(host.dataset.title)}</h3>
+    <div class="vp-bot">${host.dataset.sub ? `<p class="vp-sub">${esc(host.dataset.sub)}</p>` : ''}${host.dataset.title ? `<h3 class="vp-t">${esc(host.dataset.title)}</h3>` : ''}
       <div class="vp-track"><span class="vp-tip" hidden></span><input class="vp-prog" type="range" min="0" max="0" step="0.1" value="0" aria-label="${esc(t('vp.pos'))}"></div>
       <div class="vp-times"><span class="vp-cur">0:00</span><span class="vp-dur">0:00</span></div></div></section>`;
   const $ = s => host.querySelector(s), box = $('.vp'), v = $('video'), prog = $('.vp-prog'), vr = $('.vp-vr'), tip = $('.vp-tip');
@@ -283,7 +283,7 @@ function vpMount(host){
   setVol(vol); paint();
 }
 const iaBody = (l, i) => { const card = iaCard(l, i);
-  const left = l.video ? `<div class="vp-host" data-src="${esc(l.video)}" data-poster="${esc(l.poster || '')}" data-title="${esc(t(`prep.more.${i}.t`))}" data-sub="${esc(t(`prep.more.${i}.s`))}"></div>${iaDesc(i)}`
+  const left = l.video ? `<div class="vp-host" data-src="${esc(l.video)}" data-poster="${esc(l.poster || '')}"></div>${iaDesc(i)}`
     : `${iaDesc(i)}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a>`;
   return `<div class="ia-c${card ? ' has-card' : ''}${l.code ? ' has-code' : ''}"><div class="ia-l">${left}</div>${card}</div>`; };
 const iaRow = (l, i) => `<li class="ia-row" data-i="${i}"><button class="ia-hd" type="button" id="ia-h${i}" aria-expanded="false" aria-controls="ia-p${i}"><span class="ia-ic" aria-hidden="true">${I(l.video ? 'play' : 'ne', 18)}</span><span class="ia-no">${i + 1}</span><span class="ia-tt"><span class="ia-t">${esc(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.s`) ? `<span class="ia-s">${esc(t(`prep.more.${i}.s`))}</span>` : ''}</span><i class="ia-chv" aria-hidden="true"></i></button><div class="ia-p" id="ia-p${i}" role="region" aria-labelledby="ia-h${i}"><div class="ia-in"><div class="ia-body">${iaBody(l, i)}</div></div></div></li>`;
@@ -303,9 +303,9 @@ function prePage(){
   const m = PREP.more;
   if (m && iaOpen >= m.links.length) iaOpen = null;
   return {screen: 'ex', tag: '#/kursgacha', title: t('prep.title'), html: nav('pre') + wrap(`
-      ${dlh('#/dastur', T('nav.home'), T('pre.label'))}
-      <h1 class="headline ex-h">${T('prep.title')}</h1><p class="lede">${T(courseStarted() ? 'pre.lede_late' : 'pre.lede')}</p>
-      ${m ? `<div class="kg-wrap"><h2 class="ef-h">${T('prep.more.title')}</h2>${t('prep.more.note') ? `<p class="ef-hint">${T('prep.more.note')}</p>` : ''}<ul class="ia">${m.links.map(iaRow).join('')}</ul></div>` : `<p class="lede pre-soon">${T('lesson.soon')}</p>`}`)};
+      ${dlh('#/dastur', T('nav.home'))}
+      <h1 class="headline ex-h">${T('prep.title')}</h1><p class="lede">${T(courseStarted() ? 'pre.lede_late' : 'pre.sub')}</p>
+      ${m ? `<div class="kg-wrap"><h2 class="sr-only">${T('prep.more.title')}</h2>${t('prep.more.note') ? `<p class="ef-hint">${T('prep.more.note')}</p>` : ''}<ul class="ia">${m.links.map(iaRow).join('')}</ul></div>` : `<p class="lede pre-soon">${T('lesson.soon')}</p>`}`)};
 }
 // the accordion: first unchecked card open, checking opens the next (focus follows), a live region says what happened; the pictures only move while on screen and while the tab is visible
 let prepIO = null, prepOpen = null, prepFresh = true, liveTimer = 0;

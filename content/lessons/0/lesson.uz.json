@@ -12,14 +12,13 @@
   "slideCount": 0,
   "slideKind": "image",
   "prep": {
-    "intro": "Birinchi dars {sana}. Shu roʻyxatni oʻshangacha tayyorlab qoʻying. Hammasi 30 daqiqacha vaqt oladi, darsda esa toʻgʻridan-toʻgʻri ishni boshlaymiz.",
+    "intro": "Birinchi dars {sana}. Shungacha tayyorlab qoʻying, hammasi 30 daqiqa.",
     "items": [
       {
         "brand": "device",
         "title": "Kompyuter",
-        "note": "macOS yoki Windows noutbuk, dastur oʻrnatish huquqi bilan. Telefon yoki planshet yetarli emas.",
+        "note": "macOS yoki Windows noutbuk. Telefon yoki planshet yetarli emas.",
         "steps": [
-          "Darsga oʻz noutbukingiz bilan keling. Praktikum boshdan-oxir amaliy.",
           "Administrator huquqi borligini tekshiring: dastur oʻrnata olishingiz kerak. Ish kompyuteri boʻlsa, IT boʻlimidan soʻrang.",
           "Diskda kamida 5 GB boʻsh joy qoldiring.",
           "Quvvat adapterini ham oling."
@@ -57,7 +56,7 @@
       {
         "brand": "claude",
         "title": "Claude obunasi",
-        "note": "Praktikumning asosiy vositasi. Kamida Pro tarifi kerak, 02-darsdan Max tavsiya etiladi.",
+        "note": "Praktikumning asosiy vositasi. Pro tarifi kerak.",
         "steps": [
           "claude.ai ga kiring va «Continue with Google» orqali roʻyxatdan oʻting.",
           "Settings → Billing boʻlimida Pro tarifini tanlang. Narxi oyiga $20.",
@@ -83,7 +82,7 @@
       "links": [
         {
           "title": "Protokol 57",
-          "note": "Prompt yozishni mashq qilish platformasi: 57 ta protokol, har bir promptingizga AI 0 dan 100 gacha baho beradi. Praktikum talabalari uchun bepul: toʻlov paytida promokodni kiriting.",
+          "note": "57 ta protokol, har bir promptingizga AI 0 dan 100 gacha baho beradi. Toʻlov paytida promokodni kiriting.",
           "url": "https://p57.uz/",
           "code": "PRAKTIKUM3",
           "sub": "Prompt yozishni mashq qilish, promokod bilan bepul",
@@ -92,7 +91,7 @@
         {
           "title": "NotebookLM: kompaniya bilim bazasi",
           "sub": "Video dars, 20 daqiqa",
-          "note": "Boʻlim rahbarlari bilan qisqa intervyu yozib olasiz, yozuvlarni NotebookLMʼga yuklaysiz va kompaniya qoidalari haqida savol berasiz: chegirma qachon beriladi, oylik va KPI qanday hisoblanadi. Videoda javobni manbasi bilan olish va xodimlar uchun test yaratish ham koʻrsatilgan.",
+          "note": "Kompaniya qoidalaridan NotebookLMʼda bilim bazasi yigʻasiz va xodimlar savoliga manbasi bilan javob olasiz.",
           "video": "notebooklm",
           "points": [
             "Boʻlim rahbarlari bilan intervyu",

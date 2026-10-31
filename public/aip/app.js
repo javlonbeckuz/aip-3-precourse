@@ -278,7 +278,7 @@ const I18N = {uz: {
   'prep.title': 'Birinchi darsgacha',
   'prep.meta': 'Tayyorgarlik',
   'prep.cnt': '{d}/{t} bajarildi',
-  'prep.pdf': 'PDF yuklab olish',
+  'prep.pdf': 'PDF',
   'prep.list.k': 'Tayyorgarlik · 4 ta band',
   'prep.list.rule': 'Har bir bandni bajarganingizdan keyin belgilang.',
   
@@ -342,7 +342,7 @@ const I18N = {uz: {
   'prep.steps_n': '{n} ta qadam',
   'book.lat_name': 'Lotin yozuvida',
   'gate.help': 'IDʼingizni kiriting',
-  'prep.intro_late': 'Birinchi dars {date} kuni boʻldi. Shu roʻyxatni imkon qadar tezroq tayyorlab qoʻying. Hammasi 30 daqiqacha vaqt oladi.',
+  'prep.intro_late': 'Birinchi dars {date} kuni boʻldi. Imkon qadar tezroq tayyorlab qoʻying, hammasi 30 daqiqa.',
   'part.locked': 'Hozircha yopiq',
   'part.opens': '{date}, {time} da ochiladi',
   'gate.err.rate': 'Juda koʻp urinish. {n} daqiqadan keyin qayta urinib koʻring.',
@@ -384,12 +384,11 @@ const I18N = {uz: {
   'prep.end_back': 'Dasturga qaytish',
   'date.tba': 'Sana keyinroq',
   'lock.title_tba': '{n} sanasi keyinroq eʼlon qilinadi.',
-  'prep.intro_tba': 'Birinchi dars sanasini shu yerda eʼlon qilamiz. Roʻyxatni hozirdan tayyorlab qoʻying: hammasi 30 daqiqacha vaqt oladi.',
+  'prep.intro_tba': 'Birinchi dars sanasini shu yerda eʼlon qilamiz. Hozirdan tayyorlab qoʻying, hammasi 30 daqiqa.',
   'prep.end_tba': 'Tayyorsiz. Birinchi dars sanasi shu yerda chiqadi.',
   'menu.course_tba': '{n} dars, sanasi keyinroq',
   'menu.group_none': 'Guruh hali tanlanmagan',
   'prep.more.dflt': 'Oʻrganishda davom eting',
-  'prep.lede_done': 'Hamma qadamlar bajarildi. Kerak boʻlsa, istalgan kartani qayta oching.',
   'sl.img': '{i}-slayd: {topic}',
   // --- lesson page: tabs and panes
   'tab.list': 'Dars boʻlimlari',
@@ -584,8 +583,7 @@ const I18N = {uz: {
   
   
   
-  'course.label': 'Kurs: {n} ta dars',
-  'course.title': 'Barcha darslar',
+  'course.title': '{n} ta dars',
   
   
   
@@ -613,8 +611,7 @@ const I18N = {uz: {
   'prep.btn': 'Birinchi darsgacha', 'prep.btn_aria': 'Birinchi darsgacha',
   'pre.label': 'Kursgacha materiallar',
   'pre.sub': 'Prompt mashqi va NotebookLM video darsi',
-  'home.starts': 'Kurs {date}da boshlanadi', 'prep.left': 'Yana {n} ta qadam qoldi: {titles}.', 'pre.lede_late': 'Kurs davomida ham foydali: mashq platformasi va video dars.', 'pre.lede': 'Kurs boshlanishidan oldin kerak boʻladigan materiallar va foydali oʻquv platformalariga havolalar.',
-  'setup.title': 'Oʻrnatish va tayyorgarlik',
+  'home.starts': 'Kurs {date}da boshlanadi', 'prep.left': 'Yana {n} ta qadam qoldi: {titles}.', 'pre.lede_late': 'Kurs davomida ham foydali: mashq platformasi va video dars.',  'setup.title': 'Oʻrnatish va tayyorgarlik',
   'pre.open': 'Ochish',
 }, ru: /*RU*/{
   "common.close": "Закрыть",
@@ -716,7 +713,7 @@ const I18N = {uz: {
   "prep.title": "До первого урока",
   "prep.meta": "Подготовка",
   "prep.cnt": "{d}/{t} выполнено",
-  "prep.pdf": "Скачать PDF",
+  "prep.pdf": "PDF",
   "prep.list.k": "Подготовка · 4 пункта",
   "prep.list.rule": "Отмечайте каждый пункт, когда выполните его.",
   "tab.list": "Разделы урока",
@@ -881,7 +878,7 @@ const I18N = {uz: {
   "prep.steps_n#other": "{n} шага",
   "book.lat_name": "Латиницей",
   "gate.help": "Введите ID",
-  "prep.intro_late": "Первое занятие прошло {date}. Подготовьте этот список как можно скорее. Всё займёт около 30 минут.",
+  "prep.intro_late": "Первое занятие прошло {date}. Подготовьтесь как можно скорее, всё займёт 30 минут.",
   "part.locked": "Пока закрыто",
   "part.opens": "Откроется {date} в {time}",
   "gate.err.rate": "Слишком много попыток. Повторите через {n} мин.",
@@ -917,11 +914,10 @@ const I18N = {uz: {
   "prep.end_before": "Вы готовы. Первое занятие: {date}.",
   "prep.end_after": "Подготовка завершена.",
   "prep.end_back": "Вернуться к программе",
-  "prep.lede_done": "Все шаги выполнены. При необходимости откройте любую карточку снова.",
   "sl.img": "Слайд {i}: {topic}",
   "date.tba": "Дата будет позже",
   "lock.title_tba": "{n}: дату объявим позже.",
-  "prep.intro_tba": "Дату первого занятия мы объявим здесь. Подготовьте этот список уже сейчас: всё займёт около 30 минут.",
+  "prep.intro_tba": "Дату первого занятия объявим здесь. Подготовьтесь уже сейчас, всё займёт 30 минут.",
   "prep.end_tba": "Вы готовы. Дата первого занятия появится здесь.",
   "menu.course_tba": "{n} уроков, даты позже",
   "menu.group_none": "Группа пока не выбрана",
@@ -937,13 +933,11 @@ const I18N = {uz: {
   "prep.cmd_copy": "Скопировать команду",
   "toast.cmd_copied": "Команда скопирована",
   "lesson.7.card": "Итоги и\nдемо-день",
-  "course.label": "Курс: {n} уроков",
-  "course.title": "Все уроки",
+  "course.title": "{n} уроков",
   "prep.btn": "До первого урока",
   "prep.btn_aria": "До первого урока",
   "pre.label": "Материалы до курса",
   "pre.sub": "Тренировка промптов и видеоурок по NotebookLM",
-  "pre.lede": "Материалы, которые нужны до начала курса, и ссылки на полезные учебные платформы.",
   "setup.title": "Установка и подготовка",
   "pre.code_copy": "Скопировать промокод",
   "toast.code_copied": "Промокод скопирован",
@@ -1286,8 +1280,8 @@ const nextBlock = (href, key, params) => `<a class="play on-light" href="${href}
 function homePage(){
   const [rd, rt] = ring(), ns = nextStep(), live = liveLesson(), pre = !courseStarted(), k = prepCount();
   const fxH = cls => `<span class="fx ${cls}" aria-hidden="true"><i></i><i></i><i></i></span>`;   // the back panel of the 3D folder: its tab and three paper sheets (they only move on hover, focus and press)
-  const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><svg class="f-biglock" viewBox="0 0 64 64" aria-hidden="true"><path d="M21 29V20a11 11 0 0 1 22 0v9" fill="none" stroke="#000" stroke-width="6"/><rect x="12" y="27" width="40" height="31" rx="6" fill="#000"/><circle cx="32" cy="40" r="4" fill="#002EFF"/><rect x="30" y="41" width="4" height="9" rx="2" fill="#002EFF"/></svg><span class="f-top"><span class="f-label">${T('course.label', {n: RN().length, pl: RN().length})}</span></span>
-        <span class="f-row"><span class="f-title">${T('course.title')}</span><span class="f-note">${I('lock', 14)}${T(LESSONS[1].d ? 'date.opens' : 'date.tba', {date: lessonDate(1)})}</span></span></button>${fxH('c-course')}</li>`;
+  const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><svg class="f-biglock" viewBox="0 0 64 64" aria-hidden="true"><path d="M21 29V20a11 11 0 0 1 22 0v9" fill="none" stroke="#000" stroke-width="6"/><rect x="12" y="27" width="40" height="31" rx="6" fill="#000"/><circle cx="32" cy="40" r="4" fill="#002EFF"/><rect x="30" y="41" width="4" height="9" rx="2" fill="#002EFF"/></svg><span class="f-top"></span>
+        <span class="f-row"><span class="f-title">${T('course.title', {n: RN().length, pl: RN().length})}</span><span class="f-note">${I('lock', 14)}${T(LESSONS[1].d ? 'date.opens' : 'date.tba', {date: lessonDate(1)})}</span></span></button>${fxH('c-course')}</li>`;
   const flagH = n => LCOL[n] === 'cream' ? '<svg class="f-flag" aria-hidden="true"><use href="#i-flag"/></svg>'   // the finish flag of the last lesson: decorative, bottom right, in every state
     : lnum(n) === 1 ? '<svg class="f-flag f-start" viewBox="0 0 100 34" aria-hidden="true"><use href="#i-start"/><text x="50" y="15.5" text-anchor="middle">START</text></svg>' : '';   // its twin on lesson 01: two flags with START between
   const cardHTML = n => {
@@ -1361,7 +1355,7 @@ function prepPage(){
   }).join('');
   return {screen: 'ex', tag: '#/dars/0 · ' + t('tag.prep'), title: t('setup.title'), html: nav('prep') + wrap(`
       ${dlh('#/dastur', T('nav.home'), `${T('prep.meta')}: ${cnt('prep')}`)}
-      <h1 class="headline ex-h">${T('setup.title')}</h1><p class="lede">${prepCount() === prepTotal() ? T('prep.lede_done') : courseStarted() && prepTotal() - prepCount() <= 2 ? T('prep.left', {n: prepTotal() - prepCount(), pl: prepTotal() - prepCount(), titles: PREP.items.map((_, i) => S.has('prep:' + i) ? '' : t(`prep.${i}.title`)).filter(Boolean).join(', ')}) : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>
+      <h1 class="headline ex-h">${T('setup.title')}</h1>${prepCount() === prepTotal() ? '' : `<p class="lede">${courseStarted() && prepTotal() - prepCount() <= 2 ? T('prep.left', {n: prepTotal() - prepCount(), pl: prepTotal() - prepCount(), titles: PREP.items.map((_, i) => S.has('prep:' + i) ? '' : t(`prep.${i}.title`)).filter(Boolean).join(', ')}) : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>`}
       <div class="ex-files"><section class="grp"><h2 class="ef-h">${T('common.guide')}</h2><ul>${prepFileRow()}</ul></section></div>`,
     `<section class="prep" aria-label="${esc(t('prep.list.k'))}"><ol class="deck" id="deck" style="--cols:${deckCols(open)}">${cards}</ol></section>
       <div class="prep-end" id="prep-end"${prepCount() === prepTotal() ? '' : ' hidden'}><p class="pe-t">${T(courseStarted() ? 'prep.end_after' : LESSONS[1].d ? 'prep.end_before' : 'prep.end_tba', {date: lessonDate(1)})}</p><a class="play" href="#/dastur"><span>${T('prep.end_back')}</span><span class="play-circ">${I('next', 20)}</span></a></div>`)};
@@ -1392,7 +1386,7 @@ function vpMount(host){
     <div class="vp-mid"><button class="vp-b vp-skip" type="button" data-d="-10" aria-label="${esc(t('vp.back'))}">${VP_I.back}</button><span class="vp-flash" aria-hidden="true"></span>
       <button class="vp-b vp-play" type="button" aria-label="${esc(t('vp.play'))}"><span class="vp-ic"><span class="i-p">${VP_I.play}</span><span class="i-z off">${VP_I.pause}</span></span><span class="ring"></span></button>
       <button class="vp-b vp-skip" type="button" data-d="10" aria-label="${esc(t('vp.fwd'))}">${VP_I.fwd}</button></div>
-    <div class="vp-bot">${host.dataset.sub ? `<p class="vp-sub">${esc(host.dataset.sub)}</p>` : ''}<h3 class="vp-t">${esc(host.dataset.title)}</h3>
+    <div class="vp-bot">${host.dataset.sub ? `<p class="vp-sub">${esc(host.dataset.sub)}</p>` : ''}${host.dataset.title ? `<h3 class="vp-t">${esc(host.dataset.title)}</h3>` : ''}
       <div class="vp-track"><span class="vp-tip" hidden></span><input class="vp-prog" type="range" min="0" max="0" step="0.1" value="0" aria-label="${esc(t('vp.pos'))}"></div>
       <div class="vp-times"><span class="vp-cur">0:00</span><span class="vp-dur">0:00</span></div></div></section>`;
   const $ = s => host.querySelector(s), box = $('.vp'), v = $('video'), prog = $('.vp-prog'), vr = $('.vp-vr'), tip = $('.vp-tip');
@@ -1436,7 +1430,7 @@ function vpMount(host){
   setVol(vol); paint();
 }
 const iaBody = (l, i) => { const card = iaCard(l, i);
-  const left = l.video ? `<div class="vp-host" data-src="${esc(l.video)}" data-poster="${esc(l.poster || '')}" data-title="${esc(t(`prep.more.${i}.t`))}" data-sub="${esc(t(`prep.more.${i}.s`))}"></div>${iaDesc(i)}`
+  const left = l.video ? `<div class="vp-host" data-src="${esc(l.video)}" data-poster="${esc(l.poster || '')}"></div>${iaDesc(i)}`
     : `${iaDesc(i)}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a>`;
   return `<div class="ia-c${card ? ' has-card' : ''}${l.code ? ' has-code' : ''}"><div class="ia-l">${left}</div>${card}</div>`; };
 const iaRow = (l, i) => `<li class="ia-row" data-i="${i}"><button class="ia-hd" type="button" id="ia-h${i}" aria-expanded="false" aria-controls="ia-p${i}"><span class="ia-ic" aria-hidden="true">${I(l.video ? 'play' : 'ne', 18)}</span><span class="ia-no">${i + 1}</span><span class="ia-tt"><span class="ia-t">${esc(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.s`) ? `<span class="ia-s">${esc(t(`prep.more.${i}.s`))}</span>` : ''}</span><i class="ia-chv" aria-hidden="true"></i></button><div class="ia-p" id="ia-p${i}" role="region" aria-labelledby="ia-h${i}"><div class="ia-in"><div class="ia-body">${iaBody(l, i)}</div></div></div></li>`;
@@ -1456,9 +1450,9 @@ function prePage(){
   const m = PREP.more;
   if (m && iaOpen >= m.links.length) iaOpen = null;
   return {screen: 'ex', tag: '#/kursgacha', title: t('prep.title'), html: nav('pre') + wrap(`
-      ${dlh('#/dastur', T('nav.home'), T('pre.label'))}
-      <h1 class="headline ex-h">${T('prep.title')}</h1><p class="lede">${T(courseStarted() ? 'pre.lede_late' : 'pre.lede')}</p>
-      ${m ? `<div class="kg-wrap"><h2 class="ef-h">${T('prep.more.title')}</h2>${t('prep.more.note') ? `<p class="ef-hint">${T('prep.more.note')}</p>` : ''}<ul class="ia">${m.links.map(iaRow).join('')}</ul></div>` : `<p class="lede pre-soon">${T('lesson.soon')}</p>`}`)};
+      ${dlh('#/dastur', T('nav.home'))}
+      <h1 class="headline ex-h">${T('prep.title')}</h1><p class="lede">${T(courseStarted() ? 'pre.lede_late' : 'pre.sub')}</p>
+      ${m ? `<div class="kg-wrap"><h2 class="sr-only">${T('prep.more.title')}</h2>${t('prep.more.note') ? `<p class="ef-hint">${T('prep.more.note')}</p>` : ''}<ul class="ia">${m.links.map(iaRow).join('')}</ul></div>` : `<p class="lede pre-soon">${T('lesson.soon')}</p>`}`)};
 }
 // the accordion: first unchecked card open, checking opens the next (focus follows), a live region says what happened; the pictures only move while on screen and while the tab is visible
 let prepIO = null, prepOpen = null, prepFresh = true, liveTimer = 0;
