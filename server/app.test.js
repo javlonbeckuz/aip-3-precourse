@@ -523,7 +523,7 @@ test('gating: liveOverride cannot make a no-group or TBA student live', async (t
   assert.equal((await a.login('SUN')).session.live.n, 2);
 });
 
-test('shipped schedule.json: 7 entries (Kirish TBA), nothing in lessons 1-7 opens before that group\'s lesson 1 (or everything is shut when TBA)', () => {
+test('shipped schedule.json: 7 entries (Kirish opens with 01-dars), nothing in lessons 1-7 opens before that group\'s lesson 1 (or everything is shut when TBA)', () => {
   const real = path.resolve(import.meta.dirname, '..', 'content');
   const c = createContent({ dir: real, now: () => 0 });
   c.validateAll();
@@ -532,12 +532,13 @@ test('shipped schedule.json: 7 entries (Kirish TBA), nothing in lessons 1-7 open
     const start = sch.groups[g] ? sch.groups[g][0] : NaN;
     if (sch.groups[g]) {
       assert.equal(sch.groups[g].length, 7);
-      assert.deepEqual(sch.groups[g].map((t) => Number.isNaN(t)), [false, true, false, false, false, false, false]); // lesson 2 (Kirish) is TBA
+      assert.ok(sch.groups[g].every(Number.isFinite));
+      assert.equal(sch.groups[g][1], sch.groups[g][0]); // lesson 2 (Kirish) opens with 01-dars (user, 2026-11-08)
       assert.ok(sch.groups[g].filter(Number.isFinite).every((t) => new Date(t + 5 * 3600e3).toISOString().slice(11, 16) === '10:00'));
     }
     for (const n of [1, 2, 3, 4, 5, 6, 7]) for (const part of ['slides', 'amaliyot', 'kit', 'vazifa', 'start']) {
       const at = c.opensAt(n, part, g);
-      if (Number.isNaN(start) || (n === 2 && g)) assert.ok(Number.isNaN(at), `${g} ${n}.${part} must stay shut while dates are TBA`);
+      if (Number.isNaN(start)) assert.ok(Number.isNaN(at), `${g} ${n}.${part} must stay shut while dates are TBA`);
       else assert.ok(at >= start, `${g} ${n}.${part} opens before lesson 1`);
     }
     assert.equal(c.opensAt(0, 'prep', g), 0); // precourse is always open

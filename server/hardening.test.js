@@ -56,6 +56,19 @@ test('XM admin (default on, user 2026-10-31): always active with review, in prod
   assert.equal(c.session.lessons.find((l) => l.n === 1).open, true);   // before its date
 });
 
+test('real schedule: Kirish opens with 01-dars (user, 2026-11-08), and 01-dars stays the lesson of the day', () => {
+  const at = (s) => createContent({ dir: REAL_CONTENT, now: () => parseTime(s) });
+  for (const [g, day] of [['shanba', '2026-11-21'], ['yakshanba', '2026-11-22']]) {
+    const c = at(`${day}T12:00`);
+    assert.equal(c.lessonView(1, 'uz', g).open, true, g);
+    assert.equal(c.lessonView(2, 'uz', g).open, true, `${g}: Kirish`);
+    assert.equal(c.lessonView(3, 'uz', g).open, false, g);
+    assert.equal(c.live(g).n, 1, `${g}: the live lesson is 01-dars, not Kirish`);
+    assert.equal(at(`${day}T09:59`).lessonView(2, 'uz', g).open, false, `${g}: not before 10:00`);
+  }
+  assert.equal(at('2026-11-28T12:00').live('shanba').n, 3);   // a week later 02-dars (content 3) takes over
+});
+
 test('XM: short ids cannot be created unless explicitly allowed', () => {
   const db = openDb(':memory:', { seedDemo: true });
   assert.throws(() => createStudent(db, { fullName: 'Short Id', grp: 'shanba', id: 'AB' }), { code: 'bad_id' });

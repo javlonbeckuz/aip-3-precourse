@@ -39,7 +39,7 @@ export function parseSchedule(raw) {
     // an entry may be null: that one lesson's date is to follow (NaN here, fail-closed everywhere)
     groups[g] = a.map((s) => { if (s === null) return NaN; const t = parseTime(s); if (Number.isNaN(t)) bad(`groups.${g}: bad time "${s}"`); return t; });
     const dated = groups[g].filter(Number.isFinite);
-    if (dated.some((t, i) => i && t <= dated[i - 1])) bad(`groups.${g} must be increasing`);
+    if (dated.some((t, i) => i && t < dated[i - 1])) bad(`groups.${g} must be increasing (equal times are fine: Kirish opens with 01-dars)`);
   }
   const liveDays = raw.liveDays ?? 7;
   if (typeof liveDays !== 'number' || !(liveDays > 0 && liveDays <= 60)) bad('liveDays must be a number from 1 to 60');
@@ -158,9 +158,10 @@ export function createContent({ dir, now = () => Date.now(), production = false 
     const s = schedule(), t = now();
     let computed = 0;
     for (let n = LESSON_COUNT; n >= 1; n--) {
-      if (!(t >= start(group, n))) continue; // not started yet, or a TBA date (NaN)
-      // live until the next dated lesson starts; the last one for liveDays
-      const next = NUMS.filter((m) => m > n).map((m) => start(group, m)).find(Number.isFinite);
+      // an extra lesson (Kirish, numbered: false) is never the live one: it opens with 01-dars (user, 2026-11-08) and 01-dars stays the lesson of the day
+      if (!numbered(n) || !(t >= start(group, n))) continue; // not started yet, or a TBA date (NaN)
+      // live until the next numbered lesson that starts later; the last one for liveDays
+      const next = NUMS.filter((m) => m > n && numbered(m)).map((m) => start(group, m)).find((x) => Number.isFinite(x) && x > start(group, n));
       computed = t < (next ?? start(group, n) + s.liveDays * UNITS.d) ? n : 0;
       break;
     }
