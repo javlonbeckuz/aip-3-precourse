@@ -1281,6 +1281,11 @@ html.hid .bgp path{animation-play-state:paused}
 .pane-more>summary::-webkit-details-marker{display:none}
 .pane-more>summary::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s var(--ease)}
 .pane-more[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+.lout{margin-top:6px}
+.lout>summary{color:var(--white)}
+.lout ul{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.lout li{position:relative;padding-left:20px;font:400 16px/1.45 var(--font-body);color:rgba(255,255,255,.72)}
+.lout li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--yellow)}
 .kt-link{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .kit-intro,.uz-note{color:var(--gt-ink)}
 .fchip .fz{white-space:nowrap}

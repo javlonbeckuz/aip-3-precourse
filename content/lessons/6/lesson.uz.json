@@ -3,6 +3,13 @@
   "title": "Agentni yaxshilash",
   "subtitle": "Xatolar jurnali, test toʻplami, cron, eskalatsiya, xavfsizlik, Kit 5 B",
   "summary": "Pilotning birinchi haftasidagi xatolar boʻyicha agentni tuzatamiz. Jadval boʻyicha hisobot, eskalatsiya va xavfsizlik qoidalarini qoʻshamiz. Kit 5 B: 1-hafta.",
+  "outcomes": [
+    "Builder (Claude Code) va doim ishlaydigan assistent agent farqini tushuntirasiz.",
+    "Yaxshilash siklini yuritasiz: xatolar jurnali, koʻrsatmani oʻzgartirish, yaxshi va yomon namunalarda test, qayta deploy.",
+    "Rejali vazifa (cron) va Kit 3 B.6 dagi eskalatsiya yoʻllarini qoʻshasiz.",
+    "AI xavfsizligining asosiy xavflarini va ularning oldini oladigan qoidalarni bilasiz.",
+    "Agentni buzadigan maʼlumot tartibsizligini payqaysiz: bitta mijoz, uchta nom."
+  ],
   "topics": [
     "Builder va assistent",
     "Cron",

@@ -3,6 +3,15 @@
   "title": "AI qanday ishlaydi",
   "subtitle": "AI qatlamlari, token, kontekst, modellar, NotebookLM, Kit 1",
   "summary": "Avval oʻz biznesingiz uchun birinchi vositani yasaymiz. Keyin AI qayerda ishlashi, token va kontekst nima ekani, qaysi modelni tanlashni koʻramiz. Kit 1: ish qayerga ketadi.",
+  "outcomes": [
+    "AIʼning uch qatlamini chizib bera olasiz va chatga yozganingiz qayerga borishini bilasiz.",
+    "Model, token va kontekst oynasini oddiy soʻzlar bilan tushuntirasiz, oʻzbekcha matn nega qimmatroq ekanini bilasiz.",
+    "Frontier va open-weight modellarni ajratasiz va qachon qaysi biri toʻgʻri kelishini bilasiz.",
+    "Vazifaga qarab arzon, oʻrtacha yoki kuchli modelni tanlaysiz.",
+    "AI taxmin qilayotganini (gallyutsinatsiya) payqaysiz va tekshirasiz.",
+    "NotebookLM bilan faqat oʻz kompaniyangiz hujjatlaridan javob olasiz.",
+    "Kit 1 intervyusini oʻtkazib, raqamlari tuzatilgan B shakli roʻyxatini tuzasiz."
+  ],
   "topics": [
     "AI qatlamlari",
     "Maʼlumot qayerga ketadi",

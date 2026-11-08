@@ -879,6 +879,11 @@
   "translate": true,
   "note": "text inside a lesson-folder pane (lilac), small caps label or sentence"
  },
+ "lesson.outs": {
+  "uz": "Darsdan keyin siz",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
+ },
  "next.to_vz": {
   "uz": "Keyingi: Vazifa",
   "translate": true,

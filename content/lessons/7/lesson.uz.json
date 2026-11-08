@@ -3,6 +3,13 @@
   "title": "Natijalar va demo kuni",
   "subtitle": "Oldin va keyin, vazifa narxi, ROI, qaror: yasash yoki sotib olish, demo",
   "summary": "Pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaymiz va davom ettirish, oʻzgartirish yoki toʻxtatishni hal qilamiz. Keyin natijani taqdim etasiz. Kit 5 B: yakuniy raqamlar.",
+  "outcomes": [
+    "Baseline bilan solishtirib oʻzgarishni hisoblaysiz, barcha xarajat va tekshirish vaqtini qoʻshib.",
+    "Davom ettirish, oʻzgartirish yoki toʻxtatish qarorini qabul qilasiz va uni asoslaysiz.",
+    "Nega jarayonni qayta qurish eski jarayonga AI qoʻshishdan yaxshiroq ekanini tushuntirasiz.",
+    "Yasash, sotib olish yoki ochiq kod orasida tanlaysiz va sotuvchining AI taklifini baholaysiz.",
+    "Keyingi jarayonni oʻz matritsangizdan tanlaysiz."
+  ],
   "topics": [
     "Oldin va keyin raqamlari",
     "Bitta vazifa narxi",

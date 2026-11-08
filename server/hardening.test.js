@@ -299,7 +299,7 @@ test('shipped content: lessons 1 and 3-7 have amaliyot, kit and vazifa (no slide
     for (const f of L.kit.groups.flatMap((g) => g.files)) assert.ok(c.docFile(n, f.slug), `${n}: kit file ${f.name} missing`);
     const ids = [...L.amaliyot.groups, ...L.kit.groups, ...L.vazifa.groups].flatMap((g) => (g.prompts ?? []).map((p) => p.id));
     assert.equal(new Set(ids).size, ids.length, `${n}: prompt ids`);
-    for (const lg of ['ru']) assert.deepEqual(Object.keys(c.lesson(n, lg)).sort(), ['n', 'subtitle', 'summary', 'title', 'topics'], `${n} ${lg} stays meta-only`);
+    for (const lg of ['ru']) assert.deepEqual(Object.keys(c.lesson(n, lg)).sort(), ['n', 'outcomes', 'subtitle', 'summary', 'title', 'topics'], `${n} ${lg} stays meta-only`);
   }
 });
 
@@ -652,4 +652,14 @@ test('content: fail closed for a NULL student group, an unknown group and TBA da
   assert.equal(c.opensAt(0, 'prep', null, true), 0);
   assert.equal(c.partOpen(1, 'slides', 'shanba', false), true); // a group with dates is unaffected
   assert.equal(c.scheduleView('shanba').yakshanba, null);
+});
+
+test('real content: lessons 01-06 carry learning outcomes in both languages, Kirish none', () => {
+  const c = createContent({ dir: REAL_CONTENT, now: () => parseTime('2026-11-01T12:00') });
+  for (const n of [1, 3, 4, 5, 6, 7]) for (const lang of ['uz', 'ru']) {
+    const o = c.lessonView(n, lang, 'shanba').outcomes;
+    assert.ok(o.length >= 5 && o.every((x) => typeof x === 'string' && x.length > 10), `${n} ${lang}`);
+    assert.equal(o.length, c.lessonView(n, 'uz', 'shanba').outcomes.length, `${n}: ru and uz have the same count`);
+  }
+  assert.deepEqual(c.lessonView(2, 'uz', 'shanba').outcomes, []);
 });

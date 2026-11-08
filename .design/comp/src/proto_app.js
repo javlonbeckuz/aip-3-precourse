@@ -414,7 +414,7 @@ function lessonPage(n, tab){
     <div class="lhd">
       ${dlh('#/dastur', T('nav.home'), tt ? T('lesson.meta', {n, date: lessonDate(n), d, t: tt, pl: tt}) : esc(lessonDate(n)))}
       <h1 class="lh1">${lnum(n) == null ? '' : `<span class="ln">${lnH(n)}</span> `}<span class="ln">${esc(title)}</span></h1>
-      <div class="lhr"><p class="lsub">${T(`lesson.${n}.sub`)}</p><p class="lede">${T(`lesson.${n}.lede`)}</p></div>
+      <div class="lhr"><p class="lsub">${T(`lesson.${n}.sub`)}</p><div><p class="lede">${T(`lesson.${n}.lede`)}</p>${L.outs ? `<details class="pane-more lout"><summary>${T('lesson.outs')}</summary><ul>${Array.from({length: L.outs}, (_, i) => `<li>${T(`lesson.${n}.o${i}`)}</li>`).join('')}</ul></details>` : ''}</div></div>
     </div>
     <div class="lwrap">${side}</div>`};   // W1 (user, 2026-10-30): a compact one-line header, then the folder across the whole page
 }

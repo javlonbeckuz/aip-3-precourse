@@ -361,7 +361,7 @@ const I18N = {uz: {
   'claude.open': 'Claudeʼni ochish',
   'toast.fill': '{no} nusxalandi. Claudeʼda [qavslar]ni oʻz maʼlumotingiz bilan almashtiring.',
   'toast.copy_failed': 'Nusxa olinmadi. Matn belgilandi: uni qoʻlda nusxalang.',
-  'files.md_hint': 'MD fayllarni kompyuterda oching.', 'pane.more': 'Qoidalar va yordam', 'next.to_vz': 'Keyingi: Vazifa',
+  'files.md_hint': 'MD fayllarni kompyuterda oching.', 'pane.more': 'Qoidalar va yordam', 'lesson.outs': 'Darsdan keyin siz', 'next.to_vz': 'Keyingi: Vazifa',
   'kit.intro': 'Kit: darsdan keyin oʻz biznesingizda qoʻllaydigan tayyor shakllar va yoʻriqnoma.', 'pane.uz_note': 'Dars materiallari va promptlar oʻzbek tilida, darsdagidek.',
   
   
@@ -901,6 +901,7 @@ const I18N = {uz: {
   "toast.copy_failed": "Не удалось скопировать. Текст выделен: скопируйте его вручную.",
   "files.md_hint": "Файлы MD открывайте на компьютере.",
   "pane.more": "Правила и помощь",
+  "lesson.outs": "После урока вы",
   "next.to_vz": "Дальше: задание",
   "kit.intro": "Kit: готовые формы и инструкция, которые вы применяете в своём бизнесе после занятия.",
   "pane.uz_note": "Материалы урока и промпты на узбекском, как на занятии.",
@@ -1164,11 +1165,11 @@ function applyLessons(ls, lsUz, lang){
     const n = l.n, lock = {}, parts = [], has = l.has || {};
     const add = (on, key, part) => { if (!on) return; parts.push(key); const pp = l.parts && l.parts[part]; if (pp && !pp.open) lock[key] = pp.opensAt || 'unknown'; };
     add(has.slides, 'sl', 'slides'); add(has.amaliyot, 'am', 'amaliyot'); add(has.kit, 'kt', 'kit'); add(has.vazifa, 'vz', 'vazifa');
-    L[n] = {n, num: l.num !== undefined ? l.num : l.n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length};
+    L[n] = {n, num: l.num !== undefined ? l.num : l.n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length, outs: (l.outcomes || []).length};
   }
   LESSONS = L;
   const D = I18N[LANGS.includes(lang) ? lang : LANG];   // platform text of the payload's language (lesson metadata and the prep checklist come translated from the API)
-  for (const l of lessons) { const n = l.n; D[`lesson.${n}.title`] = l.title; D[`lesson.${n}.sub`] = l.subtitle; D[`lesson.${n}.lede`] = l.summary; (l.topics || []).forEach((x, i) => { D[`lesson.${n}.t${i}`] = x; }); }
+  for (const l of lessons) { const n = l.n; D[`lesson.${n}.title`] = l.title; D[`lesson.${n}.sub`] = l.subtitle; D[`lesson.${n}.lede`] = l.summary; (l.topics || []).forEach((x, i) => { D[`lesson.${n}.t${i}`] = x; }); (l.outcomes || []).forEach((x, i) => { D[`lesson.${n}.o${i}`] = x; }); }
   const pr = by[0] && by[0].prep;
   if (pr) {
     const acts = it => (it.actions || []).filter(a => /^https:\/\//.test(a.url));   // only https links leave the portal
@@ -1569,7 +1570,7 @@ function lessonPage(n, tab){
     <div class="lhd">
       ${dlh('#/dastur', T('nav.home'), tt ? T('lesson.meta', {n, date: lessonDate(n), d, t: tt, pl: tt}) : esc(lessonDate(n)))}
       <h1 class="lh1">${lnum(n) == null ? '' : `<span class="ln">${lnH(n)}</span> `}<span class="ln">${esc(title)}</span></h1>
-      <div class="lhr"><p class="lsub">${T(`lesson.${n}.sub`)}</p><p class="lede">${T(`lesson.${n}.lede`)}</p></div>
+      <div class="lhr"><p class="lsub">${T(`lesson.${n}.sub`)}</p><div><p class="lede">${T(`lesson.${n}.lede`)}</p>${L.outs ? `<details class="pane-more lout"><summary>${T('lesson.outs')}</summary><ul>${Array.from({length: L.outs}, (_, i) => `<li>${T(`lesson.${n}.o${i}`)}</li>`).join('')}</ul></details>` : ''}</div></div>
     </div>
     <div class="lwrap">${side}</div>`};   // W1 (user, 2026-10-30): a compact one-line header, then the folder across the whole page
 }

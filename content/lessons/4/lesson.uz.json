@@ -3,6 +3,14 @@
   "title": "API va MCP",
   "subtitle": "API, kalitlar, MCP, frontend va backend, system prompt, Kit 3",
   "summary": "Tanlangan jarayonni qadamlarga ajratamiz va agent yoʻriqnomasini yozamiz. Keyin agentning birinchi versiyasini haqiqiy tizimlarga ulaymiz. Kit 3: ishni qayta taqsimlash.",
+  "outcomes": [
+    "API, API kaliti, MCP va connector nima ekanini va qachon qaysi biri ishlatilishini tushuntirasiz.",
+    "Kalitlarni xavfsiz saqlaysiz va xarajat limitini qoʻyasiz.",
+    "Frontend va backendni ajratasiz, maʼlumotlar bazasi nima ekanini bilasiz.",
+    "Jarayonni qadamlarga ajratib, har qadamni kim bajarishi, kim tekshirishi, kim hal qilishi va kim javob berishini belgilaysiz.",
+    "Kit 3 B dan system prompt va PRD tuzib, haqiqiy maʼlumotlarda agent v0 ni qurasiz.",
+    "Noldan qurishdan oldin tayyor open source yechimlarni qayerdan topishni bilasiz."
+  ],
   "topics": [
     "API",
     "API kaliti va .env",

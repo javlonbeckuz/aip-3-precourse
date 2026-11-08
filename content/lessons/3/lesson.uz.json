@@ -3,6 +3,14 @@
   "title": "Claude Code",
   "subtitle": "Harness, CLAUDE.md, Plan mode, PRD, Skill, Kit 2",
   "summary": "Claude Codeʼni oʻz Kit 1 fayllaringizda oʻrganamiz: kompaniya papkasi, CLAUDE.md, reja va PRD. Kit 2: qaysi jarayondan boshlashni tanlaymiz.",
+  "outcomes": [
+    "Claude Codeʼni papkada ochib, unga kundalik ishlarni oddiy oʻzbek tilida berasiz.",
+    "Model va harness farqini, Claudeʼdan foydalanishning uch yoʻlini (veb, desktop, terminal) tushuntirasiz.",
+    "Claudeʼga kompaniyangizni tanishtiradigan CLAUDE.md yozasiz.",
+    "Bir sahifadan kattaroq narsani qurishdan oldin plan mode, PRD va vazifalar roʻyxatidan foydalanasiz.",
+    "Takrorlanadigan promptni skillga aylantirasiz va begona skillarni oʻrnatish xavfini bilasiz.",
+    "Jarayonlarni Kit 2 bilan baholab, birinchi pilotni tanlaysiz."
+  ],
   "topics": [
     "Harness",
     "Claude Code",

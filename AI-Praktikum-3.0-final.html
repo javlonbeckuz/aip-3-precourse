@@ -1053,6 +1053,11 @@ html.hid .bgp path{animation-play-state:paused}
 .pane-more>summary::-webkit-details-marker{display:none}
 .pane-more>summary::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s var(--ease)}
 .pane-more[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+.lout{margin-top:6px}
+.lout>summary{color:var(--white)}
+.lout ul{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.lout li{position:relative;padding-left:20px;font:400 16px/1.45 var(--font-body);color:rgba(255,255,255,.72)}
+.lout li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--yellow)}
 .kt-link{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .kit-intro,.uz-note{color:var(--gt-ink)}
 .fchip .fz{white-space:nowrap}
@@ -1659,7 +1664,7 @@ const I18N = {uz: {
   'claude.open': 'Claudeʼni ochish',
   'toast.fill': '{no} nusxalandi. Claudeʼda [qavslar]ni oʻz maʼlumotingiz bilan almashtiring.',
   'toast.copy_failed': 'Nusxa olinmadi. Matn belgilandi: uni qoʻlda nusxalang.',
-  'files.md_hint': 'MD fayllarni kompyuterda oching.', 'pane.more': 'Qoidalar va yordam', 'next.to_vz': 'Keyingi: Vazifa',
+  'files.md_hint': 'MD fayllarni kompyuterda oching.', 'pane.more': 'Qoidalar va yordam', 'lesson.outs': 'Darsdan keyin siz', 'next.to_vz': 'Keyingi: Vazifa',
   'kit.intro': 'Kit: darsdan keyin oʻz biznesingizda qoʻllaydigan tayyor shakllar va yoʻriqnoma.', 'pane.uz_note': 'Dars materiallari va promptlar oʻzbek tilida, darsdagidek.',
   
   
@@ -2232,6 +2237,7 @@ const I18N = {uz: {
   "toast.copy_failed": "Не удалось скопировать. Текст выделен: скопируйте его вручную.",
   "files.md_hint": "Файлы MD открывайте на компьютере.",
   "pane.more": "Правила и помощь",
+  "lesson.outs": "После урока вы",
   "next.to_vz": "Дальше: задание",
   "kit.intro": "Kit: готовые формы и инструкция, которые вы применяете в своём бизнесе после занятия.",
   "pane.uz_note": "Материалы урока и промпты на узбекском, как на занятии.",
@@ -3004,7 +3010,7 @@ function lessonPage(n, tab){
     <div class="lhd">
       ${dlh('#/dastur', T('nav.home'), tt ? T('lesson.meta', {n, date: lessonDate(n), d, t: tt, pl: tt}) : esc(lessonDate(n)))}
       <h1 class="lh1">${lnum(n) == null ? '' : `<span class="ln">${lnH(n)}</span> `}<span class="ln">${esc(title)}</span></h1>
-      <div class="lhr"><p class="lsub">${T(`lesson.${n}.sub`)}</p><p class="lede">${T(`lesson.${n}.lede`)}</p></div>
+      <div class="lhr"><p class="lsub">${T(`lesson.${n}.sub`)}</p><div><p class="lede">${T(`lesson.${n}.lede`)}</p>${L.outs ? `<details class="pane-more lout"><summary>${T('lesson.outs')}</summary><ul>${Array.from({length: L.outs}, (_, i) => `<li>${T(`lesson.${n}.o${i}`)}</li>`).join('')}</ul></details>` : ''}</div></div>
     </div>
     <div class="lwrap">${side}</div>`};   // W1 (user, 2026-10-30): a compact one-line header, then the folder across the whole page
 }

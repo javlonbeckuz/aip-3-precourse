@@ -188,7 +188,7 @@ export function createContent({ dir, now = () => Date.now(), production = false 
   // Titles come from the student's language; the parts (slides, blocks, files) always from the UZ file, prep from the language file.
   function lessonView(n, lang, group, review = false) {
     const T = lesson(n, lang), L = lesson(n, 'uz'), has = hasPart(L);
-    const v = { n, num: numOf(n), title: T.title, subtitle: T.subtitle, summary: T.summary, topics: T.topics,
+    const v = { n, num: numOf(n), title: T.title, subtitle: T.subtitle, summary: T.summary, topics: T.topics, outcomes: T.outcomes || [],
       start: n ? isoTashkent(start(group, n)) : null, date: n ? dateTashkent(start(group ?? firstGroup(), n)) : null, has, parts: {}, open: false };
     for (const part of PARTS.filter((p) => has[p])) {
       const at = opensAt(n, part, group, review), src = part === 'prep' ? T : L;
