@@ -19,7 +19,7 @@
     "groups": [
       {
         "title": "01 Yaxshilash sikli",
-        "note": "ASOSIY. Regression: bir joyni tuzatganda boshqa ishlayotgan joy buzilishi. Shuning uchun har oʻzgarishdan keyin barcha testlar qayta ishlaydi. 1) Kit 5 B.13 dagi har yozuv uchun instructions.md ni oʻzgartiring. 2) Shu holat uchun test qoʻshing. 3) Barcha testlarni qayta ishga tushiring. 4) Serverga qayta deploy qiling. Tayyor, agar: barcha testlar oʻtadi va B.13 dagi \"nimani oʻzgartirdik\" toʻldirilgan.",
+        "note": "ASOSIY. Regression: bir joyni tuzatganda boshqa ishlayotgan joy buzilishi. Shuning uchun har oʻzgarishdan keyin barcha testlar qayta ishlaydi. 1) Kit 5 B.13 dagi har yozuv uchun instructions.md ni oʻzgartiring. 2) Shu holat uchun test qoʻshing. 3) Barcha testlarni qayta ishga tushiring. 4) Serverga qayta deploy qiling. Tayyor, agar: barcha testlar oʻtadi va B.13 dagi «nimani oʻzgartirdik» toʻldirilgan.",
         "files": [],
         "prompts": [
           {
@@ -120,12 +120,14 @@
           {
             "slug": "kit5-pdf",
             "name": "Kit5_Pilot_va_hisob-kitob.pdf",
-            "size": 101828
+            "size": 101828,
+            "label": "Kit 5 yoʻriqnomasi"
           },
           {
             "slug": "kit5-b-raqamlar",
             "name": "kit5-b-raqamlar.md",
-            "size": 2717
+            "size": 2717,
+            "label": "Kit 5, B shakli: raqamlar"
           }
         ],
         "prompts": [

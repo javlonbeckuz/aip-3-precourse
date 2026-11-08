@@ -96,7 +96,7 @@ let toastKey = '';
 function flashToast(key){ toastKey = key; const text = t(key); toastT.textContent = text; document.getElementById('toast-undo').hidden = true; undoLi = null; toast.hidden = false; live.textContent = text; armToast(); }
 function hideToast(){ clearTimeout(toastTimer); toast.hidden = true; undoLi = null; }
 function showToast(li){
-  undoLi = li; const rawT = li.querySelector('.tx') ? li.querySelector('.tx').dataset.raw : ''; toastT.textContent = t(hasBracket(rawT) ? 'toast.fill' : 'toast.done', {no: (li.querySelector('.no').textContent || li.dataset.t)}); document.getElementById('toast-undo').hidden = false; toast.hidden = false;
+  undoLi = li; const rawT = li.querySelector('.tx') ? li.querySelector('.tx').dataset.raw : ''; toastT.textContent = t(hasBracket(rawT) ? 'toast.fill' : 'toast.done', {no: (li.dataset.t ? '«' + li.dataset.t + '»' : li.querySelector('.no').textContent)}); document.getElementById('toast-undo').hidden = false; toast.hidden = false;
   const cpB = li.querySelector('.cp'); if (cpB) cpB.after(toast);   // right after the button, so the next Tab lands on Bekor qilish
   armToast();
 }
@@ -106,12 +106,12 @@ const armToast = () => { clearTimeout(toastTimer); toastTimer = setTimeout(hideT
 document.getElementById('toast-undo').addEventListener('click', () => {
   const li = undoLi; if (!li) return;
   setDone(li, false); hideToast(); (li.querySelector('.cp') || li.querySelector('.chip')).focus(); refreshCounts();
-  live.textContent = t('live.unmarked', {no: (li.querySelector('.no').textContent || li.dataset.t)});
+  live.textContent = t('live.unmarked', {no: (li.dataset.t ? '«' + li.dataset.t + '»' : li.querySelector('.no').textContent)});
 });
 document.addEventListener('click', async e => {
   const chip = e.target.closest('.s1 .chip');
   if (chip) {
-    const li = chip.closest('li'), on = !li.classList.contains('done'), no = (li.querySelector('.no').textContent || li.dataset.t);
+    const li = chip.closest('li'), on = !li.classList.contains('done'), no = (li.dataset.t ? '«' + li.dataset.t + '»' : li.querySelector('.no').textContent);
     setDone(li, on); refreshCounts(); on ? showToast(li) : undoLi === li && hideToast();
     live.textContent = t(on ? 'live.marked' : 'live.unmarked', {no});
     return;
@@ -119,7 +119,7 @@ document.addEventListener('click', async e => {
   const b = e.target.closest('.s1 .cp'); if (!b) return;
   const li = b.closest('li');
   const ok = await copy(li.querySelector('.tx').dataset.raw);
-  if (!ok) { live.textContent = t('live.copy_failed'); flashToast('toast.copy_failed'); return; }
+  if (!ok) { live.textContent = t('live.copy_failed'); const dt = li.querySelector('details'), tx = li.querySelector('.tx'); if (dt) dt.open = true; if (tx) getSelection().selectAllChildren(tx); flashToast('toast.copy_failed'); return; }
   const fresh = !li.classList.contains('done');
   if (fresh) { setDone(li, true); refreshCounts(); showToast(li); }
   b.classList.add('flash'); b.querySelector('use').setAttribute('href', '#i-check'); b.querySelector('.cpl').textContent = t('common.copied');
@@ -165,6 +165,7 @@ function initGT(root){
   if (ind) ind.addEventListener('transitionend', e => { if (e.propertyName === 'transform') settle(); });
   function show(i, focus, key){
     if (i === cur) { if (focus) tabs[i].focus(); return; }
+    if (typeof hideToast === 'function') hideToast();   // UX audit S6-11: the copy toast belongs to the pane it was made in
     const dir = i > cur ? 1 : -1, t = ++seq, instant = key || rm.matches || !!root.dataset.instant, old = panes[cur], nw = panes[i]; cur = i;
     root.classList.toggle('kbd', !!key);
     if (!instant) { if (ind) ind.style.willChange = 'transform'; clearTimeout(rest); rest = setTimeout(settle, 400); }
@@ -359,7 +360,9 @@ const I18N = {uz: {
   'nb.open': 'NotebookLMʼni ochish',
   'claude.open': 'Claudeʼni ochish',
   'toast.fill': '{no} nusxalandi. Claudeʼda [qavslar]ni oʻz maʼlumotingiz bilan almashtiring.',
-  'toast.copy_failed': 'Nusxa olinmadi. Matnni bosib turing va «Nusxalash»ni tanlang.',
+  'toast.copy_failed': 'Nusxa olinmadi. Matn belgilandi: uni qoʻlda nusxalang.',
+  'files.md_hint': 'MD fayllarni kompyuterda oching.', 'pane.more': 'Qoidalar va yordam', 'next.to_vz': 'Keyingi: Vazifa',
+  'kit.intro': 'Kit: darsdan keyin oʻz biznesingizda qoʻllaydigan tayyor shakllar va yoʻriqnoma.', 'pane.uz_note': 'Dars materiallari va promptlar oʻzbek tilida, darsdagidek.',
   
   
   
@@ -895,7 +898,12 @@ const I18N = {uz: {
   "nb.open": "Открыть NotebookLM",
   "claude.open": "Открыть Claude",
   "toast.fill": "{no}: скопировано. В Claude замените [скобки] своими данными.",
-  "toast.copy_failed": "Не удалось скопировать. Нажмите на текст, удерживайте и выберите «Копировать».",
+  "toast.copy_failed": "Не удалось скопировать. Текст выделен: скопируйте его вручную.",
+  "files.md_hint": "Файлы MD открывайте на компьютере.",
+  "pane.more": "Правила и помощь",
+  "next.to_vz": "Дальше: задание",
+  "kit.intro": "Kit: готовые формы и инструкция, которые вы применяете в своём бизнесе после занятия.",
+  "pane.uz_note": "Материалы урока и промпты на узбекском, как на занятии.",
   "end.aria_ex": "Отметить упражнение выполненным",
   "end.aria_card": "Отметить карточку выполненной",
   "vzf.aria": "Отметить задание выполненным",
@@ -1039,7 +1047,7 @@ let PREP = {items: []};   // from the API (lesson 0)
 let C20 = {};   // filled from GET /me (app_state.js): the bundle holds no lesson text
 const PREP_CMDS = {};   // prep item -> {step index: an install command shown (and copyable) under that step}; empty since the Warp card was removed (2026-10-30)
 let PARTS = {};   // lesson number -> {am|kt|vz: {text, groups: [{title, note, files}]}}: the shape the lesson page reads
-const FC = (f, ph, slug) => f ? F(f.name, f.size, ph, slug || f.slug, f.url) : null;   // file from the demo / API: name + size (+ url in the app), never a server path
+const FC = (f, ph, slug) => f ? Object.assign(F(f.name, f.size, ph, slug || f.slug, f.url), f.label ? {label: f.label} : {}) : null;   // label: the chip text (UX audit S6-8); name stays the download name   // file from the demo / API: name + size (+ url in the app), never a server path
 function buildData(){
   FILES = {}; PARTS = {};
   Object.entries((C20 && C20.parts) || {}).forEach(([n, o]) => { PARTS[n] = {}; const used = new Set();   // progress ids of the prompt rows: unique inside a lesson, 1-8 letters or digits ("P{index}" when the id is empty)
@@ -1132,7 +1140,7 @@ function scheduleRecheck(){   // a part opens while the page is open: ask again 
 // ---- the API payload becomes the shapes the templates already read (C20 -> buildData(), LESSONS, PREP)
 const sid = s => String(s == null ? '' : s).replace(/[^A-Za-z0-9_-]/g, '');   // ids that end up in href / id / data-*: nothing else may pass
 const fileLabel = f => { const ext = (f.name.split('.').pop() || '').toUpperCase(); return f.size < 1024 ? `${ext} · ${f.size} B` : f.size < 1048576 ? `${ext} · ${(f.size / 1024).toFixed(1).replace('.', ',')} KB` : `${ext} · ${(f.size / 1048576).toFixed(1).replace('.', ',')} MB`; };
-const fo = (n, f) => f ? {slug: sid(f.slug), name: f.name, size: fileLabel(f), url: `${API}/lesson/${n}/doc/${encodeURIComponent(f.slug)}`} : null;   // name + size + the download URL; the server path never reaches the client
+const fo = (n, f) => f ? {slug: sid(f.slug), name: f.name, label: typeof f.label === 'string' ? f.label : '', size: fileLabel(f), url: `${API}/lesson/${n}/doc/${encodeURIComponent(f.slug)}`} : null;   // name + size + the download URL; the server path never reaches the client
 
 function makeC20(by){   // the open blocks of each lesson (Amaliyot, Kit, Vazifa) in the shape buildData() reads
   const parts = {};
@@ -1505,9 +1513,9 @@ const tabOfHref = h => { const m = /[?&]tab=(sl|am|kt|vz)\b/.exec(h || ''); retu
 // prompt chips (M3, user 2026-10-30): the title on a pill with a copy button; tapping the pill opens "Qayerga" and the full text. Same li / .no / .tx[data-raw] / .cp hooks as the old lilac rows, so copy = done (p:l{n}:{id}), the toast and undo work unchanged. The text stays Uzbek. Not counted in the lesson's units
 function chipList(n, gkey, g){
   return `<ol class="s1 pchips">${g.prompts.map((q, j) => { const k = `${gkey}.p${j}`, key = `p:l${n}:${q.kid}`, title = cu(`${k}.t`);
-    return `<li class="${S.has(key) ? 'done' : ''}" data-i="${j}" data-pid="${q.kid}" data-key="${key}" data-t="${esc(title)}"><details class="pchip"><summary><span class="no">${esc(q.id || 'P' + (j + 1))}</span><span class="tt">${cuh(`${k}.t`)}</span><button class="cp" type="button" aria-label="${esc(t('common.copy_aria', {title}))}"><span class="cp-c">${I('copy', 16)}</span><span class="cpl">${T('common.copy')}</span></button></summary>${q.target ? `<p class="to"><b>${T('lbl.where')}</b> ${cuh(`${k}.w`)}</p>` : ''}<p class="tx" data-raw="${esc(cu(`${k}.x`))}">${cxh(`${k}.x`, I18N.uz[`${k}.x`], x => mark(esc(x)))}</p></details></li>`; }).join('')}</ol>`;
+    return `<li class="${S.has(key) ? 'done' : ''}" data-i="${j}" data-pid="${q.kid}" data-key="${key}" data-t="${esc(title)}"><details class="pchip"><summary><span class="no">${esc(q.id || 'P' + (j + 1))}</span><span class="tt">${cuh(`${k}.t`)}</span></summary>${q.target ? `<p class="to"><b>${T('lbl.where')}</b> ${cuh(`${k}.w`)}</p>` : ''}<p class="tx" data-raw="${esc(cu(`${k}.x`))}">${cxh(`${k}.x`, I18N.uz[`${k}.x`], x => mark(esc(x)))}</p></details><button class="cp" type="button" aria-label="${esc(t('common.copy_aria', {title}))}"><span class="cp-c">${I('copy', 16)}</span><span class="cpl">${T('common.copy')}</span></button></li>`; }).join('')}</ol>`;   // UX audit S6-14: the copy button is next to the <details>, not inside its <summary>
 }
-document.addEventListener('click', e => { if (e.target.closest('.pchip summary .cp, .pchip summary .toast')) e.preventDefault(); });   // copying (or undoing) never opens or closes the chip
+document.addEventListener('click', e => { if (e.target.closest('.pchip summary .toast')) e.preventDefault(); });   // undoing never opens or closes the chip
 // a group note "ASOSIY. lead 1) a 2) b Tayyor, agar: c" -> {tag, lead, steps, ready}: display only, the stored text never changes
 function noteParts(s){
   let n = String(s || '').trim(), tag = '', ready = '';
@@ -1520,17 +1528,24 @@ function noteParts(s){
 function groupRow(n, key, g, i){
   const gk = `${key}.g${i}`, m = /^(\d+[A-Z]?)\.?\s+(.+)$/.exec(cu(gk)), no = m ? (/^\d+$/.test(m[1]) ? num2(+m[1]) : m[1]) : '', title = m ? m[2] : cu(gk);
   const np = noteParts(g.note ? cu(`${gk}.n`) : ''), lg = cxFb(`${gk}.n`) || cxFb(gk) ? ' lang="uz-Latn"' : '';
-  const steps = `${np.lead ? `<p class="m3-lead">${esc(np.lead)}</p>` : ''}${np.steps.length ? `<ol class="m3-steps">${np.steps.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="m3-ready">Tayyor, agar ${esc(np.ready)}</p>` : ''}`;
-  const files = g.files.length ? `<div class="fchips">${g.files.map(f => `<a class="fchip" ${fa(f)}><span class="sr-only">${T('common.sr_download')}</span>${I('down', 16)}<span>${wbr(f.name)}</span>${f.size ? `<span class="fz">${esc(f.size)}</span>` : ''}</a>`).join('')}</div>` : '';
+  const kt = LESSONS[n] && LESSONS[n].parts.includes('kt') && !partLock(n, 'kt'), lk = h => kt ? h.replace(/Kit boʻlimi(da|dan|dagi)/g, (w) => `<a class="kt-link" href="#/dars/${n}?tab=kt">${w}</a>`) : h;   // UX audit S6-7
+  const steps = `${np.lead ? `<p class="m3-lead">${lk(esc(np.lead))}</p>` : ''}${np.steps.length ? `<ol class="m3-steps">${np.steps.map(x => `<li>${lk(esc(x))}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="m3-ready">Tayyor, agar ${esc(np.ready)}</p>` : ''}`;
+  const md = g.files.some(f => /\.md$/i.test(f.name || ''));   // UX audit S6-8: .md files open as raw text on most phones
+  const files = g.files.length ? `<div class="fchips">${g.files.map(f => `<a class="fchip" ${fa(f)}><span class="sr-only">${T('common.sr_download')}</span>${I('down', 16)}<span>${wbr(f.label || f.name)}</span>${f.size ? `<span class="fz">${esc(f.size)}</span>` : ''}</a>`).join('')}</div>${md ? `<p class="f-hint">${T('files.md_hint')}</p>` : ''}` : '';
   return `<section class="m3"${lg}><span class="m3-dot" aria-hidden="true">${esc(no)}</span><div class="m3-b"><h3 class="m3-t">${esc(title)}</h3>${steps}${files}${g.prompts.length ? chipList(n, gk, g) : ''}</div></section>`;
 }
 // Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups as roadmap stops; Amaliyot and Vazifa end with a tick
 function blockPane(n, p){
   const b = (PARTS[n] || {})[p] || {text: '', groups: []}, key = `c.p.${n}.${p}`;
-  const text = b.text ? cu(`${key}.text`).split(/\n\s*\n/).map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`).join('') : '';
+  const paras = b.text ? cu(`${key}.text`).split(/\n\s*\n/).map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`) : [];
+  // UX audit S6-6: on Amaliyot only the first paragraph stays open; the rules and help (laptop, privacy, "Qiynalsangiz…") fold into "Qoidalar va yordam"
+  const text = p === 'am' && paras.length > 1 ? `${paras[0]}<details class="pane-more"><summary>${T('pane.more')}</summary>${paras.slice(1).join('')}</details>` : paras.join('');
+  const intro = (LANG !== 'uz' ? `<p class="p-sub uz-note">${T('pane.uz_note')}</p>` : '') + (p === 'kt' ? `<p class="p-sub kit-intro">${T('kit.intro')}</p>` : '');   // S10-1 (RU: the lesson body is Uzbek), S6-7 (what a Kit is)
   const groups = b.groups.map((g, i) => groupRow(n, key, g, i)).join('');
   const end = p === 'am' ? endb('f:am' + n, S.has('f:am' + n), 'amf.on', 'amf.off', '', 'amf.aria') : p === 'vz' ? endb('f:v' + n, S.has('f:v' + n), 'vzf.on', 'vzf.off', '', 'vzf.aria') : '';
-  return `<p class="p-label">${T('unit.' + p)}</p>${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${groups ? `<div class="m3s">${groups}</div>` : ''}${end ? `<div class="gt-foot end">${end}</div>` : ''}`;
+  // UX audit S6-5: the pane does not end in a dead end. After the tick: Amaliyot -> Vazifa, Vazifa -> home
+  const vzOpen = LESSONS[n].parts.includes('vz') && !partLock(n, 'vz'), next = p === 'am' && vzOpen ? nextBlock(`#/dars/${n}?tab=vz`, 'next.to_vz') : p === 'vz' ? nextBlock('#/dastur', 'prep.end_back') : '';
+  return `<p class="p-label sr-only">${T('unit.' + p)}</p>${intro}${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${groups ? `<div class="m3s">${groups}</div>` : ''}${end ? `<div class="gt-foot end">${end}${next}</div>` : ''}`;
 }
 function lessonPage(n, tab){
   tab = tab || tabOfHref((nextOf(n) || {}).href);   // no ?tab: the tab with today's work
@@ -1538,7 +1553,7 @@ function lessonPage(n, tab){
   const tabsDef = L.parts.map(p => ({p, label: t('unit.' + p), lock: partLock(n, p), done: partLock(n, p) ? false : {
     sl: () => slDone(n), am: () => S.has('f:am' + n), vz: () => S.has('f:v' + n), kt: () => false}[p]()}));
   const pane = {
-    sl: () => `<p class="p-label">${T('unit.sl')}</p><p class="p-num">${S.sl(n) > 0 ? `${S.sl(n)}/${L.slides}` : L.slides}</p>
+    sl: () => `<p class="p-label sr-only">${T('unit.sl')}</p><p class="p-num">${S.sl(n) > 0 ? `${S.sl(n)}/${L.slides}` : L.slides}</p>
       <div class="gt-foot"><span class="gt-meta">${T('pane.sl.meta', {n: L.slides, pl: L.slides, kind: kindT(n)})}</span>${play(slHref(n), S.sl(n) === 0 ? T('pane.sl.start') : slDone(n) ? T('pane.sl.again') : T('pane.sl.go', {i: S.sl(n), n: L.slides}), 'play', 18)}</div>`,
     am: () => blockPane(n, 'am'), kt: () => blockPane(n, 'kt'), vz: () => blockPane(n, 'vz'),
   };

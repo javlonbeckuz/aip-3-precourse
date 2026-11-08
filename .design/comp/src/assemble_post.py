@@ -130,8 +130,8 @@ function openMenu(t){
   if (q.get('id')) { gid.value = q.get('id'); gid.dispatchEvent(new Event('input')); }
 })();'''
     s = s[:a] + boot + s[b2:]
-    rep("if (!ok) { live.textContent = t('live.copy_failed'); return; }", "if (!ok) { live.textContent = t('live.copy_failed'); flashToast('toast.copy_failed'); return; }")
-    s = s.replace("li.querySelector('.no').textContent", "(li.querySelector('.no').textContent || li.dataset.t)")
+    rep("if (!ok) { live.textContent = t('live.copy_failed'); return; }", "if (!ok) { live.textContent = t('live.copy_failed'); const dt = li.querySelector('details'), tx = li.querySelector('.tx'); if (dt) dt.open = true; if (tx) getSelection().selectAllChildren(tx); flashToast('toast.copy_failed'); return; }")   # UX audit S6-12: the text is open and selected, ready to copy by hand
+    s = s.replace("li.querySelector('.no').textContent", "(li.dataset.t ? '«' + li.dataset.t + '»' : li.querySelector('.no').textContent)")   # UX audit S6-4: chips hide their ids, so name the prompt
     from hover import hoverize   # :hover only where a pointer hovers (audit 2026-10-19)
     a = s.index('<style>') + 7; b = s.index('</style>', a)
     s = s[:a] + hoverize(s[a:b]) + s[b:]

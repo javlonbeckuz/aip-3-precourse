@@ -133,7 +133,9 @@ const I18N = {uz: {
   'nb.open': 'NotebookLMʼni ochish',
   'claude.open': 'Claudeʼni ochish',
   'toast.fill': '{no} nusxalandi. Claudeʼda [qavslar]ni oʻz maʼlumotingiz bilan almashtiring.',
-  'toast.copy_failed': 'Nusxa olinmadi. Matnni bosib turing va «Nusxalash»ni tanlang.',
+  'toast.copy_failed': 'Nusxa olinmadi. Matn belgilandi: uni qoʻlda nusxalang.',
+  'files.md_hint': 'MD fayllarni kompyuterda oching.', 'pane.more': 'Qoidalar va yordam', 'next.to_vz': 'Keyingi: Vazifa',
+  'kit.intro': 'Kit: darsdan keyin oʻz biznesingizda qoʻllaydigan tayyor shakllar va yoʻriqnoma.', 'pane.uz_note': 'Dars materiallari va promptlar oʻzbek tilida, darsdagidek.',
   
   
   
@@ -702,7 +704,12 @@ const I18N = {uz: {
   "nb.open": "Открыть NotebookLM",
   "claude.open": "Открыть Claude",
   "toast.fill": "{no}: скопировано. В Claude замените [скобки] своими данными.",
-  "toast.copy_failed": "Не удалось скопировать. Нажмите на текст, удерживайте и выберите «Копировать».",
+  "toast.copy_failed": "Не удалось скопировать. Текст выделен: скопируйте его вручную.",
+  "files.md_hint": "Файлы MD открывайте на компьютере.",
+  "pane.more": "Правила и помощь",
+  "next.to_vz": "Дальше: задание",
+  "kit.intro": "Kit: готовые формы и инструкция, которые вы применяете в своём бизнесе после занятия.",
+  "pane.uz_note": "Материалы урока и промпты на узбекском, как на занятии.",
   "end.aria_ex": "Отметить упражнение выполненным",
   "end.aria_card": "Отметить карточку выполненной",
   "vzf.aria": "Отметить задание выполненным",

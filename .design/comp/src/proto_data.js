@@ -47,7 +47,7 @@ let PREP = {
 }}; /*C20:end*/
 const PREP_CMDS = {};   // prep item -> {step index: an install command shown (and copyable) under that step}; empty since the Warp card was removed (2026-10-30)
 let PARTS = {};   // lesson number -> {am|kt|vz: {text, groups: [{title, note, files}]}}: the shape the lesson page reads
-const FC = (f, ph, slug) => f ? F(f.name, f.size, ph, slug || f.slug, f.url) : null;   // file from the demo / API: name + size (+ url in the app), never a server path
+const FC = (f, ph, slug) => f ? Object.assign(F(f.name, f.size, ph, slug || f.slug, f.url), f.label ? {label: f.label} : {}) : null;   // label: the chip text (UX audit S6-8); name stays the download name   // file from the demo / API: name + size (+ url in the app), never a server path
 function buildData(){
   FILES = {}; PARTS = {};
   Object.entries((C20 && C20.parts) || {}).forEach(([n, o]) => { PARTS[n] = {}; const used = new Set();   // progress ids of the prompt rows: unique inside a lesson, 1-8 letters or digits ("P{index}" when the id is empty)

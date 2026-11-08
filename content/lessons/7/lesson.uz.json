@@ -1,25 +1,25 @@
 {
   "n": 7,
   "title": "Natijalar va demo kuni",
-  "subtitle": "Baseline va farq, vazifa narxi, ROI, qaror, build yoki buy, demo",
+  "subtitle": "Oldin va keyin, vazifa narxi, ROI, qaror: yasash yoki sotib olish, demo",
   "summary": "Pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaymiz va davom ettirish, oʻzgartirish yoki toʻxtatishni hal qilamiz. Keyin natijani taqdim etasiz. Kit 5 B: yakuniy raqamlar.",
   "topics": [
-    "Baseline va farq",
+    "Oldin va keyin raqamlari",
     "Bitta vazifa narxi",
     "Topilgan pul",
     "ROI",
     "Davom, oʻzgartirish yoki toʻxtatish",
-    "Build, buy yoki open source",
+    "Yasash, sotib olish yoki ochiq kod",
     "Demo"
   ],
   "slideCount": 0,
   "slideKind": "image",
   "amaliyot": {
-    "text": "Bu amaliyotda pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaysiz, qaror qabul qilasiz va natijani stolingizda taqdim etasiz.\n\nFaqat Kit 5 B dagi haqiqiy raqamlar bilan ishlang. Raqam yetmasa, uni toʻqimang, \"yoʻq\" deb yozing.\n\nQiynalsangiz: xatoning skrinshotini oling va Claudeʼdan soʻrang.",
+    "text": "Bu amaliyotda pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaysiz, qaror qabul qilasiz va natijani stolingizda taqdim etasiz.\n\nFaqat Kit 5 B dagi haqiqiy raqamlar bilan ishlang. Raqam yetmasa, uni toʻqimang, «yoʻq» deb yozing.\n\nQiynalsangiz: xatoning skrinshotini oling va Claudeʼdan soʻrang.",
     "groups": [
       {
         "title": "01 Yakuniy raqamlar",
-        "note": "ASOSIY. Baseline va delta: oldin va keyin, raqamlarda. Kit 5 shakli (Kit tabida). 1) Kit 5 B ning oʻzgarish ustunini toʻldiring. 2) B.9-B.12 xarajatlarni jamlang. 3) Topilgan pul qatorini qoʻshing. Tayyor, agar: har qatorda Agentgacha, 1-hafta, 2-hafta va oʻzgarish bor.",
+        "note": "ASOSIY. Baseline va delta: oldin va keyin, raqamlarda. Kit 5 shakli (Kit boʻlimida). 1) Kit 5 B ning oʻzgarish ustunini toʻldiring. 2) B.9-B.12 xarajatlarni jamlang. 3) Topilgan pul qatorini qoʻshing. Tayyor, agar: har qatorda Agentgacha, 1-hafta, 2-hafta va oʻzgarish bor.",
         "files": [],
         "prompts": [
           {
@@ -100,12 +100,14 @@
           {
             "slug": "kit5-pdf",
             "name": "Kit5_Pilot_va_hisob-kitob.pdf",
-            "size": 101828
+            "size": 101828,
+            "label": "Kit 5 yoʻriqnomasi"
           },
           {
             "slug": "kit5-b-raqamlar",
             "name": "kit5-b-raqamlar.md",
-            "size": 2717
+            "size": 2717,
+            "label": "Kit 5, B shakli: raqamlar"
           }
         ]
       },
@@ -134,12 +136,14 @@
           {
             "slug": "cheklist-pdf",
             "name": "Sotuvchi_cheklisti.pdf",
-            "size": 65821
+            "size": 65821,
+            "label": "Sotuvchi cheklisti"
           },
           {
             "slug": "sotuvchi-cheklist",
             "name": "sotuvchi-cheklist.md",
-            "size": 1578
+            "size": 1578,
+            "label": "Sotuvchi cheklisti (tahrirlash uchun)"
           }
         ],
         "prompts": [

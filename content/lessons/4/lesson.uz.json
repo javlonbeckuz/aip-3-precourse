@@ -20,7 +20,7 @@
     "groups": [
       {
         "title": "01 Kit 3 A: jarayon qadamlari",
-        "note": "ASOSIY. Kit 3 \"Ishni qayta taqsimlash\": jarayonning har qadamini kim bajarishini qayta belgilaydi. Kit 3 shakli (Kit tabida). 1) Tanlangan jarayonning har qadamini alohida qatorga yozing, bir qatorda bitta harakat. 2) Har qadamga bugun va ertaga kim bajarishini (agent, robot yoki inson), kim tekshirishini, kim qaror qilishini va kim javobgarligini yozing. 3) Oʻtgan haftadagi bitta haqiqiy holatni jadval boʻyicha boshidan oxirigacha yuritib chiqing. Qoida: agent oʻz qadamini oʻzi tekshirmaydi. Tayyor, agar: boʻsh katak yoʻq va bitta haqiqiy holat yuritilgan.",
+        "note": "ASOSIY. Kit 3 «Ishni qayta taqsimlash»: jarayonning har qadamini kim bajarishini qayta belgilaydi. Kit 3 shakli (Kit boʻlimida). 1) Tanlangan jarayonning har qadamini alohida qatorga yozing, bir qatorda bitta harakat. 2) Har qadamga bugun va ertaga kim bajarishini (agent, robot yoki inson), kim tekshirishini, kim qaror qilishini va kim javobgarligini yozing. 3) Oʻtgan haftadagi bitta haqiqiy holatni jadval boʻyicha boshidan oxirigacha yuritib chiqing. Qoida: agent oʻz qadamini oʻzi tekshirmaydi. Tayyor, agar: boʻsh katak yoʻq va bitta haqiqiy holat yuritilgan.",
         "files": []
       },
       {
@@ -137,22 +137,26 @@
           {
             "slug": "kit3-pdf",
             "name": "Kit3_Ishni_qayta_taqsimlash.pdf",
-            "size": 93955
+            "size": 93955,
+            "label": "Kit 3 yoʻriqnomasi"
           },
           {
             "slug": "kit3-a-qadamlar",
             "name": "kit3-a-qadamlar.md",
-            "size": 1426
+            "size": 1426,
+            "label": "Kit 3, A shakli: qadamlar"
           },
           {
             "slug": "kit3-b-korsatmalar",
             "name": "kit3-b-korsatmalar.md",
-            "size": 1408
+            "size": 1408,
+            "label": "Kit 3, B shakli: agent koʻrsatmalari"
           },
           {
             "slug": "kit3-skill",
             "name": "kit3-SKILL.md",
-            "size": 2693
+            "size": 2693,
+            "label": "/kit3 skill"
           }
         ]
       },

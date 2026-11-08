@@ -9,6 +9,7 @@ function initGT(root){
   if (ind) ind.addEventListener('transitionend', e => { if (e.propertyName === 'transform') settle(); });
   function show(i, focus, key){
     if (i === cur) { if (focus) tabs[i].focus(); return; }
+    if (typeof hideToast === 'function') hideToast();   // UX audit S6-11: the copy toast belongs to the pane it was made in
     const dir = i > cur ? 1 : -1, t = ++seq, instant = key || rm.matches || !!root.dataset.instant, old = panes[cur], nw = panes[i]; cur = i;
     root.classList.toggle('kbd', !!key);
     if (!instant) { if (ind) ind.style.willChange = 'transform'; clearTimeout(rest); rest = setTimeout(settle, 400); }

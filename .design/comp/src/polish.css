@@ -451,3 +451,33 @@ html.hid .bgp path{animation-play-state:paused}
 /* UX audit S9-2: "Student" opens a menu, so it shows a chevron */
 .nav-name::after{content:"";display:inline-block;width:7px;height:7px;margin-left:9px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-3px) rotate(45deg);transition:transform .2s var(--ease)}
 .nav-name[aria-expanded="true"]::after{transform:translateY(1px) rotate(-135deg)}
+
+/* ---- UX audit S6, lesson panes (user 2026-11-08) */
+/* S6-1 + S6-14: the copy button is next to the chip's <details> (no button inside <summary>), placed over the pill; on an open chip it shows its word */
+.gt .s1.pchips li{position:relative}
+.pchip>summary{min-height:52px;padding-right:58px}
+.gt .s1.pchips .cp{position:absolute;top:4px;right:4px;width:44px;height:44px}
+.gt .s1.pchips li:has(.pchip[open]) .pchip>summary{display:flex;padding-right:150px}
+.gt .s1.pchips li:has(.pchip[open]) .cp{display:inline-flex;flex-direction:row;align-items:center;gap:6px;width:auto;padding:0 16px 0 12px;border-radius:999px}
+.gt .s1.pchips li:has(.pchip[open]) .cpl{display:inline;font:500 15px/1 var(--font-body);text-transform:none;letter-spacing:0}
+/* S6-2: a chevron says the chip opens; the open pill is a shade lighter */
+.gt .s1.pchips .tt::after{content:"";display:inline-block;width:7px;height:7px;margin:0 2px 0 10px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-3px) rotate(45deg);transition:transform .2s var(--ease)}
+.gt .s1.pchips .pchip[open] .tt::after{transform:translateY(1px) rotate(-135deg)}
+.gt .s1.pchips .pchip[open]>summary{background:rgb(255 255 255 / .16)}
+/* S6-3: where to paste is the instruction students get wrong: full ink, 16px */
+.gt .s1.pchips .to{font-size:16px;color:var(--gt-ink)}.gt .s1.pchips .to b{font-weight:700}
+/* S6-5: the end tick and the way on sit under the roadmap column, on the left */
+.gt-foot.end{justify-content:flex-start;gap:16px;padding-left:52px}
+@container (max-width:599px){.gt-foot.end{padding-left:0}}
+/* S6-6: rules and help folded under the first paragraph */
+.pane-more{margin-top:10px}
+.pane-more>summary{display:inline-flex;align-items:center;gap:10px;min-height:44px;cursor:pointer;list-style:none;font:500 16px/1.3 var(--font-body);color:var(--gt-ink)}
+.pane-more>summary::-webkit-details-marker{display:none}
+.pane-more>summary::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s var(--ease)}
+.pane-more[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+/* S6-7: a link to the Kit tab, and one plain line saying what a Kit is */
+.kt-link{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.kit-intro,.uz-note{color:var(--gt-ink)}
+/* S6-8: the size never breaks inside a chip; a hint under groups with .md files */
+.fchip .fz{white-space:nowrap}
+.f-hint{margin:8px 0 0;font:400 15px/1.4 var(--font-body);color:var(--gt-ink2)}

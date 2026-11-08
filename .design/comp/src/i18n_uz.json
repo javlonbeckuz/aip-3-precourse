@@ -865,9 +865,34 @@
   "note": "undo toast at the bottom; ≤ 28 chars · keep {params} as they are"
  },
  "toast.copy_failed": {
-  "uz": "Nusxa olinmadi. Matnni bosib turing va «Nusxalash»ni tanlang.",
+  "uz": "Nusxa olinmadi. Matn belgilandi: uni qoʻlda nusxalang.",
   "translate": true,
   "note": "undo toast at the bottom; ≤ 28 chars"
+ },
+ "files.md_hint": {
+  "uz": "MD fayllarni kompyuterda oching.",
+  "translate": true,
+  "note": "UI text"
+ },
+ "pane.more": {
+  "uz": "Qoidalar va yordam",
+  "translate": true,
+  "note": "text inside a lesson-folder pane (lilac), small caps label or sentence"
+ },
+ "next.to_vz": {
+  "uz": "Keyingi: Vazifa",
+  "translate": true,
+  "note": "home screen"
+ },
+ "kit.intro": {
+  "uz": "Kit: darsdan keyin oʻz biznesingizda qoʻllaydigan tayyor shakllar va yoʻriqnoma.",
+  "translate": true,
+  "note": "UI text"
+ },
+ "pane.uz_note": {
+  "uz": "Dars materiallari va promptlar oʻzbek tilida, darsdagidek.",
+  "translate": true,
+  "note": "text inside a lesson-folder pane (lilac), small caps label or sentence"
  },
  "end.aria_ex": {
   "uz": "Mashq bajarildi deb belgilash",

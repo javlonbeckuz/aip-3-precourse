@@ -78,20 +78,20 @@
       },
       {
         "title": "05 Kit 5 A: pilot rejasi",
-        "note": "ASOSIY. Pilot: cheklangan, muddati belgilangan haqiqiy sinov. Toʻxtash sharti: sinovni darhol toʻxtatadigan holat. Kit 5 shakli (Kit tabida). 1) Mentor bilan A.1-A.9 ni toʻldiring. 2) Maqsad bitta raqam boʻlsin, masalan \"kuniga 60 daqiqadan 10 daqiqaga\". Tayyor, agar: reja kit5-pilot/plan.md da saqlangan.",
+        "note": "ASOSIY. Pilot: cheklangan, muddati belgilangan haqiqiy sinov. Toʻxtash sharti: sinovni darhol toʻxtatadigan holat. Kit 5 shakli (Kit boʻlimida). 1) Mentor bilan A.1-A.9 ni toʻldiring. 2) Maqsad bitta raqam boʻlsin, masalan «kuniga 60 daqiqadan 10 daqiqaga». Tayyor, agar: reja kit5-pilot/plan.md da saqlangan.",
         "files": [],
         "prompts": [
           {
             "id": "05P1",
             "title": "Pilot rejasi qoralamasi",
             "target": "Claude Code",
-            "text": "kit3-agent/instructions.md va kit5-pilot/baseline.md ni oʻqing.\nKit 5 A shakli (A.1-A.9) boʻyicha pilot rejasi qoralamasini tuzing: kit5-pilot/kit5-a-reja.md (Kit tabidan yuklab olingan shakl).\nRejada boʻlsin: bitta raqamli maqsad; boshlanish va tugash sanasi; qamrov; agent nima qila oladi va nima qila olmaydi; muvaffaqiyat mezoni; toʻxtash sharti; kim tekshiradi; haftalik koʻrib chiqish vaqti.\nMaqsad baseline raqamidan kelib chiqsin. Bilmagan joyni toʻldirmang, menga savol bering.\nkit5-pilot/plan.md ga saqlang."
+            "text": "kit3-agent/instructions.md va kit5-pilot/baseline.md ni oʻqing.\nKit 5 A shakli (A.1-A.9) boʻyicha pilot rejasi qoralamasini tuzing: kit5-pilot/kit5-a-reja.md (Kit boʻlimidan yuklab olingan shakl).\nRejada boʻlsin: bitta raqamli maqsad; boshlanish va tugash sanasi; qamrov; agent nima qila oladi va nima qila olmaydi; muvaffaqiyat mezoni; toʻxtash sharti; kim tekshiradi; haftalik koʻrib chiqish vaqti.\nMaqsad baseline raqamidan kelib chiqsin. Bilmagan joyni toʻldirmang, menga savol bering.\nkit5-pilot/plan.md ga saqlang."
           }
         ]
       },
       {
         "title": "06 Kit 4 A: koʻnikmalar xaritasi",
-        "note": "ASOSIY. Kit 4 \"Yangi rollar\": agent ishga tushgach xodimlar nima bilan band boʻlishini belgilaydi. Kit 4 shakli (Kit tabida). 1) Pilot taʼsir qiladigan har xodimni yozing. 2) Har biriga: eng kuchli koʻnikmasi va uning haqiqiy misoli, bugungi ishi, yangi roli, yangi tekshirish vazifasi, kerakli oʻqish. Tayyor, agar: koʻnikmalar xaritasi saqlangan.",
+        "note": "ASOSIY. Kit 4 «Yangi rollar»: agent ishga tushgach xodimlar nima bilan band boʻlishini belgilaydi. Kit 4 shakli (Kit boʻlimida). 1) Pilot taʼsir qiladigan har xodimni yozing. 2) Har biriga: eng kuchli koʻnikmasi va uning haqiqiy misoli, bugungi ishi, yangi roli, yangi tekshirish vazifasi, kerakli oʻqish. Tayyor, agar: koʻnikmalar xaritasi saqlangan.",
         "files": [],
         "prompts": [
           {
@@ -132,12 +132,14 @@
           {
             "slug": "kit5-pdf",
             "name": "Kit5_Pilot_va_hisob-kitob.pdf",
-            "size": 101828
+            "size": 101828,
+            "label": "Kit 5 yoʻriqnomasi"
           },
           {
             "slug": "kit5-a-reja",
             "name": "kit5-a-reja.md",
-            "size": 1348
+            "size": 1348,
+            "label": "Kit 5, A shakli: pilot rejasi"
           }
         ],
         "prompts": [
@@ -156,22 +158,26 @@
           {
             "slug": "kit4-pdf",
             "name": "Kit4_Yangi_rollar.pdf",
-            "size": 92416
+            "size": 92416,
+            "label": "Kit 4 yoʻriqnomasi"
           },
           {
             "slug": "kit4-a-konikmalar",
             "name": "kit4-a-konikmalar.md",
-            "size": 1113
+            "size": 1113,
+            "label": "Kit 4, A shakli: koʻnikmalar"
           },
           {
             "slug": "kit4-b-oquv-vazifasi",
             "name": "kit4-b-oquv-vazifasi.md",
-            "size": 1421
+            "size": 1421,
+            "label": "Kit 4, B shakli: oʻquv vazifasi"
           },
           {
             "slug": "kit4-skill",
             "name": "kit4-SKILL.md",
-            "size": 2566
+            "size": 2566,
+            "label": "/kit4 skill"
           }
         ],
         "prompts": [

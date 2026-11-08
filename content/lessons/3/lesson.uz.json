@@ -20,7 +20,7 @@
     "groups": [
       {
         "title": "01 Birinchi topshiriq",
-        "note": "ASOSIY. 1) Warpʼni oching va Claude Codeʼni ishga tushiring. 2) Downloads yoki Desktop papkasini tartibga keltirishni oddiy oʻzbek tilida soʻrang. 3) Natijani papkada tekshiring. Tayyor, agar: fayllar papkalarga ajratilgan, hech narsa oʻchirilmagan.",
+        "note": "ASOSIY. 1) Warpʼni oching va Claude Codeʼni ishga tushiring (oʻrnatilmagan boʻlsa: 01-dars, Amaliyot 06). 2) Downloads yoki Desktop papkasini tartibga keltirishni oddiy oʻzbek tilida soʻrang. 3) Natijani papkada tekshiring. Tayyor, agar: fayllar papkalarga ajratilgan, hech narsa oʻchirilmagan.",
         "files": [],
         "prompts": [
           {
@@ -38,7 +38,8 @@
           {
             "slug": "kompaniya-zip",
             "name": "kompaniya.zip",
-            "size": 3543
+            "size": 3543,
+            "label": "Kompaniya papkasi"
           }
         ],
         "prompts": [
@@ -77,14 +78,14 @@
       },
       {
         "title": "04 Kit 2 baholash",
-        "note": "ASOSIY. Kit 2 \"Qaysi jarayondan boshlaymiz\": jarayonlarni baholab, pilot uchun bittasini tanlaydi. Kit 2 shakli (Kit tabida). 1) /model bilan Haiku yoki Sonnetʼni tanlang. 2) Claude Codeʼdan Kit 1 fayllaridan 8 tagacha jarayon ajratishni va ularni A.2-A.7 boʻyicha baholashni soʻrang. 3) Rozi boʻlmagan har bahoni tuzating. 4) Value (qiymat) va Ease (osonlik) ni hisoblatib oling. Tayyor, agar: baholash jadvali kit2-scoring papkasida saqlangan.",
+        "note": "ASOSIY. Kit 2 «Qaysi jarayondan boshlaymiz»: jarayonlarni baholab, pilot uchun bittasini tanlaydi. Kit 2 shakli (Kit boʻlimida). 1) /model bilan Haiku yoki Sonnetʼni tanlang. 2) Claude Codeʼdan Kit 1 fayllaridan 8 tagacha jarayon ajratishni va ularni A.2-A.7 boʻyicha baholashni soʻrang. 3) Rozi boʻlmagan har bahoni tuzating. 4) Value (qiymat) va Ease (osonlik) ni hisoblatib oling. Tayyor, agar: baholash jadvali kit2-scoring papkasida saqlangan.",
         "files": [],
         "prompts": [
           {
             "id": "04P1",
             "title": "Jarayonlarni baholash",
             "target": "Claude Code",
-            "text": "kit1-interviews papkasidagi barcha B shakllarini oʻqing. Ulardan 8 tagacha jarayonni ajrating.\nHar jarayonni Kit 2 A shaklidagi A.2-A.7 mezonlari boʻyicha baholang: kit2-scoring/kit2-a-baholash.md (Kit tabidan yuklab olingan shakl).\nHar baho yonida qaysi fayl va qatorga tayanganingizni yozing. Maʼlumot yetmasa, bahoni [?] bilan belgilang.\nValue va Ease ni shakldagi qoida boʻyicha hisoblang.\nJadvalni kit2-scoring/scoring.md ga saqlang."
+            "text": "kit1-interviews papkasidagi barcha B shakllarini oʻqing. Ulardan 8 tagacha jarayonni ajrating.\nHar jarayonni Kit 2 A shaklidagi A.2-A.7 mezonlari boʻyicha baholang: kit2-scoring/kit2-a-baholash.md (Kit boʻlimidan yuklab olingan shakl).\nHar baho yonida qaysi fayl va qatorga tayanganingizni yozing. Maʼlumot yetmasa, bahoni [?] bilan belgilang.\nValue va Ease ni shakldagi qoida boʻyicha hisoblang.\nJadvalni kit2-scoring/scoring.md ga saqlang."
           },
           {
             "id": "04P2",
@@ -148,7 +149,7 @@
             "id": "08P1",
             "title": "/kit1 skill",
             "target": "Claude Code",
-            "text": "Kit 1 promptidan kit1 nomli skill yarating.\nSkill intervyu matnini olib, Kit 1 B shakli jadvalini tuzsin va natijani kit1-interviews papkasiga xodim ismi bilan .md fayl qilib saqlasin.\nSkill qachon ishlatilishini tepadagi tavsifda aniq yozing.\n\nKit 1 prompti:\n[01-dars Kit tabidagi \"Kit 1 prompti: B shakli\" matni]"
+            "text": "Kit 1 promptidan kit1 nomli skill yarating.\nSkill intervyu matnini olib, Kit 1 B shakli jadvalini tuzsin va natijani kit1-interviews papkasiga xodim ismi bilan .md fayl qilib saqlasin.\nSkill qachon ishlatilishini tepadagi tavsifda aniq yozing.\n\nKit 1 prompti:\n[01-dars Kit boʻlimidagi \"Kit 1 prompti: B shakli\" matni]"
           },
           {
             "id": "08P2",
@@ -170,22 +171,26 @@
           {
             "slug": "kit2-pdf",
             "name": "Kit2_Qaysi_jarayondan_boshlaymiz.pdf",
-            "size": 172474
+            "size": 172474,
+            "label": "Kit 2 yoʻriqnomasi"
           },
           {
             "slug": "kit2-a-baholash",
             "name": "kit2-a-baholash.md",
-            "size": 2026
+            "size": 2026,
+            "label": "Kit 2, A shakli: baholash"
           },
           {
             "slug": "kit2-b-matritsa",
             "name": "kit2-b-matritsa.md",
-            "size": 1171
+            "size": 1171,
+            "label": "Kit 2, B shakli: matritsa"
           },
           {
             "slug": "kit2-skill",
             "name": "kit2-SKILL.md",
-            "size": 3384
+            "size": 3384,
+            "label": "/kit2 skill"
           }
         ],
         "prompts": [
@@ -209,17 +214,20 @@
           {
             "slug": "kit5-pdf",
             "name": "Kit5_Pilot_va_hisob-kitob.pdf",
-            "size": 101828
+            "size": 101828,
+            "label": "Kit 5 yoʻriqnomasi"
           },
           {
             "slug": "kit5-b-raqamlar",
             "name": "kit5-b-raqamlar.md",
-            "size": 2717
+            "size": 2717,
+            "label": "Kit 5, B shakli: raqamlar"
           },
           {
             "slug": "kit5-skill",
             "name": "kit5-SKILL.md",
-            "size": 4374
+            "size": 4374,
+            "label": "/kit5 skill"
           }
         ]
       }
@@ -243,7 +251,7 @@
       },
       {
         "title": "2. Baseline ni boshlang",
-        "note": "Tanlangan jarayon boʻyicha toʻrt raqamni yozing: murojaatlar soni, oʻrtacha daqiqa, xatolar, takroriy murojaatlar. Bular Kit 5 B ning \"Agentgacha\" ustuni boʻladi. Tarix bor joyda (Telegram chat eksporti, Excel, CRM) oxirgi 2-4 haftani Claude Code bilan oling. Tarixi yoʻq raqamlarni 5 ish kuni jonli yozing.",
+        "note": "Tanlangan jarayon boʻyicha toʻrt raqamni yozing: murojaatlar soni, oʻrtacha daqiqa, xatolar, takroriy murojaatlar. Bular Kit 5 B ning «Agentgacha» ustuni boʻladi. Tarix bor joyda (Telegram chat eksporti, Excel, CRM) oxirgi 2-4 haftani Claude Code bilan oling. Tarixi yoʻq raqamlarni 5 ish kuni jonli yozing.",
         "files": [],
         "prompts": [
           {
