@@ -16,14 +16,14 @@ student  { id, fullName, firstName, mentor, group: "shanba"|"yakshanba"|null }  
 schedule { sessions: 7, shanba: "2026-11-21"|null, yakshanba: "2026-11-22"|null, group, starts: { "1": iso|null, ... "7": iso|null } }   // starts = this student's group; null = date to follow (the whole group, or just that lesson)
 live     { n: 0..7, override: null|1..7 }      // n = the live lesson for this student's group (0 = none); override = pinned by schedule.json
 progress { t: { "<tick key>": 1 }, sl: { "1": 12 } }              // sl[lesson] = highest slide reached, 1-based
-file     { slug, name, size }                   // no server path, ever; size = integer number of bytes
+file     { slug, name, size, label? }                 // no server path, ever; size = integer number of bytes
 ```
 
 ### lesson (what a student may see)
 
 ```
 { n, num, title, subtitle, summary, topics[],   // n = folder/URL number (0..7); num = the number to DISPLAY: 1..6 in order over the numbered lessons, null for lesson 0 and for unnumbered ones (Kirish, n=2: "numbered": false in its uz file). Use num, never n, in labels ("03-dars" for num 3); a null num shows the short name
-  start: iso|null, date: "YYYY-MM-DD"|null,           // this group's lesson start; null for lesson 0, and null while the dates are to follow (or the student has no group)
+  start: iso|null, date: "YYYY-MM-DD"|null,           // this group's lesson start; null for lesson 0, and null while the dates are to follow (a student with no group gets the first dated group's dates)
   has:   { slides, amaliyot, kit, vazifa, prep },   // booleans: the part exists at all (render or hide the row)
   parts: { <part>: { open: true } | { open: false, opensAt: iso|null } },   // only parts that exist; opensAt null = date to follow
   open:  true if any part is open,
@@ -42,7 +42,7 @@ block    { text, groups[{ title, note?, files[file], prompts?[{ id, title, targe
 
 Notes for the frontend:
 - A locked part has NO content fields in the payload, only `parts.<part>.opensAt`. Show "opens on ...".
-- Dates to follow: while a group's dates are not decided (`groups.<g>: null` in schedule.json), and for a student with no group, lessons 1-7 stay locked, `start`/`date`/`opensAt`/`schedule.starts.*`/`schedule.<group>` are `null` (show "date to follow"), and `live.n` is 0. Lesson 0 (prep) is still open. A 403 `locked` then carries `error.opensAt: null`.
+- Dates to follow: while a group's dates are not decided (`groups.<g>: null` in schedule.json), lessons 1-7 stay locked for a student in that group (a student with no group is treated as being in the first group that has dates, so never locked by this), `start`/`date`/`opensAt`/`schedule.starts.*`/`schedule.<group>` are `null` (show "date to follow"), and `live.n` is 0. Lesson 0 (prep) is still open. A 403 `locked` then carries `error.opensAt: null`.
 - One lesson can be TBA inside a dated group (`null` in that group's array; shipped: lesson 2 "Kirish"). It behaves like the group case for that lesson only: `start`/`date`/`opensAt` null, every part locked, never live, and `review` does not open it. Other lessons are unaffected. `starts["2"]` is null.
 - Lesson 0 (prep) is open at once. Lessons 1 and 3-7 ship with `has.amaliyot` and `has.vazifa` true (Uzbek only, with prompts) and no slides or kit: show only those tabs. The empty state (all `has.*` false, "materials soon") is for a lesson added later. Lesson 2 (Kirish, the 2.0 lesson) has slides (78, placeholder svg until stills land), amaliyot and vazifa with prompts, and no kit.
 - Progress counts numbered lessons only (`num` not null): the ring and the bot are x/6, Kirish progress is stored but not counted. Kit is not counted in progress. The counted units are: slides reached (`sl:{n} >= slideCount`), the `f:am{n}` tick, the `f:v{n}` tick.
@@ -99,7 +99,7 @@ Limits: body 256 bytes, 600 keys per student, 240 writes per minute. Errors: 400
 
 ## CRM integration
 
-For the developers of the HEAD CRM. **The CRM is connected to the portal directly**: the admin Telegram bot is paused (2026-10-31), so the CRM is the only way students are made, and the CRM gives each student their ID. Call this endpoint when a student's **first payment** is received (any amount; normally 3,000,000 so'm). **The CRM makes the student's login ID** (rules below) and sends it; the portal stores it and answers with it. Send the student's group (`shanba` or `yakshanba`) as soon as you know it, on the first call or later (see "Setting the group later"): **a student with no group sees the course dates but never gets a lesson opened**. Until the group is set the portal shows the dates of the group that starts first (21-noyabr).
+For the developers of the HEAD CRM. **The CRM is connected to the portal directly**: the admin Telegram bot is paused (2026-10-31), so the CRM is the only way students are made, and the CRM gives each student their ID. Call this endpoint when a student's **first payment** is received (any amount; normally 3,000,000 so'm). **The CRM makes the student's login ID** (rules below) and sends it; the portal stores it and answers with it. Send the student's group (`yakshanba`; a group with no dates, `shanba` for now, is stored as none) as soon as you know it, on the first call or later (see "Setting the group later"): a student with no group is treated as being in the first group that has dates (yakshanba, 22-noyabr), so lessons open on that group's schedule.
 
 ### ID rules
 
@@ -127,7 +127,7 @@ Body (JSON object, at most 1024 bytes, no other fields):
 | `id` | string | yes for the CRM (see ID rules) | `AIP-` and 6 characters of the alphabet. Missing or empty: the portal makes the ID itself (kept so an older CRM build still works); the answer carries it either way. |
 | `fullName` | string | yes | 2-80 characters |
 | `phone` | string | yes | any common spelling of an Uzbek number (`+998 90 123 45 67`, `998901234567`, `901234567`, `(90) 123-45-67`); a foreign number needs a leading `+` and 8-15 digits. Stored as `+998901234567`. This is the duplicate key. |
-| `group` | string | no | `"shanba"` or `"yakshanba"`; empty or missing = no group yet |
+| `group` | string | no | send `"yakshanba"`. `"shanba"` is accepted but, while that group has no dates, the student is stored with no group (never refused). Empty or missing = no group yet. |
 | `mentor` | string | no | up to 80 characters |
 
 A field of another type than string is treated as empty, except `id`: a non-string `id` is refused (400 `bad_id`).
@@ -136,7 +136,7 @@ Responses (all JSON). The success bodies never carry a name or phone. They carry
 
 | Status | Body | When |
 |---|---|---|
-| 201 | `{ "ok": true, "created": true, "id": "AIP-7KQ2XM" }` | new phone: student created with this ID. Give the student this ID. |
+| 201 | `{ "ok": true, "created": true, "id": "AIP-7KQ2XM", "group": "yakshanba" }` (`group` is the one stored, `null` = none) | new phone: student created with this ID. Give the student this ID. |
 | 200 | `{ "ok": true, "created": false, "id": "AIP-7KQ2XM", "group": "shanba" }` or `{ "ok": true, "created": false }` | this phone is already known. With `id` (you sent the student's own ID): if you also sent a `group`, it is set or changed, and `group` is the group now on file (`null` = none). Without `id`: the phone has another ID than the one you sent (or you sent none); nothing changed. |
 | 400 | `{ "error": { "code": "...", "message": "..." } }`, code one of `bad_id`, `bad_name`, `bad_phone`, `bad_group`, `bad_mentor`, `bad_json`, `unknown_field` | invalid input. Invisible formatting characters (zero-width, bidi marks) in a name or mentor are removed, control characters are refused. A refused request raises an alert (in Telegram while the bot runs, otherwise in the server log; at most one per 10 minutes, so check the CRM's own log for others); fix and resend. |
 | 409 | `id_taken` | the ID belongs to another student: make a new ID and send again. |
@@ -151,7 +151,7 @@ Retrying is safe: the phone number is the identity, so a repeated or timed-out c
 
 ### Setting the group later
 
-Send the same call again with the student's phone, **their ID** and `group`. The answer is 200 with the group now on file. Changing it later works the same way. With another ID, nothing changes.
+Send the same call again with the student's phone, **their ID** and `group`. The answer is 200 with the group now on file. Changing it later works the same way. A group with no dates never overwrites the one on file. With another ID, nothing changes.
 
 ```
 curl -sS -X POST https://<portal host>/api/int/students -H "Authorization: Bearer $INTEGRATION_KEY" -H "Content-Type: application/json" \

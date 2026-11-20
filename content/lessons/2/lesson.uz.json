@@ -14,7 +14,7 @@
   "slideCount": 78,
   "slideKind": "video",
   "amaliyot": {
-    "text": "Korxona bilimini ishga soling.\n\nHR, savdo, servis yoki ombor va marketing uchun amaliy natijalar.\n\nHar mashq uchun alohida notebook oching.\n\nFaqat oʻsha mashqning Manbaalar fayllarini yuklang.\n\nAvval Yoʻriqnomani oching, mashq nimadan iboratligi oʻsha yerda.",
+    "text": "Korxona bilimini ishga soling. Qoʻllanmadagi «00_BOSHLASH.html», «02_Promptlar.html» va «Manbalar» papkasi oʻrniga shu sahifa: har mashqning yoʻriqnomasi va fayllari uning ostida, promptlarni nusxalash tugmasi bilan oling.\n\nHR, savdo, servis yoki ombor va marketing uchun amaliy natijalar.\n\nHar mashq uchun alohida notebook oching.\n\nFaqat oʻsha mashqning Manbaalar fayllarini yuklang.\n\nAvval Yoʻriqnomani oching, mashq nimadan iboratligi oʻsha yerda.",
     "groups": [
       {
         "title": "Qoʻllanma",
@@ -22,12 +22,14 @@
           {
             "slug": "qollanma",
             "name": "Talaba_qollanmasi.pdf",
-            "size": 38284
+            "size": 36372,
+            "label": "Talaba qoʻllanmasi"
           },
           {
             "slug": "sinov",
             "name": "Biznesimda_7_kunlik_sinov.pdf",
-            "size": 32438
+            "size": 31714,
+            "label": "Biznesimda 7 kunlik sinov"
           }
         ]
       },
@@ -37,23 +39,27 @@
         "files": [
           {
             "slug": "01-hr-onboarding-yoriqnoma",
-            "name": "01_Yoriqnoma.pdf",
-            "size": 35017
+            "name": "01_Yoriqnoma_HR.pdf",
+            "size": 33780,
+            "label": "Yoʻriqnoma"
           },
           {
             "slug": "01-hr-onboarding-promptlar-pdf",
-            "name": "02_Promptlar.pdf",
-            "size": 37919
+            "name": "02_Promptlar_HR.pdf",
+            "size": 36056,
+            "label": "Promptlar"
           },
           {
             "slug": "01-hr-onboarding-m1",
             "name": "Ichki mehnat tartibi qoidalari.pdf",
-            "size": 215646
+            "size": 215646,
+            "label": "Ichki mehnat tartibi qoidalari"
           },
           {
             "slug": "01-hr-onboarding-m2",
             "name": "Onboarding qo'llanmasi.pdf",
-            "size": 198861
+            "size": 198861,
+            "label": "Onboarding qoʻllanmasi"
           }
         ],
         "prompts": [
@@ -89,33 +95,39 @@
         "files": [
           {
             "slug": "02-savdo-yoriqnoma",
-            "name": "01_Yoriqnoma.pdf",
-            "size": 34853
+            "name": "01_Yoriqnoma_Savdo.pdf",
+            "size": 33665,
+            "label": "Yoʻriqnoma"
           },
           {
             "slug": "02-savdo-promptlar-pdf",
-            "name": "02_Promptlar.pdf",
-            "size": 34376
+            "name": "02_Promptlar_Savdo.pdf",
+            "size": 33277,
+            "label": "Promptlar"
           },
           {
             "slug": "02-savdo-m1",
             "name": "Mijoz keyslari (tasdiqlangan).pdf",
-            "size": 201858
+            "size": 201858,
+            "label": "Mijoz keyslari (tasdiqlangan)"
           },
           {
             "slug": "02-savdo-m2",
             "name": "Narxlar_2026.csv",
-            "size": 2303
+            "size": 2303,
+            "label": "Narxlar 2026"
           },
           {
             "slug": "02-savdo-m3",
             "name": "Narxlar_izohi.pdf",
-            "size": 32724
+            "size": 31962,
+            "label": "Narxlar izohi"
           },
           {
             "slug": "02-savdo-x1",
             "name": "Narxlar ro'yxati.xlsx",
-            "size": 7536
+            "size": 7536,
+            "label": "Narxlar roʻyxati"
           }
         ],
         "prompts": [
@@ -139,23 +151,27 @@
         "files": [
           {
             "slug": "03a-servis-yoriqnoma",
-            "name": "01_Yoriqnoma.pdf",
-            "size": 34989
+            "name": "01_Yoriqnoma_Servis.pdf",
+            "size": 33777,
+            "label": "Yoʻriqnoma"
           },
           {
             "slug": "03a-servis-promptlar-pdf",
-            "name": "02_Promptlar.pdf",
-            "size": 34391
+            "name": "02_Promptlar_Servis.pdf",
+            "size": 33275,
+            "label": "Promptlar"
           },
           {
             "slug": "03a-servis-m1",
             "name": "Servis reglamenti.pdf",
-            "size": 193718
+            "size": 193718,
+            "label": "Servis reglamenti"
           },
           {
             "slug": "03a-servis-m2",
             "name": "Texnik qo'llanma SZ-400.pdf",
-            "size": 339236
+            "size": 339236,
+            "label": "Texnik qoʻllanma SZ-400"
           }
         ],
         "prompts": [
@@ -179,18 +195,21 @@
         "files": [
           {
             "slug": "03b-ombor-yoriqnoma",
-            "name": "01_Yoriqnoma.pdf",
-            "size": 35239
+            "name": "01_Yoriqnoma_Ombor.pdf",
+            "size": 33958,
+            "label": "Yoʻriqnoma"
           },
           {
             "slug": "03b-ombor-promptlar-pdf",
-            "name": "02_Promptlar.pdf",
-            "size": 34793
+            "name": "02_Promptlar_Ombor.pdf",
+            "size": 33602,
+            "label": "Promptlar"
           },
           {
             "slug": "03b-ombor-m1",
             "name": "Reglament.pdf",
-            "size": 202941
+            "size": 202941,
+            "label": "Reglament"
           }
         ],
         "prompts": [
@@ -214,18 +233,21 @@
         "files": [
           {
             "slug": "04-marketing-yoriqnoma",
-            "name": "01_Yoriqnoma.pdf",
-            "size": 35478
+            "name": "01_Yoriqnoma_Marketing.pdf",
+            "size": 34163,
+            "label": "Yoʻriqnoma"
           },
           {
             "slug": "04-marketing-promptlar-pdf",
-            "name": "02_Promptlar.pdf",
-            "size": 38848
+            "name": "02_Promptlar_Marketing.pdf",
+            "size": 36804,
+            "label": "Promptlar"
           },
           {
             "slug": "04-marketing-m1",
             "name": "Mijoz keyslari (tasdiqlangan).pdf",
-            "size": 201858
+            "size": 201858,
+            "label": "Mijoz keyslari (tasdiqlangan)"
           }
         ],
         "prompts": [
@@ -261,23 +283,27 @@
         "files": [
           {
             "slug": "05-xarid-qoshimcha-yoriqnoma",
-            "name": "01_Yoriqnoma.pdf",
-            "size": 34815
+            "name": "01_Yoriqnoma_Xarid.pdf",
+            "size": 33632,
+            "label": "Yoʻriqnoma"
           },
           {
             "slug": "05-xarid-qoshimcha-promptlar-pdf",
-            "name": "02_Promptlar.pdf",
-            "size": 34220
+            "name": "02_Promptlar_Xarid.pdf",
+            "size": 33152,
+            "label": "Promptlar"
           },
           {
             "slug": "05-xarid-qoshimcha-m1",
             "name": "Katalog_izohi.pdf",
-            "size": 32907
+            "size": 32126,
+            "label": "Katalog izohi"
           },
           {
             "slug": "05-xarid-qoshimcha-m2",
             "name": "Telefon_takliflari.csv",
-            "size": 1661
+            "size": 1661,
+            "label": "Telefon takliflari"
           }
         ],
         "prompts": [
@@ -301,18 +327,21 @@
         "files": [
           {
             "slug": "06-rahbar-audio-qoshimcha-yoriqnoma",
-            "name": "01_Yoriqnoma.pdf",
-            "size": 34673
+            "name": "01_Yoriqnoma_Rahbar.pdf",
+            "size": 33505,
+            "label": "Yoʻriqnoma"
           },
           {
             "slug": "06-rahbar-audio-qoshimcha-promptlar-pdf",
-            "name": "02_Promptlar.pdf",
-            "size": 34023
+            "name": "02_Promptlar_Rahbar.pdf",
+            "size": 32981,
+            "label": "Promptlar"
           },
           {
             "slug": "06-rahbar-audio-qoshimcha-m1",
             "name": "Kengayish rejasi, Samarqand filiali.pdf",
-            "size": 225085
+            "size": 225085,
+            "label": "Kengayish rejasi, Samarqand filiali"
           }
         ],
         "prompts": [
@@ -334,7 +363,7 @@
   },
   "kit": null,
   "vazifa": {
-    "text": "Har bir promptni nusxalab, NotebookLMʼga qoʻying. Tartib bilan yuring: har biri oldingisining javobiga tayanadi.\n\nFaqat Manbaalar papkasidagi 7 faylni NotebookLM manbaasi sifatida yuklang.\n\nBu promptlarni manbaa sifatida yuklamang, ular savol, manbaa emas.\n\nHar promptdan oldin faqat kerakli manbalarni belgilang, qolganlarining belgisini olib tashlang (oʻchirmang).\n\nBarcha kompaniya maʼlumotlari toʻqima, mashq uchun yozilgan. Oʻquv sanasi: 12.09.2026.",
+    "text": "Har bir promptni nusxalab, NotebookLMʼga qoʻying. Tartib bilan yuring: har biri oldingisining javobiga tayanadi. NotebookLMʼga manba sifatida faqat Manbalar boʻlimidagi 7 faylni yuklang, promptlarni emas: ular savol, manba emas.\n\nHar promptdan oldin faqat kerakli manbalarni belgilang, qolganlarining belgisini olib tashlang (oʻchirmang).\n\nBarcha kompaniya maʼlumotlari toʻqima, mashq uchun yozilgan. Oʻquv sanasi: 12.09.2026.",
     "groups": [
       {
         "title": "Manbalar",
@@ -343,42 +372,50 @@
           {
             "slug": "hw-kompaniya",
             "name": "01_Kompaniya.pdf",
-            "size": 21620
+            "size": 21620,
+            "label": "01 Kompaniya"
           },
           {
             "slug": "hw-narxlar",
             "name": "02_Amaldagi_narxlar.csv",
-            "size": 1222
+            "size": 1222,
+            "label": "02 Amaldagi narxlar"
           },
           {
             "slug": "hw-yetkazish",
             "name": "03_Yetkazish_qoidalari.pdf",
-            "size": 21493
+            "size": 21493,
+            "label": "03 Yetkazish qoidalari"
           },
           {
             "slug": "hw-reklama",
             "name": "04_Reklama_qoralamasi.pdf",
-            "size": 21270
+            "size": 21270,
+            "label": "04 Reklama qoralamasi"
           },
           {
             "slug": "hw-eski-narxlar",
             "name": "05_Eski_narxlar.csv",
-            "size": 934
+            "size": 934,
+            "label": "05 Eski narxlar"
           },
           {
             "slug": "hw-buyurtmalar",
             "name": "06_Buyurtmalar.csv",
-            "size": 3329
+            "size": 3329,
+            "label": "06 Buyurtmalar"
           },
           {
             "slug": "hw-yigilish",
             "name": "07_Yigilish_qaydi.txt",
-            "size": 1652
+            "size": 1652,
+            "label": "07 Yigilish qaydi"
           },
           {
             "slug": "hw-manbaalar",
             "name": "Manbaalar.zip",
-            "size": 60748
+            "size": 60748,
+            "label": "Barcha manbalar bitta arxivda"
           }
         ]
       },
@@ -388,8 +425,9 @@
         "files": [
           {
             "slug": "hw-qollanma",
-            "name": "Talaba_qollanmasi.pdf",
-            "size": 26309
+            "name": "Talaba_qollanmasi_vazifa.pdf",
+            "size": 26309,
+            "label": "Vazifa boʻyicha qoʻllanma"
           }
         ]
       },

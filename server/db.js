@@ -48,12 +48,12 @@ function migrate(db) {
 function seed(db, seedDemo, xmAdmin) {
   if (xmAdmin) {
     db.prepare(`INSERT INTO students (id, full_name, first_name, grp, mentor, created_at, review)
-                VALUES ('XM', 'Student', 'Student', 'shanba', 'Xurshid Maroziqov', ?, 1)
-                ON CONFLICT (id) DO UPDATE SET active = 1, review = 1`).run(new Date().toISOString());
+                VALUES ('XM', 'Student', 'Student', 'yakshanba', 'Xurshid Maroziqov', ?, 1)
+                ON CONFLICT (id) DO UPDATE SET active = 1, review = 1, grp = 'yakshanba'`).run(new Date().toISOString());
   } else if (seedDemo) {
     db.prepare(`INSERT INTO students (id, full_name, first_name, grp, mentor, created_at)
-                VALUES ('XM', 'Student', 'Student', 'shanba', 'Xurshid Maroziqov', ?)
-                ON CONFLICT (id) DO UPDATE SET active = 1, full_name = 'Student', first_name = 'Student'`).run(new Date().toISOString()); // students see "Student", not a real person's name
+                VALUES ('XM', 'Student', 'Student', 'yakshanba', 'Xurshid Maroziqov', ?)
+                ON CONFLICT (id) DO UPDATE SET active = 1, grp = 'yakshanba', full_name = 'Student', first_name = 'Student'`).run(new Date().toISOString()); // students see "Student", not a real person's name
 
   } else db.prepare("UPDATE students SET active = 0, review = 0 WHERE id = 'XM'").run();
 }

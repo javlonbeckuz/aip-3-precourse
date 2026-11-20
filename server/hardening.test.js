@@ -58,7 +58,7 @@ test('XM admin (default on, user 2026-10-31): always active with review, in prod
 
 test('real schedule: Kirish opens with 01-dars (user, 2026-11-08), and 01-dars stays the lesson of the day', () => {
   const at = (s) => createContent({ dir: REAL_CONTENT, now: () => parseTime(s) });
-  for (const [g, day] of [['shanba', '2026-11-21'], ['yakshanba', '2026-11-22']]) {
+  for (const [g, day] of [['yakshanba', '2026-11-22'], [null, '2026-11-22']]) {   // shanba is TBA now; no group = yakshanba
     const c = at(`${day}T12:00`);
     assert.equal(c.lessonView(1, 'uz', g).open, true, g);
     assert.equal(c.lessonView(2, 'uz', g).open, true, `${g}: Kirish`);
@@ -66,7 +66,7 @@ test('real schedule: Kirish opens with 01-dars (user, 2026-11-08), and 01-dars s
     assert.equal(c.live(g).n, 1, `${g}: the live lesson is 01-dars, not Kirish`);
     assert.equal(at(`${day}T09:59`).lessonView(2, 'uz', g).open, false, `${g}: not before 10:00`);
   }
-  assert.equal(at('2026-11-28T12:00').live('shanba').n, 3);   // a week later 02-dars (content 3) takes over
+  assert.equal(at('2026-11-29T12:00').live('yakshanba').n, 3);   // a week later 02-dars (content 3) takes over
 });
 
 test('XM: short ids cannot be created unless explicitly allowed', () => {
@@ -266,7 +266,7 @@ test('summary: a lesson with a locked part is not done, even with every unit tic
   const p = { t: { 'f:am1': 1, 'f:v1': 1 }, sl: { 1: 78 } };
   assert.deepEqual([c.summary(p, 'shanba').lessons[1], c.summary(p, 'shanba').done], [[3, 3], 0]); // vazifa is locked until 13:00
   assert.equal(c.summary(p, null).done, 0);
-  assert.equal(c.summary(p, null, true).done, 0); // review does not beat a missing group
+  assert.equal(c.summary(p, null, true).done, 1); // a missing group is the first group (shanba here), so review opens it
   assert.equal(c.summary(p, 'shanba', true).done, 1);
   now = Date.parse('2026-09-12T13:00:00+05:00');
   assert.equal(c.summary(p, 'shanba').done, 1);
@@ -626,7 +626,7 @@ test('content: groups.<g> = null means dates TBA; anything else but 7 increasing
   t.mock.method(console, 'error', () => {});
 });
 
-test('content: fail closed for a NULL student group, an unknown group and TBA dates, whatever release says', (t) => {
+test('content: fail closed for a named group with TBA dates and an unknown group, whatever release says; a missing group falls back', (t) => {
   const dir = tmpCopy(t);
   const f = path.join(dir, 'schedule.json');
   const S = JSON.parse(fs.readFileSync(f, 'utf8'));
@@ -634,7 +634,7 @@ test('content: fail closed for a NULL student group, an unknown group and TBA da
   S.release = { 1: { slides: 'open' }, 2: { vazifa: '2020-01-01T00:00' }, 3: { slides: '+0h' }, 6: { kit: 'open' } };
   fs.writeFileSync(f, JSON.stringify(S));
   const c = createContent({ dir, now: () => Date.parse('2099-01-01') });
-  for (const g of [null, undefined, 'yakshanba', 'friday', '']) {
+  for (const g of ['yakshanba', 'friday']) {   // a NAMED group with TBA dates, or an unknown name
     for (const [n, part] of [[1, 'slides'], [2, 'vazifa'], [3, 'slides'], [4, 'start'], [6, 'kit']]) {
       assert.ok(Number.isNaN(c.opensAt(n, part, g)), `${g} ${n}.${part}`);
       assert.equal(c.partOpen(n, part, g, false), false);
@@ -645,11 +645,15 @@ test('content: fail closed for a NULL student group, an unknown group and TBA da
     assert.equal(c.lessonView(1, 'uz', g).start, null);
   }
   for (const n of [1, 2, 3, 4, 5, 6]) { // review does not beat a missing group or TBA dates, and opens every lesson for a group with dates
-    assert.ok(Number.isNaN(c.opensAt(n, 'slides', null, true)), `null ${n}`);
     assert.ok(Number.isNaN(c.opensAt(n, 'start', 'yakshanba', true)), `tba ${n}`);
     assert.equal(c.opensAt(n, 'kit', 'shanba', true), 0, `shanba ${n}`);
   }
   assert.equal(c.opensAt(0, 'prep', null, true), 0);
+  for (const g of [null, undefined, '']) { // a MISSING group is the first group with dates (shanba in this fixture), never locked out
+    assert.equal(c.opensAt(1, 'slides', g), c.opensAt(1, 'slides', 'shanba'), `${g}`);
+    assert.equal(c.partOpen(1, 'slides', g, false), true);
+    assert.equal(c.scheduleView(g).starts[1], c.scheduleView('shanba').starts[1]);
+  }
   assert.equal(c.partOpen(1, 'slides', 'shanba', false), true); // a group with dates is unaffected
   assert.equal(c.scheduleView('shanba').yakshanba, null);
 });

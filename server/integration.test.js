@@ -118,7 +118,7 @@ test('integration endpoint: the CRM makes the ID (AIP- and 6 of the alphabet); t
   app.setAnnounce((st, note) => seen.push([st.id, note]));
   const c = client();
   const r1 = await c.post(URL_, { id: 'aip-7kq2xm', fullName: 'Ali Valiyev', phone: '901234567' }, auth());
-  assert.deepEqual([r1.status, r1.json], [201, { ok: true, created: true, id: 'AIP-7KQ2XM' }]);   // lower case is fine, stored upper case
+  assert.deepEqual([r1.status, r1.json], [201, { ok: true, created: true, id: 'AIP-7KQ2XM', group: null }]);   // lower case is fine, stored upper case
   assert.equal(db.prepare("SELECT id FROM students WHERE phone = '+998901234567'").get().id, 'AIP-7KQ2XM');
   // the same ID for another phone: 409, the CRM makes a new one
   const r2 = await c.post(URL_, { id: 'AIP-7KQ2XM', fullName: 'Vali Aliyev', phone: '901234568' }, auth());
@@ -150,17 +150,20 @@ test('integration endpoint: the CRM makes the ID (AIP- and 6 of the alphabet); t
   assert.equal(db.prepare("SELECT count(*) n FROM students WHERE phone = '+998901234569'").get().n, 0);
 });
 
-test('a student the CRM made (no group yet) sees the course dates from 21-noyabr, every lesson locked', async (t) => {
-  const { client, login } = await startApp(t, { now: '2026-08-01T12:00', env: { INTEGRATION_KEY: KEY } });
+test('a student the CRM made with no group is in the first dated group: lesson 1 opens at its start, its schedule, live', async (t) => {
+  // the shipped schedule: shanba is TBA (null), yakshanba starts Sunday 22 Nov 2026 10:00 Tashkent
+  const { client, login, clock } = await startApp(t, { now: '2026-11-22T09:59:00+05:00', contentDir: REAL_CONTENT, env: { INTEGRATION_KEY: KEY } });
   t.mock.method(console, 'log', () => {}); t.mock.method(console, 'warn', () => {});
   const r = await client().post(URL_, { id: 'AIP-NNNNNN', fullName: 'Yangi Talaba', phone: '901110000' }, auth());
   assert.equal(r.status, 201);
-  const L = (await login(r.json.id)).session.lessons, one = L.find((l) => l.n === 1);
-  const sat = Object.fromEntries((await login('XM')).session.lessons.map((l) => [l.n, l.date]));   // XM is in the shanba group, the one that starts first
-  assert.deepEqual([one.date, one.start, one.open], [sat[1], null, false]);   // the date is shown (real content: 21-noyabr), nothing opens from it
-  assert.ok(sat[1]);
-  for (const l of L.filter((l) => l.n > 0)) assert.equal(l.date, sat[l.n], String(l.n));
-  for (const l of L.filter((l) => l.n > 0)) assert.equal(l.open, false, String(l.n));
+  const me = (await login(r.json.id)).session;
+  assert.equal(me.student.group, null);
+  assert.deepEqual([me.schedule.yakshanba, me.schedule.shanba, me.schedule.starts[1], me.schedule.group], ['2026-11-22', null, '2026-11-22T10:00:00+05:00', null]);
+  assert.deepEqual([me.lessons[1].open, me.lessons[1].start, me.lessons[1].date, me.live.n], [false, '2026-11-22T10:00:00+05:00', '2026-11-22', 0]);
+  clock.t = Date.parse('2026-11-22T10:00:00+05:00');
+  const now = (await login(r.json.id)).session;
+  assert.deepEqual([now.lessons[1].open, now.live.n], [true, 1]);
+  assert.equal(now.lessons[3].open, false);
 });
 
 test('integration endpoint: answers carry the ID, never a name or phone; idempotent on the phone; odd repeat payments reach the admins', async (t) => {
@@ -173,7 +176,7 @@ test('integration endpoint: answers carry the ID, never a name or phone; idempot
   const r1 = await c.post(URL_, { fullName: 'Ali  Valiyev', phone: '+998 90 123 45 67' }, auth());
   assert.equal(r1.status, 201);
   const row = db.prepare("SELECT * FROM students WHERE phone = '+998901234567'").get();
-  assert.deepEqual(r1.json, { ok: true, created: true, id: row.id }); // no id sent: the portal made one; never a name or phone
+  assert.deepEqual(r1.json, { ok: true, created: true, id: row.id, group: null }); // no id sent: the portal made one; never a name or phone
   assert.deepEqual([row.full_name, row.first_name, row.grp, row.mentor, row.created_by, row.active], ['Ali Valiyev', 'Ali', null, '', 0, 1]); // 0 = made by the CRM
   assert.deepEqual(seen, [[row.id, null]]);
   // retries: other spellings of the phone, same name modulo spacing/case/apostrophes: 200, nothing changed, silent
@@ -223,7 +226,7 @@ test('integration endpoint: answers carry the ID, never a name or phone; idempot
 });
 
 test('integration endpoint: a CRM student (no group) logs in and sees precourse only', async (t) => {
-  const { client, login, db } = await startApp(t, { env: { INTEGRATION_KEY: KEY }, now: '2026-10-29T12:00:00+05:00' });
+  const { client, login, db } = await startApp(t, { env: { INTEGRATION_KEY: KEY }, now: '2026-10-29T12:00:00+05:00', contentDir: REAL_CONTENT });   // before the first lesson (22 Nov)
   t.mock.method(console, 'log', () => {});
   t.mock.method(console, 'warn', () => {});
   assert.equal((await client().post(URL_, { fullName: 'Ali Valiyev', phone: '901234567' }, auth())).status, 201);
@@ -232,17 +235,17 @@ test('integration endpoint: a CRM student (no group) logs in and sees precourse 
   assert.equal(me.student.group, null);
   assert.ok(!JSON.stringify(me).includes('901234567'));
   assert.equal(me.live.n, 0);
-  assert.ok(me.schedule.starts[1] === null && me.schedule.group === null);
+  assert.ok(me.schedule.starts[1] === '2026-11-22T10:00:00+05:00' && me.schedule.group === null);
   const lessons = Object.fromEntries(me.lessons.map((l) => [l.n, l]));
   assert.equal(lessons[0].parts.prep.open, true);
   for (const n of [1, 2, 3, 4, 5, 6]) {
     assert.equal(lessons[n].open, false, `lesson ${n}`);
-    assert.equal(lessons[n].start, null);   // nothing opens or counts down for a student with no group
-    for (const p of Object.values(lessons[n].parts)) assert.deepEqual(p, { open: false, opensAt: null });
+    assert.equal(lessons[n].start === null, false);   // the countdown runs on the first group's dates
+    for (const p of Object.values(lessons[n].parts)) assert.equal(p.open, false);
     if (!lessons[n].has.slides) continue;
     const r = await c.get(`/api/aip/lesson/${n}/slide/1`);
     assert.equal(r.status, 403);
-    assert.equal(r.json.error.opensAt, null);
+    assert.ok(r.json.error.opensAt);
   }
   assert.equal((await c.get('/api/aip/prep/pdf')).status, 200);
 });
@@ -428,4 +431,22 @@ test('wiring: a repeat payment reaches the admins as "qayta toʻlov" with no for
   await flush();
   assert.equal(sent.length, 1);
   assert.match(sent[0].text, /student who paid may be missing/);
+});
+
+test('integration endpoint: a group with no dates (shanba, null) is stored as none, never refused, never overwrites a group', async (t) => {
+  const { client, db } = await startApp(t, { contentDir: REAL_CONTENT, env: { INTEGRATION_KEY: KEY } });
+  const logs = [];
+  for (const m of ['log', 'warn']) t.mock.method(console, m, (...a) => logs.push(a.join(' ')));
+  const c = client();
+  let r = await c.post(URL_, { id: 'AIP-NNNNNN', fullName: 'Ali Valiyev', phone: '901234567', group: 'shanba' }, auth());
+  assert.deepEqual([r.status, r.json.group], [201, null]);
+  assert.equal(getStudent(db, 'AIP-NNNNNN').grp, null);
+  assert.ok(logs.some((l) => /integration: group "shanba" has no dates, stored as none for #\d+/.test(l)));
+  assert.ok(!logs.some((l) => l.includes('NNNNNN') || l.includes('Valiyev')));
+  r = await c.post(URL_, { id: 'AIP-NNNNNN', fullName: 'Ali Valiyev', phone: '901234567', group: 'yakshanba' }, auth());
+  assert.equal(r.json.group, 'yakshanba');
+  r = await c.post(URL_, { id: 'AIP-NNNNNN', fullName: 'Ali Valiyev', phone: '901234567', group: 'shanba' }, auth());
+  assert.deepEqual([r.status, r.json.group], [200, 'yakshanba']);   // not overwritten
+  r = await c.post(URL_, { id: 'AIP-PPPPPP', fullName: 'Vali Aliyev', phone: '901234568', group: 'friday' }, auth());
+  assert.equal(r.status, 400);   // an unknown name is still invalid
 });

@@ -416,7 +416,7 @@ test('review column opens every lesson early; a client cannot set it', async (t)
   assert.equal((await reg.get('/api/aip/lesson/7')).json.lesson.open, false);
 });
 
-test('empty lessons (no parts yet) open on their date, and stay shut with no group or TBA dates', async (t) => {
+test('empty lessons (no parts yet) open on their date (no group = the first group), and stay shut with TBA dates', async (t) => {
   // every shipped lesson has parts now: empty lesson 4 in a temp copy to keep testing the empty state
   const dir = tmpCopy(t, undefined, { fixtures: false });
   const f4 = path.join(dir, 'lessons/4/lesson.uz.json');
@@ -430,7 +430,7 @@ test('empty lessons (no parts yet) open on their date, and stay shut with no gro
   assert.deepEqual(L.has, { slides: false, amaliyot: false, kit: false, vazifa: false, prep: false });
   a.clock.t = Date.parse('2026-10-03T10:00:00+05:00');
   assert.equal((await l4(xm)).open, true);
-  assert.equal((await l4(nog)).open, false);
+  assert.equal((await l4(nog)).open, true);
   assert.equal((await xm.get('/api/aip/me')).json.lessons[7].open, false); // lesson 7 is three weeks away
   const tba = tbaContent(t, (s) => { s.groups.shanba = null; });
   const b = await startApp(t, { now: '2027-01-01T12:00', contentDir: tba });
@@ -481,12 +481,11 @@ function tbaContent(t, mut) {
 }
 
 test('gating: dates TBA lock lessons 1-7 even when release says "open"; prep stays open', async (t) => {
-  const contentDir = tbaContent(t, (s) => { s.groups.shanba = null; s.release = { 1: { slides: 'open', vazifa: 'open' }, 2: { slides: 'open' }, 4: { kit: 'open' } }; });
+  const contentDir = tbaContent(t, (s) => { s.groups.shanba = null; s.release = { 1: { slides: 'open', vazifa: 'open' }, 2: { slides: 'open' }, 4: { kit: 'open' } }; });   // XM is named shanba
   const a = await startApp(t, { now: '2027-01-01T12:00', contentDir });
   createStudent(a.db, { fullName: 'Yakshanba Talaba', grp: 'yakshanba', id: 'SUN', allowShort: true });
-  createStudent(a.db, { fullName: 'Guruhsiz Talaba', id: 'NOG', allowShort: true });
-  a.db.prepare("UPDATE students SET review = 1 WHERE id IN ('XM', 'NOG')").run(); // the review flag does not beat TBA dates or a missing group
-  for (const id of ['XM', 'NOG']) {
+  a.db.prepare("UPDATE students SET review = 1 WHERE id = 'XM'").run(); // the review flag does not beat TBA dates
+  for (const id of ['XM']) {
     const c = await a.login(id);
     const s = c.session;
     assert.equal(s.live.n, 0, id);
@@ -513,13 +512,13 @@ test('gating: dates TBA lock lessons 1-7 even when release says "open"; prep sta
   assert.equal(sunR.lessons[7].open, true);
 });
 
-test('gating: liveOverride cannot make a no-group or TBA student live', async (t) => {
+test('gating: liveOverride cannot make a TBA student live (no group = the first group with dates, so it can)', async (t) => {
   const contentDir = tbaContent(t, (s) => { s.groups.shanba = null; s.liveOverride = 2; });
   const a = await startApp(t, { now: '2026-09-20T12:00', contentDir });
   createStudent(a.db, { fullName: 'Guruhsiz Talaba', id: 'NOG', allowShort: true });
   createStudent(a.db, { fullName: 'Yakshanba Talaba', grp: 'yakshanba', id: 'SUN', allowShort: true });
   assert.equal((await a.login('XM')).session.live.n, 0);
-  assert.equal((await a.login('NOG')).session.live.n, 0);
+  assert.equal((await a.login('NOG')).session.live.n, 2);
   assert.equal((await a.login('SUN')).session.live.n, 2);
 });
 
@@ -528,7 +527,7 @@ test('shipped schedule.json: 7 entries (Kirish opens with 01-dars), nothing in l
   const c = createContent({ dir: real, now: () => 0 });
   c.validateAll();
   const sch = c.schedule();
-  for (const g of ['shanba', 'yakshanba', null]) {
+  for (const g of ['shanba', 'yakshanba']) {
     const start = sch.groups[g] ? sch.groups[g][0] : NaN;
     if (sch.groups[g]) {
       assert.equal(sch.groups[g].length, 7);

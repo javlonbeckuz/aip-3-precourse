@@ -550,7 +550,7 @@
   "note": "state note on an open card, e.g. \"Ochiq · 3/6 qadam\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "prep.title": {
-  "uz": "Birinchi darsgacha",
+  "uz": "Qoʻshimcha: mashq va video",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
@@ -695,7 +695,12 @@
   "note": "UI text · keep {params} as they are"
  },
  "lock.desc_n": {
-  "uz": "Slaydlar, amaliyot, kit va vazifa dars kuni shu yerda chiqadi.",
+  "uz": "Dars kuni shu yerda chiqadi: {parts}.",
+  "translate": true,
+  "note": "locked lesson: bottom sheet title / text · keep {params} as they are"
+ },
+ "lock.desc_0": {
+  "uz": "Dars kuni shu yerda chiqadi.",
   "translate": true,
   "note": "locked lesson: bottom sheet title / text"
  },
@@ -966,6 +971,11 @@
  },
  "next.all_done": {
   "uz": "Hammasi bajarildi ✓",
+  "translate": true,
+  "note": "home screen"
+ },
+ "next.course_end": {
+  "uz": "Kurs yakunlandi. Barcha materiallar shu yerda qoladi.",
   "translate": true,
   "note": "home screen"
  },
@@ -2270,12 +2280,12 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.btn": {
-  "uz": "Birinchi darsgacha",
+  "uz": "Qoʻshimcha: mashq va video",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.btn_aria": {
-  "uz": "Birinchi darsgacha",
+  "uz": "Qoʻshimcha: mashq va video",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },

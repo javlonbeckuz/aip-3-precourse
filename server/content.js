@@ -139,11 +139,14 @@ export function createContent({ dir, now = () => Date.now(), production = false 
   }
 
   const start = (group, n) => schedule().groups[group]?.[Math.max(n, 1) - 1] ?? NaN; // lesson 0 hangs off lesson 1
-  // a student with no group yet (made by the CRM) is shown the dates of the group that starts first, so the course start reads 21-noyabr; their lessons stay locked
+  // a student with no group (made by the CRM without one) is treated as being in the group that starts first, so a missing group never locks anyone out; a named group with null dates still means "dates to follow"
   const firstGroup = () => { const g = schedule().groups; return Object.keys(g).filter((k) => Number.isFinite(g[k]?.[0])).sort((a, b) => g[a][0] - g[b][0])[0] ?? null; };
+
+  const eff = (group) => group || firstGroup();
 
   // ms when a part opens for this group; `review` (students.review) opens every lesson at once, but only for a group with dates
   function opensAt(n, part, group, review = false) {
+    group = eff(group);
     if (n > 0 && !(GROUPS.includes(group) && schedule().groups[group])) return NaN; // no group or dates TBA: lessons 1-7 stay shut, even with release "open" or the review flag
     if (n > 0 && Number.isNaN(start(group, n))) return NaN; // this one lesson's date is TBA: same, review included
     if (review && n > 0) return 0;
@@ -155,6 +158,7 @@ export function createContent({ dir, now = () => Date.now(), production = false 
   const partOpen = (n, part, group, review) => isOpen(opensAt(n, part, group, review));
 
   function live(group) {
+    group = eff(group);
     const s = schedule(), t = now();
     let computed = 0;
     for (let n = LESSON_COUNT; n >= 1; n--) {
@@ -169,9 +173,9 @@ export function createContent({ dir, now = () => Date.now(), production = false 
   }
 
   function scheduleView(group) {
-    const s = schedule();
+    const s = schedule(), g = eff(group);
     return { sessions: LESSON_COUNT, shanba: dateTashkent(s.groups.shanba?.[0]), yakshanba: dateTashkent(s.groups.yakshanba?.[0]), group,
-      starts: Object.fromEntries(NUMS.map((n) => [n, isoTashkent(start(group, n))])) };
+      starts: Object.fromEntries(NUMS.map((n) => [n, isoTashkent(start(g, n))])) };
   }
 
   const blockHas = (b) => !!(b && (b.text || b.groups?.length));
@@ -188,8 +192,9 @@ export function createContent({ dir, now = () => Date.now(), production = false 
   // Titles come from the student's language; the parts (slides, blocks, files) always from the UZ file, prep from the language file.
   function lessonView(n, lang, group, review = false) {
     const T = lesson(n, lang), L = lesson(n, 'uz'), has = hasPart(L);
+    group = eff(group);
     const v = { n, num: numOf(n), title: T.title, subtitle: T.subtitle, summary: T.summary, topics: T.topics, outcomes: T.outcomes || [],
-      start: n ? isoTashkent(start(group, n)) : null, date: n ? dateTashkent(start(group ?? firstGroup(), n)) : null, has, parts: {}, open: false };
+      start: n ? isoTashkent(start(group, n)) : null, date: n ? dateTashkent(start(group, n)) : null, has, parts: {}, open: false };
     for (const part of PARTS.filter((p) => has[p])) {
       const at = opensAt(n, part, group, review), src = part === 'prep' ? T : L;
       if (isOpen(at)) { v.parts[part] = { open: true }; v.open = true; for (const k of FIELDS[part]) v[k] = k === 'prep' ? prepShown(src.prep) : src[k]; }

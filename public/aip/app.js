@@ -276,7 +276,7 @@ const I18N = {uz: {
   'next.vz': 'Vazifa · {pid}', 'next.sl': 'Slaydlar · {i} / {total}', 'cta.continue': 'Davom etish: {what}',
   'note.prep_open': 'Qadamlar: {d}/{t}', 'note.prep_done': 'Hamma qadamlar bajarildi', 'note.done': 'Amaliyot va vazifa bajarildi', 'note.live_a': 'Hozir', 'note.live_b': ' davom etmoqda', 'note.open': 'Amaliyot va vazifa: {d}/{t}',
   // --- prep (lesson 0)
-  'prep.title': 'Birinchi darsgacha',
+  'prep.title': 'Qoʻshimcha: mashq va video',
   'prep.meta': 'Tayyorgarlik',
   'prep.cnt': '{d}/{t} bajarildi',
   'prep.pdf': 'PDF',
@@ -326,7 +326,8 @@ const I18N = {uz: {
   'hero.sub_seen': 'Slaydlar koʻrildi · {n} / {n}',
   'next.prep': 'Oʻrnatish, {title}',
   'cta.start': 'Boshlash: {what}',
-  'lock.desc_n': 'Slaydlar, amaliyot, kit va vazifa dars kuni shu yerda chiqadi.',
+  'lock.desc_n': 'Dars kuni shu yerda chiqadi: {parts}.',
+  'lock.desc_0': 'Dars kuni shu yerda chiqadi.',
   'lib.back': 'Boʻlimlar',
   'lib.sect_meta': 'Promptlar {range}',
   'lib.next': 'Keyingi boʻlim\n{num} · {title}',
@@ -381,6 +382,7 @@ const I18N = {uz: {
   'units.kt': 'kit',
   'units.and': 'va',
   'next.all_done': 'Hammasi bajarildi ✓',
+  'next.course_end': 'Kurs yakunlandi. Barcha materiallar shu yerda qoladi.',
   'prep.ready': 'Tayyorsiz',
   'prep.end_before': 'Tayyorsiz. Birinchi dars {date}.',
   'prep.end_after': 'Tayyorgarlik tugadi.',
@@ -611,7 +613,7 @@ const I18N = {uz: {
   
   
   
-  'prep.btn': 'Birinchi darsgacha', 'prep.btn_aria': 'Birinchi darsgacha',
+  'prep.btn': 'Qoʻshimcha: mashq va video', 'prep.btn_aria': 'Qoʻshimcha: mashq va video',
   'pre.label': 'Kursgacha materiallar',
   'pre.sub': 'Prompt mashqi va NotebookLM video darsi',
   'home.starts': 'Kurs {date}da boshlanadi', 'prep.left': 'Yana {n} ta qadam qoldi: {titles}.', 'pre.lede_late': 'Kurs davomida ham foydali: mashq platformasi va video dars.',  'setup.title': 'Oʻrnatish va tayyorgarlik',
@@ -713,7 +715,7 @@ const I18N = {uz: {
   "note.live_a": "Сейчас",
   "note.live_b": " идёт",
   "note.open": "Практика и задание: {d}/{t}",
-  "prep.title": "До первого урока",
+  "prep.title": "Дополнительно: практика и видео",
   "prep.meta": "Подготовка",
   "prep.cnt": "{d}/{t} выполнено",
   "prep.pdf": "PDF",
@@ -860,7 +862,8 @@ const I18N = {uz: {
   "hero.sub_seen": "Слайды просмотрены · {n} / {n}",
   "next.prep": "Установка, {title}",
   "cta.start": "Начать: {what}",
-  "lock.desc_n": "Слайды, практика, kit и задание появятся здесь в день урока.",
+  "lock.desc_n": "В день урока здесь появится: {parts}.",
+  "lock.desc_0": "Появится здесь в день урока.",
   "lib.back": "Разделы",
   "lib.sect_meta": "Промпты {range}",
   "lib.next": "Следующий раздел\n{num} · {title}",
@@ -919,6 +922,7 @@ const I18N = {uz: {
   "units.kt": "kit",
   "units.and": "и",
   "next.all_done": "Всё выполнено ✓",
+  "next.course_end": "Курс завершён. Все материалы остаются здесь.",
   "prep.ready": "Вы готовы",
   "prep.end_before": "Вы готовы. Первое занятие: {date}.",
   "prep.end_after": "Подготовка завершена.",
@@ -943,8 +947,8 @@ const I18N = {uz: {
   "toast.cmd_copied": "Команда скопирована",
   "lesson.7.card": "Итоги и\nдемо-день",
   "course.title": "{n} уроков",
-  "prep.btn": "До первого урока",
-  "prep.btn_aria": "До первого урока",
+  "prep.btn": "Дополнительно: практика и видео",
+  "prep.btn_aria": "Дополнительно: практика и видео",
   "pre.label": "Материалы до курса",
   "pre.sub": "Тренировка промптов и видеоурок по NotebookLM",
   "setup.title": "Установка и подготовка",
@@ -1127,7 +1131,11 @@ const S = {
 };
 
 // ---- gating: the server decides which lesson is live and which parts are open (never the clock of this device)
-const courseStarted = () => !!(LESSONS[1] && LESSONS[1].open);
+const startedAt = n => Date.parse(LESSONS[n] && LESSONS[n].start) <= Date.now();   // the lesson start (payload) against this device clock (as scheduleRecheck does); a TBA start (null) is NaN, so false
+// audit #8: review accounts have lesson 1 open early, so "open" alone is not "started": a live lesson, or lesson 1 behind us by the clock
+const courseStarted = () => !!(LESSONS[1] && LESSONS[1].open) && (liveLesson() > 0 || startedAt(1));
+// audit #11: every numbered lesson has started and none is live any more (the server ends the last one after liveDays)
+const courseOver = () => liveLesson() === 0 && RN().length > 0 && RN().every(startedAt);
 const liveLesson = () => SESS ? SESS.live.n : 0;
 const isLocked = n => n >= 1 && !(LESSONS[n] && LESSONS[n].open);
 const partLock = (n, p) => (LESSONS[n] && LESSONS[n].lock && LESSONS[n].lock[p]) || null;   // iso time when a part opens (or 'unknown'), else null
@@ -1165,7 +1173,7 @@ function applyLessons(ls, lsUz, lang){
     const n = l.n, lock = {}, parts = [], has = l.has || {};
     const add = (on, key, part) => { if (!on) return; parts.push(key); const pp = l.parts && l.parts[part]; if (pp && !pp.open) lock[key] = pp.opensAt || 'unknown'; };
     add(has.slides, 'sl', 'slides'); add(has.amaliyot, 'am', 'amaliyot'); add(has.kit, 'kt', 'kit'); add(has.vazifa, 'vz', 'vazifa');
-    L[n] = {n, num: l.num !== undefined ? l.num : l.n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length, outs: (l.outcomes || []).length};
+    L[n] = {n, num: l.num !== undefined ? l.num : l.n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), start: l.start || null, lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length, outs: (l.outcomes || []).length};
   }
   LESSONS = L;
   const D = I18N[LANGS.includes(lang) ? lang : LANG];   // platform text of the payload's language (lesson metadata and the prep checklist come translated from the API)
@@ -1287,7 +1295,7 @@ const nextBlock = (href, key, params) => `<a class="play on-light" href="${href}
 
 // ---------------- screens ----------------
 function homePage(){
-  const [rd, rt] = ring(), ns = nextStep(), live = liveLesson(), pre = !courseStarted(), k = prepCount();
+  const [rd, rt] = ring(), ns = nextStep(), live = liveLesson(), pre = !courseStarted(), k = prepCount(), open1 = RN().some(n => LESSONS[n].open);   // a review account has lessons open early: it keeps the pre-course hero text but gets the lesson cards
   const fxH = cls => `<span class="fx ${cls}" aria-hidden="true"><i></i><i></i><i></i></span>`;   // the back panel of the 3D folder: its tab and three paper sheets (they only move on hover, focus and press)
   const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><svg class="f-biglock" viewBox="0 0 64 64" aria-hidden="true"><path d="M21 29V20a11 11 0 0 1 22 0v9" fill="none" stroke="#000" stroke-width="6"/><rect x="12" y="27" width="40" height="31" rx="6" fill="#000"/><circle cx="32" cy="40" r="4" fill="#002EFF"/><rect x="30" y="41" width="4" height="9" rx="2" fill="#002EFF"/></svg><span class="f-top"></span>
         <span class="f-row"><span class="f-title">${T('course.title', {n: RN().length, pl: RN().length})}</span><span class="f-note">${I('lock', 14)}${T(LESSONS[1].d ? 'date.opens' : 'date.tba', {date: lessonDate(1)})}</span></span></button>${fxH('c-course')}</li>`;
@@ -1310,6 +1318,7 @@ function homePage(){
     }
     return `<li class="g-${LCOL[n]} fo"><a class="folder ${colCls(n)}" href="${href}">${tab}<span class="f-top"><span class="f-label">${label}</span>${arrow}</span><span class="f-row"><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-note">${note}</span></span>${flagH(n)}</a>${fxH(colCls(n))}</li>`;
   };
+  const optCard = () => `<li class="g-yellow fo"><a class="folder c-yellow" href="#/kursgacha"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><span class="f-top"><span class="f-label">${T('pre.label')}</span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span><span class="f-row"><span class="f-title">${T('prep.title')}</span><span class="f-note">${T('pre.sub')}</span></span></a>${fxH('c-yellow')}</li>`;
   let ringPrev = null; try { ringPrev = sessionStorage.getItem('aip3.ring'); sessionStorage.setItem('aip3.ring', rd); } catch (e) {}
   const ringUp = ringPrev !== null && rd > +ringPrev, ringFrom = ringUp ? +ringPrev / rt * 100 : 0;   // animate only a rise, from where it was
   const arrowH = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`, tabH = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`;
@@ -1317,8 +1326,8 @@ function homePage(){
   let hero = '', cta = '', headCol = LCOL[0];
   if (pre) {   // before lesson 1: the prep card is the hero, and the one next step is the first open prep item
     const first = PREP.items.findIndex((_, i) => !S.has('prep:' + i));
-    hero = `<div class="fo now-card"><a class="folder c-yellow" href="#/kursgacha">${tabH}<span class="f-top"><span class="f-label">${LESSONS[0].d ? T('date.until', {date: lessonDate(0)}) : T('pre.label')}</span>${arrowH}</span>
-        <span><span class="f-title">${T('prep.title')}</span><span class="f-sub">${T('pre.sub')}</span></span></a>${fxH('c-yellow')}</div>`;
+    hero = `<div class="fo now-card"><a class="folder ${colCls(0)}" href="#/dars/0">${tabH}<span class="f-top"><span class="f-label">${LESSONS[0].d ? T('date.until', {date: lessonDate(0)}) : T('lesson.label0')}</span>${arrowH}</span>
+        <span><span class="f-title">${T('lesson.0.card')}</span><span class="f-sub">${k === prepTotal() ? T('note.prep_done') : T('note.prep_open', {d: k, t: prepTotal(), pl: prepTotal()})}</span></span></a>${fxH(colCls(0))}</div>`;   // audit #6: the required setup comes first; the optional page is a plain yellow card in the grid
     if (first >= 0) cta = pill(`${T('next.k')}: ${T('next.prep', {title: HT(T(`prep.${first}.title`))})}`, '#/dars/0');
     else if (PREP.more) cta = pill(`${T('next.k')}: ${T('prep.more.title')}`, '#/kursgacha');
   } else if (live) {
@@ -1328,7 +1337,8 @@ function homePage(){
     hero = `<div class="fo now-card"><a class="folder ${colCls(live)}" href="${href}">${tabH}<span class="f-top"><span class="f-label">${T('hero.k')}<br>${lessonLabel(live)}</span>${arrowH}</span>
         <span><span class="f-title">${T(`lesson.${live}.card`)}</span><span class="f-sub">${sub}</span></span></a>${fxH(colCls(live))}</div>`;
   }
-  if (!pre && ns) cta = pill(`${T(live ? 'next.k_backlog' : 'next.k')}: ${ns.label}`, ns.href);
+  if (!pre && !live && courseOver()) cta = `<p class="lede next course-end">${T('next.course_end')}</p>`;   // audit #11: the course is over: a closing line instead of a next step (no setup suggestion)
+  else if (!pre && ns) cta = pill(`${T(live ? 'next.k_backlog' : 'next.k')}: ${ns.label}`, ns.href);
   else if (!pre && !live && allDone()) cta = pill(T('next.all_done'), `#/dars/${LN().filter(n => lProg(n)[1] > 0).at(-1)}`);   // the whole course is done: say so, and point at what is still open
   return {screen: 'dastur', tag: '#/dastur · ' + t('tag.home'), title: t('home.title'), html: nav('home') + `
     <div class="page-head main-head g-${headCol}${hero ? '' : ' nohero'}">
@@ -1340,7 +1350,7 @@ function homePage(){
       ${hero}${cta}
     </div>
     <h2 class="sr-only">${T('home.lessons')}</h2>
-    <ul class="grid3 lessons${pre ? ' pre' : ''}">${pre ? cardHTML(0) + courseCard() : [0, ...LN()].map(cardHTML).join('')}</ul>`};
+    <ul class="grid3 lessons${pre && !open1 ? ' pre' : ''}">${pre ? (open1 ? optCard() + LN().map(cardHTML).join('') : optCard() + courseCard()) : [0, ...LN()].map(cardHTML).join('')}</ul>`};
 }
 
 // ---- lesson 0: prep checklist
@@ -1526,23 +1536,26 @@ function noteParts(s){
   return {tag, lead: (lead || '').trim(), steps: ps.map(x => x.replace(/^\d\)\s*/, '').trim()).filter(Boolean), ready};
 }
 // one group = one stop on the roadmap (M3, user 2026-10-30): the number in a dot on the line, then title, steps, file chips and prompt chips
-function groupRow(n, key, g, i){
+// audit #3: "03B BILAN BIRIDAN BIRI" -> "03B bilan biridan biri", "QOʻSHIMCHA" -> "Qoʻshimcha" (display only)
+const tagText = s => s.split(' ').map((w, i) => /^\d/.test(w) ? w : i ? w.toLowerCase() : w[0] + w.slice(1).toLowerCase()).join(' ');
+function groupRow(n, key, g, i, showTag){
   const gk = `${key}.g${i}`, m = /^(\d+[A-Z]?)\.?\s+(.+)$/.exec(cu(gk)), no = m ? (/^\d+$/.test(m[1]) ? num2(+m[1]) : m[1]) : '', title = m ? m[2] : cu(gk);
   const np = noteParts(g.note ? cu(`${gk}.n`) : ''), lg = cxFb(`${gk}.n`) || cxFb(gk) ? ' lang="uz-Latn"' : '';
   const kt = LESSONS[n] && LESSONS[n].parts.includes('kt') && !partLock(n, 'kt'), lk = h => kt ? h.replace(/Kit boʻlimi(da|dan|dagi)/g, (w) => `<a class="kt-link" href="#/dars/${n}?tab=kt">${w}</a>`) : h;   // UX audit S6-7
   const steps = `${np.lead ? `<p class="m3-lead">${lk(esc(np.lead))}</p>` : ''}${np.steps.length ? `<ol class="m3-steps">${np.steps.map(x => `<li>${lk(esc(x))}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="m3-ready">Tayyor, agar ${esc(np.ready)}</p>` : ''}`;
   const md = g.files.some(f => /\.md$/i.test(f.name || ''));   // UX audit S6-8: .md files open as raw text on most phones
   const files = g.files.length ? `<div class="fchips">${g.files.map(f => `<a class="fchip" ${fa(f)}><span class="sr-only">${T('common.sr_download')}</span>${I('down', 16)}<span>${wbr(f.label || f.name)}</span>${f.size ? `<span class="fz">${esc(f.size)}</span>` : ''}</a>`).join('')}</div>${md ? `<p class="f-hint">${T('files.md_hint')}</p>` : ''}` : '';
-  return `<section class="m3"${lg}><span class="m3-dot" aria-hidden="true">${esc(no)}</span><div class="m3-b"><h3 class="m3-t">${esc(title)}</h3>${steps}${files}${g.prompts.length ? chipList(n, gk, g) : ''}</div></section>`;
+  return `<section class="m3"${lg}><span class="m3-dot" aria-hidden="true">${esc(no)}</span><div class="m3-b">${showTag && np.tag ? `<div class="m3-th"><h3 class="m3-t">${esc(title)}</h3><span class="m3-tag">${esc(tagText(np.tag))}</span></div>` : `<h3 class="m3-t">${esc(title)}</h3>`}${steps}${files}${g.prompts.length ? chipList(n, gk, g) : ''}</div></section>`;
 }
 // Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups as roadmap stops; Amaliyot and Vazifa end with a tick
 function blockPane(n, p){
   const b = (PARTS[n] || {})[p] || {text: '', groups: []}, key = `c.p.${n}.${p}`;
   const paras = b.text ? cu(`${key}.text`).split(/\n\s*\n/).map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`) : [];
   // UX audit S6-6: on Amaliyot only the first paragraph stays open; the rules and help (laptop, privacy, "Qiynalsangiz…") fold into "Qoidalar va yordam"
-  const text = p === 'am' && paras.length > 1 ? `${paras[0]}<details class="pane-more"><summary>${T('pane.more')}</summary>${paras.slice(1).join('')}</details>` : paras.join('');
+  const text = (p === 'am' || p === 'vz') && paras.length > 1 ? `${paras[0]}<details class="pane-more"><summary>${T('pane.more')}</summary>${paras.slice(1).join('')}</details>` : paras.join('');
   const intro = (LANG !== 'uz' ? `<p class="p-sub uz-note">${T('pane.uz_note')}</p>` : '') + (p === 'kt' ? `<p class="p-sub kit-intro">${T('kit.intro')}</p>` : '');   // S10-1 (RU: the lesson body is Uzbek), S6-7 (what a Kit is)
-  const groups = b.groups.map((g, i) => groupRow(n, key, g, i)).join('');
+  const showTag = new Set(b.groups.map((g, i) => noteParts(g.note ? cu(`${key}.g${i}.n`) : '').tag)).size > 1;   // audit #3: labels only where the stops differ (lessons 1-7: all "ASOSIY", so none)
+  const groups = b.groups.map((g, i) => groupRow(n, key, g, i, showTag)).join('');
   const end = p === 'am' ? endb('f:am' + n, S.has('f:am' + n), 'amf.on', 'amf.off', '', 'amf.aria') : p === 'vz' ? endb('f:v' + n, S.has('f:v' + n), 'vzf.on', 'vzf.off', '', 'vzf.aria') : '';
   // UX audit S6-5: the pane does not end in a dead end. After the tick: Amaliyot -> Vazifa, Vazifa -> home
   const vzOpen = LESSONS[n].parts.includes('vz') && !partLock(n, 'vz'), next = p === 'am' && vzOpen ? nextBlock(`#/dars/${n}?tab=vz`, 'next.to_vz') : p === 'vz' ? nextBlock('#/dastur', 'prep.end_back') : '';
@@ -1693,9 +1706,11 @@ document.addEventListener('click', e => { const b = e.target.closest('.gt-pane [
 function refreshCounts(){ document.querySelectorAll('[data-cnt]').forEach(el => { const [type, id] = el.dataset.cnt.split(':'); el.textContent = cntText(type, id); }); }
 
 // the locked-lesson sheet (static markup in the page), shown when a locked lesson's link is opened directly: its title and text depend on the lesson; applyStatic re-renders them with these parameters on a language switch
+// audit #10: only the parts the lesson has (`has` in the payload): "slaydlar, amaliyot va vazifa"
+const partsList = n => { const a = LESSONS[n].parts.map(p => t('units.' + p).toLowerCase()); return a.length > 1 ? a.slice(0, -1).join(', ') + ' ' + t('units.and') + ' ' + a.at(-1) : a[0] || ''; };
 function lockSheet(n){
   const sh = document.getElementById('lock-sheet'), ti = sh.querySelector('#ls-t'), de = sh.querySelector('.sheet-d');
-  ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n: lnT(n), date: lessonDate(n)}); de.dataset.i18n = 'lock.desc_n';
+  ti.dataset.i18n = LESSONS[n].d ? 'lock.title' : 'lock.title_tba'; ti.dataset.i18nP = JSON.stringify({n: lnT(n), date: lessonDate(n)}); de.dataset.i18n = LESSONS[n].parts.length ? 'lock.desc_n' : 'lock.desc_0'; de.dataset.i18nP = JSON.stringify({parts: partsList(n)});
   applyStatic(sh); okina(sh); return sh;
 }
 const openLockSheet = n => lockSheet(n).showModal();

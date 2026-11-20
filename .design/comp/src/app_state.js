@@ -54,7 +54,11 @@ const S = {
 };
 
 // ---- gating: the server decides which lesson is live and which parts are open (never the clock of this device)
-const courseStarted = () => !!(LESSONS[1] && LESSONS[1].open);
+const startedAt = n => Date.parse(LESSONS[n] && LESSONS[n].start) <= Date.now();   // the lesson start (payload) against this device clock (as scheduleRecheck does); a TBA start (null) is NaN, so false
+// audit #8: review accounts have lesson 1 open early, so "open" alone is not "started": a live lesson, or lesson 1 behind us by the clock
+const courseStarted = () => !!(LESSONS[1] && LESSONS[1].open) && (liveLesson() > 0 || startedAt(1));
+// audit #11: every numbered lesson has started and none is live any more (the server ends the last one after liveDays)
+const courseOver = () => liveLesson() === 0 && RN().length > 0 && RN().every(startedAt);
 const liveLesson = () => SESS ? SESS.live.n : 0;
 const isLocked = n => n >= 1 && !(LESSONS[n] && LESSONS[n].open);
 const partLock = (n, p) => (LESSONS[n] && LESSONS[n].lock && LESSONS[n].lock[p]) || null;   // iso time when a part opens (or 'unknown'), else null
@@ -92,7 +96,7 @@ function applyLessons(ls, lsUz, lang){
     const n = l.n, lock = {}, parts = [], has = l.has || {};
     const add = (on, key, part) => { if (!on) return; parts.push(key); const pp = l.parts && l.parts[part]; if (pp && !pp.open) lock[key] = pp.opensAt || 'unknown'; };
     add(has.slides, 'sl', 'slides'); add(has.amaliyot, 'am', 'amaliyot'); add(has.kit, 'kt', 'kit'); add(has.vazifa, 'vz', 'vazifa');
-    L[n] = {n, num: l.num !== undefined ? l.num : l.n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length, outs: (l.outcomes || []).length};
+    L[n] = {n, num: l.num !== undefined ? l.num : l.n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), start: l.start || null, lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length, outs: (l.outcomes || []).length};
   }
   LESSONS = L;
   const D = I18N[LANGS.includes(lang) ? lang : LANG];   // platform text of the payload's language (lesson metadata and the prep checklist come translated from the API)

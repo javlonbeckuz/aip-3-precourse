@@ -40,6 +40,7 @@ export async function startApp(t, opts = {}) {
   cfg.now = () => clock.t;
   Object.assign(cfg, opts.cfg);
   const app = createApp(cfg);
+  if (!opts.seedGroup) app.db.prepare("UPDATE students SET grp = 'shanba' WHERE id = 'XM'").run(); // the gating tests were written for XM in the Saturday group; the seed itself puts XM in yakshanba
   await new Promise((r) => app.server.listen(0, '127.0.0.1', r));
   const base = `http://127.0.0.1:${app.server.address().port}`;
   t.after(() => app.close());

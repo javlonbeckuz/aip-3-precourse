@@ -61,6 +61,7 @@ export function createApp(cfg) {
   const db = openDb(cfg.dataDir, { seedDemo: cfg.seedDemo, xmAdmin: cfg.xmAdmin });
   const content = createContent({ dir: cfg.contentDir, now: cfg.now ?? Date.now, production: cfg.production });
   content.validateAll();
+  const unscheduled = (g) => g in content.schedule().groups && !content.schedule().groups[g];   // a known group whose dates are null (unknown names still fail in clean())
   let alert = null, announce = null;
   const guard = auth.loginGuard({ maxFail: cfg.loginMaxFail, budget: cfg.loginBudget, onTrip: (n) => {
     const msg = `AIP portal: ${n} failed logins within an hour. Login is now limited to 1 attempt per minute per client until the hour ends. Someone may be guessing IDs.`;
@@ -201,19 +202,23 @@ export function createApp(cfg) {
       if (!id || id !== have.id) return json(res, 200, { ok: true, created: false });
       // phone + the student's own ID: the CRM may set or change the group (the admin bot that used to do it is paused, 2026-10-31)
       const g = v('group').trim();
-      if (g && g !== have.grp) { updateStudent(db, have.id, { grp: g }); console.log(`integration: group set for ${studentRef(db, have.id)}`); }
+      if (g && unscheduled(g)) console.log(`integration: group "${g}" has no dates, kept as is for ${studentRef(db, have.id)}`);   // never overwrite a group with an unscheduled one
+      else if (g && g !== have.grp) { updateStudent(db, have.id, { grp: g }); console.log(`integration: group set for ${studentRef(db, have.id)}`); }
       return json(res, 200, { ok: true, created: false, id, group: getStudent(db, have.id).grp });
     }
-    let st;
-    try { st = createStudent(db, { id, fullName: v('fullName'), phone, grp: v('group').trim() || null, mentor: v('mentor'), createdBy: 0 }); } // 0 = made by the CRM; clean() validates the rest
+    let st, grp = v('group').trim() || null;
+    const noDates = grp && unscheduled(grp);   // a refused call after a payment would lose the student: store no group, they fall back to the first dated group
+    if (noDates) grp = null;
+    try { st = createStudent(db, { id, fullName: v('fullName'), phone, grp, mentor: v('mentor'), createdBy: 0 }); } // 0 = made by the CRM; clean() validates the rest
     catch (e) {   // another process made this phone a moment ago (overlapping deploys share the DB): the call did succeed
       if (e instanceof HttpError && e.code === 'duplicate_phone') return json(res, 200, { ok: true, created: false });
       throw e;
     }
     createCap.add('all');
     console.log(`integration: created ${studentRef(db, st.id)}`); // a rowid, never an ID, phone or name
+    if (noDates) console.log(`integration: group "${v('group').trim()}" has no dates, stored as none for ${studentRef(db, st.id)}`);
     fire(st, null);
-    json(res, 201, { ok: true, created: true, id: st.id });
+    json(res, 201, { ok: true, created: true, id: st.id, group: st.grp });
   }
 
   // ---- API routes: [method, regex, handler(req, res, url, match)]

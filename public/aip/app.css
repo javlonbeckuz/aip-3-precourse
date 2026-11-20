@@ -1290,6 +1290,14 @@ html.hid .bgp path{animation-play-state:paused}
 .kit-intro,.uz-note{color:var(--gt-ink)}
 .fchip .fz{white-space:nowrap}
 .f-hint{margin:8px 0 0;font:400 15px/1.4 var(--font-body);color:var(--gt-ink2)}
+.kt-link{position:relative}
+.kt-link::after{content:"";position:absolute;inset:-12px -4px}
+.vp-b{position:relative}
+.vp-b::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);translate:-50% -50%}
+.vp-mute::after{left:-4px;translate:0 -50%}
+.m3-th{display:flex;flex-wrap:wrap;align-items:center;gap:0 12px}
+.m3-th .m3-t{margin-right:0}
+.m3-tag{flex:none;margin:6px 0 12px;padding:4px 10px;border:1px solid currentColor;border-radius:999px;font:600 14px/1.2 var(--font-body)}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}

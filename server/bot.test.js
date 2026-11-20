@@ -143,7 +143,7 @@ test('bot: /list is paginated and filters by group', async () => {
   assert.equal(m.params.text.split('\n').filter((l) => /^\d+\. /.test(l)).length, 3);
   assert.deepEqual(m.params.reply_markup.inline_keyboard[0].map((b) => b.callback_data), ['l:all:0']);
   await bot.onUpdate(msg('/list yakshanba'));
-  assert.match(calls.at(-1).params.text, /Yakshanba\)<\/b>: 6 ta/);
+  assert.match(calls.at(-1).params.text, /Yakshanba\)<\/b>: 7 ta/);
   await bot.onUpdate(msg('/list friday'));
   assert.match(calls.at(-1).params.text, /Foydalanish/);
 });
