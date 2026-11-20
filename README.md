@@ -42,6 +42,8 @@ Mentor account: ID `XM` (log in as `XM` or `AIP-XM`, shown as "Student", group s
 | `SEED_DEMO` | unset | `1` = create or re-activate the demo student XM as a plain student (tests, dev; only while `XM_ADMIN=0`) |
 | `BOT_TOKEN` | empty | admin bot token; empty = bot off |
 | `ADMIN_TG_IDS` | empty | comma-separated Telegram user IDs allowed to use the bot |
+| `STATS_KEY` | empty | secret (32+ characters, else the server refuses to start) that opens the private `/stats` dashboard. Empty = the dashboard is off (404). Never shared with students; put it in the env file, not in git |
+| `STATS_PATH` | from `PORTAL_URL` | public path of the dashboard, e.g. `/aip/stats`. Default: the `/aip` or `/aip3` prefix of `PORTAL_URL`, plus `/stats` (else `/aip/stats`). The reverse proxy must route it to the app |
 | `INTEGRATION_KEY` | empty | secret (32+ characters, else the server refuses to start) the CRM sends as `Authorization: Bearer <key>` to `POST /api/int/students`; empty = that endpoint answers 404. Generate: `node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"`. See "CRM integration" in API.md |
 | `ALLOW_NOW` | unset | must be `1` for `NOW` to work |
 | `NOW` | unset | TESTING: pretend it is this time, e.g. `2026-09-12T09:59` (Tashkent). Ignored in production, and the server refuses to start if it is set together with an https `PORTAL_URL`, `TRUST_PROXY` or `TRUST_CF` |
@@ -74,6 +76,15 @@ node --test                               # includes scripts/shell.test.js: no i
 - Routes use the History API under `/aip/...` (`/aip/dars/1`, `/aip/dars/1/amaliyot/01`, `/aip/dars/2/amaliyot/01-biznes-goyalar`, ...); the server returns the shell for every `/aip/*` path.
 - Language: the `aip_lang` cookie (set by the language switch, which refetches `/me`). Progress: `PUT /progress`, optimistic. A 401 anywhere returns to the login screen; `pageshow` re-checks `/me`.
 - Try it locally with a pinned clock: `SEED_DEMO=1 ALLOW_NOW=1 NOW=2026-09-12T09:59 DATA_DIR=$(mktemp -d) node server/index.js`, open `http://localhost:3000/aip/`, log in as `XM`.
+
+## Analytics dashboard (`/stats`)
+
+Private, server-rendered page (dark, no JS) at `<portal prefix>/stats`: KPIs, a daily chart, per lesson, per student (sortable), top files, devices, the last events (200 per page) and CSV exports. `?range=7|30|all`.
+
+- **Access**: set `STATS_KEY` (32+ chars). `GET /stats` without the admin cookie shows a form with one field, "Kalit"; `POST /stats/login` compares the key in constant time and sets the cookie `aip_stats` (random session id, stored hashed in `stats_tokens`, 12 h, HttpOnly, Secure in production, SameSite=Strict, Path = the stats path). The "Chiqish" button (`POST /stats/logout`, Origin checked) ends it. The session hash is bound to `STATS_KEY`, so rotating the key ends every admin session. Dashboard and CSV answer only browser navigations (`Sec-Fetch-Mode: navigate` or no such header), so a script running on some page cannot fetch student data. Failed keys: 10 per 10 minutes per client (same client-address logic as the student login, `TRUST_PROXY`/`TRUST_CF`), each logged as an `admin_fail` event without the typed value. Sessions live in the DB (`stats_tokens`), so a restart does not log the admin out.
+- **What is logged** (table `events`, migration 005): `login_ok`, `login_fail` (HTTP status only, never what was typed), `admin_fail`, `logout`, `view` (the SPA sends the route path with `navigator.sendBeacon` to `POST /api/aip/ev`, no query string), `lesson`, `download` (lesson files and the prep PDF), `err` (any 5xx, with the path). Plus device `m`/`d` from the User-Agent. No IP, no full User-Agent. View beacons are limited to 20 a minute per student (all sessions together), and the same page twice within 3 seconds is one view; `err` rows are capped at 60 a minute. Events older than 180 days are deleted at startup and daily. Prompt copies, ticks and slides are read from `progress`, not duplicated.
+- **Migrations**: this repo has 001-003 and 005 (no 004). The fork has its own `004_settings.sql`, applied before 005 there. The runner skips every file numbered at or below the DB's `user_version`, so a repo migration 004 added later would be skipped on a database that is already at 5: number new migrations 006 and up.
+- **The fork** (`/aip3`): the dashboard path follows `PORTAL_URL`, or set `STATS_PATH=/aip3/stats`. The beacon route matches both `/api/aip/ev` and `/api/aip3/ev`. The stylesheet is `server/stats.css`, served by the app at `<stats path>/stats.css` (it travels with the server files, not with the frontend build).
 
 ## Admin bot (BotFather steps for the owner)
 

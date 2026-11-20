@@ -17,6 +17,8 @@ document.addEventListener('click', e => {
   const a = e.target.closest('a[data-r]'); if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target === '_blank') return;
   e.preventDefault(); navTo(a.dataset.r);
 });
+// one view event per page shown: the path only (no query), fire and forget; the server ignores it without a session and never stores more than the route
+function beacon(){ if (AUTH && navigator.sendBeacon) try { navigator.sendBeacon(API + '/ev', new Blob([JSON.stringify({p: location.pathname})], {type: 'application/json'})); } catch {} }
 window.addEventListener('popstate', () => d3Pop() || render());
 
 // ---- the name menu: the student's own data, and Chiqish (all as text nodes, never HTML)

@@ -66,7 +66,7 @@ test('migration 003: a v2 database upgrades, rows and progress survive, group nu
   old.close();
 
   const db = openDb(dir);
-  assert.equal(db.prepare('PRAGMA user_version').get().user_version, 3);
+  assert.equal(db.prepare('PRAGMA user_version').get().user_version, 5);   // 003 + the gap (no 004 in this repo; the fork has its own) + 005_events
   assert.equal(db.prepare('PRAGMA foreign_keys').get().foreign_keys, 1);
   assert.equal(db.prepare('PRAGMA foreign_key_check').all().length, 0);
   const a = getStudent(db, 'AIP-AAAAAA');

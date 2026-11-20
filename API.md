@@ -97,6 +97,22 @@ There is no client-writable unlock switch: the early opening of every lesson is 
 
 Limits: body 256 bytes, 600 keys per student, 240 writes per minute. Errors: 400 `bad_key`, 400 `bad_value`, 400 `unknown_field`, 400 `too_many_keys`, 413, 429 `rate_limited`, 403 `bad_origin`.
 
+## Analytics
+
+### POST /ev
+Page-view beacon, sent by the SPA on every route render (`navigator.sendBeacon`, Content-Type application/json). Auth: student session cookie (401 `unauthorized` without). Origin check. At most 20 requests per minute per student, all sessions together (429 `rate_limited`); the same page again within 3 s is acknowledged but not stored.
+Body `{ "p": "/aip/dars/1" }`: only `p`; it must be `/aip` (or `/aip3`) plus path segments of `A-Za-z0-9._~%-`, at most 120 characters, no query string.
+204, no body. Errors: 400 `bad_path`, 400 `unknown_field`, 400 `bad_json`, 401, 403 `bad_origin`, 413, 415, 429.
+Stored: time, student ID, `view`, the route without the prefix (`/dars/1`), device `m`/`d`.
+
+### The /stats dashboard (HTML, not JSON; admin only)
+Lives at `<prefix>/stats` (`STATS_PATH`), outside `/api`. Off (404) unless `STATS_KEY` is set.
+- `GET /stats`: the dashboard with the admin cookie (`?range=7|30|all`, `sort=id|name|grp|last|days|views|prompts|dl`, `dir=asc|desc`, `page=N` for the event log); a key form (200) without it.
+- `POST /stats/login`: `application/x-www-form-urlencoded`, field `key`. 303 to `/stats` and `Set-Cookie: aip_stats` on success; 401 form with "Kalit notoʻgʻri" on a wrong key; 429 (`Retry-After`) after 10 failures in 10 minutes per client; 403 `bad_origin`; 415.
+- `POST /stats/logout`: ends the session and clears the cookie, 303 to `/stats`. Origin check.
+- `GET /stats/students.csv?range=`, `GET /stats/events.csv?range=`: CSV (UTF-8 with BOM, every cell quoted, a leading `= @ + -` defused with a quote). 404 without the cookie.
+- `GET /stats/stats.css`: the stylesheet (public).
+
 ## CRM integration
 
 For the developers of the HEAD CRM. **The CRM is connected to the portal directly**: the admin Telegram bot is paused (2026-10-31), so the CRM is the only way students are made, and the CRM gives each student their ID. Call this endpoint when a student's **first payment** is received (any amount; normally 3,000,000 so'm). **The CRM makes the student's login ID** (rules below) and sends it; the portal stores it and answers with it. Send the student's group (`yakshanba`; a group with no dates, `shanba` for now, is stored as none) as soon as you know it, on the first call or later (see "Setting the group later"): a student with no group is treated as being in the first group that has dates (yakshanba, 22-noyabr), so lessons open on that group's schedule.

@@ -49,7 +49,9 @@ test('XM admin (default on, user 2026-10-31): always active with review, in prod
   const db = openDb(dir, { xmAdmin: true });
   db.prepare("UPDATE students SET active = 0, review = 0 WHERE id = 'XM'").run();   // switched off by hand: the next start turns it back on
   db.close();
-  assert.deepEqual({ ...openDb(dir, { xmAdmin: true }).prepare("SELECT active, review FROM students WHERE id = 'XM'").get() }, { active: 1, review: 1 });
+  const db2 = openDb(dir, { xmAdmin: true });
+  assert.deepEqual({ ...db2.prepare("SELECT active, review FROM students WHERE id = 'XM'").get() }, { active: 1, review: 1 });
+  db2.close();   // an open handle makes the temp-dir cleanup fail with EPERM on Windows
   const a = await startApp(t, { production: true, now: BEFORE, env: { SEED_DEMO: '0', XM_ADMIN: '1' } });
   for (const id of ['XM', 'AIP-XM', 'aip-xm', ' xm ']) assert.equal((await a.client().post('/api/aip/login', { id })).status, 200, id);
   const c = await a.login('AIP-XM');

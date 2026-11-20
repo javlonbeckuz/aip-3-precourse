@@ -7,6 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { openDb, getStudent, getStudentByPhone, createStudent, updateStudent, normPhone, studentRef, squash, fold, touchLogin, publicStudent, getProgress, putProgress, HttpError, FULL_ID } from './db.js';
 import * as auth from './auth.js';
 import { createContent, parseTime, isoTashkent, LANGS } from './content.js';
+import { createStats } from './stats.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -14,6 +15,14 @@ function hops(v) {
   if (v === undefined || v === '') return 0;
   if (!/^\d+$/.test(String(v))) throw new Error(`TRUST_PROXY must be a non-negative integer, got "${v}"`);
   return Number(v);
+}
+
+// where /stats lives: STATS_PATH, else the portal's own prefix from PORTAL_URL (/aip or /aip3), else /aip
+function statsPathOf(env) {
+  if (env.STATS_PATH) { if (!/^\/[A-Za-z0-9/_-]+$/.test(env.STATS_PATH) || env.STATS_PATH.endsWith('/')) throw new Error('STATS_PATH must look like /aip/stats'); return env.STATS_PATH; }
+  let pre = null;
+  try { pre = /^\/aip3?(?=\/|$)/.exec(new URL(env.PORTAL_URL).pathname)?.[0]; } catch { /* no PORTAL_URL */ }
+  return (pre ?? '/aip') + '/stats';
 }
 
 export function loadConfig(env = process.env) {
@@ -27,6 +36,8 @@ export function loadConfig(env = process.env) {
     contentDir: path.resolve(env.CONTENT_DIR || path.join(root, 'content')),
     publicDir: path.resolve(env.PUBLIC_DIR || path.join(root, 'public')),
     portalUrl: env.PORTAL_URL || '',
+    statsKey: env.STATS_KEY || '', // the secret that opens /stats; unset = /stats is off (404)
+    statsPath: statsPathOf(env), // the /stats dashboard
     trust: { hops: hops(env.TRUST_PROXY), cf: env.TRUST_CF === '1' },
     seedDemo: env.SEED_DEMO === '1', // the plain demo XM (tests, dev); ignored while xmAdmin is on
     xmAdmin: env.XM_ADMIN !== '0', // XM always logs in with every lesson open (user, 2026-10-31); XM_ADMIN=0 turns it off
@@ -35,6 +46,7 @@ export function loadConfig(env = process.env) {
     integrationKey: env.INTEGRATION_KEY || '', // CRM -> POST /api/int/students; unset = endpoint off (404)
     now: null,
   };
+  if (cfg.statsKey && cfg.statsKey.length < 32) throw new Error('STATS_KEY must be at least 32 characters');
   if (cfg.integrationKey && cfg.integrationKey.length < 32) throw new Error('INTEGRATION_KEY must be at least 32 characters');
   if (env.NOW) {
     // a fake clock must never sit behind a public proxy or an https address
@@ -79,7 +91,7 @@ export function createApp(cfg) {
   const badReqAlert = auth.windowLimiter(1, 600e3);
   const raise = (msg) => { console.error(`ALERT ${msg}`); try { alert?.(msg); } catch (e) { console.error('alert hook failed:', e.message); } };
   const cookieKey = auth.cookieName(cfg.production);
-  const timer = setInterval(() => { guard.prune(); writeLimit.prune(); intLimit.prune(); badKey.prune(); badKeyLog.prune(); createCap.prune(); noticeEach.prune(); noticeAll.prune(); badReqAlert.prune(); auth.purgeSessions(db); }, 600e3);
+  const timer = setInterval(() => { guard.prune(); writeLimit.prune(); intLimit.prune(); badKey.prune(); badKeyLog.prune(); createCap.prune(); noticeEach.prune(); noticeAll.prune(); badReqAlert.prune(); auth.purgeSessions(db); stats.sweep(); }, 600e3);
   timer.unref();
 
   // ---- helpers
@@ -221,6 +233,8 @@ export function createApp(cfg) {
     json(res, 201, { ok: true, created: true, id: st.id, group: st.grp });
   }
 
+  const stats = createStats({ db, cfg, content, readJson, onlyKeys, fail, needOrigin });
+
   // ---- API routes: [method, regex, handler(req, res, url, match)]
   const routes = [
     ['POST', /^\/api\/aip\/login$/, async (req, res, url) => {
@@ -239,6 +253,7 @@ export function createApp(cfg) {
       const s = cands.map((c) => getStudent(db, c)).find(Boolean);
       if (!s || !s.active) { guard.fail(key); throw fail(401, 'invalid_id', 'This ID is not valid. Ask your mentor.'); } // same answer for unknown and inactive
       touchLogin(db, s.id);
+      req.sid = s.id; // for the event log (stats.watch)
       const tok = auth.createSession(db, s.id);
       json(res, 200, session(getStudent(db, s.id), langOf(req, url)), { 'Set-Cookie': auth.sessionCookie(tok, cfg.production) });
     }],
@@ -376,6 +391,8 @@ export function createApp(cfg) {
     try {
       const url = new URL(req.url, 'http://x');
       if (url.pathname === '/health') return json(res, 200, { ok: true }, { 'Cache-Control': 'no-store' });
+      stats.watch(req, res, url);
+      if (await stats.handle(req, res, url)) return; // POST /api/aip/ev and the /stats pages
       if (url.pathname.startsWith('/api/')) {
         res.setHeader('Cache-Control', 'no-store');
         if (url.pathname.startsWith('/api/int/') && !cfg.integrationKey) throw fail(404, 'not_found', 'No such endpoint'); // endpoint off: every method is 404
@@ -412,7 +429,7 @@ export function createApp(cfg) {
     setTimeout(() => server.closeAllConnections(), 1000).unref(); // give running downloads a second, then cut
   });
 
-  return { server, db, content, guard, close, setAlert: (fn) => { alert = fn; }, setAnnounce: (fn) => { announce = fn; } };
+  return { server, db, content, guard, stats, close, setAlert: (fn) => { alert = fn; }, setAnnounce: (fn) => { announce = fn; } };
 }
 
 // the portal's hooks into the admin bot: security alerts, and new-student / repeat-payment announcements (note is forwarded as is)

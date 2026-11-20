@@ -618,6 +618,7 @@ function render(keep){
   else { scrollTo(0, 0); if (!firstRender) { const h = document.querySelector('.screen.is-on h1'); if (h) { h.tabIndex = -1; h.focus({preventScroll: true}); } } }
   if (view === 'app' && !location.hash.startsWith('#/fayl/')) prevHash = location.hash;
   firstRender = false; byClick = false; slFocus = '';
+  if (!keep && typeof beacon === 'function') beacon();   // the app build counts page views (a language switch is not a new page)
 }
 window.addEventListener('hashchange', () => d3Pop() || render());   // Back / Forward on a D3 pane that only changed ?t= is local; every other render (401, language, review bar) rebuilds the page
 // remember where a link was clicked (scroll + the link itself) so Back can return there
