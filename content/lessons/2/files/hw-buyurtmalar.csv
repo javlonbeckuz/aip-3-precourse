@@ -1,0 +1,25 @@
+﻿buyurtma_id,tasdiq_vaqti,yetkazildi_vaqti,hudud,mahsulot_kodi,mahsulot_narxi_som,xizmat,rahbar_tasdiqi,omborda_bor,soat,mijoz_izohi
+RU-001,2026-09-01 10:00,2026-09-02 04:00,Toshkent shahri,RU-101,320000,Tezkor,Aziz tasdiqlagan,Ha,18,Shikoyat qayd etilmagan
+RU-002,2026-09-01 09:00,2026-09-02 21:00,Toshkent shahri,RU-101,320000,Standart,Standart tartib,Ha,36,Shikoyat qayd etilmagan
+RU-003,2026-09-01 10:00,2026-09-02 22:00,Toshkent shahri,RU-101,320000,Standart,Standart tartib,Ha,36,Shikoyat qayd etilmagan
+RU-004,2026-09-01 09:00,2026-09-03 21:00,Toshkent viloyati,RU-101,320000,Standart,Standart tartib,Ha,60,Reklamadagi 24 soat viloyatga ham tegishlimi?
+RU-005,2026-09-02 10:00,2026-09-03 06:00,Toshkent shahri,RU-101,320000,Tezkor,Aziz tasdiqlagan,Ha,20,Shikoyat qayd etilmagan
+RU-006,2026-09-02 09:00,2026-09-03 21:00,Toshkent shahri,RU-101,320000,Standart,Standart tartib,Ha,36,Shikoyat qayd etilmagan
+RU-007,2026-09-02 10:00,2026-09-03 22:00,Toshkent shahri,RU-101,320000,Standart,Standart tartib,Ha,36,Shikoyat qayd etilmagan
+RU-008,2026-09-02 09:00,2026-09-04 21:00,Toshkent viloyati,RU-101,320000,Standart,Standart tartib,Ha,60,Yetkazishdan oldin qo‘ng‘iroq bo‘ldi.
+RU-009,2026-09-03 10:00,2026-09-04 08:00,Toshkent shahri,RU-101,320000,Tezkor,Aziz tasdiqlagan,Ha,22,Shikoyat qayd etilmagan
+RU-010,2026-09-03 09:00,2026-09-04 21:00,Toshkent shahri,RU-101,320000,Standart,Standart tartib,Ha,36,Shikoyat qayd etilmagan
+RU-011,2026-09-03 10:00,2026-09-04 22:00,Toshkent shahri,RU-101,320000,Standart,Standart tartib,Ha,36,Shikoyat qayd etilmagan
+RU-012,2026-09-03 09:00,2026-09-05 21:00,Toshkent viloyati,RU-101,320000,Standart,Standart tartib,Ha,60,Mahsulot yaxshi. Viloyat muddati oldindan aytildi.
+RU-013,2026-09-04 10:00,2026-09-05 05:00,Toshkent shahri,RU-101,320000,Tezkor,Aziz tasdiqlagan,Ha,19,Shikoyat qayd etilmagan
+RU-014,2026-09-04 09:00,2026-09-05 21:00,Toshkent shahri,RU-101,320000,Standart,Standart tartib,Ha,36,Shikoyat qayd etilmagan
+RU-015,2026-09-04 10:00,2026-09-05 22:00,Toshkent shahri,RU-101,320000,Standart,Standart tartib,Ha,36,Shikoyat qayd etilmagan
+RU-016,2026-09-04 09:00,2026-09-07 21:00,Toshkent viloyati,RU-101,320000,Standart,Standart tartib,Ha,84,Telegramda K1 narxi 299000 deb ko‘rdim. Operator 320000 dedi.
+RU-017,2026-09-05 10:00,2026-09-05 18:00,Toshkent shahri,RU-101,320000,Tezkor,Aziz tasdiqlagan,Ha,8,Shikoyat qayd etilmagan
+RU-018,2026-09-05 09:00,2026-09-07 21:00,Toshkent shahri,RU-101,320000,Standart,Standart tartib,Ha,60,Shikoyat qayd etilmagan
+RU-019,2026-09-05 10:00,2026-09-07 22:00,Toshkent shahri,RU-101,320000,Standart,Standart tartib,Ha,60,Shikoyat qayd etilmagan
+RU-020,2026-09-05 09:00,2026-09-07 21:00,Toshkent viloyati,RU-101,320000,Standart,Standart tartib,Ha,60,Mahsulot qutisi butun keldi.
+RU-021,2026-09-07 10:00,2026-09-08 09:00,Toshkent shahri,RU-101,320000,Tezkor,Aziz tasdiqlagan,Ha,23,Shikoyat qayd etilmagan
+RU-022,2026-09-07 09:00,2026-09-08 21:00,Toshkent shahri,RU-101,320000,Standart,Standart tartib,Ha,36,Shikoyat qayd etilmagan
+RU-023,2026-09-07 10:00,2026-09-08 22:00,Toshkent shahri,RU-101,320000,Standart,Standart tartib,Ha,36,Shikoyat qayd etilmagan
+RU-024,2026-09-07 09:00,2026-09-09 21:00,Toshkent viloyati,RU-101,320000,Standart,Standart tartib,Ha,60,24 soatga ulgurmasligimizni operator tushuntirdi.
