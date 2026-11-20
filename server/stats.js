@@ -193,7 +193,7 @@ export function createStats({ db, cfg, content, readJson, onlyKeys, fail, needOr
   }
 
   // ---- HTTP
-  const noStore = { 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer' };
+  const noStore = { 'Cache-Control': 'no-store', 'Referrer-Policy': 'same-origin' };   // not no-referrer: with it, browsers post the login form with Origin: null and the Origin check refuses it
   const html = (res, status, body, extra = {}) => { res.writeHead(status, { 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': Buffer.byteLength(body), ...noStore, ...extra }); res.end(body); };
 
   // true = answered, false = not ours (the caller carries on)
