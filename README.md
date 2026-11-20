@@ -50,6 +50,17 @@ Mentor account: ID `XM` (log in as `XM` or `AIP-XM`, shown as "Student", group s
 
 Both work the same: run `node server/index.js`, mount a persistent volume, set `DATA_DIR` to it (SQLite lives there, WAL mode, so keep it on a real disk, not a network share), and set `NODE_ENV=production`, `PORTAL_URL`, `TRUST_PROXY` (Railway = 2, measured 2026-10-19; a direct droplet behind Caddy = 1). Put TLS in front (Railway does; on a droplet use Caddy). The session cookie is `Secure`, so production needs HTTPS. `CONTENT_DIR` must also persist if you edit content on the server: either put it on the volume too or redeploy with the repo's `content/`. Cloudflare note: if Cloudflare sits in front, remove or block the Railway `*.up.railway.app` domain (and any other direct route to the app). Otherwise a client can skip Cloudflare and send its own `CF-Connecting-IP` or `X-Forwarded-For`, and the per-client rate limits become meaningless. Verify the proxy setting at deploy time: login with a wrong ID from your phone and from your laptop and check that they hit separate limits (or log `x-forwarded-for` once); if all clients share one bucket, `TRUST_PROXY` is too low, and if a client can change its bucket by sending its own `X-Forwarded-For`, it is too high. On a droplet bind `HOST=127.0.0.1` so only Caddy can reach the port. Run one instance only (rate limits and the bot's conversation state are in memory). Stop with SIGTERM.
 
+### The live site: ai.birfoizbilim.uz/aip3
+
+The students use `https://ai.birfoizbilim.uz/aip3/` (Cloudflare → nginx → `127.0.0.1:3200`), not Railway. It runs on the shared VPS `69.62.126.73` (read `~/CLAUDE.md` there first; paid projects share the box) as the systemd service `aip-portal`: releases in `/opt/aip-portal/releases/<name>`, the running one is the symlink `/opt/aip-portal/current`, the DB is `/var/lib/aip-portal/aip.db`, env in `/etc/aip-portal/aip-portal.env`, its own Node 24 in `/opt/aip-portal/node`.
+
+That release is a fork of this repo kept on the server: it serves under `/aip3` and `/api/aip3`, and adds `server/admin.js` plus a `settings` table (migration 004) through which the CRM can switch XM and override the schedule (a `schedule` row wins over `content/schedule.json`). So never copy the repo over it. To deploy:
+1. Back up the DB (the `VACUUM INTO` command below, run as the `aip-portal` user).
+2. `cp -a` the current release to a new release folder.
+3. Copy into it only what changed: `content/` files, the server files you changed (patched onto the fork's copies: `git diff` + `patch`, check they apply cleanly), and the frontend built with `node scripts/make-aip3.mjs public/aip <dir>` into `public/aip3`. The script applies the `/aip3` edits and adds `?v=<hash>` to `app.js` and `app.css`, because Cloudflare gives those files a 4-hour browser cache (the HTML is never cached).
+4. Point `current` at the new folder (`ln -sfn … current.tmp && mv -T current.tmp current`). Content-only changes are read on the next request; server changes need `systemctl restart aip-portal`.
+5. Check `/health`, the journal and the site. Roll back by pointing `current` at the previous release and restarting.
+
 ## Frontend: `public/aip` (built, never hand-edited)
 
 The SPA is generated from the design sources in `.design/comp/src/`, the same ones as the clickable prototype (`AI-Praktikum-3.0-final.html`):
