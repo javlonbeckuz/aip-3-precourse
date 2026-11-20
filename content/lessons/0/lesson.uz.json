@@ -1,8 +1,8 @@
 {
   "n": 0,
-  "title": "Tayyorgarlik",
+  "title": "Oʻrnatish va tayyorgarlik bosqichi",
   "subtitle": "Oʻrnatish va tayyorgarlik bosqichi",
-  "summary": "Kerakli dasturlarni oʻrnatamiz, hisoblarni ochamiz va praktikum davomida ishlatiladigan muhitni tayyorlaymiz.",
+  "summary": "Kerakli ilovalarni oʻrnatamiz, hisoblarni ochamiz va praktikum davomida ishlatiladigan muhitni tayyorlaymiz.",
   "topics": [
     "Kompyuter",
     "Google akkaunt",
@@ -19,7 +19,7 @@
         "title": "Kompyuter",
         "note": "macOS yoki Windows noutbuk. Telefon yoki planshet yetarli emas.",
         "steps": [
-          "Administrator huquqi borligini tekshiring: dastur oʻrnata olishingiz kerak. Ish kompyuteri boʻlsa, IT boʻlimidan soʻrang.",
+          "Administrator huquqi borligini tekshiring: ilova oʻrnata olishingiz kerak. Ish kompyuteri boʻlsa, IT boʻlimidan soʻrang.",
           "Diskda kamida 5 GB boʻsh joy qoldiring.",
           "Quvvat adapterini ham oling."
         ],
@@ -58,31 +58,31 @@
         "title": "Claude obunasi",
         "note": "Praktikumning asosiy vositasi. Pro tarifi kerak.",
         "steps": [
-          "claude.ai ga kiring va «Continue with Google» orqali roʻyxatdan oʻting.",
+          "claude.aiʼga kiring va «Continue with Google» orqali roʻyxatdan oʻting.",
           "Settings → Billing boʻlimida Pro tarifini tanlang. Narxi oyiga $20.",
-          "Toʻlovni 03-kartadagi Visa yoki Mastercard bilan qiling.",
-          "claude.ai/download sahifasidan Claude dasturini oʻrnating va oʻsha akkaunt bilan kiring."
+          "Toʻlovni «Visa karta» bandidagi kartangiz bilan qiling.",
+          "claude.ai/download sahifasidan Claude ilovasini oʻrnating va oʻsha akkaunt bilan kiring."
         ],
         "actions": [
           {
-            "label": "Claude dasturini yuklash",
+            "label": "Claude ilovasini yuklash",
             "url": "https://claude.ai/download"
           },
           {
-            "label": "claude.ai da hisob ochish",
+            "label": "claude.aiʼda hisob ochish",
             "url": "https://claude.ai/",
             "quiet": true
           }
         ],
-        "footnote": "02-darsdan Claude Code koʻp ishlatiladi va Pro limiti tez tugashi mumkin. Shunda Max tarifiga oʻting (oyiga $100 dan)."
+        "footnote": "02-darsdan Claude Code koʻp ishlatiladi va Pro limiti tez tugashi mumkin. Shunda Max tarifiga oʻting (oyiga $100ʼdan)."
       }
     ],
     "more": {
-      "title": "Mashq va video dars",
+      "title": "Mashq va video materiallari",
       "links": [
         {
           "title": "Protokol 57",
-          "note": "57 ta protokol, har bir promptingizga AI 0 dan 100 gacha baho beradi. Toʻlov paytida promokodni kiriting.",
+          "note": "57 ta protokol, har bir promptingizga AI 0ʼdan 100ʼgacha baho beradi. Toʻlov paytida promokodni kiriting.",
           "url": "https://p57.uz/",
           "code": "PRAKTIKUM3",
           "sub": "Prompt yozishni mashq qilish, promokod bilan bepul",

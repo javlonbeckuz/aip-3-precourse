@@ -18,7 +18,7 @@ async function api(method, path, body){
 }
 const marker = on => { document.cookie = `aip_in=${on ? 1 : ''}; Path=/; Max-Age=${on ? 86400 : 0}; SameSite=Lax`; };   // "a session probably exists" (the real cookie is HttpOnly)
 function onUnauthorized(){   // the session ended (or never existed): back to the gate, nothing of the old student stays on screen
-  marker(false);
+  marker(false); d3Forget();
   if (!AUTH) return;
   AUTH = false; SESS = null; STUDENT = STUDENT_FIRST = ''; S.set({t: {}, sl: {}});
   ['nm-name', 'nm-id', 'nm-group', 'nm-mentor', 'nm-course'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = ''; });
@@ -71,7 +71,9 @@ function scheduleRecheck(){   // a part opens while the page is open: ask again 
 
 // ---- the API payload becomes the shapes the templates already read (C20 -> buildData(), LESSONS, PREP)
 const sid = s => String(s == null ? '' : s).replace(/[^A-Za-z0-9_-]/g, '');   // ids that end up in href / id / data-*: nothing else may pass
-const fileLabel = f => { const ext = (f.name.split('.').pop() || '').toUpperCase(); return f.size < 1024 ? `${ext} · ${f.size} B` : f.size < 1048576 ? `${ext} · ${(f.size / 1024).toFixed(1).replace('.', ',')} KB` : `${ext} · ${(f.size / 1048576).toFixed(1).replace('.', ',')} MB`; };
+let FILE_LANG = 'uz';   // the language of the payload being applied (units: KB / КБ)
+const unitT = k => (I18N[FILE_LANG] && I18N[FILE_LANG][k]) || I18N.uz[k];
+const fileLabel = f => { const ext = (f.name.split('.').pop() || '').toUpperCase(); return f.size < 1024 ? `${ext} · ${f.size} ${unitT('unit.b')}` : f.size < 1048576 ? `${ext} · ${Math.round(f.size / 1024)} ${unitT('unit.kb')}` : `${ext} · ${(f.size / 1048576).toFixed(1).replace('.', ',')} ${unitT('unit.mb')}`; };   // one style everywhere: "PDF · 358 KB" (whole KB, MB with one decimal)
 const fo = (n, f) => f ? {slug: sid(f.slug), name: f.name, label: typeof f.label === 'string' ? f.label : '', size: fileLabel(f), url: `${API}/lesson/${n}/doc/${encodeURIComponent(f.slug)}`} : null;   // name + size + the download URL; the server path never reaches the client
 
 function makeC20(by){   // the open blocks of each lesson (Amaliyot, Kit, Vazifa) in the shape buildData() reads
@@ -99,6 +101,7 @@ function applyLessons(ls, lsUz, lang){
     L[n] = {n, num: l.num !== undefined ? l.num : l.n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), start: l.start || null, lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length, outs: (l.outcomes || []).length};
   }
   LESSONS = L;
+  FILE_LANG = LANGS.includes(lang) ? lang : LANG;
   const D = I18N[LANGS.includes(lang) ? lang : LANG];   // platform text of the payload's language (lesson metadata and the prep checklist come translated from the API)
   for (const l of lessons) { const n = l.n; D[`lesson.${n}.title`] = l.title; D[`lesson.${n}.sub`] = l.subtitle; D[`lesson.${n}.lede`] = l.summary; (l.topics || []).forEach((x, i) => { D[`lesson.${n}.t${i}`] = x; }); (l.outcomes || []).forEach((x, i) => { D[`lesson.${n}.o${i}`] = x; }); }
   const pr = by[0] && by[0].prep;

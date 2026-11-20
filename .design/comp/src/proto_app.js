@@ -21,7 +21,7 @@ const lnum = n => LESSONS[n].num;   // the curriculum number 1..N, or null: Tayy
 const RN = () => LN().filter(n => lnum(n) != null);   // the numbered lessons: only these count in the ring, the course size and the all-done check
 const lnT = n => lnum(n) == null ? ltitle(n) : t('lesson.n', {n: num2(lnum(n))});   // "01-dars" / "Урок 01" / "Lesson 01", or "Kirish"
 const lnH = n => esc(lnT(n));
-const lessonLabel = n => lnum(n) == null ? `${T('lesson.extra')} · ${esc(lessonDate(n))}`   // Kirish: "Qoʻshimcha dars", never its own name twice (the card title already says it)
+const lessonLabel = n => lnum(n) == null ? esc(lessonDate(n))   // Kirish: its date only ("Qoʻshimcha" is the tag of the optional tracks, nothing else)
    : T('lesson.label', {n: num2(lnum(n)), date: lessonDate(n)});
 const colCls = n => LCOL[n] === 'dark' ? 'c-night' : 'c-' + LCOL[n];   // an unlocked dark lesson keeps its dark identity, with normal (white) ink
 //#GATE:begin   (the app replaces this block: the server says which lesson is live and which parts are open, see app_state.js)
@@ -97,7 +97,7 @@ const nav = active => `<header class="nav">
 </header>`;
 const fsize = f => f.size || t('common.sample_file');
 const fileMeta = (f, extra) => [extra ? `<span class="sent">${extra.html ?? esc(extra)}</span>` : '', f.size ? esc(f.size) : ''].filter(Boolean).join(' · ');
-const fa = f => f.url ? `href="${esc(f.url)}" target="_blank" rel="noopener noreferrer"` : `href="#/fayl/${f.slug}"`;   // the prototype opens a file page, the app downloads from the API
+const fa = f => f.url ? `href="${esc(f.url)}" download="${esc(f.name)}"` : `href="#/fayl/${f.slug}"`;   // the prototype opens a file page, the app downloads from the API
 const fileRow = (f, extra) => `<li><a class="ef-row" ${fa(f)}><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${wbr(f.name)}${f.ph ? NSTAG() : ''}</span>${fileMeta(f, extra) ? `<span class="ef-mt">${fileMeta(f, extra)}</span>` : ''}</span><span class="ef-dl">${I('down', 18)}</span></a></li>`;
 const rowLink = (href, name, meta, markHTML) => `<li><a class="ef-row" href="${href}"><span><span class="ef-nm">${name}</span>${meta ? `<span class="ef-mt sent">${meta}</span>` : ''}</span><span class="xm">${markHTML || ''}${I('next')}</span></a></li>`;
 const group = (h, body, hint, note, extra) => `<section class="grp"><h2 class="ef-h">${h}</h2>${note ? `<p class="ef-hint">${note}</p>` : ''}<ul>${body}</ul>${hint ? `<p class="ef-hint">${hint}</p>` : ''}${extra || ''}</section>`;
@@ -118,14 +118,14 @@ function homePage(){
   const courseCard = () => `<li class="g-course fo"><button class="folder c-course" type="button" data-lock="course"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><svg class="f-biglock" viewBox="0 0 64 64" aria-hidden="true"><path d="M21 29V20a11 11 0 0 1 22 0v9" fill="none" stroke="#000" stroke-width="6"/><rect x="12" y="27" width="40" height="31" rx="6" fill="#000"/><circle cx="32" cy="40" r="4" fill="#002EFF"/><rect x="30" y="41" width="4" height="9" rx="2" fill="#002EFF"/></svg><span class="f-top"></span>
         <span class="f-row"><span class="f-title">${T('course.title', {n: RN().length, pl: RN().length})}</span><span class="f-note">${I('lock', 14)}${T(LESSONS[1].d ? 'date.opens' : 'date.tba', {date: lessonDate(1)})}</span></span></button>${fxH('c-course')}</li>`;
   const flagH = n => LCOL[n] === 'cream' ? '<svg class="f-flag" aria-hidden="true"><use href="#i-flag"/></svg>'   // the finish flag of the last lesson: decorative, bottom right, in every state
-    : lnum(n) === 1 ? '<svg class="f-flag f-start" viewBox="0 0 100 34" aria-hidden="true"><use href="#i-start"/><text x="50" y="15.5" text-anchor="middle">START</text></svg>' : '';   // its twin on lesson 01: two flags with START between
+    : lnum(n) === 1 ? '<svg class="f-flag f-start" viewBox="0 0 100 34" aria-hidden="true"><use href="#i-start"/></svg>' : '';   // its twin on lesson 01: two flags, no word between them (2.6: the English START is gone)
   const cardHTML = n => {
     const tab = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`, arrow = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`;
-    const label = n === 0 ? (!courseStarted() && LESSONS[0].d ? T('date.until', {date: lessonDate(0)}) : T('lesson.label0')) : lessonLabel(n);   // before the course the date stands alone (the title already says what it is)
+    const label = n === 0 ? (!courseStarted() && LESSONS[0].d ? T('date.until', {date: lessonDate(0)}) : '') : lessonLabel(n);   // before the course the date stands alone; after it the setup card has no label (the title already says what it is)
     let note, href = `#/dars/${n}`;
     if (n === 0) { const pt = prepTotal(); note = k === pt ? `${I('check', 14)}${T('note.prep_done')}` : T('note.prep_open', {d: k, t: pt, pl: pt}); }
     else if (isLocked(n)) {   // before its date: the lesson keeps its own colour, with a lock and the date (once, in the note)
-      return `<li class="g-${LCOL[n]} fo"><button class="folder c-${LCOL[n]}" type="button" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${lnum(n) == null ? T('lesson.extra') : lnH(n)}</span></span>
+      return `<li class="g-${LCOL[n]} fo"><button class="folder c-${LCOL[n]}" type="button" data-lock="${n}">${tab}<span class="f-top"><span class="f-label">${lnum(n) == null ? '' : lnH(n)}</span></span>
         <span class="f-row"><span><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-sub">${T(`lesson.${n}.sub`)}</span></span><span class="f-note">${I('lock', 14)}${T(LESSONS[n].d ? 'date.opens' : 'date.tba', {date: lessonDate(n)})}</span></span>${flagH(n)}</button>${fxH('c-' + LCOL[n])}</li>`;
     } else {
       const [d, tt] = lProg(n);
@@ -136,7 +136,7 @@ function homePage(){
     }
     return `<li class="g-${LCOL[n]} fo"><a class="folder ${colCls(n)}" href="${href}">${tab}<span class="f-top"><span class="f-label">${label}</span>${arrow}</span><span class="f-row"><span class="f-title">${T(`lesson.${n}.card`)}</span><span class="f-note">${note}</span></span>${flagH(n)}</a>${fxH(colCls(n))}</li>`;
   };
-  const optCard = () => `<li class="g-yellow fo"><a class="folder c-yellow" href="#/kursgacha"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><span class="f-top"><span class="f-label">${T('pre.label')}</span><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span><span class="f-row"><span class="f-title">${T('prep.title')}</span><span class="f-note">${T('pre.sub')}</span></span></a>${fxH('c-yellow')}</li>`;
+  const optCard = () => `<li class="g-yellow fo"><a class="folder c-yellow" href="#/kursgacha"><span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span><span class="f-top"><svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg></span><span class="f-row"><span class="f-title">${T('prep.title')}</span><span class="f-sub">${T('pre.sub')}</span></span></a>${fxH('c-yellow')}</li>`;
   let ringPrev = null; try { ringPrev = sessionStorage.getItem('aip3.ring'); sessionStorage.setItem('aip3.ring', rd); } catch (e) {}
   const ringUp = ringPrev !== null && rd > +ringPrev, ringFrom = ringUp ? +ringPrev / rt * 100 : 0;   // animate only a rise, from where it was
   const arrowH = `<svg class="f-arrow" aria-hidden="true"><use href="#i-ne"/></svg>`, tabH = `<span class="tab"><svg class="ramp" aria-hidden="true"><use href="#i-ramp"/></svg></span>`;
@@ -144,8 +144,8 @@ function homePage(){
   let hero = '', cta = '', headCol = LCOL[0];
   if (pre) {   // before lesson 1: the prep card is the hero, and the one next step is the first open prep item
     const first = PREP.items.findIndex((_, i) => !S.has('prep:' + i));
-    hero = `<div class="fo now-card"><a class="folder ${colCls(0)}" href="#/dars/0">${tabH}<span class="f-top"><span class="f-label">${LESSONS[0].d ? T('date.until', {date: lessonDate(0)}) : T('lesson.label0')}</span>${arrowH}</span>
-        <span><span class="f-title">${T('lesson.0.card')}</span><span class="f-sub">${k === prepTotal() ? T('note.prep_done') : T('note.prep_open', {d: k, t: prepTotal(), pl: prepTotal()})}</span></span></a>${fxH(colCls(0))}</div>`;   // audit #6: the required setup comes first; the optional page is a plain yellow card in the grid
+    hero = `<div class="fo now-card"><a class="folder ${colCls(0)}" href="#/dars/0">${tabH}<span class="f-top"><span class="f-label">${LESSONS[0].d ? T('date.until', {date: lessonDate(0)}) : ''}</span>${arrowH}</span>
+        <span><span class="f-title">${T('lesson.0.card')}</span><span class="f-note">${k === prepTotal() ? T('note.prep_done') : T('note.prep_open', {d: k, t: prepTotal(), pl: prepTotal()})}</span></span></a>${fxH(colCls(0))}</div>`;   // audit #6: the required setup comes first; the optional page is a plain yellow card in the grid
     if (first >= 0) cta = pill(`${T('next.k')}: ${T('next.prep', {title: HT(T(`prep.${first}.title`))})}`, '#/dars/0');
     else if (PREP.more) cta = pill(`${T('next.k')}: ${T('prep.more.title')}`, '#/kursgacha');
   } else if (live) {
@@ -153,7 +153,7 @@ function homePage(){
     const nxl = nextOf(live), slSub = !L.slides ? stepsText(d, tt) : s === 0 ? T('hero.sub_start', {n: L.slides}) : s >= L.slides ? T('hero.sub_seen', {n: L.slides}) : T('hero.sub', {i: s, n: L.slides}), sub = tt === 0 ? T('lesson.soon') : nxl && !/\/slayd\//.test(nxl.href) ? nxl.what : slSub, href = nxl ? nxl.href : `#/dars/${live}`;   // the hero opens today's next step ("continue" only when something was seen)
     headCol = LCOL[live];
     hero = `<div class="fo now-card"><a class="folder ${colCls(live)}" href="${href}">${tabH}<span class="f-top"><span class="f-label">${T('hero.k')}<br>${lessonLabel(live)}</span>${arrowH}</span>
-        <span><span class="f-title">${T(`lesson.${live}.card`)}</span><span class="f-sub">${sub}</span></span></a>${fxH(colCls(live))}</div>`;
+        <span><span class="f-title">${T(`lesson.${live}.card`)}</span><span class="f-note">${sub}</span></span></a>${fxH(colCls(live))}</div>`;
   }
   if (!pre && !live && courseOver()) cta = `<p class="lede next course-end">${T('next.course_end')}</p>`;   // audit #11: the course is over: a closing line instead of a next step (no setup suggestion)
   else if (!pre && ns) cta = pill(`${T(live ? 'next.k_backlog' : 'next.k')}: ${ns.label}`, ns.href);
@@ -179,7 +179,7 @@ function prepPdf(){   // the guide PDF of the current UI language (uz when that 
 function prepFileRow(){
   const p = prepPdf();
   if (!p) return fileRow(F('prep-' + LANG + '.pdf'), t('prep.pdf'));   // TODO: no prep-xx.pdf in comp/files yet: a sample row
-  const name = `prep-${p.lang}.pdf`;
+  const name = (I18N[p.lang] && I18N[p.lang]['prep.pdf_file']) || I18N.uz['prep.pdf_file'];   // the download name follows the guide's language (5.3)
   const tag = p.url ? `a class="ef-row" href="${p.url}" download="${name}"` : 'button class="ef-row" type="button"';   // embedded PDF = a button (no dead href)
   return `<li><${tag} data-pdf="${p.lang}" data-name="${name}"><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${T('prep.guide_name')}</span><span class="ef-mt">${T('prep.pdf_meta', {size: p.size})}</span></span><span class="ef-dl">${I('down', 18)}</span></${tag.split(' ')[0]}></li>`;
 }
@@ -192,7 +192,7 @@ document.addEventListener('click', e => {   // embedded PDF: build the file from
 });
 //#PROTO:end prepfile
 const PREP_CMD = (i, j) => (PREP_CMDS[i] || {})[j] || '';   // an install command shown under its step: a mono row with its own copy button (copying ticks nothing)
-const cmdRow = (i, j) => { const c = PREP_CMD(i, j); return c ? `<div class="cmd"><code tabindex="0" aria-label="${esc(c)}">${esc(c)}</code><button class="cmd-cp" type="button" data-cmd="${esc(c)}" aria-label="${esc(t('prep.cmd_copy'))}">${I('copy', 20)}</button></div>` : ''; };
+const cmdRow = (i, j) => { const c = PREP_CMD(i, j); return c ? `<div class="cmd"><code tabindex="0" aria-label="${esc(c)}">${esc(c)}</code><button class="cmd-cp" type="button" data-cmd="${esc(c)}" aria-label="${esc(t('prep.cmd_copy'))}">${I('copy', 20)}<span class="cpl">${T('common.copy')}</span></button></div>` : ''; };
 document.addEventListener('click', async e => { const b = e.target.closest('.cmd-cp'); if (!b) return; flashToast((await copy(b.dataset.cmd)) ? (b.dataset.toast || 'toast.cmd_copied') : 'toast.copy_failed'); });
 const deckCols = open => open < 0 ? `repeat(${prepTotal()},minmax(0,1fr))` : PREP.items.map((_, i) => i === open ? '2fr' : '1fr').join(' ');
 function prepPage(){
@@ -201,7 +201,7 @@ function prepPage(){
   const cards = PREP.items.map((it, i) => {
     const d = done[i], o = i === open, acts = it.actions || [];
     const ext = `<span class="sr-only"> ${T('common.sr_external')}</span>`;
-    return `<li class="folder flatc c-claude pc${o ? ' open' : ''}${d ? ' done' : ''}" id="pc${i}" data-i="${i}" style="--vt:pc${i}"><button class="hd" type="button" id="ph${i}" aria-expanded="${o}" aria-controls="pb${i}" aria-labelledby="pt${i}" aria-describedby="pn${i}"><span class="no">${num2(i + 1)}</span><span class="f-title" id="pt${i}">${T(`prep.${i}.title`)}</span><span class="pic">${PREP_ART[i]}</span><span class="nt" id="pn${i}">${T(`prep.${i}.note`)}<span class="stp">${T('prep.steps_n', {n: it.steps, pl: it.steps})}<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></button>
+    return `<li class="folder flatc c-claude pc${o ? ' open' : ''}${d ? ' done' : ''}" id="pc${i}" data-i="${i}" style="--vt:pc${i}"><button class="hd" type="button" id="ph${i}" aria-expanded="${o}" aria-controls="pb${i}" aria-labelledby="pt${i}" aria-describedby="pn${i}"><span class="f-title" id="pt${i}">${T(`prep.${i}.title`)}</span><span class="pic">${PREP_ART[i]}</span><span class="nt" id="pn${i}">${T(`prep.${i}.note`)}<span class="stp">${T('prep.steps_n', {n: it.steps, pl: it.steps})}<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></button>
       <div class="bd" id="pb${i}" role="region" aria-labelledby="pt${i}"${o ? '' : ' hidden'}><ol class="steps">${Array.from({length: it.steps}, (_, j) => `<li>${T(`prep.${i}.s${j}`)}${cmdRow(i, j)}</li>`).join('')}</ol>
         ${acts.length ? `<div class="acts">${acts.map((a, j) => a.quiet
           ? `<a class="pc-lk" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${T(`prep.${i}.a${j}`)}${I('ne', 18)}${ext}</a>`
@@ -210,9 +210,9 @@ function prepPage(){
       <div class="pf"><button class="chip${d ? '' : ' off'}" type="button" aria-pressed="${d}" aria-label="${esc(t('common.mark_done'))}" aria-describedby="pt${i}"><span class="cl">${T('common.done')}</span></button></div></li>`;
   }).join('');
   return {screen: 'ex', tag: '#/dars/0 · ' + t('tag.prep'), title: t('setup.title'), html: nav('prep') + wrap(`
-      ${dlh('#/dastur', T('nav.home'), `${T('prep.meta')}: ${cnt('prep')}`)}
-      <h1 class="headline ex-h">${T('setup.title')}</h1>${prepCount() === prepTotal() ? '' : `<p class="lede">${courseStarted() && prepTotal() - prepCount() <= 2 ? T('prep.left', {n: prepTotal() - prepCount(), pl: prepTotal() - prepCount(), titles: PREP.items.map((_, i) => S.has('prep:' + i) ? '' : t(`prep.${i}.title`)).filter(Boolean).join(', ')}) : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>`}
-      <div class="ex-files"><section class="grp"><h2 class="ef-h">${T('common.guide')}</h2><ul>${prepFileRow()}</ul></section></div>`,
+      ${dlh('#/dastur', T('nav.home'))}
+      <h1 class="headline ex-h">${T('setup.title')}</h1><p class="lmeta">${cnt('prep')}</p>${prepCount() === prepTotal() ? '' : `<p class="lede">${courseStarted() && prepTotal() - prepCount() <= 2 ? T('prep.left', {n: prepTotal() - prepCount(), pl: prepTotal() - prepCount(), titles: PREP.items.map((_, i) => S.has('prep:' + i) ? '' : t(`prep.${i}.title`)).filter(Boolean).join(', ')}) : T(courseStarted() ? 'prep.intro_late' : LESSONS[0].d ? 'prep.intro' : 'prep.intro_tba', {date: lessonDate(0)})}</p>`}
+      <div class="ex-files"><section class="grp"><h2 class="ef-h sr-only">${T('prep.guide_name')}</h2><ul>${prepFileRow()}</ul></section></div>`,
     `<section class="prep" aria-label="${esc(t('prep.list.k'))}"><ol class="deck" id="deck" style="--cols:${deckCols(open)}">${cards}</ol></section>
       <div class="prep-end" id="prep-end"${prepCount() === prepTotal() ? '' : ' hidden'}><p class="pe-t">${T(courseStarted() ? 'prep.end_after' : LESSONS[1].d ? 'prep.end_before' : 'prep.end_tba', {date: lessonDate(1)})}</p><a class="play" href="#/dastur"><span>${T('prep.end_back')}</span><span class="play-circ">${I('next', 20)}</span></a></div>`)};
 }
@@ -289,7 +289,7 @@ const iaBody = (l, i) => { const card = iaCard(l, i);
   const left = l.video ? `<div class="vp-host" data-src="${esc(l.video)}" data-poster="${esc(l.poster || '')}"></div>${iaDesc(i)}`
     : `${iaDesc(i)}<a class="pill-cta kg-open" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span>${T('pre.open')}<span class="sr-only"> ${T('common.sr_external')}</span></span><span class="pill-circ">${I('ne', 20)}</span></a>`;
   return `<div class="ia-c${card ? ' has-card' : ''}${l.code ? ' has-code' : ''}"><div class="ia-l">${left}</div>${card}</div>`; };
-const iaRow = (l, i) => `<li class="ia-row" data-i="${i}"><button class="ia-hd" type="button" id="ia-h${i}" aria-expanded="false" aria-controls="ia-p${i}"><span class="ia-ic" aria-hidden="true">${I(l.video ? 'play' : 'ne', 18)}</span><span class="ia-no">${i + 1}</span><span class="ia-tt"><span class="ia-t">${esc(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.s`) ? `<span class="ia-s">${esc(t(`prep.more.${i}.s`))}</span>` : ''}</span><i class="ia-chv" aria-hidden="true"></i></button><div class="ia-p" id="ia-p${i}" role="region" aria-labelledby="ia-h${i}"><div class="ia-in"><div class="ia-body">${iaBody(l, i)}</div></div></div></li>`;
+const iaRow = (l, i) => `<li class="ia-row" data-i="${i}"><button class="ia-hd" type="button" id="ia-h${i}" aria-expanded="false" aria-controls="ia-p${i}"><span class="ia-ic" aria-hidden="true">${I(l.video ? 'play' : 'ne', 18)}</span><span class="ia-tt"><span class="ia-t">${esc(t(`prep.more.${i}.t`))}</span>${t(`prep.more.${i}.s`) ? `<span class="ia-s">${esc(t(`prep.more.${i}.s`))}</span>` : ''}</span><i class="ia-chv" aria-hidden="true"></i></button><div class="ia-p" id="ia-p${i}" role="region" aria-labelledby="ia-h${i}"><div class="ia-in"><div class="ia-body">${iaBody(l, i)}</div></div></div></li>`;
 function iaPaint(ul){
   const rows = [...ul.children], last = rows.length - 1, a = iaOpen;
   rows.forEach((r, i) => { const open = a === i;
@@ -358,12 +358,6 @@ document.addEventListener('visibilitychange', () => document.documentElement.cla
 const partWhen = iso => /^\d{4}-\d\d-\d\dT\d\d:\d\d/.test(iso || '') ? {date: fmtDate(+iso.slice(8, 10), +iso.slice(5, 7)), time: iso.slice(11, 16)} : {date: '…', time: '…'};   // iso with the Tashkent offset: its own date and clock time
 const lockedPane = iso => `<p class="p-label">${T('part.locked')}</p><div><p class="p-sub">${T('part.opens', partWhen(iso))}</p></div>`;
 const tabOfHref = h => { const m = /[?&]tab=(sl|am|kt|vz)\b/.exec(h || ''); return m ? m[1] : /\/slayd\//.test(h || '') ? 'sl' : null; };
-// prompt chips (M3, user 2026-10-30): the title on a pill with a copy button; tapping the pill opens "Qayerga" and the full text. Same li / .no / .tx[data-raw] / .cp hooks as the old lilac rows, so copy = done (p:l{n}:{id}), the toast and undo work unchanged. The text stays Uzbek. Not counted in the lesson's units
-function chipList(n, gkey, g){
-  return `<ol class="s1 pchips">${g.prompts.map((q, j) => { const k = `${gkey}.p${j}`, key = `p:l${n}:${q.kid}`, title = cu(`${k}.t`);
-    return `<li class="${S.has(key) ? 'done' : ''}" data-i="${j}" data-pid="${q.kid}" data-key="${key}" data-t="${esc(title)}"><details class="pchip"><summary><span class="no">${esc(q.id || 'P' + (j + 1))}</span><span class="tt">${cuh(`${k}.t`)}</span></summary>${q.target ? `<p class="to"><b>${T('lbl.where')}</b> ${cuh(`${k}.w`)}</p>` : ''}<p class="tx" data-raw="${esc(cu(`${k}.x`))}">${cxh(`${k}.x`, I18N.uz[`${k}.x`], x => mark(esc(x)))}</p></details><button class="cp" type="button" aria-label="${esc(t('common.copy_aria', {title}))}"><span class="cp-c">${I('copy', 16)}</span><span class="cpl">${T('common.copy')}</span></button></li>`; }).join('')}</ol>`;   // UX audit S6-14: the copy button is next to the <details>, not inside its <summary>
-}
-document.addEventListener('click', e => { if (e.target.closest('.pchip summary .toast')) e.preventDefault(); });   // undoing never opens or closes the chip
 // a group note "ASOSIY. lead 1) a 2) b Tayyor, agar: c" -> {tag, lead, steps, ready}: display only, the stored text never changes
 function noteParts(s){
   let n = String(s || '').trim(), tag = '', ready = '';
@@ -372,31 +366,115 @@ function noteParts(s){
   const ps = n.split(/\s*(?=\b\d\)\s)/), lead = /^\d\)\s/.test(ps[0]) ? '' : ps.shift();
   return {tag, lead: (lead || '').trim(), steps: ps.map(x => x.replace(/^\d\)\s*/, '').trim()).filter(Boolean), ready};
 }
-// one group = one stop on the roadmap (M3, user 2026-10-30): the number in a dot on the line, then title, steps, file chips and prompt chips
 // audit #3: "03B BILAN BIRIDAN BIRI" -> "03B bilan biridan biri", "QOʻSHIMCHA" -> "Qoʻshimcha" (display only)
 const tagText = s => s.split(' ').map((w, i) => /^\d/.test(w) ? w : i ? w.toLowerCase() : w[0] + w.slice(1).toLowerCase()).join(' ');
-function groupRow(n, key, g, i, showTag){
-  const gk = `${key}.g${i}`, m = /^(\d+[A-Z]?)\.?\s+(.+)$/.exec(cu(gk)), no = m ? (/^\d+$/.test(m[1]) ? num2(+m[1]) : m[1]) : '', title = m ? m[2] : cu(gk);
-  const np = noteParts(g.note ? cu(`${gk}.n`) : ''), lg = cxFb(`${gk}.n`) || cxFb(gk) ? ' lang="uz-Latn"' : '';
-  const kt = LESSONS[n] && LESSONS[n].parts.includes('kt') && !partLock(n, 'kt'), lk = h => kt ? h.replace(/Kit boʻlimi(da|dan|dagi)/g, (w) => `<a class="kt-link" href="#/dars/${n}?tab=kt">${w}</a>`) : h;   // UX audit S6-7
-  const steps = `${np.lead ? `<p class="m3-lead">${lk(esc(np.lead))}</p>` : ''}${np.steps.length ? `<ol class="m3-steps">${np.steps.map(x => `<li>${lk(esc(x))}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="m3-ready">Tayyor, agar ${esc(np.ready)}</p>` : ''}`;
-  const md = g.files.some(f => /\.md$/i.test(f.name || ''));   // UX audit S6-8: .md files open as raw text on most phones
-  const files = g.files.length ? `<div class="fchips">${g.files.map(f => `<a class="fchip" ${fa(f)}><span class="sr-only">${T('common.sr_download')}</span>${I('down', 16)}<span>${wbr(f.label || f.name)}</span>${f.size ? `<span class="fz">${esc(f.size)}</span>` : ''}</a>`).join('')}</div>${md ? `<p class="f-hint">${T('files.md_hint')}</p>` : ''}` : '';
-  return `<section class="m3"${lg}><span class="m3-dot" aria-hidden="true">${esc(no)}</span><div class="m3-b">${showTag && np.tag ? `<div class="m3-th"><h3 class="m3-t">${esc(title)}</h3><span class="m3-tag">${esc(tagText(np.tag))}</span></div>` : `<h3 class="m3-t">${esc(title)}</h3>`}${steps}${files}${g.prompts.length ? chipList(n, gk, g) : ''}</div></section>`;
+const groupTitle = s => { const m = /^(\d+[A-Z]?)\.?\s+(.+)$/.exec(s); return m ? m[2] : s; };   // "03A Title" -> "Title": the title without its number (numbers are not shown anywhere)
+// ---- Sections as cards (user, 2026-11-20 / 21): every Amaliyot, Kit and Vazifa pane shows one card per group (sections are sequential: card order = doing order) with the chosen
+// section docked beside the cards (a full screen of its own on phones). A pane with one group is only its panel. The Kirish Amaliyot is the same, with the tracks as cards (Trk).
+// Trk trigger: at least two groups carry a "NN[a-z]-...-yoriqnoma" file (only lesson 2, Kirish, does); the area name comes from that slug prefix.
+// The chosen section is in the URL (?tab=kt&s=s2) and the last one opened is remembered per pane (an id only, never a student id).
+const D3_AREA = {'01': 'hr', '02': 'savdo', '03a': 'servis', '03b': 'ombor', '04': 'marketing', '05': 'xarid', '06': 'rahbar'};
+const d3Id = g => { const f = g.files.find(x => /-yoriqnoma$/.test(x.slug)), m = f && /^(\d+[a-z]?)-/.exec(f.slug); return (m && D3_AREA[m[1]]) || ''; };
+const isD3 = (p, groups) => p === 'am' && groups.filter(g => d3Id(g)).length >= 2;
+const D3_PREFIX = 'aip3.d3';   // browser storage: "aip3.d3.<lesson>.<tab>" = a section id. Logout and a 401 remove them (d3Forget)
+const d3Key = (n, tab) => `${D3_PREFIX}.${n}.${tab}`;
+const d3Last = (n, tab) => { try { return localStorage.getItem(d3Key(n, tab)); } catch { return null; } };
+const d3Save = (n, tab, id) => { try { localStorage.setItem(d3Key(n, tab), id); } catch {} };
+function d3Forget(){ try { Object.keys(localStorage).filter(k => k.startsWith(D3_PREFIX)).forEach(k => localStorage.removeItem(k)); } catch {} }
+const d3Tag = note => {   // the note's tag as a short card tag: ASOSIY / 03B BILAN BIRIDAN BIRI / QOʻSHIMCHA / NAMOYISH YOKI UYGA VAZIFA
+  const tg = noteParts(note).tag, or = /^(\d+[A-Z]) BILAN BIRIDAN BIRI/.exec(tg);
+  return /^ASOSIY/.test(tg) ? t('d3.tag.main') : or ? t('d3.tag.or', {area: t('d3.area.' + D3_AREA[or[1].toLowerCase()])}) : /^QO.SHIMCHA/.test(tg) ? t('d3.tag.extra') : /^NAMOYISH/.test(tg) ? t('d3.tag.demo') : tg ? tagText(tg) : '';
+};
+// the footer of a card: the tag and the prompt count, or the yellow progress ("2/4"), or "Bajarildi 4/4"; d3Paint() redraws it after every copy. tt = 0: no prompts, so no bar: only a quiet label (alt = "qadamlar" for numbered steps, "n fayl" for files, nothing for plain text)
+const d3Foot = (tag, d, tt, alt) => !tt ? (alt ? `<span class="ct">${alt}</span>` : '')
+  : d >= tt ? `<span class="ok">${I('check', 14)}<span class="sr-only">${T('common.done')} </span></span><span class="bar"><b style="width:100%"></b></span><span class="ct">${d}/${tt}</span>`
+  : d ? `${tag ? `<span class="tg">${esc(tag)}</span>` : ''}<span class="bar"><b style="width:${Math.round(d / tt * 100)}%"></b></span><span class="ct">${d}/${tt}</span>`
+  : `${tag ? `<span class="tg">${esc(tag)}</span>` : ''}<span class="bar"></span><span class="ct">${T('d3.n_prompts', {n: tt, pl: tt})}</span>`;
+function d3Paint(){
+  document.querySelectorAll('.d3 .k[data-tt]').forEach(c => { const p = document.getElementById(c.getAttribute('aria-controls')), d = p ? p.querySelectorAll('.d3r li.done').length : 0; c.querySelector('.pr').innerHTML = d3Foot(c.dataset.tag, d, +c.dataset.tt); });
 }
-// Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups as roadmap stops; Amaliyot and Vazifa end with a tick
+// prompt rows: the whole row is the toggle (P-number, title, chevron); open = "Qayerga" chip, the text in a code block, and a white "Nusxalash" button under it.
+// The li / .no / .tt / <details> / .tx[data-raw] / .cp hooks are the old ones, so copy = done, the toast with undo and the live messages are the old code; the button only shows while its row is open (CSS)
+const D3_CHAT = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 3.5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H7l-3 3v-3h-.5a1 1 0 0 1-1-1z"/></svg>';   // the "this is a prompt" mark of the P badge
+const d3Rows = (n, gk, g) => `<ol class="s1 d3r">${g.prompts.map((q, j) => { const k = `${gk}.p${j}`, key = `p:l${n}:${q.kid}`, title = cu(`${k}.t`);
+  return `<li class="${S.has(key) ? 'done' : ''}" data-i="${j}" data-pid="${q.kid}" data-key="${key}" data-t="${esc(title)}"><details class="pchip"><summary><span class="no">${D3_CHAT}P${j + 1}</span><span class="tt">${cuh(`${k}.t`)}</span><span class="d3-oc" aria-hidden="true"><span class="o">${T('d3.open')}</span><span class="c">${T('d3.close')}</span></span><span class="d3-dn sr-only"> · ${T('common.copied')}</span></summary>${q.target ? `<p class="to"><b>${T('lbl.where')}</b> ${cuh(`${k}.w`)}</p>` : ''}<p class="tx" data-raw="${esc(cu(`${k}.x`))}">${cxh(`${k}.x`, I18N.uz[`${k}.x`], x => mark(esc(x)))}</p></details><button class="cp" type="button" aria-label="${esc(t('common.copy_aria', {title}))}"><span class="cp-c">${I('copy', 18)}</span><span class="cpl">${T('common.copy')}</span></button></li>`; }).join('')}</ol>`;
+const d3Step = (i, h, hint) => `<p class="d3-st"><i aria-hidden="true">${i}</i><span>${h}${hint ? `<small>${hint}</small>` : ''}</span></p>`;
+const d3Dl = f => `<span class="sr-only">${T('common.sr_download')}</span>${I('down', 20)}<span class="d3-nm">${wbr(f.label || f.name)}</span><span class="m">${esc(f.size || '')}</span>`;
+const d3Files = fs => `<ul class="d3-fl">${fs.map(f => `<li><a class="d3-fr" ${fa(f)}>${d3Dl(f)}</a></li>`).join('')}</ul>${fs.some(f => /\.md$/i.test(f.name || '')) ? `<p class="f-hint">${T('files.md_hint')}</p>` : ''}`;
+function d3Pane(n, p, key, b, intro, text, end){
+  const q = parseHash().q, tq = q.get('tab') === p ? q.get('s') : null, pq = q.get('p'), trk = isD3(p, b.groups);
+  const tracks = b.groups.map((g, i) => ({g, i, id: d3Id(g)})).filter(x => x.id), com = b.groups.map((g, i) => ({g, i, id: 'all' + (i || '')})).filter(x => !x.g.prompts.length && !d3Id(x.g) && x.g.files.length);
+  const list = trk ? [...tracks, ...com] : b.groups.map((g, i) => ({g, i, id: 's' + (i + 1)})), ids = list.map(x => x.id), solo = list.length === 1;
+  let sel = ids.includes(tq) ? tq : (list.find(x => x.g.prompts.some(y => y.kid === pq)) || {}).id; const view = sel ? 'track' : 'grid';   // ?p= (a deep link to a prompt) also opens its section
+  if (!sel) { const l = d3Last(n, p); sel = ids.includes(l) ? l : ids[0]; }
+  const kt = LESSONS[n].parts.includes('kt') && !partLock(n, 'kt'), lk = h => kt ? h.replace(/Kit boʻlimi(da|dan|dagi)/g, w => `<a class="kt-link" href="#/dars/${n}?tab=kt">${w}</a>`) : h;   // UX audit S6-7: the words "Kit boʻlimida" link to the Kit tab
+  const lg = x => cxFb(`${key}.g${x.i}`) || cxFb(`${key}.g${x.i}.n`) ? ' lang="uz-Latn"' : '', ttl = x => groupTitle(cu(`${key}.g${x.i}`)), isT = x => trk && !!d3Id(x.g), pid = (x, a) => `${a}-${p}-${x.id}`;
+  const parts = x => noteParts(x.g.note ? cu(`${key}.g${x.i}.n`) : '');
+  const cards = solo ? '' : list.map(x => { const tr = isT(x), tag = tr ? d3Tag(cu(`${key}.g${x.i}.n`)) : '', np = parts(x), pc = x.g.prompts.length, d = x.g.prompts.filter(y => S.has(`p:l${n}:${y.kid}`)).length;
+    const alt = np.steps.length ? t('d3.steps') : x.g.files.length ? t('d3.n_files', {n: x.g.files.length, pl: x.g.files.length}) : '', area = tr ? t('d3.area.' + x.id) : trk ? t('d3.all') : '';
+    const name = tr ? `<span class="ar${area.length > 9 ? ' long' : ''}">${esc(area)}</span><span class="tt"${lg(x)}>${esc(ttl(x))}</span>` : trk ? `<span class="ar${area.length > 9 ? ' long' : ''}">${esc(area)}</span><span class="tt"${lg(x)}>${esc(x.g.files.map(f => f.label || f.name).join(', '))}</span>` : `<span class="ar"${lg(x)}>${esc(ttl(x))}</span>`;
+    return `<button class="k${trk && !tr ? ' ghost' : ''}" type="button" data-go="${x.id}" aria-pressed="${x.id === sel}" aria-controls="${pid(x, 'd3p')}"${pc ? ` data-tt="${pc}" data-tag="${esc(tag)}"` : ''}>${name}<span class="pr">${trk && !tr ? T('d3.n_files', {n: x.g.files.length, pl: x.g.files.length}) : d3Foot(tag, d, pc, esc(alt))}</span></button>`; }).join('');
+  const nextTitle = x => isT(x) ? `${t('d3.area.' + x.id)} · ${ttl(x)}` : trk ? t('d3.all') : ttl(x);
+  const panel = (x, ix) => { const tr = isT(x), gk = `${key}.g${x.i}`, np = parts(x), nx = list[ix + 1];
+    const yo = x.g.files.find(f => /-yoriqnoma$/.test(f.slug)), pdf = x.g.files.find(f => /-promptlar-pdf$/.test(f.slug)), src = x.g.files.filter(f => f !== yo && f !== pdf); let s = 0;
+    const lead = np.lead ? `<p class="d3-desc">${lk(esc(np.lead))}</p>` : '';
+    const body = tr ? `<div class="d3-two">${yo ? `<div>${d3Step(++s, T('d3.s1'), T('d3.s1h'))}<a class="d3-pri" ${fa(yo)}>${d3Dl(yo)}</a></div>` : ''}${src.length ? `<div>${d3Step(++s, T('d3.s2'), T('d3.s2h', {n: src.length, pl: src.length}))}${d3Files(src)}</div>` : ''}</div>`
+        + (x.g.prompts.length ? `<div class="d3-pr">${d3Step(++s, T('d3.s3'), T('d3.s3h'))}${d3Rows(n, gk, x.g)}</div>` : '') + (pdf ? `<a class="d3-pdf" ${fa(pdf)}><span class="sr-only">${T('common.sr_download')}</span>${T('d3.pdf')}</a>` : '')
+      : trk ? d3Files(x.g.files)
+      : `${np.steps.length ? `<ol class="d3-steps">${np.steps.map(y => `<li>${lk(esc(y))}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="d3-ready"><b>Tayyor, agar</b> ${esc(np.ready)}</p>` : ''}${x.g.files.length ? `<div class="d3-fs">${d3Files(x.g.files)}</div>` : ''}${x.g.prompts.length ? `<div class="d3-pr"><p class="d3-lh">${T('d3.prompts')}${x.g.prompts.length > 1 ? ` · ${x.g.prompts.length}` : ''}</p>${d3Rows(n, gk, x.g)}</div>` : ''}`;
+    return `<section class="d3-p" id="${pid(x, 'd3p')}" data-t="${x.id}" aria-labelledby="${pid(x, 'd3h')}"${x.id === sel ? '' : ' hidden'}${lg(x)}>${solo ? '' : `<button class="d3-back" type="button">${I('back', 18)}${T(trk ? 'd3.back' : 'd3.back_s')}</button>`}<h3 class="d3-t" id="${pid(x, 'd3h')}" tabindex="-1">${esc(ttl(x))}</h3>${lead}${body}${nx ? `<button class="d3-next" type="button" data-go="${nx.id}"><span><small>${T(trk ? 'd3.next' : 'd3.next_s')}</small><b>${esc(nextTitle(nx))}</b></span>${I('next', 20)}</button>` : ''}</section>`; };
+  return `<div class="d3${trk ? ' trk' : ''}${solo ? ' solo' : ''}" data-n="${n}" data-tab="${p}" data-sel="${sel}" data-view="${view}"><div class="d3-l">${intro}${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${cards ? `<div class="d3-cards" role="group" aria-label="${esc(t(trk ? 'd3.group_aria' : 'd3.group_aria_s'))}">${cards}</div>` : ''}</div><div class="d3-dock">${list.map(panel).join('')}</div></div>${end ? `<div class="gt-foot end">${end}</div>` : ''}`;
+}
+function d3Apply(root, id, view){
+  if ((id !== root.dataset.sel || view !== root.dataset.view) && typeof hideToast === 'function') hideToast();   // the undo toast sits inside a row of a panel that is being hidden
+  root.dataset.sel = id; root.dataset.view = view;
+  root.querySelectorAll('.k[data-go]').forEach(b => b.setAttribute('aria-pressed', b.dataset.go === id));
+  root.querySelectorAll('.d3-p').forEach(x => { x.hidden = x.dataset.t !== id; });
+}
+// the URL carries the section (?tab=kt&s=s2). Phones: a tap on a card PUSHES it (the system Back returns to the grid); wide screens only REPLACE it (nothing to go back to).
+// Every change is local (no re-render: the toast, scroll and focus stay sensible): our own taps call d3Show(), and Back / Forward come through d3Pop() from the popstate / hashchange listener (never from render(): a 401 or a language switch must rebuild the page).
+const d3Url = (n, tab, id) => `#/dars/${n}?tab=${tab}${id ? '&s=' + id : ''}`;
+const d3Move = (r, push, tab) => { const app = typeof urlOf === 'function', u = app ? urlOf(r) : r; push ? history.pushState({...(app ? {aip: 1} : {}), d3: tab}, '', u) : history.replaceState(history.state, '', u); };
+const d3Narrow = root => root.closest('.frame').clientWidth < 900;
+function d3Show(root, id, view){
+  d3Apply(root, id, view);
+  if (!d3Narrow(root)) return;
+  scrollTo(0, Math.max(0, root.closest('.gt').getBoundingClientRect().top + scrollY - 12));
+  (view === 'track' ? root.querySelector(`#d3h-${root.dataset.tab}-${id}`) : root.querySelector(`.k[data-go="${id}"]`)).focus({preventScroll: true});   // the section's heading, or the card that was open
+}
+function d3Pop(){   // Back / Forward within the same lesson and tab, only ?s= changed: true = handled locally (the page is not rebuilt)
+  const r = parseHash(), tab = r.q.get('tab'), root = /^(am|kt|vz)$/.test(tab) && document.querySelector(`#s-app .d3[data-tab="${tab}"]`);
+  if (!root || r.q.get('p') || r.parts.join('/') !== `dars/${root.dataset.n}` || root.closest('.gt-pane').inert) return false;   // not on this pane (another folder tab is open): rebuild
+  const id = r.q.get('s'), ids = [...root.querySelectorAll('.k[data-go]')].map(b => b.dataset.go);
+  if (id && !ids.includes(id)) return false;
+  d3Show(root, id || root.dataset.sel, id ? 'track' : 'grid'); return true;
+}
+document.addEventListener('click', e => {
+  const root = e.target.closest('.d3'); if (!root) return;
+  const go = e.target.closest('[data-go]'), bk = e.target.closest('.d3-back'), n = root.dataset.n, tab = root.dataset.tab;
+  if (go) {
+    const push = d3Narrow(root) && root.dataset.view === 'grid';
+    if (push) d3Move(d3Url(n, tab), false, tab);   // folder tabs do not change the URL: the entry Back lands on must carry ?tab=
+    d3Move(d3Url(n, tab, go.dataset.go), push, tab);
+    d3Save(n, tab, go.dataset.go);
+    d3Show(root, go.dataset.go, 'track');
+  } else if (bk) {
+    if (history.state && history.state.d3 === tab) return void history.back();   // pushed by a tap on a card of THIS pane: the same as the system Back (d3Pop)
+    d3Move(d3Url(n, tab), false, tab); d3Show(root, root.dataset.sel, 'grid');
+  }
+});
+// Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups as section cards + a docked panel (d3Pane); Amaliyot and Vazifa end with a tick
 function blockPane(n, p){
   const b = (PARTS[n] || {})[p] || {text: '', groups: []}, key = `c.p.${n}.${p}`;
   const paras = b.text ? cu(`${key}.text`).split(/\n\s*\n/).map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`) : [];
   // UX audit S6-6: on Amaliyot only the first paragraph stays open; the rules and help (laptop, privacy, "Qiynalsangiz…") fold into "Qoidalar va yordam"
   const text = (p === 'am' || p === 'vz') && paras.length > 1 ? `${paras[0]}<details class="pane-more"><summary>${T('pane.more')}</summary>${paras.slice(1).join('')}</details>` : paras.join('');
   const intro = (LANG !== 'uz' ? `<p class="p-sub uz-note">${T('pane.uz_note')}</p>` : '') + (p === 'kt' ? `<p class="p-sub kit-intro">${T('kit.intro')}</p>` : '');   // S10-1 (RU: the lesson body is Uzbek), S6-7 (what a Kit is)
-  const showTag = new Set(b.groups.map((g, i) => noteParts(g.note ? cu(`${key}.g${i}.n`) : '').tag)).size > 1;   // audit #3: labels only where the stops differ (lessons 1-7: all "ASOSIY", so none)
-  const groups = b.groups.map((g, i) => groupRow(n, key, g, i, showTag)).join('');
   const end = p === 'am' ? endb('f:am' + n, S.has('f:am' + n), 'amf.on', 'amf.off', '', 'amf.aria') : p === 'vz' ? endb('f:v' + n, S.has('f:v' + n), 'vzf.on', 'vzf.off', '', 'vzf.aria') : '';
   // UX audit S6-5: the pane does not end in a dead end. After the tick: Amaliyot -> Vazifa, Vazifa -> home
   const vzOpen = LESSONS[n].parts.includes('vz') && !partLock(n, 'vz'), next = p === 'am' && vzOpen ? nextBlock(`#/dars/${n}?tab=vz`, 'next.to_vz') : p === 'vz' ? nextBlock('#/dastur', 'prep.end_back') : '';
-  return `<p class="p-label sr-only">${T('unit.' + p)}</p>${intro}${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${groups ? `<div class="m3s">${groups}</div>` : ''}${end ? `<div class="gt-foot end">${end}${next}</div>` : ''}`;
+  if (b.groups.length) return `<p class="p-label sr-only">${T('unit.' + p)}</p>${d3Pane(n, p, key, b, intro, text, end ? end + next : '')}`;
+  return `<p class="p-label sr-only">${T('unit.' + p)}</p>${intro}${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${end ? `<div class="gt-foot end">${end}${next}</div>` : ''}`;
 }
 function lessonPage(n, tab){
   tab = tab || tabOfHref((nextOf(n) || {}).href);   // no ?tab: the tab with today's work
@@ -418,8 +496,9 @@ function lessonPage(n, tab){
       <div class="gt-tabs" role="tablist" aria-label="${esc(t('tab.list'))}">${tabs}</div><div class="gt-body">${panes}</div></div>`;   // every lesson folder inside a lesson page is Poʻlat (user, 2026-10-30); the home cards keep each lesson's own colour
   return {screen: 'dars', tab: Math.max(0, L.parts.indexOf(tab)), tag: `#/dars/${n} · ` + t('tag.lesson', {n: lnT(n), parts: L.parts.length}), title: lnum(n) == null ? title : t('title.lesson', {n: num2(lnum(n)), title}), html: nav('d') + `
     <div class="lhd">
-      ${dlh('#/dastur', T('nav.home'), tt ? T('lesson.meta', {n, date: lessonDate(n), d, t: tt, pl: tt}) : esc(lessonDate(n)))}
+      ${dlh('#/dastur', T('nav.home'))}
       <h1 class="lh1">${lnum(n) == null ? '' : `<span class="ln">${lnH(n)}</span> `}<span class="ln">${esc(title)}</span></h1>
+      <p class="lmeta">${tt ? T('lesson.meta', {n, date: lessonDate(n), d, t: tt, pl: tt}) : esc(lessonDate(n))}</p>
       <div class="lhr"><p class="lsub">${T(`lesson.${n}.sub`)}</p><div><p class="lede">${T(`lesson.${n}.lede`)}</p>${L.outs ? `<details class="pane-more lout"><summary>${T('lesson.outs')}</summary><ul>${Array.from({length: L.outs}, (_, i) => `<li>${T(`lesson.${n}.o${i}`)}</li>`).join('')}</ul></details>` : ''}</div></div>
     </div>
     <div class="lwrap">${side}</div>`};   // W1 (user, 2026-10-30): a compact one-line header, then the folder across the whole page
@@ -432,9 +511,9 @@ function slPage(n, i){
   const prev = i > 1 ? `#/dars/${n}/slayd/${i - 1}` : '', next = i < N ? `#/dars/${n}/slayd/${i + 1}` : '';
   const nums = Array.from({length: N}, (_, k) => `<a href="#/dars/${n}/slayd/${k + 1}"${k + 1 === i ? ' aria-current="true"' : ''}>${k + 1}</a>`).join('');
   return {screen: 'slayd', tag: `#/dars/${n}/slayd/${i} · ` + t('tag.slide', {n: N}), title: t('sl.doc_title', {i, n: N, n_dars: lnT(n)}), html: `
-    <div class="slv"><div class="slv-bar"><a class="slv-x" href="#/dars/${n}">${I('back')}${T('sl.close')}</a><h1 class="slv-ct" tabindex="-1">${i} / ${N}</h1>
+    <div class="slv"><div class="slv-bar"><a class="slv-x" href="#/dars/${n}">${I('back')}${lnH(n)}</a><h1 class="slv-ct" tabindex="-1">${i}/${N}</h1>
         <button class="slv-all" type="button" data-sheet="slides-sheet" aria-haspopup="dialog" aria-expanded="false" aria-controls="slides-sheet">${T('sl.all')}</button></div>
-      <div class="slv-stage" data-sl="${i}" data-n="${n}" data-max="${N}"><div class="slv-ph"><span class="slv-num">${num2(i)}</span><span class="slv-t">${T('sl.topic', {n: lnT(n), topic})}</span>
+      <div class="slv-stage" data-sl="${i}" data-n="${n}" data-max="${N}"><div class="slv-ph"><span class="slv-num">${i}</span><span class="slv-t">${T('sl.topic', {n: lnT(n), topic})}</span>
         <span class="ns">${T('sl.ph')}</span><span class="slv-note">${T('sl.note')}</span></div></div>
       <div class="slv-foot">${prev ? `<a class="slv-btn" data-slnav="prev" href="${prev}" aria-label="${esc(t('sl.prev'))}">${I('back', 20)}</a>` : `<span class="slv-btn off" aria-hidden="true">${I('back', 20)}</span>`}
         <span class="slv-seen">${i === N ? `${I('check', 14)}<span class="sw">${T('sl.seen')}</span>` : ''}</span>
@@ -446,7 +525,7 @@ let prevHash = '#/dastur';
 function filePage(sl){
   const f = FILES[sl];
   return {screen: 'ex', tag: `#/fayl/${sl} · ` + t('tag.file'), title: f.name, html: nav('d') + wrap(`
-    ${dlh(esc(prevHash || '#/dastur'), T('common.back'), T('file.meta'))}
+    ${dlh(esc(prevHash || '#/dastur'), T('common.back'))}
     <h1 class="headline ex-h" style="font-size:clamp(24px,6.5cqi,40px);overflow-wrap:anywhere">${esc(f.name)}</h1>
     <p class="lede">${esc(f.size || t('common.unknown_size'))}${f.ph ? NSTAG() : ''}</p>
     <p class="ef-hint">${T('file.hint')}</p>`)};
@@ -533,14 +612,14 @@ function render(keep){
   if (res.locked) openLockSheet(res.locked);
   const p = r.q.get('p'), target = p && app.querySelector(`[data-pid="${CSS.escape(p)}"]`), m = mem[location.hash];
   if (keep) {}
-  else if (target) { const dt = target.closest('details'); if (dt) dt.open = true; scrollTo(0, 0); target.scrollIntoView({block: 'start'}); const tt = target.querySelector('.tt'); tt && tt.focus({preventScroll: true}); }
+  else if (target) { const dt = target.closest('details') || target.querySelector('details'); if (dt) dt.open = true; scrollTo(0, 0); target.scrollIntoView({block: 'start'}); const sm = target.querySelector('summary'); sm && sm.focus({preventScroll: true}); }
   else if (!byClick && m && !firstRender) { scrollTo(0, m.y); const a = m.from && document.querySelector(`#s-app a[href="${CSS.escape(m.from)}"]`); if (a) a.focus({preventScroll: true}); }
   else if (slFocus && app.querySelector(`[data-slnav="${slFocus}"]`)) { scrollTo(0, 0); app.querySelector(`[data-slnav="${slFocus}"]`).focus({preventScroll: true}); }
   else { scrollTo(0, 0); if (!firstRender) { const h = document.querySelector('.screen.is-on h1'); if (h) { h.tabIndex = -1; h.focus({preventScroll: true}); } } }
   if (view === 'app' && !location.hash.startsWith('#/fayl/')) prevHash = location.hash;
   firstRender = false; byClick = false; slFocus = '';
 }
-window.addEventListener('hashchange', () => render());
+window.addEventListener('hashchange', () => d3Pop() || render());   // Back / Forward on a D3 pane that only changed ?t= is local; every other render (401, language, review bar) rebuilds the page
 // remember where a link was clicked (scroll + the link itself) so Back can return there
 document.addEventListener('click', e => { const a = e.target.closest('a[href^="#/"]'); if (!a || a.dataset.slnav) return; mem[location.hash] = {y: scrollY, from: a.getAttribute('href')}; byClick = true; }, true);
 // slide viewer: the ‹ › buttons, tap zones (left third = back, right two thirds = forward) and the keys all REPLACE the history entry
@@ -556,7 +635,7 @@ document.addEventListener('click', e => { const b = e.target.closest('[data-end]
 // a Vazifa mark inside a folder pane: the tab's own check follows it
 document.addEventListener('click', e => { const b = e.target.closest('.gt-pane [data-end]'); if (!b) return; const tab = document.getElementById(b.closest('.gt-pane').getAttribute('aria-labelledby')), l = tab.dataset.l;
   tab.innerHTML = b.getAttribute('aria-pressed') === 'true' ? `<span class="ok">${I('check', 12)}${esc(l)}<span class="sr-only">${T('common.sr_done')}</span></span>` : esc(l); });
-function refreshCounts(){ document.querySelectorAll('[data-cnt]').forEach(el => { const [type, id] = el.dataset.cnt.split(':'); el.textContent = cntText(type, id); }); }
+function refreshCounts(){ document.querySelectorAll('[data-cnt]').forEach(el => { const [type, id] = el.dataset.cnt.split(':'); el.textContent = cntText(type, id); }); d3Paint(); }
 
 // the locked-lesson sheet (static markup in the page), shown when a locked lesson's link is opened directly: its title and text depend on the lesson; applyStatic re-renders them with these parameters on a language switch
 // audit #10: only the parts the lesson has (`has` in the payload): "slaydlar, amaliyot va vazifa"

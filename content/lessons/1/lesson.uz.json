@@ -117,7 +117,7 @@
             "id": "05P2",
             "title": "Kit 1 prompti: B shakli",
             "target": "Claude",
-            "text": "Quyida xodim bilan intervyu matni va Kit 1 B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [kit1-b-vazifalar.md faylining toʻliq matni]\nIntervyu: [intervyu matni]"
+            "text": "Quyida xodim bilan intervyu matni va Kit 1, B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [kit1-b-vazifalar.md faylining toʻliq matni]\nIntervyu: [intervyu matni]"
           }
         ]
       },
@@ -147,13 +147,13 @@
     "groups": [
       {
         "title": "01 Kit 1: Ish qayerga ketadi",
-        "note": "Rozilik matni, A shakli savollari va toʻliq yoʻriqnoma PDFda. 1) Hamkasb bilan juft boʻling, rozilik matnini ovoz chiqarib oʻqing. 2) A.1-A.7 savollari bilan 5 daqiqalik intervyuni yozib oling. Tayyor, agar: telefoningizda mashq yozuvi bor.",
+        "note": "Rozilik matni, A shakli savollari va toʻliq yoʻriqnoma PDFʼda. 1) Hamkasb bilan juft boʻling, rozilik matnini ovoz chiqarib oʻqing. 2) A.1-A.7 savollari bilan 5 daqiqalik intervyuni yozib oling. Tayyor, agar: telefoningizda mashq yozuvi bor.",
         "files": [
           {
             "slug": "kit1-pdf",
             "name": "Kit1_Ish_qayerga_ketadi.pdf",
-            "size": 107993,
-            "label": "Kit 1 yoʻriqnomasi"
+            "size": 107768,
+            "label": "Kit 1: Ish qayerga ketadi (PDF)"
           },
           {
             "slug": "kit1-a-suhbat",
@@ -190,7 +190,7 @@
             "id": "K1P2",
             "title": "Kit 1 prompti: B shakli",
             "target": "Claude",
-            "text": "Quyida [xodim ismi], [lavozimi] bilan intervyu matni va Kit 1 B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [kit1-b-vazifalar.md faylining toʻliq matni]\nIntervyu: [intervyu matni]"
+            "text": "Quyida [xodim ismi], [lavozimi] bilan intervyu matni va Kit 1, B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [kit1-b-vazifalar.md faylining toʻliq matni]\nIntervyu: [intervyu matni]"
           }
         ]
       },
@@ -202,7 +202,7 @@
     ]
   },
   "vazifa": {
-    "text": "Bu vazifada Kit 1 ni oʻz xodimlaringiz bilan oʻtkazasiz. Ikkinchi darsda Claude Code shu fayllar bilan ishlaydi.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: kamida 2 ta B shakli .md faylda saqlangan; daqiqa va chastotani xodimning oʻzi tuzatgan, [?] belgilari qolmagan; har vazifada B.9 toʻldirilgan; Claude Code Warpʼda ochiladi.",
+    "text": "Bu vazifada Kit 1ʼni oʻz xodimlaringiz bilan oʻtkazasiz. 02-darsda Claude Code shu fayllar bilan ishlaydi.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: kamida 2 ta B shakli .md faylda saqlangan; daqiqa va chastotani xodimning oʻzi tuzatgan, [?] belgilari qolmagan; har vazifada B.9 toʻldirilgan; Claude Code Warpʼda ochiladi.",
     "groups": [
       {
         "title": "1. Jamoaga sababini ayting",
@@ -213,13 +213,13 @@
             "id": "V1P1",
             "title": "Jamoaga xabar",
             "target": "Claude",
-            "text": "Men [kompaniya nomi] rahbariman. [Boʻlim nomi] xodimlari bilan 20-30 daqiqalik suhbat oʻtkazmoqchiman.\nMaqsad: kim qaysi ishga qancha vaqt sarflashini bilish va takrorlanadigan ishni AI bilan yengillashtirish. Maqsad odamlarni almashtirish emas.\nJamoaga Telegramda yuboriladigan xabar yozing: suhbat nima uchun, qancha vaqt oladi, yozib olinishi va yozuvni kim koʻrishi: [kim koʻradi].\nOddiy tilda, 80 soʻzdan oshmasin."
+            "text": "Men [kompaniya nomi] rahbariman. [Boʻlim nomi] xodimlari bilan 20-30 daqiqalik suhbat oʻtkazmoqchiman.\nMaqsad: kim qaysi ishga qancha vaqt sarflashini bilish va takrorlanadigan ishni AI bilan yengillashtirish. Maqsad odamlarni almashtirish emas.\nJamoaga Telegramʼda yuboriladigan xabar yozing: suhbat nima uchun, qancha vaqt oladi, yozib olinishi va yozuvni kim koʻrishi: [kim koʻradi].\nOddiy tilda, 80 soʻzdan oshmasin."
           }
         ]
       },
       {
         "title": "2. 2-3 xodim bilan intervyu",
-        "note": "Bitta boʻlimdan 2-3 xodim bilan 20-30 daqiqalik Kit 1 A intervyusini oʻtkazing. Yozib olishdan oldin rozilik matnini oʻqing. Yakka ishlaydigan egalar va jamoasi yoʻq rahbarlar oʻzini yoki boʻlim boshligʻini intervyu qiladi. Kit 1 shakli (Kit boʻlimida).",
+        "note": "Bitta boʻlimdan 2-3 xodim bilan 20-30 daqiqalik Kit 1, A shakli intervyusini oʻtkazing. Yozib olishdan oldin rozilik matnini oʻqing. Yakka ishlaydigan egalar va jamoasi yoʻq rahbarlar oʻzini yoki boʻlim boshligʻini intervyu qiladi. Kit 1 shakli (Kit boʻlimida).",
         "files": []
       },
       {
@@ -237,7 +237,7 @@
             "id": "V3P2",
             "title": "Kit 1 prompti: B shakli",
             "target": "Claude",
-            "text": "Quyida [xodim ismi], [lavozimi] bilan intervyu matni va Kit 1 B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [kit1-b-vazifalar.md faylining toʻliq matni]\nIntervyu: [intervyu matni]"
+            "text": "Quyida [xodim ismi], [lavozimi] bilan intervyu matni va Kit 1, B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [kit1-b-vazifalar.md faylining toʻliq matni]\nIntervyu: [intervyu matni]"
           }
         ]
       },
@@ -248,7 +248,7 @@
       },
       {
         "title": "5. .md fayl qilib saqlang",
-        "note": "Har B shaklini alohida .md faylga saqlang, masalan kit1-dilnoza.md. Fayllarni ikkinchi darsga olib keling.",
+        "note": "Har B shaklini alohida .md faylga saqlang, masalan kit1-dilnoza.md. Fayllarni 02-darsga olib keling.",
         "files": []
       },
       {

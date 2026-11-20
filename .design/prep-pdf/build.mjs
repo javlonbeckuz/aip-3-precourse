@@ -12,14 +12,14 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const H = dirname(fileURLToPath(import.meta.url)), ROOT = resolve(H, '..', '..');
 const CHROME = process.env.CHROME || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const UI = {
-  uz: { lang: 'uz-Latn', meta: '0-dars · tayyorgarlik', title: 'Birinchi darsgacha', all30: 'Hammasi 30 daqiqa', date: '21-noyabr (shanba guruhi) yoki 22-noyabr (yakshanba guruhi)' },
-  ru: { lang: 'ru', meta: 'Урок 0 · подготовка', title: 'До первого урока', all30: 'Всё займёт около 30 минут', date: '21 ноября (группа субботы) или 22 ноября (группа воскресенья)' },
+  uz: { lang: 'uz-Latn', meta: 'Tayyorgarlik', title: 'Oʻrnatish va tayyorgarlik', all30: 'Hammasi 30 daqiqa', date: '22-noyabr' },
+  ru: { lang: 'ru', meta: 'Подготовка', title: 'Установка и подготовка', all30: 'Всё займёт около 30 минут', date: '22 ноября' },
 };
 const data = readFileSync(join(ROOT, '.design/comp/src/proto_data.js'), 'utf8');
 const ART = JSON.parse(data.match(/\/\*ART:begin\*\/ const PREP_ART = (\[.*?\]); \/\*ART:end\*\//s)[1]);
 const fonts = readFileSync(join(ROOT, '.design/comp/src/fonts.css'), 'utf8').replaceAll('url(fonts/', 'url(../../public/aip/fonts/');
 const CSS = readFileSync(join(H, 'deck.css'), 'utf8');
-const X = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const X = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/ʻ/g, '‘').replace(/ʼ/g, '’');   // the deck fonts lack U+02BB/U+02BC (taste-profile): show them as ‘ ’
 const pad = n => String(n).padStart(2, '0');
 const host = s => s.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
@@ -27,11 +27,11 @@ for (const L of Object.keys(UI)) {
   const u = UI[L], { intro, items } = JSON.parse(readFileSync(join(ROOT, `content/lessons/0/lesson.${L}.json`), 'utf8')).prep;
   if (items.length !== ART.length) throw new Error(`${L}: ${items.length} cards but ${ART.length} pictures`);
   const total = items.length + 2;
-  const hd = n => `<div class="top"><span class="wm">AI Praktikum 3.0</span><span class="mt">${X(u.meta)}<b>${pad(n)} / ${pad(total)}</b></span></div>`;
+  const hd = n => `<div class="top"><span class="wm">AI Praktikum 3.0</span><span class="mt">${X(u.meta)}<b>${n} / ${total}</b></span></div>`;
   let h = `<section class="slide">${hd(1)}<div class="cover"><div class="l"><h1 class="disp">${X(u.title)}</h1><p class="lede">${X(intro.replace('{sana}', u.date))}</p></div><div class="r card">${ART.join('')}</div></div></section>`;
-  h += `<section class="slide">${hd(2)}<h2 class="ov-h disp">${X(u.all30)}</h2><div class="ov">${items.map((it, i) => `<div class="card"><span class="no">${pad(i + 1)}</span><h3 class="t disp">${X(it.title)}</h3>${ART[i]}<p class="n">${X(it.note)}</p></div>`).join('')}</div></section>`;
+  h += `<section class="slide">${hd(2)}<h2 class="ov-h disp">${X(u.all30)}</h2><div class="ov">${items.map((it, i) => `<div class="card"><h3 class="t disp">${X(it.title)}</h3>${ART[i]}<p class="n">${X(it.note)}</p></div>`).join('')}</div></section>`;
   items.forEach((it, i) => {
-    h += `<section class="slide">${hd(i + 3)}<div class="item"><div class="card"><span class="no">${pad(i + 1)}</span>${ART[i]}<span></span></div><div class="rt"><h2 class="disp">${X(it.title)}</h2><p class="note">${X(it.note)}</p>`
+    h += `<section class="slide">${hd(i + 3)}<div class="item"><div class="card">${ART[i]}<span></span></div><div class="rt"><h2 class="disp">${X(it.title)}</h2><p class="note">${X(it.note)}</p>`
       + `<ol class="steps">${it.steps.map((s, j) => `<li><i>${j + 1}</i><span>${X(s)}</span></li>`).join('')}</ol>`
       + (it.actions?.length ? `<div class="acts">${it.actions.map((a, j) => `<a class="act${j ? '' : ' p'}" href="${a.url}"><b>${X(a.label)}</b><span>${host(a.url)}</span></a>`).join('')}</div>` : '')
       + (it.footnote ? `<p class="foot">${X(it.footnote)}</p>` : '') + `</div></div></section>`;

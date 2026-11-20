@@ -29,7 +29,7 @@
 *,*::before,*::after{box-sizing:border-box}
 body,h1,h2,h3,p,ol,ul,dl,dd,pre{margin:0}
 ol,ul{padding:0;list-style:none}
-body{background:#0d0d0d;color:var(--white);font:400 16px/1.5 var(--font-body);-webkit-font-smoothing:antialiased}
+body{background:var(--surface-1);color:var(--white);font:400 16px/1.5 var(--font-body);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
 svg{flex:none}
@@ -45,7 +45,7 @@ h1[tabindex="-1"]:focus{outline:none}
 .screens{display:grid;grid-template-columns:minmax(0,1fr);gap:56px;padding:24px 16px 72px}
 .screen-tag{max-width:1440px;margin:0 auto 10px;font:500 11px/1.3 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:#7a7a7a}
 body:not([data-view="all"]) .screen:not(.is-on){display:none}
-.frame{container-type:inline-size;max-width:1440px;margin:0 auto;background:var(--black);overflow:hidden}
+.frame{container-type:inline-size;max-width:1440px;margin:0 auto;background:var(--black);overflow:hidden;overflow:clip}/* clip: the same crop, but not a scroll container, so position:sticky inside works */
 .is-375 .frame,.is-375 .screen-tag{max-width:375px}
 @media (max-width:480px){.screens{padding:16px 0 56px}.screen-tag{padding:0 16px}}
 
@@ -199,7 +199,7 @@ button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
 .gt-tab:not([aria-selected="true"]):hover{color:var(--white)}
 .gt-tab:focus-visible{outline-offset:-4px;outline-color:currentColor}
 .gt-body :focus-visible{outline-color:var(--gt-ink)}/* white ring is under 3:1 on lilac */
-.gt-body{position:relative;display:grid;min-height:var(--bh);padding:22px 20px 24px;overflow:hidden}/* overflow only clips the pane swap animation */
+.gt-body{position:relative;display:grid;min-height:var(--bh);padding:22px 20px 24px;overflow:hidden;overflow:clip}/* overflow only clips the pane swap animation; clip (not hidden) so the sticky D3 dock still sticks */
 .gt-pane{grid-area:1/1;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
 .gt-pane[inert]{visibility:hidden}
 .gt .play{margin-top:0}.gt .play-circ{width:44px;height:44px;min-width:0;min-height:0}
@@ -246,14 +246,14 @@ button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
 /* home hero (ux-audit H1 B): the progress ring, the live lesson as one big blue card, then the next step */
 .main-head{grid-template-areas:"r" "c" "p"}
 .main-head>.prog{grid-area:r}.main-head>.now-card{grid-area:c;min-height:220px}.main-head>.next{grid-area:p;justify-self:start}
-.now-card .f-title{font-size:26px}.now-card .f-sub{font-size:15px;opacity:1;max-width:none}
+.now-card .f-title{font-size:26px}.now-card .f-sub{font-size:15px;opacity:1;max-width:none}.now-card .f-note{display:flex;margin:8px 0 0;font-size:15px}
 @container (min-width:900px){
   .main-head{grid-template-columns:minmax(0,1fr) calc(560 * var(--u));grid-template-rows:1fr auto auto 1fr;grid-template-areas:". c" "r c" "p c" ". c";gap:0 calc(40 * var(--u));align-items:stretch}
   .main-head>.next{margin-top:calc(44 * var(--u))}/* ring + next step sit centred against the card */
   .prog{gap:calc(28 * var(--u))}.ring{width:max(112px,calc(180 * var(--u)))}.pv{font-size:max(28px,calc(46 * var(--u)))}
   .pl{font-size:max(12px,calc(15 * var(--u)))}.ps{font-size:max(15px,calc(24 * var(--u)))}.pn{font-size:max(14px,calc(17 * var(--u)))}
   .main-head>.now-card{min-height:calc(340 * var(--u))}
-  .now-card .f-title{font-size:calc(44 * var(--u))}.now-card .f-sub{font-size:max(14px,calc(18 * var(--u)))}
+  .now-card .f-title{font-size:calc(44 * var(--u))}.now-card .f-sub{font-size:max(14px,calc(18 * var(--u)))}.now-card .f-note{font-size:max(14px,calc(16 * var(--u)))}
 }
 
 /* ===== flat card (non-folder): lesson resources ===== */
@@ -266,7 +266,7 @@ button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
 .gate-bg img{object-fit:cover;object-position:35% 50%}
 .gate-stage::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(#000,transparent 20%,transparent 78%,#000),linear-gradient(90deg,#000,transparent 14%,transparent 86%,#000)}
 .gate-stage .nav{grid-template-columns:1fr;justify-items:center;border-bottom:0;background:none}
-.gate-lang{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);display:flex;gap:24px;font:500 14px/1 var(--font-body)}
+.gate-lang{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);display:flex;gap:24px;font:500 15px/1 var(--font-body)}
 .gate-lang a{padding:8px 2px;color:rgb(255 255 255 / .7);transition:color .15s}
 .gate-lang a:hover,.gate-lang a[aria-current]{color:#fff}
 .gate-lang a[aria-current]{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
@@ -274,12 +274,13 @@ button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
 /* login wordmark: a weight wave that ripples out from the middle (no script, no mouse). Each letter's slot is as wide as that letter at the heaviest weight
    (the invisible ::after copy), so the word never changes width and nothing around it moves; only the glyph inside its slot breathes. Negative delays: it is already mid-wave on load */
 .wm-l{display:inline-grid;contain:layout}
-.wm-l::after{content:attr(data-c);grid-area:1/1;font-weight:800;visibility:hidden}
-.wm-g{grid-area:1/1;justify-self:center;animation:wm-wave 1.35s step-end infinite alternate;animation-delay:calc(var(--d) * .1s - 8s)}
+.wm-l::after{content:attr(data-c);grid-area:1/1;font-weight:800;visibility:hidden;animation:wm-slot 8.2s step-end forwards}
+@keyframes wm-slot{0%{font-weight:800}100%{font-weight:500}}/* when the wave is over the slots shrink to the real weight: same width and spacing as the nav wordmark */
+.wm-g{grid-area:1/1;justify-self:center;animation:wm-wave 1.35s step-end 6 alternate;animation-delay:calc(var(--d) * .1s - 1.35s)}/* finite: it ends on the base weight (500, the nav wordmark) */
 /* ease-in-out, 300 to 800, in 25-unit steps: every frame re-uses a handful of font instances (smooth weights would build 16 new ones per frame: ~30% of the main thread) */
 @keyframes wm-wave{0%{font-weight:300}5%{font-weight:300}10%{font-weight:325}15%{font-weight:325}20%{font-weight:350}25%{font-weight:375}30%{font-weight:400}35%{font-weight:450}40%{font-weight:475}45%{font-weight:525}50%{font-weight:550}55%{font-weight:575}60%{font-weight:625}65%{font-weight:650}70%{font-weight:700}75%{font-weight:725}80%{font-weight:750}85%{font-weight:775}90%{font-weight:775}95%{font-weight:800}100%{font-weight:800}}
 .wm-s .wm-g{animation:none}/* a space has nothing to weigh */
-@media (prefers-reduced-motion:reduce){.wm-g{animation:none}}
+@media (prefers-reduced-motion:reduce){.wm-g{animation:none}.wm-l::after{animation:none;font-weight:500}}
 /* ?solo: only the sign-in screen, full window, no comp chrome */
 .solo .comp-bar,.solo .screen-tag{display:none}
 .solo .screens{padding:0}
@@ -304,12 +305,12 @@ button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
 @keyframes ldr-strobe{0%{opacity:1}50%{opacity:0}51%,100%{opacity:1}}
 @keyframes ldr-strobe-g{0%,50%,100%{fill:#17e300}25%,75%{fill:#17e300b4}}
 /* login card = MercuryLogin's .auth-container (card only; its blob background is left out) */
-.mx{--mercury:#e0e0e0;--dim:rgb(255 255 255 / .85);position:relative;width:100%;max-width:440px;padding:40px;color:#fff;font-family:var(--font-body)}
+.mx{--mercury:#e0e0e0;--dim:var(--text-2);position:relative;width:100%;max-width:440px;padding:40px;color:#fff;font-family:var(--font-body)}
 .mx-head{margin-bottom:60px}
 .mx h1{font:500 3rem/1.05 var(--font-display);font-stretch:125%;letter-spacing:-.01em;text-transform:uppercase}
 .mx-group{position:relative;margin-bottom:12px;transition:transform .4s cubic-bezier(.2,1,.3,1)}
 .mx-group:focus-within{transform:translateX(10px);outline:0}/* the glow line is the focus mark */
-.mx-group label{display:block;margin-bottom:12px;font:500 12px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.mx-group label{display:block;margin-bottom:12px;font:500 13px/1 var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
 /* the label and ID sit on a busy photo: a soft dark halo keeps them readable */
 .mx-group label,.mx-input{text-shadow:0 1px 2px rgb(0 0 0 / .9),0 0 14px rgb(0 0 0 / .7)}
 .mx-input{display:flex;align-items:baseline;gap:4px;border-bottom:1px solid rgb(255 255 255 / .45);font-size:20px}
@@ -319,12 +320,12 @@ button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
 .mx-glow{position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--mercury);box-shadow:0 0 15px var(--mercury);transition:width .6s cubic-bezier(.2,1,.3,1)}
 .mx-group:focus-within .mx-glow{width:100%}
 .mx-group.is-error .mx-glow{width:100%;background:var(--danger);box-shadow:0 0 15px var(--danger)}
-.mx-help{position:absolute;z-index:3;left:0;right:0;top:100%;margin:0;font:400 11px/1.5 var(--font-mono);color:var(--dim)}/* inside .mx-group and out of flow: a message never moves the button */
+.mx-help{position:absolute;z-index:3;left:0;right:0;top:100%;margin:0;font:400 13px/1.5 var(--font-body);color:var(--dim)}/* inside .mx-group and out of flow: a message never moves the button */
 .mx-help.err{display:flex;gap:8px;font:500 14px/1.4 var(--font-body);color:#fff;text-shadow:0 1px 2px #000,0 0 3px #000,0 0 8px #000,0 0 16px rgb(0 0 0 / .95),0 0 28px rgb(0 0 0 / .85)}/* no box: halo like the label; 2 lines (39px) fit the 50px gap above the button */
 .mx-help.err svg{margin-top:1px;color:var(--danger);filter:drop-shadow(0 1px 2px #000)}
 .mx-help.ok{font-size:13px;color:#fff}
 .mx-submit{position:relative;width:240px;max-width:100%;margin-top:50px;filter:url(#gooey)}
-.mx-btn{position:relative;z-index:2;width:100%;padding:16px 32px;background:#fff;color:#000;border:0;font:600 13px/1 var(--font-display);font-stretch:125%;letter-spacing:2px;text-transform:uppercase;cursor:pointer}
+.mx-btn{position:relative;z-index:2;width:100%;padding:16px 32px;background:#fff;color:#000;border:0;font:500 16px/1 var(--font-body);cursor:pointer}
 .mx-drop{position:absolute;top:50%;left:50%;z-index:1;width:100%;height:100%;background:var(--mercury);border-radius:50px;transform:translate(-50%,-50%);transition:transform 200ms var(--ease),filter 200ms var(--ease)}
 .mx-submit:hover .mx-drop{transform:translate(-50%,-50%) scale(1.05,1.2);filter:brightness(1.2)}
 .grid3>li,.gt,.main-head{position:relative}
@@ -334,7 +335,7 @@ button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
 .nl,.nmenu{position:fixed;display:grid;left:16px;right:16px;top:calc(72px + env(safe-area-inset-top))}
 .nl[hidden],.nmenu[hidden],.toast[hidden]{display:none}
 .nl{z-index:30;gap:14px;padding:18px;background:var(--white);color:var(--black);border:1px solid var(--black);border-radius:15px}
-.nl-k{font:500 12px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em;color:var(--ink-2)}
+.nl-k{font:500 13px/1.3 var(--font-body);text-transform:uppercase;letter-spacing:.02em;color:var(--ink-2)}
 .nl-t{margin-top:4px;font:500 17px/1.3 var(--font-display);font-stretch:125%;text-transform:uppercase}
 .nl-a{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .nl-go,.nl-x{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;border:1px solid var(--black);border-radius:999px;font:500 15px/1 var(--font-body)}
@@ -347,7 +348,7 @@ button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
 .nm-list div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.3}
 .nm-list dt{color:var(--text-2)}.nm-list dd{text-align:right}.nm-list .mono{font:500 14px/1.3 var(--font-mono)}
 .nm-lang{display:flex;gap:4px;margin-top:8px}
-.nm-lang a{display:grid;place-items:center;min-width:44px;min-height:44px;font:500 14px/1 var(--font-body);color:var(--text-2)}.nm-lang a[aria-current]{color:var(--white);text-decoration:underline;text-underline-offset:5px}
+.nm-lang a{display:grid;place-items:center;min-width:44px;min-height:44px;font:500 15px/1 var(--font-body);color:var(--text-2)}.nm-lang a[aria-current]{color:var(--white);text-decoration:underline;text-underline-offset:5px}
 .nm-out{display:flex;align-items:center;justify-content:center;min-height:48px;margin-top:8px;border:1px solid var(--white);border-radius:999px;font:500 16px/1 var(--font-body)}
 .nm-out:hover{background:var(--surface-1)}
 @media (min-width:900px){.nl{top:16px;left:24px;right:auto;width:380px}.nmenu{left:auto;right:var(--mr,24px);width:340px}}
@@ -384,7 +385,7 @@ body:not(.solo) .nl{top:calc(172px + env(safe-area-inset-top))}
 .ef-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;padding:8px 0;font-size:15px;color:var(--text-1)}
 .ef-nm{display:block;overflow-wrap:anywhere;color:var(--white)}
 .ef-mt{display:block;margin-top:3px;font:400 12px/1.3 var(--font-mono);color:var(--text-3)}
-.ef-dl{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);color:var(--white);flex:none;transition:background .15s,color .15s}
+.ef-dl{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-ui);color:var(--white);flex:none;transition:background .15s,color .15s}
 a.ef-row:hover .ef-dl{background:var(--white);color:var(--black)}
 .ef-hint{margin-top:4px;font-size:14px;color:var(--text-2)}
 

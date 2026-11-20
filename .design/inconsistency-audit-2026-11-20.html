@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inconsistency audit</title>
+<style>
+:root{--bg:#0b0b0c;--card:#151517;--card2:#1c1c20;--line:#2c2c31;--t1:#f2f2f2;--t2:#a8a8ad;--t3:#7d7d84;--hi:#ff6b5e;--med:#fdc959;--low:#8fb3d9;--acc:#b4a1d1;--code:#d9d2ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--t1);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1080px;margin:0 auto;padding:32px 16px 96px}
+h1{font-size:28px;line-height:1.2;margin:0 0 6px}
+h2{font-size:20px;margin:48px 0 12px;padding-top:12px;border-top:1px solid var(--line)}
+h3{font-size:15px;margin:0;line-height:1.35}
+p{margin:6px 0}
+.lede{color:var(--t2);max-width:75ch}
+a{color:var(--acc)}
+code,.q{font:13px/1.45 ui-monospace,Consolas,monospace;color:var(--code);background:#1f1d29;border-radius:4px;padding:1px 5px;word-break:break-word}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--t2);font-weight:600}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.sev{display:inline-block;min-width:62px;text-align:center;font-size:12px;font-weight:700;border-radius:999px;padding:2px 8px;color:#000}
+.sev.H{background:var(--hi)}.sev.M{background:var(--med)}.sev.L{background:var(--low)}
+.f{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0}
+.f header{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:6px}
+.id{font:700 13px ui-monospace,Consolas,monospace;color:var(--t2)}
+.k{color:var(--t3);font-size:12px;text-transform:uppercase;letter-spacing:.05em;margin-right:6px}
+.row{margin:4px 0}
+.std{margin-top:8px;padding:8px 10px;background:var(--card2);border-left:3px solid var(--acc);border-radius:4px}
+.shots{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.shots a{display:block;width:200px;font-size:12px;color:var(--t2);text-decoration:none}
+.shots img{width:200px;height:120px;object-fit:cover;object-position:top;border:1px solid var(--line);border-radius:6px;display:block;margin-bottom:3px}
+ul{margin:6px 0;padding-left:20px}
+li{margin:3px 0}
+.top10 li{margin:6px 0}
+.note{color:var(--t2);font-size:14px}
+@media (max-width:600px){.shots a,.shots img{width:100%}th,td{padding:6px}}
+</style>
+</head>
+<body>
+<main>
+<h1>AI Praktikum 3.0: inconsistency audit</h1>
+<p class="lede">2026-11-20. Read-only pass over the student portal: SPA sources in <code>.design/comp/src/</code>, the build in <code>public/aip/</code>, <code>content/</code> (lesson JSON, schedule, every PDF, read with PyMuPDF), and the screenshots in <code>.design/d3-build/</code> (current) and <code>.design/audit-2026-11-20/</code> (older). Each finding was checked against the source or a screenshot. Things that tokens.md or taste-profile.md mark as intentional are left out (each lesson's fixed colour, Uzbek lesson content in the RU UI, the "Kit" brand word). The pill and chip pattern inside the Amaliyot, Kit and Vazifa panes is being redesigned, so pane items only get the short list at the end.</p>
+<p class="note">Severity: <span class="sev H">High</span> students notice it or get confused · <span class="sev M">Medium</span> visible polish · <span class="sev L">Low</span> minor. Line numbers point to <code>.design/comp/src/</code> unless a path is given.</p>
+
+<h2 id="summary">Summary</h2>
+<table>
+<thead><tr><th>Category</th><th class="n">High</th><th class="n">Medium</th><th class="n">Low</th><th class="n">Total</th></tr></thead>
+<tbody>
+<tr><td><a href="#c1">1 · Wording and terminology</a></td><td class="n">1</td><td class="n">10</td><td class="n">5</td><td class="n">16</td></tr>
+<tr><td><a href="#c2">2 · UZ vs RU</a></td><td class="n">0</td><td class="n">2</td><td class="n">4</td><td class="n">6</td></tr>
+<tr><td><a href="#c3">3 · Visual system</a></td><td class="n">0</td><td class="n">5</td><td class="n">4</td><td class="n">9</td></tr>
+<tr><td><a href="#c4">4 · Behaviour</a></td><td class="n">0</td><td class="n">3</td><td class="n">3</td><td class="n">6</td></tr>
+<tr><td><a href="#c5">5 · Content and files</a></td><td class="n">4</td><td class="n">4</td><td class="n">4</td><td class="n">12</td></tr>
+<tr><th>Total</th><th class="n">5</th><th class="n">24</th><th class="n">20</th><th class="n">49</th></tr>
+</tbody>
+</table>
+
+<h3 style="margin-top:20px">Fix first</h3>
+<ol class="top10">
+<li><a href="#f5-1">5.1</a> 18 Kirish handouts still carry the header <span class="q">II VARIANT / OʻQUV NAMUNASI / 12.09.2026</span>, and their PDF author field says "Praktikum 2.0".</li>
+<li><a href="#f5-2">5.2</a> The setup guide PDF (UZ and RU) gives two first-lesson dates, <span class="q">21-noyabr (shanba guruhi) yoki 22-noyabr</span>. The portal shows only 22-noyabr, and the schedule has no shanba group.</li>
+<li><a href="#f5-3">5.3</a> The setup material has five names. Its PDF cover reads <span class="q">BIRINCHI DARSGACHA</span>, which used to be the name of the other (optional) page.</li>
+<li><a href="#f5-4">5.4</a> The Kirish guides send students to files that the portal does not have: <span class="q">00_BOSHLASH.html</span>, <span class="q">02_Promptlar.html</span>, <span class="q">Promptlar.md</span>.</li>
+<li><a href="#f1-1">1.1</a> "Qoʻshimcha" names three different things, and two of them sit side by side on the home page.</li>
+<li><a href="#f4-3">4.3</a> The copy toast says <span class="q">Claudeʼda [qavslar]ni … almashtiring</span> for prompts that go into NotebookLM or Gemini.</li>
+<li><a href="#f4-2">4.2</a> There are two "done" systems in one pane: a section card says <span class="q">✓ Bajarildi 2/2</span> while the header still says <span class="q">0/3 bajarildi</span>.</li>
+<li><a href="#f4-1">4.1</a> The card note says <span class="q">Amaliyot va vazifa: 0/3</span>, but the 3 includes the slides.</li>
+<li><a href="#f1-4">1.4</a> The same progress count is worded four different ways (home card, hero card, setup page, lesson header).</li>
+<li><a href="#f5-7">5.7</a> A setup step points to <span class="q">03-kartadagi Visa</span>, but the cards on screen have no numbers.</li>
+</ol>
+
+<!-- ============================================================ 1 -->
+<h2 id="c1">1 · Wording and terminology</h2>
+
+<div class="f" id="f1-1"><header><span class="id">1.1</span><span class="sev H">High</span><h3>"Qoʻshimcha" means three different things</h3></header>
+<div class="row"><span class="k">Where</span>home (yellow card and Kirish card side by side), header button, Kirish panes. <code>proto_i18n.js:52</code> <code>prep.title</code>, <code>:389</code> <code>prep.btn</code>, <code>:194</code> <code>lesson.extra</code>, <code>:138</code> <code>d3.tag.extra</code>. Kirish Vazifa group title "Qoʻshimcha" (<code>content/lessons/2/lesson.uz.json</code>).</div>
+<div class="row"><span class="k">What</span>The optional page is <span class="q">Qoʻshimcha: mashq va video</span>. Kirish is labelled <span class="q">Qoʻshimcha dars · 22-noyabr</span>. Inside Kirish, optional tracks are tagged <span class="q">Qoʻshimcha</span>. RU repeats this with <span class="q">Дополнительно: …</span>, <span class="q">Дополнительный урок</span> and <span class="q">Дополнительно</span>. The optional page also has two more names: <span class="q">Mashq va video dars</span> (content <code>prep.more.title</code>) and <span class="q">Prompt mashqi va NotebookLM video darsi</span> (<code>pre.sub</code>).</div>
+<div class="std"><b>Standard:</b> keep "Qoʻshimcha" only for the optional-track tag. Give the page its own name, used on the card, the header button and the H1 alike (for example <span class="q">Mashq va video</span>). Label the Kirish card with its date only, or with "Kirish dars".</div>
+<div class="shots"><a href="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/home-uz-1440.png"><img src="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/home-uz-1440.png" alt="">d3-build/home-uz-1440</a><a href="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/home-ru-1440.png"><img src="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/home-ru-1440.png" alt="">d3-build/home-ru-1440</a></div></div>
+
+<div class="f" id="f1-2"><header><span class="id">1.2</span><span class="sev M">Medium</span><h3>"Kirish" is both the login and the Introduction lesson</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_i18n.js:28</code> <code>gate.submit</code>, <code>:220</code> <code>title.gate</code>, <code>:35</code> <code>lesson.2.title</code>; titles are built at <code>proto_app.js:498</code> and <code>:609</code>.</div>
+<div class="row"><span class="k">What</span>The login button reads <span class="q">KIRISH</span> and the login tab title is <span class="q">Kirish · AI Praktikum 3.0</span>. The Kirish lesson page has exactly the same tab title, <span class="q">Kirish · AI Praktikum 3.0</span>.</div>
+<div class="std"><b>Standard:</b> make the login tab title <span class="q">Shaxsiy kabinet</span>, the same as its H1 (<code>gate.title</code>). The button can stay "Kirish".</div></div>
+
+<div class="f" id="f1-3"><header><span class="id">1.3</span><span class="sev M">Medium</span><h3>The home page has two names, and "Dastur" also means two other things</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_i18n.js:19</code> <code>nav.home</code> "Dastur" and <code>nav.homebtn</code> "Bosh sahifa"; <code>:45</code> <code>home.title</code>; <code>:162</code> <code>prep.end_back</code>; content: <code>prep.items[3].actions</code> "Claude dasturini yuklash", lesson 7 Vazifa "Dastur tugagach".</div>
+<div class="row"><span class="k">What</span>Back links and the page title say <span class="q">← DASTUR</span>, while the round home button's tooltip and aria label say <span class="q">Bosh sahifa</span>. RU has the same split: <span class="q">Программа</span> and <span class="q">Главная</span>. Elsewhere "dastur" means the software you install, and in lesson 7 it means the course.</div>
+<div class="std"><b>Standard:</b> call the home page "Dastur" everywhere, including <code>nav.homebtn</code>. Use "ilova" for software and "kurs" for the course.</div></div>
+
+<div class="f" id="f1-4"><header><span class="id">1.4</span><span class="sev M">Medium</span><h3>One progress count, four wordings</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_i18n.js:50</code> <code>note.open</code>, <code>note.prep_open</code>; <code>:53</code> <code>prep.cnt</code>; <code>:14</code> <code>lesson.meta</code>; tokens.md "State note".</div>
+<div class="row"><span class="k">What</span>The home grid card says <span class="q">AMALIYOT VA VAZIFA: 0/2</span>. The hero card and the setup card say <span class="q">Qadamlar: 0/4</span>. The setup page says <span class="q">0/4 bajarildi</span>. The lesson header says <span class="q">22-noyabr · 0/2 bajarildi</span>. tokens.md and the setup PDF use <span class="q">3/4 qadam</span>.</div>
+<div class="std"><b>Standard:</b> <span class="q">{d}/{t} bajarildi</span> wherever a count is shown, since most places already use it. Put a noun in front only when it is needed.</div>
+<div class="shots"><a href="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/setup-uz-1440.png"><img src="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/setup-uz-1440.png" alt="">d3-build/setup-uz-1440</a><a href="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/v2-l1-am-uz-1440.png"><img src="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/v2-l1-am-uz-1440.png" alt="">d3-build/v2-l1-am-uz-1440</a></div></div>
+
+<div class="f" id="f1-5"><header><span class="id">1.5</span><span class="sev M">Medium</span><h3>The lesson number and title run together in the H1 and the lock-sheet title</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_app.js:501</code> (<code>lh1</code>); <code>proto_i18n.js:23</code> <code>lock.title</code>.</div>
+<div class="row"><span class="k">What</span>The H1 reads <span class="q">01-DARS AI QANDAY ISHLAYDI</span>, but the card label is <span class="q">01-DARS · 22-NOYABR</span> and the tab title is <span class="q">01-dars · AI qanday ishlaydi</span>. The lock sheet reads <span class="q">02-DARS 28-NOYABRDA OCHILADI</span>.</div>
+<div class="std"><b>Standard:</b> put a " · " between the number and the title in the H1, as the tab title and card labels do. Make the sheet title <span class="q">02-dars · 28-noyabrda ochiladi</span>.</div>
+<div class="shots"><a href="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/audit-2026-11-20/13-locked-l3-desktop.png"><img src="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/audit-2026-11-20/13-locked-l3-desktop.png" alt="">audit/13-locked-l3-desktop</a></div></div>
+
+<div class="f" id="f1-6"><header><span class="id">1.6</span><span class="sev M">Medium</span><h3>File sizes appear in three formats and three styles</h3></header>
+<div class="row"><span class="k">Where</span><code>app_state.js:74</code> <code>fileLabel</code> builds "PDF · 33,0 KB"; <code>proto_app.js:385</code> <code>d3Size</code> drops the type and only ",0"; <code>proto_i18n.js:96</code> <code>prep.pdf_meta</code> "PDF, {size}". CSS: <code>.ef-mt</code> Martian 12px text-3 (<code>index.pre-proto.html:386</code>), <code>.d3-fr .m</code> Martian 13px (<code>polish.css:500</code>), <code>.d3-pri .m</code> 13px <code>#3a3a3a</code> (<code>polish.css:495</code>).</div>
+<div class="row"><span class="k">What</span>The setup guide row shows <span class="q">PDF, 358 KB</span>. The lesson file rows show <span class="q">33 KB</span> next to <span class="q">210,6 KB</span> and <span class="q">194,2 KB</span>. The source string is <span class="q">PDF · 33,0 KB</span>.</div>
+<div class="std"><b>Standard:</b> <span class="q">PDF · 358 KB</span>: the type, a middle dot, whole KB (MB with one decimal), in Martian 13px <code>--text-3</code>.</div></div>
+
+<div class="f" id="f1-7"><header><span class="id">1.7</span><span class="sev M">Medium</span><h3>Suffixes after Latin names and numbers are written differently</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_i18n.js:138</code> <code>d3.s2</code> "NotebookLM ga yuklang" and <code>d3.pdf</code> "Barcha promptlar bitta PDF da"; <code>:121</code> <code>part.opens</code> "{time} da"; content: "claude.ai ga kiring", "claude.ai da hisob ochish", "CLAUDE.md ni toʻldirish", "Kit 3 dan", "Baseline ni", "v0 ni".</div>
+<div class="row"><span class="k">What</span>Some strings separate the suffix with a space (<span class="q">NotebookLM ga</span>, <span class="q">PDF da</span>). Others join it with ʼ or nothing (<span class="q">NotebookLMʼga</span> in <code>ex.g2</code> and the lesson text, <span class="q">Claudeʼni</span>, <span class="q">Warpʼni</span>, <span class="q">IDʼingizni</span>, <span class="q">PDFda</span> in the Kit 1 note, <span class="q">VPSga</span>).</div>
+<div class="std"><b>Standard:</b> join the suffix with ʼ (<span class="q">NotebookLMʼga</span>, <span class="q">PDFʼda</span>, <span class="q">claude.aiʼga</span>), which is what most UI strings already do.</div></div>
+
+<div class="f" id="f1-8"><header><span class="id">1.8</span><span class="sev M">Medium</span><h3>"Manbalar" vs "Manbaalar"</h3></header>
+<div class="row"><span class="k">Where</span><code>content/lessons/2/lesson.uz.json</code>: the Amaliyot text says "Faqat oʻsha mashqning <b>Manbaalar</b> fayllarini yuklang", the zip is called <code>Manbaalar.zip</code>, the Vazifa group title is "Manbalar", and the Vazifa text says "Manbalar boʻlimidagi 7 faylni". <code>hw-qollanma.pdf</code> says "Manbalar papkasidagi".</div>
+<div class="std"><b>Standard:</b> "Manbalar", including the zip name (<code>Manbalar.zip</code>).</div></div>
+
+<div class="f" id="f1-9"><header><span class="id">1.9</span><span class="sev M">Medium</span><h3>The same term is spelled two ways across lessons</h3></header>
+<div class="row"><span class="k">Where</span>lesson JSON topics, subtitles and notes.</div>
+<div class="row"><span class="k">What</span><ul>
+<li>The Kirish subtitle and topic say <span class="q">Context</span>, while its lede and lesson 1 say <span class="q">kontekst</span> (RU says <span class="q">контекст</span>).</li>
+<li>The lesson 4 topic says <span class="q">MCP va connector</span>, while the same lesson's group is <span class="q">05 Konnektor</span> and its prompt is <span class="q">Calendar konnektori</span>.</li>
+<li>The lesson 4 topic says <span class="q">Open source</span>, while lesson 7 says <span class="q">Yasash, sotib olish yoki ochiq kod</span>.</li>
+<li>The lesson 7 subtitle and topic say <span class="q">Oldin va keyin</span>, while lessons 3-7 use <span class="q">baseline</span> about 30 times, as do lesson 7's own outcome and the Kit 5 PDF ("1. Baseline").</li>
+</ul></div>
+<div class="std"><b>Standard:</b> one form per term: <span class="q">kontekst</span>, <span class="q">konnektor</span>, <span class="q">ochiq kod (open source)</span>, and <span class="q">baseline</span>, since the course already teaches that word.</div></div>
+
+<div class="f" id="f1-10"><header><span class="id">1.10</span><span class="sev M">Medium</span><h3>Kit forms are named three ways</h3></header>
+<div class="row"><span class="k">Where</span>lesson JSON. Group titles in lessons 4 and 5: <span class="q">Kit 3 A: jarayon qadamlari</span>, <span class="q">Kit 4 A: koʻnikmalar xaritasi</span>. File labels: <span class="q">Kit 1, A shakli: suhbat</span>. Notes: <span class="q">Kit 1 A intervyusini</span>. PDFs: <span class="q">Kit 1/5: Ish qayerga ketadi</span>, <span class="q">A shakli</span>.</div>
+<div class="std"><b>Standard:</b> <span class="q">Kit 3, A shakli</span>, the form the file labels and the PDFs already use.</div></div>
+
+<div class="f" id="f1-11"><header><span class="id">1.11</span><span class="sev M">Medium</span><h3>Lessons are named by ordinal word and by number</h3></header>
+<div class="row"><span class="k">Where</span>Lesson 1 Vazifa text: <span class="q">Ikkinchi darsda Claude Code shu fayllar bilan ishlaydi</span>. Lesson 4 Vazifa: <span class="q">Toʻrtinchi darsda</span>. Kit 1 PDF: <span class="q">Ikkinchi darsdan /kit1 skilli</span>. Kit 5 PDF: <span class="q">Ikkinchi darsdan keyin</span>. The UI and the prep footnote say <span class="q">02-darsdan</span>.</div>
+<div class="row"><span class="k">What</span>The second card on the home page is Kirish (an unnumbered lesson on the same day as 01-dars), so "ikkinchi dars" can be read as Kirish rather than 02-dars.</div>
+<div class="std"><b>Standard:</b> numbered form, <span class="q">02-darsda</span>.</div></div>
+
+<div class="f" id="f1-12"><header><span class="id">1.12</span><span class="sev L">Low</span><h3>Slide counts are written with and without spaces, and zero-padded once</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_app.js:486-487</code>: in the same pane, the big number is <span class="q">3/78</span> and the link is <span class="q">Davom etish 3 / 78</span> (<code>pane.sl.go</code>). <code>:515</code>: the viewer counter is <span class="q">3 / 78</span>. <code>:517</code>: the stage shows <span class="q">03</span> (<code>num2</code>). The ring and the cards use <span class="q">0/6</span> and <span class="q">2/2</span>.</div>
+<div class="std"><b>Standard:</b> <span class="q">3/78</span> with no spaces and no padding, matching the ring and the cards.</div></div>
+
+<div class="f" id="f1-13"><header><span class="id">1.13</span><span class="sev L">Low</span><h3>Copy and done verbs drift</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_i18n.js:25</code> <code>live.copy_failed</code> and <code>:136</code> <code>toast.copy_failed</code> say <span class="q">Nusxa olinmadi</span>, while the success state is <span class="q">Nusxalandi</span> and the action is <span class="q">Nusxalash</span>. <code>:95</code> <code>live.prep_undone</code> ends in <span class="q">{d}/{t} tayyor</span>, while <code>live.prep_done</code> uses <span class="q">bajarildi</span>.</div>
+<div class="std"><b>Standard:</b> "Nusxalash / Nusxalandi / Nusxalanmadi", and "bajarildi" for counts.</div></div>
+
+<div class="f" id="f1-14"><header><span class="id">1.14</span><span class="sev L">Low</span><h3>Counted nouns sometimes drop "ta"</h3></header>
+<div class="row"><span class="k">Where</span>The course card says <span class="q">6 ta dars</span> (<code>course.title</code>), but the name menu says <span class="q">21-noyabr – 26-dekabr, 6 dars</span> (<code>menu.course_range</code>, <code>:127</code>). The setup cards say <span class="q">4 ta qadam</span> and the pane says <span class="q">Faqat shu 2 ta fayl</span>, but the section cards say <span class="q">2 prompt</span> and <span class="q">2 fayl</span>.</div>
+<div class="std"><b>Standard:</b> <span class="q">N ta …</span> in prose. Short data chips may drop "ta", but should then do so everywhere.</div></div>
+
+<div class="f" id="f1-15"><header><span class="id">1.15</span><span class="sev L">Low</span><h3>Three quote styles</h3></header>
+<div class="row"><span class="k">What</span>UI strings and lesson notes use «» (<code>lock.desc</code>; Kit 1 note <span class="q">«bir uch-toʻrt yuz ming»</span>). The same sentence in <code>kit1-pdf.pdf</code> p.2 uses straight quotes: <span class="q">"bir uch-toʻrt yuz ming"</span>. The Kirish handouts use curly quotes, <span class="q">“Oʻquv qoralamasi”</span>.</div>
+<div class="std"><b>Standard:</b> «» in Uzbek and Russian prose. Straight quotes are fine inside copyable prompt text.</div></div>
+
+<div class="f" id="f1-16"><header><span class="id">1.16</span><span class="sev L">Low</span><h3>The same sentence appears twice in one intro, with different capitalisation</h3></header>
+<div class="row"><span class="k">Where</span><code>content/lessons/2/lesson.uz.json</code> <code>amaliyot.text</code>: paragraph 1 says <span class="q">Avval yoʻriqnomani oching.</span> and paragraph 5 says <span class="q">Avval Yoʻriqnomani oching, mashq nimadan iboratligi oʻsha yerda.</span></div>
+<div class="std"><b>Standard:</b> keep one of them, in lower case ("yoʻriqnoma" is a common noun here).</div></div>
+
+<!-- ============================================================ 2 -->
+<h2 id="c2">2 · UZ vs RU</h2>
+<p class="note">Key coverage is complete: every UZ UI key has an RU value, the static markup is all wired through <code>data-i18n</code>, and no RU key is missing in UZ. The findings below are about meaning and form.</p>
+
+<div class="f" id="f2-1"><header><span class="id">2.1</span><span class="sev M">Medium</span><h3>RU "практика" is used for "mashq" and clashes with the Практика tab</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_i18n.js:836</code> <code>prep.btn</code> and <code>:496</code> <code>prep.title</code>: <span class="q">Дополнительно: практика и видео</span>. Content <code>prep.more.title</code>: <span class="q">Практика и видеоурок</span>.</div>
+<div class="row"><span class="k">What</span>The UZ word is "mashq", which RU renders as <span class="q">упражнение</span> or <span class="q">тренировка</span> elsewhere (<code>pre.sub</code> <span class="q">Тренировка промптов</span>, <code>pre.lede_late</code> <span class="q">тренажёр промптов</span>). <span class="q">Практика</span> is the RU name of the Amaliyot tab.</div>
+<div class="std"><b>Standard:</b> <span class="q">тренировка промптов</span> for this page, and <span class="q">Практика</span> only for Amaliyot.</div></div>
+
+<div class="f" id="f2-2"><header><span class="id">2.2</span><span class="sev M">Medium</span><h3>RU uses both "урок" and "занятие" for "dars"</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_i18n.js:497</code> <code>prep.intro</code> and <code>:728</code> <code>prep.end_before</code> <span class="q">Первое занятие</span>; <code>:710</code> <code>kit.intro</code> <span class="q">после занятия</span>; <code>:711</code> <code>pane.uz_note</code> <span class="q">как на занятии</span>; content prep <span class="q">понадобится на занятии</span>. Everywhere else: <span class="q">Урок 01</span>, <span class="q">с урока 02</span>, and the PDF title <span class="q">ДО ПЕРВОГО УРОКА</span>.</div>
+<div class="std"><b>Standard:</b> <span class="q">урок</span>, to match UZ, which uses the single word "dars".</div></div>
+
+<div class="f" id="f2-3"><header><span class="id">2.3</span><span class="sev L">Low</span><h3>RU progress word order flips</h3></header>
+<div class="row"><span class="k">Where</span><code>:418</code> <code>lesson.meta</code> <span class="q">22 ноября · выполнено 0/2</span> and <code>steps</code> put the word first; <code>:498</code> <code>prep.cnt</code> <span class="q">0/4 выполнено</span> and <code>ex.k</code> put it last. UZ is always <span class="q">{d}/{t} bajarildi</span>.</div>
+<div class="std"><b>Standard:</b> one order, <span class="q">{d}/{t} выполнено</span>, which mirrors UZ.</div></div>
+
+<div class="f" id="f2-4"><header><span class="id">2.4</span><span class="sev L">Low</span><h3>"Next" is worded and capitalised differently in RU</h3></header>
+<div class="row"><span class="k">Where</span><code>:709</code> <code>next.to_vz</code> <span class="q">Дальше: задание</span> (lower case, while the tab says <span class="q">ЗАДАНИЕ</span> and UZ says <span class="q">Keyingi: Vazifa</span>); <code>next.k</code> <span class="q">Следующий шаг</span>; <code>d3.next_s</code> <span class="q">Дальше</span>.</div>
+<div class="std"><b>Standard:</b> <span class="q">Дальше: Задание</span>, with the part name capitalised as on its tab.</div></div>
+
+<div class="f" id="f2-5"><header><span class="id">2.5</span><span class="sev L">Low</span><h3>RU mixes Latin and Cyrillic units</h3></header>
+<div class="row"><span class="k">Where</span>RU setup page: the file meta says <span class="q">PDF, 412 KB</span>, the step says <span class="q">не менее 5 ГБ</span>, and the illustration says <span class="q">5 GB</span>.</div>
+<div class="std"><b>Standard:</b> КБ/МБ/ГБ in RU text. The illustration may keep Latin letters.</div>
+<div class="shots"><a href="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/setup-ru-390.png"><img src="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/setup-ru-390.png" alt="">d3-build/setup-ru-390</a></div></div>
+
+<div class="f" id="f2-6"><header><span class="id">2.6</span><span class="sev L">Low</span><h3>The 01-dars card has untranslated English chrome</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_app.js:121</code>: the flag on the lesson 01 card has the hard-coded text <span class="q">START</span> in both UZ and RU.</div>
+<div class="std"><b>Standard:</b> run it through <code>t()</code> (<span class="q">START</span> → <span class="q">BOSHLANISH</span> / <span class="q">СТАРТ</span>), or drop the word and keep the two flags.</div></div>
+
+<!-- ============================================================ 3 -->
+<h2 id="c3">3 · Visual system</h2>
+
+<div class="f" id="f3-1"><header><span class="id">3.1</span><span class="sev M">Medium</span><h3>The same card note is uppercase in the grid and sentence case on the hero</h3></header>
+<div class="row"><span class="k">Where</span>The hero uses <code>.f-sub</code> (<code>proto_app.js:148</code>, <code>index.pre-proto.html:96</code>, sentence case); the grid uses <code>.f-note</code> (<code>:169</code>, UPPERCASE). The optional card puts a description inside <code>.f-note</code> (<code>proto_app.js:139</code>).</div>
+<div class="row"><span class="k">What</span>The hero card says <span class="q">Qadamlar: 0/4</span>, and the same card in the grid says <span class="q">QADAMLAR: 0/4</span>. The yellow card's description renders as a state note: <span class="q">PROMPT MASHQI VA NOTEBOOKLM VIDEO DARSI</span>.</div>
+<div class="std"><b>Standard:</b> follow tokens.md, where <code>.f-note</code> (UPPERCASE) is for state only. Put the hero state in <code>.f-note</code> too, and use <code>.f-sub</code> (sentence case) for descriptions.</div>
+<div class="shots"><a href="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/home-uz-390.png"><img src="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/home-uz-390.png" alt="">d3-build/home-uz-390</a><a href="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/audit-2026-11-20/06-menu-desktop.png"><img src="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/audit-2026-11-20/06-menu-desktop.png" alt="">audit/06-menu-desktop</a></div></div>
+
+<div class="f" id="f3-2"><header><span class="id">3.2</span><span class="sev M">Medium</span><h3>Martian Mono is used for labels on the login screen</h3></header>
+<div class="row"><span class="k">Where</span><code>index.pre-proto.html:312</code> <code>.mx-group label</code> (Martian 12px UPPERCASE <span class="q">SHAXSIY ID</span>); <code>:322</code> <code>.mx-help</code> (Martian 11px base, patched to 13px Golos by <code>polish.css</code>).</div>
+<div class="row"><span class="k">What</span>tokens.md says "Martian Mono is data only". The same label in the name menu, <span class="q">Shaxsiy ID</span>, is Golos 15px in sentence case.</div>
+<div class="std"><b>Standard:</b> Golos 500 13px UPPERCASE (the tokens "label" role). Keep Martian for the <span class="q">AIP-</span> prefix and the typed ID.</div>
+<div class="shots"><a href="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/audit-2026-11-20/01-login-desktop.png"><img src="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/audit-2026-11-20/01-login-desktop.png" alt="">audit/01-login-desktop</a></div></div>
+
+<div class="f" id="f3-3"><header><span class="id">3.3</span><span class="sev M">Medium</span><h3>The login button uses a type style no other button has</h3></header>
+<div class="row"><span class="k">Where</span><code>index.pre-proto.html:327</code> <code>.mx-btn</code>: display font 600 13px, letter-spacing 2px, UPPERCASE.</div>
+<div class="row"><span class="k">What</span>Every other button is Golos 16px in sentence case: <span class="q">Chiqish</span>, <span class="q">Yopish</span>, <span class="q">Darsni ochish</span>. tokens.md: "body / nav / CTA: Golos 400 18".</div>
+<div class="std"><b>Standard:</b> Golos 500 16-18px in sentence case, <span class="q">Kirish</span>.</div></div>
+
+<div class="f" id="f3-4"><header><span class="id">3.4</span><span class="sev M">Medium</span><h3>Round icon controls vary in border, size and shape</h3></header>
+<div class="row"><span class="k">Where</span><code>.home-btn</code> 44-48px with a 1px white border (<code>index.pre-proto.html:59</code>); <code>.ef-dl</code> download, 40px with a 1px <b><code>--line</code></b> border (<code>:387</code>); <code>.slv-btn</code> 52px with a 1px white border; <code>.ia-ic</code> on the optional page, a 36-40px <b>rounded square</b> (radius 12) with a 1.5px white/50% border (<code>polish.css:284, 342</code>).</div>
+<div class="row"><span class="k">What</span>tokens.md says <code>--line</code> is a decorative hairline and <code>--line-ui</code> is "the outline of a control", so the download circle borrows the wrong token. The optional page uses the only square icon tile in the app for the same ↗ / ▶ action.</div>
+<div class="std"><b>Standard:</b> a circle with a 1px border (white, or <code>--line-ui</code> for quiet controls), 44px, everywhere outside the panes.</div>
+<div class="shots"><a href="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/pre-uz-1440.png"><img src="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/pre-uz-1440.png" alt="">d3-build/pre-uz-1440</a></div></div>
+
+<div class="f" id="f3-5"><header><span class="id">3.5</span><span class="sev M">Medium</span><h3>tokens.md no longer describes what ships</h3></header>
+<div class="row"><span class="k">Where</span><code>.design/tokens.md</code> compared with <code>proto_app.js:18</code> (<code>LCOL</code>), <code>:497</code> and <code>index.pre-proto.html:13-18</code>.</div>
+<div class="row"><span class="k">What</span><ul>
+<li>tokens.md gives lesson 01 as lilac. The build uses slate <code>#4F6475</code>.</li>
+<li>Every lesson-page folder is slate (a user decision on 2026-10-30), which contradicts "each lesson has ONE fixed identity colour". The lesson 3 page is slate, not blue.</li>
+<li>Yellow is listed as lesson 0's colour, but lesson 0 is Claude orange. Yellow now marks the optional page, the progress bars and "Nusxalandi".</li>
+<li>The state-note examples (<span class="q">✓ Bajarildi · n/n qadam</span>, <span class="q">Ochiq · n/n qadam</span>) are not what ships (<span class="q">Amaliyot va vazifa: 0/2</span>).</li>
+<li>The wordmark is documented as sentence case but rendered UPPERCASE.</li>
+<li>The prompt sections are documented as lilac but are slate.</li>
+<li><code>--line-ui</code> is <code>#595959</code> in tokens.md and <code>#5E5E5E</code> in code.</li>
+</ul></div>
+<div class="std"><b>Standard:</b> update tokens.md to the shipped system. It is the document the rest of this audit measures against.</div></div>
+
+<div class="f" id="f3-6"><header><span class="id">3.6</span><span class="sev L">Low</span><h3>Greys outside the token set in the shipped CSS</h3></header>
+<div class="row"><span class="k">Where</span><code>polish.css:553</code> <code>#333</code> (pressed section card); <code>:495</code> <code>#3a3a3a</code>; video background <code>#0a0a0a</code>; hovers <code>#ececec</code>; login <code>--dim: rgb(255 255 255 / .85)</code>; body outside the frame <code>#0d0d0d</code>.</div>
+<div class="std"><b>Standard:</b> <code>--ink</code>/<code>--ink-2</code> on light fills, <code>--surface-1</code> for dark wells, <code>--text-2</code> for dimmed text on dark.</div></div>
+
+<div class="f" id="f3-7"><header><span class="id">3.7</span><span class="sev L">Low</span><h3>Text sizes off the type scale</h3></header>
+<div class="row"><span class="k">Where</span><code>public/aip/app.css</code>: Golos 11px (<code>.ns</code>, <code>.s1 .chip</code>, <code>.cpl</code>), 12px (<code>.ia-k</code> promo-code label <code>polish.css:296</code>, <code>.prep .chip</code>, <code>.nl-k</code>), 14px (<code>.gate-lang</code>, <code>.nm-lang</code>, <code>.slv-x</code>).</div>
+<div class="row"><span class="k">What</span>The tokens.md snap scale is Golos 13/15/16/18, with a 13px floor (and 12px for the <code>.ns</code> badge only).</div>
+<div class="std"><b>Standard:</b> snap to 13 or 15.</div></div>
+
+<div class="f" id="f3-8"><header><span class="id">3.8</span><span class="sev L">Low</span><h3>Done indicators take five forms</h3></header>
+<div class="row"><span class="k">What</span><ul>
+<li>Setup cards: a square checkbox with <span class="q">Bajarildi</span>.</li>
+<li>Pane foot: a checkbox with <span class="q">Amaliyot bajarildi</span>.</li>
+<li>Tab: <span class="q">✓ AMALIYOT</span>.</li>
+<li>Home card: <span class="q">✓ Amaliyot va vazifa bajarildi</span>.</li>
+<li>Slide viewer: <span class="q">✓ Koʻrildi</span>.</li>
+</ul>tokens.md still describes a filled chip <span class="q">Bajarildi</span> and an outline chip <span class="q">Bajarildi deb belgilash</span>.</div>
+<div class="std"><b>Standard:</b> ✓ plus the word "Bajarildi" for state, and a checkbox only where the student ticks something. Update tokens.md to match.</div></div>
+
+<div class="f" id="f3-9"><header><span class="id">3.9</span><span class="sev L">Low</span><h3>The login wordmark looks lighter than the nav wordmark</h3></header>
+<div class="row"><span class="k">Where</span>login (<code>.wordmark</code> made of animated <code>.wm-l</code> letter spans) compared with the app nav. In <code>01-login-desktop.png</code> it reads thinner and more widely spaced than in <code>home-uz-1440.png</code>.</div>
+<div class="std"><b>Standard:</b> once the animation ends, the wordmark should match the nav: display 500, 125% stretch.</div></div>
+
+<!-- ============================================================ 4 -->
+<h2 id="c4">4 · Behaviour</h2>
+
+<div class="f" id="f4-1"><header><span class="id">4.1</span><span class="sev M">Medium</span><h3>"Amaliyot va vazifa: 0/3" counts the slides too</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_app.js:56-62</code> <code>units()</code> includes <code>sl</code>; <code>:135</code> uses the fixed label <code>note.open</code> "Amaliyot va vazifa: {d}/{t}".</div>
+<div class="row"><span class="k">What</span>The Kirish card and header show <span class="q">AMALIYOT VA VAZIFA: 0/3</span> and <span class="q">0/3 bajarildi</span>. The third unit is Slaydlar. Production currently hides the Kirish slides, but any lesson that gets slides will show the mismatch. <code>note.done</code> has the same problem: <span class="q">Amaliyot va vazifa bajarildi</span>.</div>
+<div class="std"><b>Standard:</b> drop the parts from the label (<span class="q">{d}/{t} bajarildi</span>, see <a href="#f1-4">1.4</a>), or build it from <code>units()</code>.</div>
+<div class="shots"><a href="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/l2-am-uz-1440.png"><img src="file:///C:/Users/User/vs%20code/HEAD%20projects/praktikum3-precourse-platform/.design/d3-build/l2-am-uz-1440.png" alt="">d3-build/l2-am-uz-1440</a></div></div>
+
+<div class="f" id="f4-2"><header><span class="id">4.2</span><span class="sev M">Medium</span><h3>Two "done" systems in one pane</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_app.js:391-394</code> (<code>d3Foot</code> counts copied prompts) compared with <code>:59</code> (<code>units()</code>, where Amaliyot is done only through the <code>f:am</code> checkbox).</div>
+<div class="row"><span class="k">What</span>On Kirish › Amaliyot, the Ombor card shows <span class="q">✓ Bajarildi 2/2</span>, while the tab has no ✓, the header says <span class="q">0/3 bajarildi</span>, and the ring does not move until <span class="q">Amaliyot bajarildi</span> is ticked by hand. "Copy = done" (tokens.md) holds for prompts and sections, but not for the lesson.</div>
+<div class="std"><b>Standard:</b> one rule. Either all required sections done means Amaliyot done (the checkbox becomes a summary), or the cards stop using the word "Bajarildi" and only show <span class="q">2/2</span>.</div></div>
+
+<div class="f" id="f4-3"><header><span class="id">4.3</span><span class="sev M">Medium</span><h3>The copy toast names Claude for prompts that go elsewhere</h3></header>
+<div class="row"><span class="k">Where</span><code>assemble_post.py:102</code> picks <code>toast.fill</code> whenever the prompt has [brackets]; <code>proto_i18n.js:135</code> <span class="q">{no} nusxalandi. Claudeʼda [qavslar]ni oʻz maʼlumotingiz bilan almashtiring.</span></div>
+<div class="row"><span class="k">What</span>It fires on lesson 1 <span class="q">04P1 Hujjatdan savol</span> (target NotebookLM → Chat) and on <span class="q">05P1</span>, <span class="q">K1P1</span> and <span class="q">V3P1</span> (target Gemini).</div>
+<div class="std"><b>Standard:</b> <span class="q">{no} nusxalandi. [Qavslar]ni oʻz maʼlumotingiz bilan almashtiring.</span> with no tool name (RU: drop "В Claude").</div></div>
+
+<div class="f" id="f4-4"><header><span class="id">4.4</span><span class="sev L">Low</span><h3>The slide viewer names its back link "Yopish"</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_app.js:515</code> <span class="q">← Yopish</span> (<code>sl.close</code>) and <code>:521</code> <span class="q">Darsga qaytish</span>, both of which go to the lesson. Every other back link names its destination: <span class="q">← Dastur</span>.</div>
+<div class="std"><b>Standard:</b> <span class="q">← Dars</span> (or the lesson label) at the top. Keep "Yopish" for sheets.</div></div>
+
+<div class="f" id="f4-5"><header><span class="id">4.5</span><span class="sev L">Low</span><h3>Two download rows look the same but behave differently</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_app.js:183</code>: the setup guide is <code>&lt;a download="prep-uz.pdf"&gt;</code> and stays on the page. <code>:100</code> <code>fa()</code>: lesson files use <code>target="_blank"</code> to an attachment URL, so a blank tab opens briefly. Both rows show the same ↓ circle and the same "Yuklab olish:" label.</div>
+<div class="std"><b>Standard:</b> <code>download</code> with no new tab for every file row, since the server already sends <code>attachment</code>.</div></div>
+
+<div class="f" id="f4-6"><header><span class="id">4.6</span><span class="sev L">Low</span><h3>The same copy icon sometimes marks done and sometimes does nothing, and its label varies</h3></header>
+<div class="row"><span class="k">Where</span>Prompt rows: copy marks the prompt done and the button says <span class="q">Nusxalash</span>. Setup install commands (<code>proto_app.js:195</code>): icon only, marks nothing. Promo code (<code>:224</code>): icon plus <span class="q">Nusxalash</span>, marks nothing.</div>
+<div class="std"><b>Standard:</b> show the label on every copy button, and keep copy-marks-done only where a ✓ appears afterwards.</div></div>
+
+<!-- ============================================================ 5 -->
+<h2 id="c5">5 · Content and files</h2>
+
+<div class="f" id="f5-1"><header><span class="id">5.1</span><span class="sev H">High</span><h3>Kirish handouts still carry the 2.0 header and author</h3></header>
+<div class="row"><span class="k">Where</span><code>content/lessons/2/files/</code>: all seven <code>*-yoriqnoma.pdf</code>, all seven <code>*-promptlar-pdf.pdf</code>, plus <code>qollanma.pdf</code>, <code>sinov.pdf</code>, <code>02-savdo-m3.pdf</code> and <code>05-xarid-qoshimcha-m1.pdf</code>.</div>
+<div class="row"><span class="k">What</span>Every page's header line 3 reads <span class="q">II VARIANT / OʻQUV NAMUNASI / 12.09.2026</span>, directly under <span class="q">PRAKTIKUM 3.0 / NOTEBOOKLM</span>. The PDF metadata has <span class="q">author = Praktikum 2.0</span> (18 files). <code>02-savdo-m3</code> and the prompts also cite <span class="q">01.06.2026</span>.</div>
+<div class="std"><b>Standard:</b> header <span class="q">PRAKTIKUM 3.0 / NOTEBOOKLM / 01 / YOʻRIQNOMA</span>. Drop "II VARIANT". Keep the scenario date only inside the case text, if at all. Set author to "Praktikum 3.0".</div></div>
+
+<div class="f" id="f5-2"><header><span class="id">5.2</span><span class="sev H">High</span><h3>The setup guide PDF gives a second, wrong first-lesson date</h3></header>
+<div class="row"><span class="k">Where</span><code>content/prep/prep-uz.pdf</code> p.1: <span class="q">Birinchi dars 21-noyabr (shanba guruhi) yoki 22-noyabr (yakshanba guruhi)</span>. <code>prep-ru.pdf</code> p.1: <span class="q">21 ноября (группа субботы) или 22 ноября …</span>.</div>
+<div class="row"><span class="k">What</span><code>content/schedule.json</code> has <code>"shanba": null</code>. The portal says <span class="q">Kurs 22-noyabrda boshlanadi</span> and <span class="q">Birinchi dars 22-noyabr.</span></div>
+<div class="std"><b>Standard:</b> <span class="q">Birinchi dars 22-noyabr.</span> (RU <span class="q">Первый урок 22 ноября.</span>), regenerated with <code>gen_prep_pdf.py</code>.</div></div>
+
+<div class="f" id="f5-3"><header><span class="id">5.3</span><span class="sev H">High</span><h3>The setup material has five names, and its PDF cover uses the optional page's old name</h3></header>
+<div class="row"><span class="k">What</span><ul>
+<li>Page H1 and home card: <span class="q">Oʻrnatish va tayyorgarlik</span>.</li>
+<li>File row: <span class="q">Tayyorgarlik qoʻllanmasi</span>.</li>
+<li>Download name: <span class="q">prep-uz.pdf</span>.</li>
+<li>PDF title and cover: <span class="q">BIRINCHI DARSGACHA</span>.</li>
+<li>PDF eyebrow on every page: <span class="q">0-DARS · TAYYORGARLIK</span>.</li>
+<li>Lesson 0 title in content: <span class="q">Tayyorgarlik</span>.</li>
+</ul>RU: <span class="q">Установка и подготовка</span>, <span class="q">Руководство по подготовке</span>, <span class="q">ДО ПЕРВОГО УРОКА</span>, <span class="q">УРОК 0</span>. "Birinchi darsgacha" was the header pill of the optional page until today (see <code>audit-2026-11-20/13-locked-l3-desktop.png</code>), so students who saw the old portal will look for the wrong thing. The portal never calls setup "0-dars".</div>
+<div class="std"><b>Standard:</b> <span class="q">Oʻrnatish va tayyorgarlik</span> on the PDF cover and in its title. Eyebrow <span class="q">TAYYORGARLIK</span> with no "0-DARS". Download name <span class="q">Tayyorgarlik_qollanmasi.pdf</span>.</div></div>
+
+<div class="f" id="f5-4"><header><span class="id">5.4</span><span class="sev H">High</span><h3>The Kirish guides refer to files the portal does not have</h3></header>
+<div class="row"><span class="k">Where</span><code>qollanma.pdf</code> p.3: <span class="q">00_BOSHLASH.htmlni oching … 01_Yoriqnoma.pdf … 02_Promptlar.html matnni nusxalash uchun … 01_HR_onboarding/Manbalar ichidagi 2 PDFni</span>. <code>hw-qollanma.pdf</code> p.1: <span class="q">Promptlar.md faylini yoningizda ochiq saqlang</span>, <span class="q">Manbalar papkasidagi 7 faylni</span>.</div>
+<div class="row"><span class="k">What</span>The portal has no HTML or .md prompt files, because prompts are rows with a copy button. The files are called <span class="q">01_Yoriqnoma_HR.pdf</span> and <span class="q">02_Promptlar_HR.pdf</span>, and the zip is <span class="q">Manbaalar.zip</span>. This was raised in the 11-20 UX audit (#5) and is still open.</div>
+<div class="std"><b>Standard:</b> rewrite those lines for the portal: "Yoʻriqnoma va promptlar har yoʻnalish ichida; promptni «Nusxalash» bilan oling; manbalar = shu yoʻnalishdagi fayllar".</div></div>
+
+<div class="f" id="f5-5"><header><span class="id">5.5</span><span class="sev M">Medium</span><h3>Kirish: the portal label, the download name and the PDF title disagree</h3></header>
+<table>
+<tr><th>Portal label</th><th>Download name</th><th>PDF header / title</th></tr>
+<tr><td>Yoʻriqnoma</td><td>01_Yoriqnoma_HR.pdf</td><td>01 / TALABA · "Yangi xodimga tayanch"</td></tr>
+<tr><td>Talaba qoʻllanmasi</td><td>Talaba_qollanmasi.pdf</td><td>TALABA / BOSHLASH · "Korxona bilimini ishga soling"</td></tr>
+<tr><td>Biznesimda 7 kunlik sinov</td><td>Biznesimda_7_kunlik_sinov.pdf</td><td>TALABA / YAKUNIY VARAQ · "Mening biznesimda"</td></tr>
+<tr><td>Vazifa boʻyicha qoʻllanma</td><td>Talaba_qollanmasi_vazifa.pdf</td><td>PRAKTIKUM / NOTEBOOKLM / 2026 · "NotebookLM: biznes qarori"</td></tr>
+</table>
+<div class="row">The seven track guides are headed <span class="q">TALABA</span>, a word the portal uses only for "Talaba qoʻllanmasi".</div>
+<div class="std"><b>Standard:</b> the PDF eyebrow repeats the portal label (<span class="q">01 / YOʻRIQNOMA</span>), and the download name is the label plus the track (<span class="q">HR_Yoriqnoma.pdf</span>).</div></div>
+
+<div class="f" id="f5-6"><header><span class="id">5.6</span><span class="sev M">Medium</span><h3>The brand line differs across PDFs</h3></header>
+<div class="row"><span class="k">What</span><ul>
+<li>Prep PDFs: <span class="q">AI PRAKTIKUM 3.0</span> with page numbers <span class="q">01 / 06</span>.</li>
+<li>Kit PDFs: <span class="q">PRAKTIKUM 3.0</span>, with the footer <span class="q">Tuzuvchi: Xurshid Maroziqov. Praktikum 3.0, sahifa 1</span>.</li>
+<li>Kirish handouts: <span class="q">PRAKTIKUM 3.0 / NOTEBOOKLM</span>.</li>
+<li>Kirish Vazifa sources: <span class="q">PRAKTIKUM / NOTEBOOKLM / 2026</span>, with no "3.0" and title metadata <span class="q">(anonymous)</span>.</li>
+</ul></div>
+<div class="std"><b>Standard:</b> <span class="q">AI PRAKTIKUM 3.0</span> (the portal wordmark) on every handout, and page numbers in one style (<span class="q">1 / 3</span>).</div></div>
+
+<div class="f" id="f5-7"><header><span class="id">5.7</span><span class="sev M">Medium</span><h3>A setup step refers to "card 03", but the cards on screen have no numbers</h3></header>
+<div class="row"><span class="k">Where</span><code>content/lessons/0/lesson.uz.json</code> <code>prep.items[3].steps[2]</code>: <span class="q">Toʻlovni 03-kartadagi Visa yoki Mastercard bilan qiling.</span> (RU <span class="q">из карточки 03</span>).</div>
+<div class="row"><span class="k">What</span>The setup page cards are titled with no number (<span class="q">VISA KARTA</span>). Only the PDF numbers them 01-04. "03-karta" also reads like a card number.</div>
+<div class="std"><b>Standard:</b> <span class="q">Toʻlovni «Visa karta» bandidagi kartangiz bilan qiling.</span></div></div>
+
+<div class="f" id="f5-8"><header><span class="id">5.8</span><span class="sev M">Medium</span><h3>Paste targets are missing or written differently</h3></header>
+<div class="row"><span class="k">Where</span><code>content/lessons/2/lesson.uz.json</code>.</div>
+<div class="row"><span class="k">What</span>Every Kirish Vazifa prompt (P1-P8, Q1-Q5) has <code>target: null</code>, while every other prompt in the course has one. Kirish Amaliyot targets are relative (<span class="q">Chat</span>, <span class="q">Studio → Quiz → sozlash</span>, <span class="q">Chat / video uchun zaxira</span>), while lesson 1 writes <span class="q">NotebookLM → Chat</span> and <span class="q">NotebookLM → Studio → Quiz</span>.</div>
+<div class="std"><b>Standard:</b> always give a target, written from the tool down: <span class="q">NotebookLM → Chat</span>.</div></div>
+
+<div class="f" id="f5-9"><header><span class="id">5.9</span><span class="sev L">Low</span><h3>File names follow four styles, and one label lacks ʻ</h3></header>
+<div class="row"><span class="k">What</span>File names in Kirish mix spaces (<span class="q">Ichki mehnat tartibi qoidalari.pdf</span>), underscores (<span class="q">Narxlar_izohi.pdf</span>), ASCII apostrophes (<span class="q">Onboarding qo'llanmasi.pdf</span>, <span class="q">Narxlar ro'yxati.xlsx</span>) and dropped apostrophes (<span class="q">Talaba_qollanmasi.pdf</span>, <span class="q">07_Yigilish_qaydi.txt</span>). The visible label <span class="q">07 Yigilish qaydi</span> should be <span class="q">07 Yigʻilish qaydi</span>.</div>
+<div class="std"><b>Standard:</b> download names in ASCII with underscores and no apostrophes. Labels in proper Uzbek with ʻ.</div></div>
+
+<div class="f" id="f5-10"><header><span class="id">5.10</span><span class="sev L">Low</span><h3>Numbering styles differ inside content and PDFs</h3></header>
+<div class="row"><span class="k">What</span>Group titles use <span class="q">01 Birinchi artifakt</span> in Amaliyot and Kit, <span class="q">1. Jamoaga sababini ayting</span> in Vazifa, and <span class="q">03A …</span> in Kirish (the UI strips all of these). PDF pages are numbered <span class="q">01 / 06</span>, <span class="q">sahifa 1</span> and <span class="q">Sahifa 1 / 9</span>. Kit titles use <span class="q">Kit 1/5</span>. Track step times use <span class="q">07 daqiqa</span>, zero-padded minutes, in the Kirish guides.</div>
+<div class="std"><b>Standard:</b> <span class="q">01 Title</span> in data, <span class="q">1 / 3</span> for pages, no zero-padded minutes.</div></div>
+
+<div class="f" id="f5-11"><header><span class="id">5.11</span><span class="sev L">Low</span><h3>Kit PDF title vs portal label vs group title</h3></header>
+<div class="row"><span class="k">What</span>The PDF title is <span class="q">Kit 1/5: Ish qayerga ketadi</span>, the file row is <span class="q">Kit 1 yoʻriqnomasi</span>, the group is <span class="q">Kit 1: Ish qayerga ketadi</span>, and the download is <span class="q">Kit1_Ish_qayerga_ketadi.pdf</span>. Kit 5 appears in four lessons with four group titles, but always as the same PDF.</div>
+<div class="std"><b>Standard:</b> label <span class="q">Kit 1: Ish qayerga ketadi (PDF)</span>, the same as the PDF title without "/5".</div></div>
+
+<div class="f" id="f5-12"><header><span class="id">5.12</span><span class="sev L">Low</span><h3>The prototype dictionary is stale against the content</h3></header>
+<div class="row"><span class="k">Where</span><code>proto_i18n.js:70-80</code>: prep items 2-3 are <span class="q">Claude obunasi</span> and <span class="q">Warp va Claude Code</span>, while the content has <span class="q">Visa karta</span> and <span class="q">Claude obunasi</span>. <code>:354</code> <code>lesson.7.sub</code> says <span class="q">Baseline va farq … build yoki buy</span>, while the content says <span class="q">Oldin va keyin … yasash yoki sotib olish</span>. The app strips these keys, so students never see them, but the comp and the review screenshots do.</div>
+<div class="std"><b>Standard:</b> regenerate these keys from <code>content/</code>, or delete them.</div></div>
+
+<!-- ============================================================ panes -->
+<h2 id="panes">Pane-level notes (redesign in progress, not counted)</h2>
+<ul>
+<li>In each section, prompt numbers restart at <span class="q">P1</span> (<code>proto_app.js:401</code>). The Kirish Vazifa ids Q1-Q5 show as P1-P5 under the P1-P8 group, so the pane has two "P1"s.</li>
+<li>A copied prompt keeps a yellow <span class="q">✓ Nusxalandi</span> pill as its done state, while the card foot says <span class="q">Bajarildi</span>. Done state should read "Bajarildi".</li>
+<li>Track tags (<span class="q">ASOSIY</span>, <span class="q">YOKI OMBOR</span>) appear only on untouched cards and disappear once progress starts.</li>
+<li>The pane has three "next" controls in different styles: <span class="q">Keyingi: Token tajribasi →</span> (bare arrow), <span class="q">Keyingi: Vazifa</span> (white filled circle), and home's outline pill.</li>
+<li><span class="q">NotebookLM ga yuklang</span> and <span class="q">bitta PDF da</span>: see <a href="#f1-7">1.7</a>. File sizes: see <a href="#f1-6">1.6</a>.</li>
+<li>The hard-coded <code>&lt;b&gt;Tayyor, agar&lt;/b&gt;</code> (<code>proto_app.js:425</code>) is fine as Uzbek content, but it is not wrapped in <code>lang="uz-Latn"</code> on RU pages, unlike other Uzbek text.</li>
+</ul>
+
+<h2>Checked and consistent</h2>
+<ul class="note">
+<li>All UZ UI keys have RU values, and static markup is wired through <code>data-i18n</code> / <code>data-i18n-attr</code>.</li>
+<li>Dates in the UI are always <span class="q">22-noyabr</span> (UZ) and <span class="q">22 ноября</span> (RU). Lesson labels are always zero-padded <span class="q">01-dars</span> / <span class="q">Урок 01</span>.</li>
+<li>Uzbek UI text uses ʻ (U+02BB) and ʼ (U+02BC) throughout. The ‘ ’ in the ReportLab PDFs is the documented font fallback.</li>
+<li>Kit PDFs and lesson numbering in UI strings agree (02-dars = Claude Code).</li>
+<li>The Kirish source documents (company files) use ASCII apostrophes and Word headers on purpose, as realistic case material.</li>
+</ul>
+</main>
+</body>
+</html>

@@ -54,6 +54,26 @@
   "translate": true,
   "note": "screen-reader-only prefix on file rows (not visible)"
  },
+ "unit.b": {
+  "uz": "B",
+  "translate": true,
+  "note": "tab label / unit name in the lesson folder; ≤ 11 chars at 320 px (tabs are ~100 px wide)"
+ },
+ "prep.pdf_file": {
+  "uz": "Tayyorgarlik_qollanmasi.pdf",
+  "translate": true,
+  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
+ },
+ "unit.kb": {
+  "uz": "KB",
+  "translate": true,
+  "note": "tab label / unit name in the lesson folder; ≤ 11 chars at 320 px (tabs are ~100 px wide)"
+ },
+ "unit.mb": {
+  "uz": "MB",
+  "translate": true,
+  "note": "tab label / unit name in the lesson folder; ≤ 11 chars at 320 px (tabs are ~100 px wide)"
+ },
  "common.sr_external": {
   "uz": " (yangi oynada ochiladi)",
   "translate": true,
@@ -68,11 +88,6 @@
   "uz": "oʻlchami nomaʼlum",
   "translate": true,
   "note": "file size line on the file screen when the size is unknown"
- },
- "common.guide": {
-  "uz": "Qoʻllanma",
-  "translate": true,
-  "note": "group heading (small UPPERCASE) for the guide file, ≤ 20 chars"
  },
  "common.bonus": {
   "uz": "bonus",
@@ -124,11 +139,6 @@
   "translate": true,
   "note": "small UPPERCASE card label, e.g. \"03-dars · 28-noyabr\"; {date} is built from the month table · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
- "lesson.label0": {
-  "uz": "Tayyorgarlik",
-  "translate": true,
-  "note": "small UPPERCASE label of the prep card"
- },
  "lesson.meta": {
   "uz": "{date} · {d}/{t} bajarildi",
   "translate": true,
@@ -175,7 +185,7 @@
   "note": "top-left nav link and the back link back to the home screen, ≤ 12 chars"
  },
  "nav.homebtn": {
-  "uz": "Bosh sahifa",
+  "uz": "Dastur",
   "translate": true,
   "note": "aria-label and tooltip (not visible text) of the round home button at the top left"
  },
@@ -210,7 +220,7 @@
   "note": "row label"
  },
  "menu.course_value": {
-  "uz": "7 dars · 21 noy – 26 dek",
+  "uz": "6 ta dars · 22 noy – 27 dek",
   "translate": true,
   "note": "value: \"7 lessons · 21 Nov – 26 Dec\" (short month names)"
  },
@@ -250,7 +260,7 @@
   "note": "toast when a link is unknown, ≤ 28 chars"
  },
  "lock.title": {
-  "uz": "{n} {date}da ochiladi",
+  "uz": "{n} · {date}da ochiladi",
   "translate": true,
   "note": "title of the bottom sheet on the locked card · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -275,7 +285,7 @@
   "note": "screen-reader announcement (aria-live), not visible; full sentence · keep {params} as they are"
  },
  "live.copy_failed": {
-  "uz": "Nusxa olinmadi. Matnni qoʻlda belgilang.",
+  "uz": "Nusxalanmadi. Matnni qoʻlda belgilang.",
   "translate": true,
   "note": "screen-reader announcement (aria-live), not visible; full sentence"
  },
@@ -480,7 +490,7 @@
   "note": "small UPPERCASE label on the blue card: \"happening now\""
  },
  "hero.sub": {
-  "uz": "Slaydlar {i} / {n} · davom etish",
+  "uz": "Slaydlar {i}/{n} · davom etish",
   "translate": true,
   "note": "line on the blue card; {i} slides seen of {n} · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -510,7 +520,7 @@
   "note": "home screen · keep {params} as they are"
  },
  "next.sl": {
-  "uz": "Slaydlar · {i} / {total}",
+  "uz": "Slaydlar · {i}/{total}",
   "translate": true,
   "note": "home screen · keep {params} as they are"
  },
@@ -520,17 +530,17 @@
   "note": "text of the big outline button on a lesson page; {what} is e.g. \"Amaliyot 01 · P3 Vaziyatli test\" (long: ≤ 46 chars in total, wraps to 2 lines) · keep {params} as they are"
  },
  "note.prep_open": {
-  "uz": "Qadamlar: {d}/{t}",
+  "uz": "{d}/{t} bajarildi",
   "translate": true,
   "note": "bottom-right state note on a lesson card (14px UPPERCASE); the pieces are joined, ≤ 28 chars in total at 320 px · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "note.prep_done": {
-  "uz": "Hamma qadamlar bajarildi",
+  "uz": "Bajarildi",
   "translate": true,
   "note": "bottom-right state note on a lesson card (14px UPPERCASE); the pieces are joined, ≤ 28 chars in total at 320 px"
  },
  "note.done": {
-  "uz": "Amaliyot va vazifa bajarildi",
+  "uz": "Bajarildi",
   "translate": true,
   "note": "state note on a finished card, e.g. \"Bajarildi · 3/3 qadam\""
  },
@@ -545,17 +555,12 @@
   "note": "part 2 of the same note: \" in progress\" (HIDDEN under 360 px, so the note must still make sense without it)"
  },
  "note.open": {
-  "uz": "Amaliyot va vazifa: {d}/{t}",
+  "uz": "{d}/{t} bajarildi",
   "translate": true,
   "note": "state note on an open card, e.g. \"Ochiq · 3/6 qadam\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "prep.title": {
-  "uz": "Qoʻshimcha: mashq va video",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.meta": {
-  "uz": "Tayyorgarlik",
+  "uz": "Mashq va video",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
@@ -590,7 +595,7 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.0.note": {
-  "uz": "macOS yoki Windows noutbuk, dastur oʻrnatish huquqi bilan. Telefon yoki planshet yetarli emas.",
+  "uz": "macOS yoki Windows noutbuk. Telefon yoki planshet yetarli emas.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
@@ -605,22 +610,22 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.2.title": {
-  "uz": "Claude obunasi",
+  "uz": "Visa karta",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.2.note": {
-  "uz": "Praktikumning asosiy vositasi. Kamida Pro tarifi kerak, 02-darsdan Max tavsiya etiladi.",
+  "uz": "Claude Pro obunasini toʻlash uchun kerak. Uzcard va Humo ishlamaydi.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.3.title": {
-  "uz": "Warp va Claude Code",
+  "uz": "Claude obunasi",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.3.note": {
-  "uz": "Claude Code Warp terminalida ishlaydi. Oʻrnating va bir marta ochib koʻring.",
+  "uz": "Praktikumning asosiy vositasi. Pro tarifi kerak.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
@@ -630,7 +635,7 @@
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.2.sub": {
-  "uz": "AI nima, modellar, Context, RAG, NotebookLM",
+  "uz": "AI nima, modellar, Kontekst, RAG, NotebookLM",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
@@ -665,12 +670,12 @@
   "note": "screen-reader announcement (aria-live), not visible; full sentence · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "live.prep_undone": {
-  "uz": "{title}: belgi olib tashlandi · {d}/{t} tayyor",
+  "uz": "{title}: belgi olib tashlandi · {d}/{t} bajarildi",
   "translate": true,
   "note": "screen-reader announcement (aria-live), not visible; full sentence · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "prep.pdf_meta": {
-  "uz": "PDF, {size}",
+  "uz": "PDF · {size}",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording · keep {params} as they are"
  },
@@ -680,7 +685,7 @@
   "note": "home screen · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "hero.sub_seen": {
-  "uz": "Slaydlar koʻrildi · {n} / {n}",
+  "uz": "Slaydlar koʻrildi · {n}/{n}",
   "translate": true,
   "note": "home screen · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -825,7 +830,7 @@
   "note": "name menu (dropdown under the student name); row label or value, short"
  },
  "menu.course_range": {
-  "uz": "{from} – {to}, {n} dars",
+  "uz": "{from} – {to}, {n} ta dars",
   "translate": true,
   "note": "name menu (dropdown under the student name); row label or value, short · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -865,17 +870,172 @@
   "note": "UI text"
  },
  "toast.fill": {
-  "uz": "{no} nusxalandi. Claudeʼda [qavslar]ni oʻz maʼlumotingiz bilan almashtiring.",
+  "uz": "{no} nusxalandi. [Qavslar]ni oʻz maʼlumotingiz bilan almashtiring.",
   "translate": true,
   "note": "undo toast at the bottom; ≤ 28 chars · keep {params} as they are"
  },
  "toast.copy_failed": {
-  "uz": "Nusxa olinmadi. Matn belgilandi: uni qoʻlda nusxalang.",
+  "uz": "Nusxalanmadi. Matn belgilandi: uni qoʻlda nusxalang.",
   "translate": true,
   "note": "undo toast at the bottom; ≤ 28 chars"
  },
  "files.md_hint": {
   "uz": "MD fayllarni kompyuterda oching.",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.all": {
+  "uz": "Hammaga",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.area.hr": {
+  "uz": "HR",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.area.savdo": {
+  "uz": "Savdo",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.area.servis": {
+  "uz": "Servis",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.area.ombor": {
+  "uz": "Ombor",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.area.marketing": {
+  "uz": "Marketing",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.area.xarid": {
+  "uz": "Xarid",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.area.rahbar": {
+  "uz": "Rahbar",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.tag.main": {
+  "uz": "Asosiy",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.tag.or": {
+  "uz": "yoki {area}",
+  "translate": true,
+  "note": "UI text · keep {params} as they are"
+ },
+ "d3.tag.extra": {
+  "uz": "Qoʻshimcha",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.tag.demo": {
+  "uz": "Namoyish",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.n_prompts": {
+  "uz": "{n} prompt",
+  "translate": true,
+  "note": "UI text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "d3.n_files": {
+  "uz": "{n} fayl",
+  "translate": true,
+  "note": "UI text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "d3.group_aria": {
+  "uz": "Yoʻnalishlar",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.back": {
+  "uz": "Barcha yoʻnalishlar",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.next": {
+  "uz": "Keyingi yoʻnalish",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.s1": {
+  "uz": "Avval oʻqing",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.s1h": {
+  "uz": "Mashq nimadan iboratligi",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.s2": {
+  "uz": "NotebookLMʼga yuklang",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.s2h": {
+  "uz": "Faqat shu {n} ta fayl",
+  "translate": true,
+  "note": "UI text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "d3.s3": {
+  "uz": "Promptlarni navbat bilan yuboring",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.s3h": {
+  "uz": "Bosib oching: qayerga qoʻyish va toʻliq matn",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.pdf": {
+  "uz": "Barcha promptlar bitta PDFʼda",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.prompts": {
+  "uz": "Promptlar",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.open": {
+  "uz": "Ochish",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.close": {
+  "uz": "Yopish",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.back_s": {
+  "uz": "Barcha boʻlimlar",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.next_s": {
+  "uz": "Keyingi",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.steps": {
+  "uz": "qadamlar",
+  "translate": true,
+  "note": "UI text"
+ },
+ "d3.group_aria_s": {
+  "uz": "Boʻlimlar",
   "translate": true,
   "note": "UI text"
  },
@@ -925,7 +1085,7 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.guide_name": {
-  "uz": "Tayyorgarlik qoʻllanmasi",
+  "uz": "Oʻrnatish va tayyorgarlik qoʻllanmasi",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
@@ -1005,7 +1165,7 @@
   "note": "shared UI word or pattern; check it fits as a button (≥ 44 px tall, ≤ 18 chars)"
  },
  "lock.title_tba": {
-  "uz": "{n} sanasi keyinroq eʼlon qilinadi",
+  "uz": "{n} · sanasi keyinroq eʼlon qilinadi",
   "translate": true,
   "note": "locked lesson: bottom sheet title / text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -1020,7 +1180,7 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "menu.course_tba": {
-  "uz": "{n} dars, sanasi keyinroq",
+  "uz": "{n} ta dars, sanasi keyinroq",
   "translate": true,
   "note": "name menu (dropdown under the student name); row label or value, short · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
@@ -1060,7 +1220,7 @@
   "note": "two-line link text (\\n), ≤ 12 chars per line · \\n = line break"
  },
  "pane.sl.go": {
-  "uz": "Davom etish\n{i} / {n}",
+  "uz": "Davom etish\n{i}/{n}",
   "translate": true,
   "note": "two-line link text: \"Continue\\n14 / 40\" · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · \\n = line break · keep {params} as they are"
  },
@@ -1364,11 +1524,6 @@
   "translate": true,
   "note": "bold label before the paste target, e.g. \"Where:\""
  },
- "lesson.extra": {
-  "uz": "Qoʻshimcha dars",
-  "translate": true,
-  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
- },
  "ex.pdf": {
   "uz": "PDF varianti · {size}",
   "translate": true,
@@ -1515,7 +1670,7 @@
   "note": "aria-label of the › button"
  },
  "sl.seen": {
-  "uz": "Koʻrildi",
+  "uz": "Bajarildi",
   "translate": true,
   "note": "badge shown on the last slide"
  },
@@ -1535,14 +1690,9 @@
   "note": "grey 14px note on the placeholder slide"
  },
  "sl.doc_title": {
-  "uz": "{i} / {n} · {n_dars}",
+  "uz": "{i}/{n} · {n_dars}",
   "translate": true,
   "note": "book / slide viewer / file screens · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
- },
- "file.meta": {
-  "uz": "Fayl",
-  "translate": true,
-  "note": "book / slide viewer / file screens"
  },
  "file.hint": {
   "uz": "Bu prototipda fayl yoʻq: yuklab olish 2.0 serverida ishlaydi. Qator va havolalar tekshiruv uchun shu sahifaga olib keladi.",
@@ -1710,7 +1860,7 @@
   "note": "browser tab title, ≤ 40 chars"
  },
  "title.gate": {
-  "uz": "Kirish",
+  "uz": "Shaxsiy kabinet",
   "translate": true,
   "note": "browser tab title, ≤ 40 chars"
  },
@@ -1730,12 +1880,12 @@
   "note": "lesson title in the lesson-page headline (UPPERCASE, wide font; wraps on spaces), ≤ 16 chars"
  },
  "lesson.5.sub": {
-  "uz": "VPS, domen, DNS, Git, pilot rejasi, Kit 5 A, Kit 4",
+  "uz": "VPS, domen, DNS, Git, pilot rejasi, Kit 5 (A shakli), Kit 4",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.5.lede": {
-  "uz": "Agentni noutbukdan 24/7 ishlaydigan serverga koʻchiramiz. Pilot rejasini yozamiz va xodimlar bilan suhbatga tayyorlanamiz. Kit 5 A va Kit 4.",
+  "uz": "Agentni noutbukdan 24/7 ishlaydigan serverga koʻchiramiz. Pilot rejasini yozamiz va xodimlar bilan suhbatga tayyorlanamiz. Kit 5, A shakli va Kit 4.",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
@@ -1750,12 +1900,12 @@
   "note": "lesson title in the lesson-page headline (UPPERCASE, wide font; wraps on spaces), ≤ 16 chars"
  },
  "lesson.6.sub": {
-  "uz": "Xatolar jurnali, test toʻplami, cron, eskalatsiya, xavfsizlik, Kit 5 B",
+  "uz": "Xatolar jurnali, test toʻplami, cron, eskalatsiya, xavfsizlik, Kit 5 (B shakli)",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.6.lede": {
-  "uz": "Pilotning birinchi haftasidagi xatolar boʻyicha agentni tuzatamiz. Jadval boʻyicha hisobot, eskalatsiya va xavfsizlik qoidalarini qoʻshamiz. Kit 5 B: 1-hafta.",
+  "uz": "Pilotning birinchi haftasidagi xatolar boʻyicha agentni tuzatamiz. Jadval boʻyicha hisobot, eskalatsiya va xavfsizlik qoidalarini qoʻshamiz. Kit 5, B shakli: 1-hafta.",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
@@ -1930,7 +2080,7 @@
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.2.t2": {
-  "uz": "Context",
+  "uz": "Kontekst",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
@@ -1995,7 +2145,7 @@
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.4.t2": {
-  "uz": "MCP va connector",
+  "uz": "MCP va konnektor",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
@@ -2005,7 +2155,7 @@
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.4.t4": {
-  "uz": "Open source",
+  "uz": "Ochiq kod",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
@@ -2055,7 +2205,7 @@
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.5.t6": {
-  "uz": "Kit 5 A",
+  "uz": "Kit 5, A shakli",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
@@ -2095,7 +2245,7 @@
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.6.t6": {
-  "uz": "Kit 5 B",
+  "uz": "Kit 5, B shakli",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
@@ -2105,12 +2255,12 @@
   "note": "lesson title in the lesson-page headline (UPPERCASE, wide font; wraps on spaces), ≤ 16 chars"
  },
  "lesson.7.sub": {
-  "uz": "Baseline va farq, vazifa narxi, ROI, qaror, build yoki buy, demo",
+  "uz": "Baseline va farq, vazifa narxi, ROI, qaror: yasash yoki sotib olish, demo",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.7.lede": {
-  "uz": "Pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaymiz va davom ettirish, oʻzgartirish yoki toʻxtatishni hal qilamiz. Keyin natijani taqdim etasiz. Kit 5 B: yakuniy raqamlar.",
+  "uz": "Pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaymiz va davom ettirish, oʻzgartirish yoki toʻxtatishni hal qilamiz. Keyin natijani taqdim etasiz. Kit 5, B shakli: yakuniy raqamlar.",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
@@ -2120,7 +2270,7 @@
   "note": "the lesson title on the home card, \\n = line break, ≤ 14 chars per line (UPPERCASE, wide font) · \\n = line break"
  },
  "lesson.7.t0": {
-  "uz": "Baseline va farq",
+  "uz": "Baseline va farq raqamlari",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
@@ -2145,7 +2295,7 @@
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "lesson.7.t5": {
-  "uz": "Build, buy yoki open source",
+  "uz": "Yasash, sotib olish yoki ochiq kod",
   "translate": true,
   "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
@@ -2160,21 +2310,16 @@
   "note": "UI text · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "prep.0.s0": {
-  "uz": "Darsga oʻz noutbukingiz bilan keling. Praktikum boshdan-oxir amaliy.",
+  "uz": "Administrator huquqi borligini tekshiring: ilova oʻrnata olishingiz kerak. Ish kompyuteri boʻlsa, IT boʻlimidan soʻrang.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.0.s1": {
-  "uz": "Administrator huquqi borligini tekshiring: dastur oʻrnata olishingiz kerak. Ish kompyuteri boʻlsa, IT boʻlimidan soʻrang.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.0.s2": {
   "uz": "Diskda kamida 5 GB boʻsh joy qoldiring.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
- "prep.0.s3": {
+ "prep.0.s2": {
   "uz": "Quvvat adapterini ham oling.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
@@ -2205,94 +2350,64 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.2.s0": {
-  "uz": "claude.ai ga kiring va «Continue with Google» orqali roʻyxatdan oʻting.",
+  "uz": "Bankingizdan xalqaro Visa yoki Mastercard oching.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.2.s1": {
-  "uz": "Settings → Billing boʻlimida Pro tarifini tanlang. Narxi oyiga $20.",
+  "uz": "Kartada dollar hisobi va onlayn toʻlov yoqilgan boʻlsin.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.2.s2": {
-  "uz": "Toʻlov xalqaro Visa yoki Mastercard bilan. Kartada dollar hisobi va onlayn toʻlov yoqilgan boʻlsin. Uzcard va Humo ishlamaydi.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.2.s3": {
-  "uz": "claude.ai/download sahifasidan Claude dasturini oʻrnating va oʻsha akkaunt bilan kiring.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.2.a0": {
-  "uz": "Claude dasturini yuklash",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.2.a1": {
-  "uz": "claude.ai da hisob ochish",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.2.foot": {
-  "uz": "02-darsdan Claude Code koʻp ishlatiladi va Pro limiti tez tugashi mumkin. Shunda Max tarifiga oʻting (oyiga $100 dan).",
+  "uz": "Kartada kamida $20 boʻlsin: Pro tarifi oyiga $20.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.3.s0": {
-  "uz": "warp.dev saytidan Warpʼni yuklab oling va oʻrnating.",
+  "uz": "claude.aiʼga kiring va «Continue with Google» orqali roʻyxatdan oʻting.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.3.s1": {
-  "uz": "Mac: Warpʼni oching va kiriting:",
+  "uz": "Settings → Billing boʻlimida Pro tarifini tanlang. Narxi oyiga $20.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.3.s2": {
-  "uz": "Windows: Warpʼni oching va kiriting:",
+  "uz": "Toʻlovni «Visa karta» bandidagi kartangiz bilan qiling.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.3.s3": {
-  "uz": "claude deb yozing va Enter bosing. Brauzer ochiladi: Claude akkauntingiz bilan kiring.",
-  "translate": true,
-  "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "prep.3.s4": {
-  "uz": "Claude Code salomingizga javob bersa, hammasi tayyor.",
+  "uz": "claude.ai/download sahifasidan Claude ilovasini oʻrnating va oʻsha akkaunt bilan kiring.",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.3.a0": {
-  "uz": "Warpʼni yuklab olish",
+  "uz": "Claude ilovasini yuklash",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.3.a1": {
-  "uz": "Claude Code qoʻllanmasi",
+  "uz": "claude.aiʼda hisob ochish",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.3.foot": {
-  "uz": "Oʻrnatish chiqmasa, xatoning skrinshotini mentoringizga yuboring. 01-dars oxirida mentorlar yordam beradi.",
+  "uz": "02-darsdan Claude Code koʻp ishlatiladi va Pro limiti tez tugashi mumkin. Shunda Max tarifiga oʻting (oyiga $100 dan).",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.btn": {
-  "uz": "Qoʻshimcha: mashq va video",
+  "uz": "Mashq va video",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.btn_aria": {
-  "uz": "Qoʻshimcha: mashq va video",
+  "uz": "Mashq va video",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
- },
- "pre.label": {
-  "uz": "Kursgacha materiallar",
-  "translate": true,
-  "note": "UI text"
  },
  "pre.sub": {
   "uz": "Prompt mashqi va NotebookLM video darsi",

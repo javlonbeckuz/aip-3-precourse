@@ -1,11 +1,11 @@
 {
   "n": 5,
   "title": "Ishga tushirish",
-  "subtitle": "VPS, domen, DNS, Git, pilot rejasi, Kit 5 A, Kit 4",
-  "summary": "Agentni noutbukdan 24/7 ishlaydigan serverga koʻchiramiz. Pilot rejasini yozamiz va xodimlar bilan suhbatga tayyorlanamiz. Kit 5 A va Kit 4.",
+  "subtitle": "VPS, domen, DNS, Git, pilot rejasi, Kit 5 (A shakli), Kit 4",
+  "summary": "Agentni noutbukdan 24/7 ishlaydigan serverga koʻchiramiz. Pilot rejasini yozamiz va xodimlar bilan suhbatga tayyorlanamiz. Kit 5, A shakli va Kit 4.",
   "outcomes": [
     "Lokal va server, VPS, domen, DNS va HTTPS nima ekanini oddiy soʻzlar bilan tushuntirasiz.",
-    "Claude Code yordamida agentni VPS ga joylaysiz: u domen yoki Telegram orqali ishlaydi.",
+    "Claude Code yordamida agentni VPSʼga joylaysiz: u domen yoki Telegram orqali ishlaydi.",
     "Git va GitHubʼdan zaxira nusxa va ortga qaytish uchun foydalanasiz.",
     "Bitta raqamli maqsad, qamrov, chegaralar, muvaffaqiyat mezonlari va toʻxtash sharti bor pilot rejasini yozasiz.",
     "Oʻzgarish tegadigan har xodimning eng kuchli koʻnikmasini yangi rolga bogʻlaysiz va 15 daqiqalik suhbat oʻtkazasiz."
@@ -17,50 +17,50 @@
     "Git va GitHub",
     "Pilot",
     "Muvaffaqiyat va toʻxtash sharti",
-    "Kit 5 A",
+    "Kit 5, A shakli",
     "Kit 4"
   ],
   "slideCount": 0,
   "slideKind": "image",
   "amaliyot": {
-    "text": "Bu amaliyotda agentni noutbukdan 24/7 ishlaydigan serverga koʻchirasiz, pilot rejasini yozasiz va xodimlar bilan suhbatga tayyorlanasiz.\n\nKalitlar faqat .env faylida turadi: noutbukda ham, serverda ham. Ularni chatga va GitHubga yozmang.\n\nServer buyruqlarini oʻrganish shart emas. Claude Code serverga SSH orqali kiradi va ishni oʻzi bajaradi.\n\nQiynalsangiz: xatoning skrinshotini oling va Claudeʼdan soʻrang.",
+    "text": "Bu amaliyotda agentni noutbukdan 24/7 ishlaydigan serverga koʻchirasiz, pilot rejasini yozasiz va xodimlar bilan suhbatga tayyorlanasiz.\n\nKalitlar faqat .env faylida turadi: noutbukda ham, serverda ham. Ularni chatga va GitHubʼga yozmang.\n\nServer buyruqlarini oʻrganish shart emas. Claude Code serverga SSH orqali kiradi va ishni oʻzi bajaradi.\n\nQiynalsangiz: xatoning skrinshotini oling va Claudeʼdan soʻrang.",
     "groups": [
       {
         "title": "01 GitHub zaxirasi",
-        "note": "ASOSIY. Git: kodning saqlash nuqtalari. Commit: bitta saqlash nuqtasi. Push: uni GitHubga yuborish. Private repozitoriyni faqat siz koʻrasiz. 1) Claude Codeʼdan private repozitoriy yaratishni va pilot kodini push qilishni soʻrang. 2) GitHubda fayllarni koʻrib chiqing. Tayyor, agar: kod private repozitoriyda koʻrinadi va unda kalit yoʻq.",
+        "note": "ASOSIY. Git: kodning saqlash nuqtalari. Commit: bitta saqlash nuqtasi. Push: uni GitHubʼga yuborish. Private repozitoriyni faqat siz koʻrasiz. 1) Claude Codeʼdan private repozitoriy yaratishni va pilot kodini push qilishni soʻrang. 2) GitHubʼda fayllarni koʻrib chiqing. Tayyor, agar: kod private repozitoriyda koʻrinadi va unda kalit yoʻq.",
         "files": [],
         "prompts": [
           {
             "id": "01P1",
             "title": "Private repozitoriy",
             "target": "Claude Code",
-            "text": "Shu loyiha uchun GitHubda private repozitoriy yarating va pilot kodini push qiling.\nPush qilishdan oldin .env va kalit bor boshqa fayllar repozitoriyga tushmasligini tekshiring.\nOxirida repozitoriy havolasini va unga kirgan fayllar roʻyxatini koʻrsating."
+            "text": "Shu loyiha uchun GitHubʼda private repozitoriy yarating va pilot kodini push qiling.\nPush qilishdan oldin .env va kalit bor boshqa fayllar repozitoriyga tushmasligini tekshiring.\nOxirida repozitoriy havolasini va unga kirgan fayllar roʻyxatini koʻrsating."
           }
         ]
       },
       {
         "title": "02 Deploy",
-        "note": "ASOSIY. Server: doim ishlaydigan, boshqa joydagi kompyuter. Noutbukni yopsangiz, noutbukdagi bot toʻxtaydi. 1) VPS maʼlumotlari .env da ekanini tekshiring. 2) Claude Codeʼdan agentni deploy qilishni va avtomatik qayta ishga tushishni yoqishni soʻrang. 3) Noutbukni yoping va agentga telefondan yozing. Tayyor, agar: noutbuk yopiq holda agent telefoningizga javob beradi.",
+        "note": "ASOSIY. Server: doim ishlaydigan, boshqa joydagi kompyuter. Noutbukni yopsangiz, noutbukdagi bot toʻxtaydi. 1) VPS maʼlumotlari .envʼda ekanini tekshiring. 2) Claude Codeʼdan agentni deploy qilishni va avtomatik qayta ishga tushishni yoqishni soʻrang. 3) Noutbukni yoping va agentga telefondan yozing. Tayyor, agar: noutbuk yopiq holda agent telefoningizga javob beradi.",
         "files": [],
         "prompts": [
           {
             "id": "02P1",
             "title": "Agentni serverga chiqarish",
             "target": "Claude Code",
-            "text": "VPS maʼlumotlari .env faylida. Shu agentni VPSga deploy qiling va [bot nomi] botini ulang.\nKalitlarni serverdagi .env ga koʻchiring, GitHubga emas.\nAgent ishdan chiqsa, avtomatik qayta ishga tushsin.\nHar qadamni oddiy soʻzlar bilan tushuntiring. Oxirida qanday tekshirishimni ayting."
+            "text": "VPS maʼlumotlari .env faylida. Shu agentni VPSʼga deploy qiling va [bot nomi] botini ulang.\nKalitlarni serverdagi .envʼga koʻchiring, GitHubʼga emas.\nAgent ishdan chiqsa, avtomatik qayta ishga tushsin.\nHar qadamni oddiy soʻzlar bilan tushuntiring. Oxirida qanday tekshirishimni ayting."
           }
         ]
       },
       {
         "title": "03 Domen yoki bot",
-        "note": "ASOSIY. Domen: serverning odamlar eslaydigan nomi. DNS: nom va IP manzilni bogʻlaydigan telefon kitobi. HTTPS: brauzerdagi qulf belgisi, trafik shifrlangan. 1) Agentingiz veb-sahifa boʻlsa, subdomenni VPSga ulang va HTTPS sozlang. 2) Telegram bot boʻlsa, u serverdan ishlayotganini tasdiqlang. Tayyor, agar: ochiq manzil yoki bot ishlaydi.",
+        "note": "ASOSIY. Domen: serverning odamlar eslaydigan nomi. DNS: nom va IP manzilni bogʻlaydigan telefon kitobi. HTTPS: brauzerdagi qulf belgisi, trafik shifrlangan. 1) Agentingiz veb-sahifa boʻlsa, subdomenni VPSʼga ulang va HTTPS sozlang. 2) Telegram bot boʻlsa, u serverdan ishlayotganini tasdiqlang. Tayyor, agar: ochiq manzil yoki bot ishlaydi.",
         "files": [],
         "prompts": [
           {
             "id": "03P1",
             "title": "Subdomen va HTTPS",
             "target": "Claude Code",
-            "text": "[Subdomen, masalan: bot.kompaniya.uz] ni VPSga ulamoqchiman. Domen [domen sotib olingan sayt] da.\nDNS da qaysi yozuvni qoʻshishim kerakligini aniq yozing.\nYozuv ishlagach, serverda HTTPS sozlang va manzil qulf belgisi bilan ochilishini tekshiring."
+            "text": "[Subdomen, masalan: bot.kompaniya.uz] ni VPSʼga ulamoqchiman. Domen [domen sotib olingan sayt] da.\nDNSʼda qaysi yozuvni qoʻshishim kerakligini aniq yozing.\nYozuv ishlagach, serverda HTTPS sozlang va manzil qulf belgisi bilan ochilishini tekshiring."
           },
           {
             "id": "03P2",
@@ -84,20 +84,20 @@
         ]
       },
       {
-        "title": "05 Kit 5 A: pilot rejasi",
-        "note": "ASOSIY. Pilot: cheklangan, muddati belgilangan haqiqiy sinov. Toʻxtash sharti: sinovni darhol toʻxtatadigan holat. Kit 5 shakli (Kit boʻlimida). 1) Mentor bilan A.1-A.9 ni toʻldiring. 2) Maqsad bitta raqam boʻlsin, masalan «kuniga 60 daqiqadan 10 daqiqaga». Tayyor, agar: reja kit5-pilot/plan.md da saqlangan.",
+        "title": "05 Kit 5, A shakli: pilot rejasi",
+        "note": "ASOSIY. Pilot: cheklangan, muddati belgilangan haqiqiy sinov. Toʻxtash sharti: sinovni darhol toʻxtatadigan holat. Kit 5 shakli (Kit boʻlimida). 1) Mentor bilan A.1-A.9ʼni toʻldiring. 2) Maqsad bitta raqam boʻlsin, masalan «kuniga 60 daqiqadan 10 daqiqaga». Tayyor, agar: reja kit5-pilot/plan.mdʼda saqlangan.",
         "files": [],
         "prompts": [
           {
             "id": "05P1",
             "title": "Pilot rejasi qoralamasi",
             "target": "Claude Code",
-            "text": "kit3-agent/instructions.md va kit5-pilot/baseline.md ni oʻqing.\nKit 5 A shakli (A.1-A.9) boʻyicha pilot rejasi qoralamasini tuzing: kit5-pilot/kit5-a-reja.md (Kit boʻlimidan yuklab olingan shakl).\nRejada boʻlsin: bitta raqamli maqsad; boshlanish va tugash sanasi; qamrov; agent nima qila oladi va nima qila olmaydi; muvaffaqiyat mezoni; toʻxtash sharti; kim tekshiradi; haftalik koʻrib chiqish vaqti.\nMaqsad baseline raqamidan kelib chiqsin. Bilmagan joyni toʻldirmang, menga savol bering.\nkit5-pilot/plan.md ga saqlang."
+            "text": "kit3-agent/instructions.md va kit5-pilot/baseline.mdʼni oʻqing.\nKit 5, A shakli (A.1-A.9) boʻyicha pilot rejasi qoralamasini tuzing: kit5-pilot/kit5-a-reja.md (Kit boʻlimidan yuklab olingan shakl).\nRejada boʻlsin: bitta raqamli maqsad; boshlanish va tugash sanasi; qamrov; agent nima qila oladi va nima qila olmaydi; muvaffaqiyat mezoni; toʻxtash sharti; kim tekshiradi; haftalik koʻrib chiqish vaqti.\nMaqsad baseline raqamidan kelib chiqsin. Bilmagan joyni toʻldirmang, menga savol bering.\nkit5-pilot/plan.mdʼga saqlang."
           }
         ]
       },
       {
-        "title": "06 Kit 4 A: koʻnikmalar xaritasi",
+        "title": "06 Kit 4, A shakli: koʻnikmalar xaritasi",
         "note": "ASOSIY. Kit 4 «Yangi rollar»: agent ishga tushgach xodimlar nima bilan band boʻlishini belgilaydi. Kit 4 shakli (Kit boʻlimida). 1) Pilot taʼsir qiladigan har xodimni yozing. 2) Har biriga: eng kuchli koʻnikmasi va uning haqiqiy misoli, bugungi ishi, yangi roli, yangi tekshirish vazifasi, kerakli oʻqish. Tayyor, agar: koʻnikmalar xaritasi saqlangan.",
         "files": [],
         "prompts": [
@@ -105,12 +105,12 @@
             "id": "06P1",
             "title": "Koʻnikmalar xaritasi",
             "target": "Claude Code",
-            "text": "kit1-interviews va kit3-agent fayllarini oʻqing.\nPilot taʼsir qiladigan xodimlar uchun Kit 4 A jadvalini tuzing: ism, eng kuchli koʻnikma va haqiqiy misol, bugungi ishi, yangi roli, yangi tekshirish vazifasi, kerakli oʻqish.\nKoʻnikma va misolni oʻzingiz toʻqimang. Har xodim uchun menga savol bering va javobimni yozing.\nkit4-people/skills-map.md ga saqlang."
+            "text": "kit1-interviews va kit3-agent fayllarini oʻqing.\nPilot taʼsir qiladigan xodimlar uchun Kit 4, A shakli jadvalini tuzing: ism, eng kuchli koʻnikma va haqiqiy misol, bugungi ishi, yangi roli, yangi tekshirish vazifasi, kerakli oʻqish.\nKoʻnikma va misolni oʻzingiz toʻqimang. Har xodim uchun menga savol bering va javobimni yozing.\nkit4-people/skills-map.mdʼga saqlang."
           }
         ]
       },
       {
-        "title": "07 Kit 4 B: oʻquv vazifasi",
+        "title": "07 Kit 4, B shakli: oʻquv vazifasi",
         "note": "ASOSIY. 1) Har xodimga 3 ta yaxshi va 3 ta yomon namuna asosida bitta oʻquv vazifasi tuzing. 2) Kit 4 promptini ishga tushiring. Tayyor, agar: mezonlari va 2 haftalik oʻlchovi bor oʻquv vazifasi tayyor.",
         "files": [],
         "prompts": [
@@ -118,7 +118,7 @@
             "id": "07P1",
             "title": "Oʻquv vazifasi",
             "target": "Claude Code",
-            "text": "kit4-people/skills-map.md va 3 ta yaxshi, 3 ta yomon namunani oʻqing: [namuna fayllari].\n[Xodim ismi] uchun Kit 4 B boʻyicha bitta oʻquv vazifasi tuzing.\nUnda boʻlsin: xodim nimani tekshirishni oʻrganadi; qaysi namuna yaxshi, qaysi yomon va nega; baholash mezonlari; 2 haftadan keyin nima bilan oʻlchanadi.\nkit4-people/[xodim ismi]-training.md ga saqlang."
+            "text": "kit4-people/skills-map.md va 3 ta yaxshi, 3 ta yomon namunani oʻqing: [namuna fayllari].\n[Xodim ismi] uchun Kit 4, B shakli boʻyicha bitta oʻquv vazifasi tuzing.\nUnda boʻlsin: xodim nimani tekshirishni oʻrganadi; qaysi namuna yaxshi, qaysi yomon va nega; baholash mezonlari; 2 haftadan keyin nima bilan oʻlchanadi.\nkit4-people/[xodim ismi]-training.mdʼga saqlang."
           }
         ]
       },
@@ -130,17 +130,17 @@
     ]
   },
   "kit": {
-    "text": "Kit 5 A pilot rejasini yozadi, Kit 4 agent yoqilgach xodimlar nima bilan band boʻlishini belgilaydi.",
+    "text": "Kit 5, A shakli pilot rejasini yozadi, Kit 4 agent yoqilgach xodimlar nima bilan band boʻlishini belgilaydi.",
     "groups": [
       {
         "title": "01 Kit 5: Pilot rejasi",
-        "note": "Pilot: 2-4 haftalik haqiqiy sinov, bitta raqamli maqsad va aniq toʻxtash sharti bilan. 1) Mentor bilan A.1-A.9 ni toʻldiring yoki /kit5 reja ni ishlating. 2) A.2 maqsadi baseline dan chiqqan bitta raqam boʻlsin. 3) Rejani promptda tekshiring va topilganini tuzating. Tayyor, agar: reja kit5-pilot/plan.md da saqlangan.",
+        "note": "Pilot: 2-4 haftalik haqiqiy sinov, bitta raqamli maqsad va aniq toʻxtash sharti bilan. 1) Mentor bilan A.1-A.9ʼni toʻldiring yoki «/kit5 reja»ni ishlating. 2) A.2 maqsadi baselineʼdan chiqqan bitta raqam boʻlsin. 3) Rejani promptda tekshiring va topilganini tuzating. Tayyor, agar: reja kit5-pilot/plan.mdʼda saqlangan.",
         "files": [
           {
             "slug": "kit5-pdf",
             "name": "Kit5_Pilot_va_hisob-kitob.pdf",
-            "size": 101828,
-            "label": "Kit 5 yoʻriqnomasi"
+            "size": 101893,
+            "label": "Kit 5: Pilot va hisob-kitob (PDF)"
           },
           {
             "slug": "kit5-a-reja",
@@ -154,19 +154,19 @@
             "id": "K5P1",
             "title": "Rejani tekshirish",
             "target": "Claude Code",
-            "text": "kit5-pilot/plan.md (Kit 5 A) va kit5-pilot/baseline.md ni oʻqing.\nHar bandni tekshiring: A.2 bitta raqammi va baseline raqamidan chiqadimi; A.3 2-4 hafta ichidami; A.5 kit3-agent/instructions.md dagi B.4 va B.5 ga mos keladimi; A.6 va A.7 raqam bilan oʻlchanadimi; A.8 da aniq odam va tekshirish chastotasi bormi.\nJadval: band, hozirgi matn, muammo, tuzatish taklifi.\nRejani oʻzingiz oʻzgartirmang. Fayllarda yoʻq raqam qoʻshmang."
+            "text": "kit5-pilot/plan.md (Kit 5, A shakli) va kit5-pilot/baseline.mdʼni oʻqing.\nHar bandni tekshiring: A.2 bitta raqammi va baseline raqamidan chiqadimi; A.3 2-4 hafta ichidami; A.5 kit3-agent/instructions.mdʼdagi B.4 va B.5ʼga mos keladimi; A.6 va A.7 raqam bilan oʻlchanadimi; A.8ʼda aniq odam va tekshirish chastotasi bormi.\nJadval: band, hozirgi matn, muammo, tuzatish taklifi.\nRejani oʻzingiz oʻzgartirmang. Fayllarda yoʻq raqam qoʻshmang."
           }
         ]
       },
       {
         "title": "02 Kit 4: Yangi rollar",
-        "note": "Agent yoqilishidan oldin har xodimning yangi roli va oʻquv vazifasi tayyor boʻladi. 1) A shaklida har xodimning eng kuchli koʻnikmasini misol bilan yozing. 2) Har xodimga B shaklini toʻldiring, B.4 ga haqiqiy namunalarni yozing. 3) /kit4 ni yoki Kit 4 promptini ishga tushiring. Tayyor, agar: har xodimga mezonli oʻquv vazifasi bor.",
+        "note": "Agent yoqilishidan oldin har xodimning yangi roli va oʻquv vazifasi tayyor boʻladi. 1) A shaklida har xodimning eng kuchli koʻnikmasini misol bilan yozing. 2) Har xodimga B shaklini toʻldiring, B.4ʼga haqiqiy namunalarni yozing. 3) /kit4ʼni yoki Kit 4 promptini ishga tushiring. Tayyor, agar: har xodimga mezonli oʻquv vazifasi bor.",
         "files": [
           {
             "slug": "kit4-pdf",
             "name": "Kit4_Yangi_rollar.pdf",
-            "size": 92416,
-            "label": "Kit 4 yoʻriqnomasi"
+            "size": 92202,
+            "label": "Kit 4: Yangi rollar (PDF)"
           },
           {
             "slug": "kit4-a-konikmalar",
@@ -192,41 +192,41 @@
             "id": "K4P1",
             "title": "Kit 4 prompti: mezon va mashq",
             "target": "Claude Code",
-            "text": "kit4-people/skills-map.md, kit4-people/[xodim ismi]-training.md (Kit 4 B) va namunalarni oʻqing: [namuna fayllari].\nB.3 mezonlarini aniq qiling: har mezon \"ha\" yoki \"yoʻq\" deb tekshiriladigan boʻlsin.\nFaqat shu namunalardan foydalanib xodim uchun qisqa mashq tuzing. Yangi namuna toʻqimang.\nIkki haftadan keyin natijani qanday oʻlchashni B.6 uchun taklif qiling.\nB.8 va B.9 ni toʻldirmang, ular suhbatdan keyin yoziladi."
+            "text": "kit4-people/skills-map.md, kit4-people/[xodim ismi]-training.md (Kit 4, B shakli) va namunalarni oʻqing: [namuna fayllari].\nB.3 mezonlarini aniq qiling: har mezon \"ha\" yoki \"yoʻq\" deb tekshiriladigan boʻlsin.\nFaqat shu namunalardan foydalanib xodim uchun qisqa mashq tuzing. Yangi namuna toʻqimang.\nIkki haftadan keyin natijani qanday oʻlchashni B.6 uchun taklif qiling.\nB.8 va B.9ʼni toʻldirmang, ular suhbatdan keyin yoziladi."
           }
         ]
       },
       {
         "title": "03 Uyda: Kit 4 suhbati",
-        "note": "Suhbat agent yoqilishidan oldin boʻladi, hech qachon keyin emas. 1) Har xodim bilan 15 daqiqa gaplashing: nima oʻzgaradi, nima oʻzgarmaydi. 2) Xavotirlarni B.8 ga, kelishuvni B.9 ga yozing. 3) Shundan keyin agentni cheklangan ruxsatlar bilan yoqing. Tayyor, agar: har xodim bilan suhbat oʻtgan.",
+        "note": "Suhbat agent yoqilishidan oldin boʻladi, hech qachon keyin emas. 1) Har xodim bilan 15 daqiqa gaplashing: nima oʻzgaradi, nima oʻzgarmaydi. 2) Xavotirlarni B.8ʼga, kelishuvni B.9ʼga yozing. 3) Shundan keyin agentni cheklangan ruxsatlar bilan yoqing. Tayyor, agar: har xodim bilan suhbat oʻtgan.",
         "files": []
       }
     ]
   },
   "vazifa": {
-    "text": "Bu hafta pilot ishga tushadi. Tartib: avval Kit 4 suhbati, keyin agent yoqiladi. Hech qachon aksincha emas.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: agent noutbukda emas, VPSda ishlaydi; kod private repozitoriyda, kalitlarsiz; Kit 5 A kelishilgan; Kit 4 suhbatlari ishga tushirishdan oldin oʻtkazilgan; pilot kamida 4 ish kuni ishlagan va xatolar jurnalida yozuvlar bor; Kit 5 B ning 1-hafta ustuni toʻldirilgan.",
+    "text": "Bu hafta pilot ishga tushadi. Tartib: avval Kit 4 suhbati, keyin agent yoqiladi. Hech qachon aksincha emas.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: agent noutbukda emas, VPSʼda ishlaydi; kod private repozitoriyda, kalitlarsiz; Kit 5, A shakli kelishilgan; Kit 4 suhbatlari ishga tushirishdan oldin oʻtkazilgan; pilot kamida 4 ish kuni ishlagan va xatolar jurnalida yozuvlar bor; Kit 5, B shaklining 1-hafta ustuni toʻldirilgan.",
     "groups": [
       {
         "title": "1. Kit 4 suhbati",
-        "note": "Pilot taʼsir qiladigan har xodim bilan 15 daqiqalik suhbat oʻtkazing. Xavotirlarini B.8 ga, kelishuvni B.9 ga yozing. Koʻnikmalar xaritasini boʻlim boshligʻi bilan tekshiring.",
+        "note": "Pilot taʼsir qiladigan har xodim bilan 15 daqiqalik suhbat oʻtkazing. Xavotirlarini B.8ʼga, kelishuvni B.9ʼga yozing. Koʻnikmalar xaritasini boʻlim boshligʻi bilan tekshiring.",
         "files": []
       },
       {
         "title": "2. Cheklangan ruxsatlar bilan ishga tushiring",
-        "note": "Ishga tushirishdan oldin Kit 5 A ni boʻlim boshligʻi bilan kelishing. Agent faqat qoralama tayyorlaydi, har natijani inson tasdiqlaydi. Agent pul oʻtkazmaydi, mijozga yozmaydi, maʼlumot oʻchirmaydi.",
+        "note": "Ishga tushirishdan oldin Kit 5, A shaklini boʻlim boshligʻi bilan kelishing. Agent faqat qoralama tayyorlaydi, har natijani inson tasdiqlaydi. Agent pul oʻtkazmaydi, mijozga yozmaydi, maʼlumot oʻchirmaydi.",
         "files": [],
         "prompts": [
           {
             "id": "V2P1",
             "title": "Faqat qoralama rejimi",
             "target": "Claude Code",
-            "text": "Agentni cheklangan rejimga oʻtkazing: u faqat qoralama tayyorlaydi va [masʼul xodim] ga Telegramda tasdiqlash uchun yuboradi.\nTasdiqsiz hech narsa joʻnatmasin, toʻlov qilmasin, maʼlumot oʻchirmasin.\nOʻzgarishni sinab koʻring, keyin serverga qayta deploy qiling."
+            "text": "Agentni cheklangan rejimga oʻtkazing: u faqat qoralama tayyorlaydi va [masʼul xodim] ga Telegramʼda tasdiqlash uchun yuboradi.\nTasdiqsiz hech narsa joʻnatmasin, toʻlov qilmasin, maʼlumot oʻchirmasin.\nOʻzgarishni sinab koʻring, keyin serverga qayta deploy qiling."
           }
         ]
       },
       {
         "title": "3. Xatolar jurnali",
-        "note": "Agentning har xatosini Kit 5 B.13 ga yozing: sana, nima boʻldi, kim topdi, nimani oʻzgartirdik.",
+        "note": "Agentning har xatosini Kit 5 B.13ʼga yozing: sana, nima boʻldi, kim topdi, nimani oʻzgartirdik.",
         "files": [],
         "prompts": [
           {
@@ -239,7 +239,7 @@
       },
       {
         "title": "4. 1-hafta ustuni",
-        "note": "Kit 5 B ning 1-hafta ustunini baseline bilan bir xil raqamlar boʻyicha toʻldiring.",
+        "note": "Kit 5, B shaklining 1-hafta ustunini baseline bilan bir xil raqamlar boʻyicha toʻldiring.",
         "files": [],
         "prompts": [
           {

@@ -84,7 +84,7 @@ def page(body, land=False):
     state["page"] += 1
     cls = "page land" if land else "page"
     return (f'<section class="{cls}">{body}<div class="foot">'
-            f'Tuzuvchi: Xurshid Maroziqov. Praktikum 3.0, sahifa {state["page"]}</div></section>')
+            f'Tuzuvchi: Xurshid Maroziqov. AI Praktikum 3.0, {state["page"]} / @@TOTAL@@</div></section>')
 
 
 def fields(*rows):
@@ -128,7 +128,7 @@ def prompt_box(p, label=None):
 def instr(kit, name, lead, steps, done, boxes, cc=""):
     ol = "".join(f"<li>{s}</li>" for s in steps)
     cc = f'<p class="cc"><b>Claude Code.</b> {cc}</p>' if cc else ""
-    return page(f'<div class="kicker">Praktikum 3.0</div><h1>{kit}: {name}</h1>'
+    return page(f'<div class="kicker">AI Praktikum 3.0</div><h1>{kit}: {name}</h1>'
                 f'<p class="lead">{lead}</p><ol class="steps">{ol}</ol>'
                 f'<p class="done"><b>Tayyor, agar:</b> {done}</p>{"".join(boxes)}{cc}')
 
@@ -144,8 +144,8 @@ def consent_box():
 
 # ---------------------------------------------------------------- Kit 1
 def kit1():
-    K = "Kit 1/5: Ish qayerga ketadi"
-    p1 = instr("Kit 1/5", "Ish qayerga ketadi",
+    K = "Kit 1: Ish qayerga ketadi"
+    p1 = instr("Kit 1", "Ish qayerga ketadi",
         "AIʼga vazifa berishdan oldin xodimlaringiz haftasiga qaysi ishga qancha vaqt sarflashini aniq toping.",
         [
             "<b>Jamoaga sababini ayting.</b> Birinchi intervyudan oldin rahbar butun jamoaga bitta xabar yozadi yoki qisqa yigʻilish qiladi. Maqsadni dangal ayting: ishni xaritaga tushirish, odamlarni almashtirish emas. Odamlar ishini yoʻqotishdan qoʻrqsa, haqiqiy jarayonni yashiradi. Har intervyu boshida buni yana ayting.",
@@ -248,8 +248,8 @@ def matrix_svg():
 
 
 def kit2():
-    K = "Kit 2/5: Qaysi jarayondan boshlaymiz"
-    p1 = instr("Kit 2/5", "Qaysi jarayondan boshlaymiz",
+    K = "Kit 2: Qaysi jarayondan boshlaymiz"
+    p1 = instr("Kit 2", "Qaysi jarayondan boshlaymiz",
         "Jarayonlarni bir xil mezonlarda baholang va birinchi pilot uchun bittasini tanlang: qiymati yuqori, boshlash oson, xatosi arzon.",
         [
             "<b>Jarayonlar, A shakli.</b> Kit 1 fayllaridan 8 tagacha jarayonni A shakliga yozing. Jarayon: boshlanishi va natijasi bor vazifalar zanjiri, masalan \"mijoz soʻrovidan to yozilgan sinov darsigacha\".",
@@ -301,8 +301,8 @@ def kit2():
 
 # ---------------------------------------------------------------- Kit 3
 def kit3():
-    K = "Kit 3/5: Ishni qayta taqsimlash"
-    p1 = instr("Kit 3/5", "Ishni qayta taqsimlash",
+    K = "Kit 3: Ishni qayta taqsimlash"
+    p1 = instr("Kit 3", "Ishni qayta taqsimlash",
         "Tanlangan jarayonni qadamma-qadam yozing, ertaga har qadamni kim bajarishini belgilang va agent koʻrsatmalarini tuzing.",
         [
             "<b>Qadamlar, A shakli.</b> Kit 2 da tanlangan jarayonni boshidan oxirigacha yozing, bir qatorda bitta harakat. A.3 ga uni bugun kim qilishini yozing.",
@@ -323,7 +323,7 @@ def kit3():
         + grid([("#", ""), ("A.1", "Qadam (bitta harakat)"), ("A.2", "Maʼlumot"), ("A.3", "Bugun: kim"),
                 ("A.4", "Ertaga A / R / I"), ("A.5", "Kim tekshiradi"), ("A.6", "Kim qaror qiladi"),
                 ("A.7", "Kim javobgar"), ("A.8", "Izoh: kutish, xatolar")],
-               10, "9.2mm", ["6mm", "24%", "12%", "9%", "7%", "9%", "9%", "9%", None], first="n")
+               10, "8.6mm", ["6mm", "24%", "12%", "9%", "7%", "9%", "9%", "9%", None], first="n")
         + '<div class="cols">'
         + legend(["Jarayonni boshidan oxirigacha yozing, bir qatorda bitta harakat.",
                   "A.3: bu qadamni bugun kim qiladi.",
@@ -359,8 +359,8 @@ def kit3():
 
 # ---------------------------------------------------------------- Kit 4
 def kit4():
-    K = "Kit 4/5: Yangi rollar"
-    p1 = instr("Kit 4/5", "Yangi rollar",
+    K = "Kit 4: Yangi rollar"
+    p1 = instr("Kit 4", "Yangi rollar",
         "Har xodimning eng kuchli koʻnikmasini yangi ish taqsimotidagi mos joyga qoʻying va \"AIʼni oʻrgan\" oʻrniga aniq tekshiriladigan vazifa bering.",
         [
             "<b>Xodimlar, A shakli.</b> Kit 3 jarayonida ishi oʻzgarayotgan har xodimni A.1 ga yozing. A.2 ga eng kuchli koʻnikmasini uning oʻz ishidan haqiqiy misol bilan yozing.",
@@ -413,8 +413,8 @@ def kit4():
 
 # ---------------------------------------------------------------- Kit 5
 def kit5():
-    K = "Kit 5/5: Pilot va hisob-kitob"
-    p1 = instr("Kit 5/5", "Pilot va hisob-kitob",
+    K = "Kit 5: Pilot va hisob-kitob"
+    p1 = instr("Kit 5", "Pilot va hisob-kitob",
         "Cheklangan, muddati belgilangan 2-4 haftalik pilot oʻtkazing va faqat agentning tezligini emas, pul va vaqtda nima oʻzgarganini hisoblang.",
         [
             "<b>Baseline.</b> Ikkinchi darsdan keyin B shaklining Agentgacha ustuniga B.1-B.4 ni bir haftalik raqam qilib yozing. Tarix bor joyda oxirgi 2-4 haftani Claude Code bilan oling: Telegram chat eksporti, Excel, CRM. Tarixi yoʻq raqamni 5 ish kuni jonli yozing. Baseline boʻlmasa, demo kunida faqat taassurot qoladi.",
@@ -500,7 +500,7 @@ def kit5():
 # ---------------------------------------------------------------- Sotuvchi cheklisti
 def vendor():
     p1 = page(
-        '<div class="kicker">Praktikum 3.0</div><h1>Sotuvchi cheklisti</h1>'
+        '<div class="kicker">AI Praktikum 3.0</div><h1>Sotuvchi cheklisti</h1>'
         '<p class="lead">Kimdir sizga "AI agent qurib beraman" yoki "shaxsiy Jarvis" taklif qilganda ishlating. Oʻzbekistondagi bozor narxi: 2 000-5 000 dollar.</p>'
         '<ol class="steps">'
         '<li>Sakkizta savolni sotuvchiga yozma bering va javobni yozma oling.</li>'
@@ -521,7 +521,7 @@ def vendor():
         ("Ishga tushgandan keyin oyiga qancha turadi?", "Obuna, xizmat koʻrsatish va tekshirish vaqti", "Faqat oʻrnatish narxi"),
     ]
     p2 = page(
-        fhead("Sotuvchi cheklisti", "Praktikum 3.0")
+        fhead("Sotuvchi cheklisti", "AI Praktikum 3.0")
         + '<p class="intro">Savollarni sotuvchiga yozma bering va javobni yozma oling. Har javobni "Yaxshi javob" va "Xavfli belgi" ustunlari bilan solishtiring.</p>'
         + fields(["Sotuvchi", "Taklif", "Narx", "Sana"])
         + grid([("", "#"), ("", "Savol"), ("", "Yaxshi javob"), ("", "Xavfli belgi"), ("", "Sotuvchi javobi")],
@@ -532,11 +532,11 @@ def vendor():
 
 
 DOCS = [
-    ("Kit1_Ish_qayerga_ketadi", "Kit 1/5: Ish qayerga ketadi", kit1),
-    ("Kit2_Qaysi_jarayondan_boshlaymiz", "Kit 2/5: Qaysi jarayondan boshlaymiz", kit2),
-    ("Kit3_Ishni_qayta_taqsimlash", "Kit 3/5: Ishni qayta taqsimlash", kit3),
-    ("Kit4_Yangi_rollar", "Kit 4/5: Yangi rollar", kit4),
-    ("Kit5_Pilot_va_hisob-kitob", "Kit 5/5: Pilot va hisob-kitob", kit5),
+    ("Kit1_Ish_qayerga_ketadi", "Kit 1: Ish qayerga ketadi", kit1),
+    ("Kit2_Qaysi_jarayondan_boshlaymiz", "Kit 2: Qaysi jarayondan boshlaymiz", kit2),
+    ("Kit3_Ishni_qayta_taqsimlash", "Kit 3: Ishni qayta taqsimlash", kit3),
+    ("Kit4_Yangi_rollar", "Kit 4: Yangi rollar", kit4),
+    ("Kit5_Pilot_va_hisob-kitob", "Kit 5: Pilot va hisob-kitob", kit5),
     ("Sotuvchi_cheklisti", "Sotuvchi cheklisti", vendor),
 ]
 
@@ -550,7 +550,7 @@ def main():
         state["page"] = 0
         pages = fn()
         html = (f'<!doctype html><html lang="uz-Latn"><head><meta charset="utf-8"><title>{escape(title)}</title>'
-                f"<style>{CSS}</style></head><body>{''.join(pages)}</body></html>")
+                f"<style>{CSS}</style></head><body>{''.join(pages)}</body></html>").replace('@@TOTAL@@', str(len(pages)))
         text = re.sub(r"<style>.*?</style>|<[^>]+>", " ", html, flags=re.S)
         for m in BAD.finditer(text):
             print(f"{name}: bad char near {text[max(0, m.start() - 20):m.end() + 20]!r}")

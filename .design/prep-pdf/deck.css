@@ -23,7 +23,7 @@ a{color:inherit;text-decoration:none}
 /* cover */
 .cover{display:grid;grid-template-columns:minmax(0,1fr) 760px;gap:72px;flex:1;margin-top:48px}
 .cover .l{display:flex;flex-direction:column;justify-content:center;gap:40px}
-.cover h1{font-size:120px;line-height:1.04;letter-spacing:-.01em}
+.cover h1{font-size:92px;line-height:1.04;letter-spacing:-.01em}
 .cover .lede{font-size:34px;line-height:1.45;color:var(--text-2);max-width:900px}
 .cover .r{display:grid;grid-template-columns:1fr 1fr;gap:16px 8px;padding:48px;align-content:center}
 /* overview */

@@ -1,12 +1,12 @@
 {
   "n": 6,
   "title": "Agentni yaxshilash",
-  "subtitle": "Xatolar jurnali, test toʻplami, cron, eskalatsiya, xavfsizlik, Kit 5 B",
-  "summary": "Pilotning birinchi haftasidagi xatolar boʻyicha agentni tuzatamiz. Jadval boʻyicha hisobot, eskalatsiya va xavfsizlik qoidalarini qoʻshamiz. Kit 5 B: 1-hafta.",
+  "subtitle": "Xatolar jurnali, test toʻplami, cron, eskalatsiya, xavfsizlik, Kit 5 (B shakli)",
+  "summary": "Pilotning birinchi haftasidagi xatolar boʻyicha agentni tuzatamiz. Jadval boʻyicha hisobot, eskalatsiya va xavfsizlik qoidalarini qoʻshamiz. Kit 5, B shakli: 1-hafta.",
   "outcomes": [
     "Builder (Claude Code) va doim ishlaydigan assistent agent farqini tushuntirasiz.",
     "Yaxshilash siklini yuritasiz: xatolar jurnali, koʻrsatmani oʻzgartirish, yaxshi va yomon namunalarda test, qayta deploy.",
-    "Rejali vazifa (cron) va Kit 3 B.6 dagi eskalatsiya yoʻllarini qoʻshasiz.",
+    "Rejali vazifa (cron) va Kit 3 B.6ʼdagi eskalatsiya yoʻllarini qoʻshasiz.",
     "AI xavfsizligining asosiy xavflarini va ularning oldini oladigan qoidalarni bilasiz.",
     "Agentni buzadigan maʼlumot tartibsizligini payqaysiz: bitta mijoz, uchta nom."
   ],
@@ -17,7 +17,7 @@
     "Test toʻplami",
     "Prompt injection",
     "Maʼlumotlar tartibi",
-    "Kit 5 B"
+    "Kit 5, B shakli"
   ],
   "slideCount": 0,
   "slideKind": "image",
@@ -26,27 +26,27 @@
     "groups": [
       {
         "title": "01 Yaxshilash sikli",
-        "note": "ASOSIY. Regression: bir joyni tuzatganda boshqa ishlayotgan joy buzilishi. Shuning uchun har oʻzgarishdan keyin barcha testlar qayta ishlaydi. 1) Kit 5 B.13 dagi har yozuv uchun instructions.md ni oʻzgartiring. 2) Shu holat uchun test qoʻshing. 3) Barcha testlarni qayta ishga tushiring. 4) Serverga qayta deploy qiling. Tayyor, agar: barcha testlar oʻtadi va B.13 dagi «nimani oʻzgartirdik» toʻldirilgan.",
+        "note": "ASOSIY. Regression: bir joyni tuzatganda boshqa ishlayotgan joy buzilishi. Shuning uchun har oʻzgarishdan keyin barcha testlar qayta ishlaydi. 1) Kit 5 B.13ʼdagi har yozuv uchun instructions.mdʼni oʻzgartiring. 2) Shu holat uchun test qoʻshing. 3) Barcha testlarni qayta ishga tushiring. 4) Serverga qayta deploy qiling. Tayyor, agar: barcha testlar oʻtadi va B.13ʼdagi «nimani oʻzgartirdik» toʻldirilgan.",
         "files": [],
         "prompts": [
           {
             "id": "01P1",
             "title": "Xatodan tuzatishgacha",
             "target": "Claude Code",
-            "text": "kit5-pilot/errors.md dagi [sana] yozuvini oling: [xatoning qisqa tavsifi].\n1) Bu xato takrorlanmasligi uchun kit3-agent/instructions.md ga eng kichik oʻzgartirishni kiriting va uni menga koʻrsating.\n2) Shu holat uchun test qoʻshing.\n3) Barcha testlarni ishga tushiring: 3 ta yaxshi, 3 ta yomon namuna va yangi test. Natijani jadvalda koʻrsating.\n4) Hammasi oʻtsa, serverga qayta deploy qiling.\n5) errors.md dagi \"nimani oʻzgartirdik\" ustunini toʻldiring."
+            "text": "kit5-pilot/errors.mdʼdagi [sana] yozuvini oling: [xatoning qisqa tavsifi].\n1) Bu xato takrorlanmasligi uchun kit3-agent/instructions.mdʼga eng kichik oʻzgartirishni kiriting va uni menga koʻrsating.\n2) Shu holat uchun test qoʻshing.\n3) Barcha testlarni ishga tushiring: 3 ta yaxshi, 3 ta yomon namuna va yangi test. Natijani jadvalda koʻrsating.\n4) Hammasi oʻtsa, serverga qayta deploy qiling.\n5) errors.mdʼdagi \"nimani oʻzgartirdik\" ustunini toʻldiring."
           }
         ]
       },
       {
         "title": "02 Few-shot namunalar",
-        "note": "ASOSIY. Few-shot: koʻrsatmalarga qoʻyilgan toʻgʻri namunalar. Natijani yaxshilashning eng tez yoʻli. 1) 2-3 ta toʻgʻri haqiqiy natijani instructions.md ga qoʻshing. 2) Testlarni qayta ishga tushiring. Tayyor, agar: natija formati yaxshi namunalarga mos keladi.",
+        "note": "ASOSIY. Few-shot: koʻrsatmalarga qoʻyilgan toʻgʻri namunalar. Natijani yaxshilashning eng tez yoʻli. 1) 2-3 ta toʻgʻri haqiqiy natijani instructions.mdʼga qoʻshing. 2) Testlarni qayta ishga tushiring. Tayyor, agar: natija formati yaxshi namunalarga mos keladi.",
         "files": [],
         "prompts": [
           {
             "id": "02P1",
             "title": "Namunalarni qoʻshish",
             "target": "Claude Code",
-            "text": "kit3-agent/instructions.md ga \"Namunalar\" boʻlimini qoʻshing.\nUnga quyidagi [2-3] ta toʻgʻri haqiqiy natijani qoʻying: [namunalar yoki fayl nomlari].\nMijozlarning ism va telefonlarini [ism], [telefon] belgilari bilan almashtiring.\nKeyin barcha testlarni qayta ishga tushiring va natija formati namunalarga mos kelishini tekshiring."
+            "text": "kit3-agent/instructions.mdʼga \"Namunalar\" boʻlimini qoʻshing.\nUnga quyidagi [2-3] ta toʻgʻri haqiqiy natijani qoʻying: [namunalar yoki fayl nomlari].\nMijozlarning ism va telefonlarini [ism], [telefon] belgilari bilan almashtiring.\nKeyin barcha testlarni qayta ishga tushiring va natija formati namunalarga mos kelishini tekshiring."
           }
         ]
       },
@@ -57,22 +57,22 @@
         "prompts": [
           {
             "id": "03P1",
-            "title": "Har kuni 9:00 da hisobot",
+            "title": "Har kuni 9:00ʼda hisobot",
             "target": "Claude Code",
-            "text": "Serverdagi agentga cron vazifa qoʻshing: har kuni soat 9:00 da (Toshkent vaqti) mening Telegramimga hisobot yuborsin.\nHisobotda kechagi raqamlar boʻlsin: [qaysi raqamlar]. Odatdagidan farq qiladigan holat boʻlsa, alohida qatorda yozsin.\nMening Telegram ID raqamim .env faylida.\nHisobot oʻzbek tilida, 10 qatordan oshmasin. Sozlagach, bir marta qoʻlda ishga tushirib sinang."
+            "text": "Serverdagi agentga cron vazifa qoʻshing: har kuni soat 9:00ʼda (Toshkent vaqti) mening Telegramimga hisobot yuborsin.\nHisobotda kechagi raqamlar boʻlsin: [qaysi raqamlar]. Odatdagidan farq qiladigan holat boʻlsa, alohida qatorda yozsin.\nMening Telegram ID raqamim .env faylida.\nHisobot oʻzbek tilida, 10 qatordan oshmasin. Sozlagach, bir marta qoʻlda ishga tushirib sinang."
           }
         ]
       },
       {
         "title": "04 Eskalatsiya yoʻllari",
-        "note": "ASOSIY. Eskalatsiya yoʻli: holat, kimga oʻtadi, qaysi kanal orqali. Agent notoʻgʻri javobni jimgina bermaydi, ishni odamga oʻtkazadi. 1) Kit 3 B.6 dagi har holatni agentga qoʻshing: shart, odam, kanal. 2) Har holatni bir marta soxta maʼlumot bilan sinang. Tayyor, agar: har holat bir marta sinovdan oʻtgan.",
+        "note": "ASOSIY. Eskalatsiya yoʻli: holat, kimga oʻtadi, qaysi kanal orqali. Agent notoʻgʻri javobni jimgina bermaydi, ishni odamga oʻtkazadi. 1) Kit 3 B.6ʼdagi har holatni agentga qoʻshing: shart, odam, kanal. 2) Har holatni bir marta soxta maʼlumot bilan sinang. Tayyor, agar: har holat bir marta sinovdan oʻtgan.",
         "files": [],
         "prompts": [
           {
             "id": "04P1",
             "title": "B.6 holatlarini qoʻshish",
             "target": "Claude Code",
-            "text": "kit3-agent/instructions.md dagi B.6 eskalatsiya holatlarini oʻqing.\nHar biri uchun agentga qoida qoʻshing: qaysi shartda, kimga, qaysi kanal orqali xabar ketadi. Masalan: boʻsh Excel kelsa, agent nol yozmasin, [masʼul xodim] ga xabar bersin.\nHar holat uchun soxta sinov maʼlumoti tayyorlang va bir marta ishga tushiring.\nNatija jadvali: holat, kutilgan, haqiqiy, oʻtdi yoki yoʻq."
+            "text": "kit3-agent/instructions.mdʼdagi B.6 eskalatsiya holatlarini oʻqing.\nHar biri uchun agentga qoida qoʻshing: qaysi shartda, kimga, qaysi kanal orqali xabar ketadi. Masalan: boʻsh Excel kelsa, agent nol yozmasin, [masʼul xodim] ga xabar bersin.\nHar holat uchun soxta sinov maʼlumoti tayyorlang va bir marta ishga tushiring.\nNatija jadvali: holat, kutilgan, haqiqiy, oʻtdi yoki yoʻq."
           }
         ]
       },
@@ -91,14 +91,14 @@
       },
       {
         "title": "06 Xavfsizlik cheklisti",
-        "note": "ASOSIY. Prompt injection: fayl, sahifa yoki skill ichiga yashirilgan buyruq, u agentni boshqa ishga undaydi. 1) Mentor bilan har bandni tekshiring: kalitlar faqat .env da; public repozitoriy yoʻq; skill va MCPlar tekshirilgan; xarajat limitlari qoʻyilgan; agent toʻlov qila olmaydi, mijozga yoza olmaydi, maʼlumot oʻchira olmaydi. Tayyor, agar: barcha bandlar mentor bilan belgilangan.",
+        "note": "ASOSIY. Prompt injection: fayl, sahifa yoki skill ichiga yashirilgan buyruq, u agentni boshqa ishga undaydi. 1) Mentor bilan har bandni tekshiring: kalitlar faqat .envʼda; public repozitoriy yoʻq; skill va MCPlar tekshirilgan; xarajat limitlari qoʻyilgan; agent toʻlov qila olmaydi, mijozga yoza olmaydi, maʼlumot oʻchira olmaydi. Tayyor, agar: barcha bandlar mentor bilan belgilangan.",
         "files": [],
         "prompts": [
           {
             "id": "06P1",
             "title": "Xavfsizlik tekshiruvi",
             "target": "Claude Code",
-            "text": "Loyihani xavfsizlik boʻyicha tekshiring, hech narsani oʻzgartirmang. Har band uchun ha yoki yoʻq va dalil yozing:\n1) Kalitlar faqat .env da, kodda va Git tarixida yoʻq.\n2) GitHub repozitoriy private.\n3) Oʻrnatilgan skill va MCPlarda shubhali buyruq yoki kalit qidirish yoʻq.\n4) OpenRouter va boshqa pullik xizmatlarda xarajat limiti bor.\n5) Agent toʻlov qila olmaydi, mijozga yoza olmaydi, maʼlumot oʻchira olmaydi.\nOxirida tuzatish kerak boʻlgan bandlarni alohida roʻyxat qiling."
+            "text": "Loyihani xavfsizlik boʻyicha tekshiring, hech narsani oʻzgartirmang. Har band uchun ha yoki yoʻq va dalil yozing:\n1) Kalitlar faqat .envʼda, kodda va Git tarixida yoʻq.\n2) GitHub repozitoriy private.\n3) Oʻrnatilgan skill va MCPlarda shubhali buyruq yoki kalit qidirish yoʻq.\n4) OpenRouter va boshqa pullik xizmatlarda xarajat limiti bor.\n5) Agent toʻlov qila olmaydi, mijozga yoza olmaydi, maʼlumot oʻchira olmaydi.\nOxirida tuzatish kerak boʻlgan bandlarni alohida roʻyxat qiling."
           }
         ]
       },
@@ -111,24 +111,24 @@
             "id": "07P1",
             "title": "Bir mijoz, turli nomlar",
             "target": "Claude Code",
-            "text": "Pilot ishlatadigan manbalarni oʻqing: [fayllar yoki tizim eksportlari].\nBir mijoz yoki mahsulot turli nomlar bilan yozilgan holatlarni toping, masalan: \"Umidjon aka\", \"Umidjon sinfdosh\", \"U. Karimov\".\nMoslik jadvalini tuzing: asosiy nom, boshqa nomlar, qaysi tizimda. Ishonchingiz komil boʻlmagan juftlarni [?] bilan belgilang.\nHech narsani oʻzgartirmang. kit5-pilot/data-check.md ga saqlang."
+            "text": "Pilot ishlatadigan manbalarni oʻqing: [fayllar yoki tizim eksportlari].\nBir mijoz yoki mahsulot turli nomlar bilan yozilgan holatlarni toping, masalan: \"Umidjon aka\", \"Umidjon sinfdosh\", \"U. Karimov\".\nMoslik jadvalini tuzing: asosiy nom, boshqa nomlar, qaysi tizimda. Ishonchingiz komil boʻlmagan juftlarni [?] bilan belgilang.\nHech narsani oʻzgartirmang. kit5-pilot/data-check.mdʼga saqlang."
           }
         ]
       }
     ]
   },
   "kit": {
-    "text": "Kit 5 B pilot raqamlarini har hafta baseline bilan solishtiradi, bugun 1-hafta ustunini koʻrasiz.",
+    "text": "Kit 5, B shakli pilot raqamlarini har hafta baseline bilan solishtiradi, bugun 1-hafta ustunini koʻrasiz.",
     "groups": [
       {
         "title": "01 Kit 5: 1-hafta raqamlari",
-        "note": "Har hafta ustuni baseline bilan bir xil usulda hisoblanadi. 1) /kit5 hafta 1 ni yoki promptni ishga tushiring. 2) 1-hafta ustunini Agentgacha ustuni bilan solishtiring. 3) Farqi katta raqamning sababini yozing. Tayyor, agar: har raqamning manbasi yozilgan.",
+        "note": "Har hafta ustuni baseline bilan bir xil usulda hisoblanadi. 1) «/kit5 hafta 1»ni yoki promptni ishga tushiring. 2) 1-hafta ustunini Agentgacha ustuni bilan solishtiring. 3) Farqi katta raqamning sababini yozing. Tayyor, agar: har raqamning manbasi yozilgan.",
         "files": [
           {
             "slug": "kit5-pdf",
             "name": "Kit5_Pilot_va_hisob-kitob.pdf",
-            "size": 101828,
-            "label": "Kit 5 yoʻriqnomasi"
+            "size": 101893,
+            "label": "Kit 5: Pilot va hisob-kitob (PDF)"
           },
           {
             "slug": "kit5-b-raqamlar",
@@ -142,13 +142,13 @@
             "id": "K5P1",
             "title": "1-hafta tahlili",
             "target": "Claude Code",
-            "text": "kit5-pilot papkasidagi baseline.md, results.md va errors.md ni oʻqing.\n1-hafta raqamlarini Agentgacha ustuni bilan yonma-yon jadvalda koʻrsating: metrika, Agentgacha, 1-hafta, farq.\nB.7 tekshirish soatini kunlar boʻyicha yozing va kamaygan yoki kamaymaganini ayting: [kunlik tekshirish soatlari].\nHar raqam qayerdan olinganini yozing. Faylda yoʻq raqam qoʻshmang, katakni boʻsh qoldiring."
+            "text": "kit5-pilot papkasidagi baseline.md, results.md va errors.mdʼni oʻqing.\n1-hafta raqamlarini Agentgacha ustuni bilan yonma-yon jadvalda koʻrsating: metrika, Agentgacha, 1-hafta, farq.\nB.7 tekshirish soatini kunlar boʻyicha yozing va kamaygan yoki kamaymaganini ayting: [kunlik tekshirish soatlari].\nHar raqam qayerdan olinganini yozing. Faylda yoʻq raqam qoʻshmang, katakni boʻsh qoldiring."
           }
         ]
       },
       {
         "title": "02 Xatolar va ruxsatlar",
-        "note": "B.13 dagi har xato instructions.md dagi oʻzgarishga va yangi testga aylanadi. 1) Har yozuvga qaysi qoida oʻzgarganini yozing. 2) B.7 tekshirish soati kamayganini koʻring. 3) Mentor bilan ruxsat qarorini oling va A.5 ga yozing. Tayyor, agar: B.13 toʻldirilgan, ruxsat qarori yozilgan.",
+        "note": "B.13ʼdagi har xato instructions.mdʼdagi oʻzgarishga va yangi testga aylanadi. 1) Har yozuvga qaysi qoida oʻzgarganini yozing. 2) B.7 tekshirish soati kamayganini koʻring. 3) Mentor bilan ruxsat qarorini oling va A.5ʼga yozing. Tayyor, agar: B.13 toʻldirilgan, ruxsat qarori yozilgan.",
         "files": []
       },
       {
@@ -163,12 +163,12 @@
     "groups": [
       {
         "title": "1. Pilotning 2-haftasi",
-        "note": "Pilotni yaxshilangan agent bilan davom ettiring. Har xatoni B.13 ga yozishda davom eting. Ruxsatlarni faqat darsda kelishilgan darajada oʻzgartiring.",
+        "note": "Pilotni yaxshilangan agent bilan davom ettiring. Har xatoni B.13ʼga yozishda davom eting. Ruxsatlarni faqat darsda kelishilgan darajada oʻzgartiring.",
         "files": []
       },
       {
         "title": "2. 2-hafta ustuni",
-        "note": "Kit 5 B ning 2-hafta ustunini toʻldiring. Xodimlarning tekshirishga ketgan soatlarini (B.7) ham yozing.",
+        "note": "Kit 5, B shaklining 2-hafta ustunini toʻldiring. Xodimlarning tekshirishga ketgan soatlarini (B.7) ham yozing.",
         "files": [],
         "prompts": [
           {
@@ -181,14 +181,14 @@
       },
       {
         "title": "3. Xarajatlar",
-        "note": "Obunalar (B.9), sozlash (B.10) va tekshirish soatlari × soatlik stavka (B.11) ni yozing.",
+        "note": "Obunalar (B.9), sozlash (B.10) va tekshirish soatlari × soatlik stavkani (B.11) yozing.",
         "files": [],
         "prompts": [
           {
             "id": "V3P1",
             "title": "Xarajatlar jadvali",
             "target": "Claude Code",
-            "text": "kit5-pilot ga xarajatlar jadvalini qoʻshing.\nB.9 obunalar: [Claude, OpenRouter, VPS, domen va boshqalar, oylik summasi bilan].\nB.10 sozlash: [sarflangan soat va pul].\nB.11 tekshirish: B.7 dagi soatlar × [soatlik stavka, soʻmda].\nHar qator qanday hisoblanganini koʻrsating. Bilmagan summani toʻqimang, menga soʻrang."
+            "text": "kit5-pilotʼga xarajatlar jadvalini qoʻshing.\nB.9 obunalar: [Claude, OpenRouter, VPS, domen va boshqalar, oylik summasi bilan].\nB.10 sozlash: [sarflangan soat va pul].\nB.11 tekshirish: B.7ʼdagi soatlar × [soatlik stavka, soʻmda].\nHar qator qanday hisoblanganini koʻrsating. Bilmagan summani toʻqimang, menga soʻrang."
           }
         ]
       },
@@ -201,7 +201,7 @@
             "id": "V4P1",
             "title": "Topilgan pulni yigʻish",
             "target": "Claude Code",
-            "text": "Pilot loglari va kit5-pilot/errors.md ni koʻrib chiqing.\nPilot pul olib kelgan yoki saqlab qolgan holatlarni toping: zarar qilishidan oldin ushlangan xatolar, endi yoʻqolmayotgan murojaatlar, tezroq yigʻilgan pul.\nHar holatga sana, dalil va summani yozing. Summa nomaʼlum boʻlsa, \"summa aniqlanmagan\" deb yozing, taxmin qilmang."
+            "text": "Pilot loglari va kit5-pilot/errors.mdʼni koʻrib chiqing.\nPilot pul olib kelgan yoki saqlab qolgan holatlarni toping: zarar qilishidan oldin ushlangan xatolar, endi yoʻqolmayotgan murojaatlar, tezroq yigʻilgan pul.\nHar holatga sana, dalil va summani yozing. Summa nomaʼlum boʻlsa, \"summa aniqlanmagan\" deb yozing, taxmin qilmang."
           }
         ]
       },

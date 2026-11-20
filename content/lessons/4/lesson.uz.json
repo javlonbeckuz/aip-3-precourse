@@ -4,19 +4,19 @@
   "subtitle": "API, kalitlar, MCP, frontend va backend, system prompt, Kit 3",
   "summary": "Tanlangan jarayonni qadamlarga ajratamiz va agent yoʻriqnomasini yozamiz. Keyin agentning birinchi versiyasini haqiqiy tizimlarga ulaymiz. Kit 3: ishni qayta taqsimlash.",
   "outcomes": [
-    "API, API kaliti, MCP va connector nima ekanini va qachon qaysi biri ishlatilishini tushuntirasiz.",
+    "API, API kaliti, MCP va konnektor nima ekanini va qachon qaysi biri ishlatilishini tushuntirasiz.",
     "Kalitlarni xavfsiz saqlaysiz va xarajat limitini qoʻyasiz.",
     "Frontend va backendni ajratasiz, maʼlumotlar bazasi nima ekanini bilasiz.",
     "Jarayonni qadamlarga ajratib, har qadamni kim bajarishi, kim tekshirishi, kim hal qilishi va kim javob berishini belgilaysiz.",
-    "Kit 3 B dan system prompt va PRD tuzib, haqiqiy maʼlumotlarda agent v0 ni qurasiz.",
-    "Noldan qurishdan oldin tayyor open source yechimlarni qayerdan topishni bilasiz."
+    "Kit 3, B shaklidan system prompt va PRD tuzib, haqiqiy maʼlumotlarda agent v0ʼni qurasiz.",
+    "Noldan qurishdan oldin tayyor ochiq kod yechimlarni qayerdan topishni bilasiz."
   ],
   "topics": [
     "API",
     "API kaliti va .env",
-    "MCP va connector",
+    "MCP va konnektor",
     "Frontend va backend",
-    "Open source",
+    "Ochiq kod",
     "System prompt",
     "Agent v0",
     "Kit 3"
@@ -24,29 +24,29 @@
   "slideCount": 0,
   "slideKind": "image",
   "amaliyot": {
-    "text": "Bu amaliyotda tanlangan jarayonni qadamlarga ajratasiz, agent koʻrsatmalarini yozasiz va haqiqiy tizimlarga ulangan agent v0 ni qurasiz. Agent v0: agentning noutbukda ishlaydigan birinchi versiyasi.\n\nKalit va tokenlarni chatga yozmang. Ular faqat .env faylida turadi.\n\nMijozlarning shaxsiy maʼlumotlarini chatga yozmang.\n\nQiynalsangiz: xatoning skrinshotini oling va Claudeʼdan soʻrang.",
+    "text": "Bu amaliyotda tanlangan jarayonni qadamlarga ajratasiz, agent koʻrsatmalarini yozasiz va haqiqiy tizimlarga ulangan agent v0ʼni qurasiz. Agent v0: agentning noutbukda ishlaydigan birinchi versiyasi.\n\nKalit va tokenlarni chatga yozmang. Ular faqat .env faylida turadi.\n\nMijozlarning shaxsiy maʼlumotlarini chatga yozmang.\n\nQiynalsangiz: xatoning skrinshotini oling va Claudeʼdan soʻrang.",
     "groups": [
       {
-        "title": "01 Kit 3 A: jarayon qadamlari",
+        "title": "01 Kit 3, A shakli: jarayon qadamlari",
         "note": "ASOSIY. Kit 3 «Ishni qayta taqsimlash»: jarayonning har qadamini kim bajarishini qayta belgilaydi. Kit 3 shakli (Kit boʻlimida). 1) Tanlangan jarayonning har qadamini alohida qatorga yozing, bir qatorda bitta harakat. 2) Har qadamga bugun va ertaga kim bajarishini (agent, robot yoki inson), kim tekshirishini, kim qaror qilishini va kim javobgarligini yozing. 3) Oʻtgan haftadagi bitta haqiqiy holatni jadval boʻyicha boshidan oxirigacha yuritib chiqing. Qoida: agent oʻz qadamini oʻzi tekshirmaydi. Tayyor, agar: boʻsh katak yoʻq va bitta haqiqiy holat yuritilgan.",
         "files": []
       },
       {
-        "title": "02 Kit 3 B: agent koʻrsatmalari",
-        "note": "ASOSIY. System prompt: agent har doim amal qiladigan doimiy koʻrsatmalar, uning ish tavsifi. 1) B.1-B.10 ni toʻldiring; B.3 da agent foydalanadigan manbalar, B.6 da odamga oʻtkaziladigan holatlar boʻladi. 2) /kit3 yoki Kit 3 promptini ishga tushiring. 3) Natijani kit3-agent/instructions.md ga saqlang. Tayyor, agar: instructions.md da manbalar, cheklovlar va eskalatsiya bor.",
+        "title": "02 Kit 3, B shakli: agent koʻrsatmalari",
+        "note": "ASOSIY. System prompt: agent har doim amal qiladigan doimiy koʻrsatmalar, uning ish tavsifi. 1) B.1-B.10ʼni toʻldiring; B.3ʼda agent foydalanadigan manbalar, B.6ʼda odamga oʻtkaziladigan holatlar boʻladi. 2) /kit3 yoki Kit 3 promptini ishga tushiring. 3) Natijani kit3-agent/instructions.mdʼga saqlang. Tayyor, agar: instructions.mdʼda manbalar, cheklovlar va eskalatsiya bor.",
         "files": [],
         "prompts": [
           {
             "id": "02P1",
-            "title": "Kit 3 dan system prompt",
+            "title": "Kit 3ʼdan system prompt",
             "target": "Claude Code",
-            "text": "kit3-agent papkasidagi Kit 3 A va B ni oʻqing.\nB ni agent uchun system prompt qilib qayta yozing. Boʻlimlar: agentning roli; foydalanadigan manbalar (B.3); nima qila oladi va nima qila olmaydi; odamga oʻtkaziladigan holatlar (B.6); har harakatni qayerga yozib boradi.\nA dagi har qadamni tekshiring. B.6 da yoʻq, lekin A dan chiqadigan istisno holatlarni alohida roʻyxat qiling.\nB da yoʻq qoida qoʻshmang. Natijani kit3-agent/instructions.md ga saqlang."
+            "text": "kit3-agent papkasidagi Kit 3, A va B shakllarini oʻqing.\nBʼni agent uchun system prompt qilib qayta yozing. Boʻlimlar: agentning roli; foydalanadigan manbalar (B.3); nima qila oladi va nima qila olmaydi; odamga oʻtkaziladigan holatlar (B.6); har harakatni qayerga yozib boradi.\nAʼdagi har qadamni tekshiring. B.6ʼda yoʻq, lekin Aʼdan chiqadigan istisno holatlarni alohida roʻyxat qiling.\nBʼda yoʻq qoida qoʻshmang. Natijani kit3-agent/instructions.mdʼga saqlang."
           }
         ]
       },
       {
         "title": "03 API tekshiruvi",
-        "note": "ASOSIY. API: dasturning boshqalar undan soʻrashi mumkin boʻlgan rasmiy menyusi. MCP: AIʼga boshqa ilovalardan foydalanish imkonini beradigan standart ulagich, AI uchun Type-C kabeli kabi. 1) B.3 dagi har tizim uchun Claudeʼdan API yoki MCP bor-yoʻqligini soʻrang. 2) Natijani bitta roʻyxatga yigʻing. Tayyor, agar: roʻyxat bor: tizim, API, MCP, faqat eksport yoki hech narsa.",
+        "note": "ASOSIY. API: ilovaning boshqalar undan soʻrashi mumkin boʻlgan rasmiy menyusi. MCP: AIʼga boshqa ilovalardan foydalanish imkonini beradigan standart ulagich, AI uchun Type-C kabeli kabi. 1) B.3ʼdagi har tizim uchun Claudeʼdan API yoki MCP bor-yoʻqligini soʻrang. 2) Natijani bitta roʻyxatga yigʻing. Tayyor, agar: roʻyxat bor: tizim, API, MCP, faqat eksport yoki hech narsa.",
         "files": [],
         "prompts": [
           {
@@ -65,20 +65,20 @@
             "id": "03P3",
             "title": "Umumiy roʻyxat",
             "target": "Claude Code",
-            "text": "kit3-agent/instructions.md dagi manbalarni (B.3) oʻqing.\nHar tizim uchun ulanish yoʻlini jadvalda yozing: tizim, API, MCP, faqat eksport yoki hech narsa, nima kerak, manba havolasi.\nkit3-agent/sources.md ga saqlang."
+            "text": "kit3-agent/instructions.mdʼdagi manbalarni (B.3) oʻqing.\nHar tizim uchun ulanish yoʻlini jadvalda yozing: tizim, API, MCP, faqat eksport yoki hech narsa, nima kerak, manba havolasi.\nkit3-agent/sources.mdʼga saqlang."
           }
         ]
       },
       {
         "title": "04 Kalitlar toʻgʻri joyda",
-        "note": "ASOSIY. .env: kalitlar turadigan maxfiy fayl. Kalit chatga yoki kodga yozilsa, loglarga tushadi. 1) Bot tokeni va OpenRouter kalitini .env faylga oʻzingiz yozing. 2) .env hech qayerga ulashilmasligini tekshiring. Tayyor, agar: Claude kalitlarni .env dan oʻqiydi, chatdan emas.",
+        "note": "ASOSIY. .env: kalitlar turadigan maxfiy fayl. Kalit chatga yoki kodga yozilsa, loglarga tushadi. 1) Bot tokeni va OpenRouter kalitini .env faylga oʻzingiz yozing. 2) .env hech qayerga ulashilmasligini tekshiring. Tayyor, agar: Claude kalitlarni .envʼdan oʻqiydi, chatdan emas.",
         "files": [],
         "prompts": [
           {
             "id": "04P1",
             "title": ".env faylini tayyorlash",
             "target": "Claude Code",
-            "text": "Loyiha papkasida .env fayl yarating. Ichida bot tokeni va OpenRouter kaliti uchun boʻsh qatorlar boʻlsin. Qiymatlarni men oʻzim yozaman, ularni menga koʻrsatmang.\nKod kalitlarni faqat .env dan oʻqisin.\n.env GitHubga yoki boshqa joyga yuborilmasligini taʼminlang va qanday taʼminlaganingizni ayting."
+            "text": "Loyiha papkasida .env fayl yarating. Ichida bot tokeni va OpenRouter kaliti uchun boʻsh qatorlar boʻlsin. Qiymatlarni men oʻzim yozaman, ularni menga koʻrsatmang.\nKod kalitlarni faqat .envʼdan oʻqisin.\n.env GitHubʼga yoki boshqa joyga yuborilmasligini taʼminlang va qanday taʼminlaganingizni ayting."
           }
         ]
       },
@@ -90,27 +90,27 @@
           {
             "id": "05P1",
             "title": "Calendar konnektori",
-            "target": "Claude, Google Calendar konnektori",
+            "target": "Claude → Google Calendar konnektori",
             "text": "Ertaga soat [vaqt] da [ism] bilan [mavzu] boʻyicha uchrashuv belgilang. Davomiyligi [daqiqa].\nYaratishdan oldin sana va vaqtni menga koʻrsating."
           }
         ]
       },
       {
         "title": "06 Agent v0",
-        "note": "ASOSIY. 1) Plan mode rejimida instructions.md ni PRD sifatida bering. 2) Vazifalar roʻyxatini oling va quring. 3) Telegram va kamida bitta maʼlumot manbasini ulang. Tizimda API boʻlmasa yoki sotuvchi kalit bermasa, eksport fayli ham boʻladi: Excel, CSV yoki Telegram JSON. Tayyor, agar: v0 noutbukda 3 ta oʻtgan haqiqiy holatda ishlaydi.",
+        "note": "ASOSIY. 1) Plan mode rejimida instructions.mdʼni PRD sifatida bering. 2) Vazifalar roʻyxatini oling va quring. 3) Telegram va kamida bitta maʼlumot manbasini ulang. Tizimda API boʻlmasa yoki sotuvchi kalit bermasa, eksport fayli ham boʻladi: Excel, CSV yoki Telegram JSON. Tayyor, agar: v0 noutbukda 3 ta oʻtgan haqiqiy holatda ishlaydi.",
         "files": [],
         "prompts": [
           {
             "id": "06P1",
             "title": "Plan mode: agent v0",
-            "target": "Claude Code, plan mode",
-            "text": "kit3-agent/instructions.md ni PRD sifatida oʻqing. Shu koʻrsatmalar boʻyicha ishlaydigan agent v0 ni rejalashtiring.\nAgent Telegram orqali ishlaydi va [manba nomi] dan maʼlumot oladi: [API, MCP yoki eksport fayli].\nAvval GitHubda shu ishga tayyor ochiq kodli yechim bor-yoʻqligini tekshiring.\nKeyin menga savollar bering, javoblarimdan soʻng vazifalar roʻyxatini app/tasks.md ga yozing.\nKalitlar faqat .env dan olinsin. Kod app papkasida boʻlsin."
+            "target": "Claude Code → Plan mode",
+            "text": "kit3-agent/instructions.mdʼni PRD sifatida oʻqing. Shu koʻrsatmalar boʻyicha ishlaydigan agent v0ʼni rejalashtiring.\nAgent Telegram orqali ishlaydi va [manba nomi] dan maʼlumot oladi: [API, MCP yoki eksport fayli].\nAvval GitHubʼda shu ishga tayyor ochiq kodli yechim bor-yoʻqligini tekshiring.\nKeyin menga savollar bering, javoblarimdan soʻng vazifalar roʻyxatini app/tasks.mdʼga yozing.\nKalitlar faqat .envʼdan olinsin. Kod app papkasida boʻlsin."
           },
           {
             "id": "06P2",
             "title": "Haqiqiy holatlarda sinash",
             "target": "Claude Code",
-            "text": "Agent v0 ni noutbukda ishga tushiring.\nUni oʻtgan haftadagi 3 ta haqiqiy holatda sinang: [holatlar yoki fayl nomlari].\nHar holat uchun jadval tuzing: kirgan maʼlumot, agent javobi, instructions.md ga mos keladimi.\nXato boʻlsa, sababini va tuzatish rejasini yozing."
+            "text": "Agent v0ʼni noutbukda ishga tushiring.\nUni oʻtgan haftadagi 3 ta haqiqiy holatda sinang: [holatlar yoki fayl nomlari].\nHar holat uchun jadval tuzing: kirgan maʼlumot, agent javobi, instructions.mdʼga mos keladimi.\nXato boʻlsa, sababini va tuzatish rejasini yozing."
           }
         ]
       },
@@ -123,7 +123,7 @@
             "id": "07P1",
             "title": "Tekshiruvchi qoʻshish",
             "target": "Claude Code",
-            "text": "Agent v0 ga tekshiruvchi qoʻshing: alohida subagent yoki ikkinchi qadam.\nU agentning har javobini kit3-agent/instructions.md bilan solishtirsin: manba toʻgʻrimi, raqamlar toʻgʻrimi, cheklovlar buzilmaganmi.\nXato topsa, javob joʻnatilmasin va sababi yozilsin."
+            "text": "Agent v0ʼga tekshiruvchi qoʻshing: alohida subagent yoki ikkinchi qadam.\nU agentning har javobini kit3-agent/instructions.md bilan solishtirsin: manba toʻgʻrimi, raqamlar toʻgʻrimi, cheklovlar buzilmaganmi.\nXato topsa, javob joʻnatilmasin va sababi yozilsin."
           },
           {
             "id": "07P2",
@@ -140,13 +140,13 @@
     "groups": [
       {
         "title": "01 Kit 3: Ishni qayta taqsimlash",
-        "note": "Agent oʻz qadamini oʻzi tekshirmaydi, bitta katak boʻsh boʻlsa, jarayon tayyor emas. 1) A shaklida jarayonni yozing, bir qatorda bitta harakat. 2) A.4 ga ertaga kim qilishini belgilang: A, R yoki I. 3) Oʻtgan haftadagi bitta haqiqiy holatni jadval boʻyicha yuriting. Tayyor, agar: boʻsh katak yoʻq, bitta haqiqiy holat yuritilgan.",
+        "note": "Agent oʻz qadamini oʻzi tekshirmaydi, bitta katak boʻsh boʻlsa, jarayon tayyor emas. 1) A shaklida jarayonni yozing, bir qatorda bitta harakat. 2) A.4ʼga ertaga kim qilishini belgilang: A, R yoki I. 3) Oʻtgan haftadagi bitta haqiqiy holatni jadval boʻyicha yuriting. Tayyor, agar: boʻsh katak yoʻq, bitta haqiqiy holat yuritilgan.",
         "files": [
           {
             "slug": "kit3-pdf",
             "name": "Kit3_Ishni_qayta_taqsimlash.pdf",
-            "size": 93955,
-            "label": "Kit 3 yoʻriqnomasi"
+            "size": 93549,
+            "label": "Kit 3: Ishni qayta taqsimlash (PDF)"
           },
           {
             "slug": "kit3-a-qadamlar",
@@ -170,74 +170,74 @@
       },
       {
         "title": "02 Agent koʻrsatmalari",
-        "note": "Claude Code B shaklidan agentning system promptini yozadi, /kit3 ni oʻrnatish PDFda. 1) B.1-B.10 ni toʻldiring, A va B ni kit3-agent papkasiga saqlang. 2) /kit3 ni yoki Kit 3 promptini ishga tushiring. 3) Topilgan egasiz qadam va istisnolarni B ga qoʻshing. Tayyor, agar: kit3-agent/instructions.md da manbalar, cheklovlar va eskalatsiya bor.",
+        "note": "Claude Code B shaklidan agentning system promptini yozadi, /kit3ʼni oʻrnatish PDFʼda. 1) B.1-B.10ʼni toʻldiring, A va Bʼni kit3-agent papkasiga saqlang. 2) /kit3ʼni yoki Kit 3 promptini ishga tushiring. 3) Topilgan egasiz qadam va istisnolarni Bʼga qoʻshing. Tayyor, agar: kit3-agent/instructions.mdʼda manbalar, cheklovlar va eskalatsiya bor.",
         "files": [],
         "prompts": [
           {
             "id": "K3P1",
             "title": "Kit 3 prompti: tekshiruv va system prompt",
             "target": "Claude Code",
-            "text": "kit3-agent papkasidagi Kit 3 A (kit3-a-qadamlar.md) va B (kit3-b-korsatmalar.md) ni oʻqing.\n1) Tekshiring: egasiz qadamlar (A.7 boʻsh), agent oʻzini oʻzi tekshiradigan qadamlar, boʻsh kataklar, xavfli ruxsatlar (pul oʻtkazish, mijozga yozish, maʼlumot oʻchirish) va odamga oʻtishi kerak, lekin B.6 da yoʻq holatlar. Har topilmani qadam yoki band raqami bilan roʻyxat qiling.\n2) B.3 dagi har manba uchun ulanish yoʻli belgilanganmi: API, MCP, eksport yoki qoʻlda. Belgilanmaganini [?] bilan koʻrsating.\n3) B ni agent uchun aniq system prompt qilib qayta yozing. B da yoʻq qoida qoʻshmang. Takliflaringizni alohida roʻyxatda bering, men tasdiqlayman.\nNatijani kit3-agent/instructions.md ga saqlang."
+            "text": "kit3-agent papkasidagi Kit 3, A shakli (kit3-a-qadamlar.md) va Bʼni (kit3-b-korsatmalar.md) oʻqing.\n1) Tekshiring: egasiz qadamlar (A.7 boʻsh), agent oʻzini oʻzi tekshiradigan qadamlar, boʻsh kataklar, xavfli ruxsatlar (pul oʻtkazish, mijozga yozish, maʼlumot oʻchirish) va odamga oʻtishi kerak, lekin B.6ʼda yoʻq holatlar. Har topilmani qadam yoki band raqami bilan roʻyxat qiling.\n2) B.3ʼdagi har manba uchun ulanish yoʻli belgilanganmi: API, MCP, eksport yoki qoʻlda. Belgilanmaganini [?] bilan koʻrsating.\n3) Bʼni agent uchun aniq system prompt qilib qayta yozing. Bʼda yoʻq qoida qoʻshmang. Takliflaringizni alohida roʻyxatda bering, men tasdiqlayman.\nNatijani kit3-agent/instructions.mdʼga saqlang."
           }
         ]
       },
       {
         "title": "03 Uyda: xodimlar tekshiruvi",
-        "note": "Istisno holatlarni agent bilan ishlaydigan xodimlar biladi. 1) instructions.md ni shu xodimlarga koʻrsating. 2) Ular aytgan har istisnoni B.6 ga qoʻshing. 3) 3 ta yaxshi va 3 ta yomon haqiqiy namuna yigʻing. Tayyor, agar: B imzolangan va sanasi qoʻyilgan.",
+        "note": "Istisno holatlarni agent bilan ishlaydigan xodimlar biladi. 1) instructions.mdʼni shu xodimlarga koʻrsating. 2) Ular aytgan har istisnoni B.6ʼga qoʻshing. 3) 3 ta yaxshi va 3 ta yomon haqiqiy namuna yigʻing. Tayyor, agar: B imzolangan va sanasi qoʻyilgan.",
         "files": []
       }
     ]
   },
   "vazifa": {
-    "text": "Bu vazifada agent koʻrsatmalarini xodimlar bilan tekshirasiz, v0 ni tugatasiz va serverga tayyorlanasiz. Toʻrtinchi darsda agent serverga koʻchiriladi.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: Kit 3 A da boʻsh katak yoʻq; B xodimlar aytgan istisnolar bilan imzolangan; v0 noutbukda haqiqiy holatlarda ishlaydi; 3 ta yaxshi va 3 ta yomon namuna saqlangan; VPS va domen sotib olingan, Claude Code VPSga kamida bir marta kirgan; baseline toʻliq.",
+    "text": "Bu vazifada agent koʻrsatmalarini xodimlar bilan tekshirasiz, v0ʼni tugatasiz va serverga tayyorlanasiz. 04-darsda agent serverga koʻchiriladi.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: Kit 3, A shaklida boʻsh katak yoʻq; B xodimlar aytgan istisnolar bilan imzolangan; v0 noutbukda haqiqiy holatlarda ishlaydi; 3 ta yaxshi va 3 ta yomon namuna saqlangan; VPS va domen sotib olingan, Claude Code VPSʼga kamida bir marta kirgan; baseline toʻliq.",
     "groups": [
       {
         "title": "1. Koʻrsatmalarni xodimlarga koʻrsating",
-        "note": "instructions.md ni (Kit 3 B) agent bilan ishlaydigan xodimlarga koʻrsating. Ular aytgan har istisnoni B.6 ga qoʻshing. B ni imzolang va sanasini qoʻying.",
+        "note": "instructions.mdʼni (Kit 3, B shakli) agent bilan ishlaydigan xodimlarga koʻrsating. Ular aytgan har istisnoni B.6ʼga qoʻshing. Bʼni imzolang va sanasini qoʻying.",
         "files": [],
         "prompts": [
           {
             "id": "V1P1",
             "title": "Istisnolarni qoʻshish",
             "target": "Claude Code",
-            "text": "Xodimlar quyidagi istisno holatlarni aytdi:\n[istisnolar roʻyxati: holat, kim aytdi]\nHar birini Kit 3 B.6 ga qoʻshing: qaysi holat, kimga oʻtadi, qaysi kanal orqali.\nkit3-agent/instructions.md ni shunga moslab yangilang va nima oʻzgarganini roʻyxat qiling."
+            "text": "Xodimlar quyidagi istisno holatlarni aytdi:\n[istisnolar roʻyxati: holat, kim aytdi]\nHar birini Kit 3 B.6ʼga qoʻshing: qaysi holat, kimga oʻtadi, qaysi kanal orqali.\nkit3-agent/instructions.mdʼni shunga moslab yangilang va nima oʻzgarganini roʻyxat qiling."
           }
         ]
       },
       {
-        "title": "2. Agent v0 ni tugating",
-        "note": "Mentor yordami bilan v0 ni tugating, savollarni guruh chatiga yozing. Kamida 5 ta oʻtgan haqiqiy holatda sinang.",
+        "title": "2. Agent v0ʼni tugating",
+        "note": "Mentor yordami bilan v0ʼni tugating, savollarni guruh chatiga yozing. Kamida 5 ta oʻtgan haqiqiy holatda sinang.",
         "files": [],
         "prompts": [
           {
             "id": "V2P1",
             "title": "5 ta holatda sinash",
             "target": "Claude Code",
-            "text": "Agent v0 ni 5 ta oʻtgan haqiqiy holatda sinang: [holatlar yoki fayl nomlari].\nJadval: holat, kutilgan natija, agent natijasi, tekshiruvchi xulosasi, mos keldimi.\nMos kelmaganlari uchun sababni yozing va tuzating, keyin hammasini qayta sinang."
+            "text": "Agent v0ʼni 5 ta oʻtgan haqiqiy holatda sinang: [holatlar yoki fayl nomlari].\nJadval: holat, kutilgan natija, agent natijasi, tekshiruvchi xulosasi, mos keldimi.\nMos kelmaganlari uchun sababni yozing va tuzating, keyin hammasini qayta sinang."
           }
         ]
       },
       {
         "title": "3. 3 ta yaxshi, 3 ta yomon namuna",
-        "note": "Jarayon natijasining 3 ta yaxshi va 3 ta yomon haqiqiy namunasini yigʻing va papkaga saqlang. Ular Kit 4 B.4 dagi oʻquv namunalari va agentning test toʻplami boʻladi.",
+        "note": "Jarayon natijasining 3 ta yaxshi va 3 ta yomon haqiqiy namunasini yigʻing va papkaga saqlang. Ular Kit 4 B.4ʼdagi oʻquv namunalari va agentning test toʻplami boʻladi.",
         "files": []
       },
       {
         "title": "4. VPS va domen",
-        "note": "VPS: data markazdagi ijaraga olingan, faqat sizga tegishli kompyuter. Sozlash videosi boʻyicha VPS va domen sotib oling. Kirish maʼlumotlarini hech kimga yubormang, ularni .env ga yozing. Claude Code bilan VPSga bir marta kiring.",
+        "note": "VPS: data markazdagi ijaraga olingan, faqat sizga tegishli kompyuter. Sozlash videosi boʻyicha VPS va domen sotib oling. Kirish maʼlumotlarini hech kimga yubormang, ularni .envʼga yozing. Claude Code bilan VPSʼga bir marta kiring.",
         "files": [],
         "prompts": [
           {
             "id": "V4P1",
-            "title": "VPSga birinchi kirish",
+            "title": "VPSʼga birinchi kirish",
             "target": "Claude Code",
             "text": "VPS kirish maʼlumotlari .env faylida.\nShu maʼlumotlar bilan serverga bir marta kiring va ishlayotganini tekshiring: tizim, boʻsh disk, xotira.\nHech narsa oʻrnatmang va oʻzgartirmang. Natijani oddiy soʻzlar bilan ayting."
           }
         ]
       },
       {
-        "title": "5. Baseline ni yakunlang",
-        "note": "Jarayoningiz tarixidan raqam olib boʻlmagan boʻlsa, jonli yozishni 5 ish kuniga yetkazing va baseline.md ni yakunlang.",
+        "title": "5. Baselineʼni yakunlang",
+        "note": "Jarayoningiz tarixidan raqam olib boʻlmagan boʻlsa, jonli yozishni 5 ish kuniga yetkazing va baseline.mdʼni yakunlang.",
         "files": []
       }
     ]

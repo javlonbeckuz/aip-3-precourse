@@ -6,16 +6,15 @@
 .prep .pc:not(.open){cursor:pointer}
 .prep .pc:not(.open):hover{filter:brightness(1.07)}
 .folder :focus-visible{outline-color:var(--black)}
-.prep .hd{display:grid;grid-template-columns:minmax(0,1fr) var(--pic);grid-template-areas:"no pic" "ti pic" "nt pic";grid-template-rows:auto auto 1fr;column-gap:14px;row-gap:6px;width:100%;min-height:44px;text-align:left;color:inherit}
-.prep .hd .no{grid-area:no}.prep .hd .f-title{grid-area:ti}.prep .hd .prep .nt{grid-area:nt;align-self:start}
+.prep .hd{display:grid;grid-template-columns:minmax(0,1fr) var(--pic);grid-template-areas:"ti pic" "nt pic";grid-template-rows:auto 1fr;column-gap:14px;row-gap:6px;width:100%;min-height:44px;text-align:left;color:inherit}
+.prep .hd .f-title{grid-area:ti}.prep .hd .prep .nt{grid-area:nt;align-self:start}
 .prep .hd .pic{grid-area:pic;display:block;width:var(--pic);align-self:start;margin-top:-2px}
-.prep .no{font:500 13px/1.35 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
 .prep .nt{font:500 14px/1.4 var(--font-body)}
 .ill{display:block;width:100%;height:auto;aspect-ratio:1;overflow:visible}
 .ill *{transform-box:view-box}
 .ill .s{stroke:#000;stroke-width:6;stroke-linejoin:round}
 .ill text{font-family:var(--font-mono);font-weight:500}
-.prep .pc.open .prep .hd{grid-template-columns:minmax(0,1fr);grid-template-areas:"pic" "no" "ti" "nt";grid-template-rows:none;row-gap:6px}
+.prep .pc.open .prep .hd{grid-template-columns:minmax(0,1fr);grid-template-areas:"pic" "ti" "nt";grid-template-rows:none;row-gap:6px}
 .prep .pc.open .prep .hd .pic{width:100%;height:220px;display:grid;place-items:center;margin:0 0 10px}
 .prep .pc.open .prep .hd .pic .ill{width:200px;height:200px}
 .prep .bd{display:grid;gap:12px;margin-top:14px}
@@ -46,11 +45,10 @@
   .prep{padding:calc(24 * var(--u)) calc(66 * var(--u)) calc(80 * var(--u))}
   .prep .deck{grid-template-columns:repeat(2,minmax(0,1fr));gap:calc(16 * var(--u));align-items:start}
   .prep .pc{--p1:max(150px,calc(200 * var(--u)));--p2:max(220px,calc(300 * var(--u)));min-height:0;padding:calc(31 * var(--u)) calc(27 * var(--u)) calc(34 * var(--u))}
-  .prep .hd,.prep .pc.open .prep .hd{grid-template-columns:minmax(0,1fr);grid-template-areas:"no" "ti" "pic" "nt";grid-template-rows:none;row-gap:calc(8 * var(--u))}
+  .prep .hd,.prep .pc.open .prep .hd{grid-template-columns:minmax(0,1fr);grid-template-areas:"ti" "pic" "nt";grid-template-rows:none;row-gap:calc(8 * var(--u))}
   .prep .hd .pic,.prep .pc.open .prep .hd .pic{display:block;width:min(100%,var(--p1));height:auto;margin:calc(14 * var(--u)) 0 calc(14 * var(--u))}
   .prep .pc.open .prep .hd .pic{width:min(100%,var(--p2))}
   .prep .pc.open .prep .hd .pic .ill{width:100%;height:auto}
-  .prep .no{font-size:max(12px,calc(15 * var(--u)))}
   .f-title{font-size:max(16px,calc(22 * var(--u)))}
   .prep .nt{font-size:max(14px,calc(15 * var(--u)))}
   .prep .bd{margin-top:calc(16 * var(--u))}
@@ -120,7 +118,7 @@ button.ef-row{width:100%;text-align:left;color:inherit;font:inherit}
 .gate-lang a{display:inline-grid;place-items:center;min-width:44px;min-height:44px;padding:0}
 /* checkbox-style done control: a square box + label, on yellow (prep), lilac (prompts, end marks) and black (end marks on dark pages) */
 :root{--ck-w:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M4.5 10.5l3.5 3.5 7.5-8.5' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");--ck-b:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M4.5 10.5l3.5 3.5 7.5-8.5' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
-.s1 .chip,.prep .chip{height:auto;min-height:28px;padding:0 0 0 32px;border:0;border-radius:0;background:none;color:var(--ink);font:500 14px/1.3 var(--font-body);text-transform:none;gap:0;text-align:left}
+.s1 .chip,.prep .chip{height:auto;min-height:28px;padding:0 0 0 32px;border:0;border-radius:0;background:none;color:var(--ink);font:500 15px/1.3 var(--font-body);text-transform:none;gap:0;text-align:left}
 .s1 .chip.off,.prep .chip.off{background:none;color:var(--ink)}
 .s1 .chip::before,.prep .chip::before{content:"";position:absolute;left:0;top:50%;width:22px;height:22px;margin-top:-11px;border:2px solid var(--ink);border-radius:6px;background:center/16px no-repeat}
 .s1 .chip:not(.off)::before,.prep .chip:not(.off)::before{background-color:var(--ink);background-image:var(--ck-w)}

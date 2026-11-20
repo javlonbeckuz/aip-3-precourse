@@ -62,7 +62,7 @@ css=r'''
 .slv-note{max-width:40ch;font-size:13px;color:var(--text-2)}
 .slv-foot{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;min-width:0}
 .slv-foot .play{white-space:nowrap;min-width:0}
-.slv-btn{display:grid;place-items:center;width:52px;height:52px;border:1px solid var(--white);border-radius:50%}
+.slv-btn{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--white);border-radius:50%}
 .slv-btn.off{opacity:.3;border-color:var(--line-ui)}
 .slv-seen{justify-self:center;display:inline-flex;align-items:center;gap:6px;font:500 14px/1 var(--font-body);text-transform:uppercase}
 @container (max-width:359px){.slv-seen .sw{display:none}.slv-all{padding:0 12px;font-size:13px}.slv-x{gap:4px}.slv{padding:12px}}
@@ -151,7 +151,7 @@ s=s[:a]+core+s[b:]
 rep("if (q.get('view')) go(q.get('view'));\n","")
 # persistence + robustness in the prompt-done code
 rep("  const c = li.querySelector('.chip'); c.classList.toggle('off', !on);","  if (li.dataset.key) S.tick(li.dataset.key, on);\n  const c = li.querySelector('.chip'); if (!c) return;\n  c.classList.toggle('off', !on);")
-rep("  setDone(li, false); hideToast(); li.querySelector('.cp').focus();","  setDone(li, false); hideToast(); (li.querySelector('.cp') || li.querySelector('.chip')).focus(); refreshCounts();")
+rep("  setDone(li, false); hideToast(); li.querySelector('.cp').focus();","  setDone(li, false); hideToast(); [li.querySelector('.cp'), li.querySelector('summary'), li.querySelector('.chip')].find(x => x && x.offsetParent)?.focus(); refreshCounts();")
 rep("    setDone(li, on); on ? showToast(li) : undoLi === li && hideToast();","    setDone(li, on); refreshCounts(); on ? showToast(li) : undoLi === li && hideToast();")
 rep("  if (fresh) { setDone(li, true); showToast(li); }","  if (fresh) { setDone(li, true); refreshCounts(); showToast(li); }")
 rep("  if (!force && nlSeen().includes(NL_LESSON)) return;", "  if (!force && (nlSeen().includes(NL_LESSON) || liveLesson() !== 3)) return;   // the popup is about lesson 3: only while it is live")

@@ -17,7 +17,7 @@ document.addEventListener('click', e => {
   const a = e.target.closest('a[data-r]'); if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target === '_blank') return;
   e.preventDefault(); navTo(a.dataset.r);
 });
-window.addEventListener('popstate', () => render());
+window.addEventListener('popstate', () => d3Pop() || render());
 
 // ---- the name menu: the student's own data, and Chiqish (all as text nodes, never HTML)
 function fillMenu(){
@@ -32,6 +32,7 @@ function fillMenu(){
 async function logout(){
   closeMenu();
   try { await api('POST', '/logout', {}); } catch {}
+  d3Forget();
   marker(false); location.replace('/aip/');   // a full reload: nothing of the old student stays in memory
 }
 document.addEventListener('click', e => { if (e.target.closest('#logout')) logout(); });
@@ -132,7 +133,7 @@ document.addEventListener('pointerup', e => {
 
 // ---- the prep guide PDF of the current language comes from the API
 function prepFileRow(){
-  return `<li><a class="ef-row" href="${API}/prep/pdf?lang=${LANG}" target="_blank" rel="noopener noreferrer"><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${T('prep.guide_name')}</span><span class="ef-mt">${SESS?.prepPdfSize ? T('prep.pdf_meta', {size: Math.round(SESS.prepPdfSize / 1024) + ' KB'}) : T('prep.pdf')}</span></span><span class="ef-dl">${I('down', 18)}</span></a></li>`;
+  return `<li><a class="ef-row" href="${API}/prep/pdf?lang=${LANG}" download="${esc(t('prep.pdf_file'))}"><span><span class="sr-only">${T('common.sr_download')}</span><span class="ef-nm">${T('prep.guide_name')}</span><span class="ef-mt">${SESS?.prepPdfSize ? T('prep.pdf_meta', {size: Math.round(SESS.prepPdfSize / 1024) + ' ' + t('unit.kb')}) : T('prep.pdf')}</span></span><span class="ef-dl">${I('down', 18)}</span></a></li>`;
 }
 
 // ===================== boot =====================

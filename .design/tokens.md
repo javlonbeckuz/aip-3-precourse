@@ -16,16 +16,16 @@ Brand palette (unchanged): blue, grey, yellow and lilac on black. **Each lesson 
 | `--surface-0` / `--black` | `#000000` | page canvas | white 21 · text-2 8.63 · text-3 6.12 · danger 7.52 · you 13.68 |
 | `--surface-1` | `#161616` | a raised neutral surface: locked card, sheet | white 18.1 · text-2 7.43 · text-3 5.27 |
 | `--line` | `#3F3F3F` | decorative hairline (nav rule, row rules, menu and toast borders) | n/a |
-| `--line-ui` | `#595959` | the outline of a control that has no other cue (tag pills) | 3.0 as a UI part |
+| `--line-ui` | `#5E5E5E` | the outline of a control that has no other cue (tag pills, the quiet download circle) | 3.0 as a UI part |
 | `--text-1` | `#FFFFFF` | primary text on dark | |
 | `--text-2` | `#A6A6A6` | secondary text and **locked text** (lede, eyebrow, help, locked card) | 8.63 on black, 7.43 on `#161616` |
 | `--text-3` | `#8A8A90` | **data only**: file sizes, dates in Martian | 6.12 on black, 5.27 on `#161616` |
 | `--ink` / `--ink-2` | `#000000` / `#2E2440` | text on light fills / secondary text on lilac | ink on grey 15.9, on yellow 13.7, on lilac 8.96; ink-2 on lilac 6.21 |
 | `--state-live` = `--blue` | `#0A14FC` | **lesson 3's identity colour** and the colour of the home hero (the live lesson takes its own identity colour, so hero and card always match) | white only (8.34). Never black (2.52) |
-| `--state-open` = `--lilac` | `#B4A1D1` | **lesson 1's identity colour** (card, tab folder) and the full-bleed prompt section (`.s1`) | ink 8.96, ink-2 6.21. Never white (2.34) |
+| `--state-open` = `--lilac` | `#B4A1D1` | no lesson uses it any more (lesson 01 is slate `#4F6475`); kept as a brand colour only. The old full-bleed lilac prompt section is gone (see "Shipped system" below) | ink 8.96, ink-2 6.21. Never white (2.34) |
 | `--state-done` = `--grey` | `#E0E0E0` | **lesson 2's identity colour**. Not a "done" colour any more: done = ✓ and the word "Bajarildi" | ink 15.9. Never white (1.32) |
 | `--state-locked` = `--surface-1` | `#161616` | **lesson 4's identity colour**. While locked: text-2 ink, lock and the date (the "locked look"). Once unlocked: the same dark fill with white ink | text-2 7.43, white 17.6 |
-| `--you` = `--yellow` | `#FDC959` | **lesson 0's identity colour** (prep) and **your progress** (the course ring arc and its note). | ink on it 13.68; as text on black 13.68 |
+| `--you` = `--yellow` | `#FDC959` | **your progress** (the course ring arc, the section-card bars, the P badge and ✓ of a copied prompt) and the optional page card "Mashq va video". Lesson 0 (setup) is Claude orange `#D97757`, not yellow | ink on it 13.68; as text on black 13.68 |
 | `--danger` | `#FF6B5E` | errors only: the ID error's underline and its ⚠ icon (the message text itself is white with a dark halo), always with ⚠ and text | 7.52 on black |
 | action | `#FFFFFF` | something you press: circle + arrow, outline pill, square button | |
 
@@ -56,10 +56,10 @@ Google Fonts families:
 | card numeral | display 400 | 78 | 64 | lh .9 |
 | panel title | display 500 | 34 | 22 | UPPERCASE |
 | card title | display 500 | 22 / lh 1.36 | 19 | UPPERCASE, 2 lines |
-| wordmark | display 500 | 22 | 16 | sentence case |
+| wordmark | display 500 | 22 | 16 | UPPERCASE, 125% (the login wordmark waves, then settles on this) |
 | body / nav / CTA | Golos 400 | 18 | 17 | |
 | label / tag / card label | Golos 500 | 15 | 13 | UPPERCASE, 2 lines on cards |
-| data (ID, prompt, target, sizes) | Martian | 18 ID, 13 prompt (stretch 87.5%), 10–11 tab target | same | |
+| data (ID, prompt text, file sizes, counts) | Martian | 18 ID, 13-14 prompt, 13 sizes | same | |
 
 **Uzbek apostrophes:**
 - Render U+02BB as U+2018 and U+02BC as U+2019. Mona Sans has neither source glyph, and Golos and Martian lack U+02BB.
@@ -167,3 +167,17 @@ Google Fonts families:
 **Type scale, measured (every route, `comp/src/tests/t_scale.mjs`):** distinct size/family pairs per viewport went from 29 to 13 at 1440 (Mona 13/22/28/34/56/88/96/200, Golos 13/15/16/18, Martian 13) and from 26 to 11 at 390 (Mona 13/19/22/28/32/40/96, Golos 13/15/17, Martian 13). Loader: `ldr-in` 160ms, the home renders underneath and the loader fades out over 200ms.
 
 **Background Paths (user decision 2026-10-19, an exception to "no ambient decoration"):** a vanilla port of the React/framer-motion "Background Paths" component. Two fixed layers (`position:1` and `-1`) of 36 curves, viewBox `0 0 696 316`, stretched to cover, `z-index:0` behind `.frame`, `pointer-events:none`, white at 0.22 layer opacity (0.2 on phones), so the brightest line is about 0.13 effective and body text keeps 4.7:1 (text-3) or more over it. Only on the app screens (`dastur`, `dars`, `ex`), never on the login photo; the canvas stays plain `#000` (the grid stays removed). Code: `initBgPaths()` in `src/tabs.js`, CSS at the end of `src/polish.css`. Motion: each path has `pathLength="1"`, a seeded dash length (0.3-1) and a seeded 20-30s `stroke-dashoffset` loop (0 to -1 to 0), stepped on one shared 12 Hz clock. The original's pathLength and opacity pulses are not ported: animating `stroke-dasharray` or `opacity` on SVG paths re-rasters every frame (7 fps at 4x CPU, 1440), while the offset alone holds 60 fps. Phones draw every 3rd path. Reduced motion: static full paths. Hidden tab: paused (`html.hid`).
+
+
+## Shipped system, audit 2026-11-20 (this section wins over anything above that disagrees)
+- **Lesson colours** (`LCOL`, by lesson index): 0 setup = Claude orange, 01 = slate `#4F6475`, Kirish = grey, 02 = blue, 03 = dark, 04 = orange, 05 = emerald, 06 = cream. **Every lesson page folder is slate** (user, 2026-10-30), so the lesson 3 page is slate, not blue. Yellow = your progress and the optional page card; it is nobody's identity colour. The old "lilac prompt section" and "numbered prompt rows" are gone.
+- **Card notes:** `.f-note` (UPPERCASE) is a state only and reads `{d}/{t} bajarildi` or `✓ Bajarildi`, on the grid cards and on the hero alike. `.f-sub` (sentence case) is a description. No part names in the note ("Amaliyot va vazifa: 0/2" is gone), no `qadam` wording: one count wording everywhere, `{d}/{t} bajarildi` (RU `{d}/{t} выполнено`).
+- **Done indicators:** a state is a `✓` plus the word "Bajarildi"; a checkbox only where the student ticks something (setup cards, the pane's "Amaliyot bajarildi"). A section card that is finished shows `✓ n/n` (the word "Bajarildi" belongs to the lesson, which the student ticks); a copied prompt row has a yellow P badge with ✓.
+- **Section cards + docked panel** (every Amaliyot / Kit / Vazifa pane): one card per group, in doing order, no numbers; footer = tag, yellow bar and `n/m` when the section has prompts, otherwise only a quiet label (`qadamlar` for steps, `n fayl` for files). Phones: the section is its own screen with "‹ Barcha boʻlimlar" (Kirish: "Barcha yoʻnalishlar") and a "Keyingi" link card. The chosen section is in the URL (`?tab=kt&s=s2`).
+- **Prompt row:** a "Promptlar · n" heading above the list, then rows: an outlined badge (chat icon + P number; yellow with ✓ when copied), the title, `Ochish` / `Yopish` and a chevron. Open: a "Qayerga:" chip, the text in a mono code block (Martian 13-14, line-height 1.75, `rgb(5 10 16 / .45)`, radius 10, `[placeholders]` highlighted), and a full-width white "Nusxalash" button. Copy = done.
+- **File sizes:** one style, Martian 13px: `PDF · 358 KB` (whole KB, MB with one decimal; RU КБ / МБ). Download names are ASCII with underscores; labels keep ʻ.
+- **Round icon controls:** a 44px circle with a 1px border (white, or `--line-ui` for quiet ones such as the download circle): home button, download circle, slide arrows, the optional page's ↗ / ▶. No square icon tiles.
+- **Login:** the label is Golos 500 13px UPPERCASE (Martian only for the `AIP-` prefix and the typed ID), the button is Golos 500 16px in sentence case ("Kirish"), the tab title is "Shaxsiy kabinet".
+- **Greys:** only the tokens above; light fills take `--ink` / `--ink-2` (no `#333`, `#3a3a3a`, `#ececec`; hover = `brightness(.92)`), dark wells `--surface-0` / `--surface-1`, dimmed text on dark `--text-2`. The page outside the 1440 frame is `--surface-1`.
+- **Type scale:** Golos 13 / 15 / 16 / 18 (13 floor; 12 only for the `.ns` badge); Martian 13. Lesson H1 reads `01-DARS · AI QANDAY ISHLAYDI` (the dot on wide screens, the number on its own line on phones).
+- **Names:** the home page is "Dastur" (also the round button's label); software is "ilova", the course is "kurs"; the optional page is "Mashq va video" (RU "Тренировка и видео"); "Qoʻshimcha" is only the tag of the optional Kirish tracks; the setup page is "Oʻrnatish va tayyorgarlik". "Kirish" is the lesson; the login button is "Kirish" too, its tab title is not.

@@ -1,8 +1,8 @@
 {
   "n": 7,
   "title": "Natijalar va demo kuni",
-  "subtitle": "Oldin va keyin, vazifa narxi, ROI, qaror: yasash yoki sotib olish, demo",
-  "summary": "Pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaymiz va davom ettirish, oʻzgartirish yoki toʻxtatishni hal qilamiz. Keyin natijani taqdim etasiz. Kit 5 B: yakuniy raqamlar.",
+  "subtitle": "Baseline va farq, vazifa narxi, ROI, qaror: yasash yoki sotib olish, demo",
+  "summary": "Pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaymiz va davom ettirish, oʻzgartirish yoki toʻxtatishni hal qilamiz. Keyin natijani taqdim etasiz. Kit 5, B shakli: yakuniy raqamlar.",
   "outcomes": [
     "Baseline bilan solishtirib oʻzgarishni hisoblaysiz, barcha xarajat va tekshirish vaqtini qoʻshib.",
     "Davom ettirish, oʻzgartirish yoki toʻxtatish qarorini qabul qilasiz va uni asoslaysiz.",
@@ -11,7 +11,7 @@
     "Keyingi jarayonni oʻz matritsangizdan tanlaysiz."
   ],
   "topics": [
-    "Oldin va keyin raqamlari",
+    "Baseline va farq raqamlari",
     "Bitta vazifa narxi",
     "Topilgan pul",
     "ROI",
@@ -22,24 +22,24 @@
   "slideCount": 0,
   "slideKind": "image",
   "amaliyot": {
-    "text": "Bu amaliyotda pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaysiz, qaror qabul qilasiz va natijani stolingizda taqdim etasiz.\n\nFaqat Kit 5 B dagi haqiqiy raqamlar bilan ishlang. Raqam yetmasa, uni toʻqimang, «yoʻq» deb yozing.\n\nQiynalsangiz: xatoning skrinshotini oling va Claudeʼdan soʻrang.",
+    "text": "Bu amaliyotda pilot vaqt, pul va xatolarda nimani oʻzgartirganini hisoblaysiz, qaror qabul qilasiz va natijani stolingizda taqdim etasiz.\n\nFaqat Kit 5, B shaklidagi haqiqiy raqamlar bilan ishlang. Raqam yetmasa, uni toʻqimang, «yoʻq» deb yozing.\n\nQiynalsangiz: xatoning skrinshotini oling va Claudeʼdan soʻrang.",
     "groups": [
       {
         "title": "01 Yakuniy raqamlar",
-        "note": "ASOSIY. Baseline va delta: oldin va keyin, raqamlarda. Kit 5 shakli (Kit boʻlimida). 1) Kit 5 B ning oʻzgarish ustunini toʻldiring. 2) B.9-B.12 xarajatlarni jamlang. 3) Topilgan pul qatorini qoʻshing. Tayyor, agar: har qatorda Agentgacha, 1-hafta, 2-hafta va oʻzgarish bor.",
+        "note": "ASOSIY. Baseline va delta: oldin va keyin, raqamlarda. Kit 5 shakli (Kit boʻlimida). 1) Kit 5, B shaklining oʻzgarish ustunini toʻldiring. 2) B.9-B.12 xarajatlarni jamlang. 3) Topilgan pul qatorini qoʻshing. Tayyor, agar: har qatorda Agentgacha, 1-hafta, 2-hafta va oʻzgarish bor.",
         "files": [],
         "prompts": [
           {
             "id": "01P1",
-            "title": "Kit 5 B ni yakunlash",
+            "title": "Kit 5, B shaklini yakunlash",
             "target": "Claude Code",
-            "text": "kit5-pilot papkasidagi barcha fayllarni oʻqing.\nKit 5 B jadvalini yakunlang: har qatorda Agentgacha, 1-hafta, 2-hafta va oʻzgarish boʻlsin.\nB.9-B.12 xarajatlarni jamlang. Topilgan pul qatorini qoʻshing.\nHar oʻzgarish qanday hisoblanganini koʻrsating. Raqam yetishmasa, katakni boʻsh qoldiring va roʻyxat qiling.\nkit5-pilot/results.md ga saqlang."
+            "text": "kit5-pilot papkasidagi barcha fayllarni oʻqing.\nKit 5, B shakli jadvalini yakunlang: har qatorda Agentgacha, 1-hafta, 2-hafta va oʻzgarish boʻlsin.\nB.9-B.12 xarajatlarni jamlang. Topilgan pul qatorini qoʻshing.\nHar oʻzgarish qanday hisoblanganini koʻrsating. Raqam yetishmasa, katakni boʻsh qoldiring va roʻyxat qiling.\nkit5-pilot/results.mdʼga saqlang."
           }
         ]
       },
       {
         "title": "02 Bitta vazifa narxi",
-        "note": "ASOSIY. Bitta vazifa narxi: barcha xarajatlar ÷ toʻliq bajarilgan vazifalar soni. U agent va insonni adolatli solishtiradi. 1) Umumiy xarajatni bajarilgan vazifalar soniga boʻling. 2) Baseline dagi faqat inson bajargan ish narxi bilan solishtiring. Tayyor, agar: agent uchun bitta, inson uchun bitta raqam bor.",
+        "note": "ASOSIY. Bitta vazifa narxi: barcha xarajatlar ÷ toʻliq bajarilgan vazifalar soni. U agent va insonni adolatli solishtiradi. 1) Umumiy xarajatni bajarilgan vazifalar soniga boʻling. 2) Baselineʼdagi faqat inson bajargan ish narxi bilan solishtiring. Tayyor, agar: agent uchun bitta, inson uchun bitta raqam bor.",
         "files": [],
         "prompts": [
           {
@@ -52,20 +52,20 @@
       },
       {
         "title": "03 Qaror",
-        "note": "ASOSIY. Pilotning uchta halol natijasi bor: davom ettirish, oʻzgartirish yoki toʻxtatish. 1) Kit 5 promptini ishga tushiring. 2) Natijani Kit 5 A dagi muvaffaqiyat mezoni va toʻxtash sharti bilan solishtiring. 3) Qarorni belgilang va sababini bir gapda yozing. Tayyor, agar: davom ettirish, oʻzgartirish yoki toʻxtatish belgilangan va sababi bir gapda yozilgan.",
+        "note": "ASOSIY. Pilotning uchta halol natijasi bor: davom ettirish, oʻzgartirish yoki toʻxtatish. 1) Kit 5 promptini ishga tushiring. 2) Natijani Kit 5, A shaklidagi muvaffaqiyat mezoni va toʻxtash sharti bilan solishtiring. 3) Qarorni belgilang va sababini bir gapda yozing. Tayyor, agar: davom ettirish, oʻzgartirish yoki toʻxtatish belgilangan va sababi bir gapda yozilgan.",
         "files": [],
         "prompts": [
           {
             "id": "03P1",
             "title": "Kit 5 prompti: qaror",
             "target": "Claude Code",
-            "text": "kit5-pilot/plan.md (Kit 5 A) va kit5-pilot/results.md (Kit 5 B) ni oʻqing.\nNatijani muvaffaqiyat mezoni va toʻxtash sharti bilan band-band solishtiring. Jadval: mezon, rejadagi qiymat, haqiqiy qiymat, bajarildimi.\nKeyin bitta variantni tavsiya qiling: davom ettirish, oʻzgartirish yoki toʻxtatish. Sababini bir gapda yozing. Oʻzgartirish boʻlsa, aynan nimani oʻzgartirish kerakligini yozing.\nkit5-pilot/decision.md ga saqlang."
+            "text": "kit5-pilot/plan.md (Kit 5, A shakli) va kit5-pilot/results.mdʼni (Kit 5, B shakli) oʻqing.\nNatijani muvaffaqiyat mezoni va toʻxtash sharti bilan band-band solishtiring. Jadval: mezon, rejadagi qiymat, haqiqiy qiymat, bajarildimi.\nKeyin bitta variantni tavsiya qiling: davom ettirish, oʻzgartirish yoki toʻxtatish. Sababini bir gapda yozing. Oʻzgartirish boʻlsa, aynan nimani oʻzgartirish kerakligini yozing.\nkit5-pilot/decision.mdʼga saqlang."
           },
           {
             "id": "03P2",
             "title": "Uch tanqidchi",
             "target": "Claude Code",
-            "text": "kit5-pilot/decision.md dagi qarorimni uch tomondan tanqid qiling: shubhali investor, ishonmaydigan mijoz, kuchli raqobatchi.\nHar biri eng jiddiy 3 ta eʼtiroz bersin.\nFaqat kit5-pilot fayllaridagi raqamlarga tayaning.\nOxirida qaysi eʼtirozga fayllarda javob yoʻqligini yozing."
+            "text": "kit5-pilot/decision.mdʼdagi qarorimni uch tomondan tanqid qiling: shubhali investor, ishonmaydigan mijoz, kuchli raqobatchi.\nHar biri eng jiddiy 3 ta eʼtiroz bersin.\nFaqat kit5-pilot fayllaridagi raqamlarga tayaning.\nOxirida qaysi eʼtirozga fayllarda javob yoʻqligini yozing."
           }
         ]
       },
@@ -78,7 +78,7 @@
             "id": "04P1",
             "title": "2-jarayonni tanlash",
             "target": "Claude Code",
-            "text": "kit2-scoring dagi jadval va matritsani oʻqing.\nIkkinchi pilot uchun jarayon tavsiya qiling: matritsaning yuqori oʻng burchagiga eng yaqin va hali qilinmagan jarayon. Birinchi pilotdan nimani qayta ishlatish mumkinligini yozing.\nKeyin shu jarayon uchun Kit 1 intervyu roʻyxatini tuzing: kim, qaysi boʻlim, nega aynan u.\nIsm va lavozimlarni menga soʻrang, oʻzingiz toʻqimang."
+            "text": "kit2-scoringʼdagi jadval va matritsani oʻqing.\nIkkinchi pilot uchun jarayon tavsiya qiling: matritsaning yuqori oʻng burchagiga eng yaqin va hali qilinmagan jarayon. Birinchi pilotdan nimani qayta ishlatish mumkinligini yozing.\nKeyin shu jarayon uchun Kit 1 intervyu roʻyxatini tuzing: kim, qaysi boʻlim, nega aynan u.\nIsm va lavozimlarni menga soʻrang, oʻzingiz toʻqimang."
           }
         ]
       },
@@ -102,13 +102,13 @@
     "groups": [
       {
         "title": "01 Kit 5: Yakuniy raqamlar",
-        "note": "Oʻzgarish: oxirgi toʻldirilgan hafta va Agentgacha ustuni orasidagi farq. 1) Har qatorga Oʻzgarish ustunini yozing. 2) B.12 = B.9 + B.10 + B.11 ni hisoblang. 3) Topilgan pul qatorini jamlang. Tayyor, agar: har qatorda Agentgacha, haftalar va oʻzgarish bor.",
+        "note": "Oʻzgarish: oxirgi toʻldirilgan hafta va Agentgacha ustuni orasidagi farq. 1) Har qatorga Oʻzgarish ustunini yozing. 2) B.12 = B.9 + B.10 + B.11ʼni hisoblang. 3) Topilgan pul qatorini jamlang. Tayyor, agar: har qatorda Agentgacha, haftalar va oʻzgarish bor.",
         "files": [
           {
             "slug": "kit5-pdf",
             "name": "Kit5_Pilot_va_hisob-kitob.pdf",
-            "size": 101828,
-            "label": "Kit 5 yoʻriqnomasi"
+            "size": 101893,
+            "label": "Kit 5: Pilot va hisob-kitob (PDF)"
           },
           {
             "slug": "kit5-b-raqamlar",
@@ -120,14 +120,14 @@
       },
       {
         "title": "02 Qaror",
-        "note": "Pilotning uchta halol natijasi bor: davom ettirish, oʻzgartirish yoki toʻxtatish. 1) Kit 5 promptini yoki /kit5 qaror ni ishga tushiring. 2) Natijani A.6 mezonlari va A.7 toʻxtash sharti bilan solishtiring. 3) Bitta qarorni belgilang, sababini bir gapda yozing. Tayyor, agar: qaror va sababi Kit 5 B da yozilgan.",
+        "note": "Pilotning uchta halol natijasi bor: davom ettirish, oʻzgartirish yoki toʻxtatish. 1) Kit 5 promptini yoki «/kit5 qaror»ni ishga tushiring. 2) Natijani A.6 mezonlari va A.7 toʻxtash sharti bilan solishtiring. 3) Bitta qarorni belgilang, sababini bir gapda yozing. Tayyor, agar: qaror va sababi Kit 5, B shaklida yozilgan.",
         "files": [],
         "prompts": [
           {
             "id": "K5P1",
             "title": "Kit 5 prompti: qaror",
             "target": "Claude",
-            "text": "Quyida mening pilot rejam (Kit 5 A) va haftalik raqamlarim (Kit 5 B).\nBarcha xarajatlarni (B.9-B.12) hisobga olgan holda Agentgacha ustuniga nisbatan oʻzgarishni hisoblang. Topilgan pulni alohida qator qilib koʻrsating.\nA.6 muvaffaqiyat mezonlari va A.7 toʻxtash shartini band-band tekshiring. Jadval: mezon, rejadagi qiymat, haqiqiy qiymat, bajarildimi.\nKeyin dangal ayting: davom ettiramizmi, oʻzgartiramizmi yoki toʻxtatamizmi. Sababini bir gapda yozing.\nRaqamni faqat shu matndan oling. Yetishmagan raqamni roʻyxat qiling, oʻzingizdan qoʻshmang.\n\nKit 5 A: [kit5-pilot/plan.md matni]\nKit 5 B: [kit5-pilot/results.md matni]"
+            "text": "Quyida mening pilot rejam (Kit 5, A shakli) va haftalik raqamlarim (Kit 5, B shakli).\nBarcha xarajatlarni (B.9-B.12) hisobga olgan holda Agentgacha ustuniga nisbatan oʻzgarishni hisoblang. Topilgan pulni alohida qator qilib koʻrsating.\nA.6 muvaffaqiyat mezonlari va A.7 toʻxtash shartini band-band tekshiring. Jadval: mezon, rejadagi qiymat, haqiqiy qiymat, bajarildimi.\nKeyin dangal ayting: davom ettiramizmi, oʻzgartiramizmi yoki toʻxtatamizmi. Sababini bir gapda yozing.\nRaqamni faqat shu matndan oling. Yetishmagan raqamni roʻyxat qiling, oʻzingizdan qoʻshmang.\n\nKit 5, A shakli: [kit5-pilot/plan.md matni]\nKit 5, B shakli: [kit5-pilot/results.md matni]"
           }
         ]
       },
@@ -143,8 +143,8 @@
           {
             "slug": "cheklist-pdf",
             "name": "Sotuvchi_cheklisti.pdf",
-            "size": 65821,
-            "label": "Sotuvchi cheklisti"
+            "size": 65914,
+            "label": "Sotuvchi cheklisti (PDF)"
           },
           {
             "slug": "sotuvchi-cheklist",
@@ -165,18 +165,18 @@
     ]
   },
   "vazifa": {
-    "text": "Dastur tugagach, 1 oy davomida mentorlar guruh chatida yordam beradi. Bu vazifalarni shu oy ichida bajaring.\n\nKompaniya papkasi va skillaringiz tayyor, 2-jarayon ularga tayanadi.",
+    "text": "Kurs tugagach, 1 oy davomida mentorlar guruh chatida yordam beradi. Bu vazifalarni shu oy ichida bajaring.\n\nKompaniya papkasi va skillaringiz tayyor, 2-jarayon ularga tayanadi.",
     "groups": [
       {
         "title": "1. Qarorni boʻlim boshligʻi bilan koʻrib chiqing",
-        "note": "Kit 5 B dagi qarorni boʻlim boshligʻi bilan koʻrib chiqing. Pilot davom etsa, 3 va 4-hafta ustunlarini ham toʻldiring.",
+        "note": "Kit 5, B shaklidagi qarorni boʻlim boshligʻi bilan koʻrib chiqing. Pilot davom etsa, 3 va 4-hafta ustunlarini ham toʻldiring.",
         "files": [],
         "prompts": [
           {
             "id": "V1P1",
             "title": "3-hafta ustuni",
             "target": "Claude Code",
-            "text": "Serverdagi agent loglari va [boshqa manba] dan pilotning [3 yoki 4]-haftasi raqamlarini hisoblang.\nkit5-pilot/results.md ga yangi ustun qoʻshing, oldingi haftalar bilan bir xil usulda.\nHar raqam qayerdan olinganini yozing."
+            "text": "Serverdagi agent loglari va [boshqa manba] dan pilotning [3 yoki 4]-haftasi raqamlarini hisoblang.\nkit5-pilot/results.mdʼga yangi ustun qoʻshing, oldingi haftalar bilan bir xil usulda.\nHar raqam qayerdan olinganini yozing."
           }
         ]
       },
@@ -194,7 +194,7 @@
             "id": "V3P1",
             "title": "2-jarayon papkasi",
             "target": "Claude Code",
-            "text": "kit1-interviews ichida 2-jarayon uchun alohida papka oching: [jarayon nomi].\nYangi intervyu matnlarini /kit1 bilan B shakliga aylantiring va shu papkaga saqlang.\nCLAUDE.md ga 2-jarayon boshlanganini va intervyu beradigan xodimlarni yozing."
+            "text": "kit1-interviews ichida 2-jarayon uchun alohida papka oching: [jarayon nomi].\nYangi intervyu matnlarini /kit1 bilan B shakliga aylantiring va shu papkaga saqlang.\nCLAUDE.mdʼga 2-jarayon boshlanganini va intervyu beradigan xodimlarni yozing."
           }
         ]
       }
