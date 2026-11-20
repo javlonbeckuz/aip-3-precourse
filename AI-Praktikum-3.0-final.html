@@ -1043,7 +1043,7 @@ html.hid .bgp path{animation-play-state:paused}
 .d3 .k .ok svg{flex:none}
 .d3-dock{margin-top:8px}
 .d3-p[hidden]{display:none}
-.d3-back,.d3-next{display:flex;align-items:center;min-height:44px;color:var(--gt-ink);font:500 15px/1.2 var(--font-body);cursor:pointer}
+.d3-back{display:flex;align-items:center;min-height:44px;color:var(--gt-ink);font:500 15px/1.2 var(--font-body);cursor:pointer}
 .d3-back{gap:8px;margin:0 0 14px;padding:0}
 .d3-t{margin:0;font:500 20px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase;text-wrap:balance}
 .d3-t:focus{outline:none}
@@ -1067,10 +1067,6 @@ html.hid .bgp path{animation-play-state:paused}
 .d3-fr .m{font:400 13px/1 var(--font-mono);color:var(--gt-ink2);white-space:nowrap}
 .d3-pdf{display:inline-flex;align-items:center;min-height:44px;margin-top:10px;color:var(--gt-ink2);font:400 15px/1.3 var(--font-body);text-decoration:underline;text-underline-offset:4px}
 @media (hover:hover) and (pointer:fine){.d3-pdf:hover{color:var(--gt-ink)}}
-.d3-next{justify-content:space-between;gap:12px;box-sizing:border-box;width:100%;margin-top:24px;padding:14px 16px;border:1px solid rgb(255 255 255 / .4);border-radius:14px;text-align:left}
-.d3-next small{display:block;margin-bottom:6px;font:500 13px/1 var(--font-body);letter-spacing:.1em;text-transform:uppercase;color:var(--gt-ink2)}
-.d3-next b{font-weight:500}
-@media (hover:hover) and (pointer:fine){.d3-next:hover{background:rgb(255 255 255 / .08)}}
 .gt .s1.d3r{margin:0;padding:0;border:0;border-radius:16px;overflow:clip;background:rgb(8 16 26 / .3);color:var(--gt-ink)}
 .gt .s1.d3r>li{position:relative;display:block;padding:0;border:0;content-visibility:visible;max-width:none}
 .gt .s1.d3r>li+li{border-top:1px solid var(--gt-line)}
@@ -1122,11 +1118,6 @@ html.hid .bgp path{animation-play-state:paused}
 @container (min-width:900px){.d3{display:grid;grid-template-columns:minmax(280px,420px) minmax(0,1fr);gap:0 24px;align-items:start}
 .d3-dock{position:sticky;top:20px;margin-top:20px;padding:28px 30px 30px;border-radius:22px;background:rgb(8 16 26 / .3)}
 .d3-back{display:none}
-.d3.trk .d3-next{display:none}
-.d3:not(.trk) .d3-next{width:auto;min-height:44px;margin-top:22px;padding:0;border:0;border-radius:0;background:none;justify-content:flex-start;gap:10px;color:var(--gt-ink2)}
-.d3:not(.trk) .d3-next small{display:inline;margin:0 6px 0 0;font:400 15px/1.3 var(--font-body);letter-spacing:0;text-transform:none}
-.d3:not(.trk) .d3-next small::after{content:":"}
-.d3:not(.trk) .d3-next b{color:var(--gt-ink);font-size:15px}
 .d3 .k[aria-pressed="true"]{background:#fff;color:#000;border-color:#fff}
 .d3 .k[aria-pressed="true"] .tt,.d3 .k[aria-pressed="true"] .pr,.d3 .k[aria-pressed="true"] .ok{color:var(--ink-2)}
 .d3 .k[aria-pressed="true"] .bar{background:rgb(0 0 0 / .14)}
@@ -1152,6 +1143,7 @@ html.hid .bgp path{animation-play-state:paused}
 @container (min-width:900px){.lh1 .ln:first-child::after{content:" ·"}}
 .cmd-cp{display:inline-flex;align-items:center;gap:8px;padding:0 10px}
 .cmd-cp .cpl{font:500 15px/1 var(--font-body);text-transform:none;letter-spacing:0}
+.gt .play.d3-next{display:inline-flex;justify-content:flex-start;margin-top:24px;padding:0;border:0;background:none;color:inherit;font-family:inherit;text-align:left;cursor:pointer}
 .i18n-miss{text-decoration:underline dotted #f4b400;text-underline-offset:3px;text-decoration-thickness:1.5px}
 html{scroll-padding-top:56px}
 .solo{scroll-padding-top:0}
@@ -3115,7 +3107,7 @@ function d3Paint(){
 // The li / .no / .tt / <details> / .tx[data-raw] / .cp hooks are the old ones, so copy = done, the toast with undo and the live messages are the old code; the button only shows while its row is open (CSS)
 const D3_CHAT = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 3.5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H7l-3 3v-3h-.5a1 1 0 0 1-1-1z"/></svg>';   // the "this is a prompt" mark of the P badge
 const d3Rows = (n, gk, g) => `<ol class="s1 d3r">${g.prompts.map((q, j) => { const k = `${gk}.p${j}`, key = `p:l${n}:${q.kid}`, title = cu(`${k}.t`);
-  return `<li class="${S.has(key) ? 'done' : ''}" data-i="${j}" data-pid="${q.kid}" data-key="${key}" data-t="${esc(title)}"><details class="pchip"><summary><span class="no">${D3_CHAT}P${j + 1}</span><span class="tt">${cuh(`${k}.t`)}</span><span class="d3-oc" aria-hidden="true"><span class="o">${T('d3.open')}</span><span class="c">${T('d3.close')}</span></span><span class="d3-dn sr-only"> · ${T('common.copied')}</span></summary>${q.target ? `<p class="to"><b>${T('lbl.where')}</b> ${cuh(`${k}.w`)}</p>` : ''}<p class="tx" data-raw="${esc(cu(`${k}.x`))}">${cxh(`${k}.x`, I18N.uz[`${k}.x`], x => mark(esc(x)))}</p></details><button class="cp" type="button" aria-label="${esc(t('common.copy_aria', {title}))}"><span class="cp-c">${I('copy', 18)}</span><span class="cpl">${T('common.copy')}</span></button></li>`; }).join('')}</ol>`;
+  return `<li class="${S.has(key) ? 'done' : ''}" data-i="${j}" data-pid="${q.kid}" data-key="${key}" data-t="${esc(title)}"><details class="pchip"><summary><span class="no">${D3_CHAT}${/^[A-Z]\d{1,2}$/.test(q.id) ? q.id : 'P' + (j + 1)}</span><span class="tt">${cuh(`${k}.t`)}</span><span class="d3-oc" aria-hidden="true"><span class="o">${T('d3.open')}</span><span class="c">${T('d3.close')}</span></span><span class="d3-dn sr-only"> · ${T('common.copied')}</span></summary>${q.target ? `<p class="to"><b>${T('lbl.where')}</b> ${cuh(`${k}.w`)}</p>` : ''}<p class="tx" data-raw="${esc(cu(`${k}.x`))}">${cxh(`${k}.x`, I18N.uz[`${k}.x`], x => mark(esc(x)))}</p></details><button class="cp" type="button" aria-label="${esc(t('common.copy_aria', {title}))}"><span class="cp-c">${I('copy', 18)}</span><span class="cpl">${T('common.copy')}</span></button></li>`; }).join('')}</ol>`;
 const d3Step = (i, h, hint) => `<p class="d3-st"><i aria-hidden="true">${i}</i><span>${h}${hint ? `<small>${hint}</small>` : ''}</span></p>`;
 const d3Dl = f => `<span class="sr-only">${T('common.sr_download')}</span>${I('down', 20)}<span class="d3-nm">${wbr(f.label || f.name)}</span><span class="m">${esc(f.size || '')}</span>`;
 const d3Files = fs => `<ul class="d3-fl">${fs.map(f => `<li><a class="d3-fr" ${fa(f)}>${d3Dl(f)}</a></li>`).join('')}</ul>${fs.some(f => /\.md$/i.test(f.name || '')) ? `<p class="f-hint">${T('files.md_hint')}</p>` : ''}`;
@@ -3132,7 +3124,7 @@ function d3Pane(n, p, key, b, intro, text, end){
     const alt = np.steps.length ? t('d3.steps') : x.g.files.length ? t('d3.n_files', {n: x.g.files.length, pl: x.g.files.length}) : '', area = tr ? t('d3.area.' + x.id) : trk ? t('d3.all') : '';
     const name = tr ? `<span class="ar${area.length > 9 ? ' long' : ''}">${esc(area)}</span><span class="tt"${lg(x)}>${esc(ttl(x))}</span>` : trk ? `<span class="ar${area.length > 9 ? ' long' : ''}">${esc(area)}</span><span class="tt"${lg(x)}>${esc(x.g.files.map(f => f.label || f.name).join(', '))}</span>` : `<span class="ar"${lg(x)}>${esc(ttl(x))}</span>`;
     return `<button class="k${trk && !tr ? ' ghost' : ''}" type="button" data-go="${x.id}" aria-pressed="${x.id === sel}" aria-controls="${pid(x, 'd3p')}"${pc ? ` data-tt="${pc}" data-tag="${esc(tag)}"` : ''}>${name}<span class="pr">${trk && !tr ? T('d3.n_files', {n: x.g.files.length, pl: x.g.files.length}) : d3Foot(tag, d, pc, esc(alt))}</span></button>`; }).join('');
-  const nextTitle = x => isT(x) ? `${t('d3.area.' + x.id)} · ${ttl(x)}` : trk ? t('d3.all') : ttl(x);
+  const nextTitle = x => isT(x) ? t('d3.area.' + x.id) : trk ? t('d3.all') : ttl(x);
   const panel = (x, ix) => { const tr = isT(x), gk = `${key}.g${x.i}`, np = parts(x), nx = list[ix + 1];
     const yo = x.g.files.find(f => /-yoriqnoma$/.test(f.slug)), pdf = x.g.files.find(f => /-promptlar-pdf$/.test(f.slug)), src = x.g.files.filter(f => f !== yo && f !== pdf); let s = 0;
     const lead = np.lead ? `<p class="d3-desc">${lk(esc(np.lead))}</p>` : '';
@@ -3140,7 +3132,7 @@ function d3Pane(n, p, key, b, intro, text, end){
         + (x.g.prompts.length ? `<div class="d3-pr">${d3Step(++s, T('d3.s3'), T('d3.s3h'))}${d3Rows(n, gk, x.g)}</div>` : '') + (pdf ? `<a class="d3-pdf" ${fa(pdf)}><span class="sr-only">${T('common.sr_download')}</span>${T('d3.pdf')}</a>` : '')
       : trk ? d3Files(x.g.files)
       : `${np.steps.length ? `<ol class="d3-steps">${np.steps.map(y => `<li>${lk(esc(y))}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="d3-ready"><b>Tayyor, agar</b> ${esc(np.ready)}</p>` : ''}${x.g.files.length ? `<div class="d3-fs">${d3Files(x.g.files)}</div>` : ''}${x.g.prompts.length ? `<div class="d3-pr"><p class="d3-lh">${T('d3.prompts')}${x.g.prompts.length > 1 ? ` · ${x.g.prompts.length}` : ''}</p>${d3Rows(n, gk, x.g)}</div>` : ''}`;
-    return `<section class="d3-p" id="${pid(x, 'd3p')}" data-t="${x.id}" aria-labelledby="${pid(x, 'd3h')}"${x.id === sel ? '' : ' hidden'}${lg(x)}>${solo ? '' : `<button class="d3-back" type="button">${I('back', 18)}${T(trk ? 'd3.back' : 'd3.back_s')}</button>`}<h3 class="d3-t" id="${pid(x, 'd3h')}" tabindex="-1">${esc(ttl(x))}</h3>${lead}${body}${nx ? `<button class="d3-next" type="button" data-go="${nx.id}"><span><small>${T(trk ? 'd3.next' : 'd3.next_s')}</small><b>${esc(nextTitle(nx))}</b></span>${I('next', 20)}</button>` : ''}</section>`; };
+    return `<section class="d3-p" id="${pid(x, 'd3p')}" data-t="${x.id}" aria-labelledby="${pid(x, 'd3h')}"${x.id === sel ? '' : ' hidden'}${lg(x)}>${solo ? '' : `<button class="d3-back" type="button">${I('back', 18)}${T(trk ? 'd3.back' : 'd3.back_s')}</button>`}<h3 class="d3-t" id="${pid(x, 'd3h')}" tabindex="-1">${esc(ttl(x))}</h3>${lead}${body}${nx ? `<button class="play on-light d3-next" type="button" data-go="${nx.id}"><span>${T(trk ? 'd3.next' : 'd3.next_s')}: ${esc(nextTitle(nx))}</span><span class="play-circ">${I('next', 20)}</span></button>` : ''}</section>`; };
   return `<div class="d3${trk ? ' trk' : ''}${solo ? ' solo' : ''}" data-n="${n}" data-tab="${p}" data-sel="${sel}" data-view="${view}"><div class="d3-l">${intro}${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${cards ? `<div class="d3-cards" role="group" aria-label="${esc(t(trk ? 'd3.group_aria' : 'd3.group_aria_s'))}">${cards}</div>` : ''}</div><div class="d3-dock">${list.map(panel).join('')}</div></div>${end ? `<div class="gt-foot end">${end}</div>` : ''}`;
 }
 function d3Apply(root, id, view){
