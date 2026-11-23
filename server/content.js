@@ -181,7 +181,8 @@ export function createContent({ dir, now = () => Date.now(), production = false 
   const blockHas = (b) => !!(b && (b.text || b.groups?.length));
   // fail closed (UX audit S8-1): in production a lesson whose slide stills are not uploaded has no slides part, so students see "soon", never placeholder slides
   const hasStills = (n) => ['.webp', '.jpg', '.png'].some((e) => fs.existsSync(path.join(dir, 'lessons', String(n), 'slides', `1${e}`)));
-  const hasPart = (L) => ({ slides: L.slideCount > 0 && (!production || hasStills(L.n)), amaliyot: blockHas(L.amaliyot), kit: blockHas(L.kit), vazifa: blockHas(L.vazifa), prep: !!L.prep });
+  const hasDeck = (n) => fs.existsSync(path.join(dir, 'lessons', String(n), 'slides', 'deck', 'index.html'));
+  const hasPart = (L) => ({ slides: L.slideCount > 0 && (!production || hasStills(L.n)), amaliyot: blockHas(L.amaliyot), kit: blockHas(L.kit), vazifa: blockHas(L.vazifa), prep: !!L.prep, deck: hasDeck(L.n) });
   const FIELDS = { slides: ['slideCount', 'slideKind'], amaliyot: ['amaliyot'], kit: ['kit'], vazifa: ['vazifa'], prep: ['prep'] };
 
   // display number: 1.. in order over the lessons that are numbered (lesson.uz.json "numbered" is not false); null for lesson 0 and unnumbered ones (Kirish)

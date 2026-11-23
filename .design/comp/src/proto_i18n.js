@@ -10,7 +10,8 @@ const I18N = {uz: {
   'common.copy': 'Nusxalash', 'common.copied': 'Nusxalandi', 'common.copy_aria': 'Nusxalash: {title}', 'common.namuna': 'namuna', 'common.sr_done': ' · bajarildi',
   'common.sr_download': 'Yuklab olish: ', 'unit.b': 'B', 'prep.pdf_file': 'Tayyorgarlik_qollanmasi.pdf', 'unit.kb': 'KB', 'unit.mb': 'MB', 'common.sr_external': ' (yangi oynada ochiladi)', 'common.sample_file': 'namuna fayl', 'common.unknown_size': 'oʻlchami nomaʼlum', 'common.bonus': 'bonus',
   'common.extra': 'qoʻshimcha',
-  'unit.sl': 'Slaydlar', 'unit.am': 'Amaliyot', 'unit.vz': 'Vazifa', 'unit.kt': 'Kit', 'unit.am_n': 'Amaliyot {num}', 'unit.hermes': 'Hermes {id}',
+  'unit.sl': 'Slaydlar', 'unit.am': 'Amaliyot', 'unit.vz': 'Vazifa', 'unit.kt': 'Kit', 'unit.dk': 'Slaydlar', 'unit.am_n': 'Amaliyot {num}', 'unit.hermes': 'Hermes {id}',
+  'pane.dk.open': 'Slaydlarni ochish',
   'lesson.n': '{n}-dars', 'lesson.label': '{n}-dars · {date}', 'lesson.meta': '{date} · {d}/{t} bajarildi',
   'steps': '{d}/{t} bajarildi', 'kind.video': 'video', 'kind.image': 'rasm',
   // --- dates (month table is in code; these are the patterns)
@@ -405,6 +406,8 @@ const I18N = {uz: {
   "unit.am": "Практика",
   "unit.vz": "Задание",
   "unit.kt": "Kit",
+  "unit.dk": "Слайды",
+  "pane.dk.open": "Открыть слайды",
   "unit.am_n": "Практика {num}",
   "unit.hermes": "Hermes {id}",
   "lesson.n": "Урок {n}",

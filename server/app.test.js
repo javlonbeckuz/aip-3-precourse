@@ -427,7 +427,7 @@ test('empty lessons (no parts yet) open on their date (no group = the first grou
   const l4 = async (c) => (await c.get('/api/aip/lesson/4')).json.lesson;
   const L = await l4(xm);
   assert.deepEqual([L.open, L.parts, L.start], [false, {}, '2026-10-03T10:00:00+05:00']);
-  assert.deepEqual(L.has, { slides: false, amaliyot: false, kit: false, vazifa: false, prep: false });
+  assert.deepEqual(L.has, { slides: false, amaliyot: false, kit: false, vazifa: false, prep: false, deck: false });
   a.clock.t = Date.parse('2026-10-03T10:00:00+05:00');
   assert.equal((await l4(xm)).open, true);
   assert.equal((await l4(nog)).open, true);

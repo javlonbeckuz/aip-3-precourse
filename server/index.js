@@ -355,6 +355,27 @@ export function createApp(cfg) {
     }],
   ];
 
+  // ---- deck viewer: /deck/:lesson/ serves content/lessons/:lesson/slides/deck/ (requires auth)
+  async function serveDeck(req, res, url) {
+    const p = url.pathname, m = /^\/deck\/(\d)(?:\/(.*))?$/.exec(p);
+    if (!m) return false;
+    if (req.method !== 'GET' && req.method !== 'HEAD') throw fail(405, 'method_not_allowed', 'Method not allowed');
+    const student = await auth.session(req, db); if (!student) throw fail(401, 'unauthorized', 'Not logged in');
+    const lesson = +m[1], rel = m[2] || 'index.html';
+    if (!content.has(lesson).deck) throw fail(404, 'not_found', 'No deck');
+    if (rel.split('/').some((s) => s.startsWith('.') || s.includes('\0'))) throw fail(400, 'bad_request', 'Bad path');
+    const deckDir = path.join(cfg.contentDir, 'lessons', String(lesson), 'slides', 'deck');
+    const abs = path.resolve(deckDir, rel);
+    if (!abs.startsWith(deckDir + path.sep) && abs !== deckDir) throw fail(400, 'bad_request', 'Bad path');
+    let file; try { const st = fs.statSync(abs); file = st.isDirectory() ? path.join(abs, 'index.html') : abs; } catch { throw fail(404, 'not_found', 'Not found'); }
+    if (!fs.existsSync(file)) throw fail(404, 'not_found', 'Not found');
+    const st = fs.statSync(file), etag = `W/"${st.size}-${Math.floor(st.mtimeMs)}"`, type = MIME[path.extname(file).toLowerCase()] ?? 'application/octet-stream';
+    if (req.headers['if-none-match'] === etag) { res.writeHead(304, { ETag: etag }); return res.end(), true; }
+    res.writeHead(200, { 'Content-Type': type, 'Content-Length': st.size, ETag: etag, 'Cache-Control': 'no-cache' });
+    if (req.method === 'HEAD') return res.end(), true;
+    pipeline(fs.createReadStream(file), res, () => {}); return true;
+  }
+
   // ---- static files + SPA shell
   function serveStatic(req, res, pathname) {
     if (req.method !== 'GET' && req.method !== 'HEAD') throw fail(405, 'method_not_allowed', 'Method not allowed');
@@ -362,9 +383,9 @@ export function createApp(cfg) {
     try { p = decodeURIComponent(pathname); } catch { throw fail(400, 'bad_request', 'Bad path'); }
     if (p === '/aip' || p === '/') { res.writeHead(p === '/' ? 302 : 301, { Location: '/aip/' }); return res.end(); } // the portal lives under /aip/
     const shell = () => ['aip/index.html', 'index.html'].map((f) => path.join(cfg.publicDir, f)).find((f) => fs.existsSync(f));
+    let file = null;
     const abs = path.resolve(cfg.publicDir, '.' + p);
     const inside = abs === cfg.publicDir || abs.startsWith(cfg.publicDir + path.sep);
-    let file = null;
     if (inside && !p.split('/').some((s) => s.startsWith('.') || s.includes('\0'))) {
       try { const st = fs.statSync(abs); file = st.isDirectory() ? path.join(abs, 'index.html') : abs; } catch { /* maybe SPA */ }
       if (file && !fs.existsSync(file)) file = null;
@@ -405,6 +426,7 @@ export function createApp(cfg) {
         }
         throw pathMatched ? fail(405, 'method_not_allowed', 'Method not allowed') : fail(404, 'not_found', 'No such endpoint');
       }
+      if (await serveDeck(req, res, url)) return;
       serveStatic(req, res, url.pathname);
     } catch (e) {
       const known = e instanceof HttpError;

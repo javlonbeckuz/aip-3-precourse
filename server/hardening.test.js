@@ -291,9 +291,10 @@ test('shipped lesson 0 names lessons in the padded form (01-dars, Lesson 01), ne
 
 test('shipped content: lessons 1 and 3-7 have amaliyot, kit and vazifa (no slides), clean Uzbek, unique prompt ids, every kit file on disk', () => {
   const c = createContent({ dir: REAL_CONTENT, now: () => 0 });
+  const hasDeck = [1, 3, 5, 6, 7]; // lessons with slides/deck/index.html
   for (const n of [1, 3, 4, 5, 6, 7]) {
     const L = c.lesson(n);
-    assert.deepEqual(c.has(n), { slides: false, amaliyot: true, kit: true, vazifa: true, prep: false }, `lesson ${n}`);
+    assert.deepEqual(c.has(n), { slides: false, amaliyot: true, kit: true, vazifa: true, prep: false, deck: hasDeck.includes(n) }, `lesson ${n}`);
     const txt = fs.readFileSync(path.join(REAL_CONTENT, 'lessons', String(n), 'lesson.uz.json'), 'utf8');
     assert.ok(!txt.includes('—'), `${n}: em-dash`);
     assert.ok(!txt.includes('[shakl matni]'), `${n}: a form stand-in is left`);
