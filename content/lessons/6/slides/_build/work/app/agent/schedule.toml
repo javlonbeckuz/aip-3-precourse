@@ -1,0 +1,28 @@
+# Jadval bo'yicha ishlar (5-dars): belgilangan vaqtda agent ma'lumotdan javob tayyorlaydi
+# va egaga (yoki send_to dagi odamga, faqat ish vaqtida) yuboradi.
+# Sinash uchun kutmasdan:  uv run pilot job "Kam qolgan mahsulotlar" --send
+# days: 1 = dushanba ... 7 = yakshanba.
+
+[[job]]
+name = "Kam qolgan mahsulotlar"
+time = "08:30"
+days = "1-6"
+# Ish qaysi manbaga tayanadi: manba o'chirilsa, "uv run pilot check" xato beradi.
+sources = ["Ombor qoldig‘i (1C eksport)"]
+prompt = """
+Ombor qoldig'i (1C) jadvalidan tayyor mahsulot soni (Количество) 15 donadan kam
+bo'lgan mahsulotlarni ro'yxat qil: kod, nomi, soni. Eng kami birinchi.
+Bunday mahsulot bo'lmasa, "Hammasi yetarli" deb yoz.
+Ombor fayli bo'sh yoki eski bo'lsa, ODAMGA qatori bilan javob ber.
+"""
+
+[[job]]
+name = "1C fayli tekshiruvi"
+time = "10:30"
+days = "1-6"
+send_to = 7100032
+prompt = """
+1C fayli bugun yangilanganini tekshir: ombor qoldig'i jadvalida DIQQAT yozuvi bormi?
+DIQQAT bo'lsa yoki jadval bo'sh bo'lsa, ODAMGA qatori bilan sababini yoz.
+Hammasi joyida bo'lsa, faylning yangilangan vaqtini va qatorlar sonini bir qatorda yoz.
+"""

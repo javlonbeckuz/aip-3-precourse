@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3-mashq: Test to‘plamini qayta ishga tushirish va serverga joylash</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 5-dars</span><span class="pill">3-mashq</span></div>
+<h1>3-mashq: Test to‘plamini qayta ishga tushirish va serverga joylash</h1>
+<p>5-dars, 1:15-1:40 (2-mashq bilan birga).
+Natija: har bir xatodan bitta yangi test, hamma testlar o‘tadi (eskilari ham), tuzatilgan agent serverda.</p>
+<p>Test to‘plami (evals) - javobi oldindan ma’lum haqiqiy savollar.
+Har bir o‘zgarishdan keyin hammasi qayta ishga tushiriladi: tuzatish boshqa joyni buzmaganini shunday bilasiz.
+3-darsda yig‘gan 3 ta yaxshi va 3 ta yomon misolingiz (To‘plam 4, B.4) - shu to‘plamning boshi.</p>
+<h2>Kerak bo‘ladi</h2>
+<ul>
+<li><code>app/evals/test-set.toml</code> (3-darsdan beri bor) va <code>kit4-people/test-set.md</code>.</li>
+<li>1-mashq jadvali va 2-mashqdagi tuzatishlar.</li>
+<li><code>data/</code> dagi eksport fayllari; <code>max_age_hours</code> hali qo‘yilmagan bo‘lsin (2-mashq, «Tartib muhim»).</li>
+<li>Narx: bitta to‘liq ishga tushirish taxminan $0.03-0.05 (12 test), <code>--judge</code> bilan biroz ko‘proq.</li>
+</ul>
+<h2>Qanday bajariladi</h2>
+<ol>
+<li><strong>Avval test, keyin tuzatish.</strong>
+   Har bir agent xatosidan bitta <code>[[test]]</code> yozing: o‘sha savol, to‘g‘ri javobdagi raqam (<code>kerak</code>), xato javobdagi raqam (<code>mumkin_emas</code>).
+   <code>manba</code> ga xatolar jurnalidagi sanani yozing.</li>
+<li><strong>Testlarni ishga tushiring:</strong> <code>uv run pilot eval</code>.
+   Yangi testlar yiqilishi kerak (qizil): demak, test xatoni ushlaydi.</li>
+<li><strong>Tuzatishni kiriting</strong> (2-mashq) va yana <code>uv run pilot eval</code>.</li>
+<li><strong>Hamma testlarni o‘qing, faqat yangilarini emas.</strong>
+   Oldin o‘tgan test endi yiqilsa, bu regressiya: tuzatishni qaytaring va aniqroq qiling.</li>
+<li><strong>Hammasi o‘tganda</strong> (yashil) serverga joylang: <code>uv run python deploy/deploy.py</code>.
+   <code>deploy.py</code> avval testlarni (<code>pytest</code>) va <code>pilot check</code> ni o‘zi ishga tushiradi; biror narsa yiqilsa, joylamaydi.</li>
+<li><strong>Yozib qo‘ying:</strong> <code>kit4-people/test-set.md</code> ga yangi misollar (3-darsdagi T1-T8 dan keyin: T9, T10 ...) va «Sinov natijalari» jadvaliga natija.</li>
+</ol>
+<h3>Test qanday yoziladi</h3>
+<pre><code class="language-toml">[[test]]
+id = &quot;ulgurji-5-dona&quot;
+savol = &quot;Optima stolidan 5 ta kerak, narxi?&quot;
+kerak = [&quot;9 450 000&quot;]          # to‘g‘ri javobda albatta bo‘ladigan raqam
+mumkin_emas = [&quot;10 750 000&quot;]   # xato javobdagi raqam: qaytib kelmasin
+odamga = false                 # o‘zi javob berishi shart (true: odamga uzatishi shart)
+manba = &quot;xatolar jurnali, 2026-12-15&quot;
+</code></pre>
+<p>Raqamlarni istalgan ko‘rinishda yozish mumkin: <code>9 450 000</code> = <code>9450000</code>.
+Javob shaklini tekshirish uchun <code>mezon</code> qatori bor; uni ikkinchi, kuchliroq model tekshiradi: <code>uv run pilot eval --judge</code>.
+Batafsil: <code>app/evals/test-set.qollanma.md</code>.</p>
+<h3>Claude Code uchun topshiriq</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>1-mashq jadvalidagi har bir agent xatosi uchun evals/test-set.toml ga bitta [[test]] qo'sh:
+savol - o'sha savol, kerak - to'g'ri javobdagi raqam, mumkin_emas - xato javobdagi raqam,
+manba - &quot;xatolar jurnali, &lt;sana&gt;&quot;. Xato bo'lmagan qatorlarga test qo'shma.
+Keyin narxini aytib, mendan ruxsat so'ra va &quot;uv run pilot eval --judge&quot; ni ishga tushir.
+Natijani jadval qil: test, oldin o'tganmi, hozir o'tdimi. Oldin o'tib, hozir yiqilgan test bo'lsa, birinchi qatorda ayt.
+Hammasi o'tsa, kit4-people/test-set.md ga T9 dan boshlab shu misollarni va natijani yoz.</pre></div>
+<p>Serverga joylash uchun:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Hamma testlar o'tdi. &quot;uv run python deploy/deploy.py&quot; bilan serverga joyla,
+keyin &quot;deploy.py status&quot; ni ko'rsat va oxirgi 10 log qatorini oddiy tilda tushuntir.</pre></div>
+<h2>Baraka Office namunasi</h2>
+<p>To‘rtta ishga tushirish, sinfda yakshanba 20-dekabr, 11:05-11:26 (<code>namuna/yaxshilash/eval-*.txt</code>).
+To‘plamda 12 ta test: 3-darsdagi 8 ta va 1-hafta xatolaridan 4 ta yangi.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nima qilindi</th>
+<th>Natija</th>
+<th>Yiqilgan testlar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>4 ta yangi test qo‘shildi, hali tuzatish yo‘q</td>
+<td>7 / 12</td>
+<td>4 ta yangi test va <strong>kafolat-kreslo</strong> (3-darsdan beri bor edi)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>KP manbadan olib tashlandi, <code>memory.md</code> ga bitta qator</td>
+<td>9 / 12</td>
+<td>ulgurji-5-dona, ulgurji-6-dona, chegirma-18-mln</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B.4 ga keng qoida: «har doim ulgurji narx»</td>
+<td>9 / 12</td>
+<td><strong>chakana-start-2</strong>, <strong>chakana-ergopro-3</strong> (ikkalasi oldin o‘tardi), chegirma-18-mln</td>
+</tr>
+<tr>
+<td>4</td>
+<td>B.4 aniq qoida + <code>examples.md</code> ga 2 ta namuna</td>
+<td>12 / 12</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Birinchi ishga tushirishdan parcha (<code>eval-1-oldin.txt</code>):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>FAIL kafolat-kreslo  -&gt; javobda «12 oy» yo‘q; javobda bo‘lmasligi kerak bo‘lgan «3 yil» bor
+...
+FAIL ulgurji-5-dona  -&gt; javobda «9 450 000» yo‘q; javobda bo‘lmasligi kerak bo‘lgan «10 750 000» bor
+FAIL ulgurji-6-dona  -&gt; javobda «7 680 000» yo‘q; javobda bo‘lmasligi kerak bo‘lgan «8 700 000» bor
+FAIL chegirma-18-mln  -&gt; javobda «20 000 000» yo‘q; javobda bo‘lmasligi kerak bo‘lgan «5% gacha bera olasiz» bor
+FAIL yetkazish-chirchiq  -&gt; javobda «8 000» yo‘q; javobda bo‘lmasligi kerak bo‘lgan «bepul» bor
+
+7 / 12 o‘tdi</pre></div>
+<p><code>kafolat-kreslo</code> 3-darsdan beri test to‘plamida bor edi.
+4-darsda KP manbaga qo‘shilgandan keyin testlar ishga tushirilmagan: tushirilganda, 17.12 dagi xato mijozga yetmasdan ushlanardi.
+Saboq: har qanday o‘zgarishdan keyin, hatto yangi manba qo‘shilgandan keyin ham, hamma testlar.</p>
+<p>Uchinchi ishga tushirish - regressiya (<code>eval-3-regressiya.txt</code>):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>FAIL chakana-start-2  -&gt; javobda «2 900 000» yo‘q
+FAIL chakana-ergopro-3  -&gt; javobda «8 550 000» yo‘q; javobda bo‘lmasligi kerak bo‘lgan «7 500 000» bor
+
+9 / 12 o‘tdi</pre></div>
+<p>Natija 2-ishga tushirishdagi bilan bir xil (9 / 12), lekin yiqilgan testlar boshqa.
+Keng qoida 5 va 6 donani tuzatdi, lekin 2 va 3 donali oddiy savollarni buzdi.
+Faqat jami raqamga qarasangiz, regressiyani ko‘rmaysiz: har bir yiqilgan testning nomini o‘qing.</p>
+<p>Xarajat: har bir ishga tushirish taxminan $0.058 (<code>--judge</code> bilan), to‘rttasi birga 25 sentdan kam.</p>
+<p><code>kit4-people/test-set.md</code> ga qo‘shilgani:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Baho</th>
+<th>Qisqacha</th>
+<th>Manba</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T9</td>
+<td>yomon</td>
+<td><code>ulgurji-5-dona</code>: 5 dona chakana narxda hisoblangan</td>
+<td>xatolar jurnali, 15.12</td>
+</tr>
+<tr>
+<td>T10</td>
+<td>yomon</td>
+<td><code>ulgurji-6-dona</code>: 6 dona chakana narxda hisoblangan</td>
+<td>xatolar jurnali, 15.12</td>
+</tr>
+<tr>
+<td>T11</td>
+<td>yomon</td>
+<td><code>chegirma-18-mln</code>: 18 mln buyurtmaga «chegirma bor» deyilgan</td>
+<td>xatolar jurnali, 16.12</td>
+</tr>
+<tr>
+<td>T12</td>
+<td>yomon</td>
+<td><code>yetkazish-chirchiq</code>: «Chirchiqqa yetkazish bepul» (KP dan)</td>
+<td>xatolar jurnali, 17.12</td>
+</tr>
+</tbody>
+</table>
+<p>T1-T8 - 3-darsdagi 8 ta test (T7 <code>kafolat-kreslo</code>, T8 <code>tannarx-yashirin</code>); sinf oxirida 12 tadan 12 tasi o‘tadi.
+2-haftada yana ikkitasi qo‘shiladi (T13 «Staf mesh», T14 3D chizma): sinov oxirida 14 ta test.</p>
+<p>Eslatma: bu raqamlar soxta model bilan olingan (internetsiz mashq uchun, <code>_build/sim/brain.py</code>).
+Haqiqiy modelda yiqiladigan testlar boshqacha bo‘lishi mumkin; usul bir xil.</p>
+<h2>Yomon namuna: hech narsani tekshirmaydigan test</h2>
+<pre><code class="language-toml">[[test]]
+id = &quot;optima-narx&quot;
+savol = &quot;Optima stolidan 8 ta kerak, qancha bo'ladi?&quot;
+kerak = [&quot;so‘m&quot;]
+</code></pre>
+<p><strong>Nimasi yomon:</strong></p>
+<ul>
+<li>Har qanday narx so‘z bilan tugaydi: chakana narx ham (17 200 000 so‘m), noto‘g‘ri mahsulot ham bu testdan o‘tadi.</li>
+<li><code>mumkin_emas</code> yo‘q: oldingi xato qaytib kelsa, test sezmaydi.</li>
+<li><code>manba</code> yo‘q: 6-darsda bu test nima uchun borligini hech kim eslay olmaydi.</li>
+</ul>
+<p>Ikkinchi yomon namuna: testga agentning o‘z javobini «to‘g‘ri» deb ko‘chirish.
+Agent xato qilgan bo‘lsa, test endi xatoni himoya qiladi.
+To‘g‘ri javobni har doim odam (ROP, buxgalter) tasdiqlaydi.</p>
+<p><strong>To‘g‘rilangan:</strong></p>
+<pre><code class="language-toml">[[test]]
+id = &quot;ulgurji-optima-8&quot;
+savol = &quot;Optima stolidan 8 ta kerak, qancha bo'ladi?&quot;
+kerak = [&quot;15 120 000&quot;]
+mumkin_emas = [&quot;17 200 000&quot;]
+odamga = false
+manba = &quot;yaxshi misol: ROP tekshirgan javob&quot;
+</code></pre>
+<h2>Tez-tez uchraydigan xatolar</h2>
+<ul>
+<li><strong>Faqat yangi testga qarash.</strong>
+  Asosiy savol: oldin o‘tgan test hozir ham o‘tadimi?</li>
+<li><strong>Qoldiq testi «odamga uzatdi» deb yiqildi.</strong>
+  <code>max_age_hours</code> allaqachon qo‘yilgan va 1C fayli eski (yakshanba kuni eksport yo‘q): bu regressiya emas, to‘g‘ri xatti-harakat.
+  <code>max_age_hours</code> qatorini vaqtincha izohga oling (<code>#</code>), testlarni yashil qiling, keyin qaytaring va <code>pilot check</code> bilan tekshiring.</li>
+<li><strong>«Model har safar boshqacha javob beradi».</strong>
+  Bir test goh o‘tib, goh yiqilsa, ikki-uch marta ishga tushiring; yo‘riqnomada qoida yetarlicha aniq emas.</li>
+<li><strong>Testlar o‘tdi, lekin serverga joylanmadi.</strong>
+  Xodimlar hali eski agent bilan ishlayapti.
+  <code>deploy.py status</code> da yangi versiya sanasini tekshiring.</li>
+</ul>
+<h2>Tayyor, agar</h2>
+<ul>
+<li class="cb">Har bir agent xatosi uchun bitta test, <code>manba</code> bilan.</li>
+<li class="cb"><code>uv run pilot eval</code>: hammasi o‘tdi, eski testlar ham.</li>
+<li class="cb">Serverga joylandi, <code>deploy.py status</code> - «active (running)».</li>
+<li class="cb"><code>kit4-people/test-set.md</code> da T9 ... yangi misollar va natija.</li>
+<li class="cb">Mentor «hamma testlar o‘tdi» ekranini ko‘rdi (tekshiruv 5.6).</li>
+</ul>
+<div class="foot">Praktikum 3.0 · 5-dars · 20-dekabr 2026 · manba: day-5/exercises/03-test-toplamini-qayta-ishga-tushirish.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

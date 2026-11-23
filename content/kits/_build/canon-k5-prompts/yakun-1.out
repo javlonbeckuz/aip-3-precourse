@@ -1,0 +1,69 @@
+exit=0
+session: 9e71d537-8895-428c-98c6-440b82bf88be turns: 15 models: ['claude-opus-5-5']
+Men 2-hafta ustunini va hisob-kitobni `kit5-pilot/numbers.md` ga yozdim. «Qaror» bo‘limi va e’lon sizning javobingizni kutyapti. `instructions.md` va `test-set.md` ga tegmadim, xatolar jurnalida o‘zgarishlar `app/` dagi nusxada deb yozildi.
+
+## 2-hafta va agentgacha
+
+| Ko‘rsatkich | Agentgacha | 2-hafta | O‘zgarish |
+|---|---|---|---|
+| B.1 Savollar | 120 | 138 | +18 (+15,0%) |
+| B.2 Daqiqa | 6 | 2,0 (20 / 10) | -4 (-66,7%) |
+| B.3 Xatolar | 9 | 3 | -6 (-66,7%) |
+| B.4 Takroriy | 15 | 8 | -7 (-46,7%) |
+| B.5 Hal qilingan | 100 | 121 | +21 (+21,0%) |
+| B.7 Tekshirish, soat | 0 | 2,0 | +2,0 |
+| B.8 Shikoyat | 2 | 1 | -1 (-50,0%) |
+
+## Asosiy raqamlar
+
+- **Xarajat, 2 hafta:** B.11 = 6,5 × 35 700 = 232 050 so‘m. B.12 = 234 652 + 1 885 000 + 232 050 = **2 351 702 so‘m**.
+- **B.15 tejalgan vaqt:**
+  - 1-hafta: 3,2 soat/hafta.
+  - 2-hafta: (6 - 2,0) × 138 / 60 - 2,0 = **7,2 soat/hafta**.
+  - Oraliq **3,2-7,2 soat/hafta**.
+  - Siz aytgan taqsimot ham mos keladi: Madina 3,9 + Jamshid aka 2,4 + Malika 0,9 = 7,2.
+- **B.16 bitta ish narxi:**
+  - Agent, sozlash bilan: 2 351 702 / 225 = 10 452 so‘m.
+  - Agent, sozlashsiz: 1 560-2 673 so‘m.
+  - Inson: 3 570 so‘m.
+  - 2-haftada agent narxiga xodimning 2 daqiqasini ham qo‘shsak, 2 750 so‘m chiqadi, bu insondan arzon. 1-haftada esa 4 161 so‘m edi, insondan qimmat.
+- **B.14 topilgan pul:** isbotlangani 34 000 000 × 2% = **680 000 so‘m**. Shundan QQSsiz kompaniyaga 680 000 / 1,12 = 607 143 so‘m qoladi.
+  - Optima va ErgoPro holatlari [?] bilan yozildi va jamiga qo‘shilmadi.
+  - 5 400 000 bu savdo summasi, foyda emas.
+- **Oylik solishtiruv:** oylik xarajat obuna, 504 500 so‘m.
+  - 1-hafta darajasida tejalgan vaqt bilan: -13 268 so‘m.
+  - 2-hafta darajasida: +600 772 so‘m.
+  - Oyiga bitta isbotlangan holat qo‘shilsa: +1 280 772 so‘m.
+  - Sozlash xarajati 1,5-3,1 oyda qaytadi.
+  - Bir narsani yashirmayman: tejalgan vaqt kassaga tushgan pul emas, u faqat boshqa foydali ishga sarflansa qiymatga aylanadi.
+
+## Mezonlar
+
+- **A.6 muvaffaqiyat:** 5 mezonning 5 tasi bajarildi. B.2 aynan chegarada: 2,0 daqiqa.
+- **A.7 to‘xtatish:** bajarilmadi. Uchala xato ham mijozga yetmasdan ushlandi, bir kunda ko‘pi bilan 1 ta ❌ bo‘ldi.
+- **Xatolar 4 turga bo‘lindi** (10 ta xato):
+  - narx qoidasi yoki javob shakli;
+  - raqamli chegara noaniq;
+  - eski yoki noto‘g‘ri manba;
+  - mahsulot nomini aniqlash.
+
+  Har bir tur uchun yo‘riqnomadagi o‘zgarish `numbers.md` da yozilgan.
+
+## Tavsiya: davom etish
+
+Asosiy sabab: A.6 ning hamma mezoni bajarildi, to‘xtatish sharti bo‘lmadi, va isbotlangan bitta holatning o‘zi (680 000) ikki haftalik tejalgan soatlar qiymatidan (514 080) katta.
+
+Hali isbotlanmaganlar:
+- B.2 faqat showroomda o‘lchangan, 10 ta holatda. Call-markaz va menejerlarda o‘lchanmagan.
+- Topilgan pul hozircha bitta holat, takrorlanishi hali ko‘rinmagan.
+- 22 va 23-dekabrdagi xatolar darhol ketgan narx javoblarida bo‘ldi. Ularni bot emas, xodimning diqqati ushladi.
+- 2-haftaning 3 ta xatosi ham yangi turdan edi. Demak, xatolar turi hali tugamagan.
+- Eski ombor fayli uchun test hali yo‘q. Bu papkadagi `instructions.md` va `test-set.md` ham `app/` dan orqada qolgan.
+- Tejalgan soatlar haqiqatan qaysi ishga ketayotgani hali tekshirilmagan.
+
+**Savollarim:**
+1. Qaroringiz qanday: davom etish, o‘zgartirish yoki to‘xtatish? Uni «Qaror» va «Sababi» bo‘limiga yozaman.
+2. Davom etsak, 3-4-haftalarda (9-yanvargacha) qanday ishlaymiz: rejim o‘zgarishsiz qoladimi, yoki qolgan 6 menejerni ham qo‘shamizmi?
+3. E’lon uchun ikki narsa kerak:
+   - Yozma majburiyat imzolanganmi? `team-message.md` da «imzolanmadi» deb yozilgan, `madina-form-b.md` da esa «31-maygacha amalda» deyilgan.
+   - Madina va Jamshid aka tejalgan soatlarni qaysi ishga sarflaydi? Madina bilan 26-dekabrda shuni qayta ko‘rish kelishilgan edi.

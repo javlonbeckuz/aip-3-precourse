@@ -1,0 +1,14 @@
+$ uv run python deploy/deploy.py status
+
+● pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter)
+     Loaded: loaded (/etc/systemd/system/pilot-bot.service; enabled; preset: enabled)
+     Active: active (running) since Tue 2026-11-03 03:48:19 +05; 41s ago
+   Main PID: 2117 (python)
+      Tasks: 1 (limit: 9520)
+
+Release: 20261102-224817
+
+Nov 03 03:48:19 baraka-vps systemd[1]: Started pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter).
+Nov 03 03:48:19 baraka-vps python[2117]: 2026-11-03 03:48:19,875 INFO pilot.bot: bot @baraka_demo_bot started, model google/gemini-3.8-flash, mode direct
+Nov 03 03:48:27 baraka-vps python[2117]: 2026-11-03 03:48:27,948 INFO pilot.bot: exchange 4cd7e618: answered, $0.0030, 55 ms
+Nov 03 03:48:27 baraka-vps python[2117]: 2026-11-03 03:48:27,999 INFO pilot.bot: exchange e83e2be7: answered, $0.0031, 2 ms

@@ -1,0 +1,19 @@
+$ uv run pilot ask "Mijoz 45 mln buyurtmaga 15% chegirma so'rayapti"
+ODAMGA: 15% chegirma menejer vakolatidan (5%) yuqori.
+--- holat: escalated
+
+$ uv run pilot ask "Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?"
+ODAMGA: 7 ish kunidan tez yetkazish so‘ralmoqda.
+--- holat: escalated
+
+$ uv run pilot ask "Tender: 170 mln lik buyurtma, nima qilamiz?"
+ODAMGA: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.
+--- holat: escalated
+
+$ uv run pilot ask "ErgoPro omborda nechta bor?"
+ODAMGA: ombor fayli bilan muammo (Ombor qoldig‘i (1C eksport): fayl 28 soatdan beri yangilanmagan (chegara 25 soat)), qoldiqni Otabek akadan aniqlash kerak.
+--- holat: escalated
+
+$ uv run pilot ask "Mijoz shikoyat qilyapti: kreslo mexanizmi 2 oyda buzildi, nima qilamiz?"
+ODAMGA: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.
+--- holat: escalated

@@ -1,0 +1,49 @@
+{
+  "sets": [
+    {
+      "id": "biznes",
+      "label": "Biznes gapi",
+      "texts": {
+        "uz": "Ertaga ertalab omborga 120 ta o‘quvchi stoli keladi, iltimos, narxlarni tekshirib, mijozga to‘lov hisobini yuboring.",
+        "ru": "Завтра утром на склад привезут 120 ученических столов, пожалуйста, проверьте цены и отправьте клиенту счёт на оплату.",
+        "en": "Tomorrow morning 120 student desks will arrive at the warehouse, please check the prices and send the client the payment invoice."
+      }
+    },
+    {
+      "id": "javob",
+      "label": "Mijozga javob",
+      "texts": {
+        "uz": "Assalomu alaykum! Buyurtmangiz qabul qilindi, yetkazib berish uch ish kunida bo‘ladi. Savollaringiz bo‘lsa, shu yerga yozing.",
+        "ru": "Здравствуйте! Ваш заказ принят, доставка займёт три рабочих дня. Если есть вопросы, пишите сюда.",
+        "en": "Hello! Your order has been accepted, delivery will take three working days. If you have any questions, write here."
+      }
+    },
+    {
+      "id": "soz",
+      "label": "Bitta so‘z",
+      "texts": {
+        "uz": "o‘quvchi",
+        "ru": "ученик",
+        "en": "student"
+      }
+    }
+  ],
+  "apostrophe_variants": {
+    "note": "The same Uzbek business sentence written with three apostrophe characters: typographic U+2018, ASCII U+0027 and the modifier letter U+02BB.",
+    "uz_typographic": "Ertaga ertalab omborga 120 ta o‘quvchi stoli keladi, iltimos, narxlarni tekshirib, mijozga to‘lov hisobini yuboring.",
+    "uz_ascii": "Ertaga ertalab omborga 120 ta o'quvchi stoli keladi, iltimos, narxlarni tekshirib, mijozga to'lov hisobini yuboring.",
+    "uz_okina": "Ertaga ertalab omborga 120 ta oʻquvchi stoli keladi, iltimos, narxlarni tekshirib, mijozga toʻlov hisobini yuboring."
+  },
+  "test_strings": [
+    "1 300 000 so‘m, 15% chegirma va 3-5 kun!",
+    "O‘zbekiston Respublikasi, Toshkent sh., Chilonzor t., 42-uy",
+    "Line one\nLine two\r\n\n   indented\ttab",
+    "Emoji 🙂👍🏽 and CJK 你好世界 日本語 カタカナ",
+    "Price: $1,250.99 (incl. VAT) -- e-mail: info@example.uz; URL https://example.uz/a?b=c",
+    "Сколько стоит доставка в Самарканд? 8 000 сум/км",
+    "    leading spaces and trailing   ",
+    "can't won't I'll you're we've they'd SHOULDN'T",
+    "Ko‘p‘ g‘alla, so‘ng, ma’lumot, sun’iy, e’lon, ta’mir",
+    "AAAAAAA bbbbbbbbbbbb 111111111 ..... !!!!!"
+  ]
+}

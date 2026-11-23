@@ -1,0 +1,20 @@
+# Secrets: never commit
+.env
+.env.*
+!.env.example
+
+# Runtime state: journal, reports, exports (lives on the server)
+runtime/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Build and verification artifacts of the template itself
+_build/
+dist/
+
+# OS
+.DS_Store

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>«Formulani ko‘rsat»: qanday ishlatish</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 1-dars</span><span class="pill">Qo‘llanma</span></div>
+<h1>«Formulani ko‘rsat»: qanday ishlatish</h1>
+<p>Sahifa: <code>index.html</code>, internetsiz ochiladi.
+Fayllar: <code>savdo-oktabr.xlsx</code> va <code>savdo-oktabr.csv</code> (shartli do‘kon savdosi, 35 qator).</p>
+<h2>Nima uchun</h2>
+<p>AI hisobda xato qilsa ham ishonch bilan javob beradi, Excel kabi qizil katak ko‘rsatmaydi.
+Bu mashq AI’ning sonini tekshirishni va «formulangni ko‘rsat» deb so‘rashni o‘rgatadi.</p>
+<h2>Boshlashdan oldin kerak</h2>
+<ul>
+<li>savdo-oktabr.xlsx fayli (sahifadagi tugma yoki mentor beradi).</li>
+<li>Claude yoki boshqa AI chat.</li>
+</ul>
+<h2>Qadamlar</h2>
+<ol>
+<li>Faylni AI chatga yuklang.</li>
+<li>So‘rang: «Oktabr oyidagi jami savdo qancha?»</li>
+<li>AI aytgan sonni sahifadagi «AI aytgan son» qutisiga yozing va «Tekshirish»ni bosing.</li>
+<li>AI’dan so‘rang: «Qanday hisobladingiz? Formulani va qaysi qatorlarni qo‘shganingizni ko‘rsat.»</li>
+<li>«Tuzoqlarni belgilash» tugmasi bilan jadvaldagi muammoli qatorlarni ko‘ring.</li>
+</ol>
+<h2>Faylda nima bor</h2>
+<ul>
+<li>34 ta oktabr savdosi va 1-noyabrdagi bitta savdo (oxirgi qator).</li>
+<li>3 ta summa Telegram’dan nusxalangandek matn bo‘lib yozilgan («744 000»): Excel SUM ularni qo‘shmaydi.</li>
+</ul>
+<h2>Natijani qanday o‘qish</h2>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Ma’nosi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yashil</td>
+<td>Son to‘g‘ri: 34 ta oktabr qatori, matnli summalar ham hisobda</td>
+</tr>
+<tr>
+<td>Qizil</td>
+<td>Ma’lum xato: matnli summalar tushib qolgan yoki noyabr qo‘shilgan; sababi yoziladi</td>
+</tr>
+<tr>
+<td>Kulrang</td>
+<td>Boshqa xato: farq yoziladi, AI’dan formulani so‘rang</td>
+</tr>
+</tbody>
+</table>
+<h2>Namuna</h2>
+<p>«Namuna bilan ochish» tugmasi AI «17 203 000 so‘m» deb javob bergan holatni ko‘rsatadi (shartli javob).</p>
+<p><img alt="Formula tekshiruvi namunasi" src="qollanma-namuna.png" /></p>
+<p>Sahifa: «1-noyabr qatori ham qo‘shilgan: jami 2 480 000 so‘m ortiqcha».
+To‘g‘ri oktabr jami 14 723 000 so‘m.
+Excel’da butun ustunga =SUM qilsangiz, 16 270 000 chiqadi: u ham xato, chunki 3 ta matnli summani tashlab, noyabrni qo‘shadi.</p>
+<p><strong>Qanday o‘qish:</strong> AI ham, Excel ham noto‘g‘ri bo‘lishi mumkin.
+Farqi: so‘rasangiz, AI qanday hisoblaganini aytadi; siz qaysi qatorlarni olganini tekshirasiz.</p>
+<h2>Ko‘p uchraydigan xatolar</h2>
+<ul>
+<li>Birinchi javobni tekshirmasdan hisobotga qo‘yish.</li>
+<li>«To‘g‘rimi?» deb so‘rash: AI odatda «ha» deydi. «Qaysi qatorlarni qo‘shding?» deb so‘rang.</li>
+<li>Sanaga qaramaslik: oy oxiridagi va boshidagi qatorlar aralashib ketadi.</li>
+</ul>
+<h2>Tayyor</h2>
+<p>AI’ning soni qaysi qatorlardan chiqqanini va qayerda adashganini tushuntira olasiz.</p>
+<div class="foot">Praktikum 3.0 · 1-dars · 21-noyabr (shanba) / 22-noyabr (yakshanba) 2026 · manba: day-1/demos/formula-check/formula-check.qollanma.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

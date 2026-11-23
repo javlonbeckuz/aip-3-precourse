@@ -1,0 +1,28 @@
+$ uv run python deploy/sayt.py forma.barakaoffice.uz sayt
+
+==> 1 ta fayl, 4 KB: sayt -> https://forma.barakaoffice.uz
+
+==> 1/5 Caddy (veb-server, HTTPS sertifikatini o'zi oladi)
+v2.11.7 h1:yj0Y4fYZGPkSvibBJ1sTWE33xC0fxztVyXEW5iIdUT4=
+
+==> 2/5 Firewall: 80 va 443 portlarini ochamiz (sayt uchun); SSH avvalgidek ochiq
+OpenSSH                    ALLOW       Anywhere                  
+80/tcp                     ALLOW       Anywhere                  
+443/tcp                    ALLOW       Anywhere                  
+OpenSSH (v6)               ALLOW       Anywhere (v6)             
+80/tcp (v6)                ALLOW       Anywhere (v6)             
+443/tcp (v6)               ALLOW       Anywhere (v6)             
+
+==> 3/5 Sayt fayllari: /var/www/sayt
+1 ta fayl joylandi.
+
+==> 4/5 Caddy sozlamasi: forma.barakaoffice.uz
+active
+
+==> 5/5 Tekshiruv: DNS va HTTPS
+DIQQAT: forma.barakaoffice.uz hali hech qaysi IP manzilga qaramayapti (DNS yozuvi yo'q yoki hali tarqalmagan).
+Domen panelida A yozuvi qo'shing: nom = forma, qiymat = serveringiz IP manzili.
+
+==> Caddy sozlandi, lekin https://forma.barakaoffice.uz hali ochilmadi.
+DNS tayyor bo'lishi bilan Caddy sertifikatni o'zi oladi: qayta ishga tushirish shart emas.
+Bir necha soatdan keyin brauzerda oching. Holat: journalctl -u caddy -n 30 --no-pager

@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Praktikum 2.0 - 2-Kun: Claude Ekotizimi, Doimiy Xotira va Avtomatik Lead Funnel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #07090e;
+    --bg-surface: #0e131f;
+    --bg-card: rgba(22, 30, 48, 0.7);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-accent: rgba(59, 130, 246, 0.4);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --accent-blue: #3b82f6;
+    --accent-cyan: #06b6d4;
+    --accent-indigo: #6366f1;
+    --accent-emerald: #10b981;
+    --accent-amber: #f59e0b;
+    --accent-rose: #f43f5e;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body, html {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    overflow: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 20%, rgba(30, 58, 138, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                var(--bg-dark);
+  }
+
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 48px;
+    border-bottom: 1px solid var(--border-subtle);
+    background: rgba(7, 9, 14, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 10;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .logo-badge {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+
+  .chapter-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .notes-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .notes-toggle:hover, .notes-toggle.active {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: var(--accent-blue);
+    color: #fff;
+  }
+
+  .slide-counter {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .slide-counter span {
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  /* Main Slide Stage */
+  main {
+    flex: 1;
+    display: flex;
+    position: relative;
+    padding: 40px 60px;
+    overflow: hidden;
+  }
+
+  .slide-content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 1720px;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .slide-title-area {
+    margin-bottom: 28px;
+  }
+
+  .slide-number-tag {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent-blue);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .slide-title {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+  }
+
+  .slide-body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    min-height: 0;
+  }
+
+  .body-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    padding-right: 12px;
+  }
+
+  .body-left::-webkit-scrollbar {
+    width: 4px;
+  }
+  .body-left::-webkit-scrollbar-thumb {
+    background: var(--border-subtle);
+    border-radius: 4px;
+  }
+
+  .card-bullet {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 20px 24px;
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .card-bullet:hover {
+    border-color: rgba(59, 130, 246, 0.4);
+    transform: translateX(4px);
+  }
+
+  .card-bullet h4 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card-bullet p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  .card-bullet code {
+    font-family: var(--font-mono);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--accent-cyan);
+    font-size: 13.5px;
+  }
+
+  .body-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .visual-preview-box {
+    background: rgba(14, 19, 31, 0.9);
+    border: 1px solid var(--border-accent);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    height: 100%;
+  }
+
+  .visual-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .visual-content {
+    flex: 1;
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #e2e8f0;
+    white-space: pre-wrap;
+    background: #06080d;
+    padding: 18px;
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    overflow-y: auto;
+  }
+
+  /* Speaker Notes Drawer */
+  #speaker-drawer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(10, 14, 23, 0.96);
+    border-top: 1px solid var(--border-accent);
+    backdrop-filter: blur(16px);
+    padding: 24px 60px;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 20;
+    max-height: 38%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.8);
+  }
+
+  #speaker-drawer.open {
+    transform: translateY(0);
+  }
+
+  .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .drawer-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-amber);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .drawer-body {
+    font-size: 16px;
+    line-height: 1.65;
+    color: #cbd5e1;
+    overflow-y: auto;
+  }
+
+  /* Footer Controls */
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 48px;
+    border-top: 1px solid var(--border-subtle);
+    background: rgba(7, 9, 14, 0.95);
+    z-index: 10;
+  }
+
+  .progress-track {
+    flex: 1;
+    max-width: 600px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 0 32px;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+    width: 0%;
+    transition: width 0.25s ease;
+  }
+
+  .nav-btn-group {
+    display: flex;
+    gap: 12px;
+  }
+
+  .nav-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    width: 40px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .nav-btn:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: #fff;
+  }
+
+  .keyboard-hints {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+  }
+  .keyboard-hints kbd {
+    background: rgba(255,255,255,0.08);
+    padding: 2px 6px;
+    border-radius: 3px;
+    border: 1px solid var(--border-subtle);
+  }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <header>
+    <div class="header-left">
+      <div class="logo-badge">Praktikum 2.0</div>
+      <div id="chapter-title" class="chapter-title">I BOB: Rekap va AI Tabletka Sindromi</div>
+    </div>
+    <div class="header-right">
+      <button id="notes-btn" class="notes-toggle" title="Spiker gapirishi kerak bo'lgan matnni ko'rish (P)">
+        <span>🎙️ Spiker Eslatmasi</span>
+        <kbd style="font-family: var(--font-mono); font-size: 11px;">P</kbd>
+      </button>
+      <div class="slide-counter"><span id="curr-slide">1</span> / <span id="total-slides">44</span></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="slide-content-wrapper">
+      <div class="slide-title-area">
+        <div id="slide-num-tag" class="slide-number-tag">SLAYD 01 // 44</div>
+        <h1 id="slide-title" class="slide-title">Yuklanmoqda...</h1>
+      </div>
+
+      <div class="slide-body">
+        <div id="body-left" class="body-left">
+          <!-- Dynamically populated cards -->
+        </div>
+        <div class="body-right">
+          <div class="visual-preview-box">
+            <div id="visual-tag" class="visual-tag">Vizual Sxema &amp; Arxitektura</div>
+            <div id="visual-content" class="visual-content">
+              <!-- Visual code / diagram -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="speaker-drawer">
+      <div class="drawer-header">
+        <div class="drawer-label">🎙️ Spiker Uchun Eslatma (Talk Track)</div>
+        <button id="close-drawer-btn" style="background:none; border:none; color:var(--text-muted); font-size:18px; cursor:pointer;">✕</button>
+      </div>
+      <div id="drawer-body" class="drawer-body">
+        <!-- Spiker speech notes -->
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="keyboard-hints">
+      Navigatsiya: <kbd>←</kbd> <kbd>→</kbd> yoki <kbd>Space</kbd> | Eslatma: <kbd>P</kbd>
+    </div>
+    <div class="progress-track">
+      <div id="progress-fill" class="progress-fill"></div>
+    </div>
+    <div class="nav-btn-group">
+      <button id="prev-btn" class="nav-btn" title="Oldingi slayd">←</button>
+      <button id="next-btn" class="nav-btn" title="Keyingi slayd">→</button>
+    </div>
+  </footer>
+</div>
+
+<script>
+const slidesData = [
+  {
+    num: 1,
+    chapter: "I BOB: 1-Kun Tahlili va Rekap",
+    title: "Xush Kelibsiz! Praktikum 2.0 - 2-Kunning Bosh Maqsadi",
+    bullets: [
+      { h: "Oddiy Suhbatdoshlikdan Tizimli Me'morlikka", p: "Shunchaki chatda gaplashib, chiroyli matn olish emas, AIni o'z kompyuteringizdagi fayllarga, terminalga va biznes bazangizga xo'jayin qilish." },
+      { h: "Bugungi Asosiy Mahsulot: Yopiq Lead Zanjiri", p: "Sayt (Landing) → Forma → Google Sheets (Baza) → Telegram Bot (1 soniyada ogohlantirish)." },
+      { h: "Boshqaruvchi Roli", p: "Dasturlashni bilish shart emas. Siz bugun bosh me'mor (architect) rolidasiz, Claude esa sizning eng tajribali katta muhandisingiz." }
+    ],
+    visualTag: "4 Haftalik Yo'l Xaritasi",
+    visual: "1-Kun: AI Poydevori & NotebookLM [MUVAFFAQ TARZDA BITDI]\n2-Kun: Claude Ekotizimi, Memory & Lead Funnel [BUGUN]\n3-Kun: MCP, Skills, External APIs & Deployment\n4-Kun: Autonomous Multi-Agent Systems (Hermes)",
+    talkTrack: "Assalomu alaykum, hurmatli tadbirkorlar va boshqaruvchilar! Hammangizni Praktikum 2.0 ning ikkinchi kunida ko'rib turganimdan bag'oyat xursandman. Bugun biz sifat jihatidan mutlaqo yangi bosqichga sakraymiz. Bugun kechga borib har biringizning qo'lingizda ishlaydigan tayyor biznes aktivi bo'ladi!"
+  },
+  {
+    num: 2,
+    chapter: "I BOB: 1-Kun Tahlili va Rekap",
+    title: "Dushanba Kuni Nima Bo'ldi? (1-Kundan Keyingi Natijalar Tahlili)",
+    bullets: [
+      { h: "NotebookLM & RAG Sinovi", p: "Kim o'z korporativ nizomlari, xodimlar yo'riqnomasi yoki shartnomalarini yuklab, tahlil qilib ko'rdi?" },
+      { h: "Audio Podkast Yaratish", p: "Kim o'z biznes hisobotlari asosida mashinada eshitish uchun inglizcha audio-sharh yaratdi?" },
+      { h: "Qaysi Ko'r Nuqta Ochildi?", p: "Shartnomalardan yoki qoidalardan o'zingiz kutmagan qanday faktlarni AI topib berdi? Zaldan 2-3 ta qisqa jonli keys!" }
+    ],
+    visualTag: "Interaktiv Zal So'rovi",
+    visual: "[ ? ] Kim o'tgan haftada NotebookLM ni ochdi?\n[ ? ] Kim shartnomalaridagi xatarlarni aniqladi?\n[ ? ] Kim xodimlar uchun savol-javob bazasi qildi?\n\n=> 2-3 nafar ishtirokchiga jonli mikrofon uzatiladi.",
+    talkTrack: "Keling, avval o'tgan haftadan keyin ofisingizda nima sodir bo'lganini ko'ramiz. Kim dushanba kuni amalda sinab ko'rdi? Qani, zaldan 2-3 kishining g'alabasini eshitaylik!"
+  },
+  {
+    num: 3,
+    chapter: "I BOB: 1-Kun Tahlili va Rekap",
+    title: "Xotira Mashqi: Dasturxon, Tokenomika va RAG Nima Edi?",
+    bullets: [
+      { h: "Dasturxon (Kontekst Darchasi)", p: "Muzokara stoli kabi: qancha ko'p keraksiz narsa qo'ysangiz, diqqat shuncha tarqaladi. Unga faqat eng muhim 5-10 ta manbani qo'yish kerak." },
+      { h: "Tokenomika (Tokens)", p: "Taksi hisoblagichiga o'xshaydi: kiruvchi matn arzon, chiquvchi javob hisoblash talab qiladi. Aniq topshiriq - kam xarajat." },
+      { h: "RAG (Retrieval-Augmented Generation)", p: "Kutubxonachi kabi: hamma kitobni yodlash shart emas, kerakli faktni javondan olib javob beradi." }
+    ],
+    visualTag: "Uch Ustunli Taqqoslash",
+    visual: "+-------------------+-----------------------+--------------------+\n| Konsept           | Kundalik Analogiya    | Biznes Sabog'i     |\n+-------------------+-----------------------+--------------------+\n| Context Window    | Dasturxon / Stol      | Ortiqcha narsa solma|\n| Tokenomics        | Taksi hisoblagichi    | Aniq buyruq = arzon |\n| RAG               | Arxivchi / Kutubxona  | Faktga asoslanish  |\n+-------------------+-----------------------+--------------------+",
+    talkTrack: "Boshlashdan oldin uchta oltin tushunchani eslab olaylik: Dasturxon, Tokenomika va RAG. Bugungi darsimizda bular bizga nega kerakligini tushunasiz, chunki biz AIni o'z mahalliy fayllarimizga ulaymiz."
+  },
+  {
+    num: 4,
+    chapter: "I BOB: 1-Kun Tahlili va Rekap",
+    title: "O'tgan Praktikum Qahramonlari: Biznes Egalarining Real Keyslari",
+    bullets: [
+      { h: "Onkolog Shifokor Keysi", p: "KT tahlillari bo'yicha operatsiya murakkabligini baholovchi 12 ballik interaktiv shkala yaratdi. Qaror qabul qilish vaqti 65% ga qisqardi." },
+      { h: "Burxon Aka (Germetika Distribyutori)", p: "Viloyatlardagi dilerlarning aralash xabarlarini tanib, tovar hajmi (m³) va og'irligini avtomatik hisoblab beruvchi aqlli bot qildi." },
+      { h: "Chakana Savdo (Retail) Egasi", p: "3 kunlik yo'qolgan tovarlar aktini 5 daqiqada tahlil qilib, 3 million so'mlik nomutanosiblikni fosh etdi." }
+    ],
+    visualTag: "Mahalliy Keyslar ROI",
+    visual: "ONKOLOG KEYS:  12 ballik shkala -> Operatsiya tahlili 65% tezroq\nBURXON AKA:    m3 va kg hisob-kitob -> Dilerlar zanjiri avtomatlashdi\nRETAIL KEYS:   3 kunlik tahlil -> 5 daqiqa, 3 mln so'm asrab qolindi",
+    talkTrack: "Bular dasturchilar emas, siz kabi oddiy biznes egalari. Nega ularda o'xshadi? Chunki ular AIni o'yinchoq deb emas, vaqt o'g'rilarini yo'q qiluvchi vosita deb qarashdi."
+  },
+  {
+    num: 5,
+    chapter: "I BOB: 1-Kun Tahlili va Rekap",
+    title: "'AI Tabletka' Sindromi va Biznes Egasining Qaytish Ko'rsatkichi (ROI)",
+    bullets: [
+      { h: "1-Bosqich: Shubha", p: "Har 10 daqiqada 'bepul limitim tugamadimi?', '20 dollar to'lashga arziydimi?' deb xavotirlanish." },
+      { h: "2-Bosqich: Ishtaha", p: "2 kunlik ishni 10 daqiqada bitirganingizdan so'ng, bajonidil $100-$200 lik professional API tariflariga o'tasiz. Chunki vaqtingiz qimmatroq!" },
+      { h: "3-Bosqich: Hayot Tarzi", p: "Har bir yangi biznes muammosiga 'Buni qaysi agentga topshirishim mumkin?' deb qaray boshlaysiz." }
+    ],
+    visualTag: "Biznes Egasiga ROI Formulasi",
+    visual: "ROI = (Oylik $800 oladigan tahlilchi xodim) / ($5 API tokeni + 15 daqiqa Claude)\n\nNatija: 320x Unumdorlik va 99% vaqt tejovi!",
+    talkTrack: "Sun'iy intellekt xarajat emas. Bu sizning kompaniyangizdagi eng arzon, hech qachon kasal bo'lmaydigan intellektual xodimingizdir."
+  },
+  {
+    num: 6,
+    chapter: "II BOB: Claude Ekotizimi va Zinapoya",
+    title: "Foydalanuvchining Yetuklik Zinapoyasi (The Maturity Ladder)",
+    bullets: [
+      { h: "1-Daraja: Oddiy Suhbatdosh (Casual)", p: "Odamlarning 90 foizi shu yerda. Quruq chat, xotirasizlik, AIdan umumiy javoblar olib hafsalasi pir bo'lish." },
+      { h: "2-Daraja: Professional Tadqiqotchi (Power Worker)", p: "5-7 foiz foydalanuvchilar. Artifacts, Projects, Web Search, Scheduled vazifalar." },
+      { h: "3-Daraja: Mahalliy Tizim Me'mori (System Builder)", p: "1-2 foiz yetakchilar. Claude Code, Terminal, Fayllar, APIlar, avtomatizatsiyalar. [BUGUNGI MAQSAD]" },
+      { h: "4-Daraja: Avtonom Boshqaruvchi (Autonomous Executive)", p: "Ko'p agentli avtomatlashtirilgan biznes tizimlari." }
+    ],
+    visualTag: "4 Pog'onali Zinapoya",
+    visual: "[4] Avtonom Boshqaruvchi   <-- Multi-Agent, 24/7 Funnels\n[3] Mahalliy Tizim Me'mori <-- Claude Code, Terminal, CLAUDE.md [BUGUN]\n[2] Professional Worker    <-- Projects, Artifacts, Web Search\n[1] Oddiy Suhbatdosh       <-- Chat, Quruq savol-javob",
+    talkTrack: "Odamlar nega AIdan hafsalasi pir bo'ladi? Chunki ular 1-darajada turib baho beradi. Bugun biz 2-darajani to'liq tushunib, to'g'ridan-to'g'ri 3-darajaga sakraymiz!"
+  },
+  {
+    num: 7,
+    chapter: "II BOB: Claude Ekotizimi va Zinapoya",
+    title: "1-Daraja: Oddiy Suhbatdosh (Nega Aksariyat Odamlar Natija Ololmaydi?)",
+    bullets: [
+      { h: "Bir Martalik So'rov (One-Shot Trap)", p: "'Menga kiyim do'koni uchun marketing reja yoz'. Natija: Vikipediyadan olingan suvli, umumiy gaplar." },
+      { h: "Xotirasizlik Jazosi (Statelessness)", p: "Ertaga yangi chat ochganingizda Claude sizning kimligingizni, mahsulotingiz narxini yana unutadi." },
+      { h: "Ijro Etolmaslik (No Execution)", p: "Chat sizga chiroyli maslahat beradi, lekin uni kompyuteringizdagi faylga yozib berolmaydi, dasturga aylantirolmaydi." }
+    ],
+    visualTag: "1-Daraja Anatomiyasi",
+    visual: "USER: Menga biznes-reja tuzib ber.\nCLAUDE: Albatta! 1. Bozor tahlili qiling. 2. Marketing qiling. 3. Sotuvni oshiring.\n\n=> BIZNES QIYMATI: 0%\nSABAB: Kontekst yo'q, cheklov yo'q, ijro mexanizmi yo'q!",
+    talkTrack: "Tasavvur qiling, yangi boshqaruvchini ishga oldingiz-da, hech narsa tushuntirmay 'Qani reja tuz' dedingiz. U ham umumiy gap aytadi. AIni ayblashdan oldin unga bergan muhitimizga qaraylik."
+  },
+  {
+    num: 8,
+    chapter: "II BOB: Claude Ekotizimi va Zinapoya",
+    title: "2-Daraja: Claude Chat Imkoniyatlarining To'liq Xaritasi",
+    bullets: [
+      { h: "Claude Chat - Shunchaki Chat Emas", p: "Bu Anthropic kompaniyasi tomonidan yaratilgan ko'p tarmoqli boshqaruv kabineti." },
+      { h: "5 Ta Asosiy Qurol", p: "1. Artifacts | 2. Claude Projects | 3. Web Search | 4. Scheduled Tasks | 5. Connectors (Drive/Notion)." },
+      { h: "Maqsad", p: "Vazifani shunchaki yozishma sifatida qoldirmasdan, uni alohida vizual darchaga va korporativ bilim xonalariga ajratish." }
+    ],
+    visualTag: "Claude Chat 5 Quroli",
+    visual: "+--------------------------------------------------------+\n|                   CLAUDE CHAT OFISI                    |\n+--------------------------------------------------------+\n|  [1] Artifacts       --> Vizual sandbox & prototip     |\n|  [2] Projects        --> Korporativ bilim xonalari     |\n|  [3] Web Search      --> Jonli 2026 qidiruv bazasi     |\n|  [4] Scheduled Tasks --> Avtomatik kunlik hisobotlar   |\n|  [5] Connectors      --> Google Drive & Notion sync    |\n+--------------------------------------------------------+",
+    talkTrack: "Endi 2-darajani chuqur ochamiz. Ko'pchilik Claude Chat deganda bitta oynani tushunadi. Aslida uning ichida 5 ta mustaqil vosita bor."
+  },
+  {
+    num: 9,
+    chapter: "II BOB: Claude Ekotizimi va Zinapoya",
+    title: "Komponent 1: Artifacts (Interaktiv Artefaktlar) - Vizual Sandbox",
+    bullets: [
+      { h: "Split-Screen Inqilobi", p: "Chat chapda davom etadi, yaratilgan dastur kodi, interaktiv kalkulyator yoki shartnoma o'ng tomondagi jonli darchada ochiladi." },
+      { h: "Nimalar Yaratish Mumkin?", p: "HTML/JS veb-sahifalar, React vidjetlari, SVG chizmalar va to'liq Markdown tahlillar." },
+      { h: "Bir Bosishda Ulashish", p: "Yaratilgan artefaktni havola (link) orqali darhol do'stlaringizga yoki xodimlaringizga yuborish imkoniyati." }
+    ],
+    visualTag: "Split-Screen Ko'rinishi",
+    visual: "+-----------------------+--------------------------------+\n| CHAT OYNASI           | INTERAKTIV ARTIFACT            |\n|                       |                                |\n| 'Mebel kalkulyatori   | [ Eni: 2m  Bo'yi: 3m         ] |\n| qilib ber...'         | [ Narx: $450  [Buyurtma]      ] |\n|                       |                                |\n+-----------------------+--------------------------------+",
+    talkTrack: "Oldinlari ChatGPT kod bersa, uni ko'chirib qayerdadir tekshirish kerak edi. Claudeda esa o'ng tomonda interaktiv ilova jonlanadi. Lekin bu brauzer ichidagi qumquloq!"
+  },
+  {
+    num: 10,
+    chapter: "II BOB: Claude Ekotizimi va Zinapoya",
+    title: "Komponent 2: Claude Projects - Shaxsiy Korporativ Bo'lim Boshlig'i",
+    bullets: [
+      { h: "Project Knowledge (Loyiha Bilimlari)", p: "Narxlar, mahsulot katalogi va qoidalarni bir marta yuklaysiz. Barcha yangi chatlar shu ma'lumotni bilib turadi." },
+      { h: "Custom Project Instructions", p: "'Sen bizning CFO emassan. Faqat EBITDA va cash-flow bo'yicha jadvallar bilan javob ber' kabi qat'iy xulq-atvor qoidalari." },
+      { h: "Jamoaviy Ishlash (Team Sharing)", p: "Yaratilgan bilim xonasini butun jamoa bilan ulashing - hamma bir xil standartda ishlaydi." }
+    ],
+    visualTag: "Loyiha Xonasi Arxitekturasi",
+    visual: "+--------------------------------------------------------+\n| LOYIHA: 'Mebel Savdo Bo'limi'                         |\n| Knowledge: narxlar.pdf, katalog.xlsx, mijoz_portreti   |\n| Instructions: 'Doimo Luxury uslubda professional gapir'|\n|                                                        |\n| Chat 1: Toshkent mijozi  | Chat 2: Samarqand filiali   |\n+--------------------------------------------------------+",
+    talkTrack: "Har safar kompaniyangizni tanishtirishdan charchadingizmi? Claude Projects sizning korporativ bilimlar xonangizdir. Bir marta yuklaysiz, umrbod eslab qoladi."
+  },
+  {
+    num: 11,
+    chapter: "II BOB: Claude Ekotizimi va Zinapoya",
+    title: "Komponent 3 & 4: Web Search va Rejalashtirilgan Vazifalar (Scheduled)",
+    bullets: [
+      { h: "Jonli Qidiruv (Web Search)", p: "Eskirgan bilimlar o'rniga internetdan bugungi jonli ma'lumotlarni qidirib topadi va manbalarga havola beradi." },
+      { h: "Biznesga Foydasi", p: "Raqobatchilarning bugungi narxlarini tekshirish, yangi qonun hujjatlarini topish, bozor yangiliklarini monitoring qilish." },
+      { h: "Scheduled Tasks (Taymer & Cron)", p: "Har kuni ertalab 08:30 da yangiliklar tahlilini tayyorlash yoki har juma haftalik xulosa chiqarish." }
+    ],
+    visualTag: "Jonli Qidiruv & Taymer",
+    visual: "WEB SEARCH:       Internet (2026) --> Haqiqiy manbalar tahlili\nSCHEDULED TASKS:  Har dushanba 09:00 --> 'Haftalik sotuv auditini tayyorla'",
+    talkTrack: "Web Search modelning 'men faqat 2024-yilgacha bilaman' degan dardini davolaydi. Scheduled tasks esa siz uxlayotganingizda ham ishlaydigan kotibdir."
+  },
+  {
+    num: 12,
+    chapter: "II BOB: Claude Ekotizimi va Zinapoya",
+    title: "Komponent 5: Integratsiyalar va Tashqi Konnektorlar (Connectors)",
+    bullets: [
+      { h: "Google Drive Connector", p: "Kompaniyangizning Drive papkasini to'g'ridan-to'g'ri ulab qo'yasiz. Jadval yangilansa, Claude eng yangi versiyani o'qiydi." },
+      { h: "Notion & GitHub", p: "Jamoaviy vazifalar, korporativ wiki sahifalari va dasturchilar kodi bilan doimiy sinxronizatsiya." },
+      { h: "Maxfiylik va Xavfsizlik", p: "Ma'lumotlar faqat sizning ruxsatingiz bilan o'qiladi, ochiq modelni o'qitish uchun ishlatilmaydi." }
+    ],
+    visualTag: "Konnektorlar Zanjiri",
+    visual: "[ Google Drive ] <===\n[ Notion Wiki  ] <===> [ CLAUDE CHAT ] <===> [ Korporativ Natija ]\n[ GitHub Repos ] <===",
+    talkTrack: "Fayllarni yuklab olib, qayta yuklash davri o'tdi. Konnektorlar orqali Claude sizning barcha ishchi platformalaringiz bilan to'g'ridan-to'g'ri bog'lanadi."
+  },
+  {
+    num: 13,
+    chapter: "II BOB: Claude Ekotizimi va Zinapoya",
+    title: "2-Darajaning Chegarasi: 'Nega Artifactdagi Narsa Biznesimda Ishlamayapti?'",
+    bullets: [
+      { h: "Tadbirkorning Mental To'sig'i", p: "'Men Artifactda chiroyli landing qildim, Vercelga chiqardim... Lekin mijoz tugmani bossa hech qayerga xabar bormayapti!'" },
+      { h: "Brauzer Qafasi (Sandbox Trap)", p: "Xavfsizlik vajidan Claude Artifacts sizning kompyuteringizdagi fayllarga va bazangizga teginolmaydi." },
+      { h: "Statelesslik & Motor Yo'qligi", p: "Sahifa yangilanishi bilan ma'lumot uchadi. U yerda go'zal zal bor, lekin ovqat pishiradigan oshxona (backend) yo'q!" }
+    ],
+    visualTag: "Qafasdagi Prototip",
+    visual: "+--------------------------------------------------------+\n| VERCEL DEPLOY QILINGAN ARTIFACT                        |\n| [ Ismingiz: Akmal ] [ Telefon: +99890... ] [ YUBORISH ]|\n+--------------------------------------------------------+\n                      |  (Xatolik!)\n                      X  HECH QAYERGA BORMAYDI!\n                         Baza yo'q, Telegram yo'q!",
+    talkTrack: "Mana bu slaydda hamma diqqatini jamlasin! Zaldagilarning 90 foizi mana shu joyda to'xtab qolgan. Siz chiroyli rasm chizgansiz, lekin uning orqasida motor yo'q. Bugun biz mana shu motorni quramiz!"
+  },
+  {
+    num: 14,
+    chapter: "III BOB: Bulutdan Mahalliy Kompyuterga",
+    title: "Katta Sakrash: Bulutli Qafasdan Mahalliy Kompyuterga (The Local Leap)",
+    bullets: [
+      { h: "Yashash Joyi", p: "Bulutli chat brauzerda cheklangan bo'lsa, mahalliy kompyuterda Claude sizning haqiqiy ish stantsiyangizga kiradi." },
+      { h: "Fayllar Bilan Ishlash", p: "Faqat upload/download qilish o'rniga fayllarni to'g'ridan-to'g'ri o'qiydi, o'zgartiradi va yangilarini yaratadi." },
+      { h: "Terminal va Buyruqlar", p: "Istalgan dasturni o'rnatishi, skriptlarni yurgizishi, xatoliklarni o'zi tekshirib tuzatishi mumkin." }
+    ],
+    visualTag: "Chat vs Local Machine",
+    visual: "+-------------------+-----------------------+-----------------------+\n| Xususiyat         | Claude Chat (Bulut)   | Claude Code (Mahalliy)|\n+-------------------+-----------------------+-----------------------+\n| Yashash joyi      | Brauzer sandbox       | Sizning kompyuteringiz|\n| Fayllar           | Cheklangan yuklash    | To'liq erkin boshqaruv|\n| Terminal          | YO'Q                  | HA (bash, zsh, git)   |\n| Baza & API        | Yo'q                  | To'liq integratsiya   |\n+-------------------+-----------------------+-----------------------+",
+    talkTrack: "Farqni his qilyapsizmi? Chatda siz sayyohsiz, mehmonxonadasiz. Kompyuteringizda esa Claude sizning qo'lingizdagi eng qudratli boshqaruv pultiga aylanadi."
+  },
+  {
+    num: 15,
+    chapter: "III BOB: Bulutdan Mahalliy Kompyuterga",
+    title: "3-Daraja: Mahalliy Tizim Me'mori va Claude Code (CLI)",
+    bullets: [
+      { h: "Claude Code Nima?", p: "Bu terminalda yashovchi, Anthropic tomonidan yaratilgan rasmiy avtonom sun'iy intellekt muhandisi." },
+      { h: "O'qiydi (Read)", p: "Loyiha papkangizdagi barcha fayllarni ko'zdan kechiradi va tushunadi." },
+      { h: "Bajaradi & Tuzatadi (Act & Verify)", p: "Fayllarni o'zgartiradi, buyruqlarni ishga tushiradi, agar xato chiqsa sizdan so'ramasdan o'zi tuzatadi!" }
+    ],
+    visualTag: "Claude Code Agentik Sikli",
+    visual: "READ (Fayllarni o'qish) \n  --> THINK (Arxitekturani rejalashtirish)\n    --> ACT (Kodni yozish va buyruqni berish)\n      --> VERIFY (Tekshirish va o'z xatosini tuzatish)",
+    talkTrack: "Claude Code - bugun dasturlash olamidagi eng zo'r vosita. U shunchaki maslahat bermaydi, u ishni oxirigacha bajaradi, tekshiradi va ishlaydigan qilib topshiradi."
+  },
+  {
+    num: 16,
+    chapter: "III BOB: Bulutdan Mahalliy Kompyuterga",
+    title: "Nega Biznes Egasi Terminal va Zed Dasturini Ishlatishi Kerak?",
+    bullets: [
+      { h: "Terminal - Qo'rqinchli Emas, Bu Super-Pult", p: "Kompyuter bilan vositachilarsiz gaplashishning eng tez yo'li. Siz faqat bitta buyruq yozasiz: claude." },
+      { h: "Zed Muharriri (Zed Editor)", p: "Dunyodagi eng tezkor va chiroyli muharrir. Ichida terminali bor, barcha fayllar ko'z o'ngingizda turadi." },
+      { h: "Boshqaruvchi Nigohi", p: "Siz g'isht teruvchi emassiz, lekin kaska kiyib, qurilish maydonini va chizmalarni boshqarishingiz kerak." }
+    ],
+    visualTag: "Boshqaruv Pulti: Zed + Terminal",
+    visual: "+--------------------------------------------------------+\n| ZED MUHARRIRI                                          |\n| [Fayllar Daraxti]  | [Kod & Hujjatlar]                 |\n| index.html         | <!DOCTYPE html>                   |\n| content.md         | # Biznes Taklifimiz               |\n| CLAUDE.md          |                                   |\n|--------------------+-----------------------------------|\n| TERMINAL: $ claude                                     |\n+--------------------------------------------------------+",
+    talkTrack: "Terminalda `claude` deb yozish uchun dasturchi bo'lish shart emas. Bu sizning korporativ kabinetingiz va qurilish kaskangizdir."
+  },
+  {
+    num: 17,
+    chapter: "III BOB: Bulutdan Mahalliy Kompyuterga",
+    title: "Agent Konstitutsiyasi va Doimiy Xotira (`CLAUDE.md`)",
+    bullets: [
+      { h: "Nega Modellar Unutuvchan?", p: "Stateless arxitektura sababli har safar yangi muloqotda hammasi o'chadi. Buni yengishning yagona yo'li - doimiy yozma qoidalar." },
+      { h: "Global Xotira (`~/.claude/CLAUDE.md`)", p: "Butun bino qoidalari. Kompyuteringizdagi barcha loyihalar uchun majburiy uslub va axloqiy talablar." },
+      { h: "Loyiha Qoidalari (`./CLAUDE.md`)", p: "Aynan shu veb-sayt yoki loyiha papkasiga tegishli qat'iy texnik va biznes ko'rsatmalar." }
+    ],
+    visualTag: "Xotira Ierarxiyasi",
+    visual: "GLOBAL KONSTITUTSIYA (~/.claude/CLAUDE.md)\n   │  (Barcha loyihalarga taalluqli qoidalar)\n   ▼\nLOYIHA XOTIRASI (./CLAUDE.md)\n   │  (Aynan shu sayt va shu biznes talablari)\n   ▼\nCLAUDE CODE HARAKATI (Hech qachon qoidani buzmaydi)",
+    talkTrack: "Yangi xodim ishga kelsa ichki tartib-qoidani berasiz-ku. `CLAUDE.md` - bu sizning AIdan talab qiladigan o'zgarmas qonuningizdir."
+  },
+  {
+    num: 18,
+    chapter: "III BOB: Bulutdan Mahalliy Kompyuterga",
+    title: "Spikerning Global `CLAUDE.md` Oltin Qoidalari",
+    bullets: [
+      { h: "Never Use M-dash (-)", p: "Uzun tire qo'ymaslik. AI akademik matnlardan o'rgangan va uzun tire qo'yib tashlaydi, odamlar buni AI yozganini darhol bilib qoladi." },
+      { h: "Temporal Anchor: 2026", p: "'Current year is 2026'. Aks holda internetdan eskirgan 2024-yilgi ma'lumotlarni qidiradi." },
+      { h: "Reproduce Before Fixing", p: "Xatoni taxmin qilib butun kodni buzma, avval nima sababdan yiqilganini aniq ko'rsat." },
+      { h: "Simplicity Over Complexity", p: "Ortiqcha og'ir kutubxonalarni tiqma, eng oddiy va mustahkam yechimni ber." }
+    ],
+    visualTag: "CLAUDE.md Oltin Qoidalari",
+    visual: "# GLOBAL CLAUDE.md QOIDALARI:\n1. Never use m-dash (-), only standard hyphens (-).\n2. Current year is 2026.\n3. One sentence per line in markdown.\n4. Reproduce and verify before fixing.\n5. Keep solutions robust, simple, and minimal.",
+    talkTrack: "Mana bu 5 ta qoida yuzlab soatlik asablar evaziga shakllangan. Ularni o'rnatib qo'ysangiz, Claude mutlaqo boshqa intellekt darajasida ishlaydi."
+  },
+  {
+    num: 19,
+    chapter: "III BOB: Bulutdan Mahalliy Kompyuterga",
+    title: "Dasturchilik Falsafasi: Nega Endi Biznes Egasi Kod Yozishi Shart Emas?",
+    bullets: [
+      { h: "Karpathy Qoidasi", p: "'The hottest new programming language is English (and your native tongue)'. Insoniy til - eng oliy dasturlash tili." },
+      { h: "Sintaksis O'rniga Mantiq", p: "Qavslar va nuqta-vergullarni eslab qolish shart emas. Asosiy e'tibor biznes mantiqiga va tizim arxitekturasiga qaratiladi." },
+      { h: "Bosh Muharrir (Editor-in-Chief)", p: "Siz qora ishchi emassiz, siz sun'iy intellekt taklif qilgan yechimlarni qabul qiluvchi yoki tuzatuvchi bosh muharrirsiz." }
+    ],
+    visualTag: "Dasturlash Evolyutsiyasi",
+    visual: "1980: 010101 (Perfokartalar)\n2000: Java / C++ (Murakkab sintaksis)\n2020: Python / Frameworklar\n2026: Insoniy Til (O'zbekcha / Inglizcha) <-- BIZ SHU YERDAMIZ!",
+    talkTrack: "Eng zo'r dasturchi kim? Sintaksisni yodlagan bola emas, balki o'z biznesini va mijozini chuqur tushunadigan tadbirkordir."
+  },
+  {
+    num: 20,
+    chapter: "III BOB: Bulutdan Mahalliy Kompyuterga",
+    title: "SWE-Bench va LLM Raqobati: Nega Aynan Claude Peshqadam?",
+    bullets: [
+      { h: "SWE-Bench Nima?", p: "Dasturiy injiniring bo'yicha eng nufuzli jahon standarti (GitHub dagi real murakkab muammolar imtihoni)." },
+      { h: "Claude Mutlaq Peshqadam", p: "SWE-bench Verified testlarida Claude 3.5 va 3.7 Sonnet uzoq vaqt davomida birinchi o'rinni egallab kelmoqda." },
+      { h: "Biznesga Ta'siri", p: "Siz xato qiladigan xom model bilan emas, dunyoning eng kuchli dasturiy injiniring miyasi bilan ishlaysiz." }
+    ],
+    visualTag: "SWE-Bench Benchmark",
+    visual: "CLAUDE 3.7 SONNET:  [========================] #1 O'RIN\nGPT-4o:              [====================    ]\nDEEPSEEK V3:         [==================      ]\n\n=> Murakkab kod va arxitekturada eng barqaror model.",
+    talkTrack: "Modellar ko'p, lekin nega aynan Claude? Chunki dasturiy arxitektura va kod yaratish bo'yicha u bugungi kunda jahonning eng ishonchli injiniridir."
+  },
+  {
+    num: 21,
+    chapter: "III BOB: Bulutdan Mahalliy Kompyuterga",
+    title: "Simon Sinek & Ethan Mollick Gipotezasi: Sizning Himoya Qal'angiz (Moat) Nima?",
+    bullets: [
+      { h: "Texnologiya Hammada Bir Xil", p: "Raqobatchilaringiz ham xuddi siz kabi oyiga $20 to'lab, o'sha Claudeni yoqishi mumkin." },
+      { h: "Moat Qayerda?", p: "Farqni model emas, siz beradigan chuqur korporativ kontekst, biznes strategiyasi va tizimli prompt muhandisligi belgilaydi." },
+      { h: "G'alaba Formulasi", p: "G'alaba = Mukammal Model × Chuqur Biznes Konteksti × Strategik Prompt." }
+    ],
+    visualTag: "Himoya Qal'asi (Moat)",
+    visual: "UMUMIY SAVOL  --> Umumiy Javob  --> 0% Raqobat Ustunligi\nCHUQUR KONTEKST + QAT'IY CHEKLOV --> Shaxsiy Tizim --> YENGILMAS MOAT!",
+    talkTrack: "Agar hamma bir xil texnologiyani ishlatsa, kim yutadi? O'z mijozini biladigan va AIni tizimga aylantira olgan tadbirkor yutadi."
+  },
+  {
+    num: 22,
+    chapter: "IV BOB: Boshqaruvchi Prompt Muhandisligi",
+    title: "'Menga Post Yoz'dan Voz Keching: Boshqaruvchi Prompt Formulasi",
+    bullets: [
+      { h: "Kontekst (Context)", p: "Biz kimligimiz, mahsulotimiz, mijoz kim, qaysi bozordamiz." },
+      { h: "Cheklov (Constraint)", p: "AI nimalarni qilmasligi kerak (umumiy gaplar taqiqlanadi, byudjet cheklangan)." },
+      { h: "Tanqidiy Qarshilik (Friction / Steelmanning)", p: "Xushomadgo'ylik emas, qattiq tanqidchi va skeptik investor roliga kirishni talab qilish." },
+      { h: "Aniq Format (Deliverable)", p: "Lirik matn emas, aniq jadval, checklist yoki 3 bosqichli harakat rejasi." }
+    ],
+    visualTag: "The Executive Formula",
+    visual: "+--------------------------------------------------------+\n|    KONTEKST  +  CHEKLOV  +  QARSHILIK  +  ANIQ FORMAT  |\n+--------------------------------------------------------+\nMisol: 'Men [X] sotaman. Hech qanday maqtovsiz eng katta\n3 ta xavfni jadval ko'rinishida ko'rsat!'",
+    talkTrack: "Boshqaruvchi hech qachon shunchaki post yozdirmaydi. Har bir so'rovingizda kontekst, cheklov, tanqidiy qarshilik va aniq format bo'lishi shart."
+  },
+  {
+    num: 23,
+    chapter: "IV BOB: Boshqaruvchi Prompt Muhandisligi",
+    title: "250 Ta Strategik Prompt Kutubxonasi (O'zbek Tiliga Moslashtirilgan)",
+    bullets: [
+      { h: "01. Biznes G'oyalar & Imkoniyatlar", p: "Bozordagi bo'shliqlar, cheklovlar ichida yechimlar, xizmatlarni mahsulotlashtirish." },
+      { h: "02. Tanqidiy Fikrlash & Qarorlar", p: "Gipotezalarni audit qilish, Steelmanning, xatarlarni baholash, First Principles." },
+      { h: "03. Sotuv & Strategik Muzokaralar", p: "Mijozni saralash (Qualification), narxni langarlash (Anchoring), e'tirozlar." },
+      { h: "04. Vizual & Reklama Avtomatizatsiyasi", p: "Kling, Midjourney, Flux video va rasm rejissyorligi, A/B testlar." },
+      { h: "05. Tezkor O'rganish & Ekspertiza", p: "Yangi sohani 48 soatda xaritalash, Feynman metodi, 80/20 qoidasi." }
+    ],
+    visualTag: "5 Ta Strategik To'plam",
+    visual: "[01] Biznes G'oyalar & Bo'shliqlar       (50 ta prompt)\n[02] Tanqidiy Fikrlash & Qaror Qabul      (50 ta prompt)\n[03] Sotuv & Strategik Muzokaralar        (50 ta prompt)\n[04] Reklama, Rasm & Video                (50 ta prompt)\n[05] Tezkor O'rganish & Ekspertiza        (50 ta prompt)\n\nJAMI: 250 ta professional boshqaruvchi prompti!",
+    talkTrack: "Biz siz uchun jahondagi eng nufuzli 250 ta boshqaruv promptlarini saralab, o'zbek tiliga moslashtirdik. Bugun dars oxirida barchasi sizga beriladi."
+  },
+  {
+    num: 24,
+    chapter: "IV BOB: Boshqaruvchi Prompt Muhandisligi",
+    title: "Jonli Demo 1: Gipotezalarni Audit Qilish (Assumption Auditing & Steelmanning)",
+    bullets: [
+      { h: "Maqsad", p: "Yangi mahsulot yoki xizmat gipotezasini 'yanchib tashlash' va ko'r nuqtalarni ochish." },
+      { h: "Skeptik Investor Roli", p: "AIdan do'stona maqtov emas, 5 ta eng zaif yashirin taxminni fosh qilishni so'raymiz." },
+      { h: "48 Soatlik Bepul Sinov", p: "Har bir xavfni 48 soat ichida 0 so'm xarajat bilan tekshirish usuli jadvali." }
+    ],
+    visualTag: "Jonli Prompt Matni",
+    visual: "PROMPT:\n'Men [mahsulot] boshlamoqchiman. Shafqatsiz skeptik investor\nroliga kir. Mening biznes modelim asosida yotgan eng zaif 5 ta\nyashirin gipotezani aniqlab ber. Har birini 48 soatda, 0$ sarflab\nqanday test qilish mumkinligini jadvalda ko'rsat!'",
+    talkTrack: "Do'stlaringiz sizning ko'nglingiz uchun maqtab turadi. Claude esa 5 ta halokatli xatarni stolingizga qo'yadi va 48 soatda buni tekshirish yo'lini ko'rsatadi."
+  },
+  {
+    num: 25,
+    chapter: "IV BOB: Boshqaruvchi Prompt Muhandisligi",
+    title: "Jonli Demo 2: Bozordagi Bo'shliqni Topish va Xizmatni Mahsulotlashtirish",
+    bullets: [
+      { h: "Xizmat Qopqoni", p: "Har safar mijoz bilan uzoq savdolashish va individual smeta tuzishdan charchash." },
+      { h: "Mahsulotlashtirish (Productization)", p: "Qat'iy qamrov (Fixed scope), qat'iy muddat va standart oylik narx." },
+      { h: "No-Brainer Taklif", p: "Inson omilini 70% ga qisqartirib, mijoz rad etolmaydigan konveyer taklif yaratish." }
+    ],
+    visualTag: "Xizmatdan Mahsulotga",
+    visual: "NOSTANDART XIZMAT (Bosh og'rig'i, har safar yangi smeta)\n      │\n      ▼ [Productization Prompt]\nSTANDART MAHSULOT (Aniq qamrov, 3 kun muddat, qat'iy narx)",
+    talkTrack: "O'zbekistonda ko'p bizneslar xizmat qopqonida. Bu prompt orqali siz xizmatingizni o'ylab o'tirmasdan sotib olinadigan qadoqlangan mahsulotga aylantirasiz."
+  },
+  {
+    num: 26,
+    chapter: "IV BOB: Boshqaruvchi Prompt Muhandisligi",
+    title: "4-Daraja: Avtonom Boshqaruvchi (Autonomous Executive) - Ertangi Kun",
+    bullets: [
+      { h: "Prompt Yozishdan Nazoratga", p: "Siz endi kun bo'yi kompyuterda prompt yozib o'tirmaysiz." },
+      { h: "Ko'p Agentli Tarmoq", p: "Saytga kelgan leadni bir agent qabul qiladi, ikkinchisi boyitadi, uchinchisi taklif tayyorlaydi, to'rtinchisi kalendarga uchrashuv belgilaydi." },
+      { h: "3 va 4-Kunda", p: "Biz aynan mana shu avtonom agentlar poydevorini quramiz!" }
+    ],
+    visualTag: "Multi-Agent Avtomatizatsiyasi",
+    visual: "MIJOZ TUSHDI --> [Agent 1: Saralash]\n                --> [Agent 2: Tahlil & CRM boyitish]\n                  --> [Agent 3: Taklif & Kalendarga yozish]",
+    talkTrack: "Biz qayerga qarab ketayotganimizni ko'ring. Bugun poydevorni qo'yamiz, keyingi darsda esa tizimlar o'zaro avtonom muloqot qiladigan darajaga chiqadi."
+  },
+  {
+    num: 27,
+    chapter: "IV BOB: Boshqaruvchi Prompt Muhandisligi",
+    title: "Xulosa: Zinapoyadan Yuqoriga Qarab Yo'l",
+    bullets: [
+      { h: "Ertalabki Xulosa", p: "Quruq chat davri o'tdi. Biznes qiymati korporativ xotirada (CLAUDE.md) va mahalliy ijroda (Claude Code)." },
+      { h: "Amaliyotga O'tish", p: "Endi to'liq yopiq zanjirli Lead Funnel tizimining texnik me'morligini tahlil qilamiz." },
+      { h: "Bosh Bino Qoidasi", p: "Frontend + Backend + Google Sheets + Telegram Bot!" }
+    ],
+    visualTag: "Zinapoyadan Amaliyotga",
+    visual: "NAZARIYA TUGADI  ====>  AMALIYOT BOSHLANMOQDA\n\nMaqsad: To'liq ishlaydigan Full-Funnel Lead Engine!",
+    talkTrack: "Nazariya tugadi. Endi aniq muhandislikka o'tamiz. Hozir birgalikda tizimning har bir bo'g'inini ko'rib chiqamiz."
+  },
+  {
+    num: 28,
+    chapter: "V BOB: Tizim Arxitekturasi",
+    title: "Yopiq Zanjir Arxitekturasi: Full-Funnel Lead Engine",
+    bullets: [
+      { h: "1. Veb-Sayt (Frontend)", p: "Zamonaviy dizayndagi landing sahifa (index.html) va qulay lead forma." },
+      { h: "2. Gateway (Transport)", p: "Google Apps Script so'rovni xavfsiz qabul qilib oladi." },
+      { h: "3. Database (Baza)", p: "Google Sheets da har bir mijoz uchun alohida qator ochiladi, vaqti qayd etiladi." },
+      { h: "4. Instant Alert (Xabar)", p: "1 soniya ichida rahbar yoki sotuvchining shaxsiy Telegramiga signal boradi." }
+    ],
+    visualTag: "To'liq Yopiq Zanjir",
+    visual: "+--------------------------------------------------------+\n| Veb-Sahifa (index.html)                                |\n|   --> Lead Forma (Ism, Tel, Xizmat)                    |\n|     --> Google Apps Script (Code.js)                   |\n|       --> Google Sheets (Mijozlar Bazasi)              |\n|       --> Telegram Bot (1 soniyada push-ogohlantirish) |\n+--------------------------------------------------------+",
+    talkTrack: "Biznesda eng muhim narsa nima? Tezlik! Garvard tadqiqotlariga ko'ra, 5 daqiqada bog'lanilsa konversiya 400% ga oshadi. Bu tizim 1 soniyada sizga xabar beradi."
+  },
+  {
+    num: 29,
+    chapter: "V BOB: Tizim Arxitekturasi",
+    title: "Restoran Analogiyasi: Frontend vs Backend Mantiqi",
+    bullets: [
+      { h: "Zal (Frontend)", p: "Chiroyli stollar, yoqimli musiqa, menyu. Mijoz ko'radigan hamma narsa - bu bizning HTML sahifamiz." },
+      { h: "Oshxona (Backend)", p: "Mijoz ko'rmaydigan, lekin ovqatni pishirib beradigan mantiq (Apps Script / Code.js)." },
+      { h: "Boshqaruvchi Xulosasi", p: "Qanchalik go'zal zal qilmang, agar oshxona bilan aloqa bo'lmasa, mijoz och qoladi. Saytda ham forma bazaga ulanishi shart!" }
+    ],
+    visualTag: "Zal vs Oshxona",
+    visual: "+----------------------------+----------------------------+\n| ZAL (Frontend)             | OSHXONA (Backend)          |\n| - Chiroyli dizayn          | - Ma'lumotlarni qabul qilish|\n| - Formadagi tugmalar       | - Jadvalga yozish          |\n| - Mijoz ko'radigan qism    | - Telegramga uzatish       |\n+----------------------------+----------------------------+",
+    talkTrack: "Dasturchilar frontend va backend deb qo'rqitishadi. Aslida bu restoran bilan bir xil: ko'zingiz ko'rgan narsa frontend, oshpazning pishirishi backend."
+  },
+  {
+    num: 30,
+    chapter: "V BOB: Tizim Arxitekturasi",
+    title: "Google Apps Script - Biznes Uchun Bepul, Serverless Oshpaz",
+    bullets: [
+      { h: "Nimadan Qutulamiz?", p: "Oyiga $10-$50 lik VPS server ijarasidan, Linux sozlashdan, SSL sertifikatlaridan." },
+      { h: "Nimaga滚动ga Ega Bo'lamiz?", p: "Google infratuzilmasida 100% bepul ishlovchi serverless platforma." },
+      { h: "Ishonchlilik", p: "Google Sheets bilan bitta ekotizimda, hech qachon yiqilmaydi va bitta tugma bilan Web App bo'lib deploy bo'ladi." }
+    ],
+    visualTag: "Serverless Tejamkorlik",
+    visual: "AN'ANAVIY YO'L:    VPS Server ($20/oy) + Linux + Dasturchi xizmati\nBIZNING YO'LIMIZ:  Google Apps Script (BEPUL) + Google Sheets + Claude",
+    talkTrack: "Dasturchilar sizga har doim server sotishga harakat qiladi. Kichik biznesga bu shart emas. Google Apps Script millionlab so'rovlarni tekinga ko'taradi."
+  },
+  {
+    num: 31,
+    chapter: "V BOB: Tizim Arxitekturasi",
+    title: "API va Xavfsizlik Asoslari: Bot Token va Ruxsatlar",
+    bullets: [
+      { h: "Telegram Bot Token", p: "Bu sizning uyingiz kaliti. Bot nomidan xabar yuborish huquqini beradi. Ochiq joylarda qoldirmang." },
+      { h: "Google Web App Ruxsati", p: "Deploy qilayotganda 'Who has access' degan joyini 'Anyone' qilish shart!" },
+      { h: "Eng Ko'p Uchraydigan Xato", p: "Agar 'Anyone' qilinmasa, saytingizdan kelgan buyurtmalar Google tomonidan bloklanadi." }
+    ],
+    visualTag: "Xavfsizlik & Ruxsatlar",
+    visual: "BOT TOKEN:         123456789:ABCdefGHIjklMNO... (O'ta maxfiy kalit)\nDEPLOY RUXSATI:    Who has access: Anyone  <-- JUDA MUHIM!",
+    talkTrack: "Mana bu texnik noziklikni eslab qoling. Amaliyotda kimdadir forma ishlamasa, 99% holatda 'Who has access: Anyone' unutilgan bo'ladi."
+  },
+  {
+    num: 32,
+    chapter: "VI BOB: Sahnadagi Master Demo",
+    title: "Sahnadagi Master Jonli Demo: Nol Papkadan Ishlaydigan Tizimgacha",
+    bullets: [
+      { h: "25 Daqiqalik Sinov", p: "Spiker hozir butun tizimni noldan yig'ib beradi." },
+      { h: "5 Qadam", p: "1. Papka & CLAUDE.md -> 2. Kontent intervyu -> 3. index.html -> 4. Apps Script -> 5. Telegram." },
+      { h: "Jonli Test", p: "Mobil telefondan buyurtma yuboriladi va natija proyektorda ko'rsatiladi!" }
+    ],
+    visualTag: "25 Daqiqalik Marshrut",
+    visual: "[00-05 min] Terminalda claude va CLAUDE.md\n[05-10 min] Biznes intervyu va content.md\n[10-15 min] Luxury Minimalist index.html\n[15-20 min] Google Sheets & Apps Script Web App\n[20-25 min] Telegram BotFather va Jonli Test!",
+    talkTrack: "Hurmatli do'stlar, endi so'zdan ishga o'tamiz. Mana mening bo'sh kompyuterim. Men hozir sizning ko'z o'ngingizda 25 daqiqada tizimni noldan yig'aman!"
+  },
+  {
+    num: 33,
+    chapter: "VI BOB: Sahnadagi Master Demo",
+    title: "1-Qadam: Terminalda claude va CLAUDE.md Loyiha Konstitutsiyasi",
+    bullets: [
+      { h: "Papka Ochish", p: "mkdir Lead_Engine && cd Lead_Engine" },
+      { h: "Claude Code ni Yoqish", p: "Terminalda claude buyrug'ini kiritish." },
+      { h: "Konstitutsiya Yozdirish", p: "Dizayn Luxury Minimalism bo'lsin, uzun tire taqiqlansin, sodda va mustahkam yechim berilsin." }
+    ],
+    visualTag: "Terminaldagi Qadam",
+    visual: "$ mkdir Lead_Engine && cd Lead_Engine\n$ claude\n> Biz premium mebel ishlab chiqaramiz. Loyiha uchun\n> qisqa va qat'iy CLAUDE.md yarat. Luxury Minimalism uslubida.",
+    talkTrack: "Bo'sh papka ochdim va claude deb yozdim. Birinchi ishim - Konstitutsiya yozdirish. Claude 3 soniyada CLAUDE.md ni yaratdi."
+  },
+  {
+    num: 34,
+    chapter: "VI BOB: Sahnadagi Master Demo",
+    title: "2-Qadam: Claude Bilan Biznes Intervyu va content.md",
+    bullets: [
+      { h: "Bosh Qoida", p: "Hech qachon to'g'ridan-to'g'ri sayt kodingni yozdirmang! Avval kontent pishishi kerak." },
+      { h: "Intervyu Prompti", p: "'Sayt kodini yozishdan oldin meni intervyu qil. 4 ta asosiy savol ber va javoblarim asosida content.md ni yarat'." },
+      { h: "Natija", p: "Mijoz og'rig'i, takliflar va shakl maydonlari aniq belgilangan hujjat." }
+    ],
+    visualTag: "Intervyu Bosqichi",
+    visual: "> Meni intervyu qil! Menga 4 ta eng muhim savol ber:\n> mijoz og'riqlari, takliflar va formada qaysi ma'lumotlar\n> kerakligi haqida. Javoblarim asosida content.md ni yoz.",
+    talkTrack: "Dasturchilarning eng katta xatosi - birdan sayt kodiga yopishish. Kontent bo'lmasa dizayn axlatga aylanadi. Claude intervyu qilib, content.md ni yaratdi."
+  },
+  {
+    num: 35,
+    chapter: "VI BOB: Sahnadagi Master Demo",
+    title: "3-Qadam: Luxury Minimalism Landing Sahifasi (index.html)",
+    bullets: [
+      { h: "Kontent Asosida Kod", p: "content.md faylidan foydalanib bitta to'liq index.html landing sahifasi yig'iladi." },
+      { h: "Dizayn Talabi", p: "Zamonaviy Tailwind CSS, Luxury Minimalism, mobil telefonlarga 100% moslashgan." },
+      { h: "Forma Maydonlari", p: "Ism, Telefon (+998), Mahsulot turi (Select), 'Katalogni Olish' tugmasi." }
+    ],
+    visualTag: "index.html Yaratish",
+    visual: "> content.md asosida to'liq index.html sahifasini yarat.\n> Luxury Minimalism uslubida bo'lsin. Ism, Telefon,\n> Mahsulot tanlash bo'lsin. Faylni papkada saqla.",
+    talkTrack: "Endi kontent tayyor bo'lgach, kodni yozdiramiz. Mana index.html yaratildi. Brauzerda ochsak - 1000 dollarlik agentlik chizgandek ko'rinadi!"
+  },
+  {
+    num: 36,
+    chapter: "VI BOB: Sahnadagi Master Demo",
+    title: "4-Qadam: Google Sheets va Apps Script Web App Deploy",
+    bullets: [
+      { h: "Jadval Ochish", p: "sheets.new orqali yangi jadval: Timestamp | Ism | Telefon | Mahsulot | Holat." },
+      { h: "Apps Script Kodi", p: "Claude yozib bergan Code.js skriptini script.google.com ga qo'yish." },
+      { h: "Web App Sifatida Deploy", p: "Execute as: Me | Who has access: Anyone parametrlarini qo'yib havola olish." },
+      { h: "Formaga Ulash", p: "Olingan URL ni index.html dagi forma harakatiga (action) biriktirish." }
+    ],
+    visualTag: "Google Web App Deploy",
+    visual: "1. sheets.new --> Bo'sh jadval\n2. script.google.com --> Code.js kodi\n3. Deploy --> New deployment --> Web app (Anyone)\n4. URL nusxalanib index.html ga ulandi!",
+    talkTrack: "Mana bu joyda sehr boshlanadi. Bo'sh jadval ochdim, Apps Script kodini joylab Deploy qildim. Endi sayt Google jadval bilan gaplasha oladi!"
+  },
+  {
+    num: 37,
+    chapter: "VI BOB: Sahnadagi Master Demo",
+    title: "5-Qadam: Telegram BotFather va Kulminatsion Test!",
+    bullets: [
+      { h: "BotFather", p: "Telegramda @BotFather orqali yangi bot va HTTP Token olinadi." },
+      { h: "Telefondan Yuborish", p: "Spiker o'z telefonida saytni ochadi: Akmal Raximov, +99890 123-45-67." },
+      { h: "Kulminatsiya", p: "1 soniyada proyektordagi Google jadvalga qator tushadi va telefon jiringlaydi!" }
+    ],
+    visualTag: "Kulminatsiya Zanjiri",
+    visual: "TELEFONDA BOSILDI  ===>  [ GOOGLE SHEETS: Yangi qator! ]\n                   ===>  [ TELEGRAM: 🔔 Yangi Buyurtma Tushdi! ]\n\nVAQT: 1 SONIYA!",
+    talkTrack: "Hammangiz katta ekranga qarang! Tugmani bosdim. Mana! Jadvalga tushdi va mana mening Telegramim jiringladi! Butun ishga 20 daqiqa ketdi!"
+  },
+  {
+    num: 38,
+    chapter: "VI BOB: Sahnadagi Master Demo",
+    title: "Tushlik Tanaffusi: Energiyani Yig'ib Oling!",
+    bullets: [
+      { h: "Vaqt Reglamenti", p: "12:30 - 14:00 (1.5 soat tushlik va do'stona muloqot)." },
+      { h: "Tushdan Keyin", p: "Hech qanday nazariya bo'lmaydi. Har bir stol o'z tizimini noldan yig'adi." },
+      { h: "Tayyorgarlik", p: "Kompyuteringiz zaryadkasi, BotFather va biznes g'oyangiz tayyor tursin." }
+    ],
+    visualTag: "Tushlik Taymeri",
+    visual: "+--------------------------------------------------------+\n|               TUSHLIK TANAFFUSI (1.5 SOAT)             |\n|                     12:30 - 14:00                      |\n|                                                        |\n| Soat 14:00 da o'z stollaringizda uchrashamiz!          |\n+--------------------------------------------------------+",
+    talkTrack: "Yoqimli ishtaha! Fikrlaringizni tartibga solib oling. Soat 14:00 da joyimizda uchrashamiz, oldimizda qiziqarli amaliyot kutmoqda."
+  },
+  {
+    num: 39,
+    chapter: "VII BOB: Amaliy Seminar & Mentorlik",
+    title: "Tushdan Keyingi Reja: 80 Talaba, 8 Mentor, 5 Bosqich",
+    bullets: [
+      { h: "8 Ta Stol Klasteri", p: "Har 10 nafar tadbirkorga 1 tadan maxsus texnik mentor biriktirilgan." },
+      { h: "Bosh Qoida", p: "Hech kim orqada qolmaydi. Qo'l ko'tarilgan zahoti mentor yordamga keladi." },
+      { h: "100% Natija", p: "Dars oxirida 80 kishining barchasida ishlaydigan tizim bo'lishi shart." }
+    ],
+    visualTag: "Zaldagi Mentorlik Tizimi",
+    visual: "STOL 1..8:  [ 10 Talaba + 1 Tajribali Texnik Mentor ]\nMAQSAD:     17:00 gacha 80 ta to'liq ishlaydigan Lead Funnel!",
+    talkTrack: "Hamma joy-joyiga o'tirsin. Qoidamiz oddiy: hech kim orqada qolmaydi. Xatolik chiqsa qo'l ko'taring, mentoringiz joyida yordam beradi."
+  },
+  {
+    num: 40,
+    chapter: "VII BOB: Amaliy Seminar & Mentorlik",
+    title: "5 Asosiy Biznes Sohasiga Moslashtirilgan Shablonlar",
+    bullets: [
+      { h: "1. Restoran / Kafe", p: "Taomnoma shikoyatlari va banket/stol bron qilish shakli." },
+      { h: "2. Qurilish / Ulgurji", p: "Smeta so'rovi va dilerlik buyurtmalari shakli." },
+      { h: "3. Ishlab Chiqarish", p: "Katalog so'rovi va to'g'ridan-to'g'ri ishlab chiqarishga buyurtma." },
+      { h: "4. Marketing / Xizmat", p: "Bepul audit yoki konsultatsiyaga yozilish shakli." },
+      { h: "5. Tibbiyot / Klinika", p: "Shifokor qabuliga yozilish va navbat bronlash." }
+    ],
+    visualTag: "Sohaviy Shablonlar",
+    visual: "[1] Restoran & Kafe      --> Shikoyat & Stol bron\n[2] Qurilish Mollari     --> Ulgurji smeta & katalog\n[3] Mebel / Ishlab Chiq  --> Ishlab chiqarish zakazi\n[4] Konsalting & Reklama --> Bepul audit arizasi\n[5] Xususiy Tibbiyot     --> Shifokor qabuliga yozilish",
+    talkTrack: "Mavhum narsa qurmang. Dushanba kuni ofisingizda kerak bo'ladigan yo'nalishni tanlang. Bugun qilingan ish dushanba kuni pul keltirsin!"
+  },
+  {
+    num: 41,
+    chapter: "VII BOB: Amaliy Seminar & Mentorlik",
+    title: "Mentorlar Uchun Maxsus Qalqon: Eng Ko'p Uchraydigan 5 Xatolik",
+    bullets: [
+      { h: "Google Xavfsizlik Ogohlantirishi", p: "Advanced -> Go to script (unsafe) ni bosish. Bu shaxsiy skript uchun normal." },
+      { h: "Sheet ga Ma'lumot Tushmayapti", p: "Deploy parametrida 'Who has access' ni Anyone ga o'zgartirish." },
+      { h: "Telegram 403 Xatosi", p: "Foydalanuvchi o'z botiga kirib /start bosmagan. Start bosilsa tuzaladi." },
+      { h: "Chat ID Xatosi", p: "@userinfobot orqali sof raqamli ID (12345678) ni olib berish." },
+      { h: "Script Yangilandi, Ishlamayapti", p: "Manage deployments -> Edit -> New Version qilib qayta deploy qilish." }
+    ],
+    visualTag: "Mentorlar Tezkor Spravkasi",
+    visual: "XATOLIK                   YECHIM\n--------------------------------------------------------\nGoogle Unsafe ekrani  --> Advanced -> Go to script\nSheet ga tushmayapti  --> Access: Anyone qilib deploy qilish\nTelegram 403 error    --> Botga kirib /start bosish\nChat ID noto'g'ri     --> @userinfobot dan raqamli ID olish\nKoddagi o'zgarish     --> Manage deploy -> New version",
+    talkTrack: "Mentorlar, e'tibor bering! Talabalar tiqilib qolishi mumkin bo'lgan 5 ta joyni bilasiz. Talaba xavotirlanmasin, darhol yechimni ko'rsatib bering."
+  },
+  {
+    num: 42,
+    chapter: "VII BOB: Amaliy Seminar & Mentorlik",
+    title: "1-Va 2-Bosqich Amaliy Ko'rsatmasi (Konstitutsiya va Kontent)",
+    bullets: [
+      { h: "1. Papka Ochish", p: "Desktopda Mening_Biznesim_Lead papkasini oching." },
+      { h: "2. Zed Muharriri", p: "Papkani Zed da ochib, ichki terminalni yoqing." },
+      { h: "3. Claude Code", p: "Terminalda claude deb yozing." },
+      { h: "4. Biznes Intervyu", p: "Meni intervyu qil deb 4 ta savolga javob bering va content.md ni yarating." }
+    ],
+    visualTag: "Boshlang'ich Qadam",
+    visual: "QADAM 1: Desktopda papka ochish\nQADAM 2: Zed ichida terminalni yoqish\nQADAM 3: claude buyrug'ini berish\nQADAM 4: Intervyu orqali content.md ni yaratish",
+    talkTrack: "Hamma boshladi! Avval intervyudan o'ting. Shoshilmang. Kontentingiz qanchalik sifatli bo'lsa, saytingiz shunchalik zo'r chiqadi."
+  },
+  {
+    num: 43,
+    chapter: "VII BOB: Amaliy Seminar & Mentorlik",
+    title: "Yakuniy O'zaro Sinov (Cross-Testing) va G'oliblar Taqdirlanishi",
+    bullets: [
+      { h: "Sherik Bilan Sinov", p: "O'ng tomoningizdagi qo'shningiz saytingizdan ariza qoldirsin." },
+      { h: "Sinyal Keldimi?", p: "Telegramingiz jiringladimi? Jadvalga tushdimi? Tabriklaymiz!" },
+      { h: "Zalda Taqdimot", p: "Eng yaxshi 2 ta loyiha katta ekranda barchaga namoyish etiladi." }
+    ],
+    visualTag: "Cross-Testing Final",
+    visual: "+--------------------------------------------------------+\n| 16:50 - KATTA O'ZARO SINOV                             |\n|                                                        |\n| Sherigingiz saytidan o'zingizga ariza yuboring!        |\n| 100% Natija zal bo'yicha qayd etiladi.                 |\n+--------------------------------------------------------+",
+    talkTrack: "Va nihoyat eng zavqli lahzalar! Sherigingiz saytiga kiring va buyurtma bering. Telefonlarning jiringlashini eshityapsizmi? Bu sizning mehnatingiz natijasi!"
+  },
+  {
+    num: 44,
+    chapter: "VII BOB: Amaliy Seminar & Mentorlik",
+    title: "Uyga Vazifa va Keyingi Dars Anonsi: 3-Kunda Nimalar Kutmoqda?",
+    bullets: [
+      { h: "Uyga Vazifa 1", p: "Bugungi tizimni biznesingizdagi yana 1 ta yo'nalish uchun mustaqil qayta yig'ish." },
+      { h: "Uyga Vazifa 2", p: "Formaga yangi maydon (Budjet/Manzil) qo'shib, Sheet va Telegramda aks ettirish." },
+      { h: "Keyingi 3-Kun Anonsi", p: "Saytni shaxsiy domenga ulash, MCP (Model Context Protocol), ko'p agentli Plan Mode!" }
+    ],
+    visualTag: "Keyingi Dars Anonsi",
+    visual: "KEYINGI 3-KUN:\n- Shaxsiy domenni bepul ulash (meningbiznesim.uz)\n- MCP (Model Context Protocol) orqali bazalarga ulanish\n- Avtonom ko'p agentli rejalashtirish (Plan Mode)",
+    talkTrack: "Barchangizga rahmat! Siz bugun shunchaki o'qimadingiz, real biznes aktivi yaratdingiz. Kelgusi darsda buni global internetga chiqaramiz va domenga ulaymiz. Ko'rishguncha!"
+  }
+];
+
+let currentSlideIdx = 0;
+const totalSlides = slidesData.length;
+
+// DOM Elements
+const currSlideEl = document.getElementById('curr-slide');
+const totalSlidesEl = document.getElementById('total-slides');
+const chapterTitleEl = document.getElementById('chapter-title');
+const slideNumTagEl = document.getElementById('slide-num-tag');
+const slideTitleEl = document.getElementById('slide-title');
+const bodyLeftEl = document.getElementById('body-left');
+const visualTagEl = document.getElementById('visual-tag');
+const visualContentEl = document.getElementById('visual-content');
+const drawerBodyEl = document.getElementById('drawer-body');
+const speakerDrawerEl = document.getElementById('speaker-drawer');
+const notesBtn = document.getElementById('notes-btn');
+const closeDrawerBtn = document.getElementById('close-drawer-btn');
+const progressFillEl = document.getElementById('progress-fill');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+
+totalSlidesEl.textContent = totalSlides;
+
+function renderSlide(idx) {
+  const s = slidesData[idx];
+  currSlideEl.textContent = s.num;
+  chapterTitleEl.textContent = s.chapter;
+  slideNumTagEl.textContent = `SLAYD ${String(s.num).padStart(2, '0')} // ${totalSlides}`;
+  slideTitleEl.textContent = s.title;
+
+  // Bullets
+  bodyLeftEl.innerHTML = '';
+  s.bullets.forEach((b, i) => {
+    const card = document.createElement('div');
+    card.className = 'card-bullet';
+    card.innerHTML = `
+      <h4><span style="color:var(--accent-blue); font-family:var(--font-mono); font-size:14px;">[0${i+1}]</span> ${b.h}</h4>
+      <p>${b.p}</p>
+    `;
+    bodyLeftEl.appendChild(card);
+  });
+
+  // Visual
+  visualTagEl.textContent = s.visualTag || "Sxema & Arxitektura";
+  visualContentEl.textContent = s.visual;
+
+  // Speaker notes
+  drawerBodyEl.textContent = s.talkTrack;
+
+  // Progress
+  const progressPct = ((idx + 1) / totalSlides) * 100;
+  progressFillEl.style.width = `${progressPct}%`;
+}
+
+function nextSlide() {
+  if (currentSlideIdx < totalSlides - 1) {
+    currentSlideIdx++;
+    renderSlide(currentSlideIdx);
+  }
+}
+
+function prevSlide() {
+  if (currentSlideIdx > 0) {
+    currentSlideIdx--;
+    renderSlide(currentSlideIdx);
+  }
+}
+
+function toggleNotes() {
+  speakerDrawerEl.classList.toggle('open');
+  notesBtn.classList.toggle('active');
+}
+
+// Event Listeners
+nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
+notesBtn.addEventListener('click', toggleNotes);
+closeDrawerBtn.addEventListener('click', () => {
+  speakerDrawerEl.classList.remove('open');
+  notesBtn.classList.remove('active');
+});
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+    e.preventDefault();
+    nextSlide();
+  } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+    e.preventDefault();
+    prevSlide();
+  } else if (e.key.toLowerCase() === 'p') {
+    e.preventDefault();
+    toggleNotes();
+  }
+});
+
+// Initial Render
+renderSlide(0);
+</script>
+</body>
+</html>

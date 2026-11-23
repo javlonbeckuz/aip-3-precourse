@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Namuna: Baraka Office hujjatlari bilan Gemini Notebook natijalari</title>
+<link rel="stylesheet" href="../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 1-dars</span><span class="pill">Namuna natijalar</span></div>
+<h1>Namuna: Baraka Office hujjatlari bilan Gemini Notebook natijalari</h1>
+<p>Bu sahifada mashqning tayyor natijalari bor: Gemini Notebook haqiqatan nima javob bergani va uni qanday tekshirish.
+Hammasi 2026-yil 3-noyabrda «Baraka Office - bilim bazasi (demo)» daftarida olingan: 8 ta manba (prays-list, tijoriy taklif, shartnoma, ichki tartib, uchta rahbar intervyusining audiosi va 25 ta savol shabloni).
+Javoblar qisqartirilgan, lekin raqamlar va xulosalar o‘zgartirilmagan.</p>
+<h2>1. Savol va javob: «Optima» stoli</h2>
+<p><strong>Savol:</strong></p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Mijoz 20 ta «Optima» stoli olmoqchi. Ulgurji narx bilan jami qancha bo‘ladi va oddiy sotuvchi qancha chegirma bera oladi?</pre></div>
+<p><strong>Gemini Notebook javobi (qisqartirilgan):</strong></p>
+<blockquote>
+<p>Ulgurji narx (5+ dona): 1 890 000 so‘m [1]. 20 ta stol: 20 × 1 890 000 = 37 800 000 so‘m [1].
+Oddiy sotuv menejeri buyurtma 20 000 000 so‘mdan oshganda maksimum 5% gacha chegirma bera oladi [2]. 5% bilan: 35 910 000 so‘m.
+Qo‘shimcha: Toshkent shahri hamda Toshkent viloyati bo‘ylab yetkazib berish bepul [4, 5].</p>
+</blockquote>
+<p><strong>Qanday tekshirdik:</strong></p>
+<ul>
+<li>Narx va hisob to‘g‘ri: prays-listda WS-102 ulgurji narxi 1 890 000 so‘m, 20 × 1 890 000 = 37 800 000.</li>
+<li>Chegirma to‘g‘ri: prays-list, 5-bo‘lim, 1-band.</li>
+<li><strong>Oxirgi qatorda xato bor.</strong> [5] raqamini bosganda shartnoma ochiladi, unda esa viloyatga yetkazish «har 1 km uchun 8 000 so‘m» deb yozilgan.
+  «Bepul» degan gap faqat tijoriy taklifda [4] bor.
+  AI ikki zid manbani bitta gapga qo‘shib yuborgan.</li>
+</ul>
+<p><strong>Xulosa:</strong> to‘g‘ri raqamlar orasida ham bitta noto‘g‘ri gap bo‘lishi mumkin; har bir manba raqamini bosib ko‘ring.</p>
+<h2>2. Ziddiyatlar jadvali</h2>
+<p><strong>So‘rov:</strong> mashq varag‘idagi «Ziddiyatlarni toping» prompti.</p>
+<p><strong>Gemini Notebook javobi:</strong> 8 ta ziddiyat, har biriga ikki manbadan iqtibos bilan.
+Jadval qisqartirilgan:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Mavzu</th>
+<th>1-manba</th>
+<th>2-manba</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Kafolat</td>
+<td>Tijoriy taklif: barcha mebelga 36 oy</td>
+<td>Shartnoma: korpusga 24 oy, kreslo mexanizmiga 12 oy</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Yetkazish muddati</td>
+<td>ROP Jamshid Karimov: «3 ish kuni»</td>
+<td>Shartnoma: 7 ish kuni (maxsus buyurtma 12)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Chegirma</td>
+<td>Prays-list: sotuvchi 5%, ROP 10%</td>
+<td>ROP: «30-40 mln buyurtmada sotuvchi 12-15% beradi»</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Viloyatga yetkazish</td>
+<td>Tijoriy taklif: butun viloyatga bepul</td>
+<td>Shartnoma: 1 km uchun 8 000 so‘m</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bepul 3D loyiha</td>
+<td>Prays-list: faqat 15 mln so‘mdan oshsa</td>
+<td>ROP va taklif: har bir mijozga bepul</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Sotuv rejasi</td>
+<td>Ichki tartib: 120 mln so‘m</td>
+<td>HR rahbari Dilnoza: 100 mln so‘m</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Oylik sanasi</td>
+<td>Ichki tartib: oklad 5-sanada, bonus 15-sanada</td>
+<td>HR: ikkalasi 10-sanagacha</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Kechikish jarimasi</td>
+<td>Ichki tartib: 4-kechikishdan bonus kesiladi</td>
+<td>HR: 3 martadan ko‘p kechiksa kesiladi</td>
+</tr>
+</tbody>
+</table>
+<p>Ataylab qo‘yilgan 4 ta ziddiyatning hammasi topildi (1, 2, 3, 4, 6, 7-qatorlar); 5 va 8-qatorlar hujjatlardagi qo‘shimcha haqiqiy farqlar.</p>
+<p><strong>Biznes egasi uchun:</strong> har bir qator bitta qaror: qaysi hujjat to‘g‘ri, qaysi biri tuzatiladi va xodimlarga kim aytadi.</p>
+<h2>3. O‘zbekcha test (Quiz)</h2>
+<p>Audio Overview o‘zbek tilida chiqmaydi.
+O‘zbekcha test uchun chatga shunday yozing:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Yangi sotuv menejeri uchun 5 ta savollik test tuz: har bir savolga 3 ta javob varianti, to‘g‘ri javobi va manbasi bilan. O‘zbek tilida yoz.</pre></div>
+<p>Natija: chatda 5 ta savolli o‘zbekcha test va Studio bo‘limida «Yangi sotuv menejeri uchun test» nomli interaktiv test paydo bo‘ldi.
+To‘liq matni: <code>namuna/studio-quiz-gemini-notebook.md</code>.
+Bitta savol namunasi:</p>
+<blockquote>
+<p>Oddiy sotuv menejerining mijozga chegirma berish vakolati chegarasi va sharti qanday?
+To‘g‘ri javob: faqat umumiy buyurtma summasi 20 000 000 so‘mdan oshganda maksimum 5% gacha chegirma bera oladi.</p>
+</blockquote>
+<h2>4. Yomon savol va uning to‘g‘ri varianti</h2>
+<p>Bu bo‘lim qo‘lda yozilgan misol, Gemini Notebook javobi emas.</p>
+<p><strong>Yomon:</strong></p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Kompaniya haqida gapirib ber.</pre></div>
+<p><strong>Nima noto‘g‘ri:</strong> savol juda keng.
+Javob uzun umumiy matn bo‘ladi, undan qaror chiqmaydi va har bir gapni tekshirish qiyin.</p>
+<p><strong>To‘g‘ri:</strong></p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Mijoz «kreslo 1,5 yilda buzildi» deb shikoyat qilyapti. Hujjatlarga ko‘ra kafolat bormi? Har bir gapga manba ko‘rsat, hujjatlar bir-biriga zid bo‘lsa, buni alohida yoz.</pre></div>
+<p><strong>Nega yaxshi:</strong> aniq vaziyat, aniq savol, manba talabi va ziddiyatni ko‘rsatish talabi bor.
+Bu savolga Baraka hujjatlarida ikki xil javob bor (36 oy va 12 oy): yaxshi so‘rov buni ochib beradi.</p>
+<h2>Natijani qanday o‘qish</h2>
+<ul>
+<li>Har bir raqamni manba raqamini bosib tekshiring.</li>
+<li>Javobda ikki manba bitta gapda kelsa, ikkalasini ham oching: ular zid bo‘lishi mumkin.</li>
+<li>«Hujjatlarda yo‘q» degan javob ham yaxshi natija: AI to‘qimadi.</li>
+<li>Ziddiyatlar jadvalini mas’ul xodim bilan ko‘rib chiqing va qaysi hujjat to‘g‘ri ekanini yozib qo‘ying.</li>
+</ul>
+<div class="foot">Praktikum 3.0 · 1-dars · 21-noyabr (shanba) / 22-noyabr (yakshanba) 2026 · manba: day-1/notebooklm-exercise/namuna-natijalar.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baraka Office - buyurtma kalkulyatori (namuna)</title>
+<style>
+  :root { --ink:#16181d; --ink2:#5b616e; --line:#e3e5ea; --bg:#f6f7f9; --card:#fff; --acc:#2456e6; --acc-soft:#eaf0ff; --ok:#0f8a5f; --warn:#b4541a; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 28px 20px 48px; }
+  .badge { display: inline-block; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--warn); background: #fff4ec; border: 1px solid #f3d3bd; padding: 4px 10px; border-radius: 999px; }
+  h1 { font-size: 30px; margin: 12px 0 4px; letter-spacing: -0.02em; }
+  .lead { color: var(--ink2); margin: 0 0 22px; font-size: 15px; }
+  .grid { display: grid; grid-template-columns: 1fr 360px; gap: 20px; align-items: start; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+  .group { padding: 6px 18px 10px; }
+  .group h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink2); margin: 16px 0 6px; }
+  .row { display: grid; grid-template-columns: 1fr 210px 128px 150px; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); }
+  .row:first-of-type { border-top: 0; }
+  .name { font-weight: 600; font-size: 15px; }
+  .code { font-size: 12px; color: var(--ink2); font-family: ui-monospace, Menlo, monospace; margin-right: 6px; }
+  .sub { font-size: 13px; color: var(--ink2); margin-top: 2px; }
+  .price { font-size: 14px; text-align: right; }
+  .price .tag { display: block; font-size: 11px; color: var(--ink2); white-space: nowrap; }
+  .price.wh .tag { color: var(--ok); font-weight: 600; }
+  .qty { display: flex; align-items: center; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; justify-self: center; }
+  .qty button { width: 34px; height: 36px; border: 0; background: #f1f2f5; font-size: 18px; cursor: pointer; color: var(--ink); }
+  .qty input { width: 52px; height: 36px; border: 0; text-align: center; font-size: 15px; font-family: inherit; -moz-appearance: textfield; }
+  .qty input::-webkit-outer-spin-button, .qty input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .line { text-align: right; font-weight: 600; font-size: 15px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .summary { padding: 20px; position: sticky; top: 16px; }
+  .summary h2 { font-size: 18px; margin: 0 0 14px; }
+  .sline { display: flex; justify-content: space-between; gap: 10px; font-size: 15px; padding: 7px 0; font-variant-numeric: tabular-nums; }
+  .sline.total { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 14px; font-size: 22px; font-weight: 700; }
+  .disc { margin: 12px 0 4px; padding: 12px; background: var(--bg); border-radius: 10px; font-size: 14px; }
+  .disc label { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .disc select { font: inherit; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--line); background: #fff; }
+  .hint { font-size: 12.5px; color: var(--ink2); margin-top: 6px; }
+  .tg { margin-top: 16px; }
+  .tg textarea { width: 100%; height: 190px; font: 13px/1.45 ui-monospace, Menlo, monospace; border: 1px solid var(--line); border-radius: 10px; padding: 10px; resize: vertical; color: var(--ink); background: #fbfbfc; }
+  .btn { width: 100%; margin-top: 10px; background: var(--acc); color: #fff; border: 0; border-radius: 10px; padding: 12px; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .btn.done { background: var(--ok); }
+  .foot { font-size: 12.5px; color: var(--ink2); margin-top: 18px; }
+  @media (max-width: 860px) {
+    .grid { grid-template-columns: 1fr; }
+    .summary { position: static; }
+    .row { grid-template-columns: 1fr auto; grid-template-areas: "n n" "p q" "l l"; row-gap: 8px; }
+    .row > .nm { grid-area: n; } .row > .price { grid-area: p; text-align: left; } .row > .qty { grid-area: q; justify-self: end; } .row > .line { grid-area: l; }
+    h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="badge">Namuna · o‘quv kompaniyasi</span>
+  <h1>Baraka Office: buyurtma kalkulyatori</h1>
+  <p class="lead">Miqdorni kiriting: 5 donadan boshlab ulgurji narx o‘zi qo‘llanadi. Narxlar QQS (12%) bilan, 2026-yil 31-dekabrgacha.</p>
+  <div class="grid">
+    <div class="card" id="list"></div>
+    <div class="card summary">
+      <h2>Buyurtma</h2>
+      <div class="sline"><span>Mahsulotlar soni</span><span id="cnt">0 dona</span></div>
+      <div class="sline"><span>Summa</span><span id="sub">0 so‘m</span></div>
+      <div class="disc">
+        <label>Menejer chegirmasi <select id="disc"></select></label>
+        <div class="hint" id="dhint"></div>
+      </div>
+      <div class="sline"><span>Chegirma</span><span id="dsum">0 so‘m</span></div>
+      <div class="sline total"><span>Jami</span><span id="tot">0 so‘m</span></div>
+      <div class="tg">
+        <div class="hint">Telegram uchun tayyor matn</div>
+        <textarea id="tgtext" readonly></textarea>
+        <button class="btn" id="copy">Nusxa olish</button>
+      </div>
+    </div>
+  </div>
+  <p class="foot">Namuna. Ma’lumotlar Praktikum o‘quv to‘plamidagi «Baraka Office» prays-listidan olingan; bu haqiqiy kompaniya emas.</p>
+</div>
+<script>
+  var PRODUCTS = [
+    { g: 'Ish stollari', code: 'WS-101', name: '«Start» xodim stoli', sub: '120 × 60 sm', r: 1450000, w: 1280000 },
+    { g: 'Ish stollari', code: 'WS-102', name: '«Optima» ergonomik stol', sub: '140 × 70 sm', r: 2150000, w: 1890000 },
+    { g: 'Ish stollari', code: 'WS-103', name: '«Bench-4» 4 kishilik blok', sub: 'akustik ekran bilan', r: 9800000, w: 8600000 },
+    { g: 'Ish stollari', code: 'WS-104', name: '«AeroLift» ko‘tariluvchi stol', sub: 'elektr mexanizm', r: 5900000, w: 5300000 },
+    { g: 'Kreslolar', code: 'CH-201', name: '«Staff Mesh» xodim kreslosi', sub: 'to‘r, bel tirgagi', r: 1350000, w: 1180000 },
+    { g: 'Kreslolar', code: 'CH-202', name: '«ErgoPro X5» kreslo', sub: 'bosh suyanchig‘i bilan', r: 2850000, w: 2500000 },
+    { g: 'Kreslolar', code: 'CH-203', name: '«Senator Lux» rahbar kreslosi', sub: 'charm, alyuminiy', r: 4900000, w: 4400000 },
+    { g: 'Kreslolar', code: 'CH-204', name: '«Conf-Lite» muzokara stuli', sub: 'xrom karkas', r: 980000, w: 850000 }
+  ];
+  var WHOLESALE_FROM = 5, DISCOUNT_FROM = 20000000, MAX_DISCOUNT = 5;
+  var qty = PRODUCTS.map(function (p, i) { return i === 1 ? 12 : (i === 4 ? 12 : 0); });
+
+  function som(n) { return Math.round(n).toLocaleString('ru-RU').replace(/ /g, ' ') + ' so‘m'; }
+  function unit(i) { return qty[i] >= WHOLESALE_FROM ? PRODUCTS[i].w : PRODUCTS[i].r; }
+
+  function build() {
+    var html = '', group = '';
+    PRODUCTS.forEach(function (p, i) {
+      if (p.g !== group) { if (group) html += '</div>'; group = p.g; html += '<div class="group"><h2>' + p.g + '</h2>'; }
+      html += '<div class="row"><div class="nm"><div class="name"><span class="code">' + p.code + '</span>' + p.name + '</div><div class="sub">' + p.sub + '</div></div>' +
+        '<div class="price" id="pr' + i + '"></div>' +
+        '<div class="qty"><button data-i="' + i + '" data-d="-1" aria-label="kamaytirish">−</button><input id="q' + i + '" type="number" min="0" value="' + qty[i] + '" inputmode="numeric"><button data-i="' + i + '" data-d="1" aria-label="ko‘paytirish">+</button></div>' +
+        '<div class="line" id="ln' + i + '"></div></div>';
+    });
+    html += '</div>';
+    document.getElementById('list').innerHTML = html;
+    document.querySelectorAll('.qty button').forEach(function (b) {
+      b.addEventListener('click', function () { var i = +b.dataset.i; qty[i] = Math.max(0, qty[i] + (+b.dataset.d)); document.getElementById('q' + i).value = qty[i]; calc(); });
+    });
+    PRODUCTS.forEach(function (p, i) {
+      document.getElementById('q' + i).addEventListener('input', function (e) { qty[i] = Math.max(0, parseInt(e.target.value, 10) || 0); calc(); });
+    });
+    var sel = document.getElementById('disc');
+    for (var d = 0; d <= MAX_DISCOUNT; d++) sel.innerHTML += '<option value="' + d + '">' + d + '%</option>';
+    sel.addEventListener('change', calc);
+  }
+
+  function calc() {
+    var sub = 0, cnt = 0, lines = [];
+    PRODUCTS.forEach(function (p, i) {
+      var u = unit(i), t = u * qty[i];
+      var wh = qty[i] >= WHOLESALE_FROM;
+      document.getElementById('pr' + i).className = 'price' + (wh ? ' wh' : '');
+      document.getElementById('pr' + i).innerHTML = som(u) + '<span class="tag">' + (wh ? 'ulgurji narx' : 'chakana · 5+ dan ' + som(p.w)) + '</span>';
+      document.getElementById('ln' + i).textContent = qty[i] ? som(t) : '-';
+      sub += t; cnt += qty[i];
+      if (qty[i]) lines.push('• ' + p.name + ' (' + p.code + '): ' + qty[i] + ' × ' + som(u) + ' = ' + som(t));
+    });
+    var sel = document.getElementById('disc');
+    var allowed = sub > DISCOUNT_FROM;
+    sel.disabled = !allowed;
+    if (!allowed) sel.value = '0';
+    document.getElementById('dhint').textContent = allowed
+      ? 'Ruxsat: ' + MAX_DISCOUNT + '% gacha. Undan ko‘pi faqat bo‘lim rahbari ruxsati bilan.'
+      : 'Chegirma buyurtma ' + som(DISCOUNT_FROM) + 'dan oshganda ochiladi.';
+    var pct = +sel.value, dsum = sub * pct / 100, tot = sub - dsum;
+    document.getElementById('cnt').textContent = cnt + ' dona';
+    document.getElementById('sub').textContent = som(sub);
+    document.getElementById('dsum').textContent = dsum ? '−' + som(dsum) : '0 so‘m';
+    document.getElementById('tot').textContent = som(tot);
+    var txt = 'Assalomu alaykum!\nBaraka Office tijoriy taklifi:\n\n' + (lines.length ? lines.join('\n') : '(mahsulot tanlanmagan)') +
+      '\n\nSumma: ' + som(sub) + (pct ? '\nChegirma ' + pct + '%: −' + som(dsum) : '') + '\nJami: ' + som(tot) +
+      '\n\nNarxlar QQS bilan. Taklif 2026-yil 31-dekabrgacha amal qiladi.\nSavollar bo‘lsa, shu yerga yozing.';
+    document.getElementById('tgtext').value = txt;
+  }
+
+  build(); calc();
+  document.getElementById('copy').addEventListener('click', function () {
+    var ta = document.getElementById('tgtext'), btn = this;
+    var ok = function () { btn.textContent = 'Nusxa olindi'; btn.classList.add('done'); setTimeout(function () { btn.textContent = 'Nusxa olish'; btn.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(ta.value).then(ok, function () { ta.select(); document.execCommand('copy'); ok(); });
+    else { ta.select(); document.execCommand('copy'); ok(); }
+  });
+</script>
+</body>
+</html>

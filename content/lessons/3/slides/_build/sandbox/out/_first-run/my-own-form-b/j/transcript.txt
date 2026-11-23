@@ -1,0 +1,44 @@
+== j | model sonnet | mode acceptEdits | 2026-11-03 02:55 | claude 2.1.316 (Claude Code)
+== prompt:
+hujjatlar/ papkasidagi hujjatlar va kit1-interviews/ dagi intervyularni solishtir. Bir-biriga zid raqamlar bormi: yetkazish muddati, chegirma, kafolat? Qaysi fayl, qaysi gap - jadval qilib ko‘rsat.
+== output:
+Bir-biriga zid raqamlar bor. Ular ikki joyda chiqdi: intervyu bilan rasmiy hujjatlar o'rtasida, va `hujjatlar/` ichidagi KP bilan shartnoma o'rtasida. Hujjatlarni va intervyularni to'liq o'qib chiqdim.
+
+Eslatma: `kit1-interviews/` da xom transkript yo'q, faqat B shakllari bor. Jamshid va Malika fayllarida ziddiyat to'g'ridan-to'g'ri yozilgan. Zarina faylida yo'q.
+
+## 1. Intervyu ↔ rasmiy hujjat
+
+| Masala | Intervyuda aytilgan | Rasmiy hujjat | To'g'risi |
+|---|---|---|---|
+| **Yetkazish** | «3 ish kunida yetkazamiz» (`jamshid-form-b.md:42`). Malika faylida ham «3 kun» va'dasi xavf sifatida yozilgan (`malika-form-b.md:16`). | **7 ish kuni**, MDF/shpon uchun **12 ish kuni**, oldindan to'lov tushgandan boshlab (`03_Namunaviy_Shartnoma_va_Kafolat.md:27`, 3.1-band). | 7 / 12 ish kuni |
+| **Chegirma** | «30-40 mln so'mlik buyurtmada 12-15% chegirma» (`jamshid-form-b.md:42`). Malika faylida «12-15% chegirma» marjani kuydiradi deb yozilgan (`malika-form-b.md:16`). | Sotuvchi **5%** gacha, faqat 20 mln dan oshsa (`01_Prays_list_va_Katalog_2026.md:57`). ROP **10%** gacha, faqat 100% oldindan to'lov bo'lsa yoki 50 mln dan oshsa, yozma ruxsat bilan (`01_Prays_list_va_Katalog_2026.md:58`). 10% dan yuqori **taqiqlangan** (`01_Prays_list_va_Katalog_2026.md:59`). | Ko'pi bilan 10% |
+| **Kafolat** | Intervyularda kafolat raqami yo'q. | - | - |
+
+Jamshidning 30-40 mln misolida 10% ham avtomatik berilmaydi, chunki 50 mln dan kam. 10% uchun 100% oldindan to'lov kerak. Aks holda ko'pi bilan 5%.
+
+Jamshid faylining o'zida ham shu ziddiyat qayd etilgan, lekin u «prays-list 5-bo'lim» deb yozadi (`jamshid-form-b.md:43`). Aslida bu band *Rasmiy chegirma va to'lov qoidalari* deb nomlangan bo'lim.
+
+## 2. Hujjat ↔ hujjat (`hujjatlar/` ichida)
+
+| Masala | KP (`02_Kompaniya_Taqdimoti_KP.md`) | Shartnoma (`03_...`) | To'g'risi |
+|---|---|---|---|
+| **Kafolat** | «3 YILLIK (36 OY) TO'LIQ KAFOLAT» barcha mebel va kreslolarga (24-26-qatorlar). | Korpus **24 oy**, kreslo mexanizmi/gazlift/g'ildirak **12 oy** (39-40-qatorlar, 4.1-band). | 24 / 12 oy (`CLAUDE.md` ham KPdagi 36 oyni xato deydi) |
+| **Servis muddati** | Nosoz qism «48 soat ichida» bepul almashtiriladi (26-qator). | **5 ish kuni** ichida ta'mirlanadi yoki almashtiriladi (40-qator, 4.2-band). | 5 ish kuni, shartnoma bo'yicha |
+| **Viloyatga yetkazish** | «butun Toshkent viloyati bo'ylab mutlaqo bepul» (28-qator). | Halqa yo'lidan **har km uchun 8 000 so'm** (30-qator, 3.2-band). | 8 000 so'm/km |
+| **Shahar ichida yetkazish** | Hamma buyurtmaga «mutlaqo bepul» (28-qator). | 10 mln so'mdan kam bo'lsa **350 000 so'm** (29-qator). | Shartnoma (350 000 so'm) |
+
+Rasmiy hujjatlar ro'yxatida (`CLAUDE.md`) KP yo'q. Shuning uchun KP bilan shartnoma zid kelsa, shartnoma g'olib.
+
+KP yetkazish muddatini aniq aytmaydi. U faqat «1-kun o'lchov, 2-kun 3D, montaj 1 kun» deydi (34-37-qatorlar). «3 kun» tasavvuri shu yerdan kelgan bo'lishi mumkin, lekin bu mening taxminim [?].
+
+## 3. Tasdiqlanganlar va ochiq qolganlar
+
+- **Ulgurji 5+ dona.** Zarina faylida bu `[?]` bilan qolgan (`zarina-form-b.md:65`), chunki `data/qoidalar.md` da topilmagan. Prays-list buni tasdiqlaydi: chakana 1-4 dona, ulgurji 5+ dona (`01_Prays_list_va_Katalog_2026.md:14`). Zarinaning `[?]` belgisini olib tashlasa bo'ladi.
+- **Zarina faylidagi qolgan `[?]` lar** (ketib qoladigan mijoz soni, chakana narx xatosining narxi) hujjatlar bilan hal bo'lmaydi. Ular xodim yoki ega javobini kutadi.
+
+## Taklif
+
+1. Jamshid akaga «3 kun» va «12-15%» ni agentga o'rgatmaslikni aytish. Agent rasmiy hujjatga tayanadi.
+2. Marketing KPdagi 36 oy, 48 soat va «viloyatga bepul» ni tuzatadi. 36 oyni `CLAUDE.md` allaqachon belgilagan, qolgan ikkitasi yangi topilma.
+3. Hech narsani o'zgartirmadim. Yuqoridagilarni fayllarga yozishni xohlasangiz, ayting.
+== exit 0

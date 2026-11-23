@@ -1,0 +1,33 @@
+# Kutiladigan natija, 4-namoyish: CLAUDE.md bilan (xuddi shu papka + Baraka CLAUDE.md)
+
+Haqiqiy Claude Code natijasi, o‘zgartirilmagan (Claude Code 2.1.316, Sonnet 5.5, 2026-11-03, `_build/sandbox/run_checks.sh i`).
+Savol: «Mijoz Telegram’da so‘radi: «Kafolat necha yil? Chirchiqqa yetkazib berish bepulmi?» Mijozga yuboriladigan javob matnini yoz va qaysi hujjatga tayanganingni alohida ayt.»
+Claude matnidagi apostrof va chiziqchalar modelning o‘z chiqishi.
+
+---
+
+**Mijozga yuboriladigan matn:**
+
+> Assalomu alaykum, hurmatli [Ism] aka / opa!
+>
+> Savollaringizga javob beraman:
+>
+> **Kafolat.** Kafolat mahsulot turiga qarab farq qiladi va topshirish-qabul qilish dalolatnomasi imzolangan kundan boshlanadi:
+> - stol, shkaf va tumba korpuslariga: 24 oy (2 yil);
+> - kreslo mexanizmi, gazlift, g'ildiraklar va harakatlanuvchi furnituraga: 12 oy (1 yil).
+>
+> Kafolat davrida zavod nuqsoni topilsa, murojaatingizdan keyin 5 ish kuni ichida nuqsonli qismni bepul ta'mirlaymiz yoki almashtiramiz.
+>
+> **Chirchiqqa yetkazish.** Chirchiq Toshkent shahridan tashqarida, Toshkent viloyatida joylashgan. Shuning uchun yetkazish bepul emas. Toshkent halqa yo'lidan boshlab har bir km uchun 8 000 so'm hisoblanadi. Aniq summa manzilgacha bo'lgan masofaga bog'liq. Manzilni yozsangiz, hisob-kitob qilib yuboraman.
+>
+> Yana savollaringiz bo'lsa, yordam berishdan xursand bo'lamiz.
+
+**Qaysi hujjatga tayandim:**
+- **Kafolat:** `hujjatlar/03_Namunaviy_Shartnoma_va_Kafolat.md`, 4.1 va 4.2-bandlar (24 oy, 12 oy, 5 ish kuni).
+- **Yetkazish:** shu hujjatning 3.2-bandi (viloyatga har km uchun 8 000 so'm, halqa yo'lidan boshlab).
+
+**Eslatmalar:**
+- `hujjatlar/02_Kompaniya_Taqdimoti_KP.md` da «36 oy kafolat» va «butun viloyatga bepul yetkazish» yozilgan. Bu ikkalasi ham xato. CLAUDE.md va shartnoma ularga zid, shuning uchun KPga tayanmadim.
+- Halqa yo'lidan Chirchiqqacha masofani o'zimdan to'qimadim. Summani hisoblash uchun masofani Otabek aka (@baraka_logistika) dan so'rang. Formula: *km × 8 000 so'm* [masofa: ?].
+- Buyurtma 10 mln so'mdan oshsa ham bepul yetkazish faqat Toshkent shahri ichida amal qiladi, viloyatga tegishli emas.
+- Matnda «Hurmatli [Ism] aka / opa» va «Siz» shakli saqlangan, taqiqlangan so'zlar ishlatilmagan. Yuborishdan oldin [Ism] o'rniga mijoz ismini yozing.

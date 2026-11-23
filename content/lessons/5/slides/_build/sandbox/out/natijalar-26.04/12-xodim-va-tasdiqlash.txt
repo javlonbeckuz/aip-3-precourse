@@ -1,0 +1,29 @@
+Uy vazifasi: Kit 4 suhbatidan keyin xodimni qo'shish va birinchi haftani «tasdiqlash» rejimida boshlash.
+Soxta Telegram va soxta model bilan yozib olindi.
+
+1) Kit 4 suhbatidan keyin: Madina botga yozadi, hali ruxsati yo'q.
+[Madina] Assalomu alaykum
+[Bot -> Madina] Bu bot faqat Baraka Office xodimlari uchun.
+      Sizning Telegram ID raqamingiz: 2001
+      Kirish kerak bo‘lsa, shu raqamni rahbaringizga yuboring.
+
+2) Egasi telefondan Madinaga ruxsat beradi.
+[Siz] /ruxsat 2001 Madina
+[Bot] ✅ 2001 (Madina) endi botdan foydalana oladi.
+[Madina] Optima stolidan 8 ta kerak, qancha bo'ladi?
+[Bot -> Madina] «Optima» ergonomik stol 140x70 (WS-102), 8 dona - ulgurji narx: 1 890 000 x 8 = 15 120 000 so‘m.
+
+3) .env da REPLY_MODE=approve: birinchi hafta har javobni odam tasdiqlaydi.
+[Madina] Start stoli 2 dona necha pul?
+[Bot -> Madina] Savolingiz qabul qilindi. Javobni xodim tekshirib, tez orada yuboradi.
+[Bot -> egasi] 📝 Javob loyihasi #587ba9fc
+      Kimdan: Madina
+      Savol: Start stoli 2 dona necha pul?
+      
+      Javob:
+      «Start» xodim stoli 120x60 (WS-101), 2 dona - chakana narx: 1 450 000 x 2 = 2 900 000 so‘m.
+      
+      To‘g‘ri bo‘lsa «Yuborish» ni bosing.
+      O‘zgartirmoqchi bo‘lsangiz, shu xabarga to‘g‘ri javobni reply qilib yozing.
+[Egasi] «✅ Yuborish» tugmasini bosadi
+[Bot -> Madina] «Start» xodim stoli 120x60 (WS-101), 2 dona - chakana narx: 1 450 000 x 2 = 2 900 000 so‘m.

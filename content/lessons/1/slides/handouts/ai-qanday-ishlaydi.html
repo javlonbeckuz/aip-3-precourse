@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI qanday ishlaydi: rahbar uchun qisqa qo‘llanma</title>
+<link rel="stylesheet" href="../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 1-dars</span><span class="pill">Tarqatma</span></div>
+<h1>AI qanday ishlaydi: rahbar uchun qisqa qo‘llanma</h1>
+<p>1-dars tarqatmasi.
+Praktikum 2.0 dagi «AI anatomiyasi» va «Tokenlar iqtisodiyoti» tarqatmalarining yangilangan, qisqartirilgan nusxasi.
+Eskirgan model nomlari va narxlar olib tashlandi: ular endi sanasi yozilgan «Bu hafta AI’da» varag‘ida.</p>
+<p><strong>Qanday foydalanish:</strong> darsdan keyin bir marta o‘qing, keyin oxiridagi «O‘zingizni tekshiring» ro‘yxatini belgilang.
+Belgilay olmagan bandingiz bo‘lsa, shu bo‘limni qayta o‘qing yoki stol chatida mentoringizdan so‘rang.</p>
+<h2>1. Uch qavat</h2>
+<table>
+<thead>
+<tr>
+<th>Qavat</th>
+<th>Nima</th>
+<th>Rahbar savoli</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platformalar</td>
+<td>Siz ishlatadigan ilovalar: ChatGPT, Claude, Gemini</td>
+<td>Qaysi ilova menga kerak?</td>
+</tr>
+<tr>
+<td>Modellar</td>
+<td>Matn yozadigan «miya»: Claude, GPT, Gemini, DeepSeek, Qwen</td>
+<td>Qaysi model, qancha turadi?</td>
+</tr>
+<tr>
+<td>Infratuzilma</td>
+<td>Chiplar, elektr, data markazlar</td>
+<td>Narx va kirish nega o‘zgaradi?</td>
+</tr>
+</tbody>
+</table>
+<p>Chip zanjiri bir qatorda: Nvidia chipni loyihalaydi, Tayvandagi TSMC ishlab chiqaradi, laboratoriyalar data markazda modelni o‘qitadi, ilovalar sizga sotadi.
+Chip arzonlashsa, narx tushadi; siyosat o‘zgarsa, kirish o‘zgaradi.</p>
+<h2>2. Xabaringiz qayerga boradi</h2>
+<table>
+<thead>
+<tr>
+<th>Holat</th>
+<th>Yo‘l</th>
+<th>Natija</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bulut (Claude, ChatGPT, Gemini)</td>
+<td>Noutbuk → internet → AQSh yoki Yevropadagi data markaz → javob</td>
+<td>Ma’lumot chet elga ketadi</td>
+</tr>
+<tr>
+<td>Toshkentdagi server + chet el modeli</td>
+<td>Noutbuk → Toshkent server → chet el API → javob</td>
+<td>Baribir chet elga ketadi</td>
+</tr>
+<tr>
+<td>O‘z serveringiz + ochiq vaznli model</td>
+<td>Noutbuk → sizning server (model ichida) → javob</td>
+<td>Ma’lumot ichkarida qoladi</td>
+</tr>
+</tbody>
+</table>
+<p>Qonun (2026):</p>
+<ul>
+<li>Oddiy shaxsiy ma’lumot ro‘yxatdagi 49 ta davlat va hududga yuborilishi mumkin (Vazirlar Mahkamasining 415-qarori, 29.07.2026); Germaniya shartsiz ro‘yxatda.</li>
+<li>AQSh faqat EU-US Data Privacy Framework sertifikati bor kompaniyalar uchun; Anthropic (Claude) maxfiylik siyosatida DPF ko‘rsatilmagan, shuning uchun «Claude uchun AQSh ro‘yxatda» deb bo‘lmaydi.</li>
+<li>Biometrik, genetik ma’lumot va aloqa abonentlari ma’lumoti faqat O‘zbekistonda saqlanadi (ZRU-1125, 26.03.2026).</li>
+<li>Xodim ma’lumotini uchinchi tomonga, jumladan AI xizmatiga, faqat uning yozma roziligi bilan berish mumkin (Mehnat kodeksi, 178-modda).</li>
+<li>AI yordamida shaxsiy ma’lumotni noqonuniy qayta ishlash uchun 50-100 BHM, taxminan 22-44 mln so‘m jarima (MJtK 46-2-modda).</li>
+</ul>
+<p>Manbalar: lex.uz.
+Bu yuridik maslahat emas: kompaniyangiz bunga tayanishdan oldin yurist tasdiqlashi kerak.</p>
+<p><strong>Baraka misolida:</strong> 3-4-darsda quriladigan «Savdo yordamchisi» boti Toshkentdagi serverda turadi, lekin javobni chet eldagi model yozadi (2-qator).
+Shuning uchun botga narxlar, qoldiq va qoidalar beriladi, mijozlarning shaxsiy ma’lumoti berilmaydi.</p>
+<p><strong>Chatga yozishdan oldin uch savol:</strong> bu ma’lumot kerakmi, ismsiz qilsa bo‘ladimi, odam rozimi?</p>
+<h2>3. Model taxmin qiladi</h2>
+<p>Model internetdagi ulkan matndan qaysi so‘zdan keyin qaysi so‘z kelishini o‘rgangan.
+U javobni bilmaydi, eng ehtimolli davomini yozadi.
+«1 dan 10 gacha son ayt» desangiz, ko‘p modellar 7 deydi: bu tanlov emas, taxmin.
+Shuning uchun raqam, sana va summani doim tekshiring.</p>
+<h2>4. Token: nimaga to‘laysiz</h2>
+<p>Model matnni token deb ataladigan bo‘laklarga bo‘ladi va narx tokenda hisoblanadi.
+2026-yil 3-noyabrda bir xil biznes gapini 7 ta tokenizatorda o‘lchadik:</p>
+<table>
+<thead>
+<tr>
+<th>Til</th>
+<th>Token soni</th>
+<th>Inglizchaga nisbatan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O‘zbekcha</td>
+<td>44-51</td>
+<td>taxminan 1,8-2,1 barobar</td>
+</tr>
+<tr>
+<td>Ruscha</td>
+<td>33-55</td>
+<td>modelga qarab juda farq qiladi</td>
+</tr>
+<tr>
+<td>Inglizcha</td>
+<td>24-26</td>
+<td>asos</td>
+</tr>
+</tbody>
+</table>
+<p>Bitta raqamni yodlamang: farq modelga qarab har xil, o‘zingiz o‘lchang (dars sahifasi: demos/tokenizer).</p>
+<table>
+<thead>
+<tr>
+<th>Token turi</th>
+<th>Nima</th>
+<th>Narxi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kirish</td>
+<td>Siz yuborgan matn va fayllar</td>
+<td>Eng arzon</td>
+</tr>
+<tr>
+<td>Chiqish</td>
+<td>Model yozgan javob</td>
+<td>Kirishdan bir necha barobar qimmat</td>
+</tr>
+<tr>
+<td>Fikrlash</td>
+<td>Javobdan oldingi «o‘ylash»</td>
+<td>Chiqish narxida</td>
+</tr>
+<tr>
+<td>Kesh</td>
+<td>Qayta o‘qilgan matn</td>
+<td>Ancha arzon</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bitta vazifa qoidasi:</strong> token narxiga emas, bajarilgan bitta vazifa narxiga qarang.
+Qimmat model vazifani qisqa javob bilan hal qilishi, arzon model esa uzoq «o‘ylab» ko‘p token sarflashi mumkin.</p>
+<h2>5. Kontekst oynasi: dastarxon</h2>
+<p>Model bitta suhbatda ushlab tura oladigan matn hajmi.
+Har gapingiz dastarxonga yangi likopcha; to‘lsa, chetidagi narsa tushib ketadi.
+Uzun chat oyna to‘lishidan ancha oldin xiralashadi: boshida aytgan qoidangizni unutadi.</p>
+<ul>
+<li>Yangi vazifa: yangi chat.</li>
+<li>Mavzu o‘zgarsa, eski chatdan qisqa xulosa olib, yangisiga o‘ting.</li>
+<li>500 betlik hujjatni oddiy chatga tashlamang: buning uchun Gemini Notebook bor.</li>
+</ul>
+<h2>6. Qaysi model qachon</h2>
+<table>
+<thead>
+<tr>
+<th>Daraja</th>
+<th>Qachon</th>
+<th>Claude’da</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arzon va tez</td>
+<td>Saralash, qisqa javob, ko‘p takrorlanadigan ish</td>
+<td>Haiku</td>
+</tr>
+<tr>
+<td>Muvozanatli</td>
+<td>Kundalik matn, jadval, tahlil</td>
+<td>Sonnet</td>
+</tr>
+<tr>
+<td>Kuchli</td>
+<td>Reja, murakkab tahlil, xato qimmat bo‘lgan ish</td>
+<td>Opus, Fable</td>
+</tr>
+</tbody>
+</table>
+<p>Effort (o‘ylash darajasi): ko‘proq o‘ylasa, sifat oshadi, lekin sekin va qimmat.</p>
+<p><strong>Frontier yoki ochiq vaznli?</strong>
+Frontier (Claude, GPT, Gemini) faqat ishlab chiqaruvchi orqali ishlaydi va murakkab fikrlash hamda o‘zbek tilida hozircha kuchliroq.
+Ochiq vaznli model (DeepSeek, Qwen, Kimi, GLM) fayli e’lon qilingan: o‘z serveringizda ishlatib, ma’lumotni ichkarida saqlash mumkin; oddiy saralash va qoralama uchun ko‘pincha yetarli va ancha arzon.
+DeepSeek saytidagi chat esa ma’lumotni Xitoyda saqlaydi: «ochiq» degani sayt maxfiy degani emas.</p>
+<h2>7. Hisob-kitobni AI’ga emas, formulaga bering</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Formula (Excel, 1C, dastur)</th>
+<th>AI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qoida</td>
+<td>100 × 10 har doim 1000</td>
+<td>Ehtimolga qarab taxmin</td>
+</tr>
+<tr>
+<td>Xato qilsa</td>
+<td>Katak qizil bo‘ladi, ko‘rinadi</td>
+<td>Ishonch bilan noto‘g‘ri javob beradi</td>
+</tr>
+<tr>
+<td>Nima uchun</td>
+<td>Hisob, summa, hisobot</td>
+<td>Tahlil, xulosa, xat, saralash</td>
+</tr>
+</tbody>
+</table>
+<p>To‘g‘ri tartib: ma’lumot bazangiz (1C, CRM, jadval) → formula yoki dastur hisoblaydi → AI tushuntiradi, saralaydi, yozadi.</p>
+<h2>O‘zingizni tekshiring</h2>
+<ul>
+<li class="cb">Uch qavatni chizib, har biriga bitta savol ayta olaman.</li>
+<li class="cb">Claude’ga yozgan xabarim qayerga borishini va qonun nima deyishini bilaman.</li>
+<li class="cb">O‘zbekcha nega ko‘proq token olishini va buni qanday o‘lchashni bilaman.</li>
+<li class="cb">Yangi vazifa uchun nega yangi chat ochishni tushuntira olaman.</li>
+<li class="cb">Ikki xil vazifa uchun model darajasini tanlay olaman.</li>
+</ul>
+<div class="foot">Praktikum 3.0 · 1-dars · 21-noyabr (shanba) / 22-noyabr (yakshanba) 2026 · manba: day-1/handouts/src/ai-qanday-ishlaydi.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

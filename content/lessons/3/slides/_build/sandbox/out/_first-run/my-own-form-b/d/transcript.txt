@@ -1,0 +1,45 @@
+== d | model opus | mode plan | 2026-11-03 02:58 | claude 2.1.316 (Claude Code)
+== prompt:
+AI yo‘q deb tasavvur qilaylik.
+CLAUDE.md dagi «Hozirgi sinov jarayoni» uchun yordamchi vosita qurmoqchiman.
+Bunday ishni odatda qaysi mutaxassislar qilardi va ular menga qanday savollar berardi?
+Shu mutaxassislar nomidan menga eng muhim 6 ta savol ber, bir xabarda 3 tadan ko‘p emas.
+Savollar tugagach, prd.md uchun reja tuz, ko‘pi bilan 2 sahifa: nima quriladi, kim uchun, nima kiradi, nima kirmaydi, qaysi ma’lumot manbalari, muvaffaqiyat qanday o‘lchanadi, xavflar.
+Keyin shu PRDni kichik dasturchi tushunadigan 10-15 ta kichik vazifaga bo‘l: tasks.md.
+Hozircha kod yozma.
+
+(Sinov uchun: men javob bera olmayman. Savollarga o‘zing CLAUDE.md, hujjatlar/ va kit2-scoring/ dan javob top; topolmasang [?] qoldir va savolni PRD oxiridagi «Ochiq savollar» bo‘limiga yoz.)
+== output:
+### 2-xabar: savollar 4–6
+
+**4. UX dizayner: Xodim vositani qayerda ochadi va javobni qanday yuboradi?**
+- Ma’lum qismi: agent faqat javob qoralamasini yozadi, xodim uni tasdiqlab o‘zi yuboradi (form-b-matrix.md, B.2).
+- Vosita qayerda ishlashi noma’lum: Telegram bot, veb-sahifa yoki AmoCRM vidjeti [?]. `app/` papkasi hali yo‘q.
+
+**5. Sales Ops: Chegirma so‘ralsa, agent qayerda to‘xtashi kerak?**
+- Sotuvchi 5% gacha bera oladi, buyurtma 20 mln so‘mdan oshsa.
+- 10% gacha faqat ROPning yozma ruxsati bilan beriladi, agar mijoz 100% oldindan to‘lasa yoki buyurtma 50 mln so‘mdan oshsa.
+- 10% dan yuqori chegirma taqiqlangan (manba: prays-list, 5-bo‘lim).
+- Javob topilmagan savollar:
+  - Chegirma chakana narxdan hisoblanadimi yoki ulgurji narxdan? [?]
+  - «5+ dona» bitta mahsulot bo‘yicha sanaladimi yoki butun buyurtma bo‘yicha? [?]
+  - Tayyor paket narxiga chegirma beriladimi? [?]
+
+**6. QA: Agent to‘g‘ri ishlayotganini qanday bilamiz?**
+- `kit4-people/test-set.md` va `kit5-pilot/baseline.md` hali yo‘q, shuning uchun maqsadli raqamlar hammasi [?].
+- «Ish kuni» masalasi ham ochiq: kompaniya haftasiga 6 kun ishlaydi, shartnoma esa «ish kuni» nimani anglatishini aytmaydi. Shanba hisoblanadimi [?]. Buning ustiga 7 ish kunlik va’da ham bog‘liq.
+
+---
+
+**Natija:** `prd.md` va `tasks.md` hali yaratilmagan. Plan rejimi faqat reja fayliga yozishga ruxsat beradi, shuning uchun ikkala faylning to‘liq matni hozircha `/Users/xb21/.claude/plans/ai-yo-q-deb-tasavvur-pure-popcorn.md` da turibdi. Rejani tasdiqlash vositasi bu sessiyada yo‘q edi, shuning uchun tasdiqni sizdan shu yerda so‘rayapman.
+
+- **PRD (taxminan 2 sahifa):**
+  - Nima, kim uchun, nima kiradi va nima kirmaydi.
+  - Ma’lumot manbalari: ishlatilish tartibi bilan, KP esa chiqarib tashlangan, chunki unda xatolar bor.
+  - Muvaffaqiyat o‘lchovlari va 6 ta xavf.
+  - 12 ta ochiq savol.
+- **Hisob:** savollarga haftasiga 15,2 soat × 22 600 so‘m = 343 520 so‘m ketadi. Agent buning qancha qismini tejashi noma’lum [?].
+- **tasks.md:** 14 ta kichik vazifa, har birida tekshirish mezoni bor. Asosiy qoida: narx, chegirma va muddatni kod hisoblaydi, model esa faqat matn yozadi. Shunda model raqamni o‘zidan to‘qiy olmaydi.
+
+Rejani tasdiqlasangiz yoki plan rejimini o‘chirsangiz, loyiha papkasida `prd.md` va `tasks.md` ni yarataman. Ikkalasi ham hozir yo‘q, shuning uchun hech narsa ustidan yozilmaydi. Kod yozmayman.
+== exit 0

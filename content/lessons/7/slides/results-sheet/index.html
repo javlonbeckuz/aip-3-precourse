@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Natija varag‘i</title>
+<link rel="stylesheet" href="assets/sheet.css">
+</head>
+<body>
+<header class="app-bar">
+  <div class="in">
+    <div class="brand"><b>Natija varag‘i</b><span>Praktikum 3.0 · 6-dars · sinov natijasi bir A4 varaqda</span></div>
+    <div class="actions">
+      <button class="btn" data-act="example" data-ex="baraka">Namuna bilan ochish</button>
+      <button class="btn" data-act="example" data-ex="yomon">Yomon namuna</button>
+      <label class="btn" for="file-in">Kit 5 faylini ochish</label>
+      <button class="btn" data-act="guide">Qo‘llanma</button>
+      <button class="btn" data-act="restore" id="restore-btn" hidden>Zaxiradan tiklash</button>
+      <button class="btn warn" data-act="clear">Tozalash</button>
+      <button class="btn primary" data-act="print">Chop etish / PDF</button>
+    </div>
+  </div>
+  <input type="file" id="file-in" multiple accept=".md,.txt,.markdown,text/markdown,text/plain" hidden>
+</header>
+<div class="msgs" id="msgs"></div>
+<main class="layout">
+  <section class="form" id="form" aria-label="Ma’lumotlar"></section>
+  <section class="preview" aria-label="Varaq">
+    <div class="preview-head"><span>A4 varaq: yozganingiz darhol shu yerda ko‘rinadi</span><span>Chop etish: A4, masshtab 100%</span></div>
+    <div class="paper-wrap"><article class="sheet" id="sheet"></article></div>
+  </section>
+</main>
+<section class="guide" id="qollanma" aria-label="Qo‘llanma">
+  <div class="guide-in">
+<!-- GUIDE:START -->
+<h2>Qo‘llanma: qanday ishlatish</h2>
+<h3>1. Bu nima va kim uchun</h3>
+<p>Natija varag‘i - sinovingiz natijasi bitta A4 varaqda. Uni hamkoringizga, bo‘lim boshlig‘iga yoki o‘zingizga bir yildan keyin ko‘rsatasiz. Varaqda beshta narsa bor: agentgacha va keyin raqamlar, tejalgan soat va topilgan pul, xato javoblar ulushi, vositaning narxi va qoplanish muddati, qaror va keyingi jarayon. Sahifa internetsiz ishlaydi: <code>index.html</code> ni brauzerda (Chrome, Edge, Safari) oching. Kiritgan narsangiz shu kompyuterning brauzerida saqlanadi; boshqa hech qayerga yuborilmaydi.</p>
+<h3>2. Boshlashdan oldin nima kerak</h3>
+<table><tr><th>Nima</th><th>Qayerdan</th><th>Kim beradi</th></tr><tr><td><code>kit5-pilot/numbers.md</code>: agentgacha, 1-hafta, 2-hafta ustunlari, B.7 va topilgan pul tafsiloti</td><td>Kompaniya papkangiz; <code>/kit5 hafta 2</code> va <code>/kit5 yakun</code> to‘ldiradi</td><td>Siz, Claude Code bilan</td></tr><tr><td><code>kit5-pilot/plan.md</code>: A.6 muvaffaqiyat mezoni, A.7 to‘xtatish sharti</td><td>Kompaniya papkangiz (4-darsda yozilgan)</td><td>Siz va bo‘lim boshlig‘i</td></tr><tr><td>Ish kunlari: har hafta nechta kun ishladingiz</td><td>Kalendar, bayramlar</td><td>Siz</td></tr><tr><td>Soatbay haq: ishni bajaradiganlarning oklad / oylik ish soati</td><td>Ish haqi varag‘i</td><td>Buxgalter</td></tr><tr><td>Oylik xarajat: server, model (OpenRouter), Claude obunasi</td><td>Provayder hisobi, OpenRouter paneli, Claude kvitansiyasi</td><td>Siz</td></tr><tr><td>Sozlash xarajati (B.10): kim necha soat sarfladi, kimga necha so‘m to‘landi</td><td>O‘z hisobingiz, IT xodim</td><td>Siz</td></tr><tr><td>Topilgan pulning har bir holati va hujjati</td><td>CRM bitim kartasi, hisob-faktura, buxgalter tasdig‘i</td><td>Siz va buxgalter</td></tr></table>
+<p>Mentor bu raqamlarni darsdan oldingi uch kunda tekshiradi. Darsda faqat yakuniy ustun va qaror qoladi.</p>
+<h3>3. Bosqichma-bosqich</h3>
+<ol><li>Sahifani oching va avval «Namuna bilan ochish» tugmasini bosing. Baraka Office varag‘ini 2 daqiqa o‘qing: sizniki ham shunday bo‘ladi.</li><li>«Tozalash», keyin «Kit 5 faylini ochish»: <code>numbers.md</code> va <code>plan.md</code> ni birga tanlang. Fayllarni ramkaga sudrab tashlasangiz ham bo‘ladi. Fayl ochilmasa, uning matnini nusxalab «Fayl ochilmasa» qutisiga qo‘ying.</li><li>Ochilgandan keyin ko‘k xabarni o‘qing: nechta hafta va nechta topilgan pul yozuvi o‘qilgani yoziladi.</li><li>3-bo‘limda har ustun uchun «Ish kunlari» ni yozing (sariq kataklar).</li><li>4-bo‘limda soatbay haqni, oylik xarajatlarni va sozlash xarajatini yozing. Kit 5 faylidan kelgan B.9 bitta qator bo‘lib keladi; xohlasangiz uni server, model va obunaga ajrating.</li><li>Topilgan pulning har bir holatida «Qanday hisobladik va manbasi» ni to‘ldiring. Manbasi bor holatga «Isbotlangan» belgisini qo‘ying; manbasiz summa yig‘indiga qo‘shilmaydi.</li><li>5-bo‘limda mezon bajarildimi, to‘xtatish sharti yuz berdimi, qaror va sababini belgilang.</li><li>6-bo‘limda keyingi jarayonni, suhbatdoshlarni va imzo qatorlarini yozing.</li><li>Pastdagi «Tekshiruv» qutisini o‘qing: qizil - natija yo‘q; sariq - tuzating yoki izoh yozing; ko‘k - ma’lumot uchun.</li><li>Mentor bilan varaqni ko‘rib chiqing, keyin «Chop etish / PDF».</li></ol>
+<h3>4. Har bir maydon: nima va qayerdan</h3>
+<table><tr><th>Maydon</th><th>Oddiy so‘z bilan</th><th>Qayerdan</th></tr><tr><td>B.1 Bajarilgan so‘rovlar</td><td>Haftasiga nechta ish keldi va bajarildi (hammasi, faqat agent qilgani emas)</td><td>Bot jurnali, Telegram eksporti</td></tr><tr><td>B.2 O‘rtacha vaqt, daqiqa</td><td>Bitta ishga odam sarflagan daqiqa, tekshirishsiz</td><td>10 ta holatni soat bilan o‘lchash</td></tr><tr><td>B.3 Xato javoblar</td><td>Noto‘g‘ri javoblar soni; xatolar jurnalidagi qatorlar soniga teng</td><td>Xatolar jurnali (B.13)</td></tr><tr><td>B.4 Takroriy so‘rovlar</td><td>Bir mijoz bir narsani qayta so‘ragani</td><td>Telegram eksporti</td></tr><tr><td>B.5 To‘liq hal qilingan</td><td>Qo‘shimcha savolsiz yopilgan ishlar</td><td>Bot jurnali</td></tr><tr><td>B.6 Bitimlar</td><td>Shu jarayondan chiqqan bitim yoki buyurtma; bog‘lab bo‘lmasa bo‘sh qoldiring</td><td>CRM</td></tr><tr><td>B.7 Tekshirish vaqti, soat</td><td>Agent ishini tekshirishga butun vazifa bo‘yicha haftasiga necha soat ketdi</td><td>Tekshiruvchining o‘zi aytadi</td></tr><tr><td>B.8 Mijoz shikoyatlari</td><td>Shu jarayon bo‘yicha shikoyatlar</td><td>CRM, chat</td></tr><tr><td>B.14 Topilgan pul</td><td>Oldi olingan xato, yo‘qolmagan so‘rov, tezroq tushgan pul; har biri hujjat bilan</td><td>Bitim kartasi, buxgalter</td></tr><tr><td>Ish kunlari</td><td>Shu hafta nechta kun ishlandi</td><td>Kalendar</td></tr><tr><td>Soatbay haq</td><td>Oklad / oyiga ish soati (o‘z jadvalingiz bo‘yicha: haftasiga 40 soat bo‘lsa 173,3; Baraka’da 46 soat, taxminan 200); tekshiruvchi boshqa odam bo‘lsa, uning haqi alohida maydonda</td><td>Buxgalter: ijtimoiy soliqni ham qo‘shish kerakmi, undan so‘rang</td></tr><tr><td>Oylik xarajat</td><td>Vosita ishlab turishi uchun har oy to‘lanadigan pul</td><td>Hisob-fakturalar</td></tr><tr><td>Sozlash (B.10)</td><td>Bir marta sarflangan: sizning va IT xodimning soatlari, tashqi to‘lov</td><td>O‘z hisobingiz</td></tr></table>
+<p>Varaq o‘zi hisoblaydigan qatorlar, To‘plam 5 dagi formulalar bilan:</p>
+<ul><li>Tejalgan vaqt (B.15) = (B.2 agentgacha - B.2 sinovda) × B.1 sinovda / 60 - B.7. Bu ehtiyotkor hisob: agentgacha ham kimdir tekshirgan bo‘lsa (agentgacha B.7), formula uni hisobga olmaydi.</li><li>Sinov xarajati: B.9 = oylik xarajat × hafta / 4,3; B.11 = B.7 yig‘indisi × soatbay haq; B.12 = B.9 + B.10 + B.11.</li><li>Bitta bajarilgan ish narxi (B.16): agent = B.12 / B.5 yig‘indisi; inson = B.2 agentgacha / 60 × soatbay haq.</li><li>Xato javoblar ulushi = B.3 / B.1 × 100.</li><li>Oylik: haftalik × 4,3.</li><li>Pul hisobida natija = oylik topilgan pul - oylik xarajat. Oylik topilgan pul - taxmin: sinovda isbotlangan summa ÷ hafta × 4,3.</li><li>Tejalgan vaqt qiymati = B.15 × soatbay haq × 4,3; bu shartli, naqd pul emas.</li><li>Qoplanish = sozlash xarajati / oylik pul natijasi.</li></ul>
+<p>Varaqda muvaffaqiyat mezoni va to‘xtatish sharti ikki qatorga qisqartiriladi; to‘liq matni <code>plan.md</code> da.</p>
+<h3>5. Ko‘p uchraydigan xatolar</h3>
+<table><tr><th>Xato</th><th>Nega yomon</th><th>To‘g‘risi</th></tr><tr><td>Agentgacha ustuni bo‘sh</td><td>O‘zgarishni hisoblab bo‘lmaydi: bu taassurot</td><td>2-darsdan keyingi <code>baseline.md</code> ni oching; yo‘q bo‘lsa, «natija yo‘q, sababi» deb halol yozing</td></tr><tr><td>Kunlik va haftalik daqiqalar aralashgan</td><td>Natija 5-6 baravar xato chiqadi</td><td>Hamma qator haftasiga; B.2 bitta ishga daqiqa</td></tr><tr><td>B.7 bo‘sh</td><td>Tejalgan vaqt bo‘rttiriladi</td><td>Tekshiruvchidan haftalik soatni so‘rang</td></tr><tr><td>B.2 ga tekshirish vaqti ham qo‘shilgan va B.7 ham yozilgan</td><td>Tekshirish ikki marta ayiriladi</td><td>B.2 tekshirishsiz, tekshirish faqat B.7 da</td></tr><tr><td>Topilgan pul manbasiz</td><td>Mentor o‘chiradi, hamkor ishonmaydi</td><td>Har holat: sana, hujjat, kim tasdiqladi</td></tr><tr><td>Tushum topilgan pul deb yozilgan</td><td>Tushum foyda emas</td><td>Faqat oldi olingan yo‘qotish yoki aniq qo‘shimcha foyda</td></tr><tr><td>Tejalgan soat «oyiga X so‘m foyda» deb yozilgan</td><td>Maosh kamaymagan bo‘lsa, bu pul emas</td><td>Varaq ikki qatorni alohida ko‘rsatadi: pul va shartli vaqt</td></tr><tr><td>Claude obunasi yozilmagan</td><td>Vosita arzon ko‘rinadi</td><td>Obunani to‘liq yoki ulushini yozing</td></tr><tr><td>Ish kunlari yozilmagan</td><td>Bayram haftasi «tushish» bo‘lib ko‘rinadi</td><td>Har ustunga kunlar soni</td></tr></table>
+<h3>6. Natijani qanday o‘qish: «Baraka Office» namunasi</h3>
+<p><img src="img/namuna-a4.png" alt="Baraka Office natija varag‘i, A4" style="max-width:100%;border:1px solid #d9dce3;border-radius:6px" loading="lazy"></p>
+<p>Yuqoridan pastga o‘qing:</p>
+<ol><li><b>Ko‘k ramkadagi gap</b> - butun natija bitta gapda: vaqt 6 daqiqadan 2 daqiqaga, xato ulushi 7,5% dan 2,2% ga, haftasiga 7,2 soat tejaldi, 680 000 so‘m topildi, qaror - davom etish. Hamkoringiz faqat shu gapni o‘qishi mumkin; u to‘g‘ri bo‘lsin.</li><li><b>To‘rtta kartochka.</b> Tejalgan vaqt 7,2 soat/hafta (1-haftada 3,2, chunki tekshirish ko‘p edi). Topilgan pul 680 000 so‘m, 2 haftada bitta hujjatli holat; 5,4 mln so‘mlik sotuv hisobga olinmagan, chunki bu tushum va bot tufayli ekani isbotlanmagan. Sozlash taxminan 2 oyda qoplanadi, pul hisobida; bu taxmin, chunki oylik pul bitta holatdan hisoblangan.</li><li><b>Oldin va keyin jadvali.</b> Yashil - yaxshilangan, qizil - yomonlashgan. «kuniga» qatori so‘rovlar 20 tadan 23 taga ko‘payganini ko‘rsatadi: dekabr mavsumi, «Yana nima o‘zgardi» da yozilgan.</li><li><b>Oyiga pul hisobi.</b> Yashil chiziq - topilgan pulning oylik taxmini (2 haftadagi 680 000 so‘mdan), qizil - xarajat, ko‘k - pul natijasi, chiziqli sariq - tejalgan vaqt qiymati. Oylik summalar taxmin: isbotlangani faqat 2 haftadagi 680 000 so‘m. Sariqni pulga qo‘shib gapirmang: maoshlar o‘zgarmaydi. U faqat tejalgan soat yangi ishga ketganda qiymat bo‘ladi.</li><li><b>Sinov xarajati.</b> B.16: sozlash bilan bitta ish agentda 10 452 so‘m, odamda 3 570 so‘m. Sozlashsiz agentda 2 074 so‘m. Ma’nosi: sozlash puli birinchi oylarda qaytadi, keyin agent arzonroq.</li><li><b>Qaror.</b> Mezon bajarildi, to‘xtatish sharti yuz bermadi, qaror va sababi bitta gapda.</li><li><b>Mentor belgisi</b> «Tekshirildi, izoh bilan»: raqamlar to‘g‘ri, izoh - topilgan pul bitta holatdan, oylik summa taxmin.</li></ol>
+<p>Telefonda varaq kichik ko‘rinadi; to‘ldirish mumkin, lekin chop etish va PDF uchun kompyuter qulay.</p>
+<p><img src="img/namuna-1440.png" alt="Kompyuterda: chapda maydonlar, o‘ngda varaq" style="max-width:100%;border:1px solid #d9dce3;border-radius:6px" loading="lazy"></p>
+<h3>7. Tayyor bo‘lsa</h3>
+<ul><li>☐ «Tekshiruv» qutisida qizil yozuv yo‘q.</li><li>☐ Agentgacha, 1-hafta va 2-hafta ustunlari to‘la, har ustunda ish kunlari bor.</li><li>☐ B.7 har haftada yozilgan.</li><li>☐ Topilgan pulning har bir holati hujjati bilan; isbotlanmagani alohida.</li><li>☐ Qaror belgilangan, sababi bitta gapda, A.6 va A.7 bilan solishtirilgan.</li><li>☐ Keyingi jarayon va suhbatdoshlar yozilgan.</li><li>☐ Mentor tekshirdi va belgisini qo‘ydi, sinov egasi raqamlarga rozi.</li><li>☐ PDF saqlangan: <code>kit5-pilot/natija-varagi.pdf</code>.</li></ul>
+<h3>8. Yomon namuna: raqam bor, boshlang‘ich holat yo‘q</h3>
+<p>«Yomon namuna» tugmasi shu faylni ochadi: <code>namuna/yomon-numbers.md</code>.</p>
+<p><img src="img/yomon-a4.png" alt="Yomon namuna varag‘i" style="max-width:100%;border:1px solid #d9dce3;border-radius:6px" loading="lazy"></p>
+<p>Unda nima yozilgan:</p>
+<blockquote style="border-left:3px solid #d9dce3;margin:8px 0;padding:4px 12px;color:#4a505e">Hammaga yoqdi, vaqt 2 barobar tejaldi, oyiga taxminan 10 mln so‘m foyda.</blockquote>
+<p>Nimasi yomon:</p>
+<ol><li>Agentgacha ustuni bo‘sh: «2 barobar» nimaga nisbatan ekanini hech kim bilmaydi. Varaq qizil yozuv chiqaradi va mentor belgisini «Tekshirilmagan» qiladi.</li><li>B.7 bo‘sh: tekshirish vaqti hisobga olinmagan.</li><li>B.3 da «ko‘p emas», «kam»: bu raqam emas.</li><li>«10 mln foyda» ning hujjati yo‘q, va u tejalgan vaqtni pul deb hisoblagan. Varaq uni yig‘indiga qo‘shmaydi.</li><li>«Hammaga yoqdi» - sabab emas: mezon va to‘xtatish sharti yozilmagan.</li></ol>
+<p>To‘g‘rilangan varianti - Baraka namunasining o‘zi: xuddi shu 2 hafta, lekin agentgacha raqamlari (120 so‘rov, 6 daqiqa, 9 xato), B.7 (4,5 va 2,0 soat), bitta hujjatli holat (680 000 so‘m) va A.6 bilan solishtirilgan qaror. Halol kichik raqam katta taxmindan kuchli. Agentgacha raqamingiz umuman bo‘lmasa, varaqqa «natija o‘lchanmadi: boshlang‘ich raqam yo‘q edi» deb yozing va 3-4-haftada eski holatni bir hafta qayta o‘lchang (botni bir hafta o‘chirib emas, tarixdan: Telegram yoki CRM eksporti).</p>
+<h3>9. Chop etish va PDF</h3>
+<ol><li>«Chop etish / PDF» tugmasini bosing.</li><li>Printer: «Save as PDF» (PDF sifatida saqlash) yoki printeringiz.</li><li>Qog‘oz: A4, joylashuv: portret (tik), masshtab: 100% (yoki «Default»).</li><li>«Headers and footers» (sarlavha va pastki yozuvlar) belgisini olib tashlang.</li><li>«Background graphics» (fon rasmlari) belgisini qo‘ying, aks holda ranglar chiqmaydi.</li><li>Faylni <code>kit5-pilot/natija-varagi.pdf</code> deb saqlang va mentoringizga stol chatida yuboring.</li></ol>
+<p>Varaq har doim bitta sahifa bo‘ladi; matn juda uzun bo‘lsa, pastki qatorlar kesiladi, shuning uchun izohlarni qisqa yozing.</p>
+<h3>10. Sahna rejimi</h3>
+<p>Zalda raqobatchingiz o‘tirgan bo‘lishi mumkin. «7. Ko‘rinish» bo‘limida «Sahna rejimi» ni yoqsangiz, so‘m summalari va xodim ismi yashiriladi: soat, daqiqa, xatolar soni va qaror qoladi. Hamkor uchun varaqni sahna rejimisiz chop eting.</p>
+<p><img src="img/sahna-a4.png" alt="Sahna rejimidagi varaq" style="max-width:100%;border:1px solid #d9dce3;border-radius:6px" loading="lazy"></p>
+<p>«Kurs to‘lovi qancha vaqtda qoplanishini ham ko‘rsatish» - faqat o‘zingiz uchun: kurs narxini 12 oyga bo‘lib, hozirgi oylik natija bilan solishtiradi. Odatda u o‘chiq turadi.</p>
+<!-- GUIDE:END -->
+  </div>
+</section>
+<script src="assets/calc.js"></script>
+<script src="assets/parse.js"></script>
+<script src="assets/examples.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

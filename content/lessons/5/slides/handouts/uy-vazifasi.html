@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4-dars uy vazifasi: avval odamlar, keyin assistent</title>
+<link rel="stylesheet" href="../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 4-dars</span><span class="pill">Uy vazifasi</span></div>
+<h1>4-dars uy vazifasi: avval odamlar, keyin assistent</h1>
+<p>Muddat: 5-darsgacha (19-dekabr, shanba yoki 20-dekabr, yakshanba).
+Jami vaqt: taxminan 3-4 soat, hafta davomida; sinovning o‘zi har kuni 10-15 daqiqa.
+Mentoringiz chorshanba kuni (16-dekabr) stol chatida so‘raydi: «Suhbatlar bo‘ldimi, assistent yoqildimi, jurnalda nechta yozuv?»</p>
+<p>Nega bu muhim: 6-darsda (26 yoki 27-dekabr) sinov natijasini raqam bilan ko‘rsatasiz.
+Buning uchun kamida 2 to‘liq hafta kerak: ishga tushirish dushanbadan (14-dekabr) kechikmasin.
+Kursning kafolat sharti uchun har bir uy vazifasi dalili bilan hisobga olinadi.</p>
+<h2>Tartib - eng muhim qoida</h2>
+<p><strong>Avval har bir xodim bilan suhbat, keyin assistent xodimlar uchun yoqiladi.</strong>
+<strong>Hech qachon aksincha emas.</strong>
+Xodim botni Sizdan emas, tasodifan bilib qolsa, «meni almashtirishyapti» deb o‘ylaydi va haqiqiy ishini yashiradi: sinov raqamlari yolg‘on chiqadi.</p>
+<h2>Ro‘yxat</h2>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Vazifa</th>
+<th>Qachon</th>
+<th>Vaqt</th>
+<th>Natija</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Yozma majburiyatni yangilash, rejani bo‘lim boshlig‘i bilan kelishish</td>
+<td>Dushanba, 14-dekabr, ertalab</td>
+<td>30 daqiqa</td>
+<td><code>kit1-interviews/team-message.md</code> (4 va 5-band), <code>kit5-pilot/plan.md</code> (boshliq rozi)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Har bir xodim bilan 15 daqiqalik suhbat</td>
+<td>Dushanba ertalab, bot yoqilishidan oldin</td>
+<td>15 daqiqa × xodimlar</td>
+<td><code>kit4-people/&lt;ism&gt;-form-b.md</code> da B.8 va B.9</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Ishga tushirish: xodimlar botga, birinchi hafta tasdiqlash bilan</td>
+<td>Dushanba, suhbatlardan keyin</td>
+<td>20 daqiqa</td>
+<td>Xodimlar botdan foydalanmoqda, <code>REPLY_MODE=approve</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Har bir xatoni jurnalga yozish</td>
+<td>Har kuni</td>
+<td>kuniga 5-10 daqiqa</td>
+<td><code>kit5-pilot/numbers.md</code>, B.13</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1-hafta ustuni</td>
+<td>Hafta oxiri, 5-darsdan oldin, haftalik ko‘rib chiqishda</td>
+<td>30 daqiqa</td>
+<td><code>numbers.md</code> 1-hafta ustuni</td>
+</tr>
+<tr>
+<td>+</td>
+<td>Darsda ulgurmaganlar: GitHub (1-mashq), deploy (server yo‘q bo‘lsa: bugun sotib olish va 48 soat ichida mentor bilan qo‘ng‘iroq), domen (3-mashq, ixtiyoriy)</td>
+<td>48 soat ichida</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2>1. Majburiyat va reja (dushanba ertalab, 30 daqiqa)</h2>
+<p>1-darsda imzolagan yozma majburiyatingizning 4 va 5-bandlarini aniq qiling (5-mashq, 3-qadam): loyiha yetakchisi ismi, <code>/stop</code> buyrug‘i, tejalgan vaqt nimaga ketishi.
+Imzolang va suhbat qiladigan har bir xodimga bittadan nusxa tayyorlang.</p>
+<p>Bo‘lim boshlig‘i bilan <code>kit5-pilot/plan.md</code> ni 15 daqiqa o‘qing.
+U o‘zgartirgan joyni Claude Code’da tuzating:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/kit5 reja</pre></div>
+<p>Sarlavhadagi «Bo‘lim boshlig‘i» qatoriga uning ismi va sanani yozing.
+Boshliq rozi bo‘lmasa, ishga tushirmang: mentoringizga yozing.</p>
+<h2>2. Suhbatlar (dushanba ertalab, har biri 15 daqiqa)</h2>
+<p>Har bir xodim bilan yolg‘iz, ish vaqtida, <code>kit4-people/&lt;ism&gt;-form-b.md</code> oxiridagi reja bo‘yicha.
+Darsdagi mashqdagi 7 qadam: nega gaplashyapmiz, nima o‘zgaradi, nima o‘zgarmaydi (maosh, lavozim, majburiyat), endi nimani tekshiradi, qanday to‘xtatiladi, xavotirlari, kelishuv.</p>
+<p>Suhbatdan keyin darhol Claude Code’ga (xodim ismi bilan):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/kit4 suhbat madina</pre></div>
+<p>Skill B.8 (xodimning savollari va xavotirlari, uning so‘zlari bilan) va B.9 (nima deb kelishdik) ni Siz bilan to‘ldiradi.
+Xodim rozi bo‘lmasa yoki qatnashishni istamasa: jazosiz qabul qiling, sababini so‘rang va yozing (FAQ X-06).</p>
+<h2>3. Ishga tushirish (dushanba, suhbatlardan keyin, 20 daqiqa)</h2>
+<p><strong>3.1.</strong> Har bir xodim o‘z telefonidan botga <code>/start</code> yozadi.
+Bot unga ID raqamini aytadi («Sizning Telegram ID raqamingiz: ...»).
+Telegram qoidasi: bot faqat o‘ziga avval yozgan odamga xabar yubora oladi.</p>
+<p><strong>3.2.</strong> Raqamlarni <code>app/.env</code> ga o‘zingiz yozing (Claude emas): Warp’da <code>app</code> papkasida Mac’da <code>open -e .env</code>, Windows’da <code>notepad .env</code>.
+Baraka namunasi (raqamlar shartli):</p>
+<pre><code>ALLOWED_USER_IDS=111111111,222222222,333333333,555555555
+ADMIN_USER_IDS=222222222,444444444
+REVIEWER_CHAT_ID=222222222
+ESCALATION_CHAT_ID=444444444
+REPLY_MODE=approve
+PILOT_START_DATE=2026-12-14
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Qator</th>
+<th>Nima</th>
+<th>Rejadagi joyi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ALLOWED_USER_IDS</code></td>
+<td>Botga yoza oladigan xodimlar (vergul bilan, bo‘sh joysiz)</td>
+<td>A.4</td>
+</tr>
+<tr>
+<td><code>ADMIN_USER_IDS</code></td>
+<td><code>/stop</code>, <code>/davom</code>, <code>/hisobot</code> qila oladiganlar; Siz doim adminsiz</td>
+<td>A.7</td>
+</tr>
+<tr>
+<td><code>REVIEWER_CHAT_ID</code></td>
+<td>Birinchi hafta har bir javobni tasdiqlovchi (bo‘sh bo‘lsa - Siz)</td>
+<td>A.5, A.8</td>
+</tr>
+<tr>
+<td><code>ESCALATION_CHAT_ID</code></td>
+<td>Qiyin holatlar kimga boradi (bo‘sh bo‘lsa - Siz)</td>
+<td>To‘plam 3 B.6</td>
+</tr>
+<tr>
+<td><code>REPLY_MODE=approve</code></td>
+<td>Birinchi hafta: bot qoralama yozadi, odam tasdiqlaydi</td>
+<td>A.5</td>
+</tr>
+<tr>
+<td><code>PILOT_START_DATE</code></td>
+<td>Sinov boshlangan kun: haftalik raqamlar shundan sanaladi</td>
+<td>A.3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.3.</strong> Claude Code’ga:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>&quot;uv run python deploy/deploy.py env&quot; ni ishga tushir. .env faylini ochma. Natijani bir gapda ayt.</pre></div>
+<p>Kutilgan natija (<code>exercises/namuna/natijalar/12a-env-approve.txt</code>):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Bot restarted.
+.env is on the server (/opt/pilot/.env, readable only by the bot).
+Reminder: one bot token can run in one place only. Stop the bot on your laptop (Ctrl+C).</pre></div>
+<p><strong>3.4.</strong> Sinab ko‘ring: xodim bitta savol yozadi.
+Xodim «Savolingiz qabul qilindi. Javobni xodim tekshirib, tez orada yuboradi.» degan javob oladi.
+Tasdiqlovchiga «📝 Javob loyihasi» keladi, u «✅ Yuborish» ni bosadi va javob xodimga boradi.
+Sinovimizdagi to‘liq yozishma: <code>exercises/namuna/natijalar/12-xodim-va-tasdiqlash.txt</code>.</p>
+<p>Tez yo‘l: bitta xodimni <code>.env</code> siz, telefoningizdan ham qo‘shish mumkin: botga <code>/ruxsat 111111111 Madina</code>.
+Ish vaqtidan tashqari (<code>WORK_HOURS</code>, odatda 09:00-18:00) bot xodimlarga xabar yubormaydi: qoralamalar ertalab keladi; Sizga esa istalgan vaqtda.</p>
+<h2>4. Xatolar jurnali (har kuni)</h2>
+<p>Xodim noto‘g‘ri javobni ko‘rsa, ❌ ni bosadi va bir gap yozadi.
+Tasdiqlovchi rad etgan yoki tuzatgan javob ham xato hisoblanadi.
+Har kuni kechqurun (yoki loyiha yetakchisi 17:30 da) botga yozing:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/xatolar</pre></div>
+<p>Har bir xatoni jurnalga Claude Code bilan yozing:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/kit5 xato</pre></div>
+<p>Har yozuvda 4 narsa: sana, nima bo‘ldi, kim topdi (ayblovsiz), nimani o‘zgartirdik.
+«Nimani o‘zgartirdik» 5-darsda to‘ldiriladi, hozircha bo‘sh qolishi mumkin.
+Jurnal bo‘sh qolsa, mentor so‘raydi: «Hech kim hech narsa topmadimi yoki hech kim tekshirmadimi?»</p>
+<p>A.7 dagi to‘xtatish sharti bajarilsa: darhol <code>/stop</code>, o‘sha kuni sababini ko‘rib chiqing, mentoringizga yozing.
+To‘xtatish - muvaffaqiyatsizlik emas, rejaning ishlayotgani.</p>
+<h2>5. 1-hafta ustuni (hafta oxiri, 5-darsdan oldin)</h2>
+<p>Haftalik ko‘rib chiqishda (A.9) botga yozing:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/hafta</pre></div>
+<p>Bot haftalik faylni yuboradi: B.1, B.3, B.5 va model xarajatini o‘zi sanaydi; qolganlari «qo‘lda».
+Keyin Claude Code’ga:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/kit5 hafta 1</pre></div>
+<p>Skill fayldagi raqamlarni <code>numbers.md</code> ga ko‘chiradi va qolganlarini so‘raydi: B.2 (bitta savolga daqiqa, tekshirishsiz), B.7 (shu hafta tekshirishga jami necha soat ketdi, butun vazifa uchun bitta raqam), B.14 (topilgan pul, faqat isbotlangani).</p>
+<h2>Yaxshi namuna: «Baraka Office»</h2>
+<p>Sanalar yakshanba guruhi bo‘yicha; shanba guruhida darslar bir kun oldin, sinov haftalari bir xil.</p>
+<ul>
+<li>Dushanba 08:30: Jamshid aka rejani o‘qidi, A.6 ga «B.8 shikoyat 2 tadan oshmasin» qatorini qo‘shdi va imzoladi.</li>
+<li>09:30-10:45: Madina, Zarina, Bekzod, Otabek aka va Malika bilan suhbatlar; Madinaning uchta xavotiri B.8 da uning so‘zlari bilan (<code>exercises/namuna/kompaniya/kit4-people/madina-form-b.md</code>).</li>
+<li>11:00: Malika Madina, Zarina va Bekzod bilan 30 daqiqa mashq qildi (6 misol).</li>
+<li>14:00: <code>.env</code> yangilandi, <code>deploy.py env</code>, Madinaning birinchi savoli Malikaga qoralama bo‘lib keldi va 2 daqiqada yuborildi.</li>
+<li>Hafta davomida (14-19-dekabr): 132 savol, 7 ta xato (masalan, 5+ donaga chakana narx, eski 1C fayli, kafolat muddati); har biri B.13 da kim topgani bilan.</li>
+<li>Shanba: 1-hafta ustuni to‘ldirildi: B.2 2,5 daqiqa (6 edi), B.7 4,5 soat (tasdiqlash haftasi, kutilgan), B.3 7 ta; A.7 bajarilmagan, 7 xatoning har biri yo‘riqnomaga tuzatish bo‘lib kirdi va testlar o‘tdi, shuning uchun 2-hafta qisman to‘g‘ridan-to‘g‘ri: narx va qoldiq javoblari xodimga darhol, chegirma va yetkazish sanasi javoblari oldingidek Malika tasdig‘idan keyin; A.6 2-hafta oxirida baholanadi.</li>
+</ul>
+<p>Raqamlar shartli: usulni ko‘rsatish uchun.</p>
+<h2>Zaif namuna</h2>
+<ul>
+<li>Egasi dushanba kuni ertalab assistentni xodimlar uchun yoqdi va «hamma botdan foydalansin» deb guruhga yozdi.
+  Suhbatlar «vaqt bo‘lmadi», payshanbaga qoldi.</li>
+<li><code>REPLY_MODE=direct</code> qoldi: birinchi kundan javoblar tekshiruvsiz.</li>
+<li>Jurnal bo‘sh: «xato bo‘lmadi».</li>
+</ul>
+<p><strong>Nima xato:</strong> tartib buzilgan (FAQ X-05): xodimlar botni rahbardan emas, guruhdan bilib olishdi; birinchi hafta cheklangan ruxsat yo‘q; bo‘sh jurnal - ko‘pincha hech kim tekshirmaganining belgisi.</p>
+<p><strong>Endi nima qilish kerak:</strong> shu hafta har bir xodim bilan suhbatni o‘tkazing (kech bo‘lsa ham), <code>REPLY_MODE=approve</code> ga o‘ting, 5-darsga qadar kamida 4 ish kuni jurnal yuriting.
+Mentoringizga ochiq yozing: bu birinchi marta emas, X-05 ning yechimi bor.</p>
+<hr />
+<h2>Mentor tekshiruvi: 5-dars boshida (0:00-0:30)</h2>
+<p>Kodlar <code>mentor-handbook/day-5.md</code> bilan bir xil.
+V - uy vazifasi: kafolat sharti uchun hisoblanadi, jadvalga dalili bilan yoziladi.</p>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Tekshiruv</th>
+<th>Ekranda nimani ko‘rasiz</th>
+<th>Yaxshi</th>
+<th>Zaif</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>5.1</strong> V</td>
+<td>To‘plam 5 A kelishilgan; To‘plam 4 suhbatlari agent yoqilishidan oldin bo‘lgan</td>
+<td><code>plan.md</code> da boshliq ismi va sana; har <code>&lt;ism&gt;-form-b.md</code> da B.8, B.9; suhbat sanasi ishga tushirish sanasidan oldin</td>
+<td>Suhbat 14.12 09:30, ishga tushirish 14.12 14:00</td>
+<td>Suhbat ishga tushirishdan keyin yoki umuman yo‘q</td>
+</tr>
+<tr>
+<td><strong>5.2</strong> V</td>
+<td>Sinov kamida 4 ish kuni jonli; xatolar jurnalida yozuv bor</td>
+<td>B.13: sana, nima bo‘ldi, kim topdi; botda <code>/hisobot</code></td>
+<td>6 kun, 4 yozuv</td>
+<td>1 kun, jurnal bo‘sh</td>
+</tr>
+<tr>
+<td><strong>5.3</strong> V</td>
+<td>To‘plam 5 B 1-hafta ustuni to‘ldirilgan</td>
+<td><code>numbers.md</code>, har raqam birligi bilan</td>
+<td>B.2 daqiqada, B.7 soatda</td>
+<td>«30» - birliksiz (FAQ R-02)</td>
+</tr>
+<tr>
+<td><strong>5.4</strong></td>
+<td>Assistent serverda, noutbukda emas</td>
+<td>Noutbuk yopiq, telefondan savol, javob keladi</td>
+<td>Javob 10 soniyada</td>
+<td>Faqat noutbuk ochiq bo‘lsa</td>
+</tr>
+<tr>
+<td><strong>5.5</strong></td>
+<td>Kod yopiq repoda, kalit commit qilinmagan</td>
+<td>GitHub: «Private», <code>.env</code> yo‘q</td>
+<td>Private, <code>.env.example</code> bor</td>
+<td>Public yoki <code>.env</code> repoda (FAQ D-04)</td>
+</tr>
+</tbody>
+</table>
+<p>5.4 bajarilmagan har bir ishtirokchi: 4-darsdan beri sotuv sahifasidagi va’da bajarilmagan, bugun bosh mentor bilan.
+Sinov boshlanmagan bo‘lsa: bugun instruktorga (<code>mentor-handbook.md</code>, 9-bo‘lim).</p>
+<p><strong>Chorshanba (16-dekabr), stol chatida:</strong> «Suhbatlar bo‘ldimi, assistent yoqildimi, jurnalda nechta yozuv?»
+Javob bermaganlarga payshanba kuni qo‘ng‘iroq.</p>
+<div class="foot">Praktikum 3.0 · 4-dars · manba: day-4/homework.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

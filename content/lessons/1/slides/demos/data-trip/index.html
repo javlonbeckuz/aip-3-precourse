@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xabaringiz qayerga boradi?</title>
+<link rel="stylesheet" href="../../assets/ovd-dark.css">
+<style>
+  .controls{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:18px;}
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:18px;align-items:start;}
+  .diagram{padding:10px;}
+  svg{display:block;width:100%;height:auto;}
+  .node rect{fill:#0b0b10;stroke:rgba(255,255,255,0.22);stroke-width:2;}
+  .node.home rect{stroke:rgba(79,209,161,0.75);}
+  .node.abroad rect{stroke:rgba(255,107,94,0.8);}
+  .node .t{fill:#f4f4f6;font:600 30px 'OVDInter',system-ui,sans-serif;}
+  .node .d{fill:#b4b4bc;font:400 21px 'OVDInter',system-ui,sans-serif;}
+  .edge{stroke:rgba(255,255,255,0.28);stroke-width:3;fill:none;}
+  .edge.back{stroke-dasharray:8 8;stroke:rgba(255,255,255,0.18);}
+  .border{stroke:rgba(255,255,255,0.4);stroke-width:2;stroke-dasharray:4 10;}
+  .zone{font:400 18px 'OVDMono',ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;}
+  .zone.home{fill:#4fd1a1;} .zone.abroad{fill:#ff6b5e;}
+  .pkt-label{font:500 20px 'OVDMono',ui-monospace,monospace;fill:#f4f4f6;}
+  .verdict{font-size:30px;font-weight:620;line-height:1.2;margin:4px 0 12px;}
+  .verdict.warn{color:var(--warn);} .verdict.ok{color:var(--ok);}
+  .side p{font-size:19px;line-height:1.5;color:var(--ink-2);margin:0 0 10px;}
+  .side p.src{font-size:13px;line-height:1.6;color:var(--ink-3);}
+  .side ul{margin:0;padding-left:20px;font-size:18px;line-height:1.5;color:var(--ink-2);}
+  .side li{margin:5px 0;}
+  .side b{color:var(--ink);}
+  .side p.ex{border-left:3px solid rgba(var(--acc-rgb),.6);padding-left:12px;color:var(--ink);}
+  .stack{display:flex;flex-direction:column;gap:16px;min-width:0;}
+  @media (max-width:1200px){.layout{grid-template-columns:minmax(0,1fr);}}
+  @media (max-width:700px){.verdict{font-size:24px;}.side p{font-size:16px;}.side ul{font-size:15.5px;}.seg button{font-size:14px;padding:9px 11px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div>Praktikum 3.0 // 1-dars <span class="pill">Ma’lumot yo‘li</span></div><div>Internetsiz ishlaydi</div></div>
+  <h1>Xabaringiz qayerga boradi?</h1>
+  <p class="lead">Chatga yozgan har bir gapingiz modelning serveriga borib, javob bo‘lib qaytadi. Uch holatni solishtiring.</p>
+  <details class="howto" id="howto">
+    <summary>Qanday ishlatish</summary>
+    <div class="hbody">
+      <div><h3>Qadamlar</h3><ol><li>A, B yoki C holatini bosing (klaviatura: 1, 2, 3).</li><li>Nuqta yo‘lni bosib o‘tadi: ko‘k nuqta O‘zbekistonda, qizil nuqta chet elda.</li><li>O‘ngdagi xulosani va «Baraka misolida» qatorini o‘qing.</li></ol></div>
+      <div><h3>O‘zingizga savol</h3><ul><li>Siz bugun qaysi yo‘ldan foydalanyapsiz?</li><li>3-4-darsdagi assistentingiz qaysi yo‘l bo‘ladi? (Javob: B.)</li><li>Mijozingiz ma’lumoti qaysi yo‘ldan ketishi mumkin?</li></ul></div>
+      <div><h3>Tayyor</h3><p style="margin:0">Chatga mijoz ma’lumotini yozishdan oldin uch savolni berasiz: kerakmi, ismsiz bo‘ladimi, odam rozimi.</p></div>
+    </div>
+  </details>
+  <div class="controls">
+    <div class="seg" id="seg"></div>
+    <button class="btn" id="play">Yana ko‘rsatish</button>
+  </div>
+  <div class="layout">
+    <div class="card diagram"><svg id="svg" role="img" aria-label="Ma’lumot yo‘li diagrammasi"></svg></div>
+    <div class="stack side">
+      <div class="card" id="explain"></div>
+      <div class="card">
+        <div class="label" style="margin-bottom:8px">Qonun (2026)</div>
+        <ul>
+          <li>Oddiy shaxsiy ma’lumot ro‘yxatdagi <b>49 ta davlat va hududga</b> yuborilishi mumkin; Germaniya shartsiz ro‘yxatda.</li>
+          <li>AQSh: faqat <b>Data Privacy Framework</b> sertifikati bor kompaniyalar uchun. Anthropic (Claude) siyosatida DPF ko‘rsatilmagan.</li>
+          <li>Biometrik, genetik ma’lumot va aloqa abonentlari ma’lumoti <b>faqat O‘zbekistonda</b> saqlanadi.</li>
+          <li>Xodim ma’lumotini AI xizmatiga faqat uning <b>yozma roziligi</b> bilan berish mumkin (Mehnat kodeksi, 178-modda).</li>
+          <li>AI yordamida shaxsiy ma’lumotni noqonuniy qayta ishlash: <b>50-100 BHM</b>, taxminan 22-44 mln so‘m jarima (MJtK 46-2-modda).</li>
+        </ul>
+        <p class="src" style="margin-top:10px">ZRU-1125 (26.03.2026), VM qarori 415 (29.07.2026), MJtK 46-2, Mehnat kodeksi 178; lex.uz. Bu yuridik maslahat emas: kompaniya bunga tayanishdan oldin yurist tasdiqlashi kerak.</p>
+      </div>
+      <div class="card acc">
+        <div class="label" style="margin-bottom:8px">Chatga yozishdan oldin</div>
+        <ul><li>Bu ma’lumot kerakmi?</li><li>Ismsiz qilsa bo‘ladimi?</li><li>Odam rozimi?</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot src">Manbalar: day-1/sources.md, F3-F8. DeepSeek chat ma’lumotni Xitoyda, Qwen Chat Singapurda saqlaydi (ularning maxfiylik siyosati).</div>
+</div>
+<script>
+(function () {
+  // u = position along the trip (0..1), side: 'home' (Uzbekistan) or 'abroad'
+  var V = {
+    A: { name: 'A · Bulut', tone: 'warn', verdict: 'Ma’lumot chet elga ketadi',
+         text: '<p>Claude, ChatGPT va Gemini ilovalari shunday ishlaydi: xabaringiz AQSh yoki Yevropadagi data markazga boradi, u yerda GPU javob yozadi va qaytaradi.</p><p>Bu odatiy hol. Muhimi: qaysi ma’lumotni yuborayotganingizni bilish.</p><p class="ex"><b>Baraka misolida:</b> menejer mijozning ismi va telefonini Claude chatiga yozsa, bu ma’lumot chet elga ketadi. Mijoz nomisiz yozsa, xavf yo‘q.</p>',
+         nodes: [['Noutbuk', 'Siz, Toshkent', 0.0, 'home'], ['Internet', 'provayder', 0.27, 'home'], ['Data markaz', 'AQSh yoki Yevropa', 0.62, 'abroad'], ['GPU', 'model javob yozadi', 1.0, 'abroad']] },
+    B: { name: 'B · Toshkent server + chet el modeli', tone: 'warn', verdict: 'Baribir chet elga ketadi',
+         text: '<p>Botingiz yoki ilovangiz Toshkentdagi serverda turibdi, lekin u chet eldagi modelning API’ini chaqiradi.</p><p>«Serverimiz O‘zbekistonda» degan gap ma’lumot ichkarida qoladi degani emas: matn baribir chegaradan o‘tadi.</p><p class="ex"><b>Baraka misolida:</b> 3-4-darsda quriladigan «Savdo yordamchisi» boti aynan shu yo‘l: server Toshkentda, javobni chet eldagi model yozadi. Shuning uchun botga narx, qoldiq va qoidalar beriladi, mijozlarning shaxsiy ma’lumoti berilmaydi.</p>',
+         nodes: [['Noutbuk', 'Siz, Toshkent', 0.0, 'home'], ['Toshkent server', 'botingiz yoki ilova', 0.3, 'home'], ['Chet el API', 'modelning data markazi', 0.66, 'abroad'], ['GPU', 'model javob yozadi', 1.0, 'abroad']] },
+    C: { name: 'C · O‘z serveringiz + ochiq vaznli model', tone: 'ok', verdict: 'Ma’lumot ichkarida qoladi',
+         text: '<p>Ochiq vaznli model (masalan DeepSeek yoki Qwen fayli) o‘z serveringizda ishlaydi. Xabar chegaradan o‘tmaydi.</p><p>Narxi: GPU’li server va uni yuritadigan odam. Odatda frontier modeldan kuchsizroq, ayniqsa o‘zbek tilida.</p><p class="ex"><b>Baraka misolida:</b> mijozlar bazasini tahlil qilish kerak bo‘lsa, shu yo‘l kerak bo‘ladi; oddiy pilot uchun B yo‘l arzonroq va yetarli.</p>',
+         nodes: [['Noutbuk', 'Siz, Toshkent', 0.0, 'home'], ['Sizning server', 'ofis yoki Toshkent DC', 0.26, 'home'], ['GPU + model', 'ochiq vaznli, ichkarida', 0.5, 'home']] }
+  };
+  var cur = 'A', raf = null;
+  var svg = document.getElementById('svg');
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, text) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (text) e.textContent = text; return e; }
+
+  function geometry() {
+    var vertical = svg.getBoundingClientRect().width < 640;
+    return vertical ? { vertical: true, W: 640, H: 1240, nodeW: 300, retW: 250, nodeH: 120 }
+                    : { vertical: false, W: 1600, H: 620, nodeW: 290, retW: 290, nodeH: 120 };
+  }
+  function pos(g, u, lane) {
+    // lane 0 = outbound row, lane 1 = return row
+    if (g.vertical) return { x: lane ? 495 : 175, y: 110 + u * (g.H - 300) };
+    return { x: 170 + u * (g.W - 340), y: lane ? 470 : 250 };
+  }
+
+  function draw() {
+    if (raf) cancelAnimationFrame(raf);
+    var g = geometry(), v = V[cur];
+    svg.setAttribute('viewBox', '0 0 ' + g.W + ' ' + g.H);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    // zones and border
+    var lastHome = 0, firstAbroad = null;
+    v.nodes.forEach(function (n) { if (n[3] === 'home') lastHome = Math.max(lastHome, n[2]); else if (firstAbroad === null) firstAbroad = n[2]; });
+    var bu = firstAbroad === null ? 0.78 : (lastHome + firstAbroad) / 2;
+    var b = g.vertical ? 110 + bu * (g.H - 300) : 170 + bu * (g.W - 340);
+    if (g.vertical) {
+      svg.appendChild(el('line', { x1: 20, y1: b, x2: g.W - 20, y2: b, class: 'border' }));
+      svg.appendChild(el('text', { x: g.W - 24, y: b - 16, class: 'zone home', 'text-anchor': 'end' }, 'O‘zbekiston ↑'));
+      svg.appendChild(el('text', { x: g.W - 24, y: b + 34, class: 'zone abroad', 'text-anchor': 'end' }, 'chet el ↓'));
+    } else {
+      svg.appendChild(el('line', { x1: b, y1: 40, x2: b, y2: g.H - 30, class: 'border' }));
+      svg.appendChild(el('text', { x: b - 18, y: 62, class: 'zone home', 'text-anchor': 'end' }, '← O‘zbekiston'));
+      svg.appendChild(el('text', { x: b + 18, y: 62, class: 'zone abroad' }, 'chet el →'));
+    }
+    // edges: outbound along lane 0, return along lane 1
+    var out = v.nodes.map(function (n) { return pos(g, n[2], 0); });
+    var last = v.nodes[v.nodes.length - 1][2];
+    var ret = v.nodes.slice().reverse().map(function (n) { return pos(g, n[2], 1); });
+    var outD = 'M' + out.map(function (p) { return p.x + ' ' + p.y; }).join(' L');
+    var turn = g.vertical ? pos(g, last, 0) : pos(g, last, 0);
+    var retD = 'M' + turn.x + ' ' + turn.y + ' L' + ret.map(function (p) { return p.x + ' ' + p.y; }).join(' L');
+    var e1 = el('path', { d: outD, class: 'edge' }); svg.appendChild(e1);
+    var e2 = el('path', { d: retD, class: 'edge back' }); svg.appendChild(e2);
+    // nodes (outbound row)
+    v.nodes.forEach(function (n, i) {
+      var p = out[i], grp = el('g', { class: 'node ' + n[3] });
+      grp.appendChild(el('rect', { x: p.x - g.nodeW / 2, y: p.y - g.nodeH / 2, width: g.nodeW, height: g.nodeH, rx: 12 }));
+      grp.appendChild(el('text', { x: p.x, y: p.y - 6, 'text-anchor': 'middle', class: 't' }, n[0]));
+      grp.appendChild(el('text', { x: p.x, y: p.y + 30, 'text-anchor': 'middle', class: 'd' }, n[1]));
+      svg.appendChild(grp);
+    });
+    var r0 = pos(g, 0, 1);
+    var retLabel = el('g', { class: 'node home' });
+    retLabel.appendChild(el('rect', { x: r0.x - g.retW / 2, y: r0.y - 44, width: g.retW, height: 88, rx: 12 }));
+    retLabel.appendChild(el('text', { x: r0.x, y: r0.y + 10, 'text-anchor': 'middle', class: 't' }, 'Javob ekranda'));
+    svg.appendChild(retLabel);
+    // packet
+    var dot = el('circle', { r: 14, fill: '#5e8bff' });
+    var lab = el('text', { class: 'pkt-label', 'text-anchor': 'middle' }, 'so‘rov');
+    svg.appendChild(dot); svg.appendChild(lab);
+    var L1 = e1.getTotalLength(), L2 = e2.getTotalLength(), T = 5200, start = null;
+    function frame(ts) {
+      if (start === null) start = ts;
+      var t = ((ts - start) % (T + 900)) / T;
+      if (t > 1) t = 1;
+      var p, label;
+      if (t < 0.5) { p = e1.getPointAtLength(L1 * t * 2); label = 'so‘rov'; }
+      else { p = e2.getPointAtLength(L2 * (t - 0.5) * 2); label = 'javob'; }
+      var abroad = g.vertical ? p.y > b : p.x > b;
+      dot.setAttribute('cx', p.x); dot.setAttribute('cy', p.y);
+      dot.setAttribute('fill', abroad ? '#ff6b5e' : (cur === 'C' ? '#4fd1a1' : '#5e8bff'));
+      lab.setAttribute('x', p.x); lab.setAttribute('y', p.y - 26); lab.textContent = label;
+      raf = requestAnimationFrame(frame);
+    }
+    raf = requestAnimationFrame(frame);
+    document.getElementById('explain').innerHTML = '<div class="label">' + v.name + '</div><div class="verdict ' + v.tone + '">' + v.verdict + '</div>' + v.text;
+  }
+
+  var seg = document.getElementById('seg');
+  seg.innerHTML = Object.keys(V).map(function (k) { return '<button data-k="' + k + '">' + V[k].name + '</button>'; }).join('');
+  function setVariant(k) {
+    cur = k;
+    Array.prototype.forEach.call(seg.querySelectorAll('button'), function (b) { b.classList.toggle('on', b.dataset.k === k); });
+    draw();
+  }
+  Array.prototype.forEach.call(seg.querySelectorAll('button'), function (b) { b.onclick = function () { setVariant(b.dataset.k); }; });
+  document.getElementById('play').onclick = function () { draw(); };
+  window.addEventListener('keydown', function (e) { if (e.key === '1' || e.key === 'a') setVariant('A'); if (e.key === '2' || e.key === 'b') setVariant('B'); if (e.key === '3' || e.key === 'c') setVariant('C'); });
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(draw, 150); });
+  var start = (location.hash || '#A').slice(1).toUpperCase();
+  setVariant(V[start] ? start : 'A');
+})();
+</script>
+</body>
+</html>

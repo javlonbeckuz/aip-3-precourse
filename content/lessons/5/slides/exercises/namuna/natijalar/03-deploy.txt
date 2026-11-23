@@ -1,0 +1,33 @@
+$ uv run python deploy/deploy.py
+
+==> Running the tests on this computer first
+........................................................................ [ 51%]
+...................................................................      [100%]
+==> Uploading (74 KB)
+==> Installing libraries (uv sync)
+==> Checking settings with the server .env
+Sozlamalar tekshiruvi
+
+• Model: google/gemini-3.8-flash (balanced)
+• Javob rejimi: darhol javob beradi; kirish: faqat xodimlar
+• Limit: kuniga $1.00, oyiga $15.00
+• Kunlik hisobot: 09:00, ish vaqti 09:00-18:00
+✅ agent/instructions.md: 3691 belgi
+✅ agent/examples.md: 693 belgi
+✅ agent/memory.md: 285 belgi
+✅ Prays-list 2026: 14 qator, ustunlar: Kod, Mahsulot, Turkum, Chakana narx (1-4 dona), Ulgurji narx (5+ dona), Izoh
+✅ Chegirma, to‘lov, yetkazib berish va kafolat qoidalari: hujjat
+✅ Ombor qoldig‘i (1C eksport): 11 qator, ustunlar: Код, Номенклатура, Количество, Последнее движение
+✅ Jadval: «Kam qolgan mahsulotlar» soat 08:30, kunlar 1,2,3,4,5,6
+⚠️ Baraka Office namunasi hali bor: agent/instructions.md, agent/examples.md, agent/memory.md, agent/schedule.toml, kit5-baseline.toml, evals/test-set.toml, data/narxlar.csv, data/qoidalar.md, data/ombor-1c.csv
+   O‘z pilotingiz bo‘lsa, ularni almashtiring (PARTICIPANT_GUIDE.uz.md, 1.3-qadam).
+• Ma’lumot bloki: 4632 belgi (chegara 12000)
+
+Tayyor.
+==> Waiting 8 seconds to see that it stays up
+OK: pilot-bot is running release 20261102-224817
+Nov 03 03:48:19 baraka-vps systemd[1]: Started pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter).
+Nov 03 03:48:19 baraka-vps python[2117]: 2026-11-03 03:48:19,875 INFO pilot.bot: bot @baraka_demo_bot started, model google/gemini-3.8-flash, mode direct
+
+Done. Write to your bot from your phone to check.
+Reminder: stop the bot on your laptop if it is running (one token, one place).

@@ -1,0 +1,66 @@
+/* Day 1 demo pages: the deck's dark design system ("own-vercel-design" from the 2.0 web deck) for full pages.
+   Inter + Geist Mono, faint grid, one blue accent, mono labels. Works on the projector and on a phone. */
+@font-face{font-family:'OVDInter';src:url('fonts/InterVariable-latin.woff2') format('woff2');font-weight:100 900;font-display:block;}
+@font-face{font-family:'OVDMono';src:url('fonts/GeistMono-Regular.woff2') format('woff2');font-weight:400;font-display:block;}
+@font-face{font-family:'OVDMono';src:url('fonts/GeistMono-Bold.woff2') format('woff2');font-weight:700;font-display:block;}
+:root{
+  --bg:#000;--bg-soft:#08080a;--ink:#f4f4f6;--ink-2:#b4b4bc;--ink-3:#74747e;
+  --line:rgba(255,255,255,0.10);--line-strong:rgba(255,255,255,0.2);--grid:rgba(255,255,255,0.028);
+  --acc:#5e8bff;--acc-rgb:94,139,255;--warn:#ff6b5e;--warn-rgb:255,107,94;--ok:#4fd1a1;--ok-rgb:79,209,161;
+  --sans:'OVDInter',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'OVDMono',ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+body{min-height:100vh;background-image:repeating-linear-gradient(90deg,var(--grid) 0 1px,transparent 1px 80px),repeating-linear-gradient(0deg,var(--grid) 0 1px,transparent 1px 80px);}
+.wrap{max-width:1680px;margin:0 auto;padding:28px 40px 40px;}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:26px;font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);}
+.topbar .pill{color:var(--acc);border:1px solid rgba(var(--acc-rgb),.3);background:rgba(var(--acc-rgb),.08);padding:4px 11px;border-radius:3px;margin-left:12px;}
+.topbar a{color:var(--ink-3);text-decoration:none;}
+.topbar a:hover{color:var(--ink);}
+h1{font-size:52px;line-height:1.06;letter-spacing:-0.03em;margin:0 0 10px;font-weight:640;}
+.lead{font-size:22px;line-height:1.45;color:var(--ink-2);margin:0 0 24px;max-width:1200px;}
+.label{font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);}
+.card{background:rgba(255,255,255,0.022);border:1px solid var(--line);border-radius:10px;padding:22px 24px;min-width:0;}
+.card.acc{border-color:rgba(var(--acc-rgb),.45);background:rgba(var(--acc-rgb),.05);}
+.card.warn{border-color:rgba(var(--warn-rgb),.5);background:rgba(var(--warn-rgb),.05);}
+.card.ok{border-color:rgba(var(--ok-rgb),.5);background:rgba(var(--ok-rgb),.05);}
+.seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:8px;overflow:hidden;flex-wrap:wrap;}
+.seg button{background:transparent;color:var(--ink-2);border:0;border-right:1px solid var(--line);font:500 16px var(--sans);padding:10px 16px;cursor:pointer;}
+.seg button:last-child{border-right:0;}
+.seg button.on{background:rgba(var(--acc-rgb),.16);color:var(--ink);}
+.btn{background:transparent;color:var(--ink-2);border:1px solid var(--line-strong);font:500 15px var(--sans);padding:9px 14px;border-radius:8px;cursor:pointer;}
+.btn:hover{color:var(--ink);border-color:rgba(var(--acc-rgb),.6);}
+.btn.primary{background:var(--acc);color:#000;border-color:var(--acc);font-weight:620;}
+table{width:100%;border-collapse:collapse;font-size:17px;}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+th{font-family:var(--mono);font-weight:400;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);}
+td.num{text-align:right;font-variant-numeric:tabular-nums;}
+.src{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--ink-3);line-height:1.6;}
+.foot{margin-top:28px;padding-top:12px;border-top:1px solid var(--line);}
+input,textarea,select{font-family:inherit;}
+@media (max-width:700px){
+  .wrap{padding:18px 16px 30px;}
+  h1{font-size:32px;}
+  .lead{font-size:17px;}
+  .topbar{font-size:11px;letter-spacing:.1em;}
+  table{font-size:14px;}
+  th,td{padding:8px 6px;}
+}
+
+/* How-to panel and worked-example button (every interactive page has both) */
+.helpbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 18px;}
+.btn.ex{border-color:rgba(var(--ok-rgb),.6);color:var(--ok);}
+.btn.ex:hover{background:rgba(var(--ok-rgb),.12);color:var(--ink);}
+details.howto{border:1px solid rgba(var(--acc-rgb),.35);background:rgba(var(--acc-rgb),.04);border-radius:10px;margin:0 0 20px;}
+details.howto summary{cursor:pointer;padding:14px 20px;font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);list-style:none;}
+details.howto summary::-webkit-details-marker{display:none;}
+details.howto summary::before{content:'+ ';}
+details.howto[open] summary::before{content:'- ';}
+.howto .hbody{padding:0 22px 18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;font-size:17px;line-height:1.5;color:var(--ink-2);}
+.howto h3{font-size:15px;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:0 0 8px;font-weight:400;}
+.howto ol,.howto ul{margin:0;padding-left:20px;}
+.howto li{margin:4px 0;}
+.howto b{color:var(--ink);}
+.exnote{border-left:3px solid var(--ok);padding:10px 14px;background:rgba(var(--ok-rgb),.06);border-radius:0 8px 8px 0;font-size:17px;line-height:1.5;color:var(--ink);margin:0 0 18px;display:none;}
+.exnote.on{display:block;}
+@media (max-width:900px){.howto .hbody{grid-template-columns:minmax(0,1fr);}}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7 testi: qanday ishlatish</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 1-dars</span><span class="pill">Qo‘llanma</span></div>
+<h1>7 testi: qanday ishlatish</h1>
+<p>Sahifa: <code>index.html</code>, internetsiz ochiladi.
+Darsda instruktor va mentorlar ishlatadi; uyda oilangiz yoki jamoangiz bilan qaytarish mumkin.</p>
+<h2>Nima uchun</h2>
+<p>Hamma bir xil savolni AI’ga beradi va javoblar bir-ikki songa yig‘ilganini ko‘radi.
+Bu «model tanlamaydi, eng ehtimolli javobni taxmin qiladi» degan fikrni o‘z ko‘zingiz bilan ko‘rsatadi.</p>
+<h2>Boshlashdan oldin kerak</h2>
+<ul>
+<li>Har kimda telefon yoki noutbukda istalgan AI chat.</li>
+<li>Har stolda bitta sanovchi (darsda mentor).</li>
+</ul>
+<h2>Qadamlar</h2>
+<ol>
+<li>Sahifani oching va R tugmasi bilan tozalang.</li>
+<li>Hamma so‘raydi: «1 dan 10 gacha bitta son ayt. Faqat son.»</li>
+<li>Sanovchi stolidagi javoblarni aytadi: «7 soni 4 ta, 3 soni 1 ta».</li>
+<li>Har javobni bosing: sonli tugma yoki klaviatura (0 = 10, Shift bilan ayiradi, Backspace oxirgisini bekor qiladi).</li>
+</ol>
+<h2>Natijani qanday o‘qish</h2>
+<ul>
+<li><strong>Uzuq chiziq</strong>: agar javoblar tasodifiy bo‘lganda, har bir son shu balandlikda bo‘lardi (10%).</li>
+<li><strong>Baland ustun</strong>: ko‘p model bir xil javob beradi; bu taxmin, tanlov emas.</li>
+</ul>
+<h2>Namuna</h2>
+<p>«Namuna bilan ochish» shartli raqamlarni qo‘yadi (o‘lchangan emas): 40 javobdan 22 tasi 7, 7 tasi 3.</p>
+<p><img alt="7 testi namunasi" src="qollanma-namuna.png" /></p>
+<p>Yettining ustuni uzuq chiziqdan 5 barobar baland: javoblar bir joyga yig‘ilgan.
+Darsda xulosani zalning o‘z raqamlari bilan aytasiz.</p>
+<h2>Ko‘p uchraydigan xatolar</h2>
+<ul>
+<li>Bir odamning javobini ikki marta sanash.</li>
+<li>«Har doim 7 chiqadi» deb va’da qilish: ba’zan 3 yoki 5 ko‘p chiqadi; muhimi, javoblar bir joyga yig‘iladi.</li>
+</ul>
+<h2>Tayyor</h2>
+<p>«Model son tanlamaydi, taxmin qiladi: shuning uchun uning raqamini tekshiraman» deb ayta olasiz.</p>
+<div class="foot">Praktikum 3.0 · 1-dars · 21-noyabr (shanba) / 22-noyabr (yakshanba) 2026 · manba: day-1/demos/pick-a-number/pick-a-number.qollanma.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

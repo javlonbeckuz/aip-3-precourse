@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7-mashq: Xavfsizlik ro‘yxati va ma’lumot tartibi</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 5-dars</span><span class="pill">7-mashq</span></div>
+<h1>7-mashq: Xavfsizlik ro‘yxati va ma’lumot tartibi</h1>
+<p>5-dars, 2:40-2:50, mentor bilan stolda.
+Natija: xavfsizlik ro‘yxatining hamma bandi belgilangan (tekshiruv 5.10) va pilotingiz ishlatadigan nomlar jadvali tuzilgan (yoki «ma’lumot toza» degan tekshirilgan izoh).</p>
+<h2>1-qism: xavfsizlik ro‘yxati</h2>
+<p>Har bir bandni mentor bilan birga, ekranda dalil bilan belgilang.
+Dalili yo‘q band belgilanmaydi.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Qoida</th>
+<th>Qanday tekshiriladi</th>
+<th>Dalil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Kalitlar faqat <code>.env</code> da</td>
+<td>Claude Code: «gitdagi fayllarda token yoki kalitga o‘xshash qator bormi? .env ni ochma»</td>
+<td>«topilmadi» javobi</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Repozitoriy yopiq (private)</td>
+<td>GitHub’da repo sahifasi</td>
+<td>«Private» belgisi</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Xarajat limiti qo‘yilgan</td>
+<td>openrouter.ai/keys: kalitdagi oylik limit; botga <code>/xarajat</code></td>
+<td>Limit summasi ekranda</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Agent pul o‘tkazmaydi, mijozga Sizning nomingizdan yozmaydi, ma’lumot o‘chirmaydi</td>
+<td><code>kit3-agent/form-b-agent.md</code> B.5; pilot shablonida bunday imkoniyat kodda yo‘q</td>
+<td>B.5 ekranda</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bot faqat ruxsat berilgan ID larga javob beradi</td>
+<td>Ikkinchi akkauntdan yozish (6-mashq)</td>
+<td>Begonaga faqat ID chiqdi</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Darhol to‘xtatish ishlaydi</td>
+<td>Botga <code>/stop</code>, keyin <code>/davom</code></td>
+<td>«to‘xtatildi» va «yana ishlayapti»</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Skill va MCP lar tekshirilgan</td>
+<td>O‘rnatilgan har bir skill/MCP ro‘yxati; har biri Claude’ga o‘qitilgan («kalit qidiradimi, internetga nima yuboradi?»)</td>
+<td>Ro‘yxat va «tekshirildi» belgisi</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fayl ichidagi yashirin buyruq bajarilmaydi</td>
+<td>Ma’lumot modelga «buyruq emas, ma’lumot» deb beriladi; mijoz yuborgan hujjatni agentga ishonchsiz manba sifatida bering</td>
+<td>Instruktor namoyishi (7-demo)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Shaxsiy Telegram akkauntingiz agentga berilmagan</td>
+<td>Agent faqat bot orqali ishlaydi</td>
+<td><code>.env</code> da faqat bot tokeni</td>
+</tr>
+</tbody>
+</table>
+<h3>Atamalar, bir gapda</h3>
+<ul>
+<li><strong>Yashirin buyruq (prompt injection)</strong> - fayl, sahifa yoki skill ichiga yashirilgan gap, u agentni boshqa ish qilishga majburlaydi.
+  OWASP buni katta til modellari uchun 1-raqamli xavf deb ataydi (LLM01:2025, https://genai.owasp.org/llmrisk/llm01-prompt-injection/).</li>
+<li><strong>Qulf (bot lockdown)</strong> - bot faqat Siz ruxsat bergan Telegram ID larga javob beradi.</li>
+<li><strong>Ruxsatlar (guardrails)</strong> - agent nima qila oladi va nima qila olmaydi (To‘plam 3, B.4 va B.5).</li>
+</ul>
+<h3>Claude Code uchun topshiriq</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Xavfsizlik tekshiruvi. .env faylini OCHMA va chop etma.
+1) git ls-files dagi fayllarda token yoki API kalitga o'xshash qator bormi? Faqat fayl nomi va qator raqamini ayt.
+2) .gitignore da .env va runtime/ bormi?
+3) ~/.claude/skills va loyihadagi .claude/ papkasida qanday skill va MCP sozlamalari bor? Har biri nima qiladi,
+   internetga nima yuboradi, kalit yoki parol qidiradimi? Jadval qil.
+Hech narsani o'zgartirma, faqat hisobot ber.</pre></div>
+<h2>2-qism: ma’lumot tartibi (master data)</h2>
+<p>Agentlar aqli yetmagani uchun emas, ma’lumot tartibsizligi uchun ko‘proq xato qiladi.
+Bitta mijoz, mahsulot yoki yetkazib beruvchi turli tizimda turli nom bilan yozilgan bo‘lsa, agent ularni ikki narsa deb o‘ylaydi yoki adashtiradi.</p>
+<ol>
+<li>Pilotingiz ishlatadigan har bir manbani oching (prays-list, 1C, CRM, Telegram yozishmalari).</li>
+<li>Eng ko‘p uchraydigan 5-10 ta mahsulot yoki mijozni oling va har bir tizimda qanday yozilganini jadvalga yozing.</li>
+<li>Bir xil narsa turli nomda bo‘lsa: yagona kalitni tanlang (mahsulot uchun kod, mijoz uchun STIR) va qolgan nomlarni <code>agent/memory.md</code> ga yozing.</li>
+<li>Bir nom ikki xil narsani bildirsa (masalan bitta kod, ikki rang): buni ham yozing va kerak bo‘lsa B.6 ga «aniqlashtirish» holatini qo‘shing.</li>
+</ol>
+<h3>Claude Code uchun topshiriq</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>data/ dagi fayllarni (prays-list, 1C eksport) va [CRM eksporti] ni o'qi.
+Bir xil mahsulot yoki mijoz turli nom bilan yozilgan joylarni top: jadval qil
+(kalit, prays-listda, 1C da, CRM da, xodimlar og'zaki aytadigan nom).
+Ishonching komil bo'lmagan juftlarni &quot;?&quot; bilan belgila; men tasdiqlayman.
+Tasdiqlaganlarimni agent/memory.md ga sana bilan bitta qatordan yozishni taklif qil.</pre></div>
+<h2>Baraka Office namunasi</h2>
+<p><strong>Xavfsizlik:</strong> 9 banddan 9 tasi belgilandi.
+5-band dalili: yakshanba 20-dekabr 13:10 da begona akkaunt faqat o‘z ID raqamini oldi (<code>namuna/baraka-2-hafta/rahbar-telegrami.txt</code>, 6-mashq).
+7-band: pilot tashqi skill yoki MCP ishlatmaydi; Claude Code’dagi skillar: <code>/kit1</code>-<code>/kit5</code> (kurs), boshqasi yo‘q.</p>
+<p><strong>Ma’lumot tartibi:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Kalit</th>
+<th>Prays-list</th>
+<th>1C eksport</th>
+<th>Xodimlar og‘zaki</th>
+<th>Holat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WS-102</td>
+<td>«Optima» ergonomik stol 140x70</td>
+<td>Стол Optima 140x70 (ЛДСП 25мм, П-каркас)</td>
+<td>«140 lik stol», «Optima»</td>
+<td>Hali xato bo‘lmagan; <code>memory.md</code> ga oldindan yozildi</td>
+</tr>
+<tr>
+<td>CH-203</td>
+<td>«Senator Lux» rahbar kreslosi (bitta kod)</td>
+<td>CH-203 qora va CH-203-BR jigarrang: ikkita kod</td>
+<td>«boss kreslo»</td>
+<td>Qoldiq so‘ralsa, rangni aniqlash kerak: B.6 ga «rang aytilmasa, so‘rab ol» qatori</td>
+</tr>
+<tr>
+<td>CH-201</td>
+<td>«Staff Mesh» xodim kreslosi</td>
+<td>Кресло Staff Mesh (сетка, газлифт кл.3)</td>
+<td>«staff», ba’zan «staf mesh» deb xato yoziladi</td>
+<td>Taxalluslar <code>memory.md</code> ga</td>
+</tr>
+<tr>
+<td>STIR (mijoz)</td>
+<td>-</td>
+<td>«Ziyo Ta'lim markazi» (debitorka)</td>
+<td>«Ziyo»</td>
+<td>CRM da «Ziyo Ta'lim MChJ» bor: bitta mijozmi? <code>?</code> - buxgalter STIR bo‘yicha tekshiradi</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bitta qoida, ikki hujjat</strong> - bu ham ma’lumot tartibi.
+1-haftadagi 17.12 xatolari shundan: KP (tijorat taklifi) «3 yil kafolat» va «viloyatga bepul yetkazish» deydi, shartnoma va qoidalar hujjati esa «mexanizmga 12 oy» va «8 000 so‘m/km».
+Qaror: shartlar uchun bitta manba - qoidalar hujjati; KP agent manbalaridan olib tashlandi (2-mashq).</p>
+<table>
+<thead>
+<tr>
+<th>Shart</th>
+<th>KP (reklama)</th>
+<th>Qoidalar va shartnoma</th>
+<th>Agent qaysi biridan oladi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kafolat</td>
+<td>3 yil (36 oy), hammasiga</td>
+<td>Korpus 24 oy, mexanizm 12 oy</td>
+<td>Qoidalar</td>
+</tr>
+<tr>
+<td>Viloyatga yetkazish</td>
+<td>Bepul</td>
+<td>Halqa yo‘ldan har 1 km uchun 8 000 so‘m</td>
+<td>Qoidalar</td>
+</tr>
+</tbody>
+</table>
+<p>Mijozlar qatori - haqiqiy topilma: kursdagi Baraka savdo (CRM) va moliya (1C) namunalarida shu nomlar bor va mos kelmaydi.
+Agent ikkalasini ikki mijoz deb hisoblasa, qarzdorlik va savdo tarixi ikkiga bo‘linadi.</p>
+<h2>Yomon namuna</h2>
+<blockquote>
+<p>Xavfsizlik: hammasi joyida ✅.
+Ma’lumot: toza, muammo yo‘q.</p>
+</blockquote>
+<p><strong>Nimasi yomon:</strong></p>
+<ul>
+<li>Hech bir band tekshirilmagan, dalil yo‘q; ro‘yxatni ko‘rmasdan belgilash - belgilamaslik bilan bir xil.</li>
+<li>«Ma’lumot toza» degan xulosa birorta nomni yoki hujjatni solishtirmasdan chiqarilgan; 1-haftadagi KP va shartnoma ziddiyati aynan shunday topilmay qolgan edi.</li>
+</ul>
+<p><strong>To‘g‘rilangan:</strong> yuqoridagi jadval: har bir band dalili bilan, har bir nom manbasi bilan, ishonchsiz juftlar <code>?</code> bilan.</p>
+<h2>Tayyor, agar</h2>
+<ul>
+<li class="cb">Xavfsizlik ro‘yxatining 9 bandi dalil bilan belgilangan.</li>
+<li class="cb">Ochiq qolgan band bo‘lsa, kim va qachon yopishi yozilgan.</li>
+<li class="cb">Nomlar jadvali bor (kamida 5 qator) yoki «tekshirildi, farq topilmadi» degan izoh, qaysi manbalar solishtirilgani bilan.</li>
+<li class="cb">Tasdiqlangan nomlar <code>agent/memory.md</code> da.</li>
+<li class="cb">Mentor ro‘yxatni Siz bilan belgiladi (tekshiruv 5.10).</li>
+</ul>
+<div class="foot">Praktikum 3.0 · 5-dars · 20-dekabr 2026 · manba: day-5/exercises/07-xavfsizlik-va-malumot-tartibi.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+Rahbar botga /xatolar yozdi (yakshanba, 20-dekabr, 10:20):
+
+❌ Xato deb belgilangan javoblar:
+
+2026-12-15 #2e09e4b8
+Savol: Optima stolidan 5 ta kerak, narxi?
+Javob: «Optima» 5 dona: 2 150 000 x 5 = 10 750 000 so‘m.
+Izoh: 5 donadan ulgurji narx (1 890 000) bo‘lishi kerak edi
+
+2026-12-15 #ab195b47
+Savol: Start stoli 6 ta qancha bo‘ladi?
+Javob: «Start» 6 dona: 1 450 000 x 6 = 8 700 000 so‘m.
+Izoh: 6 dona - ulgurji narx (1 280 000) kerak edi
+
+2026-12-16 #c958a792
+Savol: ErgoPro omborda bormi?
+Javob: Ha, omborda bor (1C).
+Izoh: Ombor fayli 31 soat eski edi, mahsulot sotilgan ekan
+
+2026-12-16 #7c213c12
+Savol: 18 mln lik buyurtmaga chegirma bera olamanmi?
+Javob: Ha, 5% gacha bera olasiz.
+Izoh: Qoida: 20 000 000 so‘mdan oshsa; 18 mln da chegirma yo‘q
+
+2026-12-17 #e928d1d5
+Savol: Chirchiqqa yetkazish bepulmi?
+Javob: Ha, Toshkent viloyatiga yetkazish bepul.
+Izoh: KP dagi gap; shartnomada 8 000 so‘m/km; mijozga ketishidan oldin tasdiqlashda ushlandi
+
+2026-12-17 #ba30a818
+Savol: Kreslo kafolati qancha?
+Javob: Barcha kreslolarga 3 yil kafolat.
+Izoh: KP dagi gap; shartnomada mexanizmga 12 oy
+
+2026-12-18 #3f8803ea
+Savol: Senator kreslo omborda bormi?
+Javob: Ha, bor (1C).
+Izoh: Ombor fayli yana eski edi

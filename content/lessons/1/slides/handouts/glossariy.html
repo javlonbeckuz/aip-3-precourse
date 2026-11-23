@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1-dars lug‘ati: AI qanday ishlaydi</title>
+<link rel="stylesheet" href="../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 1-dars</span><span class="pill">Lug‘at</span></div>
+<h1>1-dars lug‘ati: AI qanday ishlaydi</h1>
+<p>Birinchi qismdagi 8 ta atamani darsda jonli ko‘rdik.
+Ikkinchi qismdagilar ma’lumot uchun: o‘z ishingizda uchrasa, shu yerdan qarang yoki Claude’dan «oddiy so‘z bilan tushuntir» deb so‘rang.
+Model nomlari va narxlari bu yerda yo‘q: ular sanasi yozilgan «Bu hafta AI’da» varag‘ida.</p>
+<p><strong>Qanday foydalanish:</strong> har atamada uch qator bor: nima ekani, misol va biznes egasi uchun nega muhimligi.
+Xodimingizga tushuntirishda «Misol» qatoridan boshlang.
+Misollarning ko‘pi kursdagi o‘quv kompaniyasi «Baraka Office» MChJ hujjatlaridan.</p>
+<h2>Darsda ko‘rgan 8 ta asosiy atama</h2>
+<h3>1. AI uch qavatli (AI landscape)</h3>
+<p><strong>Nima:</strong> Pastda infratuzilma (chiplar, elektr, data markazlar), o‘rtada modellar, tepada platformalar, ya’ni siz ishlatadigan ilovalar.
+<strong>Misol:</strong> Nvidia chipni loyihalaydi, TSMC uni ishlab chiqaradi, laboratoriyalar data markazda modelni o‘qitadi, ilovalar sizga sotadi.
+<strong>Nega muhim:</strong> Narx va kirish chip ta’minoti va siyosatga qarab o‘zgaradi; yangiliklarni to‘g‘ri o‘qishga yordam beradi.</p>
+<h3>2. Ma’lumotingiz qayerga boradi</h3>
+<p><strong>Nima:</strong> Chatga yozgan xabaringiz noutbukdan chiqib, odatda AQSh yoki Yevropadagi data markazga boradi, u yerda GPU javob yozadi va qaytaradi.
+<strong>Misol:</strong> Toshkentdagi serveringiz chet eldagi modelni chaqirsa ham, matn baribir chegaradan o‘tadi.
+<strong>Nega muhim:</strong> 2026-yildan oddiy shaxsiy ma’lumot ro‘yxatdagi 49 ta davlat va hududga yuborilishi mumkin (VM qarori 415); Germaniya shartsiz ro‘yxatda, AQSh esa faqat Data Privacy Framework sertifikati bor kompaniyalar uchun, Anthropic siyosatida esa DPF ko‘rsatilmagan.
+Biometrik, genetik ma’lumot va aloqa abonentlari ma’lumoti faqat O‘zbekistonda qoladi (ZRU-1125).
+Xodim ma’lumotini AI xizmatiga faqat yozma roziligi bilan berasiz (Mehnat kodeksi, 178-modda).
+AI bilan shaxsiy ma’lumotni noqonuniy qayta ishlash uchun 22-44 mln so‘m jarima bor (MJtK 46-2-modda).
+Bu yuridik maslahat emas: yurist tasdiqlashi kerak.
+Chatga yozishdan oldin: kerakmi, ismsiz bo‘ladimi, odam rozimi?</p>
+<h3>3. Katta til modeli (LLM)</h3>
+<p><strong>Nima:</strong> Matndan o‘rgangan va keyingi eng ehtimolli so‘zni taxmin qiladigan dastur.
+<strong>Misol:</strong> «1 dan 10 gacha son ayt» desangiz, ko‘p modellar 7 deydi: tanlamaydi, eng ko‘p uchraydigan javobni aytadi.
+<strong>Nega muhim:</strong> Model hisoblamaydi va bilmaydi, taxmin qiladi; raqamni tekshirish sizning ishingiz.</p>
+<h3>4. Token</h3>
+<p><strong>Nima:</strong> Model matnni bo‘lib o‘qiydigan bo‘lak; narx ham tokenda hisoblanadi.
+<strong>Misol:</strong> Bir xil biznes gapi o‘zbekchada taxminan 44-51 token, inglizchada 24-26 token (2026-yil 3-noyabrda 7 ta tokenizatorda o‘lchangan).
+<strong>Nega muhim:</strong> O‘zbekcha so‘rov ko‘proq token oladi, uzun chat qimmatlashadi; farq modelga qarab har xil, shuning uchun o‘lchab ko‘ring.</p>
+<h3>5. Kontekst oynasi (context window)</h3>
+<p><strong>Nima:</strong> Model bitta suhbatda ushlab tura oladigan matn hajmi.
+<strong>Misol:</strong> Dastarxon: har gapingiz yangi likopcha, to‘lsa chetidagisi tushib ketadi.
+<strong>Nega muhim:</strong> Uzun chat sekin-asta xiralashadi; yangi vazifa uchun yangi chat oching.</p>
+<h3>6. Model darajalari va effort</h3>
+<p><strong>Nima:</strong> Arzon va tez, muvozanatli, kuchli modellar; effort esa model javobdan oldin qancha o‘ylashi.
+<strong>Misol:</strong> Claude’da Haiku arzon, Sonnet muvozanatli, Opus va Fable kuchli; «20 ta o‘zbek milliy taomi» savolida farq ko‘rinadi.
+<strong>Nega muhim:</strong> Kuchli model reja tuzish uchun, arzon model saralash uchun; har ishga eng qimmatini qo‘ymang.</p>
+<h3>7. Frontier va ochiq vaznli modellar (frontier vs open-weight)</h3>
+<p><strong>Nima:</strong> Frontier: eng kuchli modellar, faqat ishlab chiqaruvchining ilovasi yoki API orqali (Claude, GPT, Gemini).
+Ochiq vaznli: o‘qitilgan model fayli e’lon qilingan, uni o‘z serveringizda ishlatish mumkin (DeepSeek, Qwen, Kimi, GLM).
+<strong>Misol:</strong> 2025-yil 27-yanvarda DeepSeek chiqqanda Nvidia bir kunda taxminan 590 milliard dollar bozor qiymatini yo‘qotdi.
+<strong>Nega muhim:</strong> Ochiq vaznli model oddiy saralash va qoralama uchun ko‘pincha yetarli va arzon, ma’lumotni o‘z serveringizda saqlash mumkin; murakkab fikrlash va o‘zbek tilida frontier hali kuchliroq.
+DeepSeek saytidagi chat ma’lumotni Xitoyda saqlaydi: «ochiq» degani sayt maxfiy degani emas.</p>
+<h3>8. Gallyutsinatsiya</h3>
+<p><strong>Nima:</strong> AI’ning ishonch bilan aytgan noto‘g‘ri javobi.
+<strong>Misol:</strong> Excel xato qilsa, katak qizil bo‘ladi; AI xato qilsa, chiroyli javob beradi.
+<strong>Nega muhim:</strong> Raqamni tekshirmasdan ishonmang; har doim «qanday hisobladingiz, formulani ko‘rsat» deb so‘rang.</p>
+<div class="pagebreak"></div>
+
+<h2>Ma’lumot uchun atamalar</h2>
+<h3>Data markaz, GPU, hisoblash quvvati (compute)</h3>
+<p>Minglab GPU chipli binolar: modellar shu yerda o‘qitiladi va ishlaydi.
+Hisoblash quvvati (compute) bu ijaraga olingan chip vaqti.
+Bitta kuchli modelni o‘qitish uchun o‘n minglab GPU oylab ishlaydi: shuning uchun kuchli model so‘z bo‘yicha pullik, chip arzonlashgani sari narx tushyapti.</p>
+<h3>Kirish, chiqish, fikrlash va kesh tokenlari</h3>
+<p>Kirish: siz yuborgan matn.
+Chiqish: model yozgan javob.
+Fikrlash: javobdan oldingi «o‘ylash».
+Kesh: qayta o‘qilgan matn.
+Chiqish va fikrlash eng qimmat qismi; kesh ancha arzon.</p>
+<h3>Xiralashish zonasi (dumb zone)</h3>
+<p>Kontekst oynasi to‘lishidan ancha oldin javob sifati tushadigan holat.
+Aniq foiz yo‘q: model va vazifaga bog‘liq.
+Yechim: yangi vazifa, yangi chat; Claude Code’da /compact (2-darsda).</p>
+<h3>Platforma</h3>
+<p>Model atrofidagi ilova: ChatGPT, Claude, Gemini, ElevenLabs, Higgsfield.
+Model bu dvigatel, platforma bu mashina.
+Ishga qarab tanlang: masalan, Claude o‘zi rasm chizmaydi, rasm uchun boshqa vosita kerak.</p>
+<h3>Bilim chegarasi va veb-qidiruv (knowledge cutoff)</h3>
+<p>Modelning bilimi ma’lum sanada to‘xtaydi; veb-qidiruv bugungi ma’lumotni olib keladi.
+Bugungi narx, kurs yoki yangilik kerak bo‘lsa, qidiruvni yoqing.</p>
+<h3>RAG (manbaga tayanish)</h3>
+<p>AI faqat siz bergan hujjatlardan javob beradi va manbani ko‘rsatadi.
+Misol: kompaniya qoidalari yuklangan Gemini Notebook (avvalgi nomi NotebookLM).
+Ichki bilim bazasi uchun xavfsiz yo‘l.</p>
+<h3>Artefakt</h3>
+<p>Claude chat ichida yasab beradigan ishlaydigan sahifa: kalkulyator, taklif, jadval.
+Settings → Capabilities bo‘limida «Code execution and file creation» yoqilgan bo‘lishi kerak.</p>
+<h3>Tokenizator</h3>
+<p>Matnni tokenlarga bo‘ladigan dastur; har bir model oilasida o‘ziniki.
+Shuning uchun bir xil gap turli modellarda turli sonda token bo‘ladi.</p>
+<h3>Prompt asoslari</h3>
+<p>To‘rt qism: maqsad, qisqa kontekst, cheklovlar (nima qilmaslik), javob formati.
+«Marketing reja tuz» o‘rniga to‘rt qismli topshiriq bir xil modeldan ancha yaxshi javob oladi.</p>
+<h3>Uch marta takrorlash</h3>
+<p>Birinchi javob qoralama.
+Ikkinchi marta xatoni ko‘rsating, uchinchi marta aniqlashtiring; baholashni uchinchisidan keyin qiling.</p>
+<h3>Transkripsiya (ovozdan matnga)</h3>
+<p>Audio yozuvni matnga aylantirish.
+O‘zbekcha raqamlarda adashadi: «bir uch-to‘rt yuz ming» 1 300 000 bo‘lib chiqishi mumkin.
+Har bir transkriptdagi raqamni odam audio bilan tekshiradi.</p>
+<h3>OpenRouter</h3>
+<p>Ko‘p modelni bitta hisob orqali ishlatish xizmati; ishlab chiqaruvchi narxida hisoblaydi.
+Frontier va ochiq vaznli modellarni yonma-yon sinash uchun qulay (3-darsda kalit ochamiz).</p>
+<div class="foot">Praktikum 3.0 · 1-dars · 21-noyabr (shanba) / 22-noyabr (yakshanba) 2026 · manba: day-1/handouts/src/glossariy.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4-dars mashqlari</title>
+<link rel="stylesheet" href="../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 4-dars</span><span class="pill">Mashqlar</span></div>
+<h1>4-dars mashqlari</h1>
+<p>Yettita mashq (darsdan oldingisi bilan), darsdagi tartibda. Manba: day-4/exercises/0*.md.</p>
+<div class="pagebreak"></div>
+
+<h2>4-darsga tayyorgarlik (dars oldidan, 30-40 daqiqa)</h2>
+<p>Bu xabarni mentor stol chatiga chorshanba kuni (9-dekabr) yuboradi.
+Maqsad: darsda server bilan emas, assistentingiz bilan ishlash.
+4-darsda shaxsiy AI assistentingiz noutbukdan serverga ko‘chadi: noutbuk yopiq bo‘lsa ham ishlaydi, telefondan boshqarasiz.
+Buning uchun uchta narsa oldindan tayyor bo‘lishi kerak: server Claude Code’ni parolsiz kiritadi, server bir marta sozlangan, GitHub akkaunti bor.</p>
+<h3>Chatga yuboriladigan matn</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Assalomu alaykum! 4-dars: 12-dekabr (shanba) yoki 13-dekabr (yakshanba). Assistentingiz serverga ko'chadi.
+Darsdan oldin 30-40 daqiqa ajrating, iltimos (juma kechgacha):
+
+1. Warp'da kompaniya/app papkasini oching va &quot;claude&quot; deb yozing.
+2. Pastdagi 1-matnni Claude Code'ga yuboring: u server bilan aloqani tekshiradi va serverni sozlaydi.
+3. github.com/signup da akkaunt oching (email, parol, login). Keyin 2-matnni yuboring.
+4. Domeningiz bo'lsa: domen panelida bitta A yozuvi qo'shing (pastda, 3-qadam). Domen bo'lmasa, o'tkazib yuboring.
+5. Oxirida shu chatga yozing: &quot;server tayyor, github tayyor&quot;.
+   Xato chiqsa: skrinshot, avval Claude'dan so'rang, keyin menga.
+
+Parol, token, kalitni hech kimga yubormang: na chatga, na menga, na Claude'ga.
+Server hali sotib olinmagan bo'lsa, bugun Airnet'da oling: faollashishi 2 ish kunigacha cho'zilishi mumkin. Faollashmagan bo'lsa, menga yozing.</pre></div>
+<h3>1-qadam. Server bilan aloqa va sozlash (Claude Code’ga 1-matn)</h3>
+<p>Avval o‘zingiz bitta ish qiling: <code>app/.env</code> faylini oching va oxiriga qator qo‘shing.
+Warp’da <code>app</code> papkasida turib yozing: Mac’da <code>open -e .env</code>, Windows’da <code>notepad .env</code>.
+Saqlang (Cmd+S yoki Ctrl+S); Windows’da nom <code>.env.txt</code> bo‘lib qolmasligi uchun faylni aynan shu buyruq bilan oching.
+0-haftada Claude «vps» degan qisqa nom yaratgan bo‘lsa:</p>
+<pre><code>DEPLOY_HOST=vps
+</code></pre>
+<p>Qisqa nom bo‘lmasa yoki esingizda bo‘lmasa, IP manzil bilan:</p>
+<pre><code>DEPLOY_HOST=root@203.0.113.10
+</code></pre>
+<p><code>203.0.113.10</code> o‘rniga o‘z serveringiz IP manzilini yozing (provayder panelida turadi).
+Keyin Claude Code’ga yuboring:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Men 4-darsga tayyorlanyapman. Har qadamdan oldin nima qilishingni bir gapda ayt.
+1. .env faylini ochma. DEPLOY_HOST qatorini men yozdim.
+2. Serverga parolsiz kirish ishlayaptimi, tekshir: avval &quot;ssh vps echo ok&quot;, ishlamasa &quot;ssh root@IP echo ok&quot; (IP ni mendan so'ra).
+   &quot;ok&quot; chiqmasa, deploy/deploy.qollanma.md dagi 1-qadamni men bilan birga bajar: parol so'raydigan buyruqni men o'zim alohida oynada yozaman.
+3. &quot;uv run python deploy/deploy.py setup&quot; ni ishga tushir. 3-5 daqiqa ketadi. Har bosqichni menga bir gapda tushuntir.
+4. Oxirida 2 ta gap yoz: server tayyormi, qaysi Ubuntu versiyasi.</pre></div>
+<h4>Natija qanday bo‘lishi kerak</h4>
+<p><code>ssh vps echo ok</code> faqat bitta so‘z qaytaradi:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>ok</pre></div>
+<p><code>deploy.py setup</code> oxiri shunday tugaydi (to‘liq namuna: <code>namuna/natijalar/01-setup.txt</code>):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>==&gt; 5/6 User 'pilot' (no password, no sudo) and folders in /opt/pilot
+
+==&gt; 6/6 uv 0.13.6 for 'pilot' (it installs Python and the bot's libraries)
+...
+==&gt; Server is ready. Next: deploy.py env, then deploy.py</pre></div>
+<p>Inglizcha yozuvlarni Claude tushuntiradi; versiya raqamlari va server turi Sizda boshqacha bo‘lishi normal.
+Muhimi oxirgi qator: <code>Server is ready</code> («server tayyor»).</p>
+<p>Skriptni ikki marta ishga tushirsangiz ham zarar yo‘q: darsda yana bir marta ishga tushiramiz.</p>
+<h3>2-qadam. GitHub (Claude Code’ga 2-matn)</h3>
+<p>GitHub - kodingizning zaxira nusxasi va «orqaga qaytish» tugmasi.
+Avval brauzerda github.com/signup sahifasida akkaunt oching: email, parol, foydalanuvchi nomi (masalan, <code>rustamov-baraka</code>).
+Emailga kelgan kodni kiriting.
+GitHub ikki bosqichli himoyani (2FA) yoqishni so‘rasa, telefoningizdagi autentifikator ilovasi bilan yoqing.</p>
+<p>Keyin Claude Code’ga:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>GitHub uchun &quot;gh&quot; dasturini o'rnatmoqchiman.
+1. &quot;gh --version&quot; bilan tekshir. Bor bo'lsa, 3-bandga o't.
+2. O'rnat: Mac'da Homebrew bo'lsa &quot;brew install gh&quot;; Homebrew bo'lmasa, github.com/cli/cli/releases/latest dan macOS zip faylini curl bilan yuklab, ichidagi gh ni ~/.local/bin ga qo'y.
+   Windows'da: winget install --id GitHub.cli --source winget. Keyin Warp'ni yopib qayta ochishimni ayt.
+3. &quot;gh auth login&quot; ni men o'zim alohida oynada yozaman (brauzer ochiladi). Menga qaysi variantni tanlashimni ayt: GitHub.com, HTTPS, brauzer orqali.
+4. Men &quot;tayyor&quot; desam, &quot;gh auth status&quot; va &quot;gh auth setup-git&quot; ni ishga tushir va natijani bir gapda ayt.
+Repo yaratma: uni darsda birga qilamiz.</pre></div>
+<p><code>gh auth login</code> ni o‘zingiz yozasiz, chunki u brauzerda bir martalik kod so‘raydi.
+Ekranda 8 belgili kod chiqadi (masalan <code>4F2A-9C1B</code>): brauzerda shu kodni kiriting va «Authorize» bosing.</p>
+<h4>Natija</h4>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>github.com
+  ✓ Logged in to github.com account rustamov-baraka (keyring)
+  - Git operations protocol: https</pre></div>
+<p>Inglizcha: «github.com’ga rustamov-baraka akkaunti bilan kirilgan». Sizda o‘z login nomingiz turadi.</p>
+<h3>3-qadam. Domen (ixtiyoriy, 5 daqiqa)</h3>
+<p>Domen bo‘lmasa, bu qadamni o‘tkazib yuboring: assistent uchun domen shart emas, u Telegram orqali ishlaydi.
+Domen bo‘lsa, hozir bitta yozuv qo‘shing, darsgacha butun internetga tarqalib ulguradi.</p>
+<p>Domen sotib olgan joyingizda (masalan, Airnet mijoz paneli) domen uchun «DNS» yoki «DNS-zona» bo‘limini oching va yangi yozuv qo‘shing:</p>
+<table>
+<thead>
+<tr>
+<th>Maydon</th>
+<th>Nima yoziladi</th>
+<th>Baraka namunasi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tur (Type)</td>
+<td><code>A</code></td>
+<td><code>A</code></td>
+</tr>
+<tr>
+<td>Nom (Name, Host)</td>
+<td>subdomen nomi, bitta so‘z</td>
+<td><code>forma</code></td>
+</tr>
+<tr>
+<td>Qiymat (Value, IP)</td>
+<td>serveringiz IP manzili</td>
+<td><code>203.0.113.10</code></td>
+</tr>
+<tr>
+<td>TTL</td>
+<td>3600 yoki «default»</td>
+<td>3600</td>
+</tr>
+</tbody>
+</table>
+<p>Natija: <code>forma.barakaoffice.uz</code> sizning serveringizga qaraydi.
+Panel ko‘rinishi registratorga qarab har xil; maydon nomlari yuqoridagidek.
+Topa olmasangiz, registrator yordam xizmatiga yozing: «Domenimga A yozuvi qo‘shmoqchiman».</p>
+<p>Tekshirish (bir necha soatdan keyin), Claude Code’ga:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>&quot;nslookup forma.barakaoffice.uz 1.1.1.1&quot; ni ishga tushir. Javobdagi IP serverim IP manzili bilan bir xilmi?</pre></div>
+<h3>Ko‘p uchraydigan xatolar</h3>
+<table>
+<thead>
+<tr>
+<th>Belgi</th>
+<th>Sabab</th>
+<th>Yechim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Permission denied (publickey)</code></td>
+<td>Kalit serverga o‘rnatilmagan</td>
+<td><code>deploy/deploy.qollanma.md</code>, 1-qadam: kalitni nusxalash buyrug‘ini o‘zingiz alohida oynada yozasiz</td>
+</tr>
+<tr>
+<td><code>Connection refused</code> yoki <code>Connection timed out</code></td>
+<td>IP xato, server hali faollashmagan yoki o‘chiq</td>
+<td>Provayder panelida server holati «Running»mi? IP’ni qayta nusxalang</td>
+</tr>
+<tr>
+<td>Claude parol so‘rab qotib qoldi</td>
+<td>Kalit ishlamayapti, buyruq parol kutyapti</td>
+<td>Esc bosing; parolli buyruqni alohida oynada o‘zingiz yozing</td>
+</tr>
+<tr>
+<td>Panelda foydalanuvchi <code>root</code> emas, <code>ubuntu</code></td>
+<td>Provayder boshqa nom bergan</td>
+<td><code>.env</code> da <code>DEPLOY_HOST=ubuntu@IP</code> yozing (qisqa nom emas); <code>sudo</code> parolsiz ishlashi kerak, Claude’dan tekshirishni so‘rang</td>
+</tr>
+<tr>
+<td><code>Could not get lock /var/lib/dpkg</code></td>
+<td>Yangi server o‘zini yangilayapti</td>
+<td>5 daqiqa kuting, <code>setup</code> ni qayta ishga tushiring</td>
+</tr>
+<tr>
+<td><code>gh: command not found</code> o‘rnatgandan keyin</td>
+<td>Terminal yangi yo‘lni bilmaydi</td>
+<td>Warp’ni yopib, qayta oching</td>
+</tr>
+<tr>
+<td>Server hali sotib olinmagan yoki faollashmagan</td>
+<td>-</td>
+<td>Bugun sotib oling (0-hafta qo‘llanmasi, 13-qadam) va mentorga yozing; darsgacha tayyor bo‘lmasa - pastdagi bo‘lim</td>
+</tr>
+</tbody>
+</table>
+<h3>Server darsgacha tayyor bo‘lmasa</h3>
+<p>Kursda zaxira server yo‘q: har kim o‘z serverini oladi.
+Server darsgacha faollashmasa yoki hali sotib olinmagan bo‘lsa:</p>
+<ol>
+<li>Darsda deploy’ni stoldoshingiz bilan birga kuzatasiz va noutbukdagi qadamlarni o‘zingiz bajarasiz: GitHub (1-mashq), <code>.env</code> va <code>pilot check</code> (2-mashq, 1 va 1.5-qadamlar).</li>
+<li>Serverni <strong>shu kuni</strong> sotib olasiz (Airnet, Click yoki Payme, 15 daqiqa).</li>
+<li>48 soat ichida mentor Siz bilan ekran ulashadi va assistentingizni serverga joylaysiz: shu fayldagi 1-2-qadamlar va 2-mashq, 15-20 daqiqa.</li>
+</ol>
+<p>Shungacha assistentingiz faqat noutbuk yoqiq paytda ishlaydi: 4-darsning asosiy natijasi o‘sha qo‘ng‘iroqda bajariladi.</p>
+<h3>Tayyor bo‘ldi, agar</h3>
+<ul>
+<li class="cb"><code>ssh vps echo ok</code> (yoki <code>ssh root@IP echo ok</code>) parolsiz <code>ok</code> qaytaradi.</li>
+<li class="cb"><code>deploy.py setup</code> «Server is ready» bilan tugadi.</li>
+<li class="cb"><code>gh auth status</code> «Logged in» deydi.</li>
+<li class="cb">(Domen bo‘lsa) A yozuvi qo‘shilgan.</li>
+<li class="cb">Stol chatiga «server tayyor, github tayyor» deb yozdingiz.</li>
+</ul>
+<p>Mentor uchun: juma kechgacha har kimni belgilang: yashil (ikkalasi tayyor), sariq (bittasi qolgan), qizil (server yo‘q yoki kira olmaydi).
+Qizillar darsdan oldin 10 daqiqalik ekran ulashish qo‘ng‘irog‘iga (shanba guruhi juma kechqurun, yakshanba guruhi shanba kuni); server yo‘qlar ro‘yxati juma 18:00 gacha bosh mentorga: ularga serverni bugun sotib olishni eslating.</p>
+<div class="pagebreak"></div>
+
+<h2>1-mashq. GitHub: kodning zaxira nusxasi (0:50-1:05, 15 daqiqa)</h2>
+<p><strong>Natija:</strong> assistentingiz kodi GitHub’dagi <strong>yopiq (private)</strong> repoda turadi, ichida bitta ham kalit yo‘q.
+Noutbuk yo‘qolsa yoki o‘zgarish hammasini buzsa, ishlagan versiya joyida qoladi.</p>
+<h3>Bu nima va nega kerak</h3>
+<ul>
+<li><strong>Git</strong> - kodingizning «saqlash nuqtalari».
+  Har bir saqlash nuqtasi (<strong>commit</strong>) - shu daqiqadagi barcha fayllarning surati.
+  Xato qilsangiz, oxirgi yaxshi suratga qaytasiz.</li>
+<li><strong>GitHub</strong> - shu suratlarni internetda saqlaydigan joy, dasturchilarning «YouTube»i.
+  Suratlarni GitHub’ga yuborish - <strong>push</strong>.</li>
+<li><strong>Yopiq repo (private)</strong> - kodni faqat Siz ko‘rasiz.
+  Ochiq repodagi kalitni begonalar bir necha daqiqada topib ishlatadi: 2.0 da buni «Robin Gud» hikoyasida ko‘rgansiz.</li>
+</ul>
+<p>GitHub’ga <strong>faqat <code>app/</code> papkasi</strong> boradi.
+<code>kompaniya/</code> ning qolgan papkalarida (<code>kit1-interviews/</code>, <code>kit4-people/</code>) xodimlaringiz suhbatlari va ma’lumotlari bor.
+Mehnat kodeksining 178-moddasi: xodim ma’lumotini uning yozma roziligisiz uchinchi shaxsga berib bo‘lmaydi, GitHub esa uchinchi shaxs.</p>
+<h3>Boshlashdan oldin kerak</h3>
+<table>
+<thead>
+<tr>
+<th>Nima</th>
+<th>Qayerdan</th>
+<th>Tekshirish</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHub akkaunti va <code>gh</code> dasturi</td>
+<td>4-dars oldidan xabar (<code>00-dars-oldidan.md</code>, 2-qadam)</td>
+<td>Warp’da <code>gh auth status</code> «Logged in» deydi</td>
+</tr>
+<tr>
+<td>Ishlayotgan assistent noutbukda</td>
+<td>3-dars</td>
+<td><code>kompaniya/app/</code> da <code>uv run pilot check</code> «Tayyor.» deydi</td>
+</tr>
+</tbody>
+</table>
+<p><code>gh</code> hali yo‘q bo‘lsa: <code>00-dars-oldidan.md</code> dagi 2-matnni hozir yuboring (10 daqiqa).
+Bu mashq deploy’ni to‘xtatmaydi: GitHub ishlamay qolsa ham, 2-mashqni boshlayverasiz, GitHub’ni kechqurun mentor bilan tugatasiz.</p>
+<h3>Qadamlar</h3>
+<p>Warp’da <code>kompaniya/app</code> papkasini oching, <code>claude</code> deb yozing va yuboring:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>app papkasini GitHub'dagi yopiq (private) repoga zaxiralaymiz. Har qadamdan oldin nima qilishingni bir gapda ayt.
+1. Faqat shu app papkasida ishla. Yuqoridagi kompaniya papkasini (kit1-interviews, kit4-people) GitHub'ga yuborma: unda xodimlar ma'lumoti bor.
+2. .gitignore faylida .env, .env.* va runtime/ borligini tekshir. .env faylini ochma.
+3. Git hali yo'q bo'lsa &quot;git init -b main&quot; qil. Keyin &quot;git add -A&quot; va &quot;git status --short&quot; ni ko'rsat.
+   Ro'yxatda .env yoki runtime/ bo'lsa, darhol to'xta va menga ayt.
+4. data/ va evals/ dagi fayllarda mijozning telefon raqami, karta raqami yoki pasport ma'lumoti bormi, tekshir. Bo'lsa, menga ko'rsat va commit qilma.
+5. Commit qil: &quot;4-dars: serverga chiqishdan oldin&quot;.
+6. &quot;gh repo create baraka-pilot --private --source=. --push&quot; ni ishga tushir (baraka-pilot o'rniga o'z kompaniyam nomini qo'y).
+7. &quot;gh repo view --json visibility,url&quot; bilan repo PRIVATE ekanini ko'rsat.</pre></div>
+<p><code>baraka-pilot</code> o‘rniga o‘z nomingizni yozing, lotin harflarida, bo‘sh joysiz: masalan <code>sodiq-school-pilot</code>.</p>
+<h3>Natija qanday bo‘lishi kerak</h3>
+<p>Bizning sinovimizda (Docker ichidagi toza server, 2026-11-03) git qismi shunday chiqdi (to‘liq: <code>namuna/natijalar/11-git.txt</code>):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>$ git status --short --branch
+### main...origin/main
+
+$ git ls-files | grep -E '(^|/)\.env$|^runtime/'
+(bo'sh: kalit fayli repoda yo'q)</pre></div>
+<p>GitHub qismi taxminan shunday bo‘ladi (<code>gh</code> dasturining o‘z xabarlari):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>✓ Created repository rustamov-baraka/baraka-pilot on github.com
+  https://github.com/rustamov-baraka/baraka-pilot
+✓ Added remote https://github.com/rustamov-baraka/baraka-pilot.git
+✓ Pushed commits to https://github.com/rustamov-baraka/baraka-pilot.git
+{&quot;url&quot;:&quot;https://github.com/rustamov-baraka/baraka-pilot&quot;,&quot;visibility&quot;:&quot;PRIVATE&quot;}</pre></div>
+<p>Inglizcha: «repo yaratildi», «manzil qo‘shildi», «commit’lar yuborildi»; Claude o‘zbekcha tushuntiradi, nomlar Sizda boshqacha bo‘ladi.
+Oxirgi qatorda <code>"visibility":"PRIVATE"</code> bo‘lishi shart.
+Brauzerda repo sahifasini oching: nom yonida «Private» yozuvi turadi, fayllar ro‘yxatida <code>.env</code> yo‘q, <code>.env.example</code> bor.
+<code>.env.example</code> - bo‘sh namuna, kalitsiz: u repoda turishi kerak.</p>
+<h3>Bundan keyin: har bir o‘zgarishdan oldin commit</h3>
+<p>Bu bir martalik ish emas, odat.
+Yo‘riqnoma, ma’lumot yoki kodni o‘zgartirishdan oldin Claude Code’ga yozing:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Hozirgi holatni commit qil va GitHub'ga push qil. Xabar: &quot;&lt;nima o'zgarayotgani, bir gap&gt;&quot;.</pre></div>
+<p>Xato chiqsa, «oxirgi commit’ga qaytar» deysiz (namuna: <code>namuna/natijalar/09-rollback.txt</code>, oxiri).</p>
+<h3>Yomon namuna va tuzatish</h3>
+<p><strong>Yomon.</strong>
+Ishtirokchi Claude’ga «kodimni GitHub’ga qo‘y» deb yozdi.
+Claude <code>kompaniya/</code> papkasining hammasini ochiq (public) repoga yukladi: ichida <code>app/.env</code> (bot tokeni va OpenRouter kaliti) va <code>kit1-interviews/</code> (xodimlar suhbatlari) bor edi.</p>
+<p><strong>Nima xato:</strong></p>
+<ol>
+<li>«Qaysi papka» va «yopiqmi» aytilmagan: Claude eng oddiy yo‘lni tanlagan.</li>
+<li><code>.env</code> repoga tushgan: kalit internetda ochiq.</li>
+<li>Xodimlar suhbatlari uchinchi shaxsga berilgan.</li>
+</ol>
+<p><strong>Tuzatish (shu tartibda, darhol):</strong></p>
+<ol>
+<li>Kalitlarni almashtiring: BotFather’da <code>/token</code> (yangi token), openrouter.ai/keys da eski kalitni o‘chirib yangisini yarating.
+   GitHub tarixida qolgan kalit o‘chirildi deb hisoblanmaydi: faqat almashtirish yordam beradi.</li>
+<li>Repo sozlamalarida (Settings, General, oxirida «Danger Zone») reponi yoping yoki o‘chiring.</li>
+<li>Yangi kalitlarni <code>.env</code> ga o‘zingiz yozing, <code>deploy.py env</code> bilan serverga yuboring.</li>
+<li>Yuqoridagi to‘g‘ri topshiriq matni bilan faqat <code>app/</code> ni, yopiq repoga qayta yuklang.</li>
+<li>Mentorga ayting (FAQ D-04, K-01).</li>
+</ol>
+<h3>Tayyor bo‘ldi, agar</h3>
+<ul>
+<li class="cb"><code>gh repo view --json visibility,url</code> <code>"PRIVATE"</code> ko‘rsatadi.</li>
+<li class="cb">Brauzerda repo ochiladi: <code>.env</code> yo‘q, <code>.env.example</code> bor, <code>kit1-interviews</code> yo‘q.</li>
+<li class="cb">Mentor ekranda ko‘rdi (tekshiruv kodi 4.6).</li>
+</ul>
+<div class="pagebreak"></div>
+
+<h2>2-mashq. Assistentni serverga joylash (1:05-1:40, 35 daqiqa)</h2>
+<p><strong>Natija:</strong> shaxsiy AI assistentingiz serverda (VPS) ishlaydi.
+Noutbukni yopasiz, telefondan yozasiz, javob keladi.
+Bot yiqilsa yoki server qayta yuklansa, o‘zi qayta ishga tushadi.
+Bu sotuv sahifasidagi 4-dars va’dasi: «Yordamchi kompyuteringiz o‘chiq bo‘lsa ham ishlab turadi, telefoningiz orqali boshqara olasiz».</p>
+<p>Buyruqlarni Claude Code bajaradi.
+Siz faqat ikki joyda o‘zingiz yozasiz: <code>.env</code> fayli va telefoningiz.
+To‘liq texnik qo‘llanma: <code>app/deploy/deploy.qollanma.md</code> (pilot shablonida).</p>
+<h3>Boshlashdan oldin kerak</h3>
+<table>
+<thead>
+<tr>
+<th>Nima</th>
+<th>Tekshirish</th>
+<th>Yo‘q bo‘lsa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Server Claude Code’ni parolsiz kiritadi</td>
+<td>Warp’da <code>ssh vps echo ok</code> (yoki <code>ssh root@IP echo ok</code>) <code>ok</code> qaytaradi</td>
+<td><code>00-dars-oldidan.md</code>, 1-qadam; mentor</td>
+</tr>
+<tr>
+<td>Server bir marta sozlangan</td>
+<td>Chorshanba kuni <code>deploy.py setup</code> «Server is ready» bilan tugagan</td>
+<td>Hozir ikkinchi Warp oynasida ishga tushiring (3-5 daqiqa), GitHub mashqi bilan parallel</td>
+</tr>
+<tr>
+<td>Assistent noutbukda ishlaydi</td>
+<td><code>uv run pilot check</code> «Tayyor.» deydi</td>
+<td>3-dars; mentor</td>
+</tr>
+<tr>
+<td>Telegram ID raqamingiz</td>
+<td>Botga <code>/id</code> yozing</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Server hali yo‘q bo‘lsa: deploy’ni stoldoshingiz bilan birga kuzating, 1 va 1.5-qadamlarni o‘z noutbukingizda bajaring, serverni bugun sotib oling; 48 soat ichida mentor bilan ekran ulashib joylaysiz (<code>00-dars-oldidan.md</code>, «Server darsgacha tayyor bo‘lmasa»).</p>
+<h3>1-qadam. <code>.env</code> ni o‘zingiz tekshiring (2 daqiqa)</h3>
+<p><code>app/.env</code> faylini o‘zingiz oching (Claude emas).
+Warp’da <code>app</code> papkasida turib yozing:</p>
+<ul>
+<li>Mac: <code>open -e .env</code></li>
+<li>Windows: <code>notepad .env</code></li>
+</ul>
+<p>Uchta qatorni tekshiring:</p>
+<pre><code>ALLOWED_USER_IDS=1234567890
+REPLY_MODE=direct
+DEPLOY_HOST=vps
+</code></pre>
+<ul>
+<li><code>ALLOWED_USER_IDS</code> da bugun <strong>faqat o‘zingizning ID raqamingiz</strong>.
+  Xodimlar botga To‘plam 4 suhbatidan keyin qo‘shiladi, hech qachon oldin emas.</li>
+<li><code>REPLY_MODE=direct</code> bugun o‘zingiz sinash uchun.
+  Xodimlar qo‘shilgan kuni <code>approve</code> ga o‘tkazasiz (uy vazifasi).</li>
+<li><code>DEPLOY_HOST</code> da <code>vps</code> yoki <code>root@IP</code>.</li>
+</ul>
+<p>Faylni saqlang (Cmd+S yoki Ctrl+S) va oynani yoping.
+Windows’da fayl nomi <code>.env.txt</code> bo‘lib qolmasin: Notepad’ni <code>notepad .env</code> bilan ochsangiz, nom to‘g‘ri qoladi.</p>
+<h3>1.5-qadam. Namuna fayllar qolmaganmi (1 daqiqa)</h3>
+<p>Serverga <strong>o‘z</strong> assistentingiz chiqishi kerak, Baraka Office’niki emas.
+Claude Code’ga:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>&quot;uv run pilot check&quot; ni ishga tushir. Natijada &quot;Baraka Office namunasi hali bor&quot; degan qator bormi? Oxirgi qator nima?</pre></div>
+<ul>
+<li>Oxirgi qator «Tayyor.» va «namunasi hali bor» qatori <strong>yo‘q</strong>: 2-qadamga o‘ting.</li>
+<li><code>⚠️ Baraka Office namunasi hali bor: ...</code> chiqdi: <strong>deploy qilmang</strong>.
+  Bu - Baraka’ning yo‘riqnomasi, narxlari yoki jadvali hali Sizning botingizda degani: xodimlaringiz mebel narxlarini oladi.
+  Avval <code>app/PARTICIPANT_GUIDE.uz.md</code> dagi 1.3-qadamni Claude bilan bajaring (o‘z yo‘riqnomangiz va ma’lumotingiz bilan almashtirish, 10-15 daqiqa), keyin <code>pilot check</code> ni qayta ishga tushiring.
+  Ulgurmasangiz, qizil kartani ko‘taring: mentor siz bilan birga qiladi.</li>
+</ul>
+<h3>2-qadam. <code>.env</code> ni serverga yuborish (1 daqiqa)</h3>
+<p>Claude Code’ga:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>&quot;uv run python deploy/deploy.py env&quot; ni ishga tushir. .env faylini ochma va o'qima. Natijani bir gapda ayt.</pre></div>
+<p>Kutilgan natija (<code>namuna/natijalar/02-env.txt</code>):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>.env is on the server (/opt/pilot/.env, readable only by the bot).
+Reminder: one bot token can run in one place only. Stop the bot on your laptop (Ctrl+C).</pre></div>
+<p>Inglizcha: «.env serverda, faqat bot o‘qiy oladi»; «eslatma: bitta token faqat bitta joyda ishlaydi».
+Kalitlar shifrlangan SSH orqali boradi va serverda faqat bot o‘qiy oladigan faylda turadi.
+Chatga ham, GitHub’ga ham tushmaydi.</p>
+<h3>3-qadam. Joylash (3-5 daqiqa)</h3>
+<p><strong>Avval noutbukdagi botni to‘xtating:</strong> <code>uv run pilot run</code> ishlayotgan Warp oynasida <strong>Ctrl+C</strong>.
+Bitta bot tokeni faqat bitta joyda ishlaydi: server bot ishga tushganda noutbukdagisi ham ishlab tursa, Telegram «409 Conflict» deydi va javoblar goh keladi, goh kelmaydi.</p>
+<p>Keyin Claude Code’ga:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>&quot;uv run python deploy/deploy.py&quot; ni ishga tushir. Tugagach, natijani menga oddiy tilda 3-4 gapda tushuntir:
+testlar o'tdimi, serverda tekshiruv o'tdimi, bot ishlayaptimi.</pre></div>
+<p>Buyruq o‘zi 5 ish qiladi:</p>
+<ol>
+<li>Noutbukda hamma testlarni ishga tushiradi; bitta test o‘tmasa, hech narsa joylanmaydi.</li>
+<li>Kodni serverga yuklaydi (<code>.env</code> siz).</li>
+<li>Serverda kutubxonalarni o‘rnatadi va sozlamalarni tekshiradi; tekshiruv o‘tmasa, eski versiya ishlashda qoladi.</li>
+<li>Botni ishga tushiradi va 8 soniya kuzatadi; yiqilsa, oldingi versiyaga o‘zi qaytadi.</li>
+<li>Logning oxirgi qatorlarini ko‘rsatadi.</li>
+</ol>
+<p>Kutilgan natija, qisqartirilgan (to‘liq: <code>namuna/natijalar/03-deploy.txt</code>):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>==&gt; Running the tests on this computer first
+........................................................................ [ 51%]
+...................................................................      [100%]
+==&gt; Uploading (74 KB)
+==&gt; Installing libraries (uv sync)
+==&gt; Checking settings with the server .env
+...
+Tayyor.
+==&gt; Waiting 8 seconds to see that it stays up
+OK: pilot-bot is running release 20261213-071502
+... INFO pilot.bot: bot @baraka_savdo_bot started, model google/gemini-3.8-flash, mode direct
+
+Done. Write to your bot from your phone to check.</pre></div>
+<p>Inglizcha yozuvlarni Claude o‘zbekchaga tushuntiradi; versiya raqamlari, fayl hajmi va server turi Sizda boshqacha bo‘lishi normal.
+Muhimi uchta qator: <code>Tayyor.</code> (sozlamalar to‘g‘ri), <code>OK: pilot-bot is running</code> (bot ishlayapti), <code>Done.</code> (tamom).
+Bu namuna kurs sinovida Baraka Office namunasi bilan yozib olingan; Sizning natijangizda <code>⚠️ Baraka Office namunasi hali bor</code> qatori <strong>bo‘lmasligi</strong> kerak (1.5-qadam).</p>
+<p>Bir necha soniyadan keyin telefoningizga xabar keladi:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>🟢 «Savdo yordamchisi» ishga tushdi.
+Model: google/gemini-3.8-flash.
+Rejim: darhol javob beradi.</pre></div>
+<h3>4-qadam. Noutbuk testi (5 daqiqa)</h3>
+<p>Bu darsning asosiy dalili.</p>
+<ol>
+<li>Noutbukdagi bot 3-qadam boshida to‘xtatilganmi, tekshiring (Warp oynasida bot yozuvlari to‘xtagan).</li>
+<li>Noutbukni yoping.</li>
+<li>Telefoningizdan botga yozing: <code>/start</code>, keyin o‘z jarayoningizdagi bitta real savol, keyin <code>/holat</code>.</li>
+<li>Javob keladi: assistent endi Sizning noutbukingizda emas, serverda.</li>
+<li>Telefondan boshqarishni sinang: <code>/stop</code> (to‘xtatish), <code>/davom</code> (yana yoqish), <code>/hisobot</code> (bugungi hisobot).</li>
+<li>Endi bu - Sizning shaxsiy yordamchingiz. Telefondan sinang (faqat Siz va loyiha yetakchisi uchun):
+   - <code>/eslat 15:30 Jamshid aka bilan tender bo'yicha gaplashish</code> - vaqtni hozirdan 2 daqiqa keyinga qo‘ying va eslatmani kuting;
+   - <code>/eslab_qol Menejerlar «140 lik stol» deganda Optima stolini (WS-102) nazarda tutadi</code> - endi har bir javobda hisobga oladi, ro‘yxat: <code>/xotira</code>;
+   - <code>/jadval 07:45 Ombordan 15 donadan kam qolgan mahsulotlar ro'yxatini yubor</code> - har ish kuni 7:45 da yuboradi, ro‘yxat: <code>/jadval</code>.</li>
+</ol>
+<p>Hammasi serverda saqlanadi va server qayta yuklansa ham yo‘qolmaydi (sinovda tekshirilgan).
+   To‘liq ro‘yxat: <code>app/bot-commands.qollanma.md</code> va <code>app/PARTICIPANT_GUIDE.uz.md</code>, 2.8-qadam.</p>
+<p>Baraka namunasi (<code>namuna/natijalar/04-telefon.txt</code>, soxta model bilan yozib olingan; haqiqiy model so‘zlari boshqacha bo‘ladi):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>[Siz] Optima stolidan 8 ta kerak, qancha bo'ladi?
+[Bot] «Optima» ergonomik stol 140x70 (WS-102), 8 dona - ulgurji narx: 1 890 000 x 8 = 15 120 000 so‘m.
+[Siz] /stop
+[Bot] ⏸ Yordamchi to‘xtatildi. Xodimlarga «vaqtincha to‘xtatilgan» deb javob beradi.
+      Qayta yoqish: /davom
+[Siz] /davom
+[Bot] ▶️ Yordamchi yana ishlayapti.
+[Siz] /eslat 15:30 Jamshid aka bilan tender bo'yicha gaplashish
+[Bot] 🔔 Eslataman: bugun soat 15:30 da.
+[Bot] 🔔 Eslatma: Jamshid aka bilan tender bo'yicha gaplashish</pre></div>
+<p><code>/stop</code> - To‘plam 5 A.7 dagi «to‘xtatish sharti» tugmasi: xato ketsa, telefondan bir so‘z bilan to‘xtatasiz.</p>
+<h3>5-qadam. Log: server kundaligi (5 daqiqa)</h3>
+<p>Noutbukni oching.
+Claude Code’ga:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>&quot;uv run python deploy/deploy.py logs -n 20&quot; ni ishga tushir va oxirgi 20 qatorni menga oddiy tilda tushuntir:
+bot qachon ishga tushdi, nechta savol keldi, har biri qancha turdi, xato bormi.</pre></div>
+<p>Kutilgan natija (<code>namuna/natijalar/06-logs.txt</code>):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>... systemd[1]: Started pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter).
+... INFO pilot.bot: bot @baraka_demo_bot started, model google/gemini-3.8-flash, mode direct
+... INFO pilot.bot: exchange 173e7ad5: answered, $0.0030, 22 ms</pre></div>
+<p>Qanday o‘qiladi: <code>exchange 173e7ad5</code> - bitta savol; <code>answered</code> - bot javob berdi (<code>handed_over</code> - odamga uzatdi); <code>$0.0030</code> - shu javob narxi (taxminan 36 so‘m); <code>22 ms</code> - javob vaqti.
+Logda ism ham, savol matni ham yo‘q: bu ataylab shunday, xodimlar kuzatilmaydi.
+Savol-javoblarning o‘zi serverdagi ish jurnalida turadi va 60 kundan keyin o‘chadi.</p>
+<h3>Kundalik buyruqlar (keyin ham kerak bo‘ladi)</h3>
+<table>
+<thead>
+<tr>
+<th>Nima kerak</th>
+<th>Claude Code’ga yozing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bot ishlayaptimi?</td>
+<td><code>deploy.py status ni ishga tushir va tushuntir</code></td>
+</tr>
+<tr>
+<td>Nima bo‘ldi?</td>
+<td><code>deploy.py logs ni ishga tushir va oxirgi 20 qatorni tushuntir</code></td>
+</tr>
+<tr>
+<td>Yo‘riqnoma, ma’lumot yoki kod o‘zgardi</td>
+<td><code>avval commit qil, keyin deploy.py ni ishga tushir</code></td>
+</tr>
+<tr>
+<td><code>.env</code> o‘zgardi (masalan, <code>REPLY_MODE</code>)</td>
+<td><code>deploy.py env ni ishga tushir</code> (bot o‘zi qayta ishga tushadi)</td>
+</tr>
+<tr>
+<td>Yangi versiya yomon ishlayapti</td>
+<td><code>deploy.py rollback ni ishga tushir</code> (serverdagi oldingi versiyaga qaytadi)</td>
+</tr>
+</tbody>
+</table>
+<h3>Xato chiqsa</h3>
+<p>Avval skrinshot qiling va Claude’dan so‘rang («bu xato nimani bildiradi, nima qilay?»), keyin mentor.</p>
+<p>Kim nimani ushlaydi:</p>
+<ul>
+<li><strong>Testlar</strong> (<code>deploy.py</code> boshida) <strong>kodni</strong> tekshiradi: Claude biror faylni buzib qo‘ysa, hech narsa joylanmaydi.</li>
+<li><strong><code>pilot check</code></strong> (serverda, joylashdan oldin) <strong>imkonsiz narxni</strong> ushlaydi: bo‘sh, nol, raqam emas, ulgurji narx chakanadan katta yoki undan 30% dan ko‘proq arzon.
+  Joylash to‘xtaydi, ishlab turgan versiyaga tegilmaydi (<code>x7-narx-imkonsiz.txt</code>).</li>
+<li><strong>Ishonarli xato</strong> (1 890 000 o‘rniga 1 980 000) ikkalasidan ham o‘tadi.
+  Uni 5-darsdagi test to‘plami (<code>pilot eval</code>, aniq narxli savollar) va xodimning ❌ tugmasi topadi.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Ekranda</th>
+<th>Sabab</th>
+<th>Nima qilasiz</th>
+<th>Namuna</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Permission denied (publickey,password)</code></td>
+<td>Noutbukdagi kalit serverga o‘rnatilmagan</td>
+<td><code>deploy/deploy.qollanma.md</code>, 1-qadam; parolli buyruqni alohida oynada o‘zingiz</td>
+<td><code>x1-kalit-yoq.txt</code></td>
+</tr>
+<tr>
+<td><code>Connection refused</code> yoki <code>Connection timed out</code></td>
+<td>IP yoki port xato; server o‘chiq; zal Wi-Fi 22-portni yopgan</td>
+<td>Panelda holat va IP; telefon internetiga (hotspot) ulanib qayta urining</td>
+<td><code>x6-server-ulanmaydi.txt</code></td>
+</tr>
+<tr>
+<td><code>No /opt/pilot/.env on the server yet</code></td>
+<td><code>.env</code> yuborilmagan</td>
+<td>2-qadam</td>
+<td><code>x2-env-yoq.txt</code></td>
+</tr>
+<tr>
+<td><code>Tests failed: nothing was deployed</code></td>
+<td>Kodda xato (masalan, Claude o‘zgartirgan faylda qavs yopilmay qolgan)</td>
+<td>Claude’ga: «qaysi test yiqildi, nega? tuzat». Serverdagi eski versiya ishlashda davom etadi</td>
+<td><code>x3-testlar-otmadi.txt</code></td>
+</tr>
+<tr>
+<td><code>Check failed: the running version was not touched</code></td>
+<td>Serverdagi <code>.env</code> to‘liq emas (ko‘pincha <code>OWNER_CHAT_ID</code> yoki <code>ALLOWED_USER_IDS</code> bo‘sh) yoki prays-listda imkonsiz narx (<code>❌ Prays-list ...</code> qatori)</td>
+<td><code>.env</code> ni to‘ldiring (2-qadam) yoki narxni tuzating, keyin 3-qadam</td>
+<td><code>x4-check-failed.txt</code>, <code>x7-narx-imkonsiz.txt</code></td>
+</tr>
+<tr>
+<td><code>status</code> da <code>failed</code> va <code>status=78</code></td>
+<td><code>.env</code> da bot tokeni yo‘q yoki xato</td>
+<td>Tokenni tekshiring, 2-qadam: bot o‘zi qayta ishga tushadi</td>
+<td><code>x5-token-xato.txt</code>, <code>x5b-token-tuzatildi.txt</code></td>
+</tr>
+<tr>
+<td>Bot <code>TELEGRAM_BOT_TOKEN yo‘q</code> deydi, lekin tokenni yozgansiz</td>
+<td>Windows’da fayl <code>.env.txt</code> bo‘lib qolgan</td>
+<td>Claude’ga: «app papkasida .env.txt bormi? Bo‘lsa, nomini .env ga o‘zgartir, ichini o‘qima». Keyin 2-qadam</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Telegram’da «409 Conflict» haqida ogohlantirish</td>
+<td>Bot noutbukda ham ishlayapti</td>
+<td>Noutbukdagi Warp oynasida Ctrl+C</td>
+<td>FAQ B-04</td>
+</tr>
+<tr>
+<td>Telefonga javob kelmaydi, <code>status</code> da <code>active (running)</code></td>
+<td>Boshqa akkauntdan yozyapsiz yoki ID ro‘yxatda yo‘q</td>
+<td>Botga <code>/id</code> yozing; shu raqam <code>ALLOWED_USER_IDS</code> dami?</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Hamma savol «odamga uzatildi»</td>
+<td>OpenRouter kaliti limiti yoki balansi tugagan</td>
+<td>Botga <code>/xarajat</code>; openrouter.ai da balans</td>
+<td>FAQ K-03</td>
+</tr>
+</tbody>
+</table>
+<h3>Yomon namuna va tuzatish</h3>
+<p><strong>Yomon.</strong>
+Ishtirokchi provayder xatidagi root parolini Claude Code chatiga yozdi va «botni serverga joyla» dedi.
+Claude serverga kirdi, kodni nusxaladi va botni <code>nohup python ...</code> bilan fonda ishga tushirdi.
+Bot javob berdi, ishtirokchi xursand bo‘lib uyiga ketdi.
+Kechasi provayder serverni yangilash uchun qayta yukladi: ertalab bot o‘lik edi.
+Noutbukdagi bot ham hali ishlab turgan, shuning uchun kechqurun javoblar goh keldi, goh kelmadi (409).</p>
+<p><strong>Nima xato:</strong></p>
+<ol>
+<li>Parol chatda: suhbat yozuvi saqlanadi, parol endi faqat Sizniki emas.</li>
+<li>Claude o‘zi yo‘l o‘ylab topdi: testsiz, avtomatik qayta ishga tushirishsiz (systemd yo‘q), orqaga qaytish yo‘lisiz.</li>
+<li>Noutbukdagi nusxa to‘xtatilmagan.</li>
+</ol>
+<p><strong>Tuzatish:</strong>
+server parolini panelda almashtiring (FAQ S-06), kalit bilan kirishni sozlang (<code>deploy.qollanma.md</code>, 1-qadam), noutbukdagi botni to‘xtating, keyin shu mashqning 2-3-qadamlaridagi aniq topshiriq matnlarini yuboring.
+Tekshirilgan yo‘l bor ekan, Claude’ga yangi yo‘l o‘ylab topdirmang.</p>
+<h3>Tayyor bo‘ldi, agar</h3>
+<ul>
+<li class="cb"><code>deploy.py</code> oxirida <code>OK: pilot-bot is running release ...</code> chiqdi.</li>
+<li class="cb">Noutbuk yopiq holda telefondan savol yozdingiz va javob keldi (mentor ko‘rdi: kod 4.7).</li>
+<li class="cb"><code>/stop</code> va <code>/davom</code> telefondan ishladi.</li>
+<li class="cb"><code>/eslat</code> bilan qo‘yilgan eslatma telefoningizga keldi.</li>
+<li class="cb">Logning oxirgi qatorlarini Claude tushuntirdi va Siz «bot oxirgi marta nima qildi» degan savolga javob bera olasiz.</li>
+<li class="cb">Noutbukdagi bot deploy’dan oldin to‘xtatilgan.</li>
+<li class="cb"><code>pilot check</code> da «Baraka Office namunasi hali bor» qatori yo‘q.</li>
+</ul>
+<p>Sinovimizda (Docker ichidagi toza Ubuntu 24.04 va 26.04, 2026-11-03) shu qadamlar to‘liq o‘tdi, jumladan botni majburan «o‘ldirish» (5 soniyada qaytdi) va serverni qayta yuklash (bot o‘zi qaytdi).
+Haqiqiy provayder serverida va Windows noutbukda bu yo‘l hali sinalmagan: Windows’dagilarni mentor birinchi kuzatadi.</p>
+<div class="pagebreak"></div>
+
+<h2>3-mashq. Domen va HTTPS yoki bot (kengaytma, 1:30-1:40 va uyda)</h2>
+<p><strong>Natija (ikki yo‘ldan biri):</strong></p>
+<ul>
+<li><strong>Bot yo‘li (hamma uchun yetarli):</strong> assistent serverdan Telegram orqali ishlaydi.
+  2-mashq tayyor bo‘lsa, bu yo‘l ham tayyor: Telegram bot uchun domen kerak emas.</li>
+<li><strong>Domen yo‘li (kengaytma):</strong> o‘z subdomeningizda (masalan, <code>forma.barakaoffice.uz</code>) ochiq sahifa, qulf belgisi (HTTPS) bilan, telefondan ochiladi.</li>
+</ul>
+<p>Domen yo‘li faqat 2-mashq tugaganlar uchun.
+Domen bo‘lmasa yoki DNS hali tarqalmagan bo‘lsa, bot yo‘li bilan to‘xtang: mentor 4.8 ni «bot serverdan ishlaydi» deb belgilaydi.</p>
+<h3>Bu nima: uchta so‘z, bitta rasm</h3>
+<p>Rasm: <code>demos/03-domen-dns-https/diagramma.html</code> (darsda ekranda ko‘rsatiladi).</p>
+<ul>
+<li><strong>IP manzil</strong> - serverning telefon raqami: <code>203.0.113.10</code>.
+  Kompyuterlar faqat raqamni tushunadi.</li>
+<li><strong>Domen</strong> - shu raqamning odam eslab qoladigan ismi: <code>barakaoffice.uz</code>.
+  <strong>Subdomen</strong> - ism oldiga qo‘shilgan so‘z: <code>forma.barakaoffice.uz</code>, <code>bot.barakaoffice.uz</code>. Bitta domen, ko‘p manzil.</li>
+<li><strong>DNS</strong> - telefon kitobi: ismni raqamga bog‘laydi.
+  Kitobga yozuvni Siz domen panelida qo‘shasiz: <strong>A yozuvi</strong> «forma -&gt; 203.0.113.10».
+  Yozuv butun internetga bir necha daqiqadan bir necha soatgacha tarqaladi.</li>
+<li><strong>HTTPS</strong> - manzil satridagi qulf belgisi: sayt bilan telefon orasidagi gap shifrlangan.
+  Qulfsiz formaga mijoz telefon raqamini yozishga ishonmaydi.
+  Qulfni sertifikat beradi; uni <strong>Let’s Encrypt</strong> bepul beradi.</li>
+<li><strong>Caddy</strong> - serverdagi «qabulxona»: kelgan mehmonni kerakli eshikka yo‘naltiradi va sertifikatni o‘zi olib, o‘zi yangilaydi.
+  Dasturchi smetasida bu ish ko‘pincha <strong>Nginx</strong> deb yoziladi: vazifasi bir xil.</li>
+</ul>
+<h3>Boshlashdan oldin kerak</h3>
+<table>
+<thead>
+<tr>
+<th>Nima</th>
+<th>Tekshirish</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2-mashq tayyor</td>
+<td>Noutbuk yopiq holda bot javob bergan</td>
+</tr>
+<tr>
+<td>Domen</td>
+<td>Registrator panelida domen «faol»</td>
+</tr>
+<tr>
+<td>A yozuvi</td>
+<td><code>00-dars-oldidan.md</code>, 3-qadam; chorshanba kuni qo‘shilgan bo‘lsa yaxshi</td>
+</tr>
+<tr>
+<td>Ikkita fayl: <code>sayt.py</code> va <code>sayt-sozlash.sh</code></td>
+<td>Stol chatidagi <code>4-dars-materiallar.zip</code> ichida</td>
+</tr>
+</tbody>
+</table>
+<h3>1-qadam. DNS tayyormi (2 daqiqa)</h3>
+<p>Claude Code’ga (o‘z subdomeningiz bilan):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>&quot;nslookup forma.barakaoffice.uz 1.1.1.1&quot; ni ishga tushir. Javobdagi IP manzil .env dagi serverim IP manzili bilan bir xilmi?
+.env ni ochma: men IP ni o'zim aytaman: 203.0.113.10</pre></div>
+<ul>
+<li>Bir xil: 2-qadamga o‘ting.</li>
+<li><code>NXDOMAIN</code> yoki boshqa IP: A yozuvini tekshiring (nom faqat <code>forma</code>, qiymat faqat raqam, <code>http://</code> siz).
+  Yozuv to‘g‘ri bo‘lsa, kuting: tarqalish bir necha soat olishi mumkin.
+  Kutayotganda ham 3-qadamni qilsangiz bo‘ladi: Caddy DNS tayyor bo‘lishi bilan sertifikatni o‘zi oladi.</li>
+</ul>
+<h3>2-qadam. Sayt papkasi (3 daqiqa)</h3>
+<p>Saytga faqat ochiq bo‘lishi mumkin bo‘lgan fayllar boradi.
+Shuning uchun ular uchun alohida <code>sayt/</code> papka qilamiz.
+Claude Code’ga:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>app ichida &quot;sayt&quot; papkasini yarat.
+3-darsdagi lid formam bo'lsa (examples/lead-form/index.html), faqat shu index.html ni sayt/ ga nusxala.
+Bo'lmasa, sayt/index.html ga kompaniyam uchun bitta oddiy sahifa yoz: nomi, nima bilan shug'ullanishi, telefon raqami
+va Telegram botimga havola (t.me/BOT_NOMI). Telefonda chiroyli ko'rinsin, tashqi fayl va shriftlarsiz.
+sayt/ ga .env, kod yoki xodimlar ma'lumotini qo'yma.</pre></div>
+<h3>3-qadam. Joylash (5 daqiqa)</h3>
+<p>Avval ikkita faylni <code>app/deploy/</code> ga qo‘ying.
+Claude Code’ga:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Yuklanmalar papkasidagi 4-dars-materiallar.zip ichidan sayt.py va sayt-sozlash.sh ni app/deploy/ ga nusxala.
+Keyin &quot;uv run python deploy/sayt.py forma.barakaoffice.uz sayt&quot; ni ishga tushir va har bosqichni bir gapda tushuntir.</pre></div>
+<p><code>forma.barakaoffice.uz</code> o‘rniga o‘z subdomeningizni yozing.
+Skript serverda 5 ish qiladi: Caddy’ni o‘rnatadi, firewall’da 80 va 443 portlarini ochadi, sahifani joylaydi, Caddy’ni sozlaydi, DNS va HTTPS’ni tekshiradi.</p>
+<p>Kutilgan natija, DNS tayyor bo‘lsa (oxiri):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>==&gt; 5/5 Tekshiruv: DNS va HTTPS
+DNS: forma.barakaoffice.uz -&gt; 203.0.113.10 (shu server). To'g'ri.
+
+==&gt; Tayyor: https://forma.barakaoffice.uz ochiladi (HTTPS, qulf belgisi bilan).
+Sertifikatni Caddy o'zi yangilab turadi. Telefoningizda ham oching.</pre></div>
+<p>DNS hali tayyor bo‘lmasa (<code>namuna/natijalar/10b-sayt-dns-tayyor-emas.txt</code>):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>==&gt; 5/5 Tekshiruv: DNS va HTTPS
+DIQQAT: forma.barakaoffice.uz hali hech qaysi IP manzilga qaramayapti (DNS yozuvi yo'q yoki hali tarqalmagan).
+Domen panelida A yozuvi qo'shing: nom = forma, qiymat = serveringiz IP manzili.
+
+==&gt; Caddy sozlandi, lekin https://forma.barakaoffice.uz hali ochilmadi.
+DNS tayyor bo'lishi bilan Caddy sertifikatni o'zi oladi: qayta ishga tushirish shart emas.</pre></div>
+<p>Bu holatda hech narsani qayta qilmaysiz: kechqurun telefonda manzilni oching.</p>
+<h3>4-qadam. Telefonda tekshiring</h3>
+<p>Telefon brauzerida <code>https://forma.barakaoffice.uz</code> ni to‘liq yozing.
+Manzil satrida qulf belgisi bor, sahifa ochiladi.
+Qulfni bosing: «Connection is secure» va sertifikat beruvchi «Let’s Encrypt».</p>
+<h3>Baraka namunasi</h3>
+<p>Rustamov S.A. chorshanba kuni Airnet panelida <code>forma</code> uchun A yozuvi qo‘shdi (qiymat - server IP).
+Dars kuni <code>nslookup</code> server IP manzilini ko‘rsatdi.
+<code>sayt/</code> papkasiga 3-darsdagi lid formasi (<code>examples/lead-form/index.html</code>) nusxalandi va <code>sayt.py</code> bilan joylandi.
+Endi <code>https://forma.barakaoffice.uz</code> - Baraka Office’ning qulfli sahifasi: forma Google Sheets’ga yozadi va Telegram’ga xabar beradi (3-dars namoyishi).
+Sinovimizda (Docker, 2026-11-03) shu sahifa Caddy orqali HTTPS bilan ochildi va server qayta yuklangandan keyin ham bot bilan birga o‘zi qaytdi (<code>namuna/natijalar/10-sayt-test.txt</code>).
+Haqiqiy Let’s Encrypt sertifikati sinovda olinmadi: konteynerda ochiq domen yo‘q, Caddy’ning o‘z test sertifikati (<code>--test-local</code>) ishlatildi.</p>
+<h3>Yomon namunalar va tuzatish</h3>
+<table>
+<thead>
+<tr>
+<th>Yomon</th>
+<th>Nima xato</th>
+<th>Tuzatish</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A yozuvi: nom <code>forma.barakaoffice.uz</code>, qiymat <code>http://203.0.113.10</code></td>
+<td>Ko‘p panel nomga domenni o‘zi qo‘shadi: <code>forma.barakaoffice.uz.barakaoffice.uz</code> bo‘lib qoladi; qiymatda faqat raqam bo‘lishi kerak</td>
+<td>Nom: <code>forma</code>. Qiymat: <code>203.0.113.10</code></td>
+</tr>
+<tr>
+<td><code>sayt.py forma.barakaoffice.uz .</code> (butun <code>app/</code> papkasi)</td>
+<td><code>.env</code> yashirin fayl sifatida yuborilmaydi, lekin <code>data/</code> (narxlar, 1C qoldig‘i) va kod internetga ochiladi</td>
+<td>Faqat <code>sayt/</code> papkasi; unda faqat ochiq sahifa</td>
+</tr>
+<tr>
+<td>Saytni <code>http://203.0.113.10:8000</code> da ochish</td>
+<td>IP bilan qulf (HTTPS) bo‘lmaydi; ochiq port - qo‘shimcha eshik</td>
+<td>Faqat domen orqali; 80 va 443 dan boshqa portni ochmang</td>
+</tr>
+<tr>
+<td>DNS tarqalmagan, Claude’ga «HTTPS’ni majburan ol» deyish</td>
+<td>Let’s Encrypt DNS tayyor bo‘lmaguncha sertifikat bermaydi; ko‘p urinish limitga uriladi</td>
+<td>Kuting; Caddy o‘zi qayta urinadi</td>
+</tr>
+</tbody>
+</table>
+<h3>Orqaga qaytarish (saytni o‘chirish)</h3>
+<p>Claude Code’ga:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Serverda Caddy saytini o'chir: &quot;systemctl disable --now caddy&quot;, keyin firewall'dan &quot;ufw delete allow 80/tcp&quot; va &quot;ufw delete allow 443/tcp&quot;. Bot (pilot-bot) ga tegma.</pre></div>
+<h3>Tayyor bo‘ldi, agar</h3>
+<ul>
+<li class="cb">Bot yo‘li: 2-mashq tayyor (mentor 4.8 ni «bot» deb belgilaydi).</li>
+<li class="cb">Yoki domen yo‘li: telefonda <code>https://&lt;subdomen&gt;</code> qulf bilan ochiladi (mentor 4.8 ni «domen» deb belgilaydi).</li>
+<li class="cb">DNS tarqalmagan bo‘lsa: <code>sayt.py</code> ishga tushirilgan, kechqurun tekshirasiz va natijani stol chatiga yozasiz.</li>
+</ul>
+<div class="pagebreak"></div>
+
+<h2>4-mashq. To‘plam 5 A: sinov rejasi (1:50-2:20, 30 daqiqa)</h2>
+<p><strong>Natija:</strong> <code>kompaniya/kit5-pilot/plan.md</code> - bitta raqamli maqsad, sanalar, chegaralar, muvaffaqiyat mezonlari, to‘xtatish sharti, kim tekshiradi, haftalik ko‘rib chiqish.
+Reja bo‘lim boshlig‘i bilan agent ishga tushishidan <strong>oldin</strong> kelishiladi.</p>
+<h3>Nega kerak</h3>
+<p>Sinov (pilot) - cheklangan, muddatli, real sinov: 2 hafta, bitta jarayon, bir necha xodim.
+Rejasiz sinov 6-darsda «yaxshi bo‘ldi shekilli» degan taassurot bilan tugaydi.
+Reja bilan esa 6-darsda (26 yoki 27-dekabr) bitta savolga javob berasiz: maqsadga yetdikmi, ha yoki yo‘q.</p>
+<h3>Boshlashdan oldin kerak</h3>
+<table>
+<thead>
+<tr>
+<th>Nima</th>
+<th>Qayerda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boshlang‘ich raqamlar («Agentgacha»)</td>
+<td><code>kit5-pilot/baseline.md</code> (2-darsdan keyin)</td>
+</tr>
+<tr>
+<td>Agent yo‘riqnomasi: nima qila oladi (B.4) va qila olmaydi (B.5), kimga uzatadi (B.6)</td>
+<td><code>kit3-agent/instructions.md</code></td>
+</tr>
+<tr>
+<td>Kim botga yozadi, kim tekshiradi</td>
+<td>Boshingizda: bugun yozamiz</td>
+</tr>
+<tr>
+<td>Loyiha yetakchisi (2-darsdan keyin rozilik bergan xodim)</td>
+<td><code>kit5-pilot/briefing.md</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Qadamlar</h3>
+<h4>1. Namunani o‘qing (5 daqiqa, juftlikda)</h4>
+<p>Ikki faylni yonma-yon oching:</p>
+<ul>
+<li>Yaxshi: <code>namuna/kompaniya/kit5-pilot/plan.md</code> (Baraka Office, izohlar bilan).</li>
+<li>Yomon: <code>namuna/yomon/plan-yomon.md</code>.</li>
+</ul>
+<p>Yomon rejaning har bandida nima xato ekanini sherigingizga ayting.
+Keyin faylning oxiridagi javob bilan solishtiring.</p>
+<h4>2. O‘z rejangiz (17 daqiqa)</h4>
+<p>Warp’da <code>kompaniya</code> papkasini oching (app emas!), <code>claude</code> deb yozing va yuboring:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/kit5 reja</pre></div>
+<p>Skill sizdan A.1-A.9 ni bittalab so‘raydi.
+<code>/kit5</code> ishlamasa, shu topshiriq matnini yuboring:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>kit5-pilot/baseline.md va kit3-agent/instructions.md ni o'qi.
+Men bilan birga kit5-pilot/plan.md ni To'plam 5 A shakli bo'yicha to'ldir (A.1-A.9). Bir xabarda ko'pi bilan 3 ta savol ber.
+Qoidalar:
+- A.2 maqsad bitta raqam, baseline.md dagi raqamdan: &quot;... dan ... gacha&quot;, birligi bilan.
+- A.3: 6-darsgacha (26 yoki 27-dekabr) kamida 2 to'liq hafta; ishga tushirish dushanbadan kechikmasin.
+- A.5 instructions.md dagi B.4 va B.5 dan ko'p ruxsat bermasin. 1-hafta: agent qoralama yozadi, odam har javobni tasdiqlaydi.
+- A.7 aniq hodisa bo'lsin, &quot;ko'p xato&quot; emas; kim to'xtatadi va qanday.
+- A.8 da agent o'zini o'zi tekshirmaydi.
+Oxirida plan.md ni yoz va A.2, A.7 ni menga qayta o'qib ber.</pre></div>
+<p>Mentor stol bo‘ylab yuradi va uchta narsani tekshiradi: A.2 da birlik bormi, A.7 aniq hodisami, A.8 da odam ismi bormi.</p>
+<h4>3. Rejadan bot sozlamasiga (3 daqiqa, uyda ham bo‘ladi)</h4>
+<p>Rejaning A.4, A.5, A.7, A.8 bandlari botning <code>.env</code> qatorlariga aylanadi.
+Baraka namunasidagi «Rejadan bot sozlamasiga» jadvalini o‘qing.
+Bugun <code>.env</code> ga tegmaysiz: xodimlar bilan suhbatdan keyin, uy vazifasida o‘zgartirasiz.</p>
+<h3>Har bir maydon qayerdan keladi</h3>
+<table>
+<thead>
+<tr>
+<th>Maydon</th>
+<th>Qayerdan</th>
+<th>Odatiy xato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A.1</td>
+<td>To‘plam 2 B.1 (jarayon nomi), <code>instructions.md</code> (agent nomi)</td>
+<td>Jarayon o‘rniga bo‘lim nomi</td>
+</tr>
+<tr>
+<td>A.2</td>
+<td><code>baseline.md</code> dagi bitta ko‘rsatkich</td>
+<td>Raqamsiz fe’l: «tezlashtirish», «yaxshilash»</td>
+</tr>
+<tr>
+<td>A.3</td>
+<td>Taqvim: dushanba, 14-dekabr</td>
+<td>«Bot tayyor bo‘lgach»</td>
+</tr>
+<tr>
+<td>A.4</td>
+<td>To‘plam 3 A (kim bugun shu ishni qiladi)</td>
+<td>«Hamma»</td>
+</tr>
+<tr>
+<td>A.5</td>
+<td><code>instructions.md</code> B.4 va B.5</td>
+<td>Yo‘riqnomadan ko‘p ruxsat</td>
+</tr>
+<tr>
+<td>A.6</td>
+<td><code>baseline.md</code> + maqsad</td>
+<td>«Mamnun bo‘lsa»</td>
+</tr>
+<tr>
+<td>A.7</td>
+<td>Xatoning narxi (To‘plam 1 B.8: «yuqori» deb belgilangan vazifalar)</td>
+<td>«Juda ko‘p xato bo‘lsa»</td>
+</tr>
+<tr>
+<td>A.8</td>
+<td>To‘plam 3 A.5 (kim tekshiradi)</td>
+<td>«Agent o‘zi»</td>
+</tr>
+<tr>
+<td>A.9</td>
+<td>Bo‘lim boshlig‘i taqvimi</td>
+<td>«Vaqt bo‘lganda»</td>
+</tr>
+</tbody>
+</table>
+<p>Birliklarni aralashtirmang: kunlik va haftalik raqam bitta qatorda bo‘lmasin (FAQ R-02).</p>
+<h3>Tayyor bo‘ldi, agar</h3>
+<ul>
+<li class="cb"><code>kit5-pilot/plan.md</code> saqlangan, A.1-A.9 bo‘sh emas.</li>
+<li class="cb">A.2 - bitta raqam, birligi bilan, <code>baseline.md</code> dagi raqamdan boshlanadi.</li>
+<li class="cb">A.7 - aniq hodisa va kim <code>/stop</code> qiladi.</li>
+<li class="cb">A.8 - odam ismi bilan, agent emas.</li>
+<li class="cb">Bo‘lim boshlig‘i bilan uchrashuv vaqti belgilangan (ishga tushirishdan oldin).</li>
+<li class="cb">Mentor tekshirdi: kod 4.9.</li>
+</ul>
+<div class="pagebreak"></div>
+
+<h2>5-mashq. To‘plam 4: xodimlarni yangi rolga tayyorlash (2:26-2:37, 11 daqiqa)</h2>
+<p><strong>Natija:</strong> <code>kompaniya/kit4-people/form-a-skills-map.md</code> (har bir ishi o‘zgarayotgan xodim) va har biri uchun <code>kit4-people/&lt;ism&gt;-form-b.md</code> (mashg‘ulot vazifasi va 15 daqiqalik suhbat rejasi).
+Suhbatning o‘zi - uy vazifasi: bot xodimlar uchun yoqilishidan <strong>oldin</strong>.</p>
+<h3>Nega kerak</h3>
+<p>Xodim botni rahbardan emas, tasodifan bilib qolsa, «meni almashtirishyapti» deb o‘ylaydi va haqiqiy ishini yashiradi.
+Shunda sinov raqamlari yolg‘on chiqadi.
+To‘plam 4 uchta savolga javob beradi: kim nimani eng yaxshi qiladi, ertaga u nimani tekshiradi, bu haqda unga qanday aytamiz.
+Biz odamni almashtirmaymiz, kuchaytiramiz: bo‘shagan emas, <strong>tejalgan</strong> vaqt yuqoriroq qiymatli ishga ketadi.</p>
+<h3>Boshlashdan oldin kerak</h3>
+<table>
+<thead>
+<tr>
+<th>Nima</th>
+<th>Qayerda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jarayon qadamlari: bugun kim, ertaga kim, kim tekshiradi</td>
+<td><code>kit3-agent/form-a-steps.md</code> (A.3, A.4, A.5)</td>
+</tr>
+<tr>
+<td>3 ta yaxshi va 3 ta yomon real misol</td>
+<td><code>kit4-people/test-set.md</code> (3-dars uy vazifasi)</td>
+</tr>
+<tr>
+<td>Har bir xodimning To‘plam 1 dagi vazifalar ro‘yxati</td>
+<td><code>kit1-interviews/&lt;ism&gt;-form-b.md</code></td>
+</tr>
+<tr>
+<td>Sinov rejasi</td>
+<td><code>kit5-pilot/plan.md</code> (4-mashq)</td>
+</tr>
+</tbody>
+</table>
+<h3>Qadamlar</h3>
+<h4>1. Namunani ko‘ring (2 daqiqa)</h4>
+<ul>
+<li>Yaxshi: <code>namuna/kompaniya/kit4-people/form-a-skills-map.md</code> va <code>madina-form-b.md</code>.</li>
+<li>Yomon: <code>namuna/yomon/kit4-yomon.md</code> - har qatorda nima xato, sherigingiz bilan bir-ikki misol ayting.</li>
+</ul>
+<h4>2. A va B shakllari (9 daqiqa, uyda tugatasiz)</h4>
+<p>Warp’da <code>kompaniya</code> papkasini oching, <code>claude</code> deb yozing va yuboring:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/kit4</pre></div>
+<p>Skill avval ishi o‘zgarayotgan xodimlar ro‘yxatini To‘plam 3 dan topib, tasdiqlatadi.
+Keyin har biri uchun bittadan so‘raydi: eng kuchli qobiliyati va <strong>real misol</strong> (qachon, nima bo‘ldi).
+Misolni o‘zingiz aytasiz: Claude uni to‘qimaydi; esingizda bo‘lmasa, <code>[?]</code> qoladi va uyda to‘ldirasiz.</p>
+<p><code>/kit4</code> ishlamasa, shu topshiriq matnini yuboring:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>kit3-agent/form-a-steps.md, kit4-people/test-set.md va kit1-interviews/ dagi B shakllarini o'qi.
+1. Ishi o'zgarayotgan xodimlar ro'yxatini menga ko'rsat va tasdiqlat.
+2. Har bir xodim uchun mendan so'ra: eng kuchli qobiliyati va bitta real misol (sana va voqea). Misolni o'zing to'qima.
+3. kit4-people/form-a-skills-map.md ni To'plam 4 A shakli bo'yicha yoz (A.1-A.6).
+4. Har bir xodim uchun kit4-people/&lt;ism&gt;-form-b.md yoz: B.1-B.7, B.3 ni bir daqiqalik 4-6 ta ha/yo'q savol qil,
+   B.4 ga test-set.md dagi 6 misolni qo'y. B.8 va B.9 ni bo'sh qoldir: ular suhbatdan keyin to'ldiriladi.
+5. Har bir B shakli oxiriga 15 daqiqalik suhbat rejasini qo'sh: nima o'zgaradi, nima o'zgarmaydi (maosh va lavozim),
+   endi nimani tekshiradi, qanday to'xtatiladi, xavotirlarini so'rash, kelishuv.
+Xodimlarga aytiladigan matnda &quot;optimizatsiya&quot;, &quot;qisqartirish&quot;, &quot;o'rnini bosadi&quot;, &quot;bo'shagan vaqt&quot;, &quot;nazorat&quot; so'zlarini ishlatma.
+Har doim &quot;siz&quot; va ism bilan &quot;aka&quot; yoki &quot;opa&quot;.</pre></div>
+<h4>3. Yozma majburiyatni yangilang (uyda, 5 daqiqa)</h4>
+<p>1-darsda imzolagan yozma majburiyatingizda (<code>kit1-interviews/team-message.md</code>) ikkita joy hali umumiy: 4 va 5-bandlar.
+Suhbatlardan oldin ularni aniq qiling va har bir xodimga yangi nusxani bering:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>4. [Loyiha yetakchisi ismi] va men yordamchini istalgan payt telefondan /stop buyrug'i bilan to'xtata olamiz.
+   Yordamchi zarar yetkazayotganini ko'rgan har kim [ism]ga aytsin; buning uchun hech kim jazolanmaydi.
+5. Yordamchi tejagan vaqt [nimaga] ketadi; bu shu ishdagi odamlar bilan birga hal qilingan.
+   U qo'shimcha haqsiz ish bilan to'ldirilmaydi. Kimningdir vazifasi o'zgarsa, avval yozma kelishamiz.</pre></div>
+<p>Baraka namunasi: «4. Malika Rashidova va men ... /stop ...», «5. ... showroomdagi mijozlar va ofis o‘lchovlariga ketadi».</p>
+<h3>Har bir maydon qayerdan keladi</h3>
+<table>
+<thead>
+<tr>
+<th>Maydon</th>
+<th>Qayerdan</th>
+<th>Odatiy xato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A.1</td>
+<td>To‘plam 3 A.3 (bugun kim) va A.5 (kim tekshiradi)</td>
+<td>Ishi o‘zgarayotgan odamni unutish (masalan, savollarga javob beradigan omborchi)</td>
+</tr>
+<tr>
+<td>A.2</td>
+<td>Sizning xotirangiz: oxirgi marta qachon ko‘rdingiz?</td>
+<td>Sifat so‘zi, misolsiz («mas’uliyatli»)</td>
+</tr>
+<tr>
+<td>A.3</td>
+<td>To‘plam 1 B shakli</td>
+<td>Lavozim nomi, ish emas</td>
+</tr>
+<tr>
+<td>A.4</td>
+<td>A.2 ni jarayondagi joyga bog‘lash</td>
+<td>«AI’ni o‘rganadi»</td>
+</tr>
+<tr>
+<td>A.5</td>
+<td>To‘plam 3 A.5</td>
+<td>«Nazorat qiladi», natijasiz</td>
+</tr>
+<tr>
+<td>B.3</td>
+<td><code>instructions.md</code> B.4, B.5</td>
+<td>«To‘g‘ri bo‘lsin»</td>
+</tr>
+<tr>
+<td>B.4</td>
+<td><code>test-set.md</code></td>
+<td>Faqat yaxshi misollar</td>
+</tr>
+<tr>
+<td>B.8, B.9</td>
+<td>Suhbatdan keyin, xodimning so‘zlari</td>
+<td>Suhbatdan oldin egasi yozgan</td>
+</tr>
+</tbody>
+</table>
+<h3>Tayyor bo‘ldi, agar</h3>
+<ul>
+<li class="cb">A shaklida har bir ishi o‘zgarayotgan xodim bor va A.2 da real misol (yoki <code>[?]</code>, uyda to‘ldiriladi).</li>
+<li class="cb">Har bir xodim uchun B shakli: B.3 - 4-6 ta ha/yo‘q savol, B.4 - 6 misol, oxirida suhbat rejasi.</li>
+<li class="cb">B.8 va B.9 bo‘sh: suhbatdan keyin to‘ldiriladi.</li>
+<li class="cb">Har bir xodim bilan suhbat kuni va soati yozilgan, bot yoqiladigan vaqtdan <strong>oldin</strong>.</li>
+<li class="cb">Mentor ko‘rdi: kodlar 4.10 va 4.11.</li>
+</ul>
+<div class="pagebreak"></div>
+
+<h2>6-mashq. 15 daqiqalik suhbat mashqi, juftlikda (2:37-2:50, 13 daqiqa)</h2>
+<p><strong>Natija:</strong> har biringiz bir marta «rahbar», bir marta «xodim» bo‘lasiz.
+Har bir sherik bitta xavotirni eshitib, unga javob bergan bo‘ladi.
+Haqiqiy suhbat - uy vazifasi: bot xodimlar uchun yoqilishidan oldin, har bir xodim bilan yolg‘iz.</p>
+<h3>Nega mashq qilamiz</h3>
+<p>Rahbar uchun eng qiyin joy - xodimning savoliga darhol javob topish: «meni bo‘shatasizmi?», «xato bo‘lsa men aybdormanmi?».
+Bu savolni birinchi marta xodimdan eshitsangiz, bahslashib yuborasiz yoki hazil qilasiz.
+Bugun begona odam bilan, xavfsiz joyda bir marta aytib ko‘rasiz.</p>
+<h3>Tartib</h3>
+<table>
+<thead>
+<tr>
+<th>Vaqt</th>
+<th>Nima</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0:00-0:01</td>
+<td>Sherik tanlang (bir stoldan). A va B ni belgilang.</td>
+</tr>
+<tr>
+<td>0:01-0:07</td>
+<td><strong>1-davra.</strong> A - rahbar (o‘z kompaniyasi, o‘z xodimi), B - xodim. B pastdagi ro‘yxatdan bitta xavotirni tanlaydi va A ga oldindan aytmaydi.</td>
+</tr>
+<tr>
+<td>0:07-0:13</td>
+<td><strong>2-davra.</strong> Rollarni almashtiring.</td>
+</tr>
+<tr>
+<td>0:13</td>
+<td>Mentor bitta savol beradi: «Qaysi gap qiyin bo‘ldi?»</td>
+</tr>
+</tbody>
+</table>
+<p>Har davrada «rahbar» 6 daqiqada suhbat rejasining hammasidan o‘tadi (to‘liq suhbat 15 daqiqa; bugun qisqa varianti).
+Reja <code>kit4-people/&lt;ism&gt;-form-b.md</code> oxirida (5-mashq) yoki Baraka namunasida: <code>namuna/kompaniya/kit4-people/madina-form-b.md</code>.</p>
+<h3>Rahbar kartasi (A)</h3>
+<ol>
+<li><strong>Nega gaplashyapmiz:</strong> «[Ism] aka/opa, botni yoqishdan oldin bu haqda Siz mendan eshitishingizni xohladim.»</li>
+<li><strong>Nima o‘zgaradi:</strong> bitta-ikki gap, aniq: bot nimani qoralaydi, Siz nimani qilasiz.</li>
+<li><strong>Nima o‘zgarmaydi:</strong> mijoz bilan ishlash, maosh, lavozim; yozma majburiyat va uning muddati.</li>
+<li><strong>Endi nimani tekshirasiz:</strong> 4-6 ta ha/yo‘q savol (B.3); ❌ tugmasi.</li>
+<li><strong>Qanday to‘xtatiladi:</strong> kim, qaysi buyruq; xato haqida aytgan odam ayblanmaydi.</li>
+<li><strong>«Sizni nima xavotirga solyapti?»</strong> - so‘rang, tinglang, bahslashmang.
+   Javob bering, keyin uning so‘zlarini yozing (B.8).</li>
+<li><strong>Kelishuv:</strong> nima deb kelishdik (B.9), mashq va birinchi ko‘rib chiqish sanasi.</li>
+</ol>
+<p>Aytmang: «optimizatsiya», «qisqartirish», «o‘rningizni bosadi», «bo‘shagan vaqt», «nazorat», «sinov muddati», «sen».
+Hazil qilmang: hazilni xodim reja deb eshitadi.</p>
+<h3>Xodim kartasi (B): bitta xavotirni tanlang</h3>
+<p>Real xodimdek gapiring: qisqa, biroz xavotir bilan, darhol rozi bo‘lmang.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Xavotir (xodim aytadi)</th>
+<th>Yaxshi javob nimaga tayanadi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>«Bot hamma narsani bilsa, keyin menga nima ish qoladi?»</td>
+<td>Nima o‘zgarmaydi (mijoz, qaror); tejalgan vaqt qayerga ketishi, birga hal qilingan; yozma majburiyat</td>
+</tr>
+<tr>
+<td>2</td>
+<td>«Bot xato qilsa-yu, men payqamasam, men aybdor bo‘lamanmi?»</td>
+<td>Majburiyat 3-bandi: bot xatosi uchun rahbar javob beradi; xatoni topgan maqtaladi</td>
+</tr>
+<tr>
+<td>3</td>
+<td>«Har bir yozganimni o‘qib, kuzatib o‘tirasizmi?»</td>
+<td>Hisobotda faqat jami raqamlar, ism yo‘q; logda matn yo‘q; jurnal faqat sifat uchun, 60 kunda o‘chadi</td>
+</tr>
+<tr>
+<td>4</td>
+<td>«Menda shusiz ham vaqt yo‘q, bu qo‘shimcha ish-ku»</td>
+<td>Nima sizdan olinadi; tekshirish ish vaqtida, kuniga 10-15 daqiqa; loyiha yetakchisiga qo‘shimcha haq (kelishilgan bo‘lsa)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>«Mijoz oldida telefonga yozib o‘tirsam, mijoz nima deydi?»</td>
+<td>Amaliy javob: «bir daqiqa, aniq narxni tekshiraman»; PDF’dan qidirishdan tezroq</td>
+</tr>
+<tr>
+<td>6</td>
+<td>«Men kompyuterni yaxshi bilmayman»</td>
+<td>Bu Telegram, hamkasbga yozgandek; 30 daqiqalik mashq 6 misol ustida</td>
+</tr>
+<tr>
+<td>7</td>
+<td>«Ishim kamaysa, keyin maoshimni ham kamaytirasiz-da?»</td>
+<td>Majburiyat 1-bandi: maosh va lavozim [sana]gacha o‘zgarmaydi; yozma</td>
+</tr>
+</tbody>
+</table>
+<h3>Mentor kuzatadi (har juftlikda bitta davra)</h3>
+<table>
+<thead>
+<tr>
+<th>Kuzatuv</th>
+<th>Ha / yo‘q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nima o‘zgarishi aniq aytildi</td>
+<td></td>
+</tr>
+<tr>
+<td>Maosh va lavozim o‘zgarmasligi aytildi (yozma majburiyat bilan)</td>
+<td></td>
+</tr>
+<tr>
+<td>Xodim endi nimani tekshirishi aytildi</td>
+<td></td>
+</tr>
+<tr>
+<td>Kim va qanday to‘xtatishi aytildi</td>
+<td></td>
+</tr>
+<tr>
+<td>Xavotir so‘raldi va bahslashmasdan tinglandi</td>
+<td></td>
+</tr>
+<tr>
+<td>Taqiqlangan so‘z yoki «sen» ishlatilmadi</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Mentor oxirida bitta narsani aytadi: eng yaxshi chiqqan gap va bitta tuzatish.</p>
+<h3>Yomon namuna va tuzatish</h3>
+<p><strong>Yomon</strong> (rahbar, 2 daqiqa, yo‘lakda):
+«Madina, bot qo‘ydik, endi narxni o‘zing qidirib o‘tirma, botdan so‘ra. Xavotir olma, hech kimni haydamaymiz, hozircha. Savol bormi? Yo‘qmi? Bo‘ldi.»</p>
+<p><strong>Nima xato:</strong> «sen» bilan, yo‘lakda; nima o‘zgarmasligi va maosh aytilmagan; «hozircha» - eng qo‘rqinchli so‘z; nimani tekshirishi va qanday to‘xtatishi aytilmagan; savolga vaqt berilmagan («Yo‘qmi?», «Bo‘ldi»).</p>
+<p><strong>Tuzatilgan</strong> (boshi):
+«Madina opa, 15 daqiqa vaqtingiz bormi? Ertaga yangi yordamchini yoqmoqchimiz, oldin bu haqda Siz mendan eshitishingizni xohladim.
+Narx, qoldiq va muddat savollariga javobni endi bot qoralaydi: Siz savolni yozasiz, javobni o‘qiysiz va mijozga o‘zingiz aytasiz.
+Mijoz bilan gaplashish Sizda qoladi, maoshingiz va lavozimingiz o‘zgarmaydi: mana yozma majburiyatim, may oyining oxirigacha...»</p>
+<h3>Tayyor bo‘ldi, agar</h3>
+<ul>
+<li class="cb">Ikkala davrada ham «rahbar» rejaning 7 qadamidan o‘tdi.</li>
+<li class="cb">Har bir sherik bitta xavotirni eshitib, unga javob berdi.</li>
+<li class="cb">Har biringiz haqiqiy suhbat kuni va soatini yozdingiz (uy vazifasi, 1-band).</li>
+</ul>
+<div class="foot">Praktikum 3.0 · 4-dars · manba: day-4/_build/mashqlar-hammasi.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

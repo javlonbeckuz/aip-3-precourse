@@ -1,0 +1,30 @@
+$ uv run python deploy/deploy.py status
+
+× pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter)
+     Loaded: loaded (/etc/systemd/system/pilot-bot.service; enabled; preset: enabled)
+     Active: failed (Result: exit-code) since Tue 2026-11-03 03:50:32 +05; 10s ago
+   Duration: 91ms
+    Process: 417 ExecStart=/opt/pilot/app/.venv/bin/python -m pilot run (code=exited, status=78)
+
+Release: 20261102-224817
+
+Nov 03 03:50:23 baraka-vps python[125]: 2026-11-03 03:50:23,629 INFO pilot.bot: exchange d046e8f1: answered, $0.0030, 3 ms
+Nov 03 03:50:24 baraka-vps systemd[1]: Stopping pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter)...
+Nov 03 03:50:24 baraka-vps systemd[1]: pilot-bot.service: Deactivated successfully.
+Nov 03 03:50:24 baraka-vps systemd[1]: Stopped pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter).
+Nov 03 03:50:24 baraka-vps systemd[1]: Started pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter).
+Nov 03 03:50:24 baraka-vps python[222]: 2026-11-03 03:50:24,485 INFO pilot.bot: bot @baraka_demo_bot started, model google/gemini-3.8-flash, mode approve
+Nov 03 03:50:30 baraka-vps python[222]: 2026-11-03 03:50:30,252 INFO pilot.bot: exchange 8798edf1: answered, $0.0030, 2 ms
+Nov 03 03:50:30 baraka-vps systemd[1]: Stopping pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter)...
+Nov 03 03:50:30 baraka-vps systemd[1]: pilot-bot.service: Deactivated successfully.
+Nov 03 03:50:30 baraka-vps systemd[1]: Stopped pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter).
+Nov 03 03:50:30 baraka-vps systemd[1]: Started pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter).
+Nov 03 03:50:30 baraka-vps python[257]: 2026-11-03 03:50:30,793 WARNING root: config: OWNER_CHAT_ID yo‘q: hisobot va ogohlantirishlar kimga borishini bilmayman.
+Nov 03 03:50:30 baraka-vps python[257]: 2026-11-03 03:50:30,883 INFO pilot.bot: bot @baraka_demo_bot started, model google/gemini-3.8-flash, mode direct
+Nov 03 03:50:31 baraka-vps systemd[1]: Stopping pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter)...
+Nov 03 03:50:32 baraka-vps systemd[1]: pilot-bot.service: Deactivated successfully.
+Nov 03 03:50:32 baraka-vps systemd[1]: Stopped pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter).
+Nov 03 03:50:32 baraka-vps systemd[1]: Started pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter).
+Nov 03 03:50:32 baraka-vps python[417]: 2026-11-03 03:50:32,117 ERROR root: config: TELEGRAM_BOT_TOKEN yo‘q (BotFather bergan token).
+Nov 03 03:50:32 baraka-vps systemd[1]: pilot-bot.service: Main process exited, code=exited, status=78/CONFIG
+Nov 03 03:50:32 baraka-vps systemd[1]: pilot-bot.service: Failed with result 'exit-code'.

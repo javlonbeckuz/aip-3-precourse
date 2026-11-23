@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>To‘plam 1: juftlikda mashq</title>
+<link rel="stylesheet" href="../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 1-dars</span><span class="pill">To‘plam 1 mashqi</span></div>
+<h1>To‘plam 1: juftlikda mashq</h1>
+<p>14 daqiqa.
+Biringiz suhbatdosh, biringiz xodim.
+Xodim o‘zining haqiqiy ishi haqida gapiradi.</p>
+<h2>1. Rozilik (1 daqiqa)</h2>
+<p>Suhbatdosh To‘plam 1, A shaklidagi rozilik matnini ovoz chiqarib o‘qiydi.
+Oxirgi savol: «Qaysi biri sizga qulay: yozib olaymi yoki qo‘lda yozaymi?»
+«Rozimisiz?» demang.</p>
+<h2>2. Suhbat (5 daqiqa, telefonga yozing)</h2>
+<ul>
+<li>A.1 Odatdagi bir ish kuningiz qanday o‘tadi?</li>
+<li>A.2 Hafta davomida eng ko‘p vaqtingizni oladigan uchta vazifa qaysi? Har biriga taxminan necha daqiqa ketadi?</li>
+<li>A.5 Eng ko‘p xatolar qayerda bo‘ladi? Bu xatolar qanchaga tushadi?</li>
+<li>A.7 Agar ertaga sizga yordamchi berishsa, birinchi bo‘lib qaysi vazifani topshirardingiz?</li>
+</ul>
+<p>Har doim bitta aniq misol so‘rang: «Oxirgi marta qachon bo‘ldi?»
+Xodim: raqamlarni odatdagidek, oraliq bilan ayting («besh-olti», «bir uch-to‘rt yuz ming»).</p>
+<h2>3. Matnga aylantirish (3 daqiqa)</h2>
+<p>Audioni gemini.google.com ga yuklang va To‘plam 1 dagi «Audioni matnga aylantirish uchun so‘rov»ni yuboring.
+Bepul Gemini bir so‘rovda 10 daqiqagacha audio qabul qiladi: 5 daqiqalik mashq bemalol sig‘adi.
+Uyda 20-30 daqiqalik suhbatni qismlarga bo‘lib yozing: A.2 dan keyin, A.5 dan keyin yoki har 8 daqiqada, qaysi biri oldin kelsa, diktofonni to‘xtatib yangisini boshlang; har bir qism 10 daqiqadan qisqa bo‘lsin.</p>
+<h2>4. B shakli (3 daqiqa)</h2>
+<p>Transkriptni To‘plam 1 dagi «AI chat uchun so‘rov» bilan Claude’ga yuboring.
+Javobda ikki qism bo‘ladi: raqamlar jadvali va B shakli.</p>
+<h2>5. Raqamni tekshiring (2 daqiqa)</h2>
+<p>Raqamlar jadvalidagi har bir [?] ni xodimdan so‘rang yoki audio bilan solishtiring.
+Kamida bitta raqamni qo‘lda to‘g‘rilang.</p>
+<p><strong>Tayyor:</strong> B shakli jadvali bor va kamida bitta raqam qo‘lda to‘g‘rilangan.
+Vaqt qolsa, rollarni almashtiring.</p>
+<blockquote>
+<p>Chatga hamkasblaringizning ismini va mijoz ma’lumotini yozmang.
+Mijoz yoki bemorning ismi, telefoni, tashxisi aytilsa, matnni AI’ga berishdan oldin «[mijoz]» deb almashtiring.
+Mashqdan keyin audio faylni o‘chiring.</p>
+</blockquote>
+<div class="foot">Praktikum 3.0 · 1-dars · 21-noyabr (shanba) / 22-noyabr (yakshanba) 2026 · manba: day-1/kit1-live-demo/juftlik-mashqi.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

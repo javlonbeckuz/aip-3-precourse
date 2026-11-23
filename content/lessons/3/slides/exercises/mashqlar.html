@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2-dars mashqlari</title>
+<link rel="stylesheet" href="../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 2-dars</span><span class="pill">Mashqlar</span></div>
+<h1>2-dars mashqlari</h1>
+<p>Sakkizta mashq, darsdagi tartibda. Manba: day-2/exercises/0*.md.</p>
+<div class="pagebreak"></div>
+
+<h2>1-mashq. Birinchi topshiriq: Downloads papkasini tartibga keltirish</h2>
+<p>2-dars · 0:53-0:59 · 6 daqiqa · Claude Code</p>
+<h3>Maqsad</h3>
+<p>Claude Code’ga oddiy o‘zbek tilida bitta haqiqiy ish topshirasiz va u kompyuteringizda o‘zi bajaradi.
+Kod yozilmaydi.
+Hech bir fayl o‘chirilmaydi.</p>
+<h3>Boshlashdan oldin</h3>
+<ul>
+<li>Warp va Claude Code o‘rnatilgan (0-hafta).
+  Tekshirish: Warp’da <code>claude --version</code> versiya raqamini chiqaradi.</li>
+<li>Downloads (Yuklanmalar) papkangizda kamida 10 ta fayl bor.
+  Juda shaxsiy fayllar bo‘lsa (pasport, bank ko‘chirmasi), boshqa papkani tanlang: masalan, Desktop yoki «Hujjatlar» ichidagi biror papka.</li>
+</ul>
+<h3>Qadamlar</h3>
+<ol>
+<li>Warp’ni oching.</li>
+<li>Downloads papkasiga o‘ting:
+   - macOS: <code>cd ~/Downloads</code>
+   - Windows: <code>cd $HOME\Downloads</code></li>
+<li><code>claude</code> deb yozing va Enter bosing.
+   Birinchi marta «Do you trust the files in this folder?» deb so‘rasa, «Yes» ni tanlang.</li>
+<li>Quyidagi promptni nusxalab, Claude Code’ga joylang va Enter bosing.</li>
+<li>Claude rejani jadval qilib ko‘rsatadi.
+   O‘qing.
+   Rozi bo‘lsangiz, «ha» deb yozing.</li>
+<li>Fayllarni ko‘chirish uchun ruxsat so‘rasa, «Yes» ni tanlang.</li>
+<li>Finder (Windows’da Explorer) da Downloads’ni oching va natijani ko‘ring.</li>
+</ol>
+<h3>Prompt</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Bu papkadagi fayllarni ko‘rib chiq.
+Ularni turiga qarab papkalarga ajratish rejasini tuz: Hujjatlar, Rasmlar, Jadvallar, Arxivlar, O‘rnatish fayllari, Boshqalar.
+Avval rejani jadval qilib ko‘rsat: qaysi papkaga nechta fayl ketadi.
+Men «ha» desam, ko‘chir.
+Hech bir faylni o‘chirma va nomini o‘zgartirma.
+Har bir ko‘chirishni tartib-jurnal.md fayliga yoz: qaysi fayl, qayerdan, qayerga.
+Oxirida nechta fayl qayerga ketganini qisqa ayt.</pre></div>
+<h3>Qaytarish (undo)</h3>
+<p>Fayllarni ko‘chirish buyruq bilan bajariladi.
+Bunday o‘zgarishni <code>/rewind</code> qaytarmaydi (rasmiy hujjat: code.claude.com/docs/en/checkpointing, 2026-11-03 da tekshirildi).
+Shuning uchun promptda jurnal so‘radik.
+Qaytarish kerak bo‘lsa, yozing:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>tartib-jurnal.md bo‘yicha hamma fayllarni joyiga qaytar. Avval nima qilishingni ko‘rsat.</pre></div>
+<h3>«Baraka Office» namunasi</h3>
+<p>Instruktor 2-namoyishda shu ishni Desktop papkasida ko‘rsatadi.
+U yerda 40 ta aralash fayl bor edi: prays-list PDF, KP Word, 3D chizma rasmlari, Excel hisobotlar, Telegram’dan tushgan videolar.
+Claude rejasi:</p>
+<table>
+<thead>
+<tr>
+<th>Papka</th>
+<th>Fayllar soni</th>
+<th>Misol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hujjatlar</td>
+<td>12</td>
+<td><code>KP_Paynet_Tech_v3.docx</code>, <code>shartnoma-namuna.pdf</code></td>
+</tr>
+<tr>
+<td>Rasmlar</td>
+<td>11</td>
+<td><code>3D_ofis_Chilonzor.png</code>, <code>IMG_4471.jpg</code></td>
+</tr>
+<tr>
+<td>Jadvallar</td>
+<td>9</td>
+<td><code>savdo-oktabr.xlsx</code>, <code>ombor-qoldiq.csv</code></td>
+</tr>
+<tr>
+<td>Arxivlar</td>
+<td>3</td>
+<td><code>katalog-2025.zip</code></td>
+</tr>
+<tr>
+<td>O‘rnatish fayllari</td>
+<td>2</td>
+<td><code>AmoCRM-setup.dmg</code></td>
+</tr>
+<tr>
+<td>Boshqalar</td>
+<td>3</td>
+<td><code>ovozli-xabar.ogg</code></td>
+</tr>
+</tbody>
+</table>
+<p>Jami 40 ta fayl, 0 ta o‘chirilgan, jurnalda 40 qator.</p>
+<h3>Tayyor bo‘lsa</h3>
+<ul>
+<li class="cb">Fayllar papkalarga ajratilgan.</li>
+<li class="cb">Hech narsa o‘chirilmagan: fayllar soni avvalgidek.</li>
+<li class="cb"><code>tartib-jurnal.md</code> bor va ochiladi.</li>
+</ul>
+<h3>Ko‘p uchraydigan xatolar</h3>
+<table>
+<thead>
+<tr>
+<th>Nima bo‘ldi</th>
+<th>Nima qilish kerak</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>claude: command not found</code></td>
+<td>Claude Code o‘rnatilmagan yoki Warp qayta ochilmagan. Warp’ni yopib, qayta oching. Bo‘lmasa, xatoni skrinshot qilib mentorga ko‘rsating.</td>
+</tr>
+<tr>
+<td>Claude rejani ko‘rsatmay, darhol ko‘chira boshladi</td>
+<td>Esc bosing (to‘xtaydi, sessiya yopilmaydi). Keyin yozing: «Avval rejani ko‘rsat».</td>
+</tr>
+<tr>
+<td>Juda ko‘p fayl (1 000 dan ortiq)</td>
+<td>Bu mashq uchun kichikroq papka tanlang.</td>
+</tr>
+<tr>
+<td>Claude inglizcha javob beryapti</td>
+<td>«O‘zbek tilida javob ber» deb yozing. 3-mashqdan keyin bu doimiy bo‘ladi.</td>
+</tr>
+</tbody>
+</table>
+<h3>Mentor tekshiruvi</h3>
+<p>Fayllar ajratilgan, <code>tartib-jurnal.md</code> bor, ishtirokchi «hech narsa o‘chirilmadi»ni o‘zi tekshirgan.
+Vaqt yetmasa, bu mashq uyga vazifa bo‘ladi.</p>
+<div class="pagebreak"></div>
+
+<h2>2-mashq. Kompaniya papkasi va CLAUDE.md</h2>
+<p>2-dars · 0:59-1:14 · 15 daqiqa · Claude Code</p>
+<h3>Maqsad</h3>
+<p>Noutbukingizda kompaniyangiz uchun bitta papka paydo bo‘ladi: <code>kompaniya/</code>.
+Unda To‘plam 1 fayllaringiz va <code>CLAUDE.md</code> turadi.
+<code>CLAUDE.md</code> - Claude uchun kompaniyangizning qoidalar daftari.
+Claude Code shu papkada har safar ochilganda uni o‘qiydi, siz esa kompaniyangizni qayta-qayta tushuntirmaysiz.
+Kurs oxirigacha hamma to‘plam natijasi, agent va hisobotlar shu papkada yig‘iladi.</p>
+<h3>Boshlashdan oldin</h3>
+<ul>
+<li>Guruh chatidagi <code>2-dars-kompaniya-papkasi.zip</code> fayli (yoki mentordagi fleshka).</li>
+<li>To‘plam 1 dagi B shakllaringiz <code>.md</code> fayl ko‘rinishida (masalan, <code>dilnoza-form-b.md</code>).
+  B shaklingiz yo‘qmi?
+  Bugun zip ichidagi «Baraka Office» fayllari bilan ishlang: <code>baraka-office/kompaniya/kit1-interviews/</code>.
+  O‘zingiznikini chorshanbagacha mentorga yuboring.</li>
+<li>1-mashqda Claude Code ochildi.</li>
+</ul>
+<h3>Qadamlar</h3>
+<ol>
+<li>Zipni oching.
+   - macOS: Yuklanmalar (Downloads) papkasida zipni ikki marta bosing: yonida <code>praktikum</code> papkasi chiqadi.
+   - Windows: zipni o‘ng tugma bilan bosing, «Extract All» («Hammasini chiqarish»), joy sifatida <code>C:\Users\&lt;ismingiz&gt;</code> ni tanlang: fayllar 0-haftadagi <code>praktikum</code> papkasiga tushadi.</li>
+<li>Hamma narsa uy papkangizdagi <code>praktikum</code> papkasida bo‘lsin: uni 0-haftada (8-qadam) yaratgansiz, kurs oxirigacha shu papkada ishlaymiz.
+   macOS’da: Yuklanmalardagi yangi <code>praktikum</code> papkasini oching, ichidagi hamma narsani belgilang (Cmd+A) va uy papkangizdagi <code>praktikum</code> ga torting (Finder: «Go → Home»).
+   Kurs papkasini tez ochish: Warp’da <code>cd ~/praktikum</code>, keyin <code>open .</code> (Windows: <code>explorer .</code>; oxirida nuqta bor).
+   «Hujjatlar» (Documents) papkasiga qo‘ymang: Windows’da u ko‘pincha OneDrive ichida bo‘ladi va kalitlaringiz bulutga ketib qoladi.
+   Ichida: <code>kompaniya/</code> (sizning papkangiz), <code>skills/</code> (kurs skill’lari, 8-mashqda kerak), <code>baraka-office/</code> (to‘ldirilgan namuna), <code>yomon-namuna/</code>, <code>natijalar/</code> (Claude’ning haqiqiy javoblari), <code>sahifalar/</code> (promptlar, mashqlar, uy vazifasi, shpargalka, lug‘at) va qo‘llanma.
+   Promptlarni <code>sahifalar/promptlar.html</code> dan «Nusxa olish» tugmasi bilan oling.</li>
+<li>B shakllaringizni <code>kompaniya/kit1-interviews/</code> ichiga torting (Finder yoki Explorer’da sichqoncha bilan).
+   <code>ism-</code> bilan boshlanadigan fayllar bo‘sh andoza, ularga tegmang.</li>
+<li>Warp’da yangi varaq oching (macOS: Cmd+T, Windows: Ctrl+Shift+T) va kompaniya papkasiga o‘ting: <code>cd ~/praktikum/kompaniya</code> (macOS’da ham, Windows’da ham bir xil).
+   Ishlamasa yoki xato chiqsa: <code>cd</code> deb yozing (oxirida bitta bo‘sh joy), keyin <code>kompaniya</code> papkasini Finder yoki Explorer’dan Warp oynasiga torting va Enter bosing: yo‘l o‘zi yoziladi.</li>
+<li><code>claude</code> deb yozing.</li>
+<li><code>/init</code> deb yozing va Enter bosing.
+   Papkada <code>CLAUDE.md</code> andozasi bor, shuning uchun Claude uni ustidan yozmaydi: fayllarni o‘qib, andozani to‘ldirishni taklif qiladi.
+   Taklifni o‘qing va «ha» deng.
+   Claude uni <code>CLAUDE.new.md</code> degan alohida faylga yozsa, «buni CLAUDE.md ga ko‘chir» deng.</li>
+<li>Tepada inglizcha qator paydo bo‘lsa («This file provides guidance to Claude Code...»), uni o‘chirishni so‘rang.</li>
+<li>Bo‘sh qolgan joylarni to‘ldirish uchun quyidagi «Meni intervyu qil» promptini yuboring va savollarga javob bering.</li>
+<li>Tekshirish savolini bering (pastda).
+   Claude to‘g‘ri javob bersa, mashq tayyor.</li>
+</ol>
+<h3>Prompt: bo‘sh joylarni to‘ldirish</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>CLAUDE.md ni o‘qi.
+Kvadrat qavsda qolgan va [?] bilan belgilangan joylarni men bilan birga to‘ldiramiz.
+Menga savol ber, bir xabarda 3 tadan ko‘p emas.
+Javoblarimni CLAUDE.md ga yoz, faylni 200 qatordan qisqa saqla.
+Raqam to‘qima: men bilmagan joyni [?] bilan qoldir.
+Parol, karta raqami yoki token aytsam, yozma va meni ogohlantir.</pre></div>
+<h3>Tekshirish savoli</h3>
+<p>O‘zingizga moslang:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Faqat CLAUDE.md ga tayanib javob ber: biz nima sotamiz, asosiy mijozimiz kim va qaysi tizimlarda ishlaymiz? Javob qaysi qatordan olinganini ko‘rsat.</pre></div>
+<p>Claude uchala savolga ham to‘g‘ri javob berib, qatorni ko‘rsatsa, mashq tayyor.
+Xato javob bersa, <code>CLAUDE.md</code> da shu qatorni aniqroq yozing.</p>
+<h3>«Baraka Office» namunasi</h3>
+<p>To‘ldirilgan fayl (zip ichida): <code>baraka-office/kompaniya/CLAUDE.md</code>.
+Uning ichidagi kulrang izohlar (izoh bloklari) nega har bir qator shunday yozilganini tushuntiradi.
+Claude bu izohlarni o‘qimaydi, ular faqat siz uchun.</p>
+<p>Eng muhim qismi - «Rasmiy hujjatlar: ziddiyat bo‘lsa, shular to‘g‘ri».
+Baraka’da ROP «3 kunda yetkazamiz» deydi, shartnomada esa 7 ish kuni yozilgan.
+<code>CLAUDE.md</code> da qaysi biri to‘g‘ri ekani yozilgani uchun Claude mijozga yolg‘on muddat aytmaydi.
+Instruktor buni 4-namoyishda ko‘rsatadi: bir xil savol <code>CLAUDE.md</code> siz va <code>CLAUDE.md</code> bilan.</p>
+<p>Baraka uchun tekshirish savoli va to‘g‘ri javob:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Faqat CLAUDE.md ga tayanib javob ber: mijozga 3 kunda yetkazamiz deyish mumkinmi va sotuvchi qancha chegirma bera oladi?</pre></div>
+<p>Kutiladigan javob: «Yo‘q: yetkazish oldindan to‘lov tushgandan 7 ish kuni (MDF va shpon 12 ish kuni). Sotuvchi 20 mln so‘mdan katta buyurtmada 5% gacha; ROP yozma ruxsati bilan 10% gacha; undan yuqori taqiqlangan. Manba: CLAUDE.md, «Rasmiy hujjatlar» bo‘limi.»</p>
+<p>Yomon namuna va undagi 9 ta xato: <code>yomon-namuna/nima-xato.md</code>.</p>
+<h3>Tayyor bo‘lsa</h3>
+<ul>
+<li class="cb"><code>kompaniya/</code> Hujjatlar papkasida, ichida B shakllaringiz bor.</li>
+<li class="cb"><code>CLAUDE.md</code> da kompaniya, mijozlar, xodimlar, bo‘limlar va tizimlar yozilgan.</li>
+<li class="cb">Faylda parol, token yoki karta raqami yo‘q.</li>
+<li class="cb">Claude tekshirish savoliga <code>CLAUDE.md</code> dan to‘g‘ri javob berdi.</li>
+</ul>
+<h3>Ko‘p uchraydigan xatolar</h3>
+<table>
+<thead>
+<tr>
+<th>Nima bo‘ldi</th>
+<th>Nima qilish kerak</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude boshqa papkada ochilgan (yo‘l <code>kompaniya</code> bilan tugamaydi)</td>
+<td><code>/exit</code>, keyin 4-qadamdan boshlang. Warp tepasidagi yo‘lga qarang.</td>
+</tr>
+<tr>
+<td><code>/init</code> uzoq ishlayapti yoki g‘alati matn yozdi</td>
+<td>Esc bosing. <code>/init</code> siz ham bo‘ladi: to‘g‘ridan-to‘g‘ri 8-qadamdagi promptni yuboring.</td>
+</tr>
+<tr>
+<td>Claude <code>CLAUDE.md</code> ni inglizcha yozdi</td>
+<td>«CLAUDE.md ni o‘zbek tilida qayta yoz» deng. 3-mashqdan keyin bu takrorlanmaydi.</td>
+</tr>
+<tr>
+<td>Hamma narsani bitta uzun gap qilib yozdim</td>
+<td>Har qatorda bitta fakt. Baraka namunasiga qarang.</td>
+</tr>
+<tr>
+<td>14 sahifalik prays-listni ichiga ko‘chirdim</td>
+<td>Prays-listni <code>hujjatlar/</code> ga qo‘ying, <code>CLAUDE.md</code> da faqat fayl nomini yozing.</td>
+</tr>
+</tbody>
+</table>
+<h3>Kengaytma (tez tugatganlar uchun)</h3>
+<p>Bo‘lim uchun ichki <code>CLAUDE.md</code>: masalan, <code>kit1-interviews/CLAUDE.md</code> ga «Bu papkada xodimlarning shaxsiy ma’lumoti bor; ismlarni hech qayerga chiqarma» deb yozing.
+Claude bu faylni faqat shu papkadagi faylni o‘qiganda yuklaydi, shuning uchun asosiy <code>CLAUDE.md</code> qisqa qoladi.</p>
+<h3>Mentor tekshiruvi (2.5)</h3>
+<p>Ishtirokchi tekshirish savolini beradi, Claude <code>CLAUDE.md</code> dan to‘g‘ri javob beradi.
+Faylda maxfiy ma’lumot yo‘qligiga ko‘z yugurting.</p>
+<div class="pagebreak"></div>
+
+<h2>3-mashq. Global ko‘rsatmalar</h2>
+<p>2-dars · 1:14-1:20 · 6 daqiqa · Claude ilovasi va Claude Code</p>
+<h3>Maqsad</h3>
+<p><code>CLAUDE.md</code> faqat kompaniya papkasida ishlaydi.
+Global ko‘rsatmalar esa har bir suhbatda ishlaydi: qaysi papkada bo‘lsangiz ham, qaysi mavzuda yozsangiz ham.
+Bir marta yozasiz, Claude keyin har safar shunga amal qiladi.
+Ular maqtovni, ortiqcha gapni va eski yil bilan qidirishni to‘xtatadi.</p>
+<h3>Ikki joy, bitta matn</h3>
+<table>
+<thead>
+<tr>
+<th>Qayerda</th>
+<th>Qayerga yoziladi</th>
+<th>Qachon ishlaydi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude ilovasi (claude.ai, telefon, kompyuter ilovasi)</td>
+<td>Sozlamalar: chap pastdagi ismingiz, Settings, «Your Claude» (eski ko‘rinishda «Account»), «Instructions»</td>
+<td>Ilovadagi hamma suhbatda</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td><code>~/.claude/CLAUDE.md</code> fayli (uy papkangizdagi yashirin <code>.claude</code> papkasida)</td>
+<td>Kompyuterdagi hamma Claude Code sessiyasida</td>
+</tr>
+</tbody>
+</table>
+<p>Menyu nomlari 2026-11-03 da rasmiy yordam sahifasida tekshirildi: support.claude.com/en/articles/10185728.
+Hisobingizda boshqacha ko‘rinsa, Settings ichida «Instructions» so‘zini qidiring.</p>
+<h3>Matn</h3>
+<p>Shu 5 qatorni o‘zingizga moslang.
+Masalan, javobni rus tilida olishni istasangiz, 5-qatorni o‘zgartiring.</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>- Uzun tire belgisini ishlatma, oddiy chiziqcha (-) ishlat.
+- Ortiqcha gap va maqtovsiz, qisqa va aniq yoz.
+- Men xato bo‘lsam yoki yaxshiroq yo‘l bo‘lsa, ochiq ayt va sababini tushuntir.
+- Hozir 2026-yil. Yangilik, narx yoki qonun qidirganda shu yilni hisobga ol.
+- Men bilan o‘zbek tilida gaplash. Yangi atamani birinchi marta ishlatganda oddiy so‘zlar bilan tushuntir.</pre></div>
+<h3>Qadamlar</h3>
+<h4>A. Claude ilovasida (2 daqiqa)</h4>
+<ol>
+<li>claude.ai ni yoki Claude ilovasini oching.</li>
+<li>Chap pastda ismingizni bosing, keyin Settings.</li>
+<li>«Your Claude» (yoki «Account») bo‘limida «Instructions» maydonini toping.</li>
+<li>Yuqoridagi matnni joylang va saqlang.</li>
+<li>Yangi suhbat oching va tekshiring: «Bugun qaysi yil?»</li>
+</ol>
+<h4>B. Claude Code’da (3 daqiqa)</h4>
+<ol>
+<li>Kompaniya papkangizdagi Claude Code oynasida quyidagi promptni yuboring.</li>
+<li>Claude <code>~/.claude/CLAUDE.md</code> ga yozish uchun ruxsat so‘raydi: bu papka loyihangizdan tashqarida, shuning uchun so‘raydi.
+   «Yes» ni tanlang.</li>
+<li><code>/exit</code> deb yozing, keyin yana <code>claude</code> deb oching: endi qoidalar ishlaydi.</li>
+</ol>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>~/.claude/CLAUDE.md faylini och (yo‘q bo‘lsa, yarat) va oxiriga quyidagi qoidalarni qo‘sh.
+Bor matnni o‘chirma.
+Qo‘shgandan keyin faylning oxirgi 10 qatorini menga ko‘rsat.
+
+- Uzun tire belgisini ishlatma, oddiy chiziqcha (-) ishlat.
+- Ortiqcha gap va maqtovsiz, qisqa va aniq yoz.
+- Men xato bo‘lsam yoki yaxshiroq yo‘l bo‘lsa, ochiq ayt va sababini tushuntir.
+- Hozir 2026-yil. Yangilik, narx yoki qonun qidirganda shu yilni hisobga ol.
+- Men bilan o‘zbek tilida gaplash. Yangi atamani birinchi marta ishlatganda oddiy so‘zlar bilan tushuntir.</pre></div>
+<h3>Nima uchun aynan shular</h3>
+<table>
+<thead>
+<tr>
+<th>Qoida</th>
+<th>Nima uchun</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uzun tire yo‘q</td>
+<td>AI yozgan matnni darhol tanitadigan belgi. Mijozga yuboriladigan matnda kerak emas.</td>
+</tr>
+<tr>
+<td>Maqtovsiz, qisqa</td>
+<td>«Ajoyib savol!» kabi gaplar vaqtingizni oladi.</td>
+</tr>
+<tr>
+<td>Xato bo‘lsam, ayt</td>
+<td>AI odatda rozi bo‘lishga moyil. Bu qoida unga e’tiroz bildirishga ruxsat beradi.</td>
+</tr>
+<tr>
+<td>Hozir 2026-yil</td>
+<td>Model bilimi ma’lum sanada to‘xtagan. Qidiruvda eski yilni yozib qo‘yadi.</td>
+</tr>
+<tr>
+<td>O‘zbek tilida, atamani tushuntir</td>
+<td>«5 yoshli bolaga tushuntir» odatining doimiy ko‘rinishi.</td>
+</tr>
+</tbody>
+</table>
+<h3>«Baraka Office» namunasi</h3>
+<p>Rustamov S.A. (Baraka egasi) yana bitta qator qo‘shdi, chunki u mijozga yoziladigan matnlarni ko‘p so‘raydi:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>- Mijozga yoziladigan matnda «Hurmatli [Ism] aka / opa» va «Siz» deb murojaat qil.</pre></div>
+<p>Bu qoida faqat Baraka uchun bo‘lsa, global ko‘rsatmaga emas, kompaniya <code>CLAUDE.md</code> siga yoziladi.
+Qoida: hamma joyda kerak bo‘lsa - global; faqat shu kompaniyada kerak bo‘lsa - <code>CLAUDE.md</code>.</p>
+<h3>Yomon namuna</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Sen eng aqlli yordamchisan. Doim batafsil va professional yoz. Qisqa yoz. Ingliz tilida javob ber, lekin o‘zbekcha tushuntir.</pre></div>
+<p>Xatolar: maqtov hech narsa bermaydi; «batafsil» va «qisqa» bir-biriga zid; tillar aralash.
+Claude zid qoidalardan birini tasodifan tanlaydi (rasmiy hujjat: code.claude.com/docs/en/memory).</p>
+<h3>Tayyor bo‘lsa</h3>
+<ul>
+<li class="cb">Claude ilovasida Instructions saqlangan; yangi suhbatda «Bugun qaysi yil?» savoliga 2026 deb javob beradi.</li>
+<li class="cb"><code>~/.claude/CLAUDE.md</code> da 5 qator bor.</li>
+<li class="cb">Claude Code qayta ochilganda o‘zbek tilida javob beradi.</li>
+</ul>
+<h3>Ko‘p uchraydigan xatolar</h3>
+<table>
+<thead>
+<tr>
+<th>Nima bo‘ldi</th>
+<th>Nima qilish kerak</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Settings’da «Instructions» topilmadi</td>
+<td>Settings qidiruviga «Instructions» yozing. Topilmasa, B qismi bugun yetarli.</td>
+</tr>
+<tr>
+<td>Claude <code>~/.claude/CLAUDE.md</code> ga yozishga ruxsat so‘ramadi va yozmadi</td>
+<td>Prompt boshiga «Ruxsat so‘rab, yoz» deb qo‘shing. Yoki <code>/memory</code> deb yozing va ro‘yxatdan <code>~/.claude/CLAUDE.md</code> qatorini tanlang: fayl tahrirlagichda ochiladi.</td>
+</tr>
+<tr>
+<td>Qoidalar ishlamayapti</td>
+<td>Claude Code’ni qayta oching: fayl sessiya boshida o‘qiladi.</td>
+</tr>
+</tbody>
+</table>
+<h3>Mentor tekshiruvi (2.6)</h3>
+<p>Ilovada yoki Claude Code’da global ko‘rsatmalar saqlangan; ishtirokchi qayerdaligini ko‘rsata oladi.</p>
+<div class="pagebreak"></div>
+
+<h2>4-mashq. To‘plam 2: jarayonlarni baholash</h2>
+<p>2-dars · 1:25-1:40 · 15 daqiqa · Claude Code, Sonnet yoki Haiku modeli</p>
+<h3>Maqsad</h3>
+<p>To‘plam 1 dagi vazifalar ro‘yxatlaridan Claude Code 8 tagacha jarayon ajratadi va har birini 6 ta mezon bo‘yicha baholaydi.
+Siz har bir ballni o‘qiysiz va rozi bo‘lmaganingizni sababi bilan o‘zgartirasiz.
+Natija: <code>kit2-scoring/form-a-scoring.md</code> (To‘plam 2, A shakli).</p>
+<h3>Boshlashdan oldin</h3>
+<ul>
+<li>2-mashq tayyor: <code>kompaniya/</code> papkasi, ichida <code>CLAUDE.md</code> va kamida 2 ta B shakli.</li>
+<li>Claude Code kompaniya papkasida ochiq.</li>
+<li>Bosma To‘plam 2 shakli stolda: shkalani qog‘ozda ko‘rib turasiz.</li>
+<li>B shaklingiz yo‘q va «Baraka Office» fayllari bilan ishlayapsizmi?
+  Natija Baraka jarayonlari bo‘ladi: bu mashq, usulni o‘rganasiz.
+  O‘z B shakllaringiz tayyor bo‘lgach, uyda <code>/kit2</code> bilan o‘zingiznikini qiling va Baraka fayllarini <code>kit1-interviews/</code> dan olib tashlang.</li>
+</ul>
+<h3>Atamalar, oddiy so‘zlar bilan</h3>
+<ul>
+<li><strong>Jarayon</strong> - boshlanishi va natijasi bor vazifalar zanjiri.
+  Masalan: «mijoz savoli keldi - to‘g‘ri javob ketdi».
+  Unga bir nechta xodimning vazifasi kirishi mumkin.</li>
+<li><strong>Qiymat (A.8)</strong> = A.2 takrorlanishi + A.3 ketadigan vaqt + A.7 mijozga ta’siri.
+  Qanchalik foydali?</li>
+<li><strong>Osonlik (A.9)</strong> = A.4 aniq qoidasi bor + A.5 ma’lumot raqamli + A.6 xatosi arzon.
+  AI’ga berish qanchalik oson?</li>
+<li>Har bir mezon 1 dan 5 gacha, shuning uchun Qiymat va Osonlik 3 dan 15 gacha bo‘ladi.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Mezon</th>
+<th>1 ball</th>
+<th>5 ball</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A.2 Takrorlanishi</td>
+<td>oyiga bir marta</td>
+<td>kuniga bir necha marta</td>
+</tr>
+<tr>
+<td>A.3 Ketadigan vaqt</td>
+<td>haftasiga bir necha daqiqa</td>
+<td>haftasiga 10 soatdan ko‘p</td>
+</tr>
+<tr>
+<td>A.4 Aniq qoidasi bor</td>
+<td>har bir holat har xil</td>
+<td>har doim bir xil qadamlar</td>
+</tr>
+<tr>
+<td>A.5 Ma’lumot raqamli</td>
+<td>qog‘ozda yoki odamlar yodida</td>
+<td>allaqachon tizim yoki jadvalda</td>
+</tr>
+<tr>
+<td>A.6 Xatosi arzon</td>
+<td>xato pul yoki ishonchni yo‘qotadi</td>
+<td>xatoni sezish va to‘g‘rilash oson</td>
+</tr>
+<tr>
+<td>A.7 Mijozga ta’siri</td>
+<td>faqat ichki jarayon</td>
+<td>mijoz buni kutib turadi</td>
+</tr>
+</tbody>
+</table>
+<h3>Qadamlar</h3>
+<ol>
+<li>Modelni tanlang: <code>/model sonnet</code> (limit kam bo‘lsa, <code>/model haiku</code>).
+   Saralash va baholash uchun eng kuchli model shart emas.</li>
+<li>Quyidagi promptni yuboring.</li>
+<li>Claude jadvalni chatda ko‘rsatadi.
+   Har bir qatorni o‘qing: jarayonlar to‘g‘ri ajratilganmi, ballar sizning biznesingizga mosmi?</li>
+<li>Kamida bitta ballni o‘zgartiring, sababi bilan (pastdagi «Tuzatish» prompti).</li>
+<li>«yoz» deng: Claude <code>kit2-scoring/form-a-scoring.md</code> ga yozadi.</li>
+<li>Faylni oching va yig‘indilarni tekshiring: <code>13 (4+5+4)</code> kabi hisob har bir katakda ko‘rinib turishi kerak.</li>
+</ol>
+<h3>Prompt</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>kit1-interviews/ papkasidagi barcha *-form-b.md fayllarini o‘qi (nomi ism- bilan boshlanadigan bo‘sh andozalarni o‘tkazib yubor).
+Ulardan 8 tagacha jarayon ajrat. Jarayon - boshlanishi va natijasi bor vazifalar zanjiri, unga bir nechta xodimning vazifasi kirishi mumkin.
+Har bir jarayon uchun qaysi vazifalar kirganini fayl va qator raqami bilan yoz, haftalik soatni B.4 lardan qo‘shib, hisobi bilan ko‘rsat.
+Keyin kit2-scoring/form-a-scoring.md andozasidagi shkala bo‘yicha A.2-A.7 ni 1 dan 5 gacha bahola va har bir ball uchun bitta qisqa sabab yoz.
+A.8 Qiymat = A.2 + A.3 + A.7, A.9 Osonlik = A.4 + A.5 + A.6; katakka hisobi bilan yoz, masalan 13 (4+5+4).
+Raqam to‘qima: B shaklida [?] bo‘lgan raqamga tayangan ball ham [?] bo‘lsin.
+Avval jadvalni menga chatda ko‘rsat. Men «yoz» desam, form-a-scoring.md ga yoz.</pre></div>
+<h3>Tuzatish prompti</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>[N]-jarayonda [A.?] ni [yangi ball] qil. Sababi: [o‘z so‘zlaringiz bilan].
+Sababni «Sabablar» bo‘limiga eski ball bilan birga yoz va Qiymat yoki Osonlikni qayta hisobla.</pre></div>
+<h3>«Baraka Office» namunasi</h3>
+<p>Bu namuna kursning <code>/kit2</code> skill’ini «Baraka Office» papkasida haqiqiy ishga tushirib olingan (To‘plam qo‘llanmasidagi namuna bilan bir xil).
+Kirish: uchta B shakli (<code>baraka-office/kompaniya/kit1-interviews/</code>): Zarina Abdullayeva (call-markaz operatori, haftasiga 32,2 soat), Malika Rashidova (savdo menejeri, 32,4 soat), Jamshid Karimov (savdo bo‘limi rahbari, 20,8 soat).
+Natija: <code>baraka-office/kompaniya/kit2-scoring/form-a-scoring.md</code>.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Jarayon</th>
+<th>Qiymat</th>
+<th>Osonlik</th>
+<th>Matritsada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Narx, qoldiq, chegirma, muddat savoli</td>
+<td>15 (5+5+5)</td>
+<td>10 (4+4+2)</td>
+<td>Birinchi sinov</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Kiruvchi qo‘ng‘iroq</td>
+<td>15 (5+5+5)</td>
+<td>6 (2+2+2)</td>
+<td>Foydali, puxta reja kerak</td>
+</tr>
+<tr>
+<td>3</td>
+<td>amoCRM yuritish</td>
+<td>12 (5+5+2)</td>
+<td>10 (4+2+4) [?]</td>
+<td>Birinchi sinov</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Chiquvchi qo‘ng‘iroq</td>
+<td>13 (5+4+4)</td>
+<td>6 (2+2+2)</td>
+<td>Foydali, puxta reja kerak</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Kunlik savdo hisoboti</td>
+<td>9 (4+4+1)</td>
+<td>14 (5+5+4)</td>
+<td>Chegarada</td>
+</tr>
+<tr>
+<td>6</td>
+<td>KP</td>
+<td>12 (4+4+4) [?]</td>
+<td>12 (5+5+2)</td>
+<td>Birinchi sinov</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Instagram va Telegram xabarlari</td>
+<td>14 (5+4+5)</td>
+<td>9 (2+4+3)</td>
+<td>Chegarada</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Yangi murojaat menejerga</td>
+<td>11 (5+4+2)</td>
+<td>12 (5+3+4)</td>
+<td>Birinchi sinov</td>
+</tr>
+</tbody>
+</table>
+<p>Nega shunday baholandi (1-jarayon, faylda hammasi bor):</p>
+<ul>
+<li>A.2 = 5: Jamshid akaga kuniga 25 ta savol (jamshid-form-b.md), Malikada kuniga 12 ta (malika-form-b.md).</li>
+<li>A.3 = 5: haftasiga 17,3 soat, 10 soatdan ko‘p.</li>
+<li>A.6 = 2: telefonda aytilgan noto‘g‘ri narxni qaytarib bo‘lmaydi; eski narx bir marta 350 000 so‘m zarar bergan.</li>
+<li>A.7 = 5: mijoz javobni 5-10 daqiqa kutadi.</li>
+</ul>
+<p>Egasi qanday tuzatdi.
+6-jarayonda (KP) Claude A.6 = 3 qo‘ygan edi.
+Rustamov S.A. uni 2 ga tushirdi va sababini yozdi: «ROP tekshirsa ham, eski narx bilan 350 000 so‘m yo‘qotilgan».
+Eski ball ham, yangisi ham faylda qoldi, Osonlik 13 dan 12 ga qayta hisoblandi.
+Bu to‘g‘ri tuzatish, chunki sabab bor va uni bo‘lim boshlig‘i tekshira oladi.
+E’tibor bering: Claude har safar jarayonlarni biroz boshqacha guruhlaydi (2026-11-03 dagi sinovlarimizda ham shunday bo‘ldi), shuning uchun har bir qatorni o‘zingiz o‘qiysiz.</p>
+<p>Yomon tuzatish: «1-jarayon menga yoqadi, hamma ballni 5 qil».
+Sabab yo‘q, demak bu baholash emas, o‘zini aldash.</p>
+<h3>Tayyor bo‘lsa</h3>
+<ul>
+<li class="cb"><code>kit2-scoring/form-a-scoring.md</code> da 3-8 ta jarayon bor.</li>
+<li class="cb">Har bir ballning sababi yozilgan.</li>
+<li class="cb">Qiymat va Osonlik katakda hisobi bilan: <code>15 (5+5+5)</code>.</li>
+<li class="cb">Kamida bitta ballni o‘zingiz, sababi bilan o‘zgartirgansiz.</li>
+</ul>
+<h3>Ko‘p uchraydigan xatolar</h3>
+<table>
+<thead>
+<tr>
+<th>Nima bo‘ldi</th>
+<th>Nima qilish kerak</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude har bir vazifani alohida jarayon qildi (20 ta qator)</td>
+<td>«Bir-biriga ulangan vazifalarni bitta jarayonga birlashtir, 8 tadan oshmasin» deng.</td>
+</tr>
+<tr>
+<td>Yig‘indi noto‘g‘ri</td>
+<td>«Har bir yig‘indini qayta hisobla va hisobini ko‘rsat» deng. Bu «Hisobni ko‘rsat» odati.</td>
+</tr>
+<tr>
+<td>Hamma jarayon 13-15 ball oldi</td>
+<td>Ballar sizning raqamlaringizga emas, umumiy gaplarga qarab qo‘yilgan. «Har bir ball qaysi qatordan olinganini ko‘rsat» deng.</td>
+</tr>
+<tr>
+<td>Limit tugadi</td>
+<td><code>/model haiku</code> yoki qog‘oz shaklda davom eting; uyda tugatasiz.</td>
+</tr>
+<tr>
+<td>Prompt umuman ishlamadi</td>
+<td>Mentor kurs skill’ini o‘rnatadi: <code>/kit2</code>. U xuddi shu ishni qadamma-qadam qiladi.</td>
+</tr>
+</tbody>
+</table>
+<h3>Mentor tekshiruvi (2.7)</h3>
+<p>Mentor bitta tasodifiy ballni so‘raydi: «Nega 4?»
+Ishtirokchi sababni fayldan o‘qib bera oladi.
+Kamida bitta ball egasi tomonidan o‘zgartirilgan.</p>
+<div class="pagebreak"></div>
+
+<h2>5-mashq. To‘plam 2: qiymat va osonlik matritsasi</h2>
+<p>2-dars · 1:40-1:47 · 7 daqiqa · Claude Code</p>
+<h3>Maqsad</h3>
+<p>4-mashqdagi ballardan Claude Code matritsa chizadi va uni brauzerda ochiladigan sahifa qilib saqlaydi.
+Har bir jarayon - raqamli nuqta.
+Bir qarashda ko‘rasiz: qaysi jarayon foydali va AI’ga berish oson.</p>
+<h3>Matritsani qanday o‘qiladi</h3>
+<ul>
+<li>Gorizontal o‘q - Osonlik (A.9), 3 dan 15 gacha.</li>
+<li>Vertikal o‘q - Qiymat (A.8), 3 dan 15 gacha.</li>
+<li>Chegara 9 da, matritsa to‘rt qismga bo‘linadi:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Qism</th>
+<th>Qiymat</th>
+<th>Osonlik</th>
+<th>Ma’nosi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Birinchi sinov (yuqori o‘ng)</td>
+<td>9 dan katta</td>
+<td>9 dan katta</td>
+<td>Shu yerdan boshlang</td>
+</tr>
+<tr>
+<td>Foydali, puxta reja kerak (yuqori chap)</td>
+<td>9 dan katta</td>
+<td>9 dan kichik</td>
+<td>Keyinroq, yaxshi tayyorgarlik bilan</td>
+</tr>
+<tr>
+<td>Oson, lekin foydasi kichik (pastki o‘ng)</td>
+<td>9 dan kichik</td>
+<td>9 dan katta</td>
+<td>Vaqt bo‘lsa, kichik yordamchi</td>
+</tr>
+<tr>
+<td>Hozircha tegmang (pastki chap)</td>
+<td>9 dan kichik</td>
+<td>9 dan kichik</td>
+<td>Bugungi muammo emas, keyinga qoldiring</td>
+</tr>
+</tbody>
+</table>
+<p>Ball aynan 9 bo‘lsa, nuqta «Chegarada».</p>
+<h3>Qadamlar</h3>
+<ol>
+<li>4-mashq tayyor: <code>kit2-scoring/form-a-scoring.md</code> da ballar bor.</li>
+<li>Quyidagi promptni yuboring.</li>
+<li>Claude sahifani yozadi va brauzerda ochadi.
+   Ochilmasa: macOS’da <code>open kit2-scoring/matrix.html</code>, Windows’da <code>start kit2-scoring\matrix.html</code> deb yozing.</li>
+<li>Nuqtalar to‘g‘ri joydami?
+   Bitta nuqtani <code>form-a-scoring.md</code> bilan solishtiring.</li>
+</ol>
+<h3>Prompt</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>kit2-scoring/form-a-scoring.md dagi Qiymat (A.8) va Osonlik (A.9) bo‘yicha matritsa chiz va kit2-scoring/matrix.html sahifasi qilib saqla.
+Gorizontal o‘q - Osonlik, vertikal o‘q - Qiymat, ikkalasi 3 dan 15 gacha, chegara 9 da.
+To‘rt qism nomi: yuqori o‘ngda «Birinchi sinov», yuqori chapda «Foydali, puxta reja kerak», pastki o‘ngda «Oson, lekin foydasi kichik», pastki chapda «Hozircha tegmang».
+Har bir jarayon raqamli nuqta bo‘lsin, yonida raqam va nom bilan ro‘yxat.
+Sahifa internetsiz ishlasin: tashqi shrift va kutubxona ishlatma.
+Keyin kit2-scoring/form-b-matrix.md dagi «Matritsadagi nuqtalar» jadvalini to‘ldir va sahifani brauzerda och.</pre></div>
+<h3>Agar sahifa chiroyli chiqmasa</h3>
+<p>Kursning tayyor andozasi bor: u /kit2 ishlatadigan sahifa.
+Shu promptni yuboring (Claude <code>../skills</code> papkasini o‘qish uchun ruxsat so‘raydi, «Yes»):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>../skills/kit2/matrix-template.html faylini kit2-scoring/matrix.html ga nusxala.
+Unda faqat &lt;script id=&quot;data&quot;&gt; ichidagi JSON ni almashtir: kompaniya, bo‘lim, sana va jarayonlar (n, name, value = A.8, ease = A.9) form-a-scoring.md dan.
+Boshqa hech narsani o‘zgartirma. Keyin sahifani brauzerda och.</pre></div>
+<h3>«Baraka Office» namunasi</h3>
+<p>Sahifa (zip ichida): <code>baraka-office/kompaniya/kit2-scoring/matrix.html</code> (kurs andozasi bilan chizilgan).
+Ekran tasviri pastda.</p>
+<p><img alt="Baraka Office matritsasi" src="../handouts/img/baraka-matritsa.png" /></p>
+<p>Qanday o‘qiladi:</p>
+<ul>
+<li>1 (narx, qoldiq, chegirma, muddat savoli), 3 (amoCRM yuritish), 6 (KP) va 8 (yangi murojaat menejerga) - yuqori o‘ngda: to‘rttasi ham birinchi sinovga nomzod.
+  3 va 6 da [?] bor: ularning bir raqami hali tasdiqlanmagan.</li>
+<li>2 (kiruvchi qo‘ng‘iroq) va 4 (chiquvchi qo‘ng‘iroq) - foydali, lekin jonli suhbat: puxta reja kerak.</li>
+<li>5 (kunlik hisobot) va 7 (Instagram va Telegram xabarlari) - chegarada: ballardan biri aynan 9.</li>
+<li>Pastki chap qismda jarayon yo‘q.</li>
+</ul>
+<p>Bir nechta nomzod bo‘lsa, qaysi biri?
+Qiymati eng katta va [?] belgisi yo‘q jarayonni tanlang: Baraka’da bu 1-jarayon.
+Yakuniy javobni 6-mashqda va uyda bo‘lim boshlig‘i bilan birga berasiz.</p>
+<h3>Tayyor bo‘lsa</h3>
+<ul>
+<li class="cb"><code>kit2-scoring/matrix.html</code> brauzerda ochiladi, internet o‘chiq bo‘lsa ham.</li>
+<li class="cb">Har bir jarayon raqamli nuqta, raqamlar <code>form-a-scoring.md</code> bilan bir xil.</li>
+<li class="cb"><code>form-b-matrix.md</code> dagi nuqtalar jadvali to‘ldirilgan.</li>
+</ul>
+<h3>Ko‘p uchraydigan xatolar</h3>
+<table>
+<thead>
+<tr>
+<th>Nima bo‘ldi</th>
+<th>Nima qilish kerak</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nuqtalar bir-birining ustida, raqam o‘qilmaydi</td>
+<td>«Bir xil joydagi nuqtalarni biroz suring, raqamlar o‘qilsin» deng.</td>
+</tr>
+<tr>
+<td>O‘qlar almashib qolgan</td>
+<td>«Gorizontal o‘q Osonlik bo‘lsin» deng.</td>
+</tr>
+<tr>
+<td>Sahifa internetdan shrift yuklayapti</td>
+<td>«Tashqi shrift va kutubxonani olib tashla» deng, yoki andoza promptini ishlating.</td>
+</tr>
+<tr>
+<td>Brauzer ochilmadi</td>
+<td>Finder’da <code>kit2-scoring/matrix.html</code> ni ikki marta bosing.</td>
+</tr>
+</tbody>
+</table>
+<h3>Mentor tekshiruvi (2.7)</h3>
+<p>Sahifa ochiq, nuqtalar raqamli, ishtirokchi yuqori o‘ng qismdagi jarayonlarni ayta oladi.</p>
+<div class="pagebreak"></div>
+
+<h2>6-mashq. Qaysi ishga qaysi model</h2>
+<p>2-dars · 1:47-1:50 va 2:00-2:04 · 7 daqiqa · Claude Code</p>
+<h3>Maqsad</h3>
+<p>Claude Code’da modelni o‘zingiz tanlaysiz.
+Saralash va baholash - arzon va tez model.
+Muhim tanlov va reja - eng kuchli model.
+Limitingizni <code>/usage</code> bilan ko‘rib turasiz.</p>
+<h3>Modellar (2026-11-03 holatiga)</h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th><code>/model</code> da yozish</th>
+<th>Qachon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Haiku 5.5</td>
+<td><code>/model haiku</code></td>
+<td>Tez saralash, oddiy ko‘chirish, limit tugay deganda</td>
+</tr>
+<tr>
+<td>Sonnet 5.5</td>
+<td><code>/model sonnet</code></td>
+<td>Ko‘pchilik kundalik ish: jadval, baholash, matn</td>
+</tr>
+<tr>
+<td>Opus 5.5</td>
+<td><code>/model opus</code></td>
+<td>Tanlov, reja (PRD), murakkab tahlil. Claude Code’da odatiy model shu</td>
+</tr>
+</tbody>
+</table>
+<p>Manba: code.claude.com/docs/en/model-config, 2026-11-03 da tekshirildi.
+Model nomlari tez-tez yangilanadi; har darsdagi «Bu hafta AI’da» varag‘iga qarang.</p>
+<h3>1-qism (1:47, 3 daqiqa): limitni ko‘rish</h3>
+<ol>
+<li><code>/usage</code> deb yozing.
+   Ko‘rasiz: shu sessiya qancha sarfladi va tarif limitingizdan qancha qoldi.</li>
+<li>Javob bering (mentorga og‘zaki): 4-mashqni qaysi modelda qildingiz va nega?</li>
+</ol>
+<h3>2-qism (2:00, 4 daqiqa): sinov jarayonini tanlash, Opus’da</h3>
+<ol>
+<li><code>/model opus</code> deb yozing.</li>
+<li>Quyidagi promptni yuboring.</li>
+<li>Claude ikki nomzodni taklif qiladi va 3 ta savol beradi: B.1, B.2, B.3.</li>
+<li>Hozircha qoralama javob bering.
+   Yakuniy tanlovni uyda bo‘lim boshlig‘i bilan qilasiz.</li>
+<li>Tanlangan jarayonni <code>CLAUDE.md</code> dagi «Hozirgi sinov jarayoni» bo‘limiga yozdiring (promptning oxirgi qatori).</li>
+</ol>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>kit2-scoring/form-a-scoring.md va kit2-scoring/form-b-matrix.md ni o‘qi.
+Matritsaning yuqori o‘ng qismidan birinchi sinov uchun eng yaxshi va ikkinchi variantni taklif qil, har biri uchun bitta sabab.
+Eng yaxshisi uchun sinov muvaffaqiyatsiz bo‘lishining 3 ta eng ehtimolli sababini va boshlashdan oldin javob topishim kerak bo‘lgan bitta savolni yoz.
+Keyin mendan so‘ra: B.1 qaysi jarayonni tanlaysiz, B.2 nega aynan shu, B.3 hozir nimani qilmayapmiz.
+Javoblarimni form-b-matrix.md ga yoz va tanlangan jarayonni CLAUDE.md dagi «Hozirgi sinov jarayoni» bo‘limiga qo‘sh.</pre></div>
+<h3>«Baraka Office» namunasi</h3>
+<p>Fayl (zip ichida): <code>baraka-office/kompaniya/kit2-scoring/form-b-matrix.md</code>.</p>
+<ul>
+<li>Eng yaxshi variant: 1 - narx, qoldiq, chegirma va muddat savoli (Qiymat 15, Osonlik 10).</li>
+<li>Ikkinchi variant: 6 - KP tayyorlash (Qiymat 12, Osonlik 12); u kursdan keyingi 2-jarayon bo‘ladi.</li>
+<li>Sinov muvaffaqiyatsiz bo‘lishi mumkin, agar: ma’lumot eskirsa (eski narx 350 000 so‘m zarar bergan edi); xodimlar odatdagidek Jamshid akaga yozishda davom etsa; og‘zaki qoidalar qaytsa (12-15% chegirma, «3 kunda yetkazamiz»).</li>
+<li>Boshlashdan oldin savol: «1C qoldig‘i va prays-list qanchalik tez-tez yangilanadi?»
+  Egasining javobi: 1C qoldig‘i har kuni ertalab CSV qilib yuklanadi.</li>
+<li>Egasining javoblari:</li>
+<li>B.1: 1-jarayon, bot nomi «Savdo yordamchisi».</li>
+<li>B.2: menejerlar va call-markaz bir xil savolni kuniga o‘nlab marta Jamshid akaga beradi, mijoz kutadi, javob esa hujjatlarda bor; Jamshid akaning vaqti tenderlarga qoladi.</li>
+<li>B.3: KPni hozir qilmayapmiz (2-jarayon, kursdan keyin); bot mijozga hech narsa yozmaydi, faqat xodimlarga javob beradi.</li>
+</ul>
+<p>Yomon B.2: «Chunki AI zo‘r».
+Bu sabab emas: bo‘lim boshlig‘i uni tekshira olmaydi.
+Yaxshi B.2 da kim kutishi, javob qayerda borligi va bo‘shagan vaqt nimaga ketishi bor: buni tekshirsa bo‘ladi.</p>
+<h3>Tayyor bo‘lsa</h3>
+<ul>
+<li class="cb">4-mashqni qaysi modelda qilganingizni va nega ekanini ayta olasiz.</li>
+<li class="cb"><code>/usage</code> ni ko‘rgansiz.</li>
+<li class="cb"><code>form-b-matrix.md</code> da B.1-B.3 qoralamasi bor, <code>CLAUDE.md</code> da sinov jarayoni yozilgan.</li>
+</ul>
+<h3>Ko‘p uchraydigan xatolar</h3>
+<table>
+<thead>
+<tr>
+<th>Nima bo‘ldi</th>
+<th>Nima qilish kerak</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opus’da limit tugadi yoki «usage credits» so‘radi</td>
+<td><code>/model sonnet</code> bilan davom eting: bu tanlov uchun ham yetadi.</td>
+</tr>
+<tr>
+<td>Yuqori o‘ng qism bo‘sh</td>
+<td>Claude buni ochiq aytadi va eng yaqinini ko‘rsatadi. Ballarni bo‘lim boshlig‘i bilan qayta ko‘ring (uy vazifasi).</td>
+</tr>
+<tr>
+<td>Claude B.1-B.3 ni o‘zi yozib qo‘ydi</td>
+<td>«Bu qarorni men qilaman, mendan so‘ra» deng.</td>
+</tr>
+</tbody>
+</table>
+<div class="pagebreak"></div>
+
+<h2>7-mashq. Birinchi reja: reja rejimi, PRD va vazifalar ro‘yxati</h2>
+<p>2-dars · 2:12-2:30 · 18 daqiqa · Claude Code, Opus modeli, reja rejimi</p>
+<h3>Maqsad</h3>
+<p>Biror narsa qurishdan oldin reja tuzasiz.
+Claude reja rejimida faqat savol beradi va reja yozadi, kodga tegmaydi.
+Natija ikki fayl:</p>
+<ul>
+<li><code>prd.md</code> - nima quriladi, kim uchun, nima kiradi va nima kirmaydi (texnik topshiriq, TZ).</li>
+<li><code>tasks.md</code> - shu rejani kichik dasturchi tushunadigan 10-15 ta kichik vazifaga bo‘lish.</li>
+</ul>
+<p>Rejasiz qurish - 9 qavatli binoni quvurlarsiz qurib, keyin devorni buzib quvur o‘tkazish bilan teng.</p>
+<h3>Atamalar, oddiy so‘zlar bilan</h3>
+<ul>
+<li><strong>Reja rejimi (plan mode)</strong> - Claude faqat o‘ylaydi, savol beradi va reja yozadi; hech qanday faylni o‘zgartirmaydi.
+  Siz rejani tasdiqlaganingizdan keyingina ishga kirishadi.</li>
+<li><strong>PRD</strong> - mahsulot talablari hujjati: binoning loyiha chizmasi.
+  Dasturchi yoki kompaniya sizga xizmat sotsa, avval shuni so‘rang.</li>
+<li><strong>Vazifalar ro‘yxati</strong> - PRD ni poydevor, devor, tom kabi kichik qadamlarga bo‘lish.</li>
+</ul>
+<h3>«AI yo‘q deb tasavvur qiling» odati</h3>
+<p>Promptdan oldin 1 daqiqa o‘ylang: AI bo‘lmaganda bu vositani kimlar qurardi?
+Masalan: biznes-tahlilchi (jarayonni o‘rganadi), dasturchi, dizayner, sinovchi va sizning bo‘lim boshlig‘ingiz.
+Har biri sizga boshqa savol beradi.
+Promptda Claude’dan aynan shu odamlar nomidan savol so‘raymiz.</p>
+<h3>Qadamlar</h3>
+<ol>
+<li><code>/model opus</code> deb yozing (limit tugagan bo‘lsa, <code>sonnet</code>).</li>
+<li>Reja rejimini yoqing: Shift+Tab ni bir necha marta bosing, pastda «plan mode on» chiqquncha.
+   Windows’da Shift+Tab ishlamasa, Alt+M.
+   Yoki shunchaki <code>/plan</code> deb yozing.</li>
+<li>Quyidagi promptni yuboring.</li>
+<li>Claude savollar beradi: bir xabarda 3 tadan.
+   Oddiy so‘zlar bilan javob bering.
+   Texnik savol bersa («Python yoki Node?», «qaysi baza?»), shunday javob bering: «Sen tanla, eng soddasini, nega tanlaganingni bir gapda ayt».</li>
+<li>Claude rejani ko‘rsatadi va «davom etaymi?» deb so‘raydi.
+   O‘qing.
+   Rozi bo‘lsangiz, «Yes» ni tanlang.
+   Rozi bo‘lmasangiz, nimani o‘zgartirishni yozing: Claude rejani qayta tuzadi.</li>
+<li>Tasdiqlagandan keyin Claude <code>prd.md</code> va <code>tasks.md</code> ni kompaniya papkasiga yozadi.</li>
+<li><code>prd.md</code> ni oching va 3 savolga o‘zingiz javob bering (pastda, «Tayyor bo‘lsa»).</li>
+</ol>
+<h3>Prompt</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>AI yo‘q deb tasavvur qilaylik.
+CLAUDE.md dagi «Hozirgi sinov jarayoni» uchun yordamchi vosita qurmoqchiman.
+Bunday ishni odatda qaysi mutaxassislar qilardi va ular menga qanday savollar berardi?
+Shu mutaxassislar nomidan menga eng muhim 6 ta savol ber, bir xabarda 3 tadan ko‘p emas.
+Savollar tugagach, prd.md uchun reja tuz, ko‘pi bilan 2 sahifa: nima quriladi, kim uchun, nima kiradi, nima kirmaydi, qaysi ma’lumot manbalari, muvaffaqiyat qanday o‘lchanadi, xavflar.
+Keyin shu PRDni kichik dasturchi tushunadigan 10-15 ta kichik vazifaga bo‘l: tasks.md.
+Hozircha kod yozma.</pre></div>
+<p>«Hozirgi sinov jarayoni» <code>CLAUDE.md</code> da yo‘q bo‘lsa (6-mashqni o‘tkazib yuborgan bo‘lsangiz), ikkinchi qatorni o‘zgartiring: «[jarayon nomi] uchun yordamchi vosita qurmoqchiman».</p>
+<h3>«Baraka Office» namunasi</h3>
+<p>Fayllar (zip ichida): <code>baraka-office/kompaniya/prd.md</code> va <code>baraka-office/kompaniya/tasks.md</code>.
+Ular haqiqiy reja rejimi natijasidan qisqartirilgan (Opus 5.5, 2026-11-03 sinovi).</p>
+<p>Claude qaysi mutaxassislarni tanladi: mahsulot menejeri, biznes-tahlilchi, ma’lumotlar va 1C mutaxassisi, interfeys dizayneri, xavfsizlik va huquq mutaxassisi, sifat nazoratchisi.
+Ulardan eng foydali 3 ta savol:</p>
+<ol>
+<li>Biznes-tahlilchi: «Hujjatlarda 7 ish kuni, ROP esa 3 kun deydi. Qaysi biri to‘g‘ri ekanini kim yozma tasdiqlaydi?»</li>
+<li>Ma’lumotlar mutaxassisi: «1C qoldig‘ini kim va kuniga necha marta eksport qiladi? Kun ichida sotilgani ko‘rinadimi?»</li>
+<li>Sifat nazoratchisi: «Qaysi tuzoq savollar bilan sinaymiz va qachon tayyor deymiz?»</li>
+</ol>
+<p>PRD dagi eng muhim qaror: raqamlarni (narx, chegirma chegarasi, muddat, km bo‘yicha narx) til modeli emas, oddiy kalkulyator hisoblaydi.
+AI faqat savolni tushunadi va javob matnini qoralaydi.
+Shunday qilib, «raqamni to‘qima» qoidasi kod darajasida ta’minlanadi.</p>
+<h3>Yomon PRD namunasi</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Telegram bot kerak. Mijozlarga javob bersin. Tez va sifatli bo‘lsin. Narxlarni bilsin.</pre></div>
+<p>Nima xato:</p>
+<ul>
+<li>Kim ishlatadi - xodimmi yoki mijozmi - yozilmagan.</li>
+<li>Nima kirmaydi, yozilmagan: bot chegirma bera oladimi, mijozga o‘zi yozadimi?</li>
+<li>Ma’lumot manbasi yo‘q: «narxlarni bilsin» - qaysi fayldan, kim yangilaydi?</li>
+<li>Muvaffaqiyat o‘lchovi yo‘q: «tez» - necha daqiqa?</li>
+<li>Xavflar yo‘q: eskirgan qoldiq, noto‘g‘ri muddat.</li>
+</ul>
+<p>Bunday «TZ» bilan dasturchi taxmin qiladi, siz esa natijani tekshira olmaysiz.</p>
+<h3>Tayyor bo‘lsa</h3>
+<ul>
+<li class="cb">Kompaniya papkasida <code>prd.md</code> va <code>tasks.md</code> bor.</li>
+<li class="cb"><code>prd.md</code> da «Nima kirmaydi» bo‘limi bor va unda kamida 2 ta band.</li>
+<li class="cb">Muvaffaqiyat raqam bilan yozilgan (yoki raqam [?] bilan belgilangan va kim aniqlashi yozilgan).</li>
+<li class="cb">O‘zingiz bir gapda ayta olasiz: bu vosita kim uchun va nimani qiladi.</li>
+</ul>
+<h3>Ko‘p uchraydigan xatolar</h3>
+<table>
+<thead>
+<tr>
+<th>Nima bo‘ldi</th>
+<th>Nima qilish kerak</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude reja o‘rniga kod yoza boshladi</td>
+<td>Esc. Pastda «plan mode on» yozuvi bormi? Bo‘lmasa, Shift+Tab yoki <code>/plan</code>.</td>
+</tr>
+<tr>
+<td>Savollar juda ko‘p (15-20 ta)</td>
+<td>«Faqat eng muhim 6 tasini ber» deng.</td>
+</tr>
+<tr>
+<td>Texnik savollarga javob bera olmayapman</td>
+<td>«Sen tanla, eng soddasini, nega tanlaganingni bir gapda ayt.»</td>
+</tr>
+<tr>
+<td>PRD 6 sahifa, o‘qib bo‘lmaydi</td>
+<td>«PRD ni 2 sahifaga qisqartir, eng muhimini qoldir» deng.</td>
+</tr>
+<tr>
+<td>Vaqt tugadi</td>
+<td>Reja chatda qolsin; uyda «rejani prd.md va tasks.md ga yoz» deng.</td>
+</tr>
+</tbody>
+</table>
+<h3>Mentor tekshiruvi (2.8)</h3>
+<p><code>prd.md</code> va <code>tasks.md</code> papkada.
+Mentor so‘raydi: «Bu vosita nimani qilmaydi?»
+Ishtirokchi <code>prd.md</code> dan javob beradi.</p>
+<div class="pagebreak"></div>
+
+<h2>8-mashq. Birinchi skill va kurs skill’larini xavfsiz o‘rnatish</h2>
+<p>2-dars · 2:38-2:50 · 12 daqiqa · Claude Code</p>
+<h3>Maqsad</h3>
+<p>Takror ishlatadigan promptingizni skill qilib saqlaysiz: keyin uni bitta buyruq bilan chaqirasiz, <code>/suhbat-tahlili</code>.
+Keyin kursning tayyor skill’larini (<code>/kit1</code> ... <code>/kit5</code>) o‘rnatasiz, lekin avval ularni Claude’ga tekshirtirasiz.</p>
+<h3>Atamalar, oddiy so‘zlar bilan</h3>
+<ul>
+<li><strong>Skill</strong> - saqlangan, qayta ishlatiladigan yo‘riqnoma fayli.
+  Restorandagi texnologik karta kabi: oshpaz har safar taomni bir xil tayyorlaydi.
+  Fayl joyi: <code>kompaniya/.claude/skills/&lt;nomi&gt;/SKILL.md</code>.</li>
+<li><strong>Frontmatter</strong> - <code>SKILL.md</code> ning eng tepasi, ikkita uch chiziqcha (<code>---</code>) orasida.
+  Unda nom va «qachon ishlatiladi» yoziladi: Claude shunga qarab skill’ni o‘zi ham chaqira oladi.</li>
+<li><code>.claude</code> papkasi yashirin: Finder va Explorer uni ko‘rsatmaydi.
+  Shuning uchun faylni Claude’ning o‘zi yozadi.</li>
+</ul>
+<h3>Qadamlar</h3>
+<h4>A. O‘z skill’ingiz (6 daqiqa)</h4>
+<ol>
+<li>Kompaniya papkasidagi Claude Code’da quyidagi 1-promptni yuboring.
+   Oxiriga 1-darsdagi To‘plam 1 promptini joylang: u <code>KIT_01</code> qo‘llanmasining «AI chat uchun so‘rov» bo‘limida va <code>prompt-pack.md</code> da bor.</li>
+<li>Claude <code>.claude/skills/...</code> ga yozish uchun ruxsat so‘raydi.
+   Bu doim so‘raladi: <code>.claude</code> papkasi Claude Code’ning sozlamalari saqlanadigan joy.
+   «Yes» ni tanlang.</li>
+<li><code>/</code> deb yozing va ro‘yxatdan <code>suhbat-tahlili</code> ni toping.
+   Ko‘rinmasa, <code>/exit</code> qiling va <code>claude</code> ni qayta oching.</li>
+<li>Sinab ko‘ring: <code>/suhbat-tahlili kit1-interviews/[bir xodimning transkripti].md</code>.
+   Transkriptingiz yo‘q bo‘lsa, Otabek aka transkriptini o‘z papkangizga nusxalang va u bilan sinang: <code>baraka-office/kompaniya/kit1-interviews/otabek-transcript.md</code> (instruktor 7-namoyishda ko‘rsatgan).</li>
+</ol>
+<h4>B. Kurs skill’larini tekshirib o‘rnatish (4 daqiqa)</h4>
+<ol>
+<li>2-prompt bilan Claude’ga kurs skill’larini o‘qiting.
+   Javobni o‘qing: fayllarni o‘chiradimi, internetga chiqadimi, parol so‘raydimi?</li>
+<li>Hammasi tushunarli bo‘lsa, 3-prompt bilan o‘rnating va ruxsatni «Yes» bilan bering.</li>
+<li><code>/</code> deb yozing: <code>kit1</code> ... <code>kit5</code> ko‘rinishi kerak (2 daqiqa).</li>
+</ol>
+<h3>1-prompt: promptni skill qilish</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Quyidagi promptni Claude Code skill qilib saqla.
+Joyi: .claude/skills/suhbat-tahlili/SKILL.md.
+Tepasida frontmatter bo‘lsin: name: suhbat-tahlili, description: o‘zbekcha, bir-ikki gap, qachon ishlatilishini aytsin (xodim suhbati transkripti berilganda), argument-hint: [transkript fayli].
+Skill argument sifatida transkript faylini olsin va natijani kit1-interviews/&lt;ism&gt;-form-b.md ga yozishdan oldin mendan so‘rasin.
+Promptning matnini o‘zgartirma, faqat «Quyida ... transkripti berilgan» joyini «$ARGUMENTS faylini o‘qi» ga almashtir.
+Prompt:
+[1-darsdagi To‘plam 1 promptini shu yerga joylang]</pre></div>
+<h3>2-prompt: o‘rnatishdan oldin xavfsizlik tekshiruvi</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>../skills papkasidagi kit1, kit2, kit3, kit4, kit5 skill’larini o‘qi, hali o‘rnatma.
+Har biri uchun jadval qil: qaysi fayllarni o‘qiydi va yozadi, buyruq (Bash) ishga tushiradimi, internetga chiqadimi, kalit yoki parol so‘raydimi, faylni o‘chiradimi.
+Shubhali joy bo‘lsa, qatorini ko‘rsat.</pre></div>
+<h3>3-prompt: o‘rnatish</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>../skills ichidagi kit1, kit2, kit3, kit4, kit5 papkalarini shu papkadagi .claude/skills/ ichiga nusxala.
+Bor faylning ustiga yozma.
+Oxirida .claude/skills ichida nima borligini ko‘rsat.</pre></div>
+<h3>«Baraka Office» namunasi</h3>
+<p>O‘z skill’i (zip ichida): <code>baraka-office/kompaniya/.claude/skills/suhbat-tahlili/SKILL.md</code>.
+<code>.claude</code> yashirin papka: macOS Finder’da Cmd+Shift+. (nuqta) bilan, Windows Explorer’da «View → Show → Hidden items» («Ko‘rinish → Ko‘rsatish → Yashirin elementlar») bilan ko‘rinadi.
+Uni ochib ko‘ring: tepada frontmatter, keyin 1-darsdagi prompt so‘zma-so‘z, faqat birinchi gapda fayl nomi o‘rniga <code>$ARGUMENTS</code>.</p>
+<p>Sinov: <code>/suhbat-tahlili kit1-interviews/otabek-transcript.md</code>.
+To‘liq natija: <code>natijalar/suhbat-tahlili-otabek.md</code> (haqiqiy Claude Code natijasi, 2026-11-03).
+Skill ikki tuzoqni ushladi:</p>
+<ul>
+<li>«bir uch yuz ming so‘m kam oldik» - taxminan 300 000 so‘m, 1 300 000 emas.</li>
+<li>«Kuniga 1520 ta savol» - 1 520 bo‘lishi mumkin emas, ehtimol «15-20»; [?] bilan qoldirdi va Otabek akadan so‘rashni taklif qildi.</li>
+</ul>
+<p>Kurs skill’larini tekshirish (2-prompt) natijasi, qisqacha: beshtasi ham faqat kompaniya papkasidagi <code>.md</code> (va <code>/kit2</code> da bitta <code>.html</code>) fayllarni o‘qiydi va yozadi.
+Oldindan ruxsat faqat fayl o‘qish va yozishga berilgan (<code>allowed-tools: Read Write Edit Glob Grep</code>); buyruq (Bash) ruxsati yo‘q, matnida internet, parol yoki o‘chirish yo‘q.
+Mavjud faylning ustidan yozishdan oldin so‘raydi.
+Eslatma: <code>allowed-tools</code> taqiq emas, oldindan berilgan ruxsat; boshqa ish kerak bo‘lsa, Claude baribir sizdan so‘raydi.</p>
+<h3>Yomon namuna: tekshirmasdan o‘rnatish</h3>
+<p>2.0 kursida bir ishtirokchi, 1C administratori, internetdan tekshirilmagan vosita o‘rnatdi.
+U administrator hisobini o‘chirib, yangisini yaratmoqchi bo‘ldi.
+Rasmiy hujjatda ham yozilgan: o‘rnatilgan plagin kompyuteringizda siz nomingizdan istalgan buyruqni bajara oladi (code.claude.com/docs/en/plugins/security, 2026-11-03 da tekshirildi).
+Qoida: begona skill yoki plaginni o‘rnatishdan oldin Claude’ga o‘qiting va jadvalni o‘zingiz ko‘ring.
+Kursning o‘z skill’lari ham bundan mustasno emas.</p>
+<h3>Tayyor bo‘lsa</h3>
+<ul>
+<li class="cb"><code>/</code> menyusida <code>suhbat-tahlili</code> bor va bitta transkript bilan ishladi.</li>
+<li class="cb">Kurs skill’lari tekshirildi (2-prompt jadvali bor).</li>
+<li class="cb"><code>/</code> menyusida <code>kit1</code> ... <code>kit5</code> bor.</li>
+</ul>
+<h3>Ko‘p uchraydigan xatolar</h3>
+<table>
+<thead>
+<tr>
+<th>Nima bo‘ldi</th>
+<th>Nima qilish kerak</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude «ruxsat berilmadi» deydi va fayl yozilmadi</td>
+<td>Ruxsat so‘raganda «No» bosilgan. Promptni qayta yuboring va «Yes» ni tanlang.</td>
+</tr>
+<tr>
+<td>Skill menyuda yo‘q</td>
+<td><code>/exit</code>, keyin <code>claude</code>. Papka nomi to‘g‘rimi: <code>.claude/skills/suhbat-tahlili/SKILL.md</code> (katta harflar bilan <code>SKILL.md</code>).</td>
+</tr>
+<tr>
+<td><code>../skills</code> topilmadi</td>
+<td><code>kompaniya</code> va <code>skills</code> bitta <code>praktikum</code> papkasi ichida emas. Zip ichidagilarni uy papkangizdagi <code>praktikum</code> ga ko‘chiring (2-mashq, 2-qadam).</td>
+</tr>
+<tr>
+<td>Skill ishladi, lekin natija boshqa shaklda</td>
+<td>Skill = siz yozgan prompt. Promptni aniqroq qiling yoki kursning <code>/kit1</code> ini ishlating.</td>
+</tr>
+</tbody>
+</table>
+<h3>Mentor tekshiruvi (2.9)</h3>
+<p>Ishtirokchi <code>/</code> menyusida o‘z skill’ini va <code>kit1</code> ni ko‘rsatadi.
+Uyga vazifa uchun <code>/kit5</code> ishlashi shart: <code>/kit5</code> yozilganda Claude «baseline» rejimini taklif qiladi.</p>
+<div class="foot">Praktikum 3.0 · 2-dars · manba: day-2/_build/mashqlar-hammasi.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

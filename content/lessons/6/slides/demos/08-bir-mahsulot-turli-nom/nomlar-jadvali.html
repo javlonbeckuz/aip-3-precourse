@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bitta narsa, turli nomlar: «Baraka Office»</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 5-dars</span><span class="pill">Ma’lumot tartibi</span></div>
+<h1>Bitta narsa, turli nomlar: «Baraka Office»</h1>
+<p>Shartli misol: kursdagi Baraka Office namunaviy fayllaridan.
+Agentlar aqli yetmagani uchun emas, ma’lumot tartibsizligi uchun ko‘proq xato qiladi.</p>
+<table>
+<thead>
+<tr>
+<th>Kalit</th>
+<th>Prays-list</th>
+<th>1C ombor eksporti</th>
+<th>Xodimlar og‘zaki</th>
+<th>Nima bo‘ladi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WS-102</td>
+<td>«Optima» ergonomik stol 140x70</td>
+<td>Стол Optima 140x70 (ЛДСП 25мм, П-каркас)</td>
+<td>«140 lik stol», «Optima»</td>
+<td>Agent «140 lik» ni bilmasa, boshqa stolni hisoblaydi: <code>memory.md</code> ga oldindan yozildi</td>
+</tr>
+<tr>
+<td>CH-203</td>
+<td>«Senator Lux» rahbar kreslosi (bitta kod)</td>
+<td>CH-203 qora va CH-203-BR jigarrang (ikkita kod)</td>
+<td>«boss kreslo»</td>
+<td>Qoldiq so‘ralsa, rangini aniqlash kerak</td>
+</tr>
+<tr>
+<td>WS-101</td>
+<td>«Start» xodim stoli 120x60</td>
+<td>Стол офисный Start 120x60 (ЛДСП 18мм)</td>
+<td>«120 lik», «oddiy stol»</td>
+<td>Hali xato bo‘lmagan; oldindan yozib qo‘yildi</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Kalit</th>
+<th>1C debitorka</th>
+<th>CRM (amoCRM)</th>
+<th>Savol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STIR</td>
+<td>«Ziyo Ta'lim markazi»</td>
+<td>«Ziyo Ta'lim MChJ»</td>
+<td>Bitta mijozmi? Agent ularni ikki mijoz deb hisoblasa, qarz va savdo tarixi ikkiga bo‘linadi. Buxgalter STIR bo‘yicha tekshiradi</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Shart</th>
+<th>KP (reklama)</th>
+<th>Qoidalar va shartnoma</th>
+<th>1-haftada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kafolat</td>
+<td>3 yil (36 oy), hammasiga</td>
+<td>Korpus 24 oy, mexanizm 12 oy</td>
+<td>17.12: agent «3 yil» dedi</td>
+</tr>
+<tr>
+<td>Viloyatga yetkazish</td>
+<td>Bepul</td>
+<td>Halqa yo‘ldan har 1 km uchun 8 000 so‘m</td>
+<td>17.12: «Chirchiqqa bepul» dedi; Malika tasdiqlashda ushladi</td>
+</tr>
+</tbody>
+</table>
+<h2>Qoida</h2>
+<ol>
+<li>Har bir narsaga bitta kalit: mahsulotga kod, mijozga STIR, xodimga tabel raqami.</li>
+<li>Boshqa nomlarni <code>agent/memory.md</code> ga yozing: «- sana: «140 lik stol» = «Optima» (WS-102)».</li>
+<li>Bir nom ikki narsani bildirsa, agent aniqlashtirsin yoki odamga uzatsin (B.6).</li>
+<li>Ishonchingiz komil bo‘lmagan juftlikni agentga yozmang: avval odam tasdiqlasin.</li>
+</ol>
+<div class="foot">Praktikum 3.0 · 5-dars · 20-dekabr 2026 · manba: day-5/demos/08-bir-mahsulot-turli-nom/nomlar-jadvali.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+$ uv run python deploy/deploy.py
+
+==> Running the tests on this computer first
+
+... (pytest xato tafsilotlari, qisqartirildi) ...
+E     File "~/kompaniya/app/pilot/texts.py", line 64
+E       NOT_ALLOWED = ((
+E                     ^
+E   SyntaxError: '(' was never closed
+ERROR tests/test_assistant_budget.py
+Tests failed: nothing was deployed. Fix them first (or ask Claude Code to).

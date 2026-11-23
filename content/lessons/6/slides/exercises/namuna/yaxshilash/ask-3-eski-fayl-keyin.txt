@@ -1,0 +1,5 @@
+$ uv run pilot ask "ErgoPro omborda bormi?"
+
+ODAMGA: ombor fayli bilan muammo (Ombor qoldig‘i (1C eksport): fayl 28 soatdan beri yangilanmagan (chegara 25 soat)), qoldiqni Otabek akadan aniqlash kerak.
+
+--- holat: escalated, model: google/gemini-3.8-flash, xarajat: $0.00500, manbalar: Prays-list 2026, Chegirma, to‘lov, yetkazib berish va kafolat qoidalari, Ombor qoldig‘i (1C eksport)

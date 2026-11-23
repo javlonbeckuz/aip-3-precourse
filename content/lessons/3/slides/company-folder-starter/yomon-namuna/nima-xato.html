@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yomon CLAUDE.md: nima xato va qanday tuzatiladi</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 2-dars</span><span class="pill">Yomon namuna</span></div>
+<h1>Yomon CLAUDE.md: nima xato va qanday tuzatiladi</h1>
+<p>Yonidagi <code>CLAUDE.md</code> ni ataylab yomon yozdik.
+Bunday fayllar darsda ko‘p uchraydi.
+Har bir xatoni toping, keyin to‘g‘ri namuna bilan solishtiring: <code>../baraka-office/kompaniya/CLAUDE.md</code>.</p>
+<p>Muhim: bu fayldagi login, parol va token soxta.
+Haqiqiy faylda ular bo‘lsa, darhol o‘chiring va parolni almashtiring.</p>
+<h2>9 ta xato</h2>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Fayldagi qator</th>
+<th>Nima xato</th>
+<th>To‘g‘risi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>«Sen dunyodagi eng zo‘r biznes konsultantsan»</td>
+<td>Maqtov Claude’ga hech narsa bermaydi: u baribir sizning kompaniyangizni bilmaydi. Joy va diqqat behuda ketadi.</td>
+<td>Rol emas, fakt yozing: nima qilasiz, kimga, qayerda, qancha xodim.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>«Narxlarimiz arzon, sifatimiz yuqori, yetkazib berish tez»</td>
+<td>Sifat so‘zlari, bitta ham raqam yo‘q. Claude «tez» degani 1 kunmi yoki 7 kunmi, bilmaydi.</td>
+<td>«Yetkazish: oldindan to‘lovdan 7 ish kuni.»</td>
+</tr>
+<tr>
+<td>3</td>
+<td>«Hamma narsani tez qil, savol berma»</td>
+<td>Claude taxmin qiladi va xato qiladi. Kursdagi asosiy odat buning teskarisi: «Meni intervyu qil».</td>
+<td>«Yozishdan oldin menga savol ber, bir xabarda 3 tadan ko‘p emas.»</td>
+</tr>
+<tr>
+<td>4</td>
+<td>«Kerakli chegirmani ber, mijoz ketib qolmasin»</td>
+<td>Xavfli qoida: Claude marjani kuydiradigan javob yozishi mumkin. Rasmiy chegara (5% va 10%) yozilmagan.</td>
+<td>«Chegirma: sotuvchi 5% gacha, ROP yozma ruxsati bilan 10% gacha, undan yuqori taqiqlangan.»</td>
+</tr>
+<tr>
+<td>5</td>
+<td>«Yetkazib berishni 3 kun deb ayt»</td>
+<td>Shartnomada 7 ish kuni. Endi Claude mijozga yolg‘on va’da yozadi va siz buni o‘zingiz o‘rgatgansiz.</td>
+<td>Faqat rasmiy hujjatdagi muddat, va qaysi hujjatdan olingani.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>«Eski fayllarni o‘zing tozalab tur»</td>
+<td>Claude’ga o‘chirishga ruxsat berildi. Kerakli fayl yo‘qolishi mumkin.</td>
+<td>«Faylni o‘chirishdan yoki ustidan yozishdan oldin mendan so‘ra.»</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Login, parol, bot tokeni</td>
+<td>Eng xavfli xato. CLAUDE.md oddiy matn fayl: uni nusxalash, kimgadir yuborish, GitHub’ga yuklash oson. Token bilan begona odam botingizni boshqaradi.</td>
+<td>Kalitlar faqat <code>.env</code> faylida. CLAUDE.md da: «Kalit va parollar faqat .env faylida turadi.»</td>
+</tr>
+<tr>
+<td>8</td>
+<td>«Ingliz tilida yoz, menga o‘zbekcha tushuntir, qisqa va batafsil bo‘lsin»</td>
+<td>Bir-biriga zid ko‘rsatmalar. Rasmiy hujjatda ham aytilgan: ikki qoida zid bo‘lsa, Claude ulardan birini tasodifan tanlaydi.</td>
+<td>Bitta aniq qoida: «Men bilan o‘zbek tilida, oddiy gaplar bilan gaplash.»</td>
+</tr>
+<tr>
+<td>9</td>
+<td>14 sahifalik prays-list shu yerga ko‘chirilgan</td>
+<td>CLAUDE.md har safar to‘liq o‘qiladi: uzun fayl kontekstni to‘ldiradi va qoidalarga e’tibor kamayadi (rasmiy tavsiya: 200 qatordan kam). Narx o‘zgarsa, ikki joyda yangilash kerak bo‘ladi.</td>
+<td>Prays-listni <code>hujjatlar/</code> ga qo‘ying va CLAUDE.md da faqat fayl nomini yozing.</td>
+</tr>
+</tbody>
+</table>
+<p>Yana nima yo‘q: «Kitlar» bo‘limi.
+U bo‘lmasa, /kit1 ... /kit5 skill’lari fayllarni qayerdan izlashni bilmaydi.</p>
+<h2>Qanday tekshirasiz</h2>
+<p>Claude Code’ni kompaniya papkasida oching va so‘rang:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>CLAUDE.md faylimni o‘qi. Unda zid qoidalar, xavfli ruxsatlar, parol yoki kalitlar, raqamsiz sifat so‘zlari va 200 qatordan uzun joylar bormi? Har birini qator raqami bilan jadval qilib ko‘rsat. Hech narsani o‘zgartirma, faqat ro‘yxat ber.</pre></div>
+<p>Kutiladigan natija: Claude yuqoridagi 9 ta xatoning kamida 7 tasini topadi, parol va tokenni birinchi o‘ringa qo‘yadi.
+Topmasa, savolni boshqacha so‘rang: «Bu faylni xavfsizlik bo‘yicha mutaxassis sifatida tekshir.»</p>
+<h2>Manba</h2>
+<ul>
+<li>CLAUDE.md hajmi va zid qoidalar haqida: https://code.claude.com/docs/en/memory (2026-11-03 da tekshirildi): «target under 200 lines per CLAUDE.md file», «if two instructions contradict each other, Claude may pick one arbitrarily».</li>
+</ul>
+<div class="foot">Praktikum 3.0 · 2-dars · manba: day-2/company-folder-starter/yomon-namuna/nima-xato.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

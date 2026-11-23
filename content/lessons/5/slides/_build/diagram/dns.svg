@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="16 26 1560 852" role="img" aria-labelledby="t d">
+  <title id="t">Domen, DNS, HTTPS va bot: bitta rasmda</title>
+  <desc id="d">Mijoz telefoni DNS dan IP manzilni so‘raydi, keyin serverdagi Caddy ga HTTPS bilan ulanadi. Bot serverdan Telegram ga o‘zi ulanadi, noutbuk serverga SSH kalit bilan kiradi.</desc>
+  <defs>
+    <marker id="aB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5e8bff"/></marker>
+    <marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4fd1a1"/></marker>
+    <marker id="aW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b4b4bc"/></marker>
+  </defs>
+  <style>
+    .t { font-family: 'OVDInter', system-ui, -apple-system, 'Segoe UI', sans-serif; fill: #f4f4f6; }
+    .h { font-size: 27px; font-weight: 650; }
+    .b { font-size: 22px; fill: #b4b4bc; }
+    .s { font-size: 19px; fill: #8a8a94; }
+    .m { font-family: 'OVDMono', ui-monospace, Menlo, Consolas, monospace; font-size: 21px; fill: #f4f4f6; }
+    .lb { font-size: 20px; font-weight: 600; }
+    .box { fill: rgba(255,255,255,0.03); stroke: rgba(255,255,255,0.22); stroke-width: 1.5; }
+    .acc { fill: rgba(94,139,255,0.08); stroke: rgba(94,139,255,0.7); stroke-width: 1.5; }
+    .ok { fill: rgba(79,209,161,0.07); stroke: rgba(79,209,161,0.7); stroke-width: 1.5; }
+    .vps { fill: rgba(255,255,255,0.015); stroke: rgba(255,255,255,0.35); stroke-width: 2; stroke-dasharray: 8 6; }
+    .lnB { stroke: #5e8bff; stroke-width: 3; fill: none; }
+    .lnG { stroke: #4fd1a1; stroke-width: 3; fill: none; }
+    .lnW { stroke: #b4b4bc; stroke-width: 2.5; fill: none; stroke-dasharray: 7 6; }
+  </style>
+
+  <!-- ===== Column 1: people ===== -->
+  <rect class="box" x="30" y="70" width="330" height="150" rx="10"/>
+  <text class="t h" x="56" y="116">Mijoz telefoni</text>
+  <text class="t b" x="56" y="152">brauzerda yozadi:</text>
+  <text class="t m" x="56" y="190">forma.barakaoffice.uz</text>
+
+  <rect class="box" x="30" y="390" width="330" height="150" rx="10"/>
+  <text class="t h" x="56" y="436">Noutbukingiz</text>
+  <text class="t b" x="56" y="472">Claude Code</text>
+  <text class="t b" x="56" y="506">kalit: ~/.ssh</text>
+
+  <rect class="box" x="30" y="680" width="330" height="150" rx="10"/>
+  <text class="t h" x="56" y="726">Sizning telefoningiz</text>
+  <text class="t b" x="56" y="762">Telegram: savol,</text>
+  <text class="t b" x="56" y="796">/stop, /hisobot</text>
+
+  <!-- ===== Column 2: DNS and Telegram ===== -->
+  <rect class="acc" x="520" y="40" width="360" height="210" rx="10"/>
+  <text class="t h" x="546" y="86">DNS = telefon kitobi</text>
+  <text class="t b" x="546" y="122">ism → raqam (A yozuvi)</text>
+  <rect x="546" y="144" width="308" height="80" rx="6" fill="rgba(0,0,0,0.35)" stroke="rgba(94,139,255,0.45)"/>
+  <text class="t m" x="564" y="178">forma  A</text>
+  <text class="t m" x="564" y="210">→ 203.0.113.10</text>
+
+  <rect class="ok" x="520" y="680" width="360" height="150" rx="10"/>
+  <text class="t h" x="546" y="726">Telegram</text>
+  <text class="t b" x="546" y="762">xabarlarni saqlab turadi;</text>
+  <text class="t b" x="546" y="796">bot ularni o‘zi olib ketadi</text>
+
+  <!-- ===== Let's Encrypt ===== -->
+  <rect class="box" x="1100" y="40" width="460" height="150" rx="10"/>
+  <text class="t h" x="1126" y="86">Let’s Encrypt</text>
+  <text class="t b" x="1126" y="122">bepul sertifikat = qulf belgisi</text>
+  <text class="t s" x="1126" y="160">90 kun; Caddy o‘zi yangilaydi</text>
+
+  <!-- ===== Column 3: the VPS ===== -->
+  <rect class="vps" x="1000" y="290" width="560" height="560" rx="14"/>
+  <text class="t h" x="1026" y="336">Server (VPS) · 203.0.113.10</text>
+  <text class="t s" x="1026" y="368">kecha-kunduz yoqiq · firewall: faqat 22, 80, 443</text>
+
+  <rect class="acc" x="1026" y="396" width="508" height="130" rx="10"/>
+  <text class="t lb" x="1048" y="436">Caddy · qabulxona · 80, 443</text>
+  <text class="t b" x="1048" y="472">kelganni sahifaga yo‘naltiradi</text>
+  <text class="t s" x="1048" y="506">sayt: /var/www/sayt</text>
+
+  <rect class="ok" x="1026" y="640" width="508" height="170" rx="10"/>
+  <text class="t lb" x="1048" y="680">pilot-bot · shaxsiy AI assistent</text>
+  <text class="t b" x="1048" y="716">systemd: yiqilsa 5 soniyada,</text>
+  <text class="t b" x="1048" y="748">server qayta yuklansa ham qaytadi</text>
+  <text class="t s" x="1048" y="784">kalitlar: /opt/pilot/.env (faqat bot o‘qiydi)</text>
+
+  <!-- ===== Arrows: website path (blue) ===== -->
+  <path class="lnB" d="M360,108 L514,108" marker-end="url(#aB)"/>
+  <text class="t s" x="372" y="94">1. qayerda?</text>
+  <path class="lnB" d="M520,170 L366,170" marker-end="url(#aB)"/>
+  <text class="t s" x="372" y="156">2. 203.0.113.10</text>
+  <path class="lnB" d="M360,205 C 600,240 760,450 1020,455" marker-end="url(#aB)"/>
+  <text class="t lb" x="440" y="320" style="fill:#5e8bff">3. https:// + qulf</text>
+  <path class="lnB" d="M1500,190 L1500,390" marker-end="url(#aB)"/>
+  <text class="t s" x="1396" y="264">sertifikat</text>
+
+  <!-- ===== Arrows: SSH (grey dashed) ===== -->
+  <path class="lnW" d="M360,465 C 620,465 760,640 1020,690" marker-end="url(#aW)"/>
+  <text class="t s" x="420" y="452">SSH 22 · kalit bilan · deploy.py</text>
+
+  <!-- ===== Arrows: bot path (green) ===== -->
+  <path class="lnG" d="M1026,755 L886,755" marker-end="url(#aG)"/>
+  <text class="t s" x="520" y="866">bot o‘zi so‘raydi: serverda ochiq port kerak emas</text>
+  <path class="lnG" d="M520,740 L366,740" marker-end="url(#aG)"/>
+  <path class="lnG" d="M366,790 L520,790" marker-end="url(#aG)"/>
+</svg>

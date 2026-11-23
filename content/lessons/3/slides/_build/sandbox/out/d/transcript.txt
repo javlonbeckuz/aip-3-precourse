@@ -1,0 +1,62 @@
+== d | model opus | mode plan | 2026-11-03 04:03 | claude 2.1.316 (Claude Code)
+== prompt:
+AI yo‘q deb tasavvur qilaylik.
+CLAUDE.md dagi «Hozirgi sinov jarayoni» uchun yordamchi vosita qurmoqchiman.
+Bunday ishni odatda qaysi mutaxassislar qilardi va ular menga qanday savollar berardi?
+Shu mutaxassislar nomidan menga eng muhim 6 ta savol ber, bir xabarda 3 tadan ko‘p emas.
+Savollar tugagach, prd.md uchun reja tuz, ko‘pi bilan 2 sahifa: nima quriladi, kim uchun, nima kiradi, nima kirmaydi, qaysi ma’lumot manbalari, muvaffaqiyat qanday o‘lchanadi, xavflar.
+Keyin shu PRDni kichik dasturchi tushunadigan 10-15 ta kichik vazifaga bo‘l: tasks.md.
+Hozircha kod yozma.
+
+(Sinov uchun: men javob bera olmayman. Savollarga o‘zing CLAUDE.md, hujjatlar/ va kit2-scoring/ dan javob top; topolmasang [?] qoldir va savolni PRD oxiridagi «Ochiq savollar» bo‘limiga yoz.)
+== output:
+Hozir reja rejimidaman, shuning uchun `prd.md` va `tasks.md` hali yaratilmadi. Hammasi reja faylida turibdi: `/Users/xb21/.claude/plans/ai-yo-q-deb-tasavvur-zazzy-tulip.md`. Ma'qullasangiz, shu ikki faylni papka ildizida yarataman. Ikkalasi ham yangi fayl, hech qaysi faylning ustidan yozilmaydi. Kod yozilmaydi.
+
+## Bu ishni kim qilardi
+Mahsulot menejeri, biznes-tahlilchi, UX-tadqiqotchi, ma'lumot muhandisi (1C), QA muhandisi va xavfsizlik mutaxassisi.
+
+### 1-xabar
+1. **Mahsulot menejeri: qaysi raqam o'zgarsa, sinov muvaffaqiyatli bo'ladi?**
+   - Hozirgi holat: Jamshid akaga kuniga 25 ta savol keladi, bu ishga haftasiga 17,25 soat ketadi, mijoz 5-10 daqiqa kutadi (`kit2-scoring/form-a-scoring.md`, 1-jarayon).
+   - Pulda: 17,25 × 35 700 = 615 825 so'm/hafta.
+   - Maqsadli raqam hech qayerda yozilmagan, shuning uchun **[?]**.
+2. **Biznes-tahlilchi: hujjatlar bir-biriga zid bo'lsa, qaysi biri ustun?**
+   - Prays-list, shartnoma va reglament ustun.
+   - KPda 3 ta gap xato:
+     - «36 oy kafolat». To'g'risi: korpus 24 oy, kreslo mexanizmi va gazlift 12 oy.
+     - «Viloyat bo'ylab bepul yetkazish». To'g'risi: halqa yo'lidan har km uchun 8 000 so'm.
+     - «1 kunda o'rnatamiz». To'g'risi: 7 ish kuni, MDF va shpon uchun 12 ish kuni.
+3. **UX-tadqiqotchi: kim, qayerda ishlatadi?**
+   - Call-markaz operatorlari va menejerlar, ko'pincha mijoz telefonda kutib turganda.
+   - Bot mijozga yozmaydi.
+   - Interfeys Telegram botmi yoki veb-sahifami, noma'lum: **[?]**.
+
+### 2-xabar
+4. **Ma'lumot muhandisi: qoldiq qayerdan keladi va qanchalik yangi?**
+   - 1C qoldig'i har kuni ertalab CSV qilib yuklanadi, fayl cp1251 kodlashida.
+   - Lekin `data/` papkasi umuman yo'q: **[?]**.
+5. **QA muhandisi: xato javob qanchaga tushadi va bot qachon savolni boshqa odamga yo'naltiradi?**
+   - Eski narx aytilgani 350 000 so'm zarar bergan.
+   - 5% dan katta chegirma bo'lsa, ROPga; qoldiq bo'yicha Otabek akaga; to'lov tushgani bo'yicha Nodira opaga yo'naltiradi.
+   - Sinov savollari to'plami hali yo'q: **[?]**.
+6. **Xavfsizlik mutaxassisi: nima tashqariga chiqmasligi kerak?**
+   - Narx jadvallarini uchinchi shaxslarga berish taqiqlangan (reglament, 3-bo'lim, 2-band).
+   - Kalitlar faqat `.env` faylida turadi.
+   - Botga kim kira olishi aniqlanmagan: **[?]**.
+
+## Reja qisqacha
+- **`prd.md`** (2 sahifadan oshmaydi): nima quriladi, kim uchun, nima kiradi, nima kirmaydi, ma'lumot manbalari, muvaffaqiyat o'lchovi va xavflar.
+  - Kirmaydi: KP tayyorlash, AmoCRM ga yozish, 10% dan katta chegirma.
+  - Oxirida 10 ta ochiq savol bor.
+- **`tasks.md`**: 13 ta kichik vazifa. Har birining «tayyor» sharti bor.
+  - Vazifalar: prays-listni CSV ga ko'chirish, qoidalar fayli, KPdagi xato gaplar ro'yxati, cp1251 ni o'qish va eski ma'lumotdan ogohlantirish.
+  - Narx, chegirma, yetkazish va muddat uchun alohida hisoblagichlar.
+  - Tizim yo'riqnomasi, chat interfeysi, sinov savollari to'plami va jurnal.
+
+## Hujjatlarda topilgan muammolar
+- `data/narxlar.csv`, `data/qoidalar.md` va `data/ombor-1c.csv` fayllari papkada yo'q, `app/` va `kit3-agent/` ham yo'q. Vaholanki, `kit2-scoring/form-a-scoring.md` aynan shu `data/` fayllariga tayanadi.
+- `kit2-scoring` fayllaridagi sana 2026-11-29, bugun esa 2026-11-03. Yana `form-b-matrix.md` hali bo'lmagan dekabr voqealarini tilga oladi (masalan, 18.12 va 21.12 dagi xatolar). Bu andozadan qolgan matnga o'xshaydi.
+- Shartnomaga ko'ra Toshkent ichida 10 mln so'mdan kam buyurtmani yetkazish 350 000 so'm turadi. Bu CLAUDE.md da yozilmagan, PRDga shartnomadan olib kiritdim.
+
+Rejani ma'qullaysizmi? Shundan keyin ikkala faylni yarataman.
+== exit 0

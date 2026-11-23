@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5-mashq: To‘plam 5 B shakli: 1-hafta ustuni va topilgan pul (B.14)</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 5-dars</span><span class="pill">5-mashq</span></div>
+<h1>5-mashq: To‘plam 5 B shakli: 1-hafta ustuni va topilgan pul (B.14)</h1>
+<p>5-dars, 0:03-0:18 stolda (mentor bilan), qolgani uy vazifasida.
+Natija: <code>kit5-pilot/numbers.md</code> da 1-hafta ustuni to‘liq, har bir raqamning manbasi bilan; topilgan pul qatori isbotlangan va isbotlanmagan qismlarga ajratilgan.</p>
+<h2>Kerak bo‘ladi</h2>
+<ul>
+<li>Botdan <code>/hafta</code> fayli (<code>kit5-raqamlar-&lt;sana&gt;.md</code>).</li>
+<li><code>kit5-pilot/numbers.md</code> (4-darsda «Agentgacha» ustuni to‘ldirilgan) va <code>kit5-pilot/plan.md</code>.</li>
+<li>Soatbay haq: jarayonda ishlaydigan xodimlarning oyligi / oyiga ish soati (173,3 yoki 200 soat; qaysi birini olganingizni yozing).</li>
+<li>Tekshiruvchi (loyiha yetakchisi) bilan 5 daqiqa: u bu hafta tekshirishga qancha vaqt sarfladi.</li>
+</ul>
+<h2>Qanday bajariladi</h2>
+<ol>
+<li><strong>Bot sanaganini ko‘chiring.</strong>
+   <code>/hafta</code> faylidan: B.1, B.3, B.5, odamga uzatilganlar va model xarajati.
+   Bot bu qatorlarni jurnaldan sanaydi; ularni qo‘lda o‘zgartirmang, faqat izoh yozing.</li>
+<li><strong>Bot sanay olmaydiganini qo‘lda to‘ldiring.</strong>
+   - B.2 O‘rtacha vaqt: har bir so‘rov turidan 3 ta holatni o‘lchang (xodim savol yozadi va javobni o‘qiydi).
+     Tekshiruv vaqti bu yerga kirmaydi.
+   - B.4 Takroriy so‘rovlar: bir mijoz bir narsani ikki marta so‘ragan holatlar (Telegram guruhi, CRM).
+   - B.6 Yakunlangan bitimlar: CRM yoki 1C dan, xuddi shu kunlar uchun.
+   - B.7 Tekshirish vaqti: butun vazifa uchun bitta raqam, soatda.
+     Kim qancha tekshirgani emas, jami.
+   - B.8 Mijoz shikoyatlari: shu hafta.</li>
+<li><strong>Topilgan pul (B.14).</strong>
+   Har bir holat alohida qator: sana, nima bo‘ldi, summa, qanday hisoblandi.
+   Isbotlangan summa (hujjat bor: hisob-faktura, to‘lov, 1C) ustunga yoziladi.
+   Isbotlanmagan summa <code>[?]</code> bilan yoziladi va jamiga qo‘shilmaydi.</li>
+<li><strong>Xarajatlar:</strong> B.9 obuna (oyliksini 4,3 ga bo‘ling), B.10 sozlash, B.11 = B.7 x soatbay haq, B.12 = jami.</li>
+<li><strong>B.13 xatolar jurnali:</strong> <code>/hafta</code> faylidagi jadvalni ko‘chiring, «Nimani o‘zgartirdik» ni 2-mashqdan to‘ldiring.</li>
+<li><strong>Ta’rifni tekshiring:</strong> B.1 oldin ham, hozir ham bir xil ishni sanayaptimi?
+   Sinfda yuborilgan sinov savollari ham B.1 ga kiradi: ularni ayirib tashlang va izoh yozing.</li>
+</ol>
+<h3>Claude Code uchun topshiriq</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/kit5 hafta 1</pre></div>
+<p>Skill raqamlarni so‘raydi, har birining manbasini <code>## Hisoblar</code> bo‘limiga yozadi va topilgan pulni isbotlangan va isbotlanmagan qismlarga ajratadi.
+<code>/hafta</code> faylini oldindan <code>kit5-pilot/</code> ga qo‘ying, skill uni o‘qiydi.</p>
+<h2>«Topilgan pul» nima va nima emas</h2>
+<table>
+<thead>
+<tr>
+<th>Topilgan pul (B.14)</th>
+<th>Topilgan pul emas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent tufayli oldi olingan xato: noto‘g‘ri narx, noto‘g‘ri muddat mijozga ketmadi</td>
+<td>Agentning o‘z xatosini tekshiruvchi ushlagani: bu tekshirish xarajati (B.11)</td>
+</tr>
+<tr>
+<td>Yo‘qolmagan so‘rov: kechki savol ertalab javob oldi va sotuvga aylandi</td>
+<td>Sotuvning butun summasi: daromad emas, faqat sizga qolgan qismi (marja) va faqat busiz yo‘qolishi aniq bo‘lsa</td>
+</tr>
+<tr>
+<td>Tezroq tushgan pul: eslatma tufayli to‘lov oldinroq keldi</td>
+<td>«Bo‘lishi mumkin edi» degan taxmin, hujjatsiz</td>
+</tr>
+<tr>
+<td>Oldin bepul berib yuborilgan xizmat endi to‘g‘ri hisoblandi</td>
+<td>Tejalgan soatlar: ular B.15 da alohida hisoblanadi</td>
+</tr>
+</tbody>
+</table>
+<p>Mahalliy maoshlarda tejalgan soatlar ko‘pincha vositaning oylik narxidan kichik chiqadi.
+Hamkorlarni odatda topilgan pul qatori ishontiradi: shuning uchun uni halol va hujjat bilan yozing.</p>
+<h2>Baraka Office namunasi</h2>
+<p>To‘liq to‘ldirilgan shakl: <code>namuna/kompaniya/kit5-pilot/numbers.md</code>.
+Bot sanagan qatorlar: <code>namuna/baraka-1-hafta/kit5-raqamlar-2026-12-20.md</code> (yakshanba 10:20 dagi <code>/hafta</code>).
+Bu kursning umumiy Baraka namunasi: 6-darsda xuddi shu 1-hafta ustunini davom ettirasiz.</p>
+<table>
+<thead>
+<tr>
+<th>Ko‘rsatkich</th>
+<th>Agentgacha</th>
+<th>1-hafta</th>
+<th>Manba</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B.1 Bajarilgan so‘rovlar</td>
+<td>120</td>
+<td>132</td>
+<td>bot jurnali, 14-19.12</td>
+</tr>
+<tr>
+<td>B.2 O‘rtacha vaqt, daqiqa</td>
+<td>6</td>
+<td>2,5</td>
+<td>Madina 10 ta holatni soat bilan o‘lchadi, tekshirishsiz</td>
+</tr>
+<tr>
+<td>B.3 Xato javoblar</td>
+<td>9</td>
+<td>7</td>
+<td>bot jurnali (❌ bosilgan yoki tasdiqlashda tuzatilgan) = xatolar jurnalidagi 7 qator</td>
+</tr>
+<tr>
+<td>B.4 Takroriy so‘rovlar</td>
+<td>15</td>
+<td>12</td>
+<td>savdo guruhi Telegram yozishmasi, 14-19.12</td>
+</tr>
+<tr>
+<td>B.5 To‘liq hal qilingan</td>
+<td>100</td>
+<td>104</td>
+<td>bot jurnali</td>
+</tr>
+<tr>
+<td>B.6 Yakunlangan buyurtmalar</td>
+<td>-</td>
+<td>-</td>
+<td>bu jarayon bitimni bevosita yopmaydi: o‘lchanmaydi</td>
+</tr>
+<tr>
+<td>B.7 Tekshirish vaqti, soat</td>
+<td>0</td>
+<td>4,5</td>
+<td>Malika har qoralamani tasdiqladi, 17:30 da ❌ larni ko‘rdi (2,5); Jamshid aka uzatishlar va jurnal (2)</td>
+</tr>
+<tr>
+<td>B.14 Topilgan pul, so‘m</td>
+<td>0</td>
+<td>0</td>
+<td>bu hafta isbotlangan holat yo‘q</td>
+</tr>
+<tr>
+<td>B.8 Mijoz shikoyatlari</td>
+<td>2</td>
+<td>2</td>
+<td>Telegram va amoCRM «shikoyat» tegi: ikkalasi ham sinovgacha berilgan muddat va’dasi haqida</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Topilgan pul 0 so‘m:</strong> bu halol natija.
+Bu hafta agent pulni saqlab qolgan, hujjat bilan isbotlanadigan holat bo‘lmadi.
+Birinchi holat ko‘pincha 2-haftada keladi: namunada 23-dekabr kuni mijoz 34 000 000 so‘mlik buyurtmaga 12% chegirma so‘radi, bot qoidani aytdi, ROP 100% oldindan to‘lov bilan 10% berdi (uy vazifasi, <code>homework.md</code>).
+O‘ylab topilgan summadan ko‘ra «0 va sababi» yaxshiroq: 6-darsda mentor har bir summaning hujjatini so‘raydi.</p>
+<p>Xarajat va natija (1-hafta):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Soatbay haq: (12 x 25 000 + 5 x 22 500 + 8 x 60 000) / 25 = 35 700 so‘m
+             (Madina, Malika, Jamshid aka: oklad / 200 soat; kuniga 12, 5 va 8 ta savol)
+B.9  = server 200 000 / 4,3 + Claude Pro 267 500 / 4,3 + OpenRouter $0,67 x 11 941,65
+     = 46 512 + 62 209 + 8 001 = 116 722 so‘m
+B.10 = 0 so‘m hozircha (sozlash soatlari 6-darsda qo‘shiladi)
+B.11 = 4,5 soat x 35 700 = 160 650 so‘m
+B.12 = 116 722 + 0 + 160 650 = 277 372 so‘m
+B.15 = (6 - 2,5) x 132 / 60 - 4,5 = 7,7 - 4,5 = 3,2 soat/hafta
+B.16 = agent: 277 372 / 104 = 2 667 so‘m; inson: 6 / 60 x 35 700 = 3 570 so‘m</pre></div>
+<p><strong>Qanday o‘qiladi:</strong> 1-haftada bitta ish agent bilan 2 667 so‘m, inson bilan 3 570 so‘m.
+Tekshirish (B.11) xarajatning 58 foizi: 1-hafta ishonch qozonish haftasi, Malika har bir qoralamani tasdiqladi.
+5-darsdagi ruxsat qarori, qisman to‘g‘ridan-to‘g‘ri: 2-haftada narx va qoldiq javoblari to‘g‘ridan-to‘g‘ri ketadi, chegirma va yetkazish muddati javoblarini Malika 100% tasdiqlaydi.
+Botda bu <code>REPLY_MODE=topics</code> va <code>agent/approval.toml</code> dagi <code>direct_topics = ["narx", "qoldiq"]</code> (yoki telefondan <code>/darhol narx qoldiq</code>).
+Tejalgan vaqt hozircha 3,2 soat: B.7 ni ayirmasangiz, 7,7 chiqardi.</p>
+<p><strong>B.1 haqida:</strong> 132 agentgachadagi 120 dan ko‘p.
+Bot bilan so‘rash oson bo‘ldi: ilgari menejer ba’zan so‘ramasdan taxmin qilardi, endi so‘raydi; takroriy so‘rovlar esa 15 dan 12 ga tushdi (B.4).
+Bir xil ish o‘lchanmoqda (savdo bo‘limining narx, qoldiq, chegirma va muddat savollari): buni izohga yozing.</p>
+<p><strong>B.3 haqida:</strong> 7 ta xatoning hammasi mijozga ketmasdan ushlangan (Malika qoralamalarni tasdiqlagan, xodimlar ❌ bosgan).
+Agentgacha sanalgan 9 xato mijozga ketgan javoblarda edi: buni ham izohga yozing.</p>
+<h2>Yomon namuna</h2>
+<blockquote>
+<p>B.14 Topilgan pul (1-hafta): 9 450 000 so‘m.
+- 5 ta Optima buyurtmasi, bot narxni aytdi: 9 450 000</p>
+<p>B.7: -
+B.15 = (6 - 2,5) x 132 / 60 = 7,7 soat tejaldi.</p>
+</blockquote>
+<p><strong>Nimasi yomon:</strong></p>
+<ul>
+<li>Buyurtmaning butun summasi topilgan pul emas: bu daromad, foyda emas, va bot bo‘lmaganda ham sotilarmidi - noma’lum.</li>
+<li>Bu buyurtmada bot avval xato qilgan (chakana narx aytgan) va xatoni Malika ushlagan: agentning o‘z xatosini xodim ushlagani - pul topish emas, tekshirishning narxi.</li>
+<li>B.7 bo‘sh: tekshirish vaqti ayirilmagan, tejalgan vaqt 2,4 barobar oshirib ko‘rsatilgan (3,2 o‘rniga 7,7).</li>
+<li>Summaning hujjati yo‘q: 6-darsda mentor raqamlar tekshiruvidan o‘tmaydi (7-band: manbasiz summa o‘chiriladi).</li>
+</ul>
+<p><strong>To‘g‘rilangan:</strong> yuqoridagi Baraka jadvali: B.14 = 0 va sababi, B.7 = 4,5 soat ayirilgan, B.15 = 3,2.</p>
+<h2>Tez-tez uchraydigan xatolar</h2>
+<ul>
+<li><strong>Birliklar aralash.</strong> B.2 daqiqa, B.7 soat, B.1 haftasiga; sarlavhada yozilganidek.</li>
+<li><strong>Agentgacha qatori bo‘sh.</strong> Taqqoslab bo‘lmaydi: tarixdan (1C, CRM, Telegram) hozir oling va manbasini yozing.</li>
+<li><strong>Topilgan pul «0».</strong> Bu ham halol natija; yonida bir gap: «bu hafta isbotlangan holat bo‘lmadi».</li>
+<li><strong>Raqamni kimdir «yaxshiroq» qilib o‘zgartirdi.</strong> Bot sanagan qatorlarni o‘zgartirmang; izoh yozing.</li>
+<li><strong>Xodim bo‘yicha raqamlar.</strong> Shakl jarayonni o‘lchaydi: «Malika 30 ta savol berdi» kabi yozuvlar bo‘lmaydi.</li>
+</ul>
+<h2>Tayyor, agar</h2>
+<ul>
+<li class="cb">1-hafta ustunidagi har bir katakda raqam yoki <code>[?]</code> va manba bor.</li>
+<li class="cb">B.7 tekshirish vaqti yozilgan va B.15 da ayirilgan.</li>
+<li class="cb">B.14: har bir summa alohida qator, hisob va hujjat bilan; isbotlanmagani <code>[?]</code>.</li>
+<li class="cb">B.9-B.12 hisoblangan (hozircha 1-hafta uchun).</li>
+<li class="cb">B.13 dagi har bir xatoda «Nimani o‘zgartirdik» to‘ldirilgan.</li>
+<li class="cb">Mentor ko‘rdi (tekshiruv 5.3).</li>
+</ul>
+<div class="foot">Praktikum 3.0 · 5-dars · 20-dekabr 2026 · manba: day-5/exercises/05-kit5-b-1-hafta-va-topilgan-pul.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

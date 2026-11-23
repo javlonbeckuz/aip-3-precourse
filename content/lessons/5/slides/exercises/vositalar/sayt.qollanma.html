@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sayt.py: o‘z subdomeningizda HTTPS sahifa (qo‘llanma)</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 4-dars</span><span class="pill">Qo‘llanma</span></div>
+<h1>sayt.py: o‘z subdomeningizda HTTPS sahifa (qo‘llanma)</h1>
+<p>Bu vosita serveringizga kichik sahifa qo‘yadi va unga qulf belgisi (HTTPS) beradi: masalan, <code>https://forma.barakaoffice.uz</code>.
+Bot bilan bir serverda ishlaydi, botga tegmaydi.
+Assistent uchun shart emas: bot Telegram orqali ishlaydi.
+Darsdagi mashq: <code>../03-domen-va-https.md</code>.</p>
+<h2>Ichida nima bor</h2>
+<table>
+<thead>
+<tr>
+<th>Fayl</th>
+<th>Nima qiladi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sayt.py</code></td>
+<td>Noutbukda ishlaydi: <code>sayt/</code> papkasini arxivlaydi (yashirin fayllarsiz), serverga yuboradi va <code>sayt-sozlash.sh</code> ni ishga tushiradi. Server manzilini <code>.env</code> dagi <code>DEPLOY_HOST</code> dan o‘zi oladi</td>
+</tr>
+<tr>
+<td><code>sayt-sozlash.sh</code></td>
+<td>Serverda ishlaydi: Caddy’ni rasmiy manbadan o‘rnatadi, firewall’da 80 va 443 ni ochadi, sahifani <code>/var/www/sayt</code> ga qo‘yadi, Caddy’ni sozlaydi, DNS va HTTPS ni tekshiradi</td>
+</tr>
+</tbody>
+</table>
+<p>Ikkalasi ham <code>app/deploy/</code> papkasiga, <code>deploy.py</code> yoniga qo‘yiladi.</p>
+<h2>Boshlashdan oldin kerak</h2>
+<table>
+<thead>
+<tr>
+<th>Nima</th>
+<th>Qayerdan</th>
+<th>Tekshirish</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ishlayotgan server va <code>DEPLOY_HOST</code></td>
+<td>2-mashq</td>
+<td><code>deploy.py status</code> <code>active (running)</code></td>
+</tr>
+<tr>
+<td>Domen</td>
+<td>Registrator (masalan, Airnet), <code>.uz</code> domen yiliga taxminan 27 000 so‘m</td>
+<td>Panelda «faol»</td>
+</tr>
+<tr>
+<td>A yozuvi</td>
+<td>Domen panelidagi DNS bo‘limi: nom <code>forma</code>, qiymat - server IP</td>
+<td><code>nslookup forma.barakaoffice.uz 1.1.1.1</code> server IP ni ko‘rsatadi</td>
+</tr>
+<tr>
+<td><code>sayt/</code> papkasi, ichida <code>index.html</code></td>
+<td>3-mashq, 2-qadam: Claude yozadi yoki 3-darsdagi lid formasi</td>
+<td>Brauzerda faylni ochib ko‘ring</td>
+</tr>
+</tbody>
+</table>
+<h2>Qanday ishlatiladi</h2>
+<p>Claude Code’ga (<code>app/</code> papkasida):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>&quot;uv run python deploy/sayt.py forma.barakaoffice.uz sayt&quot; ni ishga tushir va har bosqichni bir gapda tushuntir.</pre></div>
+<table>
+<thead>
+<tr>
+<th>Qism</th>
+<th>Nima yoziladi</th>
+<th>Qayerdan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forma.barakaoffice.uz</code></td>
+<td>Subdomeningiz, <code>https://</code> siz va <code>/</code> siz</td>
+<td>A yozuvidagi nom + domeningiz</td>
+</tr>
+<tr>
+<td><code>sayt</code></td>
+<td>Sahifa papkasi (<code>app/</code> ichida)</td>
+<td>3-mashq, 2-qadam</td>
+</tr>
+<tr>
+<td><code>--test-local</code> (ixtiyoriy)</td>
+<td>Haqiqiy domen yo‘q bo‘lsa, mashq uchun: Caddy’ning o‘z test sertifikati</td>
+<td>Faqat sinash uchun; brauzer uni tanimaydi</td>
+</tr>
+</tbody>
+</table>
+<p>Qayta ishga tushirsangiz, zarar yo‘q: sahifa fayllari va Caddy sozlamasi yangilanadi, bot o‘zgarmaydi.
+Sahifani o‘zgartirdingizmi?
+Xuddi shu buyruqni qayta ishga tushiring.</p>
+<h2>Namuna: «Baraka Office»</h2>
+<p>Kirish: <code>sayt/index.html</code> - 3-darsdagi lid formasi (<code>examples/lead-form/index.html</code> dan nusxa).
+Buyruq: <code>uv run python deploy/sayt.py forma.barakaoffice.uz sayt</code>.
+To‘liq natija, DNS tayyor bo‘lmagan holat: <code>../namuna/natijalar/10b-sayt-dns-tayyor-emas.txt</code>.
+To‘liq natija, test sertifikati bilan: <code>../namuna/natijalar/10-sayt-test.txt</code>.
+DNS tayyor bo‘lganda oxirgi qatorlar:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>==&gt; 5/5 Tekshiruv: DNS va HTTPS
+DNS: forma.barakaoffice.uz -&gt; 203.0.113.10 (shu server). To'g'ri.
+
+==&gt; Tayyor: https://forma.barakaoffice.uz ochiladi (HTTPS, qulf belgisi bilan).
+Sertifikatni Caddy o'zi yangilab turadi. Telefoningizda ham oching.</pre></div>
+<h2>Ko‘p uchraydigan xatolar</h2>
+<table>
+<thead>
+<tr>
+<th>Ekranda</th>
+<th>Sabab</th>
+<th>Yechim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>... domen emas. Namuna: forma.barakaoffice.uz</code></td>
+<td>Manzil xato yozilgan (bo‘sh joy, <code>http://...</code> qismi to‘liq emas)</td>
+<td>Faqat <code>forma.barakaoffice.uz</code></td>
+</tr>
+<tr>
+<td><code>... ichida index.html yo'q</code></td>
+<td>Papkada bosh sahifa yo‘q yoki boshqacha nomlangan</td>
+<td>Bosh sahifa nomi aynan <code>index.html</code></td>
+</tr>
+<tr>
+<td><code>Qaysi server? .env ga DEPLOY_HOST=...</code></td>
+<td><code>.env</code> da <code>DEPLOY_HOST</code> yo‘q</td>
+<td>00-dars-oldidan, 1-qadam</td>
+</tr>
+<tr>
+<td><code>DIQQAT: ... hech qaysi IP manzilga qaramayapti</code></td>
+<td>A yozuvi yo‘q yoki hali tarqalmagan</td>
+<td>Panelni tekshiring; to‘g‘ri bo‘lsa, kuting: Caddy o‘zi qayta urinadi</td>
+</tr>
+<tr>
+<td><code>DIQQAT: ... boshqa manzilga qarayapti</code></td>
+<td>A yozuvi eski yoki boshqa server IP sida</td>
+<td>A yozuvini tuzating</td>
+</tr>
+<tr>
+<td><code>Caddy sozlamasi xato: hech narsa o'zgarmadi</code></td>
+<td>Kutilmagan holat</td>
+<td>Skrinshot, mentor; eski sozlama joyida qoldi</td>
+</tr>
+</tbody>
+</table>
+<h2>Saytni o‘chirish</h2>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Serverda Caddy saytini o'chir: &quot;systemctl disable --now caddy&quot;, keyin &quot;ufw delete allow 80/tcp&quot; va &quot;ufw delete allow 443/tcp&quot;. pilot-bot ga tegma.</pre></div>
+<h2>Tayyor bo‘ldi, agar</h2>
+<ul>
+<li class="cb">Telefonda <code>https://&lt;subdomen&gt;</code> ochiladi, manzil satrida qulf.</li>
+<li class="cb">Qulfni bossangiz, sertifikat beruvchi «Let’s Encrypt».</li>
+<li class="cb">Botga <code>/holat</code>: bot ham ishlayapti.</li>
+</ul>
+<p>Sinov: 2026-11-03, Docker ichidagi toza Ubuntu 24.04 va 26.04, Caddy v2.11.7 (rasmiy Debian/Ubuntu ombori).
+Sahifa test sertifikati bilan HTTPS orqali ochildi, server qayta yuklangandan keyin ham ishladi; DNS tayyor bo‘lmagan holatdagi ogohlantirish chiqdi.
+Haqiqiy Let’s Encrypt sertifikati sinovda olinmadi (konteynerda ochiq domen yo‘q).
+Kod testlari: <code>day-4/_build/tests/test_sayt.py</code> (18 ta, internetsiz).</p>
+<div class="foot">Praktikum 3.0 · 4-dars · manba: day-4/exercises/vositalar/sayt.qollanma.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

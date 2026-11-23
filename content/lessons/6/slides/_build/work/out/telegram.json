@@ -1,0 +1,3836 @@
+[
+ {
+  "t": "2026-12-14T07:40+05:00",
+  "chat": "Rustamov",
+  "text": "🟢 «Savdo yordamchisi» ishga tushdi.\nModel: google/gemini-3.8-flash.\nRejim: darhol javob beradi.",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-14T07:40+05:00",
+  "chat": null,
+  "text": "[server] deploy: agent v1 (go-live, 4-darsdan keyin), REPLY_MODE=approve",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-14T08:30+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Kam qolgan mahsulotlar\n\nTayyor mahsulot 15 donadan kam:\n- CF-401 Стол переговоров Dialog-8 280x120: 2 dona\n- CH-203 Кресло руководителя Senator Lux черное: 11 dona\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 12 dona\n- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 14 dona",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-14T09:19+05:00",
+  "chat": "Madina",
+  "text": "«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 20 dona - ulgurji narx: 5 300 000 x 20 = 106 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T09:26+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-202 Кресло ErgoPro X5 (синхромеханизм): 150 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T09:33+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #6a6ae768\nKimdan: Zarina\nSavol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?\nSabab: 7 ish kunidan tez yetkazish so‘ralmoqda.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T09:33+05:00",
+  "chat": "Zarina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T09:54+05:00",
+  "chat": "Zarina",
+  "text": "«Bench-4» 4 kishilik blok 280x140 (WS-103), 2 dona - chakana narx: 9 800 000 x 2 = 19 600 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T10:08+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 12 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T10:15+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #9dd8904f\nKimdan: Bekzod\nSavol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?\nSabab: 7 ish kunidan tez yetkazish so‘ralmoqda.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T10:15+05:00",
+  "chat": "Bekzod",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T10:18+05:00",
+  "chat": "Zarina",
+  "text": "Xodim javobi:\nBu buyurtma bo‘yicha bugun 16:00 gacha javob beraman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T10:18+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #6a6ae768 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T10:22+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-103 Блок Bench-4 на 4 места 280x140: 16 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T10:23+05:00",
+  "chat": "Bekzod",
+  "text": "Xodim javobi:\n5% dan oshmaydi, qolganini men mijoz bilan hal qilaman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T10:23+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #9dd8904f yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T10:50+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 120 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T11:32+05:00",
+  "chat": "Bekzod",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 8 dona - ulgurji narx: 1 180 000 x 8 = 9 440 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T12:07+05:00",
+  "chat": "Malika",
+  "text": "«Optima» ergonomik stol 140x70 (WS-102), 7 dona - ulgurji narx: 1 890 000 x 7 = 13 230 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T12:35+05:00",
+  "chat": "Bekzod",
+  "text": "«Senator Lux» rahbar kreslosi (CH-203), 15 dona - ulgurji narx: 4 400 000 x 15 = 66 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T12:56+05:00",
+  "chat": "Zarina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 12 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T13:17+05:00",
+  "chat": "Zarina",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 4 dona - chakana narx: 1 350 000 x 4 = 5 400 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T13:31+05:00",
+  "chat": "Zarina",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 10 dona - ulgurji narx: 1 180 000 x 10 = 11 800 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T13:38+05:00",
+  "chat": "Zarina",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 4 dona - chakana narx: 1 350 000 x 4 = 5 400 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T14:06+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 12 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T14:27+05:00",
+  "chat": "Bekzod",
+  "text": "«Bench-4» 4 kishilik blok 280x140 (WS-103), 12 dona - ulgurji narx: 8 600 000 x 12 = 103 200 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T15:51+05:00",
+  "chat": "Malika",
+  "text": "«Bench-4» 4 kishilik blok 280x140 (WS-103), 20 dona - ulgurji narx: 8 600 000 x 20 = 172 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T16:12+05:00",
+  "chat": "Malika",
+  "text": "«Conf-Lite» muzokara stuli (CH-204), 3 dona - chakana narx: 980 000 x 3 = 2 940 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T16:40+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-103 Блок Bench-4 на 4 места 280x140: 16 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T17:36+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #ac03031e\nKimdan: Zarina\nSavol: Mijoz shikoyat qilyapti: kreslo g'ildiragi singan, nima qilamiz?\nSabab: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T17:36+05:00",
+  "chat": "Zarina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T18:21+05:00",
+  "chat": "Zarina",
+  "text": "Xodim javobi:\n5% dan oshmaydi, qolganini men mijoz bilan hal qilaman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-14T18:21+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #ac03031e yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T08:30+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Kam qolgan mahsulotlar\n\nTayyor mahsulot 15 donadan kam:\n- CF-401 Стол переговоров Dialog-8 280x120: 2 dona\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona\n- CH-203 Кресло руководителя Senator Lux черное: 11 dona\n- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 14 dona",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-15T09:00+05:00",
+  "chat": "Rustamov",
+  "text": "📊 Kunlik hisobot: 14-dekabr, dushanba\n«Savdo yordamchisi»\n\n• So‘rovlar: 21\n• Javob berildi: 18\n• Odamga uzatildi: 3\n• Xato deb belgilandi: 0\n• To‘liq hal qilindi: 18\n• Texnik xatolar: 0\n• Xarajat: $0.11 (shu oy $0.11 / limit $15.00)",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-15T09:12+05:00",
+  "chat": "Bekzod",
+  "text": "Foizsiz 3 oyga bo‘lib to‘lash: faqat 50% boshlang‘ich to‘lov va bank kafolati (yoki lizing) bo‘lsa.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T09:19+05:00",
+  "chat": "Zarina",
+  "text": "«Senator Lux» rahbar kreslosi (CH-203), 1 dona - chakana narx: 4 900 000 x 1 = 4 900 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T09:33+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-103 Блок Bench-4 на 4 места 280x140: 16 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T10:01+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-103 Блок Bench-4 на 4 места 280x140: 16 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T10:36+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T10:43+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T11:20+05:00",
+  "chat": "Malika",
+  "text": "«Optima» 5 dona: 2 150 000 x 5 = 10 750 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T11:21+05:00",
+  "chat": "Malika",
+  "text": "Rahmat, bu xatolar jurnaliga yozildi.\nNima noto‘g‘ri edi? Bitta xabar bilan qisqa yozing (yoki /bekor).",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T11:21+05:00",
+  "chat": "Malika",
+  "text": "Yozib qo‘ydim. Rahmat - shu bilan yordamchi yaxshilanadi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T11:53+05:00",
+  "chat": "Madina",
+  "text": "Foizsiz 3 oyga bo‘lib to‘lash: faqat 50% boshlang‘ich to‘lov va bank kafolati (yoki lizing) bo‘lsa.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T12:42+05:00",
+  "chat": "Malika",
+  "text": "Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T12:49+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 120 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T13:10+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T14:13+05:00",
+  "chat": "Malika",
+  "text": "«ErgoPro X5» menejer kreslosi (CH-202), 20 dona - ulgurji narx: 2 500 000 x 20 = 50 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T14:55+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #dd1775a9\nKimdan: Zarina\nSavol: Tender: 160 mln lik buyurtma, nima qilamiz?\nSabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T14:55+05:00",
+  "chat": "Zarina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T15:03+05:00",
+  "chat": "Zarina",
+  "text": "Xodim javobi:\nMen o‘zim mijoz bilan gaplashaman, raqamini yuboring.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T15:03+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #dd1775a9 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T15:09+05:00",
+  "chat": "Madina",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 2 dona - chakana narx: 1 350 000 x 2 = 2 700 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T15:16+05:00",
+  "chat": "Zarina",
+  "text": "«Optima» ergonomik stol 140x70 (WS-102), 4 dona - chakana narx: 2 150 000 x 4 = 8 600 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T15:40+05:00",
+  "chat": "Madina",
+  "text": "«Start» 6 dona: 1 450 000 x 6 = 8 700 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T15:41+05:00",
+  "chat": "Madina",
+  "text": "Rahmat, bu xatolar jurnaliga yozildi.\nNima noto‘g‘ri edi? Bitta xabar bilan qisqa yozing (yoki /bekor).",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T15:41+05:00",
+  "chat": "Madina",
+  "text": "Yozib qo‘ydim. Rahmat - shu bilan yordamchi yaxshilanadi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T15:51+05:00",
+  "chat": "Zarina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-202 Кресло ErgoPro X5 (синхромеханизм): 150 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T16:19+05:00",
+  "chat": "Malika",
+  "text": "«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T16:40+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #e88f40a2\nKimdan: Madina\nSavol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?\nSabab: 7 ish kunidan tez yetkazish so‘ralmoqda.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T16:40+05:00",
+  "chat": "Madina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T16:47+05:00",
+  "chat": "Madina",
+  "text": "«Conf-Lite» muzokara stuli (CH-204), 7 dona - ulgurji narx: 850 000 x 7 = 5 950 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T16:47+05:00",
+  "chat": "Madina",
+  "text": "Xodim javobi:\nBu buyurtma bo‘yicha bugun 16:00 gacha javob beraman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T16:47+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #e88f40a2 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T17:01+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 14 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T17:08+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #e9a462ce\nKimdan: Bekzod\nSavol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?\nSabab: 7 ish kunidan tez yetkazish so‘ralmoqda.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T17:08+05:00",
+  "chat": "Bekzod",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T17:21+05:00",
+  "chat": "Bekzod",
+  "text": "Xodim javobi:\nBu buyurtma bo‘yicha bugun 16:00 gacha javob beraman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-15T17:21+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #e9a462ce yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T08:30+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Kam qolgan mahsulotlar\n\nTayyor mahsulot 15 donadan kam:\n- CF-401 Стол переговоров Dialog-8 280x120: 2 dona\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona\n- CH-203 Кресло руководителя Senator Lux черное: 11 dona\n- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 14 dona",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-16T09:00+05:00",
+  "chat": "Rustamov",
+  "text": "📊 Kunlik hisobot: 15-dekabr, seshanba\n«Savdo yordamchisi»\n\n• So‘rovlar: 22\n• Javob berildi: 19\n• Odamga uzatildi: 3\n• Xato deb belgilandi: 2\n• To‘liq hal qilindi: 17\n• Texnik xatolar: 0\n• Xarajat: $0.11 (shu oy $0.22 / limit $15.00)\n\nDiqqat:\n• Xato javoblar ro‘yxati: /xatolar",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-16T09:05+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #46371f37\nKimdan: Bekzod\nSavol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?\nSabab: 7 ish kunidan tez yetkazish so‘ralmoqda.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T09:05+05:00",
+  "chat": "Bekzod",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T09:12+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #5622276a\nKimdan: Bekzod\nSavol: Mijoz 30 mln buyurtmaga 10% chegirma so'rayapti\nSabab: 10% chegirma menejer vakolatidan (5%) yuqori.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T09:12+05:00",
+  "chat": "Bekzod",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T09:13+05:00",
+  "chat": "Bekzod",
+  "text": "Xodim javobi:\nMen o‘zim mijoz bilan gaplashaman, raqamini yuboring.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T09:13+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #46371f37 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T09:26+05:00",
+  "chat": "Bekzod",
+  "text": "«Bench-4» 4 kishilik blok 280x140 (WS-103), 10 dona - ulgurji narx: 8 600 000 x 10 = 86 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T09:33+05:00",
+  "chat": "Bekzod",
+  "text": "Foizsiz 3 oyga bo‘lib to‘lash: faqat 50% boshlang‘ich to‘lov va bank kafolati (yoki lizing) bo‘lsa.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T09:42+05:00",
+  "chat": "Bekzod",
+  "text": "Xodim javobi:\n5% dan oshmaydi, qolganini men mijoz bilan hal qilaman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T09:42+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #5622276a yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T10:01+05:00",
+  "chat": "Madina",
+  "text": "«Senator Lux» rahbar kreslosi (CH-203), 2 dona - chakana narx: 4 900 000 x 2 = 9 800 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T10:22+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 120 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T11:04+05:00",
+  "chat": "Zarina",
+  "text": "«ErgoPro X5» menejer kreslosi (CH-202), 2 dona - chakana narx: 2 850 000 x 2 = 5 700 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T12:21+05:00",
+  "chat": "Madina",
+  "text": "«Bench-4» 4 kishilik blok 280x140 (WS-103), 10 dona - ulgurji narx: 8 600 000 x 10 = 86 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T12:35+05:00",
+  "chat": "Zarina",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 20 dona - ulgurji narx: 1 180 000 x 20 = 23 600 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T12:49+05:00",
+  "chat": "Zarina",
+  "text": "«Optima» ergonomik stol 140x70 (WS-102), 1 dona - chakana narx: 2 150 000 x 1 = 2 150 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T13:38+05:00",
+  "chat": "Malika",
+  "text": "Muddat: 70% (yoki 100%) oldindan to‘lov tushgan kundan 7 ish kuni.\nToshkent shahri: 10 000 000 so‘mdan katta buyurtmaga yetkazish va montaj bepul.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T13:59+05:00",
+  "chat": "Malika",
+  "text": "«Dialog-8» muzokara stoli 280x120 (CF-401), 10 dona - ulgurji narx: 7 400 000 x 10 = 74 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T14:06+05:00",
+  "chat": "Zarina",
+  "text": "«Senator Lux» rahbar kreslosi (CH-203), 3 dona - chakana narx: 4 900 000 x 3 = 14 700 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T14:13+05:00",
+  "chat": "Bekzod",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 4 dona - chakana narx: 1 350 000 x 4 = 5 400 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T14:27+05:00",
+  "chat": "Zarina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 14 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T14:55+05:00",
+  "chat": "Zarina",
+  "text": "«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 2 dona - chakana narx: 5 900 000 x 2 = 11 800 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T15:00+05:00",
+  "chat": "Madina",
+  "text": "Ha, omborda bor (1C).",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T15:01+05:00",
+  "chat": "Madina",
+  "text": "Rahmat, bu xatolar jurnaliga yozildi.\nNima noto‘g‘ri edi? Bitta xabar bilan qisqa yozing (yoki /bekor).",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T15:01+05:00",
+  "chat": "Madina",
+  "text": "Yozib qo‘ydim. Rahmat - shu bilan yordamchi yaxshilanadi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T15:09+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T15:58+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-204 Стул конференц Conf-Lite (полозья хром): 64 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T16:05+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #99f06659\nKimdan: Malika\nSavol: Tender: 160 mln lik buyurtma, nima qilamiz?\nSabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T16:05+05:00",
+  "chat": "Malika",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T16:12+05:00",
+  "chat": "Bekzod",
+  "text": "«ErgoPro X5» menejer kreslosi (CH-202), 7 dona - ulgurji narx: 2 500 000 x 7 = 17 500 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T16:21+05:00",
+  "chat": "Malika",
+  "text": "Xodim javobi:\nBu buyurtma bo‘yicha bugun 16:00 gacha javob beraman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T16:21+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #99f06659 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T16:30+05:00",
+  "chat": "Malika",
+  "text": "Ha, 5% gacha bera olasiz.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T16:31+05:00",
+  "chat": "Malika",
+  "text": "Rahmat, bu xatolar jurnaliga yozildi.\nNima noto‘g‘ri edi? Bitta xabar bilan qisqa yozing (yoki /bekor).",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T16:31+05:00",
+  "chat": "Malika",
+  "text": "Yozib qo‘ydim. Rahmat - shu bilan yordamchi yaxshilanadi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-16T17:15+05:00",
+  "chat": "Malika",
+  "text": "Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T08:00+05:00",
+  "chat": "Rustamov",
+  "text": "⚠️ Ma’lumot manbasi muammosi: Ombor qoldig‘i (1C eksport): jadvalda qatorlar yo‘q",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-17T08:30+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Kam qolgan mahsulotlar: bu safar javob tayyorlab bo‘lmadi (ombor fayli bilan muammo (Ombor qoldig‘i (1C eksport): jadvalda qatorlar yo‘q), qoldiqni Otabek akadan aniqlash kerak.). Ma’lumot fayllarini tekshiring: /holat",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-17T09:00+05:00",
+  "chat": "Rustamov",
+  "text": "📊 Kunlik hisobot: 16-dekabr, chorshanba\n«Savdo yordamchisi»\n\n• So‘rovlar: 23\n• Javob berildi: 20\n• Odamga uzatildi: 3\n• Xato deb belgilandi: 2\n• To‘liq hal qilindi: 18\n• Texnik xatolar: 0\n• Xarajat: $0.12 (shu oy $0.34 / limit $15.00)\n\nDiqqat:\n• Ombor qoldig‘i (1C eksport): jadvalda qatorlar yo‘q\n• Xato javoblar ro‘yxati: /xatolar",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-17T09:10+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #70ce7993\nKimdan: Zarina\nSavol: ErgoPro omborda nechta bor?\nSabab: ombor fayli bilan muammo (Ombor qoldig‘i (1C eksport): jadvalda qatorlar yo‘q), qoldiqni Otabek akadan aniqlash kerak.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T09:10+05:00",
+  "chat": "Zarina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T09:12+05:00",
+  "chat": "Madina",
+  "text": "«ErgoPro X5» menejer kreslosi (CH-202), 2 dona - chakana narx: 2 850 000 x 2 = 5 700 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T09:23+05:00",
+  "chat": "Zarina",
+  "text": "Xodim javobi:\nOmborda 150 ta bor. 1C fayli bugun bo‘sh chiqdi, Otabek aka qayta yuklayapti.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T09:23+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #70ce7993 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T09:33+05:00",
+  "chat": "Malika",
+  "text": "«Dialog-8» muzokara stoli 280x120 (CF-401), 8 dona - ulgurji narx: 7 400 000 x 8 = 59 200 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T09:35+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #e144c4ee\nKimdan: Bekzod\nSavol: Staff Mesh omborda nechta bor?\nSabab: ombor fayli bilan muammo (Ombor qoldig‘i (1C eksport): jadvalda qatorlar yo‘q), qoldiqni Otabek akadan aniqlash kerak.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T09:35+05:00",
+  "chat": "Bekzod",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T09:40+05:00",
+  "chat": "Madina",
+  "text": "«Sultan» rahbar kabineti (EX-301), 1 dona - chakana narx: 18 500 000 x 1 = 18 500 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T09:48+05:00",
+  "chat": "Bekzod",
+  "text": "Xodim javobi:\nOmborda 14 ta bor (Otabek akadan so‘radim).",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T09:48+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #e144c4ee yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T10:01+05:00",
+  "chat": "Bekzod",
+  "text": "«Bench-4» 4 kishilik blok 280x140 (WS-103), 12 dona - ulgurji narx: 8 600 000 x 12 = 103 200 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T10:15+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #7a6d7ff3\nKimdan: Madina\nSavol: Optima omborda nechta bor?\nSabab: ombor fayli bilan muammo (Ombor qoldig‘i (1C eksport): jadvalda qatorlar yo‘q), qoldiqni Otabek akadan aniqlash kerak.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T10:15+05:00",
+  "chat": "Madina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T10:28+05:00",
+  "chat": "Madina",
+  "text": "Xodim javobi:\nOmborda 6 ta qoldi (Otabek akadan so‘radim).",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T10:28+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #7a6d7ff3 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T10:29+05:00",
+  "chat": "Malika",
+  "text": "«Optima» ergonomik stol 140x70 (WS-102), 2 dona - chakana narx: 2 150 000 x 2 = 4 300 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T10:43+05:00",
+  "chat": "Zarina",
+  "text": "«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T11:18+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-203 Кресло руководителя Senator Lux черное: 11 dona\n- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T11:25+05:00",
+  "chat": "Zarina",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 20 dona - ulgurji narx: 1 180 000 x 20 = 23 600 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T11:53+05:00",
+  "chat": "Zarina",
+  "text": "«Bench-4» 4 kishilik blok 280x140 (WS-103), 12 dona - ulgurji narx: 8 600 000 x 12 = 103 200 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T12:10+05:00",
+  "chat": "Malika",
+  "text": "Ha, Toshkent viloyatiga yetkazish bepul.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T12:11+05:00",
+  "chat": "Malika",
+  "text": "Rahmat, bu xatolar jurnaliga yozildi.\nNima noto‘g‘ri edi? Bitta xabar bilan qisqa yozing (yoki /bekor).",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T12:11+05:00",
+  "chat": "Malika",
+  "text": "Yozib qo‘ydim. Rahmat - shu bilan yordamchi yaxshilanadi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T12:35+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-103 Блок Bench-4 на 4 места 280x140: 16 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T13:03+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #7b05bc1a\nKimdan: Madina\nSavol: Mijoz 45 mln buyurtmaga 8% chegirma so'rayapti\nSabab: 8% chegirma menejer vakolatidan (5%) yuqori.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T13:03+05:00",
+  "chat": "Madina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T13:31+05:00",
+  "chat": "Malika",
+  "text": "Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T13:48+05:00",
+  "chat": "Madina",
+  "text": "Xodim javobi:\nMen o‘zim mijoz bilan gaplashaman, raqamini yuboring.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T13:48+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #7b05bc1a yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T14:27+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #eb5c35d9\nKimdan: Bekzod\nSavol: Tender: 210 mln lik buyurtma, nima qilamiz?\nSabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T14:27+05:00",
+  "chat": "Bekzod",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T14:41+05:00",
+  "chat": "Madina",
+  "text": "«Bench-4» 4 kishilik blok 280x140 (WS-103), 15 dona - ulgurji narx: 8 600 000 x 15 = 129 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T14:46+05:00",
+  "chat": "Bekzod",
+  "text": "Xodim javobi:\nMen o‘zim mijoz bilan gaplashaman, raqamini yuboring.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T14:46+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #eb5c35d9 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T15:16+05:00",
+  "chat": "Bekzod",
+  "text": "«Conf-Lite» muzokara stuli (CH-204), 7 dona - ulgurji narx: 850 000 x 7 = 5 950 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T15:23+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 120 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T15:50+05:00",
+  "chat": "Jamshid aka",
+  "text": "Barcha kreslolarga 3 yil kafolat.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T15:51+05:00",
+  "chat": "Jamshid aka",
+  "text": "Rahmat, bu xatolar jurnaliga yozildi.\nNima noto‘g‘ri edi? Bitta xabar bilan qisqa yozing (yoki /bekor).",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T15:51+05:00",
+  "chat": "Jamshid aka",
+  "text": "Yozib qo‘ydim. Rahmat - shu bilan yordamchi yaxshilanadi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-17T17:43+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- SH-501 Шкаф для документов 80x40x200: 58 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T08:30+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Kam qolgan mahsulotlar\n\nTayyor mahsulot 15 donadan kam:\n- CF-401 Стол переговоров Dialog-8 280x120: 0 dona\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona\n- CH-203 Кресло руководителя Senator Lux черное: 11 dona\n- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 14 dona",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-18T09:00+05:00",
+  "chat": "Rustamov",
+  "text": "📊 Kunlik hisobot: 17-dekabr, payshanba\n«Savdo yordamchisi»\n\n• So‘rovlar: 22\n• Javob berildi: 17\n• Odamga uzatildi: 5\n• Xato deb belgilandi: 2\n• To‘liq hal qilindi: 15\n• Texnik xatolar: 0\n• Xarajat: $0.11 (shu oy $0.45 / limit $15.00)\n\nDiqqat:\n• Xato javoblar ro‘yxati: /xatolar",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-18T09:12+05:00",
+  "chat": "Bekzod",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 7 dona - ulgurji narx: 1 180 000 x 7 = 8 260 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T09:19+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #6e325d76\nKimdan: Madina\nSavol: Tender: 160 mln lik buyurtma, nima qilamiz?\nSabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T09:19+05:00",
+  "chat": "Madina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T09:26+05:00",
+  "chat": "Zarina",
+  "text": "«Optima» ergonomik stol 140x70 (WS-102), 3 dona - chakana narx: 2 150 000 x 3 = 6 450 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T09:28+05:00",
+  "chat": "Madina",
+  "text": "Xodim javobi:\nMen o‘zim mijoz bilan gaplashaman, raqamini yuboring.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T09:28+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #6e325d76 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T09:40+05:00",
+  "chat": "Zarina",
+  "text": "«Imperia» VIP kabinet (EX-302), 1 dona - chakana narx: 32 000 000 x 1 = 32 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T10:08+05:00",
+  "chat": "Bekzod",
+  "text": "Muddat: 70% (yoki 100%) oldindan to‘lov tushgan kundan 7 ish kuni.\nToshkent shahri: 10 000 000 so‘mdan katta buyurtmaga yetkazish va montaj bepul.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T10:22+05:00",
+  "chat": "Bekzod",
+  "text": "Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T10:43+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-103 Блок Bench-4 на 4 места 280x140: 16 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T11:39+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #7e974317\nKimdan: Malika\nSavol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?\nSabab: 7 ish kunidan tez yetkazish so‘ralmoqda.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T11:39+05:00",
+  "chat": "Malika",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T11:48+05:00",
+  "chat": "Malika",
+  "text": "Xodim javobi:\n5% dan oshmaydi, qolganini men mijoz bilan hal qilaman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T11:48+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #7e974317 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T12:28+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T12:35+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- SH-501 Шкаф для документов 80x40x200: 58 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T12:49+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #9edf96f4\nKimdan: Bekzod\nSavol: Mijoz shikoyat qilyapti: kreslo g'ildiragi singan, nima qilamiz?\nSabab: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T12:49+05:00",
+  "chat": "Bekzod",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T13:10+05:00",
+  "chat": "Malika",
+  "text": "«Dialog-8» muzokara stoli 280x120 (CF-401), 10 dona - ulgurji narx: 7 400 000 x 10 = 74 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T13:17+05:00",
+  "chat": "Zarina",
+  "text": "«Sultan» rahbar kabineti (EX-301), 1 dona - chakana narx: 18 500 000 x 1 = 18 500 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T13:24+05:00",
+  "chat": "Malika",
+  "text": "«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 20 dona - ulgurji narx: 5 300 000 x 20 = 106 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T13:31+05:00",
+  "chat": "Zarina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T13:34+05:00",
+  "chat": "Bekzod",
+  "text": "Xodim javobi:\nBu buyurtma bo‘yicha bugun 16:00 gacha javob beraman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T13:34+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #9edf96f4 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T14:27+05:00",
+  "chat": "Madina",
+  "text": "«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 7 dona - ulgurji narx: 5 300 000 x 7 = 37 100 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T14:55+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-202 Кресло ErgoPro X5 (синхромеханизм): 150 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T15:51+05:00",
+  "chat": "Malika",
+  "text": "«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T16:30+05:00",
+  "chat": "Madina",
+  "text": "Ha, bor (1C).",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T16:31+05:00",
+  "chat": "Madina",
+  "text": "Rahmat, bu xatolar jurnaliga yozildi.\nNima noto‘g‘ri edi? Bitta xabar bilan qisqa yozing (yoki /bekor).",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T16:31+05:00",
+  "chat": "Madina",
+  "text": "Yozib qo‘ydim. Rahmat - shu bilan yordamchi yaxshilanadi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T17:15+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T17:22+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-203 Кресло руководителя Senator Lux черное: 11 dona\n- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-18T17:36+05:00",
+  "chat": "Madina",
+  "text": "«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 10 dona - ulgurji narx: 5 300 000 x 10 = 53 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T08:30+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Kam qolgan mahsulotlar\n\nTayyor mahsulot 15 donadan kam:\n- CF-401 Стол переговоров Dialog-8 280x120: 0 dona\n- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 4 dona\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona\n- CH-203 Кресло руководителя Senator Lux черное: 9 dona",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-19T09:00+05:00",
+  "chat": "Rustamov",
+  "text": "📊 Kunlik hisobot: 18-dekabr, juma\n«Savdo yordamchisi»\n\n• So‘rovlar: 22\n• Javob berildi: 19\n• Odamga uzatildi: 3\n• Xato deb belgilandi: 1\n• To‘liq hal qilindi: 18\n• Texnik xatolar: 0\n• Xarajat: $0.11 (shu oy $0.56 / limit $15.00)\n\nDiqqat:\n• Xato javoblar ro‘yxati: /xatolar",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-19T10:08+05:00",
+  "chat": "Zarina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-103 Блок Bench-4 на 4 места 280x140: 16 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T10:22+05:00",
+  "chat": "Malika",
+  "text": "«Senator Lux» rahbar kreslosi (CH-203), 8 dona - ulgurji narx: 4 400 000 x 8 = 35 200 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T10:29+05:00",
+  "chat": "Malika",
+  "text": "«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T11:32+05:00",
+  "chat": "Bekzod",
+  "text": "«ErgoPro X5» menejer kreslosi (CH-202), 12 dona - ulgurji narx: 2 500 000 x 12 = 30 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T11:46+05:00",
+  "chat": "Madina",
+  "text": "«Start» xodim stoli 120x60 (WS-101), 3 dona - chakana narx: 1 450 000 x 3 = 4 350 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T12:07+05:00",
+  "chat": "Bekzod",
+  "text": "«Start» xodim stoli 120x60 (WS-101), 8 dona - ulgurji narx: 1 280 000 x 8 = 10 240 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T12:35+05:00",
+  "chat": "Bekzod",
+  "text": "«Imperia» VIP kabinet (EX-302), 1 dona - chakana narx: 32 000 000 x 1 = 32 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T12:49+05:00",
+  "chat": "Malika",
+  "text": "Foizsiz 3 oyga bo‘lib to‘lash: faqat 50% boshlang‘ich to‘lov va bank kafolati (yoki lizing) bo‘lsa.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T13:10+05:00",
+  "chat": "Bekzod",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 1 dona - chakana narx: 1 350 000 x 1 = 1 350 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T13:24+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T13:31+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #19ee685f\nKimdan: Zarina\nSavol: Mijoz 25 mln buyurtmaga 12% chegirma so'rayapti\nSabab: 12% chegirma menejer vakolatidan (5%) yuqori.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T13:31+05:00",
+  "chat": "Zarina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T13:45+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #6c68d4a0\nKimdan: Malika\nSavol: Tender: 210 mln lik buyurtma, nima qilamiz?\nSabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T13:45+05:00",
+  "chat": "Malika",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T13:56+05:00",
+  "chat": "Malika",
+  "text": "Xodim javobi:\nMen o‘zim mijoz bilan gaplashaman, raqamini yuboring.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T13:56+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #6c68d4a0 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T14:01+05:00",
+  "chat": "Zarina",
+  "text": "Xodim javobi:\nMen o‘zim mijoz bilan gaplashaman, raqamini yuboring.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T14:01+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #19ee685f yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T14:27+05:00",
+  "chat": "Zarina",
+  "text": "Foizsiz 3 oyga bo‘lib to‘lash: faqat 50% boshlang‘ich to‘lov va bank kafolati (yoki lizing) bo‘lsa.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T14:48+05:00",
+  "chat": "Zarina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T15:16+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T15:30+05:00",
+  "chat": "Bekzod",
+  "text": "«Conf-Lite» muzokara stuli (CH-204), 12 dona - ulgurji narx: 850 000 x 12 = 10 200 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T15:44+05:00",
+  "chat": "Bekzod",
+  "text": "«Optima» ergonomik stol 140x70 (WS-102), 8 dona - ulgurji narx: 1 890 000 x 8 = 15 120 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T17:22+05:00",
+  "chat": "Zarina",
+  "text": "«Senator Lux» rahbar kreslosi (CH-203), 12 dona - ulgurji narx: 4 400 000 x 12 = 52 800 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T17:29+05:00",
+  "chat": "Bekzod",
+  "text": "«ErgoPro X5» menejer kreslosi (CH-202), 7 dona - ulgurji narx: 2 500 000 x 7 = 17 500 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T17:36+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T17:43+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #93cd7e6f\nKimdan: Zarina\nSavol: Tender: 170 mln lik buyurtma, nima qilamiz?\nSabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T17:43+05:00",
+  "chat": "Zarina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T17:54+05:00",
+  "chat": "Zarina",
+  "text": "Xodim javobi:\nMen o‘zim mijoz bilan gaplashaman, raqamini yuboring.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T17:54+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #93cd7e6f yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-19T18:40+05:00",
+  "chat": "Bekzod",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim, u ish vaqtida javob beradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-20T09:00+05:00",
+  "chat": "Rustamov",
+  "text": "📊 Kunlik hisobot: 19-dekabr, shanba\n«Savdo yordamchisi»\n\n• So‘rovlar: 22\n• Javob berildi: 18\n• Odamga uzatildi: 4\n• Xato deb belgilandi: 0\n• To‘liq hal qilindi: 18\n• Texnik xatolar: 0\n• Xarajat: $0.11 (shu oy $0.67 / limit $15.00)",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-20T10:20+05:00",
+  "chat": "Rustamov",
+  "text": "❌ Xato deb belgilangan javoblar:\n\n2026-12-15 #2e09e4b8\nSavol: Optima stolidan 5 ta kerak, narxi?\nJavob: «Optima» 5 dona: 2 150 000 x 5 = 10 750 000 so‘m.\nIzoh: 5 donadan ulgurji narx (1 890 000) bo‘lishi kerak edi\n\n2026-12-15 #ab195b47\nSavol: Start stoli 6 ta qancha bo‘ladi?\nJavob: «Start» 6 dona: 1 450 000 x 6 = 8 700 000 so‘m.\nIzoh: 6 dona - ulgurji narx (1 280 000) kerak edi\n\n2026-12-16 #c958a792\nSavol: ErgoPro omborda bormi?\nJavob: Ha, omborda bor (1C).\nIzoh: Ombor fayli 31 soat eski edi, mahsulot sotilgan ekan\n\n2026-12-16 #7c213c12\nSavol: 18 mln lik buyurtmaga chegirma bera olamanmi?\nJavob: Ha, 5% gacha bera olasiz.\nIzoh: Qoida: 20 000 000 so‘mdan oshsa; 18 mln da chegirma yo‘q\n\n2026-12-17 #e928d1d5\nSavol: Chirchiqqa yetkazish bepulmi?\nJavob: Ha, Toshkent viloyatiga yetkazish bepul.\nIzoh: KP dagi gap; shartnomada 8 000 so‘m/km; mijozga ketishidan oldin tasdiqlashda ushlandi\n\n2026-12-17 #ba30a818\nSavol: Kreslo kafolati qancha?\nJavob: Barcha kreslolarga 3 yil kafolat.\nIzoh: KP dagi gap; shartnomada mexanizmga 12 oy\n\n2026-12-18 #3f8803ea\nSavol: Senator kreslo omborda bormi?\nJavob: Ha, bor (1C).\nIzoh: Ombor fayli yana eski edi",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-20T10:20+05:00",
+  "chat": "Rustamov",
+  "text": "📊 Kunlik hisobot: 20-dekabr, yakshanba\n«Savdo yordamchisi»\n\n• So‘rovlar: 0\n• Javob berildi: 0\n• Odamga uzatildi: 0\n• Xato deb belgilandi: 0\n• To‘liq hal qilindi: 0\n• Texnik xatolar: 0\n• Xarajat: $0.00 (shu oy $0.67 / limit $15.00)",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-20T11:40+05:00",
+  "chat": "Rustamov",
+  "text": "🟢 «Savdo yordamchisi» ishga tushdi.\nModel: google/gemini-3.8-flash.\nRejim: darhol javob beradi.",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-20T11:40+05:00",
+  "chat": null,
+  "text": "[server] deploy: agent v2 (5-dars yaxshilash halqasi), testlar 12/12",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-20T12:40+05:00",
+  "chat": "Rustamov",
+  "text": "✅ Har ish kuni soat 09:05 da javob yuboraman: «Eng uzoq harakatsiz turgan 3 ta mahsulot». Ro‘yxat: /jadval",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-20T12:40+05:00",
+  "chat": "Rustamov",
+  "text": "⚠️ Ma’lumot manbasi muammosi: Ombor qoldig‘i (1C eksport): fayl 29 soatdan beri yangilanmagan (chegara 25 soat)",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-20T12:40+05:00",
+  "chat": "Rustamov",
+  "text": "🔔 Eslataman: bugun soat 17:00 da.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-20T12:40+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Jadvaldagi ishlar (har ish kuni):\n• 08:30 - Kam qolgan mahsulotlar\n• 10:30 - 1C fayli tekshiruvi\n1. 09:05 - Eng uzoq harakatsiz turgan 3 ta mahsulot",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-20T13:10+05:00",
+  "chat": "Begona",
+  "text": "Bu bot faqat Baraka Office xodimlari uchun.\nSizning Telegram ID raqamingiz: 7199999\nKirish kerak bo‘lsa, shu raqamni rahbaringizga yuboring.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-20T17:00+05:00",
+  "chat": "Rustamov",
+  "text": "🔔 Eslatma: Otabek aka bilan 1C eksporti haqida gaplashish",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-21T00:40+05:00",
+  "chat": "Rustamov",
+  "text": "⚠️ Ma’lumot manbasi muammosi: Ombor qoldig‘i (1C eksport): fayl 41 soatdan beri yangilanmagan (chegara 25 soat)",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-21T08:30+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Kam qolgan mahsulotlar\n\nTayyor mahsulot 15 donadan kam:\n- CF-401 Стол переговоров Dialog-8 280x120: 0 dona\n- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 4 dona\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona\n- CH-203 Кресло руководителя Senator Lux черное: 9 dona",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-21T09:00+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #347a6ea7\nKimdan: Bekzod\nSavol: Tender: Ilm Ziyo akademiyasi 160 mln, mijoz chegirma so'rayapti\nSabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-21T09:00+05:00",
+  "chat": "Rustamov",
+  "text": "📊 Kunlik hisobot: 20-dekabr, yakshanba\n«Savdo yordamchisi»\n\n• So‘rovlar: 0\n• Javob berildi: 0\n• Odamga uzatildi: 0\n• Xato deb belgilandi: 0\n• To‘liq hal qilindi: 0\n• Texnik xatolar: 0\n• Xarajat: $0.00 (shu oy $0.67 / limit $15.00)",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-21T09:05+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Eng uzoq harakatsiz turgan 3 ta mahsulot\n\nEng uzoq harakatsiz turgan mahsulotlar (1C):\n- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona, oxirgi harakat 18.04.2026\n- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona, oxirgi harakat 20.10.2026\n- SH-501 Шкаф для документов 80x40x200: 58 dona, oxirgi harakat 27.10.2026",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-21T09:12+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- SH-501 Шкаф для документов 80x40x200: 58 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T09:13+05:00",
+  "chat": "Bekzod",
+  "text": "Xodim javobi:\nTender bo‘yicha dushanba 11:00 da men bilan birga taklif tayyorlaymiz, hujjatlarni olib keling.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T09:13+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #347a6ea7 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T09:33+05:00",
+  "chat": "Zarina",
+  "text": "«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T09:40+05:00",
+  "chat": "Malika",
+  "text": "«Bench-4» 4 kishilik blok 280x140 (WS-103), 4 dona - chakana narx: 9 800 000 x 4 = 39 200 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T10:01+05:00",
+  "chat": "Bekzod",
+  "text": "Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T10:22+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #d10ad589\nKimdan: Bekzod\nSavol: Mijoz shikoyat qilyapti: kreslo g'ildiragi singan, nima qilamiz?\nSabab: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T10:22+05:00",
+  "chat": "Bekzod",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T10:30+05:00",
+  "chat": "Otabek",
+  "text": "⏰ 1C fayli tekshiruvi\n\n1C ombor fayli joyida: ogohlantirish yo‘q, 11 qator.",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-21T10:38+05:00",
+  "chat": "Bekzod",
+  "text": "Xodim javobi:\nBu buyurtma bo‘yicha bugun 16:00 gacha javob beraman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T10:38+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #d10ad589 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T11:04+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T12:00+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-203 Кресло руководителя Senator Lux черное: 9 dona\n- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T12:14+05:00",
+  "chat": "Bekzod",
+  "text": "«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 10 dona - ulgurji narx: 5 300 000 x 10 = 53 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T12:15+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #379cf45f\nKimdan: Bekzod\nSavol: Mijoz 8 ta Optima stolni juma kuniga so‘rayapti, bo‘ladimi?\nSabab: 7 ish kunidan qisqa muddat ROP qaroriga ko‘ra.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T12:15+05:00",
+  "chat": "Bekzod",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T12:21+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-204 Стул конференц Conf-Lite (полозья хром): 64 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T12:28+05:00",
+  "chat": "Bekzod",
+  "text": "Xodim javobi:\nJuma kuniga bo‘lmaydi: eng tezi to‘lovdan keyin 7 ish kuni. Mijozga 31-dekabrni taklif qiling.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T12:28+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #379cf45f yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T12:42+05:00",
+  "chat": "Zarina",
+  "text": "«Sultan» rahbar kabineti (EX-301), 1 dona - chakana narx: 18 500 000 x 1 = 18 500 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T13:45+05:00",
+  "chat": "Madina",
+  "text": "«Optima» ergonomik stol 140x70 (WS-102), 4 dona - chakana narx: 2 150 000 x 4 = 8 600 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T13:59+05:00",
+  "chat": "Zarina",
+  "text": "«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 7 dona - ulgurji narx: 5 300 000 x 7 = 37 100 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T14:20+05:00",
+  "chat": "Madina",
+  "text": "Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T14:55+05:00",
+  "chat": "Malika",
+  "text": "«Optima» ergonomik stol 140x70 (WS-102), 7 dona - ulgurji narx: 1 890 000 x 7 = 13 230 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T15:16+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T15:51+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-202 Кресло ErgoPro X5 (синхромеханизм): 150 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T16:05+05:00",
+  "chat": "Bekzod",
+  "text": "«Startap 10» paketi (10 kishilik ofis) (PK-10), 1 dona - chakana narx: 34 500 000 x 1 = 34 500 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T16:33+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T17:01+05:00",
+  "chat": "Bekzod",
+  "text": "«ErgoPro X5» menejer kreslosi (CH-202), 10 dona - ulgurji narx: 2 500 000 x 10 = 25 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T17:08+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #fc3eb39d\nKimdan: Madina\nSavol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?\nSabab: 7 ish kunidan tez yetkazish so‘ralmoqda.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T17:08+05:00",
+  "chat": "Madina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T17:22+05:00",
+  "chat": "Zarina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 112 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T17:53+05:00",
+  "chat": "Madina",
+  "text": "Xodim javobi:\nMen o‘zim mijoz bilan gaplashaman, raqamini yuboring.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-21T17:53+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #fc3eb39d yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T08:30+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Kam qolgan mahsulotlar\n\nTayyor mahsulot 15 donadan kam:\n- CF-401 Стол переговоров Dialog-8 280x120: 0 dona\n- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 4 dona\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona\n- CH-203 Кресло руководителя Senator Lux черное: 9 dona",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-22T09:00+05:00",
+  "chat": "Rustamov",
+  "text": "📊 Kunlik hisobot: 21-dekabr, dushanba\n«Savdo yordamchisi»\n\n• So‘rovlar: 22\n• Javob berildi: 19\n• Odamga uzatildi: 3\n• Xato deb belgilandi: 0\n• To‘liq hal qilindi: 19\n• Texnik xatolar: 0\n• Xarajat: $0.11 (shu oy $0.79 / limit $15.00)",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-22T09:05+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Eng uzoq harakatsiz turgan 3 ta mahsulot: bu safar javob tayyorlab bo‘lmadi (Ombor qoldig‘i (1C eksport): fayl 25 soatdan beri yangilanmagan (chegara 25 soat).). Ma’lumot fayllarini tekshiring: /holat",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-22T09:05+05:00",
+  "chat": "Rustamov",
+  "text": "⚠️ Ma’lumot manbasi muammosi: Ombor qoldig‘i (1C eksport): fayl 25 soatdan beri yangilanmagan (chegara 25 soat)",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-22T09:19+05:00",
+  "chat": "Madina",
+  "text": "«Bench-4» 4 kishilik blok 280x140 (WS-103), 10 dona - ulgurji narx: 8 600 000 x 10 = 86 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T09:26+05:00",
+  "chat": "Madina",
+  "text": "Muddat: 70% (yoki 100%) oldindan to‘lov tushgan kundan 7 ish kuni.\nToshkent shahri: 10 000 000 so‘mdan katta buyurtmaga yetkazish va montaj bepul.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T10:15+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #610464bf\nKimdan: Zarina\nSavol: Staff Mesh omborda nechta bor?\nSabab: ombor fayli bilan muammo (Ombor qoldig‘i (1C eksport): fayl 26 soatdan beri yangilanmagan (chegara 25 soat)), qoldiqni Otabek akadan aniqlash kerak.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T10:15+05:00",
+  "chat": "Zarina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T10:28+05:00",
+  "chat": "Zarina",
+  "text": "Xodim javobi:\nOmborda 24 ta (Otabek akadan so‘radim, 1C fayli bugun kech yuklanadi).",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T10:28+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #610464bf yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T10:29+05:00",
+  "chat": "Madina",
+  "text": "«Dialog-8» muzokara stoli 280x120 (CF-401), 1 dona - chakana narx: 7 400 000 x 1 = 7 400 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T10:30+05:00",
+  "chat": "Otabek",
+  "text": "⏰ 1C fayli tekshiruvi: bu safar javob tayyorlab bo‘lmadi (Ombor qoldig‘i (1C eksport): fayl 26 soatdan beri yangilanmagan (chegara 25 soat). Otabek aka 1C dan bugungi qoldiqni eksport qilsin.). Ma’lumot fayllarini tekshiring: /holat",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-22T11:18+05:00",
+  "chat": "Bekzod",
+  "text": "«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T11:32+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-203 Кресло руководителя Senator Lux черное: 9 dona\n- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T12:35+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #7c06e2e5\nKimdan: Madina\nSavol: Mijoz 25 mln buyurtmaga 10% chegirma so'rayapti\nSabab: 10% chegirma menejer vakolatidan (5%) yuqori.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T12:35+05:00",
+  "chat": "Madina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T12:42+05:00",
+  "chat": "Madina",
+  "text": "Xodim javobi:\n5% dan oshmaydi, qolganini men mijoz bilan hal qilaman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T12:42+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #7c06e2e5 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T12:49+05:00",
+  "chat": "Zarina",
+  "text": "«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T12:56+05:00",
+  "chat": "Bekzod",
+  "text": "«Bench-4» 4 kishilik blok 280x140 (WS-103), 20 dona - ulgurji narx: 8 600 000 x 20 = 172 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T13:03+05:00",
+  "chat": "Zarina",
+  "text": "«Dialog-8» muzokara stoli 280x120 (CF-401), 7 dona - ulgurji narx: 7 400 000 x 7 = 51 800 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T13:59+05:00",
+  "chat": "Madina",
+  "text": "«Senator Lux» rahbar kreslosi (CH-203), 3 dona - chakana narx: 4 900 000 x 3 = 14 700 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T14:00+05:00",
+  "chat": "Malika",
+  "text": "1 890 000 x 8 = 15 120 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T14:01+05:00",
+  "chat": "Malika",
+  "text": "Rahmat, bu xatolar jurnaliga yozildi.\nNima noto‘g‘ri edi? Bitta xabar bilan qisqa yozing (yoki /bekor).",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T14:01+05:00",
+  "chat": "Malika",
+  "text": "Yozib qo‘ydim. Rahmat - shu bilan yordamchi yaxshilanadi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T14:20+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #5fbd9cc9\nKimdan: Madina\nSavol: Mijoz 60 mln buyurtmaga 10% chegirma so'rayapti\nSabab: 10% chegirma menejer vakolatidan (5%) yuqori.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T14:20+05:00",
+  "chat": "Madina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T14:28+05:00",
+  "chat": "Madina",
+  "text": "Xodim javobi:\nMen o‘zim mijoz bilan gaplashaman, raqamini yuboring.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T14:28+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #5fbd9cc9 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T14:41+05:00",
+  "chat": "Bekzod",
+  "text": "«Conf-Lite» muzokara stuli (CH-204), 2 dona - chakana narx: 980 000 x 2 = 1 960 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T14:55+05:00",
+  "chat": "Bekzod",
+  "text": "«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 2 dona - chakana narx: 5 900 000 x 2 = 11 800 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T15:09+05:00",
+  "chat": "Malika",
+  "text": "«Dialog-8» muzokara stoli 280x120 (CF-401), 12 dona - ulgurji narx: 7 400 000 x 12 = 88 800 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T15:44+05:00",
+  "chat": "Zarina",
+  "text": "Muddat: 70% (yoki 100%) oldindan to‘lov tushgan kundan 7 ish kuni.\nToshkent shahri: 10 000 000 so‘mdan katta buyurtmaga yetkazish va montaj bepul.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T16:19+05:00",
+  "chat": "Malika",
+  "text": "«Senator Lux» rahbar kreslosi (CH-203), 20 dona - ulgurji narx: 4 400 000 x 20 = 88 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T16:40+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T17:15+05:00",
+  "chat": "Madina",
+  "text": "Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T17:29+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- SH-501 Шкаф для документов 80x40x200: 58 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T17:36+05:00",
+  "chat": "Bekzod",
+  "text": "«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 15 dona - ulgurji narx: 5 300 000 x 15 = 79 500 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-22T17:43+05:00",
+  "chat": "Zarina",
+  "text": "Toshkent viloyati: halqa yo‘ldan har 1 km uchun 8 000 so‘m: 44 x 8 000 = 352 000 so‘m.\nMuddat: oldindan to‘lov tushgan kundan 7 ish kuni.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T08:30+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Kam qolgan mahsulotlar\n\nTayyor mahsulot 15 donadan kam:\n- CF-401 Стол переговоров Dialog-8 280x120: 0 dona\n- CH-203 Кресло руководителя Senator Lux черное: 9 dona",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-23T09:00+05:00",
+  "chat": "Rustamov",
+  "text": "📊 Kunlik hisobot: 22-dekabr, seshanba\n«Savdo yordamchisi»\n\n• So‘rovlar: 23\n• Javob berildi: 20\n• Odamga uzatildi: 3\n• Xato deb belgilandi: 1\n• To‘liq hal qilindi: 19\n• Texnik xatolar: 0\n• Xarajat: $0.12 (shu oy $0.90 / limit $15.00)\n\nDiqqat:\n• Xato javoblar ro‘yxati: /xatolar",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-23T09:05+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Eng uzoq harakatsiz turgan 3 ta mahsulot\n\nEng uzoq harakatsiz turgan mahsulotlar (1C):\n- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona, oxirgi harakat 18.04.2026\n- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona, oxirgi harakat 20.10.2026\n- SH-501 Шкаф для документов 80x40x200: 58 dona, oxirgi harakat 27.10.2026",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-23T09:54+05:00",
+  "chat": "Malika",
+  "text": "«Dialog-8» muzokara stoli 280x120 (CF-401), 12 dona - ulgurji narx: 7 400 000 x 12 = 88 800 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T10:01+05:00",
+  "chat": "Malika",
+  "text": "Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T10:22+05:00",
+  "chat": "Madina",
+  "text": "«Startap 10» paketi (10 kishilik ofis) (PK-10), 1 dona - chakana narx: 34 500 000 x 1 = 34 500 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T10:30+05:00",
+  "chat": "Otabek",
+  "text": "⏰ 1C fayli tekshiruvi\n\n1C ombor fayli joyida: ogohlantirish yo‘q, 11 qator.",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-23T10:43+05:00",
+  "chat": "Malika",
+  "text": "«Senator Lux» rahbar kreslosi (CH-203), 1 dona - chakana narx: 4 900 000 x 1 = 4 900 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T11:11+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 18 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T11:53+05:00",
+  "chat": "Madina",
+  "text": "«Start» xodim stoli 120x60 (WS-101), 7 dona - ulgurji narx: 1 280 000 x 7 = 8 960 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T12:07+05:00",
+  "chat": "Zarina",
+  "text": "Toshkent viloyati: halqa yo‘ldan har 1 km uchun 8 000 so‘m: 44 x 8 000 = 352 000 so‘m.\nMuddat: oldindan to‘lov tushgan kundan 7 ish kuni.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T12:15+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #77153f24\nKimdan: Bekzod\nSavol: 34 mln lik buyurtmaga mijoz 12% chegirma so‘rayapti, bera olamanmi?\nSabab: menejer 5% gacha; 10% faqat 100% oldindan to‘lovda ROP yozma ruxsati bilan; 10% dan yuqori taqiqlangan.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T12:15+05:00",
+  "chat": "Bekzod",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T12:21+05:00",
+  "chat": "Madina",
+  "text": "«Bench-4» 4 kishilik blok 280x140 (WS-103), 1 dona - chakana narx: 9 800 000 x 1 = 9 800 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T12:28+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #3527107d\nKimdan: Bekzod\nSavol: Mijoz shikoyat qilyapti: kreslo g'ildiragi singan, nima qilamiz?\nSabab: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T12:28+05:00",
+  "chat": "Bekzod",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T12:28+05:00",
+  "chat": "Bekzod",
+  "text": "Xodim javobi:\n12% bo‘lmaydi. 100% oldindan to‘lov bo‘lsa, yozma ruxsatim bilan 10% beramiz.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T12:28+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #77153f24 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T12:39+05:00",
+  "chat": "Bekzod",
+  "text": "Xodim javobi:\n5% dan oshmaydi, qolganini men mijoz bilan hal qilaman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T12:39+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #3527107d yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T12:42+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T14:27+05:00",
+  "chat": "Madina",
+  "text": "Muddat: 70% (yoki 100%) oldindan to‘lov tushgan kundan 7 ish kuni.\nToshkent shahri: 10 000 000 so‘mdan katta buyurtmaga yetkazish va montaj bepul.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T14:34+05:00",
+  "chat": "Malika",
+  "text": "«Imperia» VIP kabinet (EX-302), 1 dona - chakana narx: 32 000 000 x 1 = 32 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T14:41+05:00",
+  "chat": "Madina",
+  "text": "Toshkent viloyati: halqa yo‘ldan har 1 km uchun 8 000 so‘m: 44 x 8 000 = 352 000 so‘m.\nMuddat: oldindan to‘lov tushgan kundan 7 ish kuni.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T14:48+05:00",
+  "chat": "Madina",
+  "text": "«Sultan» rahbar kabineti (EX-301), 1 dona - chakana narx: 18 500 000 x 1 = 18 500 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T15:58+05:00",
+  "chat": "Madina",
+  "text": "«ErgoPro X5» menejer kreslosi (CH-202), 8 dona - ulgurji narx: 2 500 000 x 8 = 20 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T16:26+05:00",
+  "chat": "Malika",
+  "text": "«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 15 dona - ulgurji narx: 5 300 000 x 15 = 79 500 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T16:30+05:00",
+  "chat": "Madina",
+  "text": "«ErgoPro X5»: 2 850 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T16:31+05:00",
+  "chat": "Madina",
+  "text": "Rahmat, bu xatolar jurnaliga yozildi.\nNima noto‘g‘ri edi? Bitta xabar bilan qisqa yozing (yoki /bekor).",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T16:31+05:00",
+  "chat": "Madina",
+  "text": "Yozib qo‘ydim. Rahmat - shu bilan yordamchi yaxshilanadi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T16:33+05:00",
+  "chat": "Malika",
+  "text": "«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 10 dona - ulgurji narx: 5 300 000 x 10 = 53 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T16:40+05:00",
+  "chat": "Madina",
+  "text": "«Optima» ergonomik stol 140x70 (WS-102), 20 dona - ulgurji narx: 1 890 000 x 20 = 37 800 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T16:45+05:00",
+  "chat": "Jamshid aka",
+  "text": "🧠 Eslab qoldim. Endi har bir javobda hisobga olaman. Ro‘yxat: /xotira",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T16:47+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #fe3a9921\nKimdan: Malika\nSavol: Mijoz shikoyat qilyapti: kreslo g'ildiragi singan, nima qilamiz?\nSabab: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T16:47+05:00",
+  "chat": "Malika",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T16:54+05:00",
+  "chat": "Bekzod",
+  "text": "Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T17:01+05:00",
+  "chat": "Malika",
+  "text": "«Optima» ergonomik stol 140x70 (WS-102), 12 dona - ulgurji narx: 1 890 000 x 12 = 22 680 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T17:15+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 18 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T17:17+05:00",
+  "chat": "Malika",
+  "text": "Xodim javobi:\n5% dan oshmaydi, qolganini men mijoz bilan hal qilaman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-23T17:17+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #fe3a9921 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T08:30+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Kam qolgan mahsulotlar\n\nTayyor mahsulot 15 donadan kam:\n- CF-401 Стол переговоров Dialog-8 280x120: 2 dona\n- CH-203 Кресло руководителя Senator Lux черное: 7 dona",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-24T09:00+05:00",
+  "chat": "Rustamov",
+  "text": "📊 Kunlik hisobot: 23-dekabr, chorshanba\n«Savdo yordamchisi»\n\n• So‘rovlar: 24\n• Javob berildi: 21\n• Odamga uzatildi: 3\n• Xato deb belgilandi: 1\n• To‘liq hal qilindi: 20\n• Texnik xatolar: 0\n• Xarajat: $0.12 (shu oy $1.02 / limit $15.00)\n\nDiqqat:\n• Xato javoblar ro‘yxati: /xatolar",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-24T09:05+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Eng uzoq harakatsiz turgan 3 ta mahsulot\n\nEng uzoq harakatsiz turgan mahsulotlar (1C):\n- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona, oxirgi harakat 18.04.2026\n- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona, oxirgi harakat 20.10.2026\n- SH-501 Шкаф для документов 80x40x200: 58 dona, oxirgi harakat 27.10.2026",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-24T09:12+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 112 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T10:05+05:00",
+  "chat": "Madina",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 4 dona - chakana narx: 1 350 000 x 4 = 5 400 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T10:30+05:00",
+  "chat": "Otabek",
+  "text": "⏰ 1C fayli tekshiruvi\n\n1C ombor fayli joyida: ogohlantirish yo‘q, 11 qator.",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-24T10:57+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- SH-501 Шкаф для документов 80x40x200: 58 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T11:11+05:00",
+  "chat": "Zarina",
+  "text": "Foizsiz 3 oyga bo‘lib to‘lash: faqat 50% boshlang‘ich to‘lov va bank kafolati (yoki lizing) bo‘lsa.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T11:32+05:00",
+  "chat": "Zarina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 112 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T12:35+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #3f250fab\nKimdan: Bekzod\nSavol: Mijoz 30 mln buyurtmaga 12% chegirma so'rayapti\nSabab: 12% chegirma menejer vakolatidan (5%) yuqori.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T12:35+05:00",
+  "chat": "Bekzod",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T12:43+05:00",
+  "chat": "Bekzod",
+  "text": "Xodim javobi:\nBu buyurtma bo‘yicha bugun 16:00 gacha javob beraman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T12:43+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #3f250fab yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T13:10+05:00",
+  "chat": "Zarina",
+  "text": "«Senator Lux» rahbar kreslosi (CH-203), 7 dona - ulgurji narx: 4 400 000 x 7 = 30 800 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T13:31+05:00",
+  "chat": "Bekzod",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 15 dona - ulgurji narx: 1 180 000 x 15 = 17 700 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T13:45+05:00",
+  "chat": "Zarina",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 20 dona - ulgurji narx: 1 180 000 x 20 = 23 600 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T14:55+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 112 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T15:02+05:00",
+  "chat": "Malika",
+  "text": "«ErgoPro X5» menejer kreslosi (CH-202), 15 dona - ulgurji narx: 2 500 000 x 15 = 37 500 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T15:10+05:00",
+  "chat": "Jamshid aka",
+  "text": "Ha, 3D chizma bepul.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T15:11+05:00",
+  "chat": "Jamshid aka",
+  "text": "Rahmat, bu xatolar jurnaliga yozildi.\nNima noto‘g‘ri edi? Bitta xabar bilan qisqa yozing (yoki /bekor).",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T15:11+05:00",
+  "chat": "Jamshid aka",
+  "text": "Yozib qo‘ydim. Rahmat - shu bilan yordamchi yaxshilanadi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T15:23+05:00",
+  "chat": "Malika",
+  "text": "«Conf-Lite» muzokara stuli (CH-204), 12 dona - ulgurji narx: 850 000 x 12 = 10 200 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T15:30+05:00",
+  "chat": "Zarina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 112 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T15:44+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #af9ea7bd\nKimdan: Malika\nSavol: Mijoz shikoyat qilyapti: kreslo g'ildiragi singan, nima qilamiz?\nSabab: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T15:44+05:00",
+  "chat": "Malika",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T15:51+05:00",
+  "chat": "Madina",
+  "text": "«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T16:05+05:00",
+  "chat": "Malika",
+  "text": "«Bench-4» 4 kishilik blok 280x140 (WS-103), 20 dona - ulgurji narx: 8 600 000 x 20 = 172 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T16:12+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 112 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T16:14+05:00",
+  "chat": "Malika",
+  "text": "Xodim javobi:\nBu buyurtma bo‘yicha bugun 16:00 gacha javob beraman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T16:14+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #af9ea7bd yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T16:26+05:00",
+  "chat": "Bekzod",
+  "text": "«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 4 dona - chakana narx: 5 900 000 x 4 = 23 600 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T16:33+05:00",
+  "chat": "Malika",
+  "text": "«Conf-Lite» muzokara stuli (CH-204), 4 dona - chakana narx: 980 000 x 4 = 3 920 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T16:40+05:00",
+  "chat": "Madina",
+  "text": "«ErgoPro X5» menejer kreslosi (CH-202), 2 dona - chakana narx: 2 850 000 x 2 = 5 700 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T16:54+05:00",
+  "chat": "Zarina",
+  "text": "«Startap 10» paketi (10 kishilik ofis) (PK-10), 1 dona - chakana narx: 34 500 000 x 1 = 34 500 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-24T17:22+05:00",
+  "chat": "Bekzod",
+  "text": "«Senator Lux» rahbar kreslosi (CH-203), 20 dona - ulgurji narx: 4 400 000 x 20 = 88 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T08:30+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Kam qolgan mahsulotlar\n\nTayyor mahsulot 15 donadan kam:\n- CF-401 Стол переговоров Dialog-8 280x120: 2 dona\n- CH-203 Кресло руководителя Senator Lux черное: 7 dona",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-25T09:00+05:00",
+  "chat": "Rustamov",
+  "text": "📊 Kunlik hisobot: 24-dekabr, payshanba\n«Savdo yordamchisi»\n\n• So‘rovlar: 23\n• Javob berildi: 21\n• Odamga uzatildi: 2\n• Xato deb belgilandi: 1\n• To‘liq hal qilindi: 20\n• Texnik xatolar: 0\n• Xarajat: $0.12 (shu oy $1.14 / limit $15.00)\n\nDiqqat:\n• Xato javoblar ro‘yxati: /xatolar",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-25T09:05+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Eng uzoq harakatsiz turgan 3 ta mahsulot\n\nEng uzoq harakatsiz turgan mahsulotlar (1C):\n- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona, oxirgi harakat 18.04.2026\n- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona, oxirgi harakat 20.10.2026\n- SH-501 Шкаф для документов 80x40x200: 58 dona, oxirgi harakat 27.10.2026",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-25T09:33+05:00",
+  "chat": "Zarina",
+  "text": "«Optima» ergonomik stol 140x70 (WS-102), 15 dona - ulgurji narx: 1 890 000 x 15 = 28 350 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T10:30+05:00",
+  "chat": "Otabek",
+  "text": "⏰ 1C fayli tekshiruvi\n\n1C ombor fayli joyida: ogohlantirish yo‘q, 11 qator.",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-25T10:43+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-203 Кресло руководителя Senator Lux черное: 7 dona\n- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T10:57+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-204 Стул конференц Conf-Lite (полозья хром): 64 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T11:25+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #06a06e39\nKimdan: Madina\nSavol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?\nSabab: 7 ish kunidan tez yetkazish so‘ralmoqda.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T11:25+05:00",
+  "chat": "Madina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T11:32+05:00",
+  "chat": "Malika",
+  "text": "Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T11:35+05:00",
+  "chat": "Madina",
+  "text": "Xodim javobi:\nBu buyurtma bo‘yicha bugun 16:00 gacha javob beraman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T11:35+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #06a06e39 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T11:39+05:00",
+  "chat": "Madina",
+  "text": "«Optima» ergonomik stol 140x70 (WS-102), 8 dona - ulgurji narx: 1 890 000 x 8 = 15 120 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T13:03+05:00",
+  "chat": "Zarina",
+  "text": "«ErgoPro X5» menejer kreslosi (CH-202), 12 dona - ulgurji narx: 2 500 000 x 12 = 30 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T13:10+05:00",
+  "chat": "Malika",
+  "text": "Toshkent viloyati: halqa yo‘ldan har 1 km uchun 8 000 so‘m: 44 x 8 000 = 352 000 so‘m.\nMuddat: oldindan to‘lov tushgan kundan 7 ish kuni.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T13:31+05:00",
+  "chat": "Madina",
+  "text": "«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T13:45+05:00",
+  "chat": "Madina",
+  "text": "«Dialog-8» muzokara stoli 280x120 (CF-401), 1 dona - chakana narx: 7 400 000 x 1 = 7 400 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T14:13+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T14:20+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #b1e4bf65\nKimdan: Malika\nSavol: Tender: 160 mln lik buyurtma, nima qilamiz?\nSabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T14:20+05:00",
+  "chat": "Malika",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T14:41+05:00",
+  "chat": "Bekzod",
+  "text": "«Conf-Lite» muzokara stuli (CH-204), 4 dona - chakana narx: 980 000 x 4 = 3 920 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T14:48+05:00",
+  "chat": "Malika",
+  "text": "«ErgoPro X5» menejer kreslosi (CH-202), 8 dona - ulgurji narx: 2 500 000 x 8 = 20 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T14:50+05:00",
+  "chat": "Malika",
+  "text": "Xodim javobi:\n5% dan oshmaydi, qolganini men mijoz bilan hal qilaman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T14:50+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #b1e4bf65 yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T14:55+05:00",
+  "chat": "Zarina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-204 Стул конференц Conf-Lite (полозья хром): 64 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T15:23+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T15:44+05:00",
+  "chat": "Bekzod",
+  "text": "«Conf-Lite» muzokara stuli (CH-204), 3 dona - chakana narx: 980 000 x 3 = 2 940 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T16:19+05:00",
+  "chat": "Madina",
+  "text": "«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T16:47+05:00",
+  "chat": "Zarina",
+  "text": "«Conf-Lite» muzokara stuli (CH-204), 2 dona - chakana narx: 980 000 x 2 = 1 960 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T16:54+05:00",
+  "chat": "Bekzod",
+  "text": "«Start» xodim stoli 120x60 (WS-101), 8 dona - ulgurji narx: 1 280 000 x 8 = 10 240 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T17:08+05:00",
+  "chat": "Zarina",
+  "text": "«Senator Lux» rahbar kreslosi (CH-203), 8 dona - ulgurji narx: 4 400 000 x 8 = 35 200 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T17:15+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-202 Кресло ErgoPro X5 (синхромеханизм): 150 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-25T17:36+05:00",
+  "chat": "Zarina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 24 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T08:30+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Kam qolgan mahsulotlar\n\nTayyor mahsulot 15 donadan kam:\n- CF-401 Стол переговоров Dialog-8 280x120: 2 dona\n- CH-203 Кресло руководителя Senator Lux черное: 7 dona",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-26T09:00+05:00",
+  "chat": "Rustamov",
+  "text": "📊 Kunlik hisobot: 25-dekabr, juma\n«Savdo yordamchisi»\n\n• So‘rovlar: 23\n• Javob berildi: 21\n• Odamga uzatildi: 2\n• Xato deb belgilandi: 0\n• To‘liq hal qilindi: 21\n• Texnik xatolar: 0\n• Xarajat: $0.12 (shu oy $1.26 / limit $15.00)",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-26T09:05+05:00",
+  "chat": "Rustamov",
+  "text": "⏰ Eng uzoq harakatsiz turgan 3 ta mahsulot\n\nEng uzoq harakatsiz turgan mahsulotlar (1C):\n- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona, oxirgi harakat 18.04.2026\n- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona, oxirgi harakat 20.10.2026\n- SH-501 Шкаф для документов 80x40x200: 58 dona, oxirgi harakat 27.10.2026",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-26T09:12+05:00",
+  "chat": "Bekzod",
+  "text": "«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 3 dona - chakana narx: 5 900 000 x 3 = 17 700 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T09:26+05:00",
+  "chat": "Zarina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-203 Кресло руководителя Senator Lux черное: 7 dona\n- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T09:33+05:00",
+  "chat": "Malika",
+  "text": "«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 20 dona - ulgurji narx: 5 300 000 x 20 = 106 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T10:01+05:00",
+  "chat": "Madina",
+  "text": "«Dialog-8» muzokara stoli 280x120 (CF-401), 8 dona - ulgurji narx: 7 400 000 x 8 = 59 200 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T10:08+05:00",
+  "chat": "Zarina",
+  "text": "Muddat: 70% (yoki 100%) oldindan to‘lov tushgan kundan 7 ish kuni.\nToshkent shahri: 10 000 000 so‘mdan katta buyurtmaga yetkazish va montaj bepul.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T10:30+05:00",
+  "chat": "Otabek",
+  "text": "⏰ 1C fayli tekshiruvi\n\n1C ombor fayli joyida: ogohlantirish yo‘q, 11 qator.",
+  "buttons": [],
+  "origin": "own"
+ },
+ {
+  "t": "2026-12-26T10:36+05:00",
+  "chat": "Zarina",
+  "text": "«Start» xodim stoli 120x60 (WS-101), 20 dona - ulgurji narx: 1 280 000 x 20 = 25 600 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T11:04+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 104 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T11:18+05:00",
+  "chat": "Bekzod",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 3 dona - chakana narx: 1 350 000 x 3 = 4 050 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T12:35+05:00",
+  "chat": "Jamshid aka",
+  "text": "🙋 Odamga uzatildi #e7233dab\nKimdan: Zarina\nSavol: Mijoz shikoyat qilyapti: kreslo g'ildiragi singan, nima qilamiz?\nSabab: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.\n\nJavob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T12:35+05:00",
+  "chat": "Zarina",
+  "text": "Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T12:42+05:00",
+  "chat": "Bekzod",
+  "text": "«Conf-Lite» muzokara stuli (CH-204), 20 dona - ulgurji narx: 850 000 x 20 = 17 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T12:49+05:00",
+  "chat": "Madina",
+  "text": "«Dialog-8» muzokara stoli 280x120 (CF-401), 20 dona - ulgurji narx: 7 400 000 x 20 = 148 000 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T12:51+05:00",
+  "chat": "Zarina",
+  "text": "Xodim javobi:\n5% dan oshmaydi, qolganini men mijoz bilan hal qilaman.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T12:51+05:00",
+  "chat": "Jamshid aka",
+  "text": "✅ Sizning javobingiz #e7233dab yuborildi.",
+  "buttons": [],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T13:03+05:00",
+  "chat": "Malika",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-204 Стул конференц Conf-Lite (полозья хром): 64 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T13:10+05:00",
+  "chat": "Zarina",
+  "text": "«Start» xodim stoli 120x60 (WS-101), 8 dona - ulgurji narx: 1 280 000 x 8 = 10 240 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T13:24+05:00",
+  "chat": "Zarina",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 2 dona - chakana narx: 1 350 000 x 2 = 2 700 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T14:13+05:00",
+  "chat": "Bekzod",
+  "text": "«Staff Mesh» xodim kreslosi (CH-201), 12 dona - ulgurji narx: 1 180 000 x 12 = 14 160 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T14:20+05:00",
+  "chat": "Bekzod",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-202 Кресло ErgoPro X5 (синхромеханизм): 150 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T14:34+05:00",
+  "chat": "Malika",
+  "text": "«Start» xodim stoli 120x60 (WS-101), 3 dona - chakana narx: 1 450 000 x 3 = 4 350 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T15:09+05:00",
+  "chat": "Madina",
+  "text": "«Senator Lux» rahbar kreslosi (CH-203), 12 dona - ulgurji narx: 4 400 000 x 12 = 52 800 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T15:23+05:00",
+  "chat": "Madina",
+  "text": "Omborda (1C, tayyor mahsulot):\n- CH-203 Кресло руководителя Senator Lux черное: 7 dona\n- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T15:37+05:00",
+  "chat": "Malika",
+  "text": "«Startap 10» paketi (10 kishilik ofis) (PK-10), 1 dona - chakana narx: 34 500 000 x 1 = 34 500 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T15:58+05:00",
+  "chat": "Malika",
+  "text": "Muddat: 70% (yoki 100%) oldindan to‘lov tushgan kundan 7 ish kuni.\nToshkent shahri: 10 000 000 so‘mdan katta buyurtmaga yetkazish va montaj bepul.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T16:12+05:00",
+  "chat": "Zarina",
+  "text": "«Senator Lux» rahbar kreslosi (CH-203), 3 dona - chakana narx: 4 900 000 x 3 = 14 700 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ },
+ {
+  "t": "2026-12-26T17:29+05:00",
+  "chat": "Madina",
+  "text": "«Start» xodim stoli 120x60 (WS-101), 7 dona - ulgurji narx: 1 280 000 x 7 = 8 960 000 so‘m.",
+  "buttons": [
+   "✅ To‘g‘ri",
+   "❌ Xato"
+  ],
+  "origin": "reply"
+ }
+]

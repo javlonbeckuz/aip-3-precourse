@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4-mashq: Jadvalga ish qo‘shish (ertalabki hisobot va rejali ish)</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 5-dars</span><span class="pill">4-mashq</span></div>
+<h1>4-mashq: Jadvalga ish qo‘shish (ertalabki hisobot va rejali ish)</h1>
+<p>5-dars, 1:57-2:15.
+Natija: telefoningizga birinchi rejali xabar keldi (tekshiruv 5.7).
+Biznesdagi foydaning ko‘pi chatdan emas, jadvaldan keladi: ma’lumot o‘zi Sizga keladi, Siz so‘rab yurmaysiz.</p>
+<h2>Atamalar, bir gapda</h2>
+<ul>
+<li><strong>Rejali ish (cron)</strong> - belgilangan vaqtda o‘zi bajariladigan ish: «har ish kuni 9:00 da».</li>
+<li><strong>Proaktiv agent</strong> - so‘ramasangiz ham, jadval yoki hodisa bo‘yicha o‘zi yozadigan agent.</li>
+<li><strong>Ertalabki hisobot (brifing)</strong> - kechagi raqamlar va g‘ayrioddiy holatlar, har kuni bir xil vaqtda.</li>
+</ul>
+<h2>Botingizda allaqachon nima bor</h2>
+<table>
+<thead>
+<tr>
+<th>Ish</th>
+<th>Qachon</th>
+<th>Kimga</th>
+<th>Qayerda sozlanadi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kunlik hisobot: kechagi so‘rovlar, xatolar, xarajat, «Diqqat»</td>
+<td><code>DAILY_REPORT_TIME</code> (masalan 09:00)</td>
+<td>Sizga</td>
+<td><code>.env</code></td>
+</tr>
+<tr>
+<td>Haftalik To‘plam 5 fayli</td>
+<td><code>WEEKLY_REPORT_DAY</code> (1 = dushanba)</td>
+<td>Sizga</td>
+<td><code>.env</code></td>
+</tr>
+<tr>
+<td>Ma’lumot muammosi haqida ogohlantirish (fayl bo‘sh yoki eski)</td>
+<td>Darhol, 12 soatda ko‘pi bilan bir marta</td>
+<td>Sizga</td>
+<td><code>agent/sources.toml</code> (<code>max_age_hours</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Bugun bularga <strong>o‘z biznes ishingizni</strong> qo‘shasiz: agent ma’lumotlaringizdan belgilangan vaqtda javob tayyorlaydi.</p>
+<h2>Ikki yo‘l</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A. Telefondan: <code>/jadval</code></th>
+<th>B. Claude Code bilan: <code>agent/schedule.toml</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kim qo‘shadi</td>
+<td>Siz, telefondan, 10 soniyada</td>
+<td>Siz va Claude Code, noutbukda</td>
+</tr>
+<tr>
+<td>Kimga boradi</td>
+<td>Faqat Sizga</td>
+<td>Istalgan odamga (<code>send_to</code>): xodimga faqat ish vaqtida</td>
+</tr>
+<tr>
+<td>Qaysi kunlar</td>
+<td>Ish kunlari (<code>WORK_DAYS</code>)</td>
+<td>Istalgan kunlar (<code>days = "1-6"</code>)</td>
+</tr>
+<tr>
+<td>Serverga joylash</td>
+<td>Shart emas</td>
+<td>Kerak (<code>deploy.py</code>)</td>
+</tr>
+<tr>
+<td>Qachon tanlang</td>
+<td>O‘zingiz uchun shaxsiy hisobot</td>
+<td>Xodimga eslatma, eskalatsiya, aniq kunlar</td>
+</tr>
+</tbody>
+</table>
+<h3>A. Telefondan</h3>
+<p>Botga yozing:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/jadval 09:05 Eng uzoq harakatsiz turgan 3 ta mahsulot</pre></div>
+<ul>
+<li><code>/jadval</code> - hamma rejali ishlar ro‘yxati.</li>
+<li><code>/jadval_ochir 1</code> - 1-ishni o‘chirish.</li>
+<li><code>/eslat 17:00 Otabek aka bilan 1C eksporti haqida gaplashish</code> - bir martalik eslatma.</li>
+</ul>
+<p>Savolni qisqa yozing: uning birinchi 40 belgisi ishning nomi bo‘ladi.</p>
+<h3>B. <code>agent/schedule.toml</code> orqali</h3>
+<p>Claude Code’ga yozing:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>app/agent/schedule.qollanma.md ni o'qi.
+Har ish kuni [vaqt] da [kimga] [nima kerak] ni yuboradigan ish qo'sh.
+Qaysi manbadan (agent/sources.toml) olishini ayt; manba bo'lmasa, avval menga ayt.
+Javobda xodim ismlari va har bir xodim bo'yicha raqamlar bo'lmasin.
+Keyin narxini aytib, &quot;uv run pilot job &lt;nom&gt;&quot; bilan bir marta sinab ko'r (yubormasdan),
+natija to'g'ri bo'lsa, testlarni ishga tushir va serverga joyla.</pre></div>
+<p>Ish boshqa odamga boradigan bo‘lsa (<code>send_to</code>), o‘sha odam botni bir marta ochib <code>/start</code> bosgan bo‘lishi kerak: Telegram boti o‘zi birinchi bo‘lib odamga yoza olmaydi.</p>
+<h3>Serverdagi oddiy cron (bilib qo‘ying)</h3>
+<p>Ba’zi bo‘lim skillari (masalan moliya <code>/owner-weekly</code>, marketing <code>/mkt-report</code>) hisobotni skript bilan tayyorlaydi.
+Ularni serverning o‘z jadvali - cron - ishga tushiradi.
+Cron qatori beshta maydon: daqiqa, soat, oy kuni, oy, hafta kuni.
+<code>30 8 * * 1</code> - har dushanba 08:30.
+Claude Code bu qatorni o‘zi yozadi; Siz faqat vaqt va kimga borishini aytasiz.</p>
+<h2>Bo‘limlar uchun foydali rejali ishlar</h2>
+<p>Faqat Sizning ma’lumotingizdan javob beradigan ish foydali.
+Kompaniyangizdan hech narsa bo‘lmagan ertalabki xabar - bu ob-havo ilovasi.</p>
+<table>
+<thead>
+<tr>
+<th>Bo‘lim</th>
+<th>Ish</th>
+<th>Vaqt</th>
+<th>Kimga</th>
+<th>Kurs materiali</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Savdo</td>
+<td>Har sotuvchiga o‘z kuzatuv ro‘yxati (KP dan keyin qo‘ng‘iroq qilinmaganlar)</td>
+<td>Ish kunlari 09:00</td>
+<td>Har kim o‘ziga</td>
+<td><code>department-labs/sales/opportunity-map.md</code>, 3-qator</td>
+</tr>
+<tr>
+<td>Marketing</td>
+<td>Haftalik hisobot: xarajat, lidlar, manbasi noma’lum lidlar</td>
+<td>Dushanba 08:30</td>
+<td>Egasiga</td>
+<td><code>department-labs/marketing/exercises/06-weekly-report.md</code></td>
+</tr>
+<tr>
+<td>Moliya</td>
+<td>Bir sahifa: pul, debitorka, ombor, marja va bu hafta qilinadigan ishlar</td>
+<td>Dushanba 09:00</td>
+<td>Egasiga</td>
+<td><code>department-labs/finance-ops/exercises/08-owner-weekly.md</code></td>
+</tr>
+<tr>
+<td>Moliya</td>
+<td>Soliq kalendari eslatmasi (faqat eslatma, summa hisoblamaydi)</td>
+<td>Oyning 10, 15, 20-sanalari</td>
+<td>Bosh buxgalterga</td>
+<td><code>department-labs/finance-ops/opportunity-map.md</code>, 13-qator</td>
+</tr>
+<tr>
+<td>Ombor</td>
+<td>Kam qolgan mahsulotlar</td>
+<td>Ish kunlari 08:30</td>
+<td>Egasiga, ombor boshlig‘iga</td>
+<td><code>app/agent/schedule.toml</code> (namuna)</td>
+</tr>
+<tr>
+<td>Ombor</td>
+<td>1C fayli kelmadi: eslatma</td>
+<td>Ish kunlari 10:30</td>
+<td>Eksport qiladigan odamga</td>
+<td>Pastdagi Baraka namunasi</td>
+</tr>
+<tr>
+<td>HR</td>
+<td>Shu hafta tugaydigan hujjat muddatlari (masalan, shartnomani 5 ish kunida ro‘yxatdan o‘tkazish)</td>
+<td>Dushanba 09:00</td>
+<td>Faqat HR rahbariga</td>
+<td><code>department-labs/hr/opportunity-map.md</code>, A4</td>
+</tr>
+</tbody>
+</table>
+<p>Xodimlar haqidagi ma’lumot bilan ishlaganda: xodimning yozma roziligi bo‘lmasa, uning ma’lumotini uchinchi tomonga bermang (Mehnat kodeksi 178-modda, https://lex.uz/mact/6257288).
+Har qanday shaxsiy ma’lumot bilan ishlashdan oldin yurist bilan tekshiring.</p>
+<h2>Baraka Office namunasi</h2>
+<p>Shartli misol, natijalar botni soxta Telegram bilan ishlatib olingan (<code>namuna/baraka-2-hafta/rahbar-telegrami.txt</code>).</p>
+<p><strong>1. Telefondan, rahbar uchun</strong> (yakshanba 20-dekabr, 12:40):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/jadval 09:05 Eng uzoq harakatsiz turgan 3 ta mahsulot
+✅ Har ish kuni soat 09:05 da javob yuboraman: «Eng uzoq harakatsiz turgan 3 ta mahsulot». Ro‘yxat: /jadval</pre></div>
+<p>Dushanba 21-dekabr, 09:05 da kelgani:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>⏰ Eng uzoq harakatsiz turgan 3 ta mahsulot
+
+Eng uzoq harakatsiz turgan mahsulotlar (1C):
+- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona, oxirgi harakat 18.04.2026
+- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona, oxirgi harakat 20.10.2026
+- SH-501 Шкаф для документов 80x40x200: 58 dona, oxirgi harakat 27.10.2026</pre></div>
+<p><strong>Nega aynan shu ish:</strong> jigarrang Senator Lux kreslolari 8 oydan beri omborda turibdi.
+Bu - muzlab qolgan pul.
+Rahbar har kuni buni ko‘rib, aksiya yoki sotuvchilarga topshiriq beradi.
+Tannarx agentga ko‘rsatilmaydi (<code>sources.toml</code> dagi <code>columns</code>), summasini buxgalterdan so‘raydi.</p>
+<p><strong>2. Claude Code bilan, ombor uchun: «10:30 gacha 1C fayli kelmasa, Otabek akaga eslatma»</strong></p>
+<p>Bu 1-mashqdagi 16-dekabr xatosiga (eski 1C fayli) javob.
+<code>agent/schedule.toml</code> ga qo‘shilgani (<code>namuna/yaxshilash/agent-v2/schedule.toml</code>):</p>
+<pre><code class="language-toml">[[job]]
+name = &quot;1C fayli tekshiruvi&quot;
+time = &quot;10:30&quot;
+days = &quot;1-6&quot;
+send_to = 7100032   # Otabek aka (namunadagi shartli ID)
+prompt = &quot;&quot;&quot;
+1C fayli bugun yangilanganini tekshir: ombor qoldig'i jadvalida DIQQAT yozuvi bormi?
+DIQQAT bo'lsa yoki jadval bo'sh bo'lsa, ODAMGA qatori bilan sababini yoz.
+Hammasi joyida bo'lsa, faylning yangilangan vaqtini va qatorlar sonini bir qatorda yoz.
+&quot;&quot;&quot;
+</code></pre>
+<p>Yuborishdan oldin sinov (<code>namuna/yaxshilash/job-1c-tekshiruvi.txt</code>, yakshanba, fayl shanbadan beri eski):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>$ uv run pilot job &quot;1C fayli tekshiruvi&quot;
+
+ODAMGA: Ombor qoldig‘i (1C eksport): fayl 28 soatdan beri yangilanmagan (chegara 25 soat). Otabek aka 1C dan bugungi qoldiqni eksport qilsin.</pre></div>
+<p>2-haftada nima bo‘ldi:</p>
+<table>
+<thead>
+<tr>
+<th>Kun</th>
+<th>10:30 da Otabek akaga kelgani</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dushanba 21.12</td>
+<td>«1C ombor fayli joyida: ogohlantirish yo‘q, 11 qator.»</td>
+</tr>
+<tr>
+<td>Seshanba 22.12</td>
+<td>«1C fayli tekshiruvi: bu safar javob tayyorlab bo‘lmadi (... fayl 26 soatdan beri yangilanmagan (chegara 25 soat) ...)» - Otabek aka 10:50 da eksport qildi</td>
+</tr>
+<tr>
+<td>Chorshanba-shanba</td>
+<td>«joyida»</td>
+</tr>
+</tbody>
+</table>
+<p>Seshanba kuni 10:15 da bitta qoldiq savoli odamga uzatildi, eski fayldan javob berilmadi.
+Rejali ish har safar bitta xabar yuboradi, promptga «hammasi joyida bo‘lsa, hech narsa yozma» deb yozsangiz ham.
+Shuning uchun Otabek aka bilan kelishildi: «joyida» xabari - kunlik tasdiq.</p>
+<p><strong>3. Ertalabki hisobot</strong> (o‘rnatilgan, <code>DAILY_REPORT_TIME=09:00</code>), seshanba 22-dekabr:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>📊 Kunlik hisobot: 21-dekabr, dushanba
+«Savdo yordamchisi»
+
+• So‘rovlar: 22
+• Javob berildi: 19
+• Odamga uzatildi: 3
+• Xato deb belgilandi: 0
+• To‘liq hal qilindi: 19</pre></div>
+<h2>Yomon namuna</h2>
+<blockquote>
+<p>/jadval 07:00 Dunyo va O‘zbekiston yangiliklari, ob-havo va kunning maslahati</p>
+<p>schedule.toml: har kuni 08:00 da har bir menejerga «kecha kim nechta savol berdi va kim eng sekin javob berdi» jadvali, butun savdo guruhiga.</p>
+</blockquote>
+<p><strong>Nimasi yomon:</strong></p>
+<ul>
+<li>Birinchisida kompaniyangizdan hech narsa yo‘q: bu ish Gemini ilovasida ham bor, pilotga hech narsa qo‘shmaydi.
+  Bot faqat ulangan ma’lumotdan javob beradi; internetdan yangilik qidirmaydi.</li>
+<li>Ikkinchisi odamni o‘lchaydi, ishni emas: xodimlarga «bot sizni kuzatmaydi» deb va’da berilgan (To‘plam 4 suhbati).
+  Bot hisobotlarga ism va har bir xodim bo‘yicha raqam qo‘shmaydi; buni so‘rash va’dani buzadi.</li>
+<li>Ikkinchisi soat 08:00 da, ish vaqtidan oldin: xodimlarga bot xabarlari faqat ish vaqtida boradi.</li>
+</ul>
+<p><strong>To‘g‘rilangan:</strong></p>
+<blockquote>
+<p>/jadval 09:05 Eng uzoq harakatsiz turgan 3 ta mahsulot</p>
+<p>schedule.toml: ish kunlari 10:30 da, faqat Otabek akaga: «1C fayli kelmagan bo‘lsa, eslatma».</p>
+</blockquote>
+<h2>Tez-tez uchraydigan xatolar</h2>
+<ul>
+<li><strong>Xabar kelmadi.</strong>
+  <code>/jadval</code> da ish bormi?
+  Vaqt allaqachon o‘tgan bo‘lsa, ish ertaga boshlanadi.
+  Bugun yakshanba bo‘lsa va <code>WORK_DAYS=1-6</code> bo‘lsa, ish dushanba keladi: sinfda sinash uchun <code>pilot job "&lt;nom&gt;"</code> ni ishlating.</li>
+<li><strong>Xodimga kelmadi.</strong>
+  U botda <code>/start</code> bosmagan, yoki hozir ish vaqtidan tashqari: xabar ish vaqtigacha kutadi.</li>
+<li><strong>Javob «bajarilmadi» deydi.</strong>
+  Bu ko‘pincha yaxshi belgi: ma’lumot eski yoki bo‘sh, agent taxmin qilmadi.
+  <code>/holat</code> bilan qaysi fayl muammoli ekanini ko‘ring.</li>
+<li><strong>Har bir rejali ish pul turadi.</strong>
+  Bitta ish taxminan $0.003-0.005, kuniga bitta ish oyiga 15-20 sent.
+  Xarajat kunlik hisobotda ko‘rinadi.</li>
+</ul>
+<h2>Tayyor, agar</h2>
+<ul>
+<li class="cb">Kamida bitta o‘z biznes ishingiz qo‘shilgan (telefondan yoki <code>schedule.toml</code> da).</li>
+<li class="cb">U Sizning ma’lumotingizdan javob beradi, ismlar va har bir xodim bo‘yicha raqamlarsiz.</li>
+<li class="cb">Bir marta sinalgan: <code>pilot job "&lt;nom&gt;"</code> yoki birinchi rejali xabar telefoningizga keldi.</li>
+<li class="cb">Kunlik hisobot vaqti (<code>DAILY_REPORT_TIME</code>) qo‘yilgan.</li>
+<li class="cb">Mentor telefoningizdagi xabarni ko‘rdi (tekshiruv 5.7).</li>
+</ul>
+<div class="foot">Praktikum 3.0 · 5-dars · 20-dekabr 2026 · manba: day-5/exercises/04-jadvalga-ish-qoshish.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

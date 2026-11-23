@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O‘quv markazi: bir sahifalik taklif (namuna)</title>
+<style>
+  :root { --ink:#12202b; --ink2:#566573; --line:#dfe6ec; --bg:#f3f7fa; --card:#fff; --acc:#0b7a75; --acc-soft:#e3f4f2; --hot:#d9822b; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.5; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 28px 20px 48px; }
+  .badge { display: inline-block; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--acc); background: var(--acc-soft); border: 1px solid #bfe3df; padding: 4px 10px; border-radius: 999px; }
+  .hero { background: linear-gradient(135deg, #0b7a75, #0f5a7a); color: #fff; border-radius: 18px; padding: 34px 30px; margin: 14px 0 20px; }
+  .hero h1 { font-size: 34px; line-height: 1.15; margin: 0 0 10px; letter-spacing: -0.02em; }
+  .hero p { margin: 0; font-size: 17px; opacity: .92; max-width: 640px; }
+  .who { display: inline-block; margin-top: 16px; font-size: 14px; background: rgba(255,255,255,.16); padding: 6px 12px; border-radius: 999px; }
+  h2 { font-size: 20px; margin: 26px 0 12px; letter-spacing: -0.01em; }
+  .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .why div { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+  .why b { display: block; font-size: 16px; margin-bottom: 4px; }
+  .why span { font-size: 14px; color: var(--ink2); }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; font-size: 15px; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  th { background: #f8fafb; font-size: 12.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink2); }
+  td.p { font-weight: 700; white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  .note { background: #fff7ec; border: 1px solid #f4d8b5; border-radius: 12px; padding: 12px 14px; font-size: 15px; margin-top: 12px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; counter-reset: s; }
+  .steps div { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; font-size: 15px; }
+  .steps div::before { counter-increment: s; content: counter(s); display: inline-flex; width: 28px; height: 28px; border-radius: 50%; background: var(--acc); color: #fff; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 8px; }
+  textarea { width: 100%; height: 150px; font: 13px/1.45 ui-monospace, Menlo, monospace; border: 1px solid var(--line); border-radius: 10px; padding: 10px; resize: vertical; background: #fff; color: var(--ink); }
+  .btn { margin-top: 10px; background: var(--acc); color: #fff; border: 0; border-radius: 10px; padding: 12px 18px; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .foot { font-size: 12.5px; color: var(--ink2); margin-top: 22px; }
+  @media (max-width: 760px) { .why, .steps { grid-template-columns: 1fr; } .hero h1 { font-size: 26px; } .hero { padding: 26px 20px; } th, td { padding: 10px; font-size: 14px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="badge">Namuna · shartli o‘quv markazi</span>
+  <div class="hero">
+    <h1>Farzandingiz ingliz tilida 3 oyda gapira boshlaydi</h1>
+    <p>Kichik guruhlar, har oy ota-onaga hisobot va sinov darsi bepul.</p>
+    <span class="who">7-15 yoshli bolalar uchun · Chilonzor</span>
+  </div>
+
+  <h2>Nega bizda o‘qishadi</h2>
+  <div class="why">
+    <div><b>Guruhda 8 kishi</b><span>Har bir bola darsda kamida 10 daqiqa gapiradi.</span></div>
+    <div><b>Har oy hisobot</b><span>Ota-onaga Telegram’da baho va o‘qituvchi izohi.</span></div>
+    <div><b>Sinov darsi bepul</b><span>Bola yoqtirmasa, hech narsa to‘lamaysiz.</span></div>
+  </div>
+
+  <h2>Kurslar va narxlar</h2>
+  <table>
+    <thead><tr><th>Kurs</th><th>Jadval</th><th>Oyiga</th></tr></thead>
+    <tbody>
+      <tr><td>Ingliz tili, boshlang‘ich (7-10 yosh)</td><td>Haftasiga 3 marta, 15:00</td><td class="p">450 000 so‘m</td></tr>
+      <tr><td>Ingliz tili, o‘rta (11-15 yosh)</td><td>Haftasiga 3 marta, 16:30</td><td class="p">520 000 so‘m</td></tr>
+      <tr><td>Matematika, olimpiadaga tayyorlov</td><td>Haftasiga 2 marta, 17:00</td><td class="p">480 000 so‘m</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><b>Chegirma:</b> ikkinchi farzand uchun 10%. Uch oyni oldindan to‘lasangiz, yana 5%.</div>
+
+  <h2>Qanday yozilish mumkin</h2>
+  <div class="steps">
+    <div>Telegram’da yozing: farzandingiz yoshi va qaysi kurs.</div>
+    <div>Bepul sinov darsiga vaqt tanlaymiz.</div>
+    <div>Yoqsa, guruhga yozamiz va birinchi oyni to‘laysiz.</div>
+  </div>
+
+  <h2>Telegram uchun qisqa matn</h2>
+  <textarea id="tg" readonly>Assalomu alaykum!
+Farzandingiz uchun ingliz tili va matematika kurslari, Chilonzorda.
+• Guruhda 8 kishi, har oy ota-onaga hisobot
+• Ingliz tili: oyiga 450 000 so‘mdan
+• Ikkinchi farzandga 10% chegirma
+Sinov darsi bepul. Yozilish uchun shu yerga farzandingiz yoshini yozing.</textarea>
+  <button class="btn" id="copy">Nusxa olish</button>
+  <p class="foot">Namuna. Markaz, narxlar va jadval shartli; o‘z ma’lumotlaringiz bilan quring.</p>
+</div>
+<script>
+  document.getElementById('copy').addEventListener('click', function () {
+    var ta = document.getElementById('tg'), btn = this;
+    var ok = function () { btn.textContent = 'Nusxa olindi'; setTimeout(function () { btn.textContent = 'Nusxa olish'; }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(ta.value).then(ok, function () { ta.select(); document.execCommand('copy'); ok(); });
+    else { ta.select(); document.execCommand('copy'); ok(); }
+  });
+</script>
+</body>
+</html>

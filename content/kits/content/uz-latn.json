@@ -1,0 +1,944 @@
+{
+ "lang": "uz-Latn",
+ "ui": {
+  "author_label": "Tuzuvchi:",
+  "author": "XURSHID MAROZIQOV",
+  "series": "Praktikum 3.0",
+  "kit_word": "To‘plam",
+  "company": "Kompaniya",
+  "date": "Sana",
+  "filled_by": "To‘ldirdi",
+  "page_of": "sahifa",
+  "file_hint": "Raqamli nusxa",
+  "scripts_title": "Tayyor matnlar",
+  "scripts_hint": "Ovoz chiqarib o‘qing yoki o‘z so‘zlaringiz bilan ayting"
+ },
+ "kits": [
+  {
+   "id": "k01",
+   "slug": "topish",
+   "file": "Ish_qayerga_ketyapti",
+   "folder": "kit1-interviews",
+   "skill": "/kit1",
+   "title": "Ish qayerga ketyapti?",
+   "purpose": "Agent yoki robotga vazifa berishdan oldin, odamlaringiz hafta davomida qaysi vazifaga qancha vaqt sarflayotganini aniq toping.",
+   "steps": [
+    "Avval jamoaga ayting. Birinchi suhbatdan oldin bo‘lim xodimlariga o‘zingiz qisqa yig‘ilishda yoki bitta xabarda tushuntiring: maqsad ishni xaritaga tushirish, odamlarni almashtirish emas. Odamlar ishini yo‘qotishdan qo‘rqsa, asl holatni yashiradi. Tayyor matn shu to‘plamning oxirida.",
+    "Bitta bo‘lim va 2-3 xodimni tanlang. Jamoangiz bo‘lmasa yoki siz menejer bo‘lsangiz, o‘zingizni yoki bo‘lim boshlig‘ini suhbatdan o‘tkazing. Har biri bilan A shakli bo‘yicha 20-30 daqiqa gaplashing: avval rozilik matnini o‘qing, xodim yozib olish yoki qo‘lda yozishni o‘zi tanlaydi. Yozib olsangiz, bo‘laklab yozing: A.2 dan keyin, A.5 dan keyin yoki har 8 daqiqada, qaysi biri oldin kelsa, yozishni to‘xtatib yangisini boshlang. Xodimdan mijozning ismi va telefonini aytmaslikni so‘rang.",
+    "Har bir bo‘lakni Gemini’ga alohida yuklang (bepul Gemini bir so‘rovda 10 daqiqagacha audio oladi) va matnlarni ketma-ket bitta faylga qo‘ying. Mijoz yoki bemorning ismi, telefoni, tashxisi qolgan bo‘lsa, AI’ga berishdan oldin «[mijoz]» deb almashtiring. Har bir raqamni audio bilan solishtiring: «bir uch-to‘rt yuz ming» (taxminan 300-400 ming) matnda «1 300 000» bo‘lib chiqishi mumkin.",
+    "Transkriptni pastdagi so‘rov bilan AI chatga joylang yoki Claude Code’da /kit1 ni ishga tushiring. Natija B shakli bo‘ladi. Uni xodimga ko‘rsating: u daqiqalar va takrorlanish sonini to‘g‘rilaydi, [?] belgili har bir taxmin aniq raqamga aylanadi.",
+    "Haftalik soatlarni qo‘shing va B.9 da har bir vazifani ertaga kim qilishini belgilang: A agent, R robot, I inson, B birga. Har bir xodim uchun .md fayl saqlang (masalan, dilnoza-form-b.md) va 2-darsga olib keling. Audio faylni 7 kun ichida o‘chiring."
+   ],
+   "ai_label": "AI chat uchun so‘rov",
+   "ai_short": "Bu xodim bilan suhbat transkripti yoki qaydlarim. Avval har bir raqamni qaysi gapdan olganingiz bilan ro‘yxat qiling, shubhalilarini [?] bilan belgilang. Keyin vazifalarni B shakli ustunlariga tushiring va haftalik soatni hisobi bilan yozing.",
+   "skill_line": "Claude Code’da (2-darsdan): kompaniya papkasida /kit1 dilnoza-transcript.md deb yozing. Natija kit1-interviews/ papkasiga yoziladi.",
+   "transcribe_label": "Audioni matnga aylantirish uchun so‘rov (Gemini)",
+   "transcribe_prompt": [
+    "Bu audioni o‘zbek tilida so‘zma-so‘z matnga aylantir.",
+    "Gapiruvchilarni «Suhbatdosh» va «Xodim» deb belgila.",
+    "Raqamlarni eshitganingdek so‘z bilan yoz, masalan «bir uch-to‘rt yuz ming», o‘zing raqamga aylantirma.",
+    "Mijoz yoki bemorning ismi, telefoni va tashxisi o‘rniga «[mijoz]» deb yoz.",
+    "Eshitilmagan joyni [eshitilmadi] deb belgila, taxmin qilma.",
+    "Hech narsani qisqartirma va tuzatma."
+   ],
+   "ai_prompt": [
+    "Siz kichik biznes egasiga o‘z kompaniyasidagi ishlarni xaritaga tushirishda yordam beryapsiz.",
+    "Quyida bir xodim bilan 20-30 daqiqalik suhbat transkripti yoki suhbatchining qo‘lda yozgan qaydlari berilgan.",
+    "Ikki ishni bajaring.",
+    "",
+    "1) Raqamlarni tekshirish.",
+    "Matndagi har bir raqam va miqdorni, so‘z bilan aytilganlarini ham, jadvalga chiqaring: matndan aynan iqtibos, siz qanday tushundingiz, ishonch (aniq yoki [?]).",
+    "Ovozni matnga o‘girish o‘zbekcha taxminiy raqamlarni buzadi.",
+    "Raqam oldidagi «bir» ko‘pincha «taxminan» degani: «bir uch-to‘rt yuz ming» taxminan 300 000-400 000 degani, 1 300 000 emas.",
+    "«uch-to‘rt», «besh-o‘n» kabi oraliqlarni oraliq qilib qoldiring.",
+    "Gapga mos kelmaydigan raqamni (masalan, kichik do‘konda kuniga 1 300 000 ta buyurtma) [?] bilan belgilang.",
+    "Shubhali raqamni o‘zingiz «to‘g‘rilamang»: uni [?] bilan qoldiring.",
+    "",
+    "2) Vazifalar ro‘yxati.",
+    "Xodim aytgan har bir alohida vazifani ajratib oling va aynan quyidagi ustunlar va kodlar bilan Markdown jadval qaytaring: B.1 Vazifa (fe’l bilan boshlang), B.2 Haftasiga necha marta, B.3 Har safar, daqiqa, B.4 Haftalik vaqt, soat, B.5 Ma’lumot qayerdan keladi, B.6 Natija kimga yoki qayerga yuboriladi, B.7 Qoida (Q) yoki fikr (F), B.8 Xatoning narxi (past / o‘rta / yuqori).",
+    "B.4 ni har bir qatorda hisobi bilan yozing, masalan «10 × 15 / 60 = 2,5».",
+    "Oxirida haftalik soatlar yig‘indisini ham hisobi bilan yozing.",
+    "Faqat xodim aytgan narsalardan foydalaning.",
+    "Aniq raqam aytilmagan bo‘lsa, eng yaxshi taxminingizni yozing va uni [?] bilan belgilang.",
+    "Turli vazifalarni birlashtirmang.",
+    "B.9 ustunini bo‘sh qoldiring: uni biznes egasi to‘ldiradi.",
+    "",
+    "Jadvaldan keyin 3-5 banddan iborat ro‘yxatda yozing: har doim bir xil takrorlanadigan vazifalar, xodim ma’lumot kutib qoladigan joylar va xodim aytgan xatolar.",
+    "Oxirida xodimdan so‘rash kerak bo‘lgan savollarni sanang: har bir [?] uchun bittadan.",
+    "O‘zbek tilida javob bering."
+   ],
+   "forms": [
+    {
+     "id": "A",
+     "orient": "portrait",
+     "type": "questions",
+     "file": "ism-form-a.md",
+     "title": "Xodim bilan suhbat",
+     "header": [
+      "Xodim",
+      "Lavozim",
+      "Sana",
+      "Suhbatni o‘tkazdi"
+     ],
+     "consent_label": "Suhbat boshida ovoz chiqarib o‘qing",
+     "consent": [
+      "[Ism] aka/opa, boshlashdan oldin bir narsani aytay.",
+      "Takrorlanadigan ishlarning bir qismini yelkangizdan olish uchun ishingiz aslida qanday yurishini tushunmoqchiman.",
+      "Bu sizni tekshirish emas: aytganlaringiz maoshingiz, ishingizni baholash yoki lavozimingiz haqidagi hech qanday qaror uchun ishlatilmaydi.",
+      "Detallarni o‘tkazib yubormaslik uchun suhbatni telefonga yozib olmoqchiman.",
+      "Yozuvni yoki uning matnini AI xizmatiga beraman: u ovozni matnga aylantiradi va vazifalar ro‘yxatini tuzishga yordam beradi.",
+      "Ovozli faylni bir hafta ichida o‘chiraman.",
+      "Matnni kompaniyada faqat men ko‘raman; vazifalar ro‘yxatining nusxasini sizga beraman, xohlagan joyini tuzatasiz.",
+      "Yozib olmasdan, men qo‘lda yozib borsam ham bo‘ladi; qaydlarimni ham AI’ga bermasligimni xohlasangiz, ro‘yxatni o‘zim tuzaman.",
+      "Mehnat kodeksiga ko‘ra, ma’lumotingizni AI xizmatiga faqat yozma roziligingiz bilan bera olaman, shuning uchun pastga imzo qo‘yishingizni so‘rayman.",
+      "Istalgan payt to‘xtatishimiz mumkin.",
+      "Qaysi biri sizga qulay: yozib olaymi yoki qo‘lda yozaymi?"
+     ],
+     "consent_box": "Yozib olishga va yozuv yoki matni AI xizmatiga berilishiga roziman, audio 7 kunda o‘chiriladi; xodim imzosi:",
+     "items": [
+      {
+       "code": "A.1",
+       "q": "Odatdagi bir ish kuningiz qanday o‘tadi, ishga kelganingizdan to ketguningizgacha aytib bering."
+      },
+      {
+       "code": "A.2",
+       "q": "Hafta davomida eng ko‘p vaqtingizni oladigan uchta vazifa qaysi? Har biriga taxminan necha daqiqa ketadi?"
+      },
+      {
+       "code": "A.3",
+       "q": "Qaysi vazifalarni har doim bir xil bajarasiz? Menga oxirgisini ko‘rsating."
+      },
+      {
+       "code": "A.4",
+       "q": "Qayerda ma’lumot kutib qolasiz yoki bir narsani boshqalardan qayta-qayta so‘raysiz?"
+      },
+      {
+       "code": "A.5",
+       "q": "Eng ko‘p xatolar qayerda bo‘ladi? Ularni kim sezadi va bu xatolar qanchaga tushadi?"
+      },
+      {
+       "code": "A.6",
+       "q": "Qaysi ishingiz sizning tajribangizni talab qiladi, ya’ni yangi kelgan xodim uni birinchi oyida eplay olmaydi?"
+      },
+      {
+       "code": "A.7",
+       "q": "Agar ertaga sizga yordamchi berishsa, birinchi bo‘lib qaysi vazifani unga topshirardingiz?"
+      }
+     ],
+     "legal_note": "Egasi uchun: Mehnat kodeksi 178-modda (lex.uz/mact/6257288) - xodim ma’lumoti uchinchi tomonga, AI xizmati ham, faqat uning yozma roziligi bilan beriladi. Kompaniyangiz bunga tayanishidan oldin yurist tasdiqlasin."
+    },
+    {
+     "id": "B",
+     "orient": "landscape",
+     "type": "table",
+     "file": "ism-form-b.md",
+     "title": "Vazifalar ro‘yxati",
+     "header": [
+      "Xodim",
+      "Lavozim",
+      "Bo‘lim",
+      "Sana",
+      "Xodim ko‘rib chiqdi"
+     ],
+     "rows": 11,
+     "cols": [
+      {
+       "code": "B.1",
+       "h": "Vazifa (fe’l bilan)",
+       "w": 62
+      },
+      {
+       "code": "B.2",
+       "h": "Haftasiga necha marta",
+       "w": 19
+      },
+      {
+       "code": "B.3",
+       "h": "Har safar, daqiqa",
+       "w": 19
+      },
+      {
+       "code": "B.4",
+       "h": "Haftalik vaqt, soat",
+       "w": 19
+      },
+      {
+       "code": "B.5",
+       "h": "Ma’lumot qayerdan keladi",
+       "w": 34
+      },
+      {
+       "code": "B.6",
+       "h": "Natija kimga yoki qayerga yuboriladi",
+       "w": 30
+      },
+      {
+       "code": "B.7",
+       "h": "Qoida Q / Fikr F",
+       "w": 20
+      },
+      {
+       "code": "B.8",
+       "h": "Xatoning narxi",
+       "w": 22
+      },
+      {
+       "code": "B.9",
+       "h": "Ertaga A/R/I/B",
+       "w": 20
+      }
+     ],
+     "total": "Haftasiga jami soat",
+     "legend": "B.4 = B.2 x B.3 / 60.  B.7: Q - aniq qoida; F - tajriba va mulohaza talab qiladigan ish.  B.8: past, o‘rta, yuqori.  B.9: A agent, R robot, I inson, B birga.  [?] - taxmin: xodim bilan tekshiring."
+    }
+   ],
+   "scripts": [
+    {
+     "label": "Jamoaga xabar",
+     "when": "Birinchi suhbatdan oldin: yig‘ilishda ayting, keyin shu matnni bo‘lim guruhiga yozing.",
+     "file": "team-message.md",
+     "text": [
+      "Assalomu alaykum, jamoa.",
+      "Men AI bo‘yicha kursda o‘qiyapman va [bo‘lim] ishini yengillashtirish yo‘lini qidiryapman.",
+      "Buning uchun shu hafta 2-3 kishi bilan 20-30 daqiqadan gaplashaman: ish kuni qanday o‘tadi, qaysi ish ko‘p vaqt oladi, qayerda ma’lumot kutib qolasiz.",
+      "Maqsad ishni xaritaga tushirish, odamlarni almashtirish emas.",
+      "Aytganlaringiz maosh, baholash yoki lavozim haqidagi qarorlar uchun ishlatilmaydi.",
+      "Suhbatni yozib olaymi yoki qo‘lda yozaymi, har kim o‘zi tanlaydi.",
+      "Suhbat yozuvi yoki matni AI dasturiga faqat sizning yozma roziligingiz bilan beriladi (Mehnat kodeksi, 178-modda).",
+      "Har biringiz o‘z vazifalar ro‘yxatingizni ko‘rasiz va tuzatasiz.",
+      "Savolingiz bo‘lsa, menga to‘g‘ridan-to‘g‘ri ayting yoki shaxsan yozing."
+     ]
+    },
+    {
+     "label": "Yozma majburiyat (tavsiya etiladi)",
+     "when": "Ishga olish va bo‘shatish huquqi bor odam imzolaydi; bo‘limdagi har bir xodimga bittadan nusxa.",
+     "file": "team-message.md",
+     "text": [
+      "[Bo‘lim] bo‘yicha AI yordamchisi loyihasi haqida majburiyatim.",
+      "1. [Sana, bugundan kamida olti oy keyin]gacha [bo‘lim]da hech kim bu loyiha yoki u tejagan vaqt sababli ishdan bo‘shatilmaydi, maoshi kamaytirilmaydi va pastroq lavozimga o‘tkazilmaydi.",
+      "2. Biz odamni emas, ishni o‘lchaymiz: raqamlar hech kimni baholash, jazolash yoki maoshini belgilash uchun ishlatilmaydi, har kim o‘z ishi haqidagi raqamlarni ko‘radi.",
+      "3. Yordamchi xato qilsa, men, [ism], javob beraman; xato yoki u haqda xabar bergani uchun hech kim ayblanmaydi.",
+      "4. Loyihani boshqaradigan xodim (ishga tushishidan oldin nomi aytiladi) va men yordamchini istalgan payt to‘xtata olamiz.",
+      "5. Tejalgan vaqt qayerga ketishini hech narsa o‘zgarishidan oldin shu ishdagi odamlar bilan birga hal qilamiz; kimningdir vazifasi o‘zgarsa, avval yozma kelishamiz.",
+      "6. Bu loyiha haqida menga istalgan payt, yolg‘iz ham savol berishingiz mumkin.",
+      "Imzo: ____________  Lavozim: ____________  Sana: ____________"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "k02",
+   "slug": "tanlash",
+   "file": "Qaysi_jarayondan_boshlaymiz",
+   "folder": "kit2-scoring",
+   "skill": "/kit2",
+   "title": "Qaysi jarayondan boshlaymiz?",
+   "purpose": "Jarayonlarni bir xil mezonlarda baholang va birinchi sinov (pilot) uchun bittasini tanlang: qiymati yuqori, boshlash oson, xatosi arzon bo‘lsin.",
+   "steps": [
+    "To‘plam 1 dagi B shakllaridan 8 tagacha jarayonni A shakliga yozing. Claude Code’da /kit2 buni kit1-interviews/ papkasidagi fayllardan o‘zi qiladi. Jarayon - bu boshlanishi va natijasi bor vazifalar zanjiri, masalan «mijoz murojaatidan sinov darsiga yozilguncha».",
+    "Har bir jarayonni oltita mezon bo‘yicha 1 dan 5 gacha baholang. Shkala jadval ostida berilgan. AI qo‘ygan har bir balning sababini so‘rang va rozi bo‘lmaganingizni o‘zgartiring. Keyin baholarni bo‘lim boshlig‘i bilan ko‘rib chiqing: biznes egasi odatda ma’lumotlar qanchalik tartibsiz ekanini bilmaydi.",
+    "Qiymat (A.2 + A.3 + A.7) va Osonlik (A.4 + A.5 + A.6) ni hisoblang. Har biri 3 va 15 oralig‘ida bo‘lishi kerak.",
+    "Har bir jarayonni B shaklidagi qiymat va osonlik matritsasiga bitta nuqta qilib tushiring: gorizontal bo‘yicha Osonlik, vertikal bo‘yicha Qiymat. Nuqta yoniga uning raqamini yozing. /kit2 matritsani brauzerda ochiladigan sahifa qilib ham chizadi.",
+    "Matritsaning yuqori o‘ng qismidan bitta jarayonni tanlang. Nega aynan shuni tanlaganingizni va hozir nimani qilmayotganingizni yozing. Shu hafta tanlangan jarayonning boshlang‘ich raqamlarini yig‘ishni boshlang (To‘plam 5, 1-qadam)."
+   ],
+   "ai_label": "AI chat uchun so‘rov",
+   "ai_short": "Bu mening jarayonlarni baholash jadvalim. Hisobni qayta tekshiring, baholardagi qarama-qarshiliklarni toping, jarayonlarni Qiymat va Osonlik bo‘yicha tartiblang va birinchi sinov uchun bittasini taklif qiling.",
+   "skill_line": "Claude Code’da: /kit2. U kit1-interviews/ dagi B shakllarini o‘qiydi va natijani kit2-scoring/ papkasiga yozadi.",
+   "ai_prompt": [
+    "Siz kichik biznes egasiga jarayonning bir qismini AI agentiga berish uchun birinchi jarayonni tanlashda yordam beryapsiz.",
+    "Quyida uning baholash jadvali berilgan (A.1-A.9 kodlari; har bir mezon 1-5 gacha baholangan; A.8 Qiymat = A.2 + A.3 + A.7, A.9 Osonlik = A.4 + A.5 + A.6).",
+    "1) A.8 va A.9 ni qayta hisoblang, hisobni har bir qatorda ko‘rsating (masalan, A.8 = 4 + 3 + 5 = 12) va arifmetik xatolarni ko‘rsating.",
+    "2) Jarayon nomiga to‘g‘ri kelmaydigan baholarni ko‘rsating (masalan, shaxsiy qarorni talab qiladigan jarayon «aniq qoidasi bor» degan mezonda 5 olgan bo‘lsa).",
+    "3) Jarayonlarni Qiymat va Osonlik bo‘yicha tartiblang va 2-4 haftalik sinov uchun eng yaxshi hamda ikkinchi eng yaxshi variantni ayting.",
+    "4) Eng yaxshi variant uchun sinov muvaffaqiyatsiz tugashining uchta eng ehtimolli sababini va biznes egasi boshlashdan oldin javob topishi kerak bo‘lgan bitta savolni yozing.",
+    "Raqamlarni o‘zingizdan to‘qimang.",
+    "O‘zbek tilida javob bering."
+   ],
+   "forms": [
+    {
+     "id": "A",
+     "orient": "landscape",
+     "type": "table",
+     "file": "form-a-scoring.md",
+     "title": "Jarayonlarni baholash",
+     "header": [
+      "Bo‘lim",
+      "Baholadi",
+      "Sana"
+     ],
+     "rows": 8,
+     "numbered": true,
+     "cols": [
+      {
+       "code": "A.1",
+       "h": "Jarayon (boshlanishi - natijasi)",
+       "w": 70
+      },
+      {
+       "code": "A.2",
+       "h": "Takrorlanishi",
+       "w": 19
+      },
+      {
+       "code": "A.3",
+       "h": "Ketadigan vaqt",
+       "w": 19
+      },
+      {
+       "code": "A.4",
+       "h": "Aniq qoidasi bor",
+       "w": 19
+      },
+      {
+       "code": "A.5",
+       "h": "Ma’lumot raqamli",
+       "w": 19
+      },
+      {
+       "code": "A.6",
+       "h": "Xatosi arzon",
+       "w": 19
+      },
+      {
+       "code": "A.7",
+       "h": "Mijozga ta’siri",
+       "w": 19
+      },
+      {
+       "code": "A.8",
+       "h": "Qiymat",
+       "w": 18
+      },
+      {
+       "code": "A.9",
+       "h": "Osonlik",
+       "w": 18
+      }
+     ],
+     "scale": [
+      [
+       "A.2",
+       "1 ball - oyiga bir marta",
+       "5 ball - kuniga bir necha marta"
+      ],
+      [
+       "A.3",
+       "1 ball - haftasiga bir necha daqiqa",
+       "5 ball - haftasiga 10 soatdan ko‘p"
+      ],
+      [
+       "A.4",
+       "1 ball - har bir holat har xil",
+       "5 ball - har doim bir xil qadamlar"
+      ],
+      [
+       "A.5",
+       "1 ball - qog‘ozda yoki odamlar yodida",
+       "5 ball - allaqachon tizim yoki jadvalda"
+      ],
+      [
+       "A.6",
+       "1 ball - xato pul yoki ishonchni yo‘qotadi",
+       "5 ball - xatoni sezish va to‘g‘rilash oson"
+      ],
+      [
+       "A.7",
+       "1 ball - faqat ichki jarayon",
+       "5 ball - mijoz buni kutib turadi"
+      ]
+     ]
+    },
+    {
+     "id": "B",
+     "orient": "portrait",
+     "type": "matrix",
+     "file": "form-b-matrix.md",
+     "title": "Qiymat va osonlik",
+     "header": [
+      "Bo‘lim",
+      "Sana"
+     ],
+     "x": "Osonlik (A.9)",
+     "y": "Qiymat (A.8)",
+     "q_tr": "Birinchi sinov",
+     "q_tl": "Foydali, puxta reja kerak",
+     "q_br": "Oson, lekin foydasi kichik",
+     "q_bl": "Hozircha tegmang",
+     "choice": [
+      {
+       "code": "B.1",
+       "label": "Tanlangan jarayon"
+      },
+      {
+       "code": "B.2",
+       "label": "Nega aynan shu"
+      },
+      {
+       "code": "B.3",
+       "label": "Hozir nimani qilmayapmiz"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "k03",
+   "slug": "loyihalash",
+   "file": "Ishni_qayta_taqsimlash",
+   "folder": "kit3-agent",
+   "skill": "/kit3",
+   "title": "Ishni qayta taqsimlash",
+   "purpose": "Tanlangan jarayonni bosqichma-bosqich chizib chiqing, ertaga har bir qadamni kim qilishini hal qiling va agentning ish yo‘riqnomasi va chegaralarini yozing.",
+   "steps": [
+    "A shaklida tanlangan jarayonni boshidan oxirigacha yozing, har bir qatorga bitta harakat. «Bugun» ustuniga uni hozir kim qilishini yozing. O‘tgan haftadagi bitta real holatni eslab, hech qaysi qadam qolib ketmaganini tekshiring.",
+    "Ertaga har bir qadamni kim qilishini belgilang: A agent, R robot, I inson. Keyin natijani kim tekshirishini, kim qaror qabul qilishini va kim javobgar bo‘lishini yozing. Agar bitta katak bo‘sh qolsa, demak jarayon hali tayyor emas.",
+    "Agent qadamlarini B shakliga - agentning ish yo‘riqnomasiga yig‘ing. B.3 dagi har bir manba yoniga qanday ulanishini yozing: API, MCP, eksport (Excel, CSV, Telegram JSON) yoki qo‘lda. Agent nima qila olishini, nimani umuman qilmasligini va qachon ishni odamga topshirishini yozing.",
+    "B shaklini agent bilan ishlaydigan xodimlarga ko‘rsating: istisno holatlarni ular biladi. Hamma istisnolarni B.6 ga qo‘shing. Jarayon natijasidan 3 ta yaxshi va 3 ta yomon real misol yig‘ing: ular To‘plam 4 dagi B.4 va agentning sinov to‘plami bo‘ladi.",
+    "B shaklini imzolang va sana qo‘ying. Claude Code’da /kit3 uni kit3-agent/instructions.md fayliga - agentning tizim yo‘riqnomasiga (system prompt) aylantiradi. Agent v0 shu fayl asosida quriladi."
+   ],
+   "ai_label": "AI chat uchun so‘rov",
+   "ai_short": "Bu mening jarayon jadvalim va agent yo‘riqnomasi. Egasiz qadamlarni, xavfli ruxsatlarni, ulanish turi yozilmagan manbalarni va odamga o‘tishi kerak bo‘lgan holatlarni toping, so‘ngra B shaklini agent uchun aniq tizim yo‘riqnomasi (system prompt) qilib qayta yozib bering.",
+   "skill_line": "Claude Code’da: /kit3. Natija kit3-agent/ papkasida: A va B shakli hamda instructions.md.",
+   "ai_prompt": [
+    "Siz kichik biznes egasiga qayta ishlangan jarayonni AI agent yo‘riqnomasiga aylantirishda yordam beryapsiz.",
+    "Quyida to‘ldirilgan ikkita shakl bor.",
+    "A shakli - qadamlar jadvali (A.1 qadam, A.2 ma’lumot, A.3 bugun kim, A.4 ertaga kim A/R/I, A.5 kim tekshiradi, A.6 kim qaror qiladi, A.7 kim javobgar, A.8 izoh).",
+    "B shakli - agent yo‘riqnomasi (B.1-B.10).",
+    "Beshta ishni bajaring.",
+    "1) A.4-A.7 bo‘sh qolgan yoki agent bir qadamni o‘zi qilib o‘zi tekshiradigan joylarni ro‘yxat qiling.",
+    "2) B.3 dagi har bir manba uchun ulanish turi yozilganmi, tekshiring: API, MCP, eksport yoki qo‘lda; yozilmaganini so‘rang.",
+    "3) B.4 dagi noto‘g‘ri ketganda pul yoki ishonch yo‘qolishi mumkin bo‘lgan ruxsatlarni sanab, ularga chegara taklif qiling.",
+    "4) A shakl qadamlaridan kelib chiqib, B.6 da qolib ketgan odamga uzatish holatlarini taklif qiling.",
+    "5) B shaklini agent uchun tizim yo‘riqnomasi (system prompt) sifatida qayta yozing, bo‘limlar: Rol, Manbalar, Ruxsat etilgan harakatlar, Taqiqlangan harakatlar, Odamga uzatish, Qayd etish, Ohang va til, Sifat mezoni.",
+    "Iloji boricha egasining so‘zlarini saqlab qoling.",
+    "Egasi bermagan ruxsatlarni qo‘shmang.",
+    "O‘zbek tilida javob bering."
+   ],
+   "forms": [
+    {
+     "id": "A",
+     "orient": "landscape",
+     "type": "table",
+     "file": "form-a-steps.md",
+     "title": "Jarayon qadamlari: bugun va ertaga",
+     "header": [
+      "Jarayon",
+      "Boshlanadi",
+      "Tugaydi",
+      "Jarayon egasi"
+     ],
+     "rows": 10,
+     "numbered": true,
+     "cols": [
+      {
+       "code": "A.1",
+       "h": "Qadam (bitta harakat)",
+       "w": 52
+      },
+      {
+       "code": "A.2",
+       "h": "Ma’lumot",
+       "w": 32
+      },
+      {
+       "code": "A.3",
+       "h": "Bugun: kim",
+       "w": 24
+      },
+      {
+       "code": "A.4",
+       "h": "Ertaga A / R / I",
+       "w": 20
+      },
+      {
+       "code": "A.5",
+       "h": "Kim tekshiradi",
+       "w": 24
+      },
+      {
+       "code": "A.6",
+       "h": "Kim qaror qiladi",
+       "w": 24
+      },
+      {
+       "code": "A.7",
+       "h": "Kim javobgar",
+       "w": 24
+      },
+      {
+       "code": "A.8",
+       "h": "Izoh: kutish, xatolar",
+       "w": 41
+      }
+     ],
+     "legend": "A.4: A agent, R robot, I inson. Agent hech qachon o‘z qadamini o‘zi tekshirmaydi."
+    },
+    {
+     "id": "B",
+     "orient": "portrait",
+     "type": "fields",
+     "file": "form-b-agent.md",
+     "title": "Agentning ish yo‘riqnomasi",
+     "header": [
+      "Agent nomi",
+      "Jarayon"
+     ],
+     "fields": [
+      {
+       "code": "B.1",
+       "label": "Agentning vazifasi: bir gapda",
+       "lines": 2
+      },
+      {
+       "code": "B.2",
+       "label": "Javobgar rahbar",
+       "lines": 1
+      },
+      {
+       "code": "B.3",
+       "label": "Ishlatishi mumkin bo‘lgan manbalar (hujjatlar, narxlar, CRM, jadval)",
+       "note": "Har bir manba yoniga qanday ulanishini yozing: API, MCP, eksport yoki qo‘lda.",
+       "md_table": [
+        "Manba",
+        "Ulanish: API / MCP / eksport / qo‘lda"
+       ],
+       "lines": 3
+      },
+      {
+       "code": "B.4",
+       "label": "O‘zi mustaqil qila oladigan harakatlar",
+       "lines": 3
+      },
+      {
+       "code": "B.5",
+       "label": "Hech qachon qilmaydigan ishlar",
+       "lines": 3
+      },
+      {
+       "code": "B.6",
+       "label": "Qachon odamga uzatadi ... (holat - kimga - qanday)",
+       "md_table": [
+        "Holat",
+        "Kimga",
+        "Qanday"
+       ],
+       "lines": 4
+      },
+      {
+       "code": "B.7",
+       "label": "Har bir harakatdan so‘ng nimalarni yozib qo‘yadi",
+       "lines": 2
+      },
+      {
+       "code": "B.8",
+       "label": "Ohang va til",
+       "lines": 1
+      },
+      {
+       "code": "B.9",
+       "label": "Sifat mezoni: natija qachon to‘g‘ri hisoblanadi?",
+       "lines": 2
+      },
+      {
+       "code": "B.10",
+       "label": "Tasdiqladi, sana, keyingi ko‘rib chiqish sanasi",
+       "lines": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "k04",
+   "slug": "odamlar",
+   "file": "Xodimni_yangi_rolga_tayyorlash",
+   "folder": "kit4-people",
+   "skill": "/kit4",
+   "title": "Xodimlarni yangi rolga tayyorlash",
+   "purpose": "Har bir xodimning eng kuchli qobiliyatini yangi ish taqsimotidagi mos joyga qo‘ying va «AI’ni o‘rgan» o‘rniga aniq tekshirish mumkin bo‘lgan vazifa bering.",
+   "steps": [
+    "A shakliga To‘plam 3 dagi jarayonda ishi o‘zgarayotgan har bir xodimni yozing. Ularning eng kuchli qobiliyatini o‘z ishidan olingan real misol bilan yozing.",
+    "Bu qobiliyat ertaga qayerda ishlashini hal qiling. Mijozning chalkash gapidan asosiy ehtiyojni ajrata oladigan yaxshi sotuvchi agentga to‘g‘ri topshiriq bera oladi. Ehtiyotkor muharrir esa agent yozgan narsani tekshira oladi.",
+    "Agent ishga tushishidan oldin, hech qachon keyin emas, har bir xodim bilan 15 daqiqa suhbatlashing. Ularga nima o‘zgarishini, nima o‘zgarishsiz qolishini va bundan buyon nimalarni tekshirishini tushuntiring. Savol va xavotirlarini B.8 ga, kelishuvni B.9 ga yozing.",
+    "Har bir xodim uchun B shaklida bitta mashg‘ulot vazifasini to‘ldiring: qanday natijani tekshiradi, qaysi mezonlarga asosan va qaysi misollar ustida. B.4 uchun To‘plam 3 da yig‘ilgan 3 ta yaxshi va 3 ta yomon misoldan foydalaning: ular agentning sinov to‘plami ham.",
+    "Muddatni va o‘sishni qanday o‘lchashni kelishib oling. Ikki haftadan so‘ng xodim bilan natijani ko‘rib chiqing va kerak bo‘lsa, mezonlarni o‘zgartiring."
+   ],
+   "ai_label": "AI chat uchun so‘rov",
+   "ai_short": "Bu mening qobiliyatlar xaritam va bitta mashg‘ulot vazifasi. Tekshirish mezonlarini aniq qiling, mening biznesimdan olingan misollar bilan qisqa mashq tuzing va ikki haftadan so‘ng natijani qanday o‘lchashni ayting.",
+   "skill_line": "Claude Code’da: /kit4. Natija kit4-people/ papkasiga yoziladi; 6 ta misol test-set.md faylida.",
+   "ai_prompt": [
+    "Siz biznes egasiga xodimlarini AI agenti bilan birga ishlashga tayyorlashda yordam beryapsiz.",
+    "Quyida A shakli (qobiliyatlar xaritasi: A.1 xodim, A.2 kuchli qobiliyati misol bilan, A.3 bugungi asosiy ishi, A.4 yangi taqsimotdagi o‘rni, A.5 yangi nazorat vazifasi, A.6 o‘qish kerakmi ha/yo‘q) va B shakli (bir xodim uchun mashg‘ulot vazifasi, B.1-B.9) berilgan.",
+    "1) A shaklidagi har bir xodim uchun A.4 va A.5 haqiqatan ham A.2 dagi qobiliyatdan foydalanyaptimi, ayting; agar yo‘q bo‘lsa, yaxshiroq variant taklif qiling.",
+    "2) B.3 dagi mezonlarni qayta yozib, inson bitta agent javobini bir daqiqadan kam vaqtda tekshirishi uchun 4-6 ta ha/yo‘q savolidan iborat cheklist qiling.",
+    "3) B.4 dagi yaxshi va yomon misollardan foydalanib, 30 daqiqalik mashq ishlab chiqing.",
+    "4) B.4 dagi misollar agentning sinov to‘plami ham bo‘ladi: har bir misol uchun kirish, to‘g‘ri natija va nega yaxshi yoki yomonligini bittadan qatorda yozing.",
+    "5) Ikki haftadan so‘ng natijani o‘lchash uchun ikkita ko‘rsatkich taklif qiling (B.6).",
+    "6) B.8 ga yozilgan xavotirlarga javob berish uchun biznes egasi ishlatishi mumkin bo‘lgan uchta dangal gap tuzib bering.",
+    "O‘zbek tilida javob bering."
+   ],
+   "forms": [
+    {
+     "id": "A",
+     "orient": "landscape",
+     "type": "table",
+     "file": "form-a-skills-map.md",
+     "title": "Qobiliyatlar xaritasi",
+     "header": [
+      "Bo‘lim",
+      "Jarayon",
+      "Sana"
+     ],
+     "rows": 9,
+     "cols": [
+      {
+       "code": "A.1",
+       "h": "Xodim",
+       "w": 34
+      },
+      {
+       "code": "A.2",
+       "h": "Eng kuchli qobiliyati (real misol)",
+       "w": 58
+      },
+      {
+       "code": "A.3",
+       "h": "Bugungi asosiy ishi",
+       "w": 40
+      },
+      {
+       "code": "A.4",
+       "h": "Yangi ish taqsimotidagi roli",
+       "w": 40
+      },
+      {
+       "code": "A.5",
+       "h": "Yangi nazorat vazifasi",
+       "w": 50
+      },
+      {
+       "code": "A.6",
+       "h": "O‘qish kerakmi",
+       "w": 18
+      }
+     ]
+    },
+    {
+     "id": "B",
+     "orient": "portrait",
+     "type": "fields",
+     "file": "ism-form-b.md",
+     "title": "Mashg‘ulot vazifasi",
+     "header": [
+      "Xodim",
+      "Menejer",
+      "Sana"
+     ],
+     "fields": [
+      {
+       "code": "B.1",
+       "label": "Nimani tekshiradi (qanday natijani)",
+       "lines": 2
+      },
+      {
+       "code": "B.2",
+       "label": "Nega aynan shu xodim: qaysi qobiliyati kerak",
+       "lines": 1
+      },
+      {
+       "code": "B.3",
+       "label": "Mezonlar: to‘g‘ri natija bu ... / xato natija bu ...",
+       "lines": 4
+      },
+      {
+       "code": "B.4",
+       "label": "Misollar: 3 ta yaxshi va 3 ta yomon, manbasi",
+       "note": "Bu 6 ta misol agentning sinov to‘plami ham: har bir o‘zgarishdan keyin agent shularda tekshiriladi (kit4-people/test-set.md).",
+       "lines": 2
+      },
+      {
+       "code": "B.5",
+       "label": "Muddat",
+       "lines": 1
+      },
+      {
+       "code": "B.6",
+       "label": "O‘sishni qanday o‘lchaymiz",
+       "lines": 2
+      },
+      {
+       "code": "B.7",
+       "label": "Natijani kim ko‘rib chiqadi",
+       "lines": 1
+      },
+      {
+       "code": "B.8",
+       "label": "Suhbatdan: uning savollari va xavotirlari",
+       "lines": 4
+      },
+      {
+       "code": "B.9",
+       "label": "Nima deb kelishdik",
+       "lines": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "k05",
+   "slug": "sinash",
+   "file": "Sinov_va_hisob",
+   "folder": "kit5-pilot",
+   "skill": "/kit5",
+   "title": "Sinov va hisob-kitob",
+   "purpose": "Aniq chegaralangan 2-4 haftalik sinov (pilot) o‘tkazing va faqat agentning tezligini emas, balki pul va vaqtda nima o‘zgarganini hisoblang.",
+   "steps": [
+    "2-darsdan keyin: boshlang‘ich holat. Tanlangan jarayonning hozirgi raqamlarini yozing: bajarilgan so‘rovlar, o‘rtacha daqiqa, xatolar, takroriy so‘rovlar. Tarix bo‘lsa (Telegram eksporti, Excel, CRM), oxirgi 2-4 haftani Claude Code bilan oling; tarixi yo‘q narsani 5 ish kuni jonli yozing. Bu B shaklidagi «Agentgacha» ustuni: boshlang‘ich raqam bo‘lmasa, sizda faqat taassurot qoladi.",
+    "4-darsda: sinov rejasi. Agent ishga tushishidan oldin bo‘lim boshlig‘i bilan A shaklini to‘ldiring: bitta raqamli maqsad, sanalar, agent nima qila oladi va nima qila olmaydi, sinovni to‘xtatish sharti.",
+    "Cheklangan ruxsat bilan boshlang: agent qoralama yozadi, odam har bir javobni tasdiqlaydi. Agentning har bir xatosini B.13 xatolar jurnaliga yozing: kim topgani va yo‘riqnomada nimani o‘zgartirganingiz bilan.",
+    "Har hafta B shaklining bitta ustunini to‘ldiring, xodimlarning tekshirishga sarflagan soatlari (B.7) bilan. Topilgan pulni (B.14) ham yozing: oldi olingan xatolar, yo‘qolmagan so‘rovlar, tezroq tushgan pul. Xarajatlarni qo‘shing: obuna, sozlash, tekshirish soatlari.",
+    "6-darsda: o‘zgarish ustunini, jami xarajatni, tejalgan vaqtni va bitta bajarilgan ish narxini hisoblang. Natijani A.6 va A.7 bilan solishtiring va bitta qarorni belgilang: davom etish, o‘zgartirish yoki to‘xtatish. Sababini bir gapda yozing va natijani jamoaga ayting."
+   ],
+   "ai_label": "AI chat uchun so‘rov",
+   "ai_short": "Bu mening sinov rejam va haftalik raqamlarim. O‘zgarishni, tejalgan vaqtni, topilgan pulni va bitta bajarilgan ish narxini barcha xarajatlar bilan hisoblang, hisobni ko‘rsating, to‘xtatish shartini tekshiring va dangal ayting: davom etaylikmi, o‘zgartiraylikmi yoki to‘xtataylikmi.",
+   "skill_line": "Claude Code’da: /kit5 baseline, /kit5 reja, /kit5 hafta 1, /kit5 xato, /kit5 yakun. Natija kit5-pilot/ papkasida.",
+   "ai_prompt": [
+    "Siz kichik biznes egasi uchun 2-4 haftalik AI agenti sinovini ko‘rib chiqyapsiz.",
+    "Quyida A shakli (sinov rejasi, A.1-A.9) va B shakli (haftalik raqamlar B.1-B.8, topilgan pul B.14, xarajatlar B.9-B.12, natija B.15-B.16, xatolar jurnali B.13) berilgan.",
+    "Har bir hisobni formulasi va raqamlari bilan ko‘rsating.",
+    "1) Har bir ko‘rsatkich uchun boshlang‘ich holatdan oxirgi haftagacha bo‘lgan o‘zgarishni raqam va foizda hisoblang.",
+    "2) Tejalgan vaqtni haftasiga soatda hisoblang: B.15 = (B.2 agentgacha - B.2 oxirgi hafta) × B.1 oxirgi hafta / 60 - (B.7 oxirgi hafta - B.7 agentgacha). Ma’lumot 2 haftalik bo‘lgani uchun uni oraliq qilib bering.",
+    "3) Sinovning umumiy xarajatini (B.12) va bitta to‘liq bajarilgan ish narxini hisoblang: B.16 = B.12 / sinov haftalaridagi B.5 yig‘indisi. Uni agentgacha bo‘lgan inson narxi bilan solishtiring: B.2 agentgacha / 60 × soatbay haq. Soatbay haq berilmagan bo‘lsa, so‘rang.",
+    "4) Topilgan pulni (B.14) alohida yozing: har bir summa qayerdan kelganini ko‘rsating va isbotlanmagan summani ajratib qo‘ying.",
+    "5) Natijalarni muvaffaqiyat mezonlari (A.6) va to‘xtatish sharti (A.7) bilan solishtiring, har biriga bitta qator.",
+    "6) Xatolar jurnalini 2-4 turga bo‘ling va har bir turning oldini oladigan yo‘riqnoma o‘zgarishini nomlang.",
+    "7) Davom etish, o‘zgartirish yoki to‘xtatish bo‘yicha tavsiya bering, asosiy sababni bitta gapda yozing va hali isbotlanmagan narsalarni sanang.",
+    "Faqat berilgan raqamlardan foydalaning; har qanday taxminni ko‘rsating.",
+    "O‘zbek tilida javob bering."
+   ],
+   "forms": [
+    {
+     "id": "A",
+     "orient": "portrait",
+     "type": "fields",
+     "file": "plan.md",
+     "title": "Sinov rejasi",
+     "header": [
+      "Jarayon",
+      "Sinov egasi",
+      "Bo‘lim boshlig‘i",
+      "Sana"
+     ],
+     "fields": [
+      {
+       "code": "A.1",
+       "label": "Jarayon va agent",
+       "lines": 1
+      },
+      {
+       "code": "A.2",
+       "label": "Maqsad, bitta raqamda (... dan ... gacha)",
+       "lines": 2
+      },
+      {
+       "code": "A.3",
+       "label": "Sanalar: boshlanishi - tugashi (2-4 hafta)",
+       "lines": 1
+      },
+      {
+       "code": "A.4",
+       "label": "Qamrov: qaysi mijozlar, so‘rovlar yoki buyurtmalar",
+       "lines": 2
+      },
+      {
+       "code": "A.5",
+       "label": "Chegaralar: agent qila oladi / qila olmaydi",
+       "lines": 3
+      },
+      {
+       "code": "A.6",
+       "label": "Muvaffaqiyat mezonlari",
+       "lines": 2
+      },
+      {
+       "code": "A.7",
+       "label": "To‘xtatish sharti: agar ... bo‘lsa, darhol to‘xtatamiz",
+       "lines": 2
+      },
+      {
+       "code": "A.8",
+       "label": "Agent javoblarini kim va qanchalik tez-tez tekshiradi",
+       "lines": 2
+      },
+      {
+       "code": "A.9",
+       "label": "Haftalik ko‘rib chiqish: kun, vaqt, kim qatnashadi",
+       "lines": 1
+      }
+     ]
+    },
+    {
+     "id": "B",
+     "orient": "landscape",
+     "type": "scorecard",
+     "file": "numbers.md",
+     "title": "Sinov raqamlari",
+     "header": [
+      "Jarayon",
+      "Sinov sanalari",
+      "Soatbay haq, so‘m"
+     ],
+     "metric_h": "Ko‘rsatkich",
+     "period_h": [
+      "Agentgacha",
+      "1-hafta",
+      "2-hafta",
+      "3-hafta",
+      "4-hafta",
+      "O‘zgarish"
+     ],
+     "metrics": [
+      {
+       "code": "B.1",
+       "label": "Bajarilgan so‘rovlar"
+      },
+      {
+       "code": "B.2",
+       "label": "O‘rtacha vaqt, daqiqa"
+      },
+      {
+       "code": "B.3",
+       "label": "Xato javoblar"
+      },
+      {
+       "code": "B.4",
+       "label": "Takroriy so‘rovlar"
+      },
+      {
+       "code": "B.5",
+       "label": "To‘liq hal qilingan so‘rovlar"
+      },
+      {
+       "code": "B.6",
+       "label": "Yakunlangan bitimlar yoki buyurtmalar"
+      },
+      {
+       "code": "B.7",
+       "label": "Xodimning tekshirishga sarflagan vaqti, soat"
+      },
+      {
+       "code": "B.14",
+       "label": "Topilgan pul, so‘m"
+      },
+      {
+       "code": "B.8",
+       "label": "Mijoz shikoyatlari"
+      }
+     ],
+     "legend": "B.2 - bitta so‘rovga odam sarflagan daqiqa, tekshirishsiz (tekshirish B.7 da).  B.14 - oldi olingan xato, yo‘qolmagan so‘rov, tezroq tushgan pul.",
+     "costs_h": "Xarajatlar",
+     "costs": [
+      {
+       "code": "B.9",
+       "label": "Obuna"
+      },
+      {
+       "code": "B.10",
+       "label": "Integratsiya va sozlash"
+      },
+      {
+       "code": "B.11",
+       "label": "Tekshirish soati x soatbay haq"
+      },
+      {
+       "code": "B.12",
+       "label": "Jami"
+      }
+     ],
+     "results_h": "Natija",
+     "results": [
+      {
+       "code": "B.15",
+       "label": "Tejalgan vaqt, soat/hafta",
+       "formula": "(B.2 agentgacha - B.2 sinovda) x B.1 / 60 - (B.7 sinovda - B.7 agentgacha)"
+      },
+      {
+       "code": "B.16",
+       "label": "Bitta bajarilgan ish narxi: agent / inson",
+       "formula": "agent: B.12 / B.5 yig‘indisi; inson: B.2 agentgacha / 60 x soatbay haq"
+      }
+     ],
+     "log_h": "Xatolar jurnali",
+     "log_cols": [
+      {
+       "code": "B.13",
+       "h": "Sana"
+      },
+      {
+       "h": "Nima bo‘ldi"
+      },
+      {
+       "h": "Kim topdi"
+      },
+      {
+       "h": "Nimani o‘zgartirdik"
+      }
+     ],
+     "log_rows": 4,
+     "money_h": "Topilgan pul tafsiloti (B.14)",
+     "money_cols": [
+      "Sana",
+      "Nima bo‘ldi",
+      "Summa, so‘m",
+      "Qanday hisobladik"
+     ],
+     "decision_h": "Qaror",
+     "decision": [
+      "Davom etish",
+      "O‘zgartirish",
+      "To‘xtatish"
+     ],
+     "reason": "Sababi"
+    }
+   ],
+   "scripts": [
+    {
+     "label": "Loyiha yetakchisi bilan suhbat",
+     "when": "2-darsdan keyin, boshlang‘ich raqamlardan oldin: yolg‘iz, taxminan 5 daqiqa.",
+     "file": "briefing.md",
+     "text": [
+      "[Ism] aka/opa, sizdan bir narsani so‘ramoqchiman, «yo‘q» deyishingiz ham mumkin.",
+      "Kursda [jarayon] bo‘yicha AI yordamchisini taxminan to‘rt hafta ishlatib ko‘rmoqchiman.",
+      "Shu loyihani men bilan birga boshqarishingizni xohlayman, chunki bu ishni hammadan, mendan ham yaxshi bilasiz.",
+      "Avval bir hafta [jarayon] bugun qancha vaqt olishini sanaymiz: sizni emas, ishni hisoblaymiz.",
+      "Keyin yordamchi yoningizda ishlaydi: kuniga taxminan 10-15 daqiqa, ish vaqtida, u qilgan ishni tekshirasiz va qayerda xato qilganini menga aytasiz.",
+      "Uni istalgan payt [buyruq] bilan to‘xtata olasiz; to‘xtatganingiz yoki xato haqida aytganingiz uchun hech qachon ayblanmaysiz.",
+      "Men ko‘radigan har bir raqamni siz ham ko‘rasiz, ularning hech biri baholash yoki maoshingizga ta’sir qilmaydi.",
+      "Bu davrda [vazifa]ni sizdan olaman, shunda bu qo‘shimcha ish bo‘lmaydi; qo‘shimcha mehnat uchun natijadan qat’i nazar haftasiga [summa] to‘layman.",
+      "Ish chiqsa, xohlasangiz, ismingiz shu ishda turadi va [o‘qish yoki yangi rol] uchun birinchi navbat sizniki.",
+      "Ish chiqmasa, bu ham foydali natija, va bu sizning emas, mening javobgarligim.",
+      "Ertagacha o‘ylab ko‘ring; «yo‘q» desangiz, oramizda hech narsa o‘zgarmaydi, faqat qanday qilsak ishlashini aytib bering."
+     ]
+    },
+    {
+     "label": "Jamoaga e’lon",
+     "when": "6-darsdan keyin, har bir xodim bilan yolg‘iz gaplashgandan so‘ng: avval yig‘ilishda, keyin shu matn guruhga.",
+     "file": "announcement.md",
+     "text": [
+      "Assalomu alaykum, jamoa.",
+      "Bir oy oldin [jarayon] bo‘yicha AI yordamchisini ishlatib ko‘rayotganimizni aytgan edim [va yozma majburiyat bergan bo‘lsangiz: bu sababli hech kim ishini yoki maoshini yo‘qotmasligini va’da qilgan edim].",
+      "Natija shunday: yordamchi endi [nima qiladi, bitta oddiy gapda].",
+      "[Jarayon] avval kuniga taxminan [X] daqiqa olardi; endi [Ism] tekshirishga sarflaydigan vaqt bilan birga taxminan [Y] daqiqa oladi.",
+      "Ba’zi narsalar ishlamadi: [bitta halol muvaffaqiyatsizlik], va biz [uni tuzatdik yoki o‘sha qismini to‘xtatdik].",
+      "Kundalik ishi bilan birga shu loyihani boshqargan, [n] ta xatoni topgan va yordamchini yaxshilagan [Ism]ga rahmat.",
+      "Nima o‘zgaradi: [sana]dan boshlab [Ism] tejalgan soatlarni [vazifa]ga sarflaydi; buni birga kelishdik.",
+      "Qolganlarning ishida [x]dan boshqa hech narsa o‘zgarmaydi; maosh va lavozimlar avvalgidek qoladi.",
+      "Keyingi qadam: [oy]da [2-jarayon]ni ko‘rib chiqamiz; birovning ishiga tegishdan oldin har biringiz bilan avval xuddi shunday gaplashaman.",
+      "Savollaringiz bo‘lsa, menga yoki [Ism]ga to‘g‘ridan-to‘g‘ri ayting yoki menga shaxsan yozing."
+     ]
+    }
+   ]
+  }
+ ]
+}

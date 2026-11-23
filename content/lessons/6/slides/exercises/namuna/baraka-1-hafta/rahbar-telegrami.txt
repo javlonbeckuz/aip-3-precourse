@@ -1,0 +1,146 @@
+Avtomatik yaratilgan: day-5/_build/sim/simulate.py (soxta Telegram va soxta model, internetsiz).
+Qo‘lda tahrirlamang: skriptni qayta ishga tushiring.
+
+--- 2026-12-14 07:40 -> Rustamov
+🟢 «Savdo yordamchisi» ishga tushdi.
+Model: google/gemini-3.8-flash.
+Rejim: darhol javob beradi.
+
+--- 2026-12-14 07:40 -> None
+[server] deploy: agent v1 (go-live, 4-darsdan keyin), REPLY_MODE=approve
+
+--- 2026-12-14 08:30 -> Rustamov
+⏰ Kam qolgan mahsulotlar
+
+Tayyor mahsulot 15 donadan kam:
+- CF-401 Стол переговоров Dialog-8 280x120: 2 dona
+- CH-203 Кресло руководителя Senator Lux черное: 11 dona
+- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 12 dona
+- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 14 dona
+
+--- 2026-12-15 08:30 -> Rustamov
+⏰ Kam qolgan mahsulotlar
+
+Tayyor mahsulot 15 donadan kam:
+- CF-401 Стол переговоров Dialog-8 280x120: 2 dona
+- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona
+- CH-203 Кресло руководителя Senator Lux черное: 11 dona
+- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 14 dona
+
+--- 2026-12-15 09:00 -> Rustamov
+📊 Kunlik hisobot: 14-dekabr, dushanba
+«Savdo yordamchisi»
+
+• So‘rovlar: 21
+• Javob berildi: 18
+• Odamga uzatildi: 3
+• Xato deb belgilandi: 0
+• To‘liq hal qilindi: 18
+• Texnik xatolar: 0
+• Xarajat: $0.11 (shu oy $0.11 / limit $15.00)
+
+--- 2026-12-16 08:30 -> Rustamov
+⏰ Kam qolgan mahsulotlar
+
+Tayyor mahsulot 15 donadan kam:
+- CF-401 Стол переговоров Dialog-8 280x120: 2 dona
+- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona
+- CH-203 Кресло руководителя Senator Lux черное: 11 dona
+- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 14 dona
+
+--- 2026-12-16 09:00 -> Rustamov
+📊 Kunlik hisobot: 15-dekabr, seshanba
+«Savdo yordamchisi»
+
+• So‘rovlar: 22
+• Javob berildi: 19
+• Odamga uzatildi: 3
+• Xato deb belgilandi: 2
+• To‘liq hal qilindi: 17
+• Texnik xatolar: 0
+• Xarajat: $0.11 (shu oy $0.22 / limit $15.00)
+
+Diqqat:
+• Xato javoblar ro‘yxati: /xatolar
+
+--- 2026-12-17 08:00 -> Rustamov
+⚠️ Ma’lumot manbasi muammosi: Ombor qoldig‘i (1C eksport): jadvalda qatorlar yo‘q
+
+--- 2026-12-17 08:30 -> Rustamov
+⏰ Kam qolgan mahsulotlar: bu safar javob tayyorlab bo‘lmadi (ombor fayli bilan muammo (Ombor qoldig‘i (1C eksport): jadvalda qatorlar yo‘q), qoldiqni Otabek akadan aniqlash kerak.). Ma’lumot fayllarini tekshiring: /holat
+
+--- 2026-12-17 09:00 -> Rustamov
+📊 Kunlik hisobot: 16-dekabr, chorshanba
+«Savdo yordamchisi»
+
+• So‘rovlar: 23
+• Javob berildi: 20
+• Odamga uzatildi: 3
+• Xato deb belgilandi: 2
+• To‘liq hal qilindi: 18
+• Texnik xatolar: 0
+• Xarajat: $0.12 (shu oy $0.34 / limit $15.00)
+
+Diqqat:
+• Ombor qoldig‘i (1C eksport): jadvalda qatorlar yo‘q
+• Xato javoblar ro‘yxati: /xatolar
+
+--- 2026-12-18 08:30 -> Rustamov
+⏰ Kam qolgan mahsulotlar
+
+Tayyor mahsulot 15 donadan kam:
+- CF-401 Стол переговоров Dialog-8 280x120: 0 dona
+- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona
+- CH-203 Кресло руководителя Senator Lux черное: 11 dona
+- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 14 dona
+
+--- 2026-12-18 09:00 -> Rustamov
+📊 Kunlik hisobot: 17-dekabr, payshanba
+«Savdo yordamchisi»
+
+• So‘rovlar: 22
+• Javob berildi: 17
+• Odamga uzatildi: 5
+• Xato deb belgilandi: 2
+• To‘liq hal qilindi: 15
+• Texnik xatolar: 0
+• Xarajat: $0.11 (shu oy $0.45 / limit $15.00)
+
+Diqqat:
+• Xato javoblar ro‘yxati: /xatolar
+
+--- 2026-12-19 08:30 -> Rustamov
+⏰ Kam qolgan mahsulotlar
+
+Tayyor mahsulot 15 donadan kam:
+- CF-401 Стол переговоров Dialog-8 280x120: 0 dona
+- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 4 dona
+- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona
+- CH-203 Кресло руководителя Senator Lux черное: 9 dona
+
+--- 2026-12-19 09:00 -> Rustamov
+📊 Kunlik hisobot: 18-dekabr, juma
+«Savdo yordamchisi»
+
+• So‘rovlar: 22
+• Javob berildi: 19
+• Odamga uzatildi: 3
+• Xato deb belgilandi: 1
+• To‘liq hal qilindi: 18
+• Texnik xatolar: 0
+• Xarajat: $0.11 (shu oy $0.56 / limit $15.00)
+
+Diqqat:
+• Xato javoblar ro‘yxati: /xatolar
+
+--- 2026-12-20 09:00 -> Rustamov
+📊 Kunlik hisobot: 19-dekabr, shanba
+«Savdo yordamchisi»
+
+• So‘rovlar: 22
+• Javob berildi: 18
+• Odamga uzatildi: 4
+• Xato deb belgilandi: 0
+• To‘liq hal qilindi: 18
+• Texnik xatolar: 0
+• Xarajat: $0.11 (shu oy $0.67 / limit $15.00)

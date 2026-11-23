@@ -1,0 +1,265 @@
+{
+ "date": "2026-11-03",
+ "libraries": {
+  "tiktoken": "0.14.0",
+  "tokenizers": "0.23.3"
+ },
+ "method": "Token count of the plain text, no special tokens, no chat template.",
+ "not_measured": [
+  {
+   "label": "Claude (Anthropic)",
+   "why": "Tokenizator ochiq emas; hisoblash API kalit bilan bepul (count_tokens). Repetitsiyada o‘lchanadi."
+  },
+  {
+   "label": "Gemini (Google)",
+   "why": "Gemini 3.x/4 tokenizatori e’lon qilinmagan; countTokens API kalit bilan bepul. Repetitsiyada o‘lchanadi."
+  },
+  {
+   "label": "GPT-6 (OpenAI)",
+   "why": "Tokenizatori e’lon qilinmagan (tiktoken 0.14 da yo‘q)."
+  }
+ ],
+ "tools": [
+  {
+   "id": "o200k",
+   "label": "OpenAI GPT-5.x",
+   "maker": "OpenAI",
+   "kind": "frontier",
+   "tokenizer": "tiktoken o200k_base",
+   "note": "GPT-5.x va gpt-oss tokenizatori; GPT-6 tokenizatori e’lon qilinmagan"
+  },
+  {
+   "id": "cl100k",
+   "label": "OpenAI GPT-4 (2023)",
+   "maker": "OpenAI",
+   "kind": "old",
+   "tokenizer": "tiktoken cl100k_base",
+   "note": "Taqqoslash uchun: 2023-yilgi tokenizator"
+  },
+  {
+   "id": "deepseek-v4",
+   "label": "DeepSeek V4 Pro",
+   "maker": "DeepSeek",
+   "kind": "open",
+   "note": "Ochiq vaznli, MIT",
+   "tokenizer": "deepseek-ai/DeepSeek-V4-Pro-0813 tokenizer.json (sha256 8f9f37ca37fdc4f5)"
+  },
+  {
+   "id": "qwen3.8",
+   "label": "Qwen3.8",
+   "maker": "Alibaba",
+   "kind": "open",
+   "note": "Ochiq vaznli, Apache 2.0",
+   "tokenizer": "Qwen/Qwen3.8-27B tokenizer.json (sha256 0997f410c57a1f4e)"
+  },
+  {
+   "id": "glm-5.3",
+   "label": "GLM-5.3",
+   "maker": "Z.ai",
+   "kind": "open",
+   "note": "Ochiq vaznli",
+   "tokenizer": "zai-org/GLM-5.3 tokenizer.json (sha256 19e773648cb4e65d)"
+  },
+  {
+   "id": "gemma-4",
+   "label": "Gemma 4",
+   "maker": "Google",
+   "kind": "open",
+   "note": "Google’ning ochiq modeli; Gemma 3 hisobotiga ko‘ra Gemma Gemini 2.0 tokenizatoridan foydalanadi",
+   "tokenizer": "google/gemma-4-31B-it tokenizer.json (sha256 cc8d3a0ce36466cc)"
+  },
+  {
+   "id": "kimi-k3",
+   "label": "Kimi K3",
+   "maker": "Moonshot",
+   "kind": "open",
+   "note": "Ochiq vaznli, o‘zgartirilgan MIT",
+   "tokenizer": "moonshotai/Kimi-K3 tiktoken.model (sha256 b6c497a7469b33ce)"
+  }
+ ],
+ "sets": [
+  {
+   "id": "biznes",
+   "label": "Biznes gapi",
+   "texts": {
+    "uz": "Ertaga ertalab omborga 120 ta o‘quvchi stoli keladi, iltimos, narxlarni tekshirib, mijozga to‘lov hisobini yuboring.",
+    "ru": "Завтра утром на склад привезут 120 ученических столов, пожалуйста, проверьте цены и отправьте клиенту счёт на оплату.",
+    "en": "Tomorrow morning 120 student desks will arrive at the warehouse, please check the prices and send the client the payment invoice."
+   },
+   "counts": {
+    "o200k": {
+     "uz": 44,
+     "ru": 33,
+     "en": 24
+    },
+    "cl100k": {
+     "uz": 50,
+     "ru": 55,
+     "en": 24
+    },
+    "deepseek-v4": {
+     "uz": 48,
+     "ru": 40,
+     "en": 24
+    },
+    "qwen3.8": {
+     "uz": 51,
+     "ru": 33,
+     "en": 26
+    },
+    "glm-5.3": {
+     "uz": 50,
+     "ru": 34,
+     "en": 24
+    },
+    "gemma-4": {
+     "uz": 49,
+     "ru": 34,
+     "en": 26
+    },
+    "kimi-k3": {
+     "uz": 48,
+     "ru": 46,
+     "en": 24
+    }
+   }
+  },
+  {
+   "id": "javob",
+   "label": "Mijozga javob",
+   "texts": {
+    "uz": "Assalomu alaykum! Buyurtmangiz qabul qilindi, yetkazib berish uch ish kunida bo‘ladi. Savollaringiz bo‘lsa, shu yerga yozing.",
+    "ru": "Здравствуйте! Ваш заказ принят, доставка займёт три рабочих дня. Если есть вопросы, пишите сюда.",
+    "en": "Hello! Your order has been accepted, delivery will take three working days. If you have any questions, write here."
+   },
+   "counts": {
+    "o200k": {
+     "uz": 43,
+     "ru": 21,
+     "en": 24
+    },
+    "cl100k": {
+     "uz": 54,
+     "ru": 46,
+     "en": 24
+    },
+    "deepseek-v4": {
+     "uz": 52,
+     "ru": 33,
+     "en": 24
+    },
+    "qwen3.8": {
+     "uz": 50,
+     "ru": 24,
+     "en": 24
+    },
+    "glm-5.3": {
+     "uz": 54,
+     "ru": 21,
+     "en": 24
+    },
+    "gemma-4": {
+     "uz": 45,
+     "ru": 23,
+     "en": 24
+    },
+    "kimi-k3": {
+     "uz": 50,
+     "ru": 43,
+     "en": 24
+    }
+   }
+  },
+  {
+   "id": "soz",
+   "label": "Bitta so‘z",
+   "texts": {
+    "uz": "o‘quvchi",
+    "ru": "ученик",
+    "en": "student"
+   },
+   "counts": {
+    "o200k": {
+     "uz": 5,
+     "ru": 3,
+     "en": 1
+    },
+    "cl100k": {
+     "uz": 5,
+     "ru": 3,
+     "en": 1
+    },
+    "deepseek-v4": {
+     "uz": 5,
+     "ru": 3,
+     "en": 1
+    },
+    "qwen3.8": {
+     "uz": 5,
+     "ru": 3,
+     "en": 1
+    },
+    "glm-5.3": {
+     "uz": 5,
+     "ru": 3,
+     "en": 1
+    },
+    "gemma-4": {
+     "uz": 5,
+     "ru": 3,
+     "en": 1
+    },
+    "kimi-k3": {
+     "uz": 5,
+     "ru": 3,
+     "en": 1
+    }
+   }
+  }
+ ],
+ "apostrophes": {
+  "note": "The same Uzbek business sentence written with three apostrophe characters: typographic U+2018, ASCII U+0027 and the modifier letter U+02BB.",
+  "texts": {
+   "uz_typographic": "Ertaga ertalab omborga 120 ta o‘quvchi stoli keladi, iltimos, narxlarni tekshirib, mijozga to‘lov hisobini yuboring.",
+   "uz_ascii": "Ertaga ertalab omborga 120 ta o'quvchi stoli keladi, iltimos, narxlarni tekshirib, mijozga to'lov hisobini yuboring.",
+   "uz_okina": "Ertaga ertalab omborga 120 ta oʻquvchi stoli keladi, iltimos, narxlarni tekshirib, mijozga toʻlov hisobini yuboring."
+  },
+  "counts": {
+   "o200k": {
+    "uz_typographic": 44,
+    "uz_ascii": 44,
+    "uz_okina": 43
+   },
+   "cl100k": {
+    "uz_typographic": 50,
+    "uz_ascii": 50,
+    "uz_okina": 52
+   },
+   "deepseek-v4": {
+    "uz_typographic": 48,
+    "uz_ascii": 48,
+    "uz_okina": 47
+   },
+   "qwen3.8": {
+    "uz_typographic": 51,
+    "uz_ascii": 51,
+    "uz_okina": 53
+   },
+   "glm-5.3": {
+    "uz_typographic": 50,
+    "uz_ascii": 50,
+    "uz_okina": 52
+   },
+   "gemma-4": {
+    "uz_typographic": 49,
+    "uz_ascii": 49,
+    "uz_okina": 49
+   },
+   "kimi-k3": {
+    "uz_typographic": 48,
+    "uz_ascii": 48,
+    "uz_okina": 46
+   }
+  }
+ }
+}

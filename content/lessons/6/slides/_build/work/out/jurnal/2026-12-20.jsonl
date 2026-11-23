@@ -1,0 +1,4 @@
+{"ts": "2026-12-20T09:00:00+05:00", "type": "system", "kind": "report", "detail": "daily"}
+{"ts": "2026-12-20T11:40:00+05:00", "type": "system", "kind": "start", "detail": "google/gemini-3.8-flash"}
+{"ts": "2026-12-20T11:40:00+05:00", "type": "system", "kind": "alert", "detail": "started"}
+{"ts": "2026-12-20T12:40:00+05:00", "type": "system", "kind": "alert", "detail": "data"}

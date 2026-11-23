@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier va ochiq vaznli: yonma-yon</title>
+<link rel="stylesheet" href="../../assets/ovd-dark.css">
+<style>
+  .task{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:start;margin-bottom:18px;}
+  textarea{width:100%;background:#050507;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:18px;line-height:1.5;resize:vertical;}
+  textarea:focus,select:focus,input:focus{outline:none;border-color:rgba(var(--acc-rgb),.6);}
+  #task{min-height:150px;}
+  .cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .colhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+  select{background:#050507;color:var(--ink);border:1px solid var(--line-strong);border-radius:8px;padding:9px 10px;font-size:17px;}
+  .price{font-family:var(--mono);font-size:16px;color:var(--ink-2);}
+  .price b{color:var(--ink);font-weight:400;font-size:20px;}
+  .ans{min-height:260px;font-size:17px;}
+  .rub{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:16px;color:var(--ink-2);}
+  .rub label{display:flex;gap:8px;align-items:center;cursor:pointer;}
+  .rub input{width:18px;height:18px;accent-color:#5e8bff;}
+  .where{margin-top:10px;width:100%;background:#050507;color:var(--ink-2);border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-size:15px;}
+  .calc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,1.6fr);gap:14px;align-items:end;margin-top:18px;}
+  .calc label{display:flex;flex-direction:column;gap:6px;}
+  .calc input{background:#050507;color:var(--ink);border:1px solid var(--line-strong);border-radius:8px;padding:9px 10px;font-size:18px;width:100%;}
+  .result{font-size:20px;line-height:1.5;color:var(--ink-2);}
+  .result b{color:var(--ink);font-size:24px;}
+  .result .acc{color:var(--acc);}
+  @media (max-width:900px){.cols{grid-template-columns:minmax(0,1fr);}.calc{grid-template-columns:repeat(3,minmax(0,1fr));}.calc .result{grid-column:1/-1;}.task{grid-template-columns:minmax(0,1fr);}}
+  @media (max-width:520px){.calc{grid-template-columns:minmax(0,1fr);}textarea{font-size:16px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div>Praktikum 3.0 // 1-dars <span class="pill">Yonma-yon</span></div><div id="checked"></div></div>
+  <h1>Frontier va ochiq vaznli: bitta vazifa</h1>
+  <p class="lead">Bir xil o‘zbekcha vazifani ikkita modelga bering, javoblarni shu yerga qo‘ying va solishtiring: sifat va narx.</p>
+
+  <div class="helpbar">
+    <button class="btn ex" id="exBtn">Namuna bilan ochish</button>
+    <button class="btn" id="howBtn">Qanday ishlatish</button>
+  </div>
+  <details class="howto" id="howto">
+    <summary>Qanday ishlatish</summary>
+    <div class="hbody">
+      <div><h3>Kerak</h3><ul><li>Maxfiy bo‘lmagan bitta biznes vazifasi (mijozga javob, qoida bo‘yicha savol).</li><li>Claude va bitta ochiq vaznli chat: chat.deepseek.com yoki chat.qwen.ai.</li></ul>
+        <h3 style="margin-top:14px">Qadamlar</h3><ol><li>Vazifani yozing va «Nusxa olish»ni bosing.</li><li>Uni Claude’ga va ochiq vaznli chatga yuboring.</li><li>Ikkala javobni o‘z qutisiga qo‘ying, model nomini tanlang.</li><li>Uchta belgini qo‘ying: til toza, qoida to‘g‘ri, ohang yaxshi.</li></ol></div>
+      <div><h3>Narxni hisoblash</h3><ul><li><b>Kirish tokenlari</b>: savol va unga qo‘shilgan qoidalar. Tokenizator sahifasida o‘lchang.</li><li><b>Chiqish tokenlari</b>: javob uzunligi.</li><li><b>Oyiga necha marta</b>: shu savol oyiga necha marta beriladi (B shaklidagi B.2 × 4,3).</li><li>O‘ngda: ikkala model bilan oylik xarajat va necha barobar farq.</li></ul></div>
+      <div><h3>Xulosa qilish</h3><ul><li>Avval sifat: qoida noto‘g‘ri bo‘lsa, arzonligi yordam bermaydi.</li><li>Keyin narx: oylik farq kichik bo‘lsa, sifatli modelni tanlang.</li><li>Mijoz ma’lumotini DeepSeek saytiga yozmang.</li></ul>
+        <h3 style="margin-top:14px">Tayyor</h3><p style="margin:0">Har bir vazifa uchun «qaysi model va nega» deb bir gap yoza olasiz.</p></div>
+    </div>
+  </details>
+  <div class="exnote" id="exnote"><b>Namuna:</b> Baraka Office mijozi 34 mln so‘mlik buyurtmaga 12% chegirma so‘rayapti. Ikkala javob <b>qo‘lda yozilgan namuna</b>, model javobi emas: biri qoidani to‘g‘ri aytadi, ikkinchisi shartni tushirib qoldiradi. Narx: oyiga taxminan 1 000 ta shunday savol (8 menejer × haftasiga 30 savol × 4,3 hafta), har birida 1 500 token kirish (savol va qoidalar) va 200 token javob. Natija: ikkala model ham oyiga bir necha dollar; bu yerda qaror narx emas, qoida aniqligi bo‘yicha qilinadi.</div>
+
+  <div class="card task">
+    <div><div class="label" style="margin-bottom:8px">Vazifa (maxfiy ma’lumotsiz)</div><textarea id="task"></textarea></div>
+    <button class="btn" id="copyTask" style="margin-top:28px">Nusxa olish</button>
+  </div>
+
+  <div class="cols">
+    <div class="card acc" id="colA"></div>
+    <div class="card ok" id="colB"></div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <div class="label">Narx: oyiga shunday vazifalar</div>
+    <div class="calc">
+      <label><span class="label">Kirish tokenlari</span><input id="tin" type="number" min="0" value="300"></label>
+      <label><span class="label">Chiqish tokenlari</span><input id="tout" type="number" min="0" value="400"></label>
+      <label><span class="label">Oyiga necha marta</span><input id="nper" type="number" min="0" value="1000"></label>
+      <div class="result" id="result"></div>
+    </div>
+  </div>
+
+  <div class="card warn" style="margin-top:18px">
+    <div class="label" style="margin-bottom:6px">Diqqat</div>
+    <div class="result">DeepSeek saytidagi chat ma’lumotni Xitoyda saqlaydi, Qwen Chat Singapurda. «Ochiq vaznli» degani modelni o‘z serveringizda ishlata olasiz degani, sayt maxfiy degani emas. Mashqda faqat maxfiy bo‘lmagan matn.</div>
+  </div>
+  <div class="foot src">Narxlar: demos/models/models-data.js (sanasi yuqorida). Javoblar shu kompyuterda saqlanadi; repetitsiyada OpenRouter orqali olinib, qo‘yiladi. Manbalar: day-1/sources.md.</div>
+</div>
+<script src="../models/models-data.js"></script>
+<script>
+(function () {
+  var D = window.MODELS_DATA;
+  var DEFAULT_TASK = 'Mijoz yozdi: «Buyurtmam 3 kun kechikdi, pulimni qaytaring.»\nKompaniya qoidasi: kechikish 5 ish kunidan oshsa, pul to‘liq qaytariladi; 5 kungacha bo‘lsa, keyingi xaridga 10% chegirma beriladi.\nMijozga o‘zbek tilida qisqa va xushmuomala javob yoz. Qaysi qoida qo‘llanishini aniq ayt.';
+  var MEM = {};
+  function get(k, d) { try { var v = localStorage.getItem('d1sbs:' + k); if (v !== null) return v; } catch (e) {} return Object.prototype.hasOwnProperty.call(MEM, k) ? MEM[k] : d; }
+  function set(k, v) { MEM[k] = v; try { localStorage.setItem('d1sbs:' + k, v); } catch (e) {} }
+  var all = {}; D.groups.forEach(function (g) { g.models.forEach(function (m) { all[m.id] = m; m.kind = g.kind; m.maker = g.maker; }); });
+  var frontier = Object.keys(all).filter(function (k) { return all[k].kind === 'frontier'; });
+  var open = Object.keys(all).filter(function (k) { return all[k].kind === 'open'; });
+  document.getElementById('checked').textContent = 'Narxlar tekshirildi: ' + D.checked;
+  var task = document.getElementById('task');
+  task.value = get('task', DEFAULT_TASK);
+  task.oninput = function () { set('task', task.value); };
+  document.getElementById('copyTask').onclick = function () {
+    var b = this; task.select(); try { document.execCommand('copy'); } catch (e) {}
+    b.textContent = 'Nusxa olindi'; setTimeout(function () { b.textContent = 'Nusxa olish'; }, 1500);
+  };
+  function usd(x) { var s = x % 1 === 0 ? String(x) : x.toFixed(3).replace(/0$/, ''); return '$' + s.replace('.', ','); }
+  function column(elId, side, ids, def, title) {
+    var el = document.getElementById(elId), cur = get(side + ':model', def);
+    if (ids.indexOf(cur) < 0) cur = def;
+    el.innerHTML = '<div class="colhead"><div><div class="label">' + title + '</div><select id="' + side + 'Sel">' +
+      ids.map(function (k) { return '<option value="' + k + '"' + (k === cur ? ' selected' : '') + '>' + all[k].name + '</option>'; }).join('') +
+      '</select></div><div class="price" id="' + side + 'Price"></div></div>' +
+      '<textarea class="ans" id="' + side + 'Ans" placeholder="Modelning javobini shu yerga qo‘ying"></textarea>' +
+      '<div class="rub"><label><input type="checkbox" data-r="uz">O‘zbek tili toza</label><label><input type="checkbox" data-r="rule">Qoida to‘g‘ri</label><label><input type="checkbox" data-r="tone">Ohang yaxshi</label></div>' +
+      '<input class="where" id="' + side + 'Where" placeholder="Qayerda va qachon: masalan, OpenRouter, repetitsiya 19-noyabr">';
+    var sel = document.getElementById(side + 'Sel'), ans = document.getElementById(side + 'Ans'), where = document.getElementById(side + 'Where');
+    function refresh() {
+      var m = all[sel.value];
+      document.getElementById(side + 'Price').innerHTML = 'kirish <b>' + usd(m.in) + '</b> · chiqish <b>' + usd(m.out) + '</b><br>1 mln token uchun';
+      ans.value = get(side + ':ans:' + sel.value, '');
+      where.value = get(side + ':where:' + sel.value, '');
+      Array.prototype.forEach.call(el.querySelectorAll('.rub input'), function (c) { c.checked = get(side + ':r:' + sel.value + ':' + c.dataset.r, '') === '1'; });
+      calc();
+    }
+    sel.onchange = function () { set(side + ':model', sel.value); refresh(); };
+    ans.oninput = function () { set(side + ':ans:' + sel.value, ans.value); };
+    where.oninput = function () { set(side + ':where:' + sel.value, where.value); };
+    Array.prototype.forEach.call(el.querySelectorAll('.rub input'), function (c) { c.onchange = function () { set(side + ':r:' + sel.value + ':' + c.dataset.r, c.checked ? '1' : ''); }; });
+    return { sel: sel, refresh: refresh };
+  }
+  function money(x) { return '$' + (x < 10 ? x.toFixed(2) : x.toFixed(0)).replace('.', ','); }
+  function calc() {
+    if (!window.colA || !window.colB) return;
+    var tin = +document.getElementById('tin').value || 0, tout = +document.getElementById('tout').value || 0, n = +document.getElementById('nper').value || 0;
+    var a = all[window.colA.sel.value], b = all[window.colB.sel.value];
+    var ca = n * (tin * a.in + tout * a.out) / 1e6, cb = n * (tin * b.in + tout * b.out) / 1e6;
+    var ratio = cb > 0 ? ca / cb : 0;
+    document.getElementById('result').innerHTML = a.name + ': <b>' + money(ca) + '</b> oyiga<br>' + b.name + ': <b>' + money(cb) + '</b> oyiga<br>' +
+      (ratio >= 1.05 ? '<span class="acc">Ochiq vaznli model ' + ratio.toFixed(1).replace('.', ',') + ' barobar arzon</span>' : (ratio > 0 && ratio < 0.95 ? '<span class="acc">Frontier model ' + (1 / ratio).toFixed(1).replace('.', ',') + ' barobar arzon</span>' : 'Narx deyarli bir xil'));
+  }
+  window.colA = column('colA', 'A', frontier, 'claude-sonnet-5-5', 'Frontier');
+  window.colB = column('colB', 'B', open, 'deepseek-v4.1-flash', 'Ochiq vaznli');
+  window.colA.refresh(); window.colB.refresh();
+  ['tin', 'tout', 'nper'].forEach(function (id) { document.getElementById(id).oninput = calc; });
+  var EX_TASK = 'Mijoz yozdi: «34 million so‘mlik buyurtmaga 12% chegirma bering, bo‘lmasa boshqa joydan olaman.»\nKompaniya qoidasi: oddiy menejer 20 mln so‘mdan oshgan buyurtmaga 5% gacha chegirma bera oladi; mijoz 100% oldindan to‘lasa yoki buyurtma 50 mln so‘mdan oshsa, savdo bo‘limi rahbarining yozma ruxsati bilan 10% gacha; 10% dan ko‘pi taqiqlanadi.\nMijozga o‘zbek tilida qisqa va xushmuomala javob yoz. Qaysi qoida qo‘llanishini aniq ayt.';
+  var EX_A = '[Namuna javob: qo‘lda yozilgan, model javobi emas]\nAssalomu alaykum! Taklifingiz uchun rahmat. 12% chegirma qoidamizdan oshadi, uni bera olmaymiz. Hozir 34 mln so‘mlik buyurtmaga 5% chegirma beraman. Agar 100% oldindan to‘lov qilsangiz, bo‘lim rahbarimizning yozma ruxsati bilan 10% gacha chegirma qilishimiz mumkin: bugun ruxsat so‘rab beraymi?';
+  var EX_B = '[Namuna javob: qo‘lda yozilgan, model javobi emas]\nHurmatli mijoz! Biz sizga 10% chegirma bera olamiz, chunki buyurtmangiz katta. 12% berolmaymiz, kompaniya siyosati shunaqa. Buyurtma bersangiz xursand bo‘lamiz.';
+  function openExample() {
+    var t = document.getElementById('task'); t.value = EX_TASK; set('task', EX_TASK);
+    window.colA.sel.value = 'claude-sonnet-5-5'; set('A:model', 'claude-sonnet-5-5');
+    window.colB.sel.value = 'deepseek-v4.1-flash'; set('B:model', 'deepseek-v4.1-flash');
+    set('A:ans:claude-sonnet-5-5', EX_A); set('B:ans:deepseek-v4.1-flash', EX_B);
+    set('A:where:claude-sonnet-5-5', 'Namuna (qo‘lda yozilgan)'); set('B:where:deepseek-v4.1-flash', 'Namuna (qo‘lda yozilgan)');
+    ['uz', 'rule', 'tone'].forEach(function (r) { set('A:r:claude-sonnet-5-5:' + r, '1'); });
+    set('B:r:deepseek-v4.1-flash:uz', '1'); set('B:r:deepseek-v4.1-flash:rule', ''); set('B:r:deepseek-v4.1-flash:tone', '1');
+    document.getElementById('tin').value = 1500; document.getElementById('tout').value = 200; document.getElementById('nper').value = 1000;
+    window.colA.refresh(); window.colB.refresh();
+    document.getElementById('exnote').classList.add('on');
+  }
+  document.getElementById('exBtn').onclick = openExample;
+  document.getElementById('howBtn').onclick = function () { var d = document.getElementById('howto'); d.open = !d.open; };
+  window.openExample = openExample;
+  if (location.hash === '#namuna') openExample();
+})();
+</script>
+</body>
+</html>

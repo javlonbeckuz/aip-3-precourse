@@ -1,0 +1,27 @@
+$ uv run python deploy/deploy.py
+
+==> Uploading (74 KB)
+==> Installing libraries (uv sync)
+==> Checking settings with the server .env
+Sozlamalar tekshiruvi
+
+❌ OWNER_CHAT_ID yo‘q: hisobot va ogohlantirishlar kimga borishini bilmayman.
+• Model: google/gemini-3.8-flash (balanced)
+• Javob rejimi: darhol javob beradi; kirish: faqat xodimlar
+• Limit: kuniga $1.00, oyiga $15.00
+• Kunlik hisobot: 09:00, ish vaqti 09:00-18:00
+✅ agent/instructions.md: 3691 belgi
+✅ agent/examples.md: 693 belgi
+✅ agent/memory.md: 285 belgi
+✅ Prays-list 2026: 14 qator, ustunlar: Kod, Mahsulot, Turkum, Chakana narx (1-4 dona), Ulgurji narx (5+ dona), Izoh
+✅ Chegirma, to‘lov, yetkazib berish va kafolat qoidalari: hujjat
+✅ Ombor qoldig‘i (1C eksport): 11 qator, ustunlar: Код, Номенклатура, Количество, Последнее движение
+✅ Jadval: «Kam qolgan mahsulotlar» soat 08:30, kunlar 1,2,3,4,5,6
+⚠️ Baraka Office namunasi hali bor: agent/instructions.md, agent/examples.md, agent/memory.md, agent/schedule.toml, kit5-baseline.toml, evals/test-set.toml, data/narxlar.csv, data/qoidalar.md, data/ombor-1c.csv
+   O‘z pilotingiz bo‘lsa, ularni almashtiring (PARTICIPANT_GUIDE.uz.md, 1.3-qadam).
+• Ma’lumot bloki: 4632 belgi (chegara 12000)
+
+Tuzatish kerak.
+Check failed: the running version was not touched. Fix what the check lists above (.env: deploy.py env; data/: correct the file), then deploy again.
+
+Server command failed (code 4): bash -c 'bash /tmp/pilot-remote-install.sh /tmp/pilot-release.tar.gz; rc=$?; rm -f /tmp/pilot-remote-install.sh; exit $rc'

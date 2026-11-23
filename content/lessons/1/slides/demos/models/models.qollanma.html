@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>«Bu hafta AI’da» varag‘i: qanday o‘qish</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 1-dars</span><span class="pill">Qo‘llanma</span></div>
+<h1>«Bu hafta AI’da» varag‘i: qanday o‘qish</h1>
+<p>Sahifa: <code>index.html</code> (ekranda) va <code>handouts/pdf/bu-hafta-ai-da.pdf</code> (bosma).
+Narxlar har oy o‘zgaradi: varaqdagi «Tekshirildi» sanasiga qarang.</p>
+<h2>Nima uchun</h2>
+<p>Model tanlash va xarajatni hisoblash uchun bitta sanasi yozilgan jadval.
+Model nomlari va narxlari slaydlarda emas, shu yerda turadi.</p>
+<h2>Qadamlar</h2>
+<ol>
+<li>Ishingiz qaysi darajaga to‘g‘ri kelishini tanlang: arzon va tez, muvozanatli yoki kuchli.</li>
+<li>Jadvaldan o‘sha darajadagi modelning kirish va chiqish narxini oling.</li>
+<li>Bitta vazifaning tokenlarini tokenizator sahifasida o‘lchang.</li>
+<li>Hisoblang: bitta vazifa narxi = (kirish tokenlari × kirish narxi + chiqish tokenlari × chiqish narxi) / 1 000 000.</li>
+<li>Oylik narx = bitta vazifa narxi × oyiga necha marta.</li>
+</ol>
+<h2>Har bir ustun nima</h2>
+<table>
+<thead>
+<tr>
+<th>Ustun</th>
+<th>Nima</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Daraja</td>
+<td>Arzon, muvozanatli, kuchli: ish murakkabligiga qarab</td>
+</tr>
+<tr>
+<td>Kirish</td>
+<td>Siz yuborgan matnning narxi, 1 million token uchun dollar</td>
+</tr>
+<tr>
+<td>Chiqish</td>
+<td>Model yozgan javobning narxi; odatda kirishdan bir necha barobar qimmat</td>
+</tr>
+<tr>
+<td>Izoh</td>
+<td>Muddatli aksiya, litsenziya yoki shart</td>
+</tr>
+</tbody>
+</table>
+<h2>Namuna: Baraka Office «Savdo yordamchisi»</h2>
+<p>Faraz: oyiga taxminan 1 000 savol (8 menejer × haftasiga 30 savol × 4,3 hafta), har biriga 1 500 token kirish va 200 token javob.</p>
+<p><img alt="Varaq va Baraka hisobi" src="qollanma-namuna.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Bitta savol</th>
+<th>Oyiga</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Haiku 5.5</td>
+<td>(1 500 × 0,10 + 200 × 0,50) / 1 000 000 = 0,00025 $</td>
+<td>0,25 $</td>
+</tr>
+<tr>
+<td>Claude Sonnet 5.5</td>
+<td>(1 500 × 2 + 200 × 10) / 1 000 000 = 0,005 $</td>
+<td>5,00 $</td>
+</tr>
+<tr>
+<td>Claude Opus 5.5</td>
+<td>(1 500 × 4 + 200 × 20) / 1 000 000 = 0,01 $</td>
+<td>10,00 $</td>
+</tr>
+<tr>
+<td>DeepSeek V4.1 Flash</td>
+<td>(1 500 × 0,15 + 200 × 0,60) / 1 000 000 = 0,000345 $</td>
+<td>0,34 $</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Qanday o‘qish:</strong> bu hajmda har qanday model oyiga bir necha dollar.
+Qarorni javob aniqligi va ma’lumot qayerga ketishi hal qiladi, narx emas.
+Server (oyiga taxminan 200 000 so‘m) va Claude obunasi alohida.</p>
+<h2>Ko‘p uchraydigan xatolar</h2>
+<ul>
+<li>Faqat kirish narxiga qarash: javob uzun bo‘lsa, chiqish narxi ko‘p bo‘ladi.</li>
+<li>Eski varaqdan foydalanish: narx oyda bir necha marta o‘zgaradi.</li>
+<li>O‘zbekcha matnni inglizcha bilan bir xil hisoblash: o‘zbekcha taxminan 2 barobar ko‘p token.</li>
+</ul>
+<h2>Tayyor</h2>
+<p>Bitta vazifangizning oylik narxini uchta model uchun hisoblab, birini sababi bilan tanlay olasiz.</p>
+<div class="foot">Praktikum 3.0 · 1-dars · 21-noyabr (shanba) / 22-noyabr (yakshanba) 2026 · manba: day-1/demos/models/models.qollanma.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qiymat va osonlik matritsasi</title>
+<!--
+  To‘plam 2, B shakli. /kit2 faqat pastdagi <script id="data"> ichidagi JSON ni almashtiradi.
+  Internet kerak emas: shrift, rang va chizma shu faylning o‘zida.
+-->
+<style>
+  :root {
+    --ink: #111111; --ink-2: #4a4a4a; --ink-3: #8a8a8a;
+    --rule: #d6d6d6; --rule-soft: #ececec; --cobalt: #2563eb; --cobalt-soft: rgba(37, 99, 235, 0.06);
+    --bg: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body { font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 16px; line-height: 1.45; }
+  main { max-width: 1180px; margin: 0 auto; padding: 32px 24px 48px; }
+  header { border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 24px; }
+  .kicker { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.15; margin: 6px 0 4px; text-transform: uppercase; letter-spacing: -0.01em; }
+  .meta { color: var(--ink-2); font-size: 14px; }
+  .grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+  figure { margin: 0; }
+  svg { width: 100%; height: auto; display: block; }
+  svg text { font-family: inherit; }
+  .axis { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .tick { font-size: 10px; fill: var(--ink-3); }
+  .quad { font-size: 13px; font-weight: 600; }
+  .dot-num { font-size: 12px; font-weight: 700; fill: #fff; }
+  ol.list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+  ol.list li { display: grid; grid-template-columns: 32px 1fr auto; gap: 10px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+  .badge { display: inline-flex; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 12px; font-weight: 700; align-items: center; justify-content: center; }
+  li.chosen .badge { background: var(--cobalt); }
+  .pname { font-weight: 600; }
+  .pquad { display: block; font-size: 13px; color: var(--ink-2); font-weight: 400; }
+  .score { font-variant-numeric: tabular-nums; font-size: 13px; color: var(--ink-2); white-space: nowrap; text-align: right; }
+  .score b { color: var(--ink); }
+  .choice { margin-top: 24px; border: 1.5px solid var(--cobalt); padding: 14px 16px; }
+  .choice h2 { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cobalt); margin: 0 0 8px; }
+  .choice dl { margin: 0; display: grid; grid-template-columns: 170px 1fr; gap: 6px 12px; }
+  .choice dt { color: var(--ink-2); font-size: 14px; }
+  .choice dd { margin: 0; }
+  .note { font-size: 13px; color: var(--ink-3); margin-top: 20px; }
+  @media (max-width: 760px) {
+    /* the plot shrinks to about 60% on a phone, so its text is drawn larger in viewBox units */
+    .tick { font-size: 15px; }
+    .quad { font-size: 16px; }
+    .axis { font-size: 19px; }
+    .dot-num { font-size: 15px; }
+    svg circle { r: 15px; }
+    main { padding: 20px 16px 36px; }
+    h1 { font-size: 22px; }
+    .grid { grid-template-columns: 1fr; gap: 20px; }
+    .choice dl { grid-template-columns: 1fr; gap: 2px; }
+    .choice dd { margin-bottom: 8px; }
+  }
+  @media print {
+    main { max-width: none; padding: 12mm; }
+    .grid { grid-template-columns: 1.2fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="kicker">To‘plam 2 · B shakli</div>
+    <h1>Qiymat va osonlik</h1>
+    <div class="meta" id="meta"></div>
+  </header>
+  <div class="grid">
+    <figure><svg id="plot" viewBox="0 0 560 600" role="img" aria-label="Qiymat va osonlik matritsasi"></svg></figure>
+    <section>
+      <ol class="list" id="list"></ol>
+      <div class="choice" id="choice" hidden>
+        <h2>Tanlov</h2>
+        <dl>
+          <dt>B.1 Tanlangan jarayon</dt><dd id="b1"></dd>
+          <dt>B.2 Nega aynan shu</dt><dd id="b2"></dd>
+          <dt>B.3 Hozir nimani qilmayapmiz</dt><dd id="b3"></dd>
+        </dl>
+      </div>
+      <p class="note">Qiymat (A.8) = A.2 + A.3 + A.7. Osonlik (A.9) = A.4 + A.5 + A.6. Har biri 3 dan 15 gacha; o‘rta chiziq 9 da.</p>
+    </section>
+  </div>
+</main>
+
+<script id="data" type="application/json">
+{
+  "company": "Oydin Kitob",
+  "department": "Sotuv va ombor",
+  "date": "2026-11-03",
+  "chosen": null,
+  "b1": "",
+  "b2": "",
+  "b3": "",
+  "processes": [
+    {"n": 1, "name": "Telegram buyurtma", "value": 15, "ease": 8},
+    {"n": 2, "name": "Instagram narx savoli", "value": 12, "ease": 11},
+    {"n": 3, "name": "Kitob qoldig‘ini yuritish", "value": 11, "ease": 9},
+    {"n": 4, "name": "Click/Payme solishtirish va kunlik hisobot", "value": 10, "ease": 10},
+    {"n": 5, "name": "Kuryerlar haftalik hisob-kitobi", "value": 5, "ease": 6}
+  ]
+}
+</script>
+
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById("data").textContent);
+  var NS = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("plot");
+  // plot area inside the 560 x 600 viewBox; the scale runs 2.5..15.5 so a dot at 3 or 15 never sits on the frame,
+  // and the quadrant names live above and below the frame so no dot can cover them
+  var L = 64, T = 40, S = 464, LO = 2.5, HI = 15.5;
+  function X(v) { return L + (v - LO) / (HI - LO) * S; }
+  function Y(v) { return T + S - (v - LO) / (HI - LO) * S; }
+  function el(name, attrs, text) {
+    var n = document.createElementNS(NS, name);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (text !== undefined) n.textContent = text;
+    svg.appendChild(n);
+    return n;
+  }
+  function quadrant(p) {
+    if (p.value === 9 || p.ease === 9) return "Chegarada (9)";
+    if (p.value > 9 && p.ease > 9) return "Birinchi sinov";
+    if (p.value > 9) return "Foydali, puxta reja kerak";
+    if (p.ease > 9) return "Oson, lekin foydasi kichik";
+    return "Hozircha tegmang";
+  }
+  el("rect", { x: X(9), y: T, width: X(HI) - X(9), height: Y(9) - T, fill: "var(--cobalt-soft)" });
+  el("rect", { x: L, y: T, width: S, height: S, fill: "none", stroke: "#111", "stroke-width": 1.4 });
+  for (var v = 3; v <= 15; v++) {
+    var strong = v === 9;
+    el("line", { x1: X(v), y1: T, x2: X(v), y2: T + S, stroke: strong ? "#111" : "#ececec", "stroke-width": strong ? 1.4 : 1 });
+    el("line", { x1: L, y1: Y(v), x2: L + S, y2: Y(v), stroke: strong ? "#111" : "#ececec", "stroke-width": strong ? 1.4 : 1 });
+    el("text", { x: X(v), y: T + S + 18, "text-anchor": "middle", "class": "tick" }, v);
+    el("text", { x: L - 10, y: Y(v) + 4, "text-anchor": "end", "class": "tick" }, v);
+  }
+  el("text", { x: L, y: T - 12, "class": "quad", fill: "#4a4a4a" }, "Foydali, puxta reja kerak");
+  el("text", { x: L + S, y: T - 12, "text-anchor": "end", "class": "quad", fill: "#2563eb" }, "Birinchi sinov");
+  el("text", { x: L, y: T + S + 44, "class": "quad", fill: "#8a8a8a" }, "Hozircha tegmang");
+  el("text", { x: L + S, y: T + S + 44, "text-anchor": "end", "class": "quad", fill: "#4a4a4a" }, "Oson, lekin foydasi kichik");
+  el("text", { x: L + S / 2, y: T + S + 72, "text-anchor": "middle", "class": "axis" }, "Osonlik (A.9)");
+  el("text", { x: 16, y: T + S / 2, "text-anchor": "middle", "class": "axis", transform: "rotate(-90 16 " + (T + S / 2) + ")" }, "Qiymat (A.8)");
+
+  // dots that share a score are fanned out so every number stays readable
+  var seen = {};
+  var FAN = [[0, 0], [24, 0], [-24, 0], [0, 24], [24, 24], [-24, 24], [0, -24], [24, -24]];
+  D.processes.forEach(function (p) {
+    var key = p.value + ":" + p.ease;
+    var k = seen[key] = (seen[key] || 0) + 1;
+    var off = FAN[(k - 1) % FAN.length];
+    var cx = X(p.ease) + off[0], cy = Y(p.value) + off[1];
+    el("circle", { cx: cx, cy: cy, r: 13, fill: p.n === D.chosen ? "#2563eb" : "#111" });
+    el("text", { x: cx, y: cy + 4, "text-anchor": "middle", "class": "dot-num" }, p.n);
+  });
+
+  var meta = [D.company, D.department, D.date].filter(Boolean).join(" · ");
+  document.getElementById("meta").textContent = meta;
+  var list = document.getElementById("list");
+  D.processes.slice().sort(function (a, b) { return a.n - b.n; }).forEach(function (p) {
+    var li = document.createElement("li");
+    if (p.n === D.chosen) li.className = "chosen";
+    li.innerHTML = '<span class="badge"></span><span class="pname"></span><span class="score">Qiymat <b></b> · Osonlik <b></b></span>';
+    li.querySelector(".badge").textContent = p.n;
+    li.querySelector(".pname").textContent = p.name;
+    var q = document.createElement("span"); q.className = "pquad"; q.textContent = quadrant(p);
+    li.querySelector(".pname").appendChild(q);
+    var bs = li.querySelectorAll(".score b"); bs[0].textContent = p.value; bs[1].textContent = p.ease;
+    list.appendChild(li);
+  });
+  if (D.b1) {
+    document.getElementById("choice").hidden = false;
+    document.getElementById("b1").textContent = D.b1;
+    document.getElementById("b2").textContent = D.b2 || "-";
+    document.getElementById("b3").textContent = D.b3 || "-";
+  }
+})();
+</script>
+</body>
+</html>

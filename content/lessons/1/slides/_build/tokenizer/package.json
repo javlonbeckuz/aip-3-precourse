@@ -1,0 +1,13 @@
+{
+  "name": "day1-tokenizer-build",
+  "private": true,
+  "description": "Builds the offline tokenizer bundle for day-1/demos/tokenizer. Regenerable.",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node test_bpe.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10",
+    "js-tiktoken": "1.0.21"
+  }
+}

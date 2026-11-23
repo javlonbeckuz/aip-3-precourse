@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tokenizator: qanday ishlatish</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 1-dars</span><span class="pill">Qo‘llanma</span></div>
+<h1>Tokenizator: qanday ishlatish</h1>
+<p>Sahifa: <code>index.html</code> (papkadan ochiladi) yoki <code>tokenizer-offline.html</code> (bitta fayl, Telegram orqali yuboriladi).
+Ikkalasi ham internetsiz ishlaydi.</p>
+<h2>Nima uchun</h2>
+<p>Model matnni token deb ataladigan bo‘laklarga bo‘lib o‘qiydi va narx tokenda hisoblanadi.
+Sahifa bir xil gap o‘zbek, rus va ingliz tilida necha tokenga bo‘linishini ko‘rsatadi.
+Shundan o‘zbekcha so‘rovlaringiz qancha qimmat va suhbat oynasini qancha tez to‘ldirishini bilasiz.</p>
+<h2>Boshlashdan oldin kerak</h2>
+<ul>
+<li>Sahifa fayli (mentor stol chatiga tashlaydi).</li>
+<li>Biznesingizdan bitta gap: mijozga yozadigan javob, xodimga topshiriq yoki narx haqida xabar.</li>
+<li>O‘sha gapning rus va ingliz tilidagi tarjimasi (Claude’dan so‘rasangiz bo‘ladi).</li>
+</ul>
+<h2>Qadamlar</h2>
+<ol>
+<li>Faylni brauzerda oching.</li>
+<li>«Tokenizator» qatoridan birini tanlang: «OpenAI GPT-5.x» yoki «DeepSeek V4 Pro».</li>
+<li>«Gap» qatoridan «O‘z gapingiz»ni bosing.</li>
+<li>Gapingizni o‘zbekcha qutiga, tarjimasini rus va ingliz qutilariga yozing.</li>
+<li>Har qutidagi katta sonni yozib oling.</li>
+<li>Tokenizatorni almashtiring va sonlar qanday o‘zgarishini ko‘ring.</li>
+</ol>
+<h2>Har bir maydon nima</h2>
+<table>
+<thead>
+<tr>
+<th>Joy</th>
+<th>Nima</th>
+<th>Qayerdan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Katta son</td>
+<td>Gap necha tokenga bo‘lindi</td>
+<td>Sahifa hisoblaydi</td>
+</tr>
+<tr>
+<td>«1,8×»</td>
+<td>Inglizchadan necha barobar ko‘p</td>
+<td>Sahifa hisoblaydi</td>
+</tr>
+<tr>
+<td>Rangli bo‘laklar</td>
+<td>Model ko‘radigan bo‘laklar</td>
+<td>Sahifa ko‘rsatadi</td>
+</tr>
+<tr>
+<td>Pastdagi jadval</td>
+<td>Shu gap 7 ta modelda (3-noyabrda o‘lchangan)</td>
+<td>Oldindan o‘lchangan</td>
+</tr>
+<tr>
+<td>Claude va Gemini qutilari</td>
+<td>Instruktor repetitsiyada yozadigan sonlar</td>
+<td>API orqali o‘lchanadi</td>
+</tr>
+</tbody>
+</table>
+<h2>Namuna: Baraka Office</h2>
+<p>«Namuna bilan ochish» tugmasi Baraka Office menejerining mijozga javobini uch tilda qo‘yadi.</p>
+<p><img alt="Tokenizator namunasi" src="qollanma-namuna.png" /></p>
+<p>Natija (OpenAI GPT-5.x): o‘zbekcha 71, ruscha 56, inglizcha 62 token, ya’ni o‘zbekcha atigi 1,1 barobar ko‘p.
+Sababi: gapda raqam ko‘p («1 890 000», «37 800 000»), raqamlar esa har tilda deyarli bir xil bo‘linadi.
+Endi «Biznes gapi»ni bosing: raqami kam oddiy gapda o‘zbekcha 44, inglizcha 24 token, ya’ni 1,8 barobar.
+DeepSeek V4 Pro modelida xuddi shu gap 48 va 24 token: 2,0 barobar.</p>
+<p><strong>Qanday o‘qish:</strong> o‘zbekcha matn oddiy gapda taxminan 2 barobar ko‘p token oladi, raqamli xabarda farq kichikroq.
+Shuning uchun bitta umumiy raqamga ishonmang: o‘z matningizni o‘lchang.</p>
+<h2>Ko‘p uchraydigan xatolar</h2>
+<ul>
+<li>Uch qutiga har xil ma’noli gap yozish: solishtirib bo‘lmaydi.</li>
+<li>Bitta so‘zdan xulosa qilish: «o‘quvchi» 5 token, «student» 1 token, lekin butun gapda farq 2 barobar atrofida.</li>
+<li>Apostrofni hisobga olmaslik: «o‘» dagi belgi ko‘pincha alohida bo‘lak bo‘ladi.</li>
+</ul>
+<h2>Tayyor</h2>
+<p>«Mening gapim o‘zbekchada X token, inglizchada Y token, ya’ni Z barobar» deb ayta olasiz.</p>
+<div class="foot">Praktikum 3.0 · 1-dars · 21-noyabr (shanba) / 22-noyabr (yakshanba) 2026 · manba: day-1/demos/tokenizer/tokenizer.qollanma.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

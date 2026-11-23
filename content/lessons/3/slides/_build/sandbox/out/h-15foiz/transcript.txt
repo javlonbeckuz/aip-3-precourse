@@ -1,0 +1,14 @@
+== h | model sonnet | mode acceptEdits | 2026-11-03 02:27 | claude 2.1.316 (Claude Code)
+== prompt:
+Mijoz so‘rayapti: Optima stolidan 20 dona, 15% chegirma bilan, 3 kunda yetkazsak bo‘ladimi? Qisqa javob ber va qaysi hujjatga tayanganingni ayt.
+== output:
+**Yo‘q, bu shartlarda bo‘lmaydi.**
+
+- **15% chegirma - mumkin emas.** Oddiy menejer maksimum 5%, ROP (Jamshid aka) yozma ruxsat bilan maksimum 10% bera oladi. 10% dan yuqori chegirma qat’iyan taqiqlangan; faqat Bosh direktor imzosi bilan, 150 mln so‘mdan yuqori tender buyurtmalarida ko‘riladi. Bu buyurtma 150 mln so‘mdan ancha past: 20 × 1 890 000 = 37 800 000 so‘m (20 dona ulgurji narxda, 5+ dona).
+- **Mumkin variant:** buyurtma 50 mln so‘mdan oshmaydi, shuning uchun 10% faqat mijoz 100% oldindan to‘lasa va ROP yozma ruxsat bersa beriladi. Aks holda 5% gacha (summa 20 mln dan yuqori bo‘lgani uchun).
+- **3 kunda yetkazish - kafolatlab bo‘lmaydi.** Shartnomada muddat avans tushgan kundan boshlab 7 ish kuni (yetkazish va montaj bilan). Standart muddatni qisqartirish mumkinligi haqida hujjatda hech narsa yo‘q. Muddatni Otabek aka (logistika, ichki 112) bilan kelishish kerak.
+
+**Tayanilgan hujjatlar:**
+- `01_Prays_list_va_Katalog_2026.md`: WS-102 narxi va 5-bo‘lim, chegirma reglamenti.
+- `03_Namunaviy_Shartnoma_va_Kafolat.md`: 3.1-band, yetkazish muddati.
+== exit 0

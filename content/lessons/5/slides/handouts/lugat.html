@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4-dars lug‘ati: server, domen, sinov va odamlar</title>
+<link rel="stylesheet" href="../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 4-dars</span><span class="pill">Lug‘at</span></div>
+<h1>4-dars lug‘ati: server, domen, sinov va odamlar</h1>
+<p>Qalin yozilgan 7 ta atama darsda jonli ko‘rsatiladi.
+Qolganlari - ma’lumotnoma: o‘z ishingizda uchraganda shu yerdan qarang.
+Atama tushunarsiz bo‘lsa, Claude’dan so‘rang: «[atama] nima? 5 yoshli bolaga tushuntir».</p>
+<h2>Dastur qayerda yashaydi</h2>
+<table>
+<thead>
+<tr>
+<th>Atama</th>
+<th>Oddiy so‘z bilan</th>
+<th>O‘xshatish yoki namoyish</th>
+<th>Biznes uchun nima</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lokal va server</strong></td>
+<td>Lokal - noutbukingizda; server - boshqa joyda, doim yoqiq turadigan kompyuter</td>
+<td>Noutbukni yopasiz: lokal bot «o‘ladi»</td>
+<td>Biznes vositasi noutbukka bog‘liq bo‘lmasligi kerak</td>
+</tr>
+<tr>
+<td><strong>VPS</strong></td>
+<td>Data markazda ijaraga olingan, faqat Sizniki bo‘lgan kompyuter</td>
+<td>Kvartira ijarasi (VPS) va uy sotib olish (Mac mini)</td>
+<td>Taxminan 200 000 so‘m/oy; Mac mini $600-800 va tok, internet</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>Noutbukdan serverga xavfsiz ulanish yo‘li</td>
+<td>Claude Code serverga «kirib» ishlaydi</td>
+<td>Buyruqlarni o‘rganish shart emas</td>
+</tr>
+<tr>
+<td>SSH kalit</td>
+<td>Parol o‘rniga ikki qismli kalit: yopiq qismi noutbukda, ochiq qismi (.pub) serverda</td>
+<td>Ochiq kalit - qulf, yopiq kalit - kalitning o‘zi</td>
+<td>Parol chatda aylanmaydi; Claude parol yozmasdan kiradi</td>
+</tr>
+<tr>
+<td>systemd</td>
+<td>Serverdagi «navbatchi»: dasturni ishga tushiradi, yiqilsa qayta turg‘izadi</td>
+<td>Botni ataylab o‘ldirdik: 5 soniyada qaytdi</td>
+<td>Kecha-kunduz ishlash shundan</td>
+</tr>
+<tr>
+<td>Uptime</td>
+<td>Xizmat qancha vaqt ishlab turgani</td>
+<td>24/7 bot</td>
+<td>Server uchun to‘laydigan narsangiz</td>
+</tr>
+<tr>
+<td>Server muhit o‘zgaruvchilari</td>
+<td>Serverning o‘z <code>.env</code> fayli: <code>/opt/pilot/.env</code></td>
+<td>Kalitlar serverga, GitHub’ga emas</td>
+<td>Xavfsizlik qoidasi bir xil, joyi yangi</td>
+</tr>
+<tr>
+<td>Log</td>
+<td>Serverning kundaligi: nima, qachon bo‘ldi</td>
+<td>Claude’ga «oxirgi 20 qatorni tushuntir»</td>
+<td>Biror narsa buzilsa, birinchi qaraladigan joy</td>
+</tr>
+<tr>
+<td>Release</td>
+<td>Serverga chiqarilgan bitta versiya; oxirgi 5 tasi saqlanadi</td>
+<td><code>release 20261213-071502</code></td>
+<td>Orqaga qaytish uchun eski versiya tayyor turadi</td>
+</tr>
+<tr>
+<td>Rollback</td>
+<td>Serverda oldingi yaxshi versiyaga qaytish</td>
+<td><code>deploy.py rollback</code>, 3 soniya</td>
+<td>Xato arzon, agar qaytarish oson bo‘lsa</td>
+</tr>
+<tr>
+<td>Staging va production</td>
+<td>Sinov nusxasi va jonli nusxa</td>
+<td>Avval noutbukda sinash, keyin serverga</td>
+<td>Xodimlar faqat ishlaydigan versiyani ko‘radi</td>
+</tr>
+<tr>
+<td>Shaxsiy yordamchi buyruqlari</td>
+<td>Egasi va loyiha yetakchisi telefondan beradigan buyruqlar: <code>/eslat</code> (eslatma), <code>/eslab_qol</code>, <code>/xotira</code>, <code>/unut</code> (xotira), <code>/jadval</code> (har kungi ish), <code>/stop</code>, <code>/davom</code></td>
+<td>«Soat 15:30 da tender haqida eslat»</td>
+<td>Noutbuk o‘chiq bo‘lsa ham ishlaydi: sotuv sahifasidagi va’da</td>
+</tr>
+<tr>
+<td>Remote Control</td>
+<td>Noutbukda ishlayotgan Claude Code sessiyasini telefondan boshqarish</td>
+<td>Mashinadan «tugadimi?» deb so‘rash</td>
+<td>Noutbuk <strong>yoqiq</strong> bo‘lishi kerak: bu assistent emas</td>
+</tr>
+</tbody>
+</table>
+<h2>Domen va HTTPS</h2>
+<table>
+<thead>
+<tr>
+<th>Atama</th>
+<th>Oddiy so‘z bilan</th>
+<th>O‘xshatish yoki namoyish</th>
+<th>Biznes uchun nima</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IP manzil, domen, DNS</strong></td>
+<td>Serverning raqami, uning odam eslaydigan ismi va ularni bog‘laydigan telefon kitobi</td>
+<td><code>forma.barakaoffice.uz</code> → <code>203.0.113.10</code></td>
+<td>Mijozga raqam emas, ism kerak</td>
+</tr>
+<tr>
+<td>A yozuvi</td>
+<td>DNS dagi bitta qator: ism → IP manzil</td>
+<td>Domen panelida: nom <code>forma</code>, qiymat IP</td>
+<td>Bitta qator - bitta subdomen</td>
+</tr>
+<tr>
+<td>Subdomen</td>
+<td>Domen oldiga qo‘shilgan so‘z</td>
+<td><code>forma.barakaoffice.uz</code>, <code>bot.barakaoffice.uz</code></td>
+<td>Bitta domen, ko‘p vosita</td>
+</tr>
+<tr>
+<td>DNS tarqalishi</td>
+<td>Yangi yozuv internetdagi hamma «kitob»larga yetib borishi</td>
+<td>Bir necha daqiqadan bir necha soatgacha</td>
+<td>Yozuvni bir kun oldin qo‘shing</td>
+</tr>
+<tr>
+<td>HTTPS / SSL</td>
+<td>Manzil satridagi qulf: telefon va sayt orasidagi gap shifrlangan</td>
+<td>Qulfni bosib ko‘rsatish</td>
+<td>Qulfsiz formaga mijoz raqamini yozmaydi</td>
+</tr>
+<tr>
+<td>Let’s Encrypt</td>
+<td>Bepul sertifikat beradigan tashkilot; hozir 90 kunlik, 2027-yil fevraldan 64 kunlik</td>
+<td>«Qulf»ning hujjati</td>
+<td>Pul to‘lamaysiz; yangilashni Caddy o‘zi qiladi</td>
+</tr>
+<tr>
+<td>Caddy</td>
+<td>Serverdagi veb-server: saytni beradi, sertifikatni o‘zi oladi va yangilaydi</td>
+<td>Qabulxona</td>
+<td>Bir buyruq bilan HTTPS</td>
+</tr>
+<tr>
+<td>Nginx, reverse proxy</td>
+<td>Xuddi shu «qabulxona»ning boshqa, eng keng tarqalgan turi</td>
+<td>Har mehmonni kerakli eshikka yo‘naltiradi</td>
+<td>Dasturchi smetasida ko‘rsangiz, taniysiz</td>
+</tr>
+<tr>
+<td>Port, firewall</td>
+<td>Port - serverdagi eshik raqami (22 SSH, 80 va 443 sayt); firewall - qaysi eshik ochiqligini hal qiladi</td>
+<td>Bizda faqat 22, sayt bo‘lsa 80 va 443</td>
+<td>Ortiqcha ochiq eshik - ortiqcha xavf</td>
+</tr>
+</tbody>
+</table>
+<h2>Git va GitHub</h2>
+<table>
+<thead>
+<tr>
+<th>Atama</th>
+<th>Oddiy so‘z bilan</th>
+<th>O‘xshatish yoki namoyish</th>
+<th>Biznes uchun nima</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Git, commit, push</strong></td>
+<td>Kodning saqlash nuqtalari va ularni GitHub’ga yuborish</td>
+<td>O‘yindagi saqlash nuqtasi</td>
+<td>Ishlagan versiya hech qachon yo‘qolmaydi</td>
+</tr>
+<tr>
+<td>GitHub, repo</td>
+<td>Kod saqlanadigan joy; repo - bitta loyiha papkasi</td>
+<td>«Dasturchilarning YouTube’i»</td>
+<td>Noutbuk yo‘qolsa ham kod qoladi</td>
+</tr>
+<tr>
+<td>Yopiq (private) va ochiq (public) repo</td>
+<td>Kodni kim ko‘ra olishi</td>
+<td>Kalit ochiq repoda bo‘lsa, bir necha daqiqada o‘g‘irlanadi</td>
+<td>Faqat private; faqat <code>app/</code> papkasi</td>
+</tr>
+<tr>
+<td><code>.gitignore</code></td>
+<td>Gitga «bu fayllarga tegma» degan ro‘yxat</td>
+<td><code>.env</code>, <code>runtime/</code> shu yerda</td>
+<td>Kalit tasodifan repoga tushmaydi</td>
+</tr>
+<tr>
+<td><code>git restore</code></td>
+<td>Faylni oxirgi commit holatiga qaytarish</td>
+<td>Noutbukdagi «bekor qilish»</td>
+<td>Serverdagi rollback’ning juftligi</td>
+</tr>
+</tbody>
+</table>
+<h2>Sinov va odamlar</h2>
+<table>
+<thead>
+<tr>
+<th>Atama</th>
+<th>Oddiy so‘z bilan</th>
+<th>O‘xshatish yoki namoyish</th>
+<th>Biznes uchun nima</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sinov (pilot)</strong></td>
+<td>Cheklangan, muddatli, real sinov</td>
+<td>2 hafta, bitta jarayon, 3-5 xodim</td>
+<td>Butun bo‘limga yoyishdan oldin arzon o‘rganish</td>
+</tr>
+<tr>
+<td>Boshlang‘ich raqam (baseline)</td>
+<td>Agentgacha bo‘lgan raqamlar</td>
+<td>To‘plam 5 B, «Agentgacha» ustuni</td>
+<td>Raqamsiz faqat taassurot qoladi</td>
+</tr>
+<tr>
+<td><strong>Muvaffaqiyat mezoni va to‘xtatish sharti</strong></td>
+<td>Nima bo‘lsa «ishlayapti» deymiz; nima bo‘lsa darhol to‘xtatamiz</td>
+<td>«Mijozga bitta noto‘g‘ri narx = to‘xtatamiz»</td>
+<td>Mijozni va pulni himoya qiladi</td>
+</tr>
+<tr>
+<td>Cheklangan ruxsat</td>
+<td>Birinchi hafta agent faqat qoralama yozadi, odam tasdiqlaydi</td>
+<td><code>REPLY_MODE=approve</code></td>
+<td>Ishonch bosqichma-bosqich</td>
+</tr>
+<tr>
+<td>Loyiha yetakchisi</td>
+<td>Jarayonni har kuni qiladigan, o‘zi rozi bo‘lgan xodim: qoralamalarni tekshiradi, jurnal yuritadi</td>
+<td>Baraka: Malika</td>
+<td>Bo‘lim boshlig‘i emas; u imzolaydi va ko‘rib chiqishda bo‘ladi</td>
+</tr>
+<tr>
+<td><strong>Almashtirmaymiz, kuchaytiramiz</strong></td>
+<td>Tejalgan vaqt yuqoriroq qiymatli ishga ketadi</td>
+<td>Madina: savolni aniqlaydi, javobni tekshiradi</td>
+<td>Qo‘rquv xodimni haqiqiy ishni yashirishga majbur qiladi</td>
+</tr>
+<tr>
+<td>Xatolar jurnali (B.13)</td>
+<td>Agentning har bir xatosi: sana, nima bo‘ldi, kim topdi, nimani o‘zgartirdik</td>
+<td>❌ tugmasi va bir gap</td>
+<td>5-darsdagi yaxshilash shu yerdan boshlanadi</td>
+</tr>
+</tbody>
+</table>
+<div class="foot">Praktikum 3.0 · 4-dars · manba: day-4/handouts/src/lugat.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

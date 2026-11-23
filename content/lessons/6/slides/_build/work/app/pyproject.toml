@@ -1,0 +1,31 @@
+[project]
+name = "pilot"
+version = "1.0.0"
+description = "Praktikum 3.0 pilot bot: Telegram + OpenRouter + business data, with Kit 5 numbers built in."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28",
+    "openpyxl>=3.1",
+    "python-dotenv>=1.0",
+    "tzdata>=2024.1",
+]
+
+[project.scripts]
+pilot = "pilot.__main__:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.8,<0.20"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

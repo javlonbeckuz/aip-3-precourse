@@ -1,0 +1,20 @@
+$ uv run pilot check
+
+Sozlamalar tekshiruvi
+
+• Model: google/gemini-3.8-flash (balanced)
+• Javob rejimi: darhol javob beradi; kirish: faqat xodimlar
+• Limit: kuniga $1.00, oyiga $15.00
+• Kunlik hisobot: 09:00, ish vaqti 09:00-18:00
+✅ agent/instructions.md: 3708 belgi
+✅ agent/examples.md: 1060 belgi
+✅ agent/memory.md: 353 belgi
+✅ Prays-list 2026: 14 qator, ustunlar: Kod, Mahsulot, Turkum, Chakana narx (1-4 dona), Ulgurji narx (5+ dona), Izoh
+✅ Chegirma, to‘lov, yetkazib berish va kafolat qoidalari: hujjat
+⚠️ Ombor qoldig‘i (1C eksport): 11 qator, ustunlar: Код, Номенклатура, Количество, Последнее движение
+   Ombor qoldig‘i (1C eksport): fayl 28 soatdan beri yangilanmagan (chegara 25 soat)
+✅ Jadval: «Kam qolgan mahsulotlar» soat 08:30, kunlar 1,2,3,4,5,6
+⚠️ Baraka demo rejimi (DEMO_SAMPLE=on): namuna fayllari ataylab qoldirilgan
+• Ma’lumot bloki: 4719 belgi (chegara 12000)
+
+Tayyor.

@@ -1,0 +1,6 @@
+$ uv run python deploy/deploy.py
+
+==> Uploading (74 KB)
+No /opt/pilot/.env on the server yet: run 'deploy.py env' first
+
+Server command failed (code 3): bash -c 'bash /tmp/pilot-remote-install.sh /tmp/pilot-release.tar.gz; rc=$?; rm -f /tmp/pilot-remote-install.sh; exit $rc'

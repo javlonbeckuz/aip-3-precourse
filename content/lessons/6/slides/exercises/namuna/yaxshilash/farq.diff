@@ -1,0 +1,84 @@
+--- agent-v1/instructions.md
++++ agent-v2/instructions.md
+@@ -29,3 +29,3 @@
+ 
+-- Prays-listdagi narxni aytasan: 1-4 dona uchun chakana, 5 va undan ko‘p dona uchun ulgurji narx.
++- Prays-listdagi narxni aytasan: 1-4 dona - chakana; 5 va undan ko‘p dona (5, 6, 7 ...) - ulgurji narx; 5 dona ham ulgurji.
+ - Buyurtma summasini hisoblaysan va hisobni bir qatorda ko‘rsatasan (narx x dona = summa).
+--- agent-v1/examples.md
++++ agent-v2/examples.md
+@@ -14 +14,8 @@
+ Ma’lumot: 1C, 01.11.2026 holatiga tayyor mahsulot ombori (Sergeli).
++
++Savol: Optima stolidan 5 ta kerak, narxi?
++Javob: «Optima» ergonomik stol (WS-102), 5 dona - ulgurji narx: 1 890 000 x 5 = 9 450 000 so‘m.
++Ulgurji narx 5 donadan boshlab: 5 dona ham ulgurji.
++
++Savol: Mijoz 18 mln lik buyurtmaga chegirma so‘rayapti.
++Javob: Yo‘q: chegirma faqat buyurtma 20 000 000 so‘mdan oshsa (5% gacha). 18 000 000 so‘mlik buyurtmaga chegirma yo‘q.
+--- agent-v1/memory.md
++++ agent-v2/memory.md
+@@ -4 +4,2 @@
+ - 2026-12-13: Ombor fayli har kuni soat 08:00 da 1C dan yangilanadi (Otabek aka).
++- 2026-12-20: Narx, chegirma, kafolat va yetkazish shartlari faqat prays-list va qoidalar hujjatidan; KP (taqdimot) - reklama, unga tayanma.
+--- agent-v1/sources.toml
++++ agent-v2/sources.toml
+@@ -33,8 +33,3 @@
+ # eslatadi. Shuning uchun bu yerda hali izoh qatori.
+-# max_age_hours = 25
+-
+-[[source]]
+-name = "Kompaniya taqdimoti (KP)"
+-type = "file"
+-path = "data/kp-2026.md"
++max_age_hours = 25
+ 
+--- agent-v1/schedule.toml
++++ agent-v2/schedule.toml
+@@ -17 +17,12 @@
+ """
++
++[[job]]
++name = "1C fayli tekshiruvi"
++time = "10:30"
++days = "1-6"
++send_to = 7100032
++prompt = """
++1C fayli bugun yangilanganini tekshir: ombor qoldig'i jadvalida DIQQAT yozuvi bormi?
++DIQQAT bo'lsa yoki jadval bo'sh bo'lsa, ODAMGA qatori bilan sababini yoz.
++Hammasi joyida bo'lsa, faylning yangilangan vaqtini va qatorlar sonini bir qatorda yoz.
++"""
+--- evals/test-set-v1.toml
++++ evals/test-set-v2.toml
+@@ -69 +69,31 @@
+ manba = "yaxshi misol: 1C eksportidan (01.11.2026 holatiga)"
++
++[[test]]
++id = "ulgurji-5-dona"
++savol = "Optima stolidan 5 ta kerak, narxi?"
++kerak = ["9 450 000"]
++mumkin_emas = ["10 750 000"]
++odamga = false
++manba = "xatolar jurnali, 2026-12-15: 5 dona chakana narxda hisoblangan (Malika)"
++
++[[test]]
++id = "ulgurji-6-dona"
++savol = "Start stoli 6 ta qancha bo‘ladi?"
++kerak = ["7 680 000"]
++mumkin_emas = ["8 700 000"]
++odamga = false
++manba = "xatolar jurnali, 2026-12-15: 6 dona chakana narxda hisoblangan (Madina)"
++
++[[test]]
++id = "chegirma-18-mln"
++savol = "18 mln lik buyurtmaga chegirma bera olamanmi?"
++kerak = ["20 000 000"]
++mumkin_emas = ["5% gacha bera olasiz"]
++manba = "xatolar jurnali, 2026-12-16: 18 mln da chegirma yo‘q, agent «ha» degan (Malika)"
++
++[[test]]
++id = "yetkazish-chirchiq"
++savol = "Chirchiqqa yetkazish bepulmi?"
++kerak = ["8 000"]
++mumkin_emas = ["bepul"]
++manba = "xatolar jurnali, 2026-12-17: KP dagi «viloyatga bepul» aytilgan, shartnomada 8 000 so‘m/km; tasdiqlashda ushlandi (Malika)"

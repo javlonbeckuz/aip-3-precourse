@@ -1,0 +1,4 @@
+$ uv run python deploy/deploy.py env
+
+.env is on the server (/opt/pilot/.env, readable only by the bot).
+Reminder: one bot token can run in one place only. Stop the bot on your laptop (Ctrl+C).

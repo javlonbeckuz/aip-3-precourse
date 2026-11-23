@@ -1,0 +1,232 @@
+Avtomatik yaratilgan: day-5/_build/sim/simulate.py (soxta Telegram va soxta model, internetsiz).
+Qo‘lda tahrirlamang: skriptni qayta ishga tushiring.
+
+--- 2026-12-14 09:33 -> Jamshid aka
+🙋 Odamga uzatildi #6a6ae768
+Kimdan: Zarina
+Savol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?
+Sabab: 7 ish kunidan tez yetkazish so‘ralmoqda.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-14 10:15 -> Jamshid aka
+🙋 Odamga uzatildi #9dd8904f
+Kimdan: Bekzod
+Savol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?
+Sabab: 7 ish kunidan tez yetkazish so‘ralmoqda.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-14 10:18 -> Jamshid aka
+✅ Sizning javobingiz #6a6ae768 yuborildi.
+
+--- 2026-12-14 10:23 -> Jamshid aka
+✅ Sizning javobingiz #9dd8904f yuborildi.
+
+--- 2026-12-14 17:36 -> Jamshid aka
+🙋 Odamga uzatildi #ac03031e
+Kimdan: Zarina
+Savol: Mijoz shikoyat qilyapti: kreslo g'ildiragi singan, nima qilamiz?
+Sabab: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-14 18:21 -> Jamshid aka
+✅ Sizning javobingiz #ac03031e yuborildi.
+
+--- 2026-12-15 14:55 -> Jamshid aka
+🙋 Odamga uzatildi #dd1775a9
+Kimdan: Zarina
+Savol: Tender: 160 mln lik buyurtma, nima qilamiz?
+Sabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-15 15:03 -> Jamshid aka
+✅ Sizning javobingiz #dd1775a9 yuborildi.
+
+--- 2026-12-15 16:40 -> Jamshid aka
+🙋 Odamga uzatildi #e88f40a2
+Kimdan: Madina
+Savol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?
+Sabab: 7 ish kunidan tez yetkazish so‘ralmoqda.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-15 16:47 -> Jamshid aka
+✅ Sizning javobingiz #e88f40a2 yuborildi.
+
+--- 2026-12-15 17:08 -> Jamshid aka
+🙋 Odamga uzatildi #e9a462ce
+Kimdan: Bekzod
+Savol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?
+Sabab: 7 ish kunidan tez yetkazish so‘ralmoqda.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-15 17:21 -> Jamshid aka
+✅ Sizning javobingiz #e9a462ce yuborildi.
+
+--- 2026-12-16 09:05 -> Jamshid aka
+🙋 Odamga uzatildi #46371f37
+Kimdan: Bekzod
+Savol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?
+Sabab: 7 ish kunidan tez yetkazish so‘ralmoqda.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-16 09:12 -> Jamshid aka
+🙋 Odamga uzatildi #5622276a
+Kimdan: Bekzod
+Savol: Mijoz 30 mln buyurtmaga 10% chegirma so'rayapti
+Sabab: 10% chegirma menejer vakolatidan (5%) yuqori.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-16 09:13 -> Jamshid aka
+✅ Sizning javobingiz #46371f37 yuborildi.
+
+--- 2026-12-16 09:42 -> Jamshid aka
+✅ Sizning javobingiz #5622276a yuborildi.
+
+--- 2026-12-16 16:05 -> Jamshid aka
+🙋 Odamga uzatildi #99f06659
+Kimdan: Malika
+Savol: Tender: 160 mln lik buyurtma, nima qilamiz?
+Sabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-16 16:21 -> Jamshid aka
+✅ Sizning javobingiz #99f06659 yuborildi.
+
+--- 2026-12-17 09:10 -> Jamshid aka
+🙋 Odamga uzatildi #70ce7993
+Kimdan: Zarina
+Savol: ErgoPro omborda nechta bor?
+Sabab: ombor fayli bilan muammo (Ombor qoldig‘i (1C eksport): jadvalda qatorlar yo‘q), qoldiqni Otabek akadan aniqlash kerak.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-17 09:23 -> Jamshid aka
+✅ Sizning javobingiz #70ce7993 yuborildi.
+
+--- 2026-12-17 09:35 -> Jamshid aka
+🙋 Odamga uzatildi #e144c4ee
+Kimdan: Bekzod
+Savol: Staff Mesh omborda nechta bor?
+Sabab: ombor fayli bilan muammo (Ombor qoldig‘i (1C eksport): jadvalda qatorlar yo‘q), qoldiqni Otabek akadan aniqlash kerak.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-17 09:48 -> Jamshid aka
+✅ Sizning javobingiz #e144c4ee yuborildi.
+
+--- 2026-12-17 10:15 -> Jamshid aka
+🙋 Odamga uzatildi #7a6d7ff3
+Kimdan: Madina
+Savol: Optima omborda nechta bor?
+Sabab: ombor fayli bilan muammo (Ombor qoldig‘i (1C eksport): jadvalda qatorlar yo‘q), qoldiqni Otabek akadan aniqlash kerak.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-17 10:28 -> Jamshid aka
+✅ Sizning javobingiz #7a6d7ff3 yuborildi.
+
+--- 2026-12-17 13:03 -> Jamshid aka
+🙋 Odamga uzatildi #7b05bc1a
+Kimdan: Madina
+Savol: Mijoz 45 mln buyurtmaga 8% chegirma so'rayapti
+Sabab: 8% chegirma menejer vakolatidan (5%) yuqori.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-17 13:48 -> Jamshid aka
+✅ Sizning javobingiz #7b05bc1a yuborildi.
+
+--- 2026-12-17 14:27 -> Jamshid aka
+🙋 Odamga uzatildi #eb5c35d9
+Kimdan: Bekzod
+Savol: Tender: 210 mln lik buyurtma, nima qilamiz?
+Sabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-17 14:46 -> Jamshid aka
+✅ Sizning javobingiz #eb5c35d9 yuborildi.
+
+--- 2026-12-17 15:50 -> Jamshid aka
+Barcha kreslolarga 3 yil kafolat.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-17 15:51 -> Jamshid aka
+Rahmat, bu xatolar jurnaliga yozildi.
+Nima noto‘g‘ri edi? Bitta xabar bilan qisqa yozing (yoki /bekor).
+
+--- 2026-12-17 15:51 -> Jamshid aka
+Yozib qo‘ydim. Rahmat - shu bilan yordamchi yaxshilanadi.
+
+--- 2026-12-18 09:19 -> Jamshid aka
+🙋 Odamga uzatildi #6e325d76
+Kimdan: Madina
+Savol: Tender: 160 mln lik buyurtma, nima qilamiz?
+Sabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-18 09:28 -> Jamshid aka
+✅ Sizning javobingiz #6e325d76 yuborildi.
+
+--- 2026-12-18 11:39 -> Jamshid aka
+🙋 Odamga uzatildi #7e974317
+Kimdan: Malika
+Savol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?
+Sabab: 7 ish kunidan tez yetkazish so‘ralmoqda.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-18 11:48 -> Jamshid aka
+✅ Sizning javobingiz #7e974317 yuborildi.
+
+--- 2026-12-18 12:49 -> Jamshid aka
+🙋 Odamga uzatildi #9edf96f4
+Kimdan: Bekzod
+Savol: Mijoz shikoyat qilyapti: kreslo g'ildiragi singan, nima qilamiz?
+Sabab: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-18 13:34 -> Jamshid aka
+✅ Sizning javobingiz #9edf96f4 yuborildi.
+
+--- 2026-12-19 13:31 -> Jamshid aka
+🙋 Odamga uzatildi #19ee685f
+Kimdan: Zarina
+Savol: Mijoz 25 mln buyurtmaga 12% chegirma so'rayapti
+Sabab: 12% chegirma menejer vakolatidan (5%) yuqori.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-19 13:45 -> Jamshid aka
+🙋 Odamga uzatildi #6c68d4a0
+Kimdan: Malika
+Savol: Tender: 210 mln lik buyurtma, nima qilamiz?
+Sabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-19 13:56 -> Jamshid aka
+✅ Sizning javobingiz #6c68d4a0 yuborildi.
+
+--- 2026-12-19 14:01 -> Jamshid aka
+✅ Sizning javobingiz #19ee685f yuborildi.
+
+--- 2026-12-19 17:43 -> Jamshid aka
+🙋 Odamga uzatildi #93cd7e6f
+Kimdan: Zarina
+Savol: Tender: 170 mln lik buyurtma, nima qilamiz?
+Sabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-19 17:54 -> Jamshid aka
+✅ Sizning javobingiz #93cd7e6f yuborildi.

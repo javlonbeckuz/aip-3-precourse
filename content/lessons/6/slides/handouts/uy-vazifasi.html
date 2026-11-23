@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5-dars uy vazifasi: sinovning 2-haftasi</title>
+<link rel="stylesheet" href="../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 5-dars</span><span class="pill">Uy vazifasi</span></div>
+<h1>5-dars uy vazifasi: sinovning 2-haftasi</h1>
+<p>6-darsgacha (yakshanba, 27-dekabr).
+6-darsda raqamlaringiz bilan qaror qabul qilasiz va 3 daqiqa taqdim qilasiz.
+Bu vazifalar kafolat sharti uchun hisobga olinadi: mentor har birini dalili bilan jadvalga yozadi.</p>
+<h2>Vazifalar</h2>
+<ol>
+<li><strong>Sinovning 2-haftasini yaxshilangan agent bilan o‘tkazing.</strong>
+   5-darsdagi ruxsat qarori bo‘yicha: hali hamma javob tekshiriladi yoki bitta qadam bo‘shatilgan (Baraka: narx va qoldiq to‘g‘ridan-to‘g‘ri, chegirma va muddat - Malika tasdig‘i bilan).
+   Qanday yoqiladi: <code>.env</code> da <code>REPLY_MODE=topics</code> va <code>agent/approval.toml</code> da <code>direct_topics</code>, yoki telefondan <code>/darhol narx qoldiq</code> (qo‘llanma: <code>app/agent/approval.qollanma.md</code>).
+   Har bir yangi xatoni B.13 ga yozing va 2-mashqdagi tartibda tuzating: test, <code>pilot eval</code>, joylash.</li>
+<li><strong>2-hafta ustunini to‘ldiring</strong> (<code>kit5-pilot/numbers.md</code>), tekshirish soatlari (B.7) bilan.
+   Botga <code>/hafta</code> yozing; bot sanaydigan qatorlarni ko‘chiring, qolganlarini qo‘lda, manbasi bilan.
+   Yoki: <code>/kit5 hafta 2</code>.
+   <strong>Payshanba kechqurungacha</strong> shu kungacha bo‘lgan raqamlar <code>numbers.md</code> da bo‘lsin: mentor 24-26-dekabr kunlari har bir ishtirokchining raqamlarini oldindan tekshiradi (taxminan 20 daqiqa).
+   Shanba kuni haftani yakunlang.</li>
+<li><strong>Xarajatlarni qo‘shing:</strong> B.9 obuna (oylikni 4,3 ga bo‘ling), B.10 sozlash, B.11 = B.7 x soatbay haq, B.12 jami.</li>
+<li><strong>Topilgan pulni yozing (B.14):</strong> oldi olingan xato, yo‘qolmagan so‘rov, tezroq tushgan pul.
+   Har bir summa - alohida qator, hisob va hujjat bilan; isbotlanmagani <code>[?]</code> bilan, jamiga qo‘shilmaydi.
+   Topilmagan bo‘lsa, «0» va bir gap sabab.</li>
+<li><strong>3 daqiqalik namoyish tayyorlang:</strong> 3 ta slayd yoki 3 daqiqa gap.
+   1) Jarayon va «oldin» raqamlari; 2) nima buzildi va qanday tuzatdingiz; 3) «keyin» raqamlari va qanday qaror kutayotganingiz.
+   Ekranda xodim ismi, mijoz ma’lumoti yoki transkript bo‘lmasin.
+   <strong>Shanba 26-dekabr 18:00 gacha</strong> mentoringizga yuboring: agent ishlayotgan 60 soniyalik ekran yozuvi va To‘plam 5 B natijasining bitta skrinshoti.
+   Sahnadagi namoyishlar shu yozuvlardan bitta noutbukda ko‘rsatiladi.
+   Qanday yozish (Mac: Cmd+Shift+5, Windows: Win+Shift+R, telefon): <code>day-6/demo-day/ekran-yozuvi.qollanma.md</code>.</li>
+<li><strong>Telefondan qo‘shgan faktlaringizni</strong> (<code>/xotira</code>) <code>agent/memory.md</code> ga ko‘chiring va har biriga test qo‘shing.</li>
+</ol>
+<p>Chorshanba kuni mentor guruhda so‘raydi: «2-hafta raqamlari va xarajatlar qayerda?»</p>
+<h2>Yaxshi namuna: «Baraka Office»</h2>
+<p>Shartli misol: kursning umumiy Baraka namunasi, 6-darsda shu raqamlar bilan ishlaysiz.
+Bot sanagan qatorlar soxta Telegram bilan ishlatib olingan (<code>exercises/namuna/baraka-2-hafta/kit5-raqamlar-2026-12-26.md</code>).
+1-hafta: <code>exercises/namuna/kompaniya/kit5-pilot/numbers.md</code>.
+Soatbay haq: 35 700 so‘m.</p>
+<table>
+<thead>
+<tr>
+<th>Ko‘rsatkich</th>
+<th>Agentgacha</th>
+<th>1-hafta</th>
+<th>2-hafta</th>
+<th>Manba (2-hafta)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B.1 Bajarilgan so‘rovlar</td>
+<td>120</td>
+<td>132</td>
+<td>138</td>
+<td>bot, 21-26.12</td>
+</tr>
+<tr>
+<td>B.2 O‘rtacha vaqt, daqiqa</td>
+<td>6</td>
+<td>2,5</td>
+<td>2,0</td>
+<td>Madina o‘lchadi, yana 10 ta holat</td>
+</tr>
+<tr>
+<td>B.3 Xato javoblar</td>
+<td>9</td>
+<td>7</td>
+<td>3</td>
+<td>bot (❌ bosilgan)</td>
+</tr>
+<tr>
+<td>B.4 Takroriy so‘rovlar</td>
+<td>15</td>
+<td>12</td>
+<td>8</td>
+<td>savdo guruhi yozishmasi</td>
+</tr>
+<tr>
+<td>B.5 To‘liq hal qilingan</td>
+<td>100</td>
+<td>104</td>
+<td>121</td>
+<td>bot</td>
+</tr>
+<tr>
+<td>B.7 Tekshirish vaqti, soat</td>
+<td>0</td>
+<td>4,5</td>
+<td>2,0</td>
+<td>Malika: chegirma va muddat javoblari 100%; narx va qoldiqdan har 5 tadan bittasini keyin ko‘rdi</td>
+</tr>
+<tr>
+<td>B.14 Topilgan pul, so‘m</td>
+<td>0</td>
+<td>0</td>
+<td>680 000</td>
+<td>pastda</td>
+</tr>
+<tr>
+<td>B.8 Mijoz shikoyatlari</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>Telegram va amoCRM «shikoyat» tegi</td>
+</tr>
+</tbody>
+</table>
+<p>Topilgan pul, 2-hafta:</p>
+<table>
+<thead>
+<tr>
+<th>Sana</th>
+<th>Nima bo‘ldi</th>
+<th>Summa, so‘m</th>
+<th>Qanday hisobladik</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>23.12</td>
+<td>Mijoz 34 000 000 so‘mlik buyurtmaga 12% chegirma so‘radi; Bekzod berishdan oldin botdan so‘radi; bot qoidani aytdi (menejer 5% gacha; 10% faqat 100% oldindan to‘lovda ROP yozma ruxsati bilan) va Jamshid akaga uzatdi; Jamshid aka 100% oldindan to‘lov sharti bilan 10% ga ruxsat berdi</td>
+<td>680 000</td>
+<td>34 000 000 x (12% - 10%) = 680 000; agentgacha shunday buyurtmalarda 12% berilgan (noyabr, amoCRM: 3 ta bitim); amoCRM bitim kartasi, Jamshid akaning yozma ruxsati, to‘lov 24.12 da tushdi</td>
+</tr>
+</tbody>
+</table>
+<p>Hisob (ikki hafta, 6-darsdagi namuna bilan bir xil):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>B.9  = oyiga 504 500 (server 200 000, OpenRouter 37 000, Claude Pro 267 500)
+       2 haftada: 504 500 x 2 / 4,3 = 234 651 so‘m
+B.10 = egasi 14 soat x 125 000 + Sardorbek 3 soat x 45 000 = 1 885 000 so‘m
+B.11 = (4,5 + 2,0) x 35 700 = 232 050 so‘m
+B.12 = 234 651 + 1 885 000 + 232 050 = 2 351 701 so‘m
+B.15 = (6 - 2,0) x 138 / 60 - 2,0 = 9,2 - 2,0 = 7,2 soat/hafta  (1-hafta: 3,2; oraliq 3,2-7,2)
+B.16 = agent: 2 351 701 / (104 + 121) = 10 452 so‘m (sozlashsiz 2 074); inson: 6 / 60 x 35 700 = 3 570 so‘m
+B.14 jami (isbotlangan): 0 + 680 000 = 680 000 so‘m</pre></div>
+<p>OpenRouter oyiga: ikki haftalik panel 1,45 $ (sinfdagi <code>pilot eval</code> lar bilan) / 2 x 4,3 = 3,12 $ x 11 941,65 ≈ 37 000 so‘m.
+B.10 - bir martalik sozlash: 6-darsda u bilan va usiz ikkala hisob ko‘rsatiladi.</p>
+<p>B.13 dagi yangi yozuvlar (2-hafta):</p>
+<table>
+<thead>
+<tr>
+<th>Sana</th>
+<th>Nima bo‘ldi</th>
+<th>Kim topdi</th>
+<th>Nimani o‘zgartirdik</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>22.12</td>
+<td>«Optima 8 dona jami qancha?»: summani aytdi, lekin narx QQS bilan ekanini aytmadi; menejer mijozga aytishdan oldin so‘radi</td>
+<td>Malika</td>
+<td>«Narxlar QQS bilan» qatori; javob andozasiga qo‘shildi</td>
+</tr>
+<tr>
+<td>23.12</td>
+<td>«Staf mesh narxi qancha?»: xato yozilgan nomga boshqa kreslo narxini aytdi; Madina mijozga aytishdan oldin sezdi</td>
+<td>Madina</td>
+<td>O‘sha kuni ROP telefondan <code>/eslab_qol</code> bilan taxallusni qo‘shdi; keyin yo‘riqnomaga: aniq topilmasa, eng yaqin 3 tasini ko‘rsatib so‘raydi; T13</td>
+</tr>
+<tr>
+<td>24.12</td>
+<td>«12 mln lik buyurtmaga 3D chizma bepulmi?»: «bepul» dedi (qoida: 15 000 000 dan oshsa); mijozga aytilmadi</td>
+<td>Jamshid aka</td>
+<td>3D qoidasi raqam bilan; T14; 14 ta test o‘tdi</td>
+</tr>
+</tbody>
+</table>
+<p>Namoyish rejasi (3 daqiqa):
+1. «Menejerlar narx va qoldiqni ROP va ombordan so‘rardi: bitta savolga 6 daqiqa, haftasiga 9 xato.»
+2. «1-haftada agent 7 marta adashdi: 5-6 donaga chakana narx, eski 1C fayli, KP dagi va’dalar. Hammasi mijozga yetmasdan ushlandi. Tuzatishdan keyin 12 testdan 12 tasi o‘tadi.»
+3. «2-haftada: savolga 2 daqiqa, 3 xato, tekshirish 4,5 dan 2 soatga tushdi, birinchi topilgan pul 680 000 so‘m. Qaror kutayapman: davom etamiz, keyingi qadam - KP tayyorlash.»</p>
+<p><strong>Nega yaxshi:</strong> har bir raqamning manbasi bor; 1-haftadagi «topilgan pul 0» yashirilmagan; topilgan pul hujjat bilan va hisobi bilan; namoyishda «nima buzildi» bor.</p>
+<h2>Zaif namuna</h2>
+<blockquote>
+<p>2-hafta: hammasi yaxshi ishladi, xodimlar xursand.
+B.7: 0 (endi tekshirmaymiz).
+B.14: 45 000 000 so‘m (bot javob bergan buyurtmalar).
+Namoyish: «AI kelajagi» haqida 12 ta slayd.</p>
+</blockquote>
+<p><strong>Nimasi zaif:</strong></p>
+<ul>
+<li>«Hammasi yaxshi» - taassurot, raqam emas: 6-darsda solishtirib bo‘lmaydi.</li>
+<li>B.7 = 0 bo‘lishi mumkin emas: ❌ bosilganlarni va uzatishlarni kimdir ko‘rgan; 0 yozilsa, tejalgan vaqt oshirib ko‘rsatiladi.</li>
+<li>Buyurtmalar summasi - daromad, topilgan pul emas; bot bo‘lmaganda ham sotilarmidi - noma’lum.</li>
+<li>Namoyishda jarayon ham, raqamlar ham, nima buzilgani ham yo‘q.</li>
+</ul>
+<p><strong>Qanday tuzatiladi:</strong> yaxshi namunadagi jadval tartibi bilan: har bir qator manbasi bilan, B.7 ROPdan so‘rab, B.14 faqat hujjatli holatlar, namoyish uch qismli.</p>
+<h2>6-dars boshida mentor tekshiruvi</h2>
+<p>Mentor varag‘i: <code>mentor-handbook/day-6.md</code> (kodlar 6.1-6.5).
+24-26-dekabr kunlari mentor har bir ishtirokchining raqamlarini oldindan tekshiradi (taxminan 20 daqiqa).</p>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Tekshiruv</th>
+<th>Ekranda nimani ko‘radi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6.1 V</td>
+<td>2-hafta raqamlari, xarajatlar va topilgan pul to‘ldirilgan</td>
+<td><code>numbers.md</code>: 2-hafta ustuni, B.9-B.12, B.14 (topilmagan bo‘lsa «0» va sababi)</td>
+</tr>
+<tr>
+<td>6.2</td>
+<td>Xatolar jurnalida tuzatishlar bor, test to‘plami o‘tadi</td>
+<td>B.13 «Nimani o‘zgartirdik»; <code>uv run pilot eval</code> - hammasi o‘tdi</td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>Rejali hisobot va eskalatsiya ishlayapti</td>
+<td>Shu hafta kelgan hisobot va kamida bitta uzatish xabari</td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>Xavfsizlik ro‘yxati to‘liq</td>
+<td>5-darsdagi 9 band, dalillari bilan</td>
+</tr>
+<tr>
+<td>6.5 V</td>
+<td>Namoyish tayyor</td>
+<td>3 slayd yoki 3 daqiqa: jarayon, oldin va keyin, nima buzildi, qaror; 60 soniyalik ekran yozuvi va To‘plam 5 B skrinshoti shanba 18:00 gacha mentorda</td>
+</tr>
+</tbody>
+</table>
+<p>V - uy vazifasi: kafolat sharti uchun hisoblanadi.</p>
+<p>Raqamlar tekshiruvi (dars oldidan, <code>mentor-handbook/day-6.md</code> bo‘yicha qisqacha):</p>
+<ul>
+<li class="cb">Har bir raqamning birligi yozilgan (daqiqa, soat, so‘m, haftasiga).</li>
+<li class="cb">«Agentgacha» davri va manbasi yozilgan.</li>
+<li class="cb">Oldin va keyin bir xil ish o‘lchangan (sinov savollari B.1 dan ayirilgan).</li>
+<li class="cb">B.7 hisobga olingan va ikki marta ayirilmagan.</li>
+<li class="cb">B.3 xatolar jurnalidagi qatorlar soniga teng.</li>
+<li class="cb">Xarajatlar hisob yoki to‘lov tarixidan.</li>
+<li class="cb">B.14 ning har bir summasi manbasi bilan; manbasiz summa o‘chiriladi.</li>
+<li class="cb">Mentor asosiy natijani qo‘lda qayta hisoblaydi, farq 10 foizdan oshmaydi.</li>
+</ul>
+<div class="foot">Praktikum 3.0 · 5-dars · 20-dekabr 2026 · manba: day-5/homework.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

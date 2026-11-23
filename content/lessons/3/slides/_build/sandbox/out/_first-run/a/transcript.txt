@@ -1,0 +1,18 @@
+== a | model sonnet | mode acceptEdits | 2026-11-03 01:56 | claude 2.1.316 (Claude Code)
+== prompt:
+/init
+== output:
+`CLAUDE.md` is written at the repo root. I didn't re-read it after the last edit. I also couldn't verify that the quote characters are still plain `'` in `hujjatlar/` and typographic `‘` `’` in the kit files, since that was never checked against the files.
+
+This directory is not a code project. It has no build, lint, or test tooling and isn't a git repo. It holds Uzbek-language Markdown files for a workshop ("Praktikum 3.0") on choosing which business process to hand to an AI agent, using a fictional furniture company, "Baraka Office" MChJ, as the example. So the file describes the content instead of commands.
+
+`★ Insight ─────────────────────────────────────`
+- The two kits form a pipeline: tasks from the Kit 1 interview forms are grouped into processes, which become rows in Kit 2's scoring form. That form then feeds a value-vs-ease matrix. This link isn't stated in any one file.
+- Every weekly-hours cell follows `B.2 × B.3 / 60` and the totals row is double-checked, so any edit to a row means recomputing the total.
+- The Kit 2 headers mention a `/kit2` command, but no such command exists in this directory. I noted that so a future session doesn't go looking for it.
+`─────────────────────────────────────────────────`
+
+`CLAUDE.md` covers the layout, the Kit 1 to Kit 2 data flow, the B-form column conventions, which `hujjatlar/` facts the forms depend on, and the writing rules from your global config (Uzbek Latin script, one sentence per line, no em dash). It also says to leave `.stamp` alone.
+
+I found no Cursor, Copilot, Codex or Gemini config files, so there is nothing to import.
+== exit 0

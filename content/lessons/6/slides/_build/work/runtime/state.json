@@ -1,0 +1,29 @@
+{
+ "paused": false,
+ "extra_users": {},
+ "removed_users": [],
+ "last_daily": "2026-12-26",
+ "last_weekly": "2026-W52",
+ "pending": {},
+ "relays": {},
+ "outbox": [],
+ "alerts": {
+  "started": "2026-12-20T11:40:00+05:00",
+  "cleanup": "cleanup-2026-12-26",
+  "data": "2026-12-22T09:05:00+05:00"
+ },
+ "offset": 1427,
+ "jobs_done": {
+  "Kam qolgan mahsulotlar": "2026-12-26",
+  "1C fayli tekshiruvi": "2026-12-26",
+  "Eng uzoq harakatsiz turgan 3 ta mahsulot": "2026-12-26"
+ },
+ "phone_jobs": [
+  {
+   "name": "Eng uzoq harakatsiz turgan 3 ta mahsulot",
+   "time": "09:05",
+   "prompt": "Eng uzoq harakatsiz turgan 3 ta mahsulot"
+  }
+ ],
+ "reminders": []
+}

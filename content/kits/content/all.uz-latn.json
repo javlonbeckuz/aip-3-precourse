@@ -1,0 +1,18 @@
+{
+ "top_left": "Praktikum 3.0",
+ "top_right": "1-6-darslar",
+ "title": "Biznesda AI’ni qo‘llash",
+ "subtitle": "Amaliy qo‘llanma",
+ "purpose": "Kompaniyangizdagi bitta jarayonni «vaqt qayerga ketyapti» holatidan AI agent ishtirokidagi o‘lchanadigan sinovgacha olib chiqish uchun 5 ta to‘plam. Har bir to‘plam o‘z kompaniyangizda bajariladi.",
+ "how_label": "Foydalanish tartibi",
+ "how": "Har bir darsda bitta to‘plamni boshlaymiz, uyga vazifada uni o‘z kompaniyangizda tugatasiz. Har bir to‘plamning birinchi sahifasida yo‘riqnoma, keyin bo‘sh shakllar. Ularni qog‘ozda yoki .md faylda to‘ldiring va kompaniya papkangizga saqlang: Claude Code hammasini o‘qiydi. 2-darsdan boshlab /kit1 ... /kit5 buyruqlari shakllarni siz bilan birga to‘ldiradi.",
+ "contents_label": "Mundarija",
+ "kit_lines": [
+  "1-dars. Xodimlar bilan gaplashib, ishlarini yozing",
+  "2-dars. Jarayonlarni baholab, birinchi sinovni tanlang",
+  "3-dars. Qadamlarni taqsimlab, agent yo‘riqnomasini yozing",
+  "4-dars. Ko‘nikmalarni moslab, o‘quv vazifasini bering",
+  "2-6-darslar. Boshlang‘ich raqamdan qarorgacha: vaqt, pul va xato"
+ ],
+ "page_word": "sahifa"
+}

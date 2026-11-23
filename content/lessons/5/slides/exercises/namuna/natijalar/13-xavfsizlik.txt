@@ -1,0 +1,13 @@
+$ ssh vps 'systemctl show pilot-bot ...; ufw status; fail2ban; vaqt mintaqasi'
+
+Restart=always
+User=pilot
+ProtectSystem=strict
+Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere                  
+80/tcp                     ALLOW       Anywhere                  
+active
+Asia/Tashkent

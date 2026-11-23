@@ -1,0 +1,28 @@
+exit=0
+session: e181e95b-1489-443a-b551-00dc53266f13 turns: 7 models: ['claude-opus-5-5']
+1-hafta ustuni yozildi: `kit5-pilot/numbers.md` (fayl yo‘q edi, yangisini ochdim; «Agentgacha» ustuni `baseline.md` dan olindi).
+
+**To‘xtatish sharti (A.7) bajarilmadi.** Mijozga bot orqali xato javob ketmadi. Bir kunda eng ko‘pi 2 ta ❌ bo‘ldi, chegara esa 3 ta.
+
+**1-hafta, agentgacha bilan solishtirganda:**
+- B.1 savollar: 120 → 132 (+10,0%)
+- B.2 bitta savolga vaqt: 6 → 2,5 daqiqa (-58,3%). Hisob: 25 / 10 = 2,5
+- B.3 xato javoblar: 9 → 7 (-22,2%). A.6 bo‘yicha 2-haftada 5 yoki kam bo‘lishi kerak.
+- B.7 tekshirish: 0 → 4,5 soat. Hisob: 2,5 + 2. A.6 bo‘yicha 2-haftada 3 yoki kam bo‘lishi kerak.
+- B.8 shikoyatlar: 2 → 2. Ikkalasi ham sinovgacha berilgan va’da haqida, botga bog‘liq emas.
+- B.15 tejalgan vaqt: (6 - 2,5) × 132 / 60 - 4,5 = 7,7 - 4,5 = **3,2 soat/hafta**
+- Jami xarajat (B.12): 117 326 + 1 885 000 + 160 650 = **2 162 976 so‘m**
+- Bitta ish narxi (B.16): agent sozlash bilan 20 798, sozlashsiz 2 673 so‘m; inson 3 570 so‘m.
+- Topilgan pul (B.14): 0.
+
+**Uchta narsa ko‘zimga tashlandi:**
+1. **Qoldiq javoblari 2-haftadan tasdiqsiz ketadi.** 1-haftada aynan qoldiqda 2 ta xato bo‘ldi (16 va 18-dekabr). Ularning tuzatishi 19-dekabrdagi ko‘rib chiqishdan keyin, 20-dekabrda kirdi va unga test yo‘q. Ya’ni A.5 dagi «har bir xato tuzatilgan va testdan o‘tgan» sharti ombor uchun to‘liq bajarilmagan.
+2. **Kafolat xatosi test bor bo‘lsa ham bo‘ldi.** `kafolat-kreslo` testi 3-darsdan beri o‘tib kelgan, lekin bot jonli ishda baribir «3 yil» dedi. Demak test botning serverdagi manbalarini (KP) to‘liq aks ettirmagan.
+3. **B.2 ni 10 ta holat bitta ish joyidan (showroom) o‘lchagan.** Agentgacha 18 ta holat uch ish joyidan o‘lchangan edi. Bundan tashqari, tasdiqni kutish vaqti B.2 ga kirmagan.
+
+Bu papkadagi `kit3-agent/instructions.md` va `test-set.md` ga tegmadim. `test-set.md` da hali 8 ta test turibdi.
+
+**Savollar:**
+1. 19-dekabrda kelishilgan ruxsatni `plan.md` dagi A.5 ga qo‘shaymi? U mavjud fayl, shuning uchun so‘rayapman.
+2. Qoldiq javoblari bo‘yicha nima qilamiz? Variantlar: 1C fayli tekshiruvi (10:30) kamida 2-3 kun to‘g‘ri ishlaguncha qoldiq ham Malikaning tasdig‘ida qolsin; yoki eski ombor fayli uchun test qo‘shilsin.
+3. 2-haftada B.2 ni call-markaz va menejer savollaridan ham 3 tadan holat bilan o‘lchaymizmi?

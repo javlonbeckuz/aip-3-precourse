@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sotuvchi tekshiruvi</title>
+<style>
+  @font-face { font-family: 'VCInter'; src: url('assets/InterVariable-latin.woff2') format('woff2'); font-weight: 100 900; font-display: block; }
+  :root { --ink: #15171c; --ink-2: #4a505e; --ink-3: #7a8091; --rule: #d9dce3; --rule-2: #eceef2; --bg: #f3f4f7; --acc: #2350c9; --acc-soft: #e8eefc;
+    --ok: #0e7c55; --ok-soft: #e3f4ed; --warn: #c2362b; --warn-soft: #fbe9e7; --amber: #a86b0c; --amber-soft: #fbf2e1; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--bg); color: var(--ink); font-family: 'VCInter', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.45; -webkit-font-smoothing: antialiased; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  .bar { background: #fff; border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 5; }
+  .bar .in { max-width: 1100px; margin: 0 auto; padding: 12px 24px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .brand { margin-right: auto; display: flex; flex-direction: column; }
+  .brand b { font-size: 19px; } .brand span { font-size: 13px; color: var(--ink-3); }
+  .btn { border: 1px solid var(--rule); background: #fff; border-radius: 8px; padding: 8px 14px; cursor: pointer; font-size: 14px; font-weight: 560; white-space: nowrap; }
+  .btn.primary { background: var(--acc); border-color: var(--acc); color: #fff; }
+  .btn.warn { color: var(--warn); }
+  .btn:focus-visible, input:focus-visible, textarea:focus-visible, label:focus-within { outline: 2px solid var(--acc); outline-offset: 2px; }
+  main { max-width: 1100px; margin: 0 auto; padding: 20px 24px 48px; display: flex; flex-direction: column; gap: 16px; }
+  .card { background: #fff; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 22px; }
+  h2 { font-size: 18px; margin: 0 0 4px; } .hint { font-size: 13px; color: var(--ink-3); margin: 0 0 12px; }
+  .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px 12px; }
+  label.f { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--ink-2); font-weight: 520; min-width: 0; }
+  input[type=text], textarea { width: 100%; border: 1px solid var(--rule); border-radius: 7px; padding: 8px 10px; background: #fff; font-size: 14px; }
+  textarea { resize: vertical; min-height: 44px; }
+  input.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .q { display: grid; grid-template-columns: 34px minmax(0, 1.1fr) minmax(0, 1.2fr) 220px; gap: 12px; padding: 14px 0; border-top: 1px solid var(--rule-2); align-items: start; }
+  .q:first-of-type { border-top: 0; }
+  .q .n { font-size: 20px; font-weight: 700; color: var(--acc); }
+  .q .t b { display: block; font-size: 15px; margin-bottom: 4px; }
+  .q .t .g { font-size: 13px; color: var(--ok); } .q .t .r { font-size: 13px; color: var(--warn); }
+  .seg { display: flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .seg label { flex: 1; text-align: center; padding: 8px 4px; font-size: 13px; cursor: pointer; border-left: 1px solid var(--rule); user-select: none; }
+  .seg label:first-child { border-left: 0; }
+  .seg input { position: absolute; opacity: 0; pointer-events: none; }
+  .seg label.on.v-yaxshi { background: var(--ok-soft); color: var(--ok); font-weight: 650; }
+  .seg label.on.v-noaniq { background: var(--amber-soft); color: var(--amber); font-weight: 650; }
+  .seg label.on.v-xavf { background: var(--warn-soft); color: var(--warn); font-weight: 650; }
+  table.cost { width: 100%; border-collapse: collapse; font-size: 14px; }
+  table.cost th, table.cost td { padding: 7px 8px; border-bottom: 1px solid var(--rule-2); text-align: right; vertical-align: middle; }
+  table.cost th:first-child, table.cost td:first-child { text-align: left; }
+  table.cost th { font-size: 13px; color: var(--ink-2); }
+  table.cost tr.tot td { font-weight: 700; background: #f6f8fd; }
+  table.cost input { min-width: 0; }
+  .yn { display: grid; grid-template-columns: minmax(0, 1fr) 160px; gap: 10px; align-items: center; padding: 8px 0; border-top: 1px solid var(--rule-2); }
+  .yn .seg label { padding: 6px 4px; }
+  .seg label.on.v-ha { background: var(--acc-soft); color: var(--acc); font-weight: 650; }
+  .seg label.on.v-yoq { background: #f1f2f4; color: var(--ink); font-weight: 650; }
+  .summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; }
+  .tile .k { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); font-weight: 650; }
+  .tile .v { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-top: 2px; }
+  .tile .d { font-size: 13px; color: var(--ink-2); }
+  .tile.ok .v { color: var(--ok); } .tile.warn .v { color: var(--warn); } .tile.amber .v { color: var(--amber); } .tile.acc .v { color: var(--acc); }
+  .rec { margin-top: 12px; padding: 12px 14px; border-radius: 8px; background: var(--acc-soft); font-size: 14px; }
+  .radios { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 10px; }
+  .radios label { border: 1px solid var(--rule); border-radius: 8px; padding: 7px 12px; font-size: 14px; cursor: pointer; display: flex; gap: 6px; align-items: center; }
+  .guide h3 { font-size: 16px; margin: 18px 0 6px; } .guide p, .guide li { color: var(--ink-2); font-size: 14.5px; }
+  .guide table { border-collapse: collapse; width: 100%; font-size: 14px; } .guide th, .guide td { border-bottom: 1px solid var(--rule-2); padding: 6px 8px; text-align: left; vertical-align: top; }
+  @media (max-width: 760px) {
+    .bar { position: static; } .bar .in { padding: 10px 16px; } .bar .btn { flex: 1 1 auto; }
+    main { padding: 14px 16px 32px; }
+    .grid, .summary { grid-template-columns: 1fr 1fr; }
+    .q { grid-template-columns: 26px minmax(0, 1fr); }
+    .q .ans, .q .seg { grid-column: 2; }
+    .yn { grid-template-columns: 1fr; }
+    table.cost { font-size: 13px; } table.cost th, table.cost td { padding: 6px 4px; }
+  }
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    body { background: #fff; font-size: 11px; } .bar, .noprint, .guide { display: none !important; }
+    main { padding: 0; gap: 8px; } .card { border: 0; padding: 0; break-inside: avoid; }
+    .q { padding: 6px 0; grid-template-columns: 24px 1fr 1.2fr 150px; } textarea { border: 0; padding: 0; min-height: 0; } input[type=text] { border: 0; padding: 0; }
+  }
+</style>
+</head>
+<body>
+<header class="bar"><div class="in">
+  <div class="brand"><b>Sotuvchi tekshiruvi</b><span>Praktikum 3.0 · 6-dars · AI taklifini pul to‘lashdan oldin tekshirish</span></div>
+  <button class="btn" data-act="namuna">Namuna bilan ochish</button>
+  <button class="btn" data-act="restore" id="restore-btn" hidden>Zaxiradan tiklash</button>
+  <button class="btn" data-act="guide">Qo‘llanma</button>
+  <button class="btn warn" data-act="clear">Tozalash</button>
+  <button class="btn primary" data-act="print">Chop etish / PDF</button>
+</div></header>
+<main>
+  <section class="card">
+    <h2>1. Taklif</h2>
+    <p class="hint">Uchrashuvdan oldin to‘ldiring. Jarayon va uning bugungi raqami bo‘lmasa, taklifni baholab bo‘lmaydi.</p>
+    <div class="grid">
+      <label class="f">Sotuvchi<input type="text" data-k="vendor"></label>
+      <label class="f">Taklif<input type="text" data-k="offer"></label>
+      <label class="f">Jarayon va bugungi raqami<input type="text" data-k="process"></label>
+      <label class="f">Sana<input type="text" data-k="date" placeholder="27.12.2026"></label>
+    </div>
+  </section>
+  <section class="card" id="questions">
+    <h2>2. Sotuvchiga 8 ta savol</h2>
+    <p class="hint">Savolni bering, javobni o‘z so‘zlari bilan yozing, keyin belgilang: yaxshi, noaniq yoki xavf. Ma’lumot, egalik va oylik narxni yozma so‘rang.</p>
+  </section>
+  <section class="card">
+    <h2>3. 12 oyda qancha</h2>
+    <p class="hint">So‘mda yozing. Dollar bo‘lsa: dollar × kurs. Tekshirish soati - agent ishini tekshirishga haftasiga ketadigan vaqt; soatbay haq - tekshiruvchiniki. «Hech narsa qilmaslik» - bugun shu ishga xodimlar vaqti oyiga necha so‘m (naqd pul emas).</p>
+    <div class="grid noprint" style="margin-bottom:10px">
+      <label class="f">Tekshiruvchi soatbay haqi, so‘m<input type="text" class="num" inputmode="decimal" data-k="rate" placeholder="35 700"></label>
+      <label class="f">1 $ = so‘m<input type="text" class="num" inputmode="decimal" data-k="fx" placeholder="11 941,65"></label>
+      <label class="f">Dollar → so‘m<input type="text" class="num" inputmode="decimal" id="usd" placeholder="4 000"></label>
+      <label class="f">Natija, so‘m<input type="text" class="num" id="usd-out" readonly tabindex="-1"></label>
+    </div>
+    <div style="overflow-x:auto"><table class="cost" id="cost"></table></div>
+  </section>
+  <section class="card">
+    <h2>4. Qurish, sotib olish yoki ochiq kod</h2>
+    <p class="hint">Beshta savol. Javoblar qaysi yo‘l mos kelishini ko‘rsatadi; qarorni o‘zingiz qilasiz.</p>
+    <div id="yn"></div>
+    <div class="rec" id="path"></div>
+  </section>
+  <section class="card">
+    <h2>5. Natija va qaror</h2>
+    <div class="summary" id="summary"></div>
+    <div class="radios" role="radiogroup" aria-label="Qaror">
+      <label><input type="radio" name="dec" value="rozi"> Rozi bo‘lish</label>
+      <label><input type="radio" name="dec" value="sinov"> Avval 2-4 haftalik sinov</label>
+      <label><input type="radio" name="dec" value="boshqa"> Boshqa variant</label>
+      <label><input type="radio" name="dec" value="rad"> Rad etish</label>
+    </div>
+    <label class="f">Sababi, bitta gapda<textarea data-k="reason" rows="2"></textarea></label>
+  </section>
+  <section class="card guide" id="qollanma">
+    <h2>Qo‘llanma: qanday ishlatish</h2>
+    <p>To‘liq qo‘llanma va Baraka namunasi: <code>sotuvchi-tekshiruvi.qollanma.md</code> va <code>namuna/alfa-ai-taklifi.md</code>. Qisqasi:</p>
+    <h3>Boshlashdan oldin</h3>
+    <ul><li>Bitta jarayon va uning bugungi raqami (To‘plam 1 va 2 dan, yoki natija varag‘ingizdan).</li><li>Sotuvchining yozma taklifi yoki uchrashuv sanasi.</li><li>Soatbay haq (buxgalterdan) va dollar kursi (Markaziy bank sayti).</li></ul>
+    <h3>Qadamlar</h3>
+    <ol><li>«Namuna bilan ochish» ni bosib, Baraka namunasini 2 daqiqa ko‘ring.</li><li>«Tozalash», keyin 1-bo‘limni to‘ldiring.</li><li>Uchrashuvda 8 savolni bering; javobni yozing va belgilang.</li><li>3-bo‘limda kamida ikkita variantni yozing: sotuvchi va o‘zingiz qurish. «Hech narsa qilmaslik» qatori - hozirgi jarayon xodimlarga qanchaga tushishi (vaqt, naqd pul emas).</li><li>4-bo‘limda beshta savolga javob bering.</li><li>5-bo‘limda qaror va sababini yozing, chop eting.</li></ol>
+    <h3>Natijani o‘qish</h3>
+    <ul><li>Xavf belgisi 3 tadan ko‘p: pul to‘lamang, avval yozma javob so‘rang.</li><li>12 oylik jami - asosiy raqam. O‘rnatish narxi arzon bo‘lsa ham, pulning ko‘pi oylik to‘lovga ketadi.</li><li>«Avval sinov» - eng xavfsiz «ha»: 2-4 hafta, bitta raqamli maqsad va to‘xtatish sharti bilan, kod va ma’lumot sizning nomingizda.</li></ul>
+    <h3>Ko‘p uchraydigan xatolar</h3>
+    <table><tr><th>Xato</th><th>To‘g‘risi</th></tr><tr><td>Faqat o‘rnatish narxini so‘rash</td><td>Oylik narx va 12 oylik jami</td></tr><tr><td>Og‘zaki va’dalar</td><td>Ma’lumot qayerda, kim egasi, oylik narx - yozma</td></tr><tr><td>Namoyishga ishonish</td><td>Sizning jarayoningizda 2-4 haftalik sinov va raqam</td></tr><tr><td>Tekshirish vaqtini unutish</td><td>Har bir variantga haftalik tekshirish soati</td></tr></table>
+    <p>Chuqurroq: qo‘shimcha to‘plam 3 «Bu AI taklifi arziydimi?» (12 savol, ballar bilan solishtiruv).</p>
+  </section>
+</main>
+<script>
+(function () {
+  'use strict';
+  var STORE = 'praktikum3-sotuvchi-tekshiruvi-v1';
+  var Q = [
+    ['Qaysi jarayon, bugungi raqami qancha?', 'Aniq jarayon va raqam', '«Butun kompaniya uchun AI»'],
+    ['Natijani qanday o‘lchaymiz, qachon to‘xtatamiz?', 'Bitta raqamli maqsad va to‘xtatish sharti', 'Raqam yo‘q, faqat namoyish'],
+    ['Qaysi model ishlatiladi, almashtirsa bo‘ladimi?', 'Nomi aytilgan, almashtiriladi; oddiy qadamlar uchun ochiq model ko‘rilgan', 'Bitta yopiq model'],
+    ['Tizimlarimizga API yoki MCP bilan ulanadimi?', 'Ha, tizimlar nomi bilan', 'Faqat nusxa ko‘chirish yoki skrinshot'],
+    ['Ma’lumotimiz qayerda saqlanadi, kim ko‘radi?', 'Aniq javob, yozma, davlati bilan', 'Noaniq'],
+    ['Agent ishini kim va qanday tekshiradi?', 'Odam tekshiruvi va ish jurnali', '«U xato qilmaydi»'],
+    ['Ochiq kod varianti bormi?', 'Ko‘rib chiqilgan va solishtirilgan', '«Eshitmaganmiz»'],
+    ['Ishga tushgandan keyin oyiga qancha?', 'Obuna + xizmat + tekshirish vaqti', 'Faqat o‘rnatish narxi']
+  ];
+  var VARIANTS = [['vendor', 'Sotuvchi taklifi'], ['own', 'O‘zingiz qurish'], ['open', 'Ochiq kod']];
+  var YN = [
+    ['unique', 'Bu jarayon faqat bizda shundaymi (o‘z qoidalarimiz, narxlarimiz)?'],
+    ['product', 'O‘zbek tilida sinalgan tayyor mahsulot bormi?'],
+    ['oss', 'GitHub’da ishning 80% ini qiladigan ochiq loyiha bormi?'],
+    ['dataok', 'Ma’lumotni sotuvchining serveriga berish mumkinmi (yurist bilan)?'],
+    ['support', 'Bizda haftasiga 2-3 soat qo‘llab-quvvatlashga odam bormi?']
+  ];
+  var NAMUNA = {
+    vendor: '«Alfa AI» (to‘qima nom)', offer: '«Shaxsiy Jarvis»: AI sotuvchi bot', process: 'Savdo savollari: haftasiga 120 ta, har biri 6 daqiqa', date: '27.12.2026',
+    ans: [
+      ['Butun savdo bo‘limini AI bilan avtomatlashtiramiz.', 'xavf'],
+      ['Demo ko‘rsatamiz, natija o‘zi ko‘rinadi.', 'xavf'],
+      ['O‘zimizning AI modelimiz; nomini aytmadi, almashtirib bo‘lmaydi.', 'xavf'],
+      ['Telegram bilan ishlaydi; 1C ma’lumotini skrinshot qilib yuborasiz.', 'noaniq'],
+      ['«Bizning serverimizda, xavfsiz». Davlati aytilmadi.', 'xavf'],
+      ['Bot xato qilmaydi, o‘zi o‘rganadi.', 'xavf'],
+      ['Ochiq kod ishonchsiz, ishlatmaymiz.', 'xavf'],
+      ['O‘rnatish 4 000 $, keyin oyiga 150 $ qo‘llab-quvvatlash. Model va tekshirish haqida gap yo‘q.', 'noaniq']
+    ],
+    rate: 35700, fx: 11941.65,
+    cost: { vendor: [47766600, 1791248, 2], own: [1885000, 504500, 2], open: [null, null, null], nothing: 1842120 },
+    yn: { unique: 'ha', product: 'yoq', oss: 'ha', dataok: 'ha', support: 'ha' },
+    dec: 'rad', reason: '8 savoldan 6 tasida xavf belgisi; 12 oyda o‘zimiz qurganidan taxminan 9 baravar qimmat; o‘zimiz qurgan bot ishlayapti va 2 haftada natija berdi.'
+  };
+  var st = blank();
+  function blank() { return { vendor: '', offer: '', process: '', date: '', ans: Q.map(function () { return ['', '']; }), rate: null, fx: 11941.65, cost: { vendor: [null, null, null], own: [null, null, null], open: [null, null, null], nothing: null }, yn: {}, dec: '', reason: '' }; }
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  /* "1 250 000", "1,250,000", "1.250.000" are thousands; a single ",000" group is thousands only for so'm fields */
+  function num(s, money) {
+    var t = String(s || '').replace(/[\u00a0\u202f]/g, ' ').trim(), m;
+    if ((m = t.match(/^-?\d{1,3}(?: \d{3})+(?:[.,]\d+)?/))) return parseFloat(m[0].replace(/ /g, '').replace(',', '.'));
+    if ((m = t.match(/^-?\d{1,3}(?:,\d{3}){2,}(?:\.\d+)?/))) return parseFloat(m[0].replace(/,/g, ''));
+    if ((m = t.match(/^-?\d{1,3}(?:\.\d{3}){2,}(?:,\d+)?/))) return parseFloat(m[0].replace(/\./g, '').replace(',', '.'));
+    if (money && (m = t.match(/^-?\d{1,3}[.,]\d{3}(?![\d.,])/))) return parseFloat(m[0].replace(/[.,]/, ''));
+    if ((m = t.match(/^-?\d+(?:[.,]\d+)?/))) return parseFloat(m[0].replace(',', '.'));
+    return null;
+  }
+  function isN(v) { return typeof v === 'number' && isFinite(v); }
+  function fmt(v, d) { if (!isN(v)) return ''; var s = Math.abs(v).toFixed(d || 0).split('.'); var o = s[0].replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + (s[1] && /[1-9]/.test(s[1]) ? ',' + s[1].replace(/0+$/, '') : ''); return (v < 0 ? '-' : '') + o; }
+  function mln(v) { return isN(v) ? fmt(Math.round(v / 1e5) / 10, 1) + ' mln' : '-'; }
+  function save() { try { localStorage.setItem(STORE, JSON.stringify(st)); } catch (e) {} }
+  function load() { try { var r = localStorage.getItem(STORE); if (r) { var s = JSON.parse(r); if (s && s.ans) st = s; } } catch (e) {} }
+
+  function renderQuestions() {
+    var box = document.getElementById('questions');
+    box.querySelectorAll('.q').forEach(function (n) { n.remove(); });
+    Q.forEach(function (q, i) {
+      var a = st.ans[i] || ['', ''];
+      var div = document.createElement('div');
+      div.className = 'q';
+      div.innerHTML = '<div class="n">' + (i + 1) + '</div><div class="t"><b>' + esc(q[0]) + '</b><div class="g">Yaxshi: ' + esc(q[1]) + '</div><div class="r">Xavf: ' + esc(q[2]) + '</div></div>' +
+        '<label class="ans f" style="font-weight:450">Sotuvchi javobi<textarea data-q="' + i + '" rows="2">' + esc(a[0]) + '</textarea></label>' +
+        '<div class="seg" role="radiogroup" aria-label="Baho ' + (i + 1) + '">' + [['yaxshi', 'Yaxshi'], ['noaniq', 'Noaniq'], ['xavf', 'Xavf']].map(function (o) {
+          return '<label class="v-' + o[0] + (a[1] === o[0] ? ' on' : '') + '"><input type="radio" name="q' + i + '" value="' + o[0] + '" data-qv="' + i + '"' + (a[1] === o[0] ? ' checked' : '') + '>' + o[1] + '</label>';
+        }).join('') + '</div>';
+      box.appendChild(div);
+    });
+  }
+  function renderCost() {
+    var rows = [['O‘rnatish (bir martalik)', 0], ['Oylik to‘lov: obuna, server, model, xizmat', 1], ['Tekshirish, soat/hafta', 2]];
+    var h = '<tr><th>so‘m</th>' + VARIANTS.map(function (v) { return '<th>' + v[1] + '</th>'; }).join('') + '<th>Hech narsa qilmaslik</th></tr>';
+    rows.forEach(function (r) {
+      h += '<tr><td>' + r[0] + '</td>' + VARIANTS.map(function (v) { return '<td><input type="text" class="num" inputmode="decimal" data-c="' + v[0] + '.' + r[1] + '" value="' + esc(fmt(st.cost[v[0]][r[1]], r[1] === 2 ? 1 : 0)) + '"></td>'; }).join('') +
+        (r[1] === 1 ? '<td><input type="text" class="num" inputmode="decimal" data-c="nothing" value="' + esc(fmt(st.cost.nothing, 0)) + '" title="Bugun shu ishga xodimlar vaqti oyiga necha so‘m"></td>' : '<td class="hint" style="font-size:12px">-</td>') + '</tr>';
+    });
+    h += '<tr><td>12 oy: o‘rnatish + 12 × oylik</td>' + VARIANTS.map(function (v) { return '<td id="sub-' + v[0] + '"></td>'; }).join('') + '<td id="sub-nothing"></td></tr>';
+    h += '<tr><td>+ tekshirish vaqti (soat × haq × 4,3 × 12)</td>' + VARIANTS.map(function (v) { return '<td id="chk-' + v[0] + '"></td>'; }).join('') + '<td id="chk-nothing"></td></tr>';
+    h += '<tr class="tot"><td>12 oylik jami</td>' + VARIANTS.map(function (v) { return '<td id="tot-' + v[0] + '"></td>'; }).join('') + '<td id="tot-nothing"></td></tr>';
+    document.getElementById('cost').innerHTML = h;
+  }
+  function renderYN() {
+    document.getElementById('yn').innerHTML = YN.map(function (y) {
+      var v = st.yn[y[0]] || '';
+      return '<div class="yn"><div>' + esc(y[1]) + '</div><div class="seg">' + [['ha', 'Ha'], ['yoq', 'Yo‘q']].map(function (o) {
+        return '<label class="v-' + o[0] + (v === o[0] ? ' on' : '') + '"><input type="radio" name="yn-' + y[0] + '" value="' + o[0] + '" data-yn="' + y[0] + '"' + (v === o[0] ? ' checked' : '') + '>' + o[1] + '</label>';
+      }).join('') + '</div></div>';
+    }).join('');
+  }
+  function totals() {
+    var rate = st.rate, out = {};
+    VARIANTS.concat([['nothing']]).forEach(function (v) {
+      var k = v[0], c = k === 'nothing' ? [null, st.cost.nothing, null] : st.cost[k];
+      var sub = (isN(c[0]) || isN(c[1])) ? (c[0] || 0) + 12 * (c[1] || 0) : null;
+      var chk = isN(c[2]) && isN(rate) ? c[2] * rate * 4.3 * 12 : null;
+      out[k] = { sub: sub, chk: chk, tot: (isN(sub) || isN(chk)) ? (sub || 0) + (chk || 0) : null };
+    });
+    return out;
+  }
+  function update() {
+    var t = totals();
+    Object.keys(t).forEach(function (k) {
+      ['sub', 'chk', 'tot'].forEach(function (f) { var el = document.getElementById(f + '-' + k); if (el) el.textContent = isN(t[k][f]) ? fmt(Math.round(t[k][f])) : '-'; });
+    });
+    var c = { yaxshi: 0, noaniq: 0, xavf: 0 };
+    st.ans.forEach(function (a) { if (c[a[1]] !== undefined) c[a[1]]++; });
+    var unanswered = 8 - c.yaxshi - c.noaniq - c.xavf;
+    var ratio = isN(t.vendor.sub) && isN(t.own.sub) && t.own.sub > 0 ? t.vendor.sub / t.own.sub : null;
+    document.getElementById('summary').innerHTML =
+      '<div class="tile ok"><div class="k">Yaxshi</div><div class="v">' + c.yaxshi + '</div><div class="d">8 savoldan</div></div>' +
+      '<div class="tile amber"><div class="k">Noaniq</div><div class="v">' + c.noaniq + '</div><div class="d">yozma aniqlashtiring</div></div>' +
+      '<div class="tile warn"><div class="k">Xavf belgisi</div><div class="v">' + c.xavf + '</div><div class="d">' + (c.xavf > 3 ? '3 tadan ko‘p: pul to‘lamang' : (unanswered ? unanswered + ' ta savol belgilanmagan' : 'chegara: 3')) + '</div></div>' +
+      '<div class="tile acc"><div class="k">12 oy: taklif / o‘zingiz</div><div class="v">' + mln(t.vendor.sub) + ' / ' + mln(t.own.sub) + '</div><div class="d">' + (isN(ratio) ? 'taklif ' + fmt(Math.round(ratio * 10) / 10, 1) + ' baravar ' + (ratio >= 1 ? 'qimmat' : 'arzon') + ' (tekshirishsiz)' : 'ikkala ustunni to‘ldiring') + '</div></div>';
+    var y = st.yn, s = { qurish: 0, sotib: 0, ochiq: 0 };
+    if (y.unique === 'ha') { s.qurish += 2; } else if (y.unique === 'yoq') { s.sotib += 1; }
+    if (y.product === 'ha') s.sotib += 2;
+    if (y.oss === 'ha') s.ochiq += 2;
+    if (y.dataok === 'yoq') { s.qurish += 1; s.ochiq += 1; s.sotib -= 2; }
+    if (y.support === 'yoq') { s.sotib += 2; s.qurish -= 1; s.ochiq -= 1; } else if (y.support === 'ha') { s.qurish += 1; s.ochiq += 1; }
+    var answered = Object.keys(y).length;
+    var best = Object.keys(s).sort(function (a, b) { return s[b] - s[a]; })[0];
+    var label = { qurish: 'O‘zingiz qurish (Claude Code bilan, kursdagidek)', sotib: 'Sotib olish (2-4 haftalik sinov sharti bilan)', ochiq: 'Ochiq kod: tayyor loyihani Claude Code bilan moslash' };
+    document.getElementById('path').innerHTML = answered < 5 ? 'Beshta savolga javob bering: keyin mos yo‘l shu yerda ko‘rinadi.' : '<b>Mos yo‘l: ' + label[best] + '.</b> Ochiq kod va o‘zingiz qurish ko‘pincha birga ketadi: tayyor andozani olib, o‘zingizga moslaysiz. Ma’lumot chet elga chiqsa, yurist tasdiqlasin.';
+    var usd = num(document.getElementById('usd').value, true);
+    document.getElementById('usd-out').value = isN(usd) && isN(st.fx) ? fmt(Math.round(usd * st.fx)) : '';
+    var rb = document.getElementById('restore-btn'); if (rb) rb.hidden = !hasBackup();
+    save();
+  }
+  function renderAll() {
+    document.querySelectorAll('[data-k]').forEach(function (el) {
+      var k = el.getAttribute('data-k'), v = st[k];
+      el.value = (k === 'rate' || k === 'fx') ? fmt(v, k === 'fx' ? 2 : 0) : (v || '');
+    });
+    renderQuestions(); renderCost(); renderYN();
+    document.querySelectorAll('input[name=dec]').forEach(function (r) { r.checked = r.value === st.dec; });
+    update();
+  }
+  document.addEventListener('input', function (e) {
+    var el = e.target;
+    st.isNamuna = false;
+    if (el.hasAttribute('data-k')) { var k = el.getAttribute('data-k'); st[k] = (k === 'rate' || k === 'fx') ? num(el.value, k === 'rate') : el.value; }
+    else if (el.hasAttribute('data-q')) st.ans[+el.getAttribute('data-q')][0] = el.value;
+    else if (el.hasAttribute('data-c')) { var p = el.getAttribute('data-c'); if (p === 'nothing') st.cost.nothing = num(el.value, true); else { var a = p.split('.'); st.cost[a[0]][+a[1]] = num(el.value, a[1] !== '2'); } }
+    update();
+  });
+  document.addEventListener('change', function (e) {
+    var el = e.target;
+    st.isNamuna = false;
+    if (el.hasAttribute('data-qv')) { st.ans[+el.getAttribute('data-qv')][1] = el.value; el.closest('.seg').querySelectorAll('label').forEach(function (l) { l.classList.toggle('on', l.contains(el)); }); }
+    if (el.hasAttribute('data-yn')) { st.yn[el.getAttribute('data-yn')] = el.value; el.closest('.seg').querySelectorAll('label').forEach(function (l) { l.classList.toggle('on', l.contains(el)); }); }
+    if (el.name === 'dec') st.dec = el.value;
+    update();
+  });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-act]'); if (!b) return;
+    var a = b.getAttribute('data-act');
+    if (a === 'namuna') { openNamuna(false); return; }
+    if (a === 'restore') { try { var raw = localStorage.getItem(STORE + '-zaxira'); if (raw) { st = JSON.parse(raw); st.isNamuna = false; renderAll(); } } catch (err) {} }
+    if (a === 'clear' && window.confirm('Hamma maydon tozalansinmi?')) { if (hasOwn()) { try { localStorage.setItem(STORE + '-zaxira', JSON.stringify(st)); } catch (err) {} } st = blank(); renderAll(); }
+    if (a === 'print') window.print();
+    if (a === 'guide') document.getElementById('qollanma').scrollIntoView({ behavior: 'smooth' });
+  });
+  function hasOwn() {
+    if (st.isNamuna) return false;
+    if (st.vendor || st.offer || st.process || st.reason || st.dec) return true;
+    if (st.ans.some(function (a) { return a[0] || a[1]; })) return true;
+    if (Object.keys(st.yn || {}).length) return true;
+    return ['vendor', 'own', 'open'].some(function (k) { return st.cost[k].some(isN); }) || isN(st.cost.nothing) || isN(st.rate);
+  }
+  function hasBackup() { try { return !!localStorage.getItem(STORE + '-zaxira'); } catch (e) { return false; } }
+  function openNamuna(silent) {
+    if (hasOwn()) {
+      if (!silent && !window.confirm('Namuna ochilsinmi? Siz kiritgan ma’lumot zaxiraga saqlanadi.')) return;
+      try { localStorage.setItem(STORE + '-zaxira', JSON.stringify(st)); } catch (err) {}
+    }
+    st = JSON.parse(JSON.stringify(NAMUNA)); st.isNamuna = true; renderAll();
+  }
+  load();
+  if (new URLSearchParams(location.search).get('namuna')) openNamuna(true);
+  renderAll();
+  window.VC = { state: function () { return st; }, totals: totals };
+})();
+</script>
+</body>
+</html>

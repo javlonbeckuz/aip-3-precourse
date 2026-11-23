@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assistentim ishlamayapti: nima qilaman?</title>
+<link rel="stylesheet" href="../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 4-dars</span><span class="pill">Assistent ishlamayapti</span></div>
+<h1>Assistentim ishlamayapti: nima qilaman?</h1>
+<p>Bu kartani noutbuk yoniga qo‘ying.
+Qoida o‘zgarmaydi: avval skrinshot, keyin Claude’dan so‘rang, keyin mentor.
+Parol, token yoki kalitni hech kimga yubormang, mentorga ham.</p>
+<h2>1-qadam. Telefondan: botga <code>/holat</code> yozing</h2>
+<table>
+<thead>
+<tr>
+<th>Nima bo‘ldi</th>
+<th>Ma’nosi</th>
+<th>Keyingi qadam</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«ℹ️ Holat ... (ishlayapti)» keldi</td>
+<td>Bot serverda tirik</td>
+<td>Muammo ruxsat, limit yoki ma’lumotda: 3-qadam</td>
+</tr>
+<tr>
+<td>«... (to‘xtatilgan)»</td>
+<td>Kimdir <code>/stop</code> qilgan</td>
+<td>Sababini so‘rang, keyin <code>/davom</code></td>
+</tr>
+<tr>
+<td>«Bu bot faqat ... xodimlari uchun»</td>
+<td>Bu akkaunt ruxsat ro‘yxatida yo‘q</td>
+<td>Shu ID ni <code>ALLOWED_USER_IDS</code> ga yoki <code>/ruxsat ID ism</code></td>
+</tr>
+<tr>
+<td>Hech narsa kelmadi (1 daqiqa kuting)</td>
+<td>Bot ishlamayapti yoki serverga yetib bo‘lmaydi</td>
+<td>2-qadam</td>
+</tr>
+</tbody>
+</table>
+<h2>2-qadam. Noutbukda: Claude Code’ga</h2>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>&quot;uv run python deploy/deploy.py status&quot; ni ishga tushir va natijani menga oddiy tilda tushuntir.</pre></div>
+<table>
+<thead>
+<tr>
+<th>Ekranda</th>
+<th>Sabab</th>
+<th>Yechim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active (running)</code>, lekin javob yo‘q</td>
+<td>Bot noutbukda ham ishlayapti (409 Conflict) yoki boshqa token</td>
+<td>Noutbukdagi <code>pilot run</code> oynasida Ctrl+C; logni ko‘ring (pastda)</td>
+</tr>
+<tr>
+<td><code>failed</code> va <code>status=78/CONFIG</code></td>
+<td><code>.env</code> da token yoki kalit yo‘q yoki xato</td>
+<td><code>.env</code> ni o‘zingiz tuzating, keyin Claude’ga: <code>deploy.py env ni ishga tushir</code></td>
+</tr>
+<tr>
+<td><code>failed</code>, boshqa kod</td>
+<td>Yangi versiya ishga tushmadi</td>
+<td>Claude’ga: <code>deploy.py rollback ni ishga tushir</code>, keyin logni ko‘rsating</td>
+</tr>
+<tr>
+<td><code>Connection timed out</code></td>
+<td>Server o‘chiq, internet yo‘q yoki tarmoq 22-portni yopgan</td>
+<td>Provayder panelida server holati; telefon internetiga (hotspot) ulanib qayta urining</td>
+</tr>
+<tr>
+<td><code>Connection refused</code></td>
+<td>Server qayta yuklanyapti yoki IP xato</td>
+<td>2 daqiqa kuting; <code>.env</code> dagi <code>DEPLOY_HOST</code> ni tekshiring</td>
+</tr>
+<tr>
+<td><code>Permission denied (publickey)</code></td>
+<td>Noutbuk kaliti serverda yo‘q (yangi noutbuk, yangi server)</td>
+<td>Mentor bilan: kalitni qayta o‘rnatish</td>
+</tr>
+<tr>
+<td><code>REMOTE HOST IDENTIFICATION HAS CHANGED</code></td>
+<td>Server qayta o‘rnatilgan</td>
+<td>Claude’ga: «known_hosts dan shu serverning eski yozuvini o‘chir»</td>
+</tr>
+</tbody>
+</table>
+<p>Log kerak bo‘lsa:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>&quot;uv run python deploy/deploy.py logs -n 50&quot; ni ishga tushir va oxirgi qatorlarni tushuntir: xato bormi, qachondan beri.</pre></div>
+<h2>3-qadam. Bot ishlaydi, lekin javoblari yomon</h2>
+<table>
+<thead>
+<tr>
+<th>Belgi</th>
+<th>Tekshiring</th>
+<th>Yechim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hamma savol «odamga uzatildi»</td>
+<td>Botga <code>/xarajat</code></td>
+<td>Kunlik yoki oylik limit tugagan, yoki OpenRouter balansi 0: limitni oshiring yoki balansni to‘ldiring</td>
+</tr>
+<tr>
+<td><code>deploy.py</code> «Check failed» va <code>❌ Prays-list ...</code> qatori</td>
+<td>Prays-listda imkonsiz narx (nol, bo‘sh, ulgurji chakanadan katta)</td>
+<td>Faylni tuzating, keyin <code>deploy.py</code>; ishlab turgan versiyaga tegilmagan</td>
+</tr>
+<tr>
+<td>Egaga «Ma’lumot manbasi muammosi» xabari</td>
+<td>Botga <code>/holat</code>: fayl sanasi</td>
+<td>Eksport fayli eski, bo‘sh yoki ustun nomi o‘zgargan: yangi faylni <code>data/</code> ga, keyin <code>deploy.py</code></td>
+</tr>
+<tr>
+<td>Javob noto‘g‘ri (narx, muddat)</td>
+<td>Xatoni xodim ❌ bilan belgiladimi?</td>
+<td>Jurnalga: <code>/kit5 xato</code>. Yangi deploy’dan keyin boshlangan bo‘lsa: <code>deploy.py rollback</code></td>
+</tr>
+<tr>
+<td>Xodimga kechqurun xabar bormayapti</td>
+<td><code>WORK_HOURS</code></td>
+<td>Bu ataylab shunday: ish vaqtidan tashqari xodimlarni bezovta qilmaydi</td>
+</tr>
+<tr>
+<td>Eslatma yoki <code>/jadval</code> ishi kelmadi</td>
+<td>Botga <code>/jadval</code>; vaqt Toshkent vaqti bilanmi?</td>
+<td>Vaqt o‘tib ketgan bo‘lsa, eslatma ertaga keladi; bot o‘sha paytda ishlamagan bo‘lsa, qaytganda yuboradi</td>
+</tr>
+<tr>
+<td>Tasdiqlash uchun qoralama kelmayapti</td>
+<td>Tasdiqlovchi botga <code>/start</code> yozganmi?</td>
+<td>Bot faqat o‘ziga yozgan odamga xabar yubora oladi</td>
+</tr>
+</tbody>
+</table>
+<h2>Shoshilinch holat: assistent zarar yetkazyapti</h2>
+<ol>
+<li>Telefondan darhol <code>/stop</code> (Siz yoki loyiha yetakchisi).</li>
+<li>Mijozga noto‘g‘ri ma’lumot ketgan bo‘lsa: o‘sha xodim mijozga qayta yozadi, to‘g‘ri ma’lumot bilan.</li>
+<li>Sababini toping: <code>/xatolar</code>, keyin Claude Code’da <code>/kit5 xato</code>.</li>
+<li>Tuzatilgandan va testlardan keyin <code>deploy.py</code>, keyin <code>/davom</code>.</li>
+</ol>
+<h2>Kimga yozaman</h2>
+<table>
+<thead>
+<tr>
+<th>Qachon</th>
+<th>Kimga</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ish vaqtida, 15 daqiqada hal bo‘lmasa</td>
+<td>Stol mentoringiz, stol chatida (skrinshot, parolsiz)</td>
+</tr>
+<tr>
+<td>Server umuman ishlamayapti, provayder javob bermayapti</td>
+<td>Bosh mentor</td>
+</tr>
+<tr>
+<td>Provayder masalasi (to‘lov, server o‘chirilgan)</td>
+<td>Provayder yordam xizmati (Airnet: Telegram <code>@airnetuzb</code>, +998 71 202-87-00)</td>
+</tr>
+</tbody>
+</table>
+<p>Bu kartadagi xabarlar 2026-11-03 da Docker ichidagi toza Ubuntu 24.04 va 26.04 serverlarda haqiqiy ishga tushirishdan olingan.</p>
+<div class="foot">Praktikum 3.0 · 4-dars · manba: day-4/handouts/src/assistent-ishlamayapti.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

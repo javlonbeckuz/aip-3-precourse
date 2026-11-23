@@ -1,0 +1,6 @@
+slides old/new: 41 41
+slides whose text, notes or other fields differ: none
+do flag changed on slides: [4, 22, 23, 31, 33]
+layout changed on slides: []
+tone changed on slides: []
+size or width fields changed on slides: [23, 31, 39]

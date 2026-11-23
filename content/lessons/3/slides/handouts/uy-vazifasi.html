@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2-dars uy vazifasi: jarayonni tasdiqlash va boshlang‘ich raqamlar</title>
+<link rel="stylesheet" href="../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 2-dars</span><span class="pill">Uy vazifasi</span></div>
+<h1>2-dars uy vazifasi: jarayonni tasdiqlash va boshlang‘ich raqamlar</h1>
+<p>Muddat: 3-darsgacha (5-dekabr, shanba yoki 6-dekabr, yakshanba).
+Jami vaqt: taxminan 3 soat, bir haftaga bo‘lingan.
+Mentoringizga chorshanba kuni yozing: qaysi manbadan raqam olayapsiz va qayerda qotib qoldingiz.</p>
+<p>Nega bu muhim: 6-darsda natijani raqam bilan ko‘rsatasiz.
+Boshlang‘ich raqam bo‘lmasa, solishtiradigan narsa yo‘q, demak natija ham yo‘q.
+Kursning kafolat sharti uchun har bir uy vazifasi dalili bilan hisobga olinadi.</p>
+<h2>Ro‘yxat</h2>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Vazifa</th>
+<th>Vaqt</th>
+<th>Natija fayli</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Bo‘lim boshlig‘i bilan To‘plam 2 ballari va B.1-B.3</td>
+<td>30-45 daqiqa</td>
+<td><code>kit2-scoring/form-a-scoring.md</code>, <code>form-b-matrix.md</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Boshlang‘ich raqamlar: tarixdan, tarixi yo‘qini 5 kun jonli</td>
+<td>1-2 soat va 5 kun</td>
+<td><code>kit5-pilot/baseline.md</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Telegram bot (BotFather), token maxfiy</td>
+<td>5 daqiqa</td>
+<td>bot nomi; token parollar ilovasida</td>
+</tr>
+<tr>
+<td>4</td>
+<td>OpenRouter kaliti va limitini tekshirish (0-haftada qilingan)</td>
+<td>5 daqiqa</td>
+<td><code>praktikum</code> kaliti limit bilan, balans kamida 5 dollar</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Jarayon tegadigan tizimlar va ularning API’si</td>
+<td>20 daqiqa</td>
+<td><code>kit3-agent/tizimlar.md</code></td>
+</tr>
+<tr>
+<td>+</td>
+<td>Darsda ulgurmaganlar: 1-mashq, o‘z skill’ingiz, <code>prd.md</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2>1. Bo‘lim boshlig‘i bilan kelishuv</h2>
+<p>Nega: siz ma’lumot qanchalik tartibsiz ekanini odatda bilmaysiz, bo‘lim boshlig‘i biladi.
+Uning roziligisiz sinov qog‘ozda qoladi.</p>
+<ol>
+<li>Uchrashuv belgilang: 30-45 daqiqa, ish vaqtida.</li>
+<li>Unga <code>kit2-scoring/matrix.html</code> va <code>form-a-scoring.md</code> ni ko‘rsating.
+   Har bir ballni birga o‘qing: «Shu to‘g‘rimi?»</li>
+<li>U o‘zgartirgan ballarni Claude Code’da yozing:</li>
+</ol>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/kit2 qayta</pre></div>
+<p>Kurs skill’i o‘rnatilmagan bo‘lsa, <code>prompt-pack.md</code> dagi 12-prompt bilan har bir ballni sababi bilan o‘zgartiring.
+4. B.1, B.2, B.3 ni birga yakunlang va <code>form-b-matrix.md</code> dagi «Bo‘lim boshlig‘i bilan kelishuv» belgilarini qo‘ying.
+5. Kim loyiha yetakchisi bo‘ladi (jarayonni har kuni qiladigan, hurmatli xodim)?
+   U bilan yolg‘iz 5 daqiqa gaplashing: tayyor matn <code>kit5-pilot/briefing.md</code> da.
+   Asosiy gap: «sizni emas, ishni hisoblaymiz».</p>
+<h2>2. Boshlang‘ich raqamlar (baseline)</h2>
+<p>Nega: bular To‘plam 5 dagi «Agentgacha» ustuni.
+6-darsda agentli hafta shu raqamlar bilan solishtiriladi.</p>
+<p>Qoida: avval tarix, keyin jonli.
+Tarix bor joyda (Telegram chat, Excel, CRM) oxirgi 2-4 haftani undan oling.
+Tarixi yo‘q ko‘rsatkichni 5 ish kuni jonli yozing.
+Odamni emas, ishni o‘lchaymiz.</p>
+<ol>
+<li>Kerakli eksportlarni oling va <code>kompaniya/manbalar/</code> papkasiga qo‘ying:
+   - Telegram: Telegram Desktop’da (macOS’da to‘liq versiya, «Telegram Lite» eksport qilmaydi) chatni oching, ⋮, «Export chat history», format JSON.
+   - Excel yoki Google Sheets: faylning nusxasi.
+   - CRM (AmoCRM, Bitrix): oxirgi 4 hafta bitimlari, CSV yoki Excel.</li>
+<li>Claude Code’da:</li>
+</ol>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/kit5 baseline</pre></div>
+<p>Skill sizdan jarayon, davr va manbalarni so‘raydi, sanaydi va har bir raqamning manbasini yozadi.
+   Telegram eksportini sanash uchun alohida prompt: <code>prompt-pack.md</code>, 33-prompt.
+3. Claude sanagan 20 ta tasodifiy xabarni qo‘lda tekshiring: to‘g‘ri ajratilganmi?
+4. Tarixdan chiqmaydigan raqamni (odatda bitta so‘rovga ketadigan daqiqa) 5 ish kuni jonli yozing: har kuni har turdan 3 ta holat.</p>
+<p>O‘lchanadigan ko‘rsatkichlar (<code>kit5-pilot/baseline.md</code> andozasida):</p>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Ko‘rsatkich</th>
+<th>Misol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B.1</td>
+<td>Bajarilgan so‘rovlar, haftasiga</td>
+<td>120 ta savolga javob berildi</td>
+</tr>
+<tr>
+<td>B.2</td>
+<td>Bitta so‘rovga o‘rtacha vaqt, daqiqa</td>
+<td>6 daqiqa</td>
+</tr>
+<tr>
+<td>B.3</td>
+<td>Xato javoblar</td>
+<td>rahbar tuzatgan 9 ta javob</td>
+</tr>
+<tr>
+<td>B.4</td>
+<td>Takroriy so‘rovlar</td>
+<td>15 ta mijoz 24 soat ichida yana so‘radi</td>
+</tr>
+<tr>
+<td>B.5</td>
+<td>To‘liq hal qilingan so‘rovlar</td>
+<td>100 ta</td>
+</tr>
+<tr>
+<td>B.6</td>
+<td>Yakunlangan bitim yoki buyurtmalar</td>
+<td>bog‘lab bo‘lmasa [?]</td>
+</tr>
+<tr>
+<td>B.8</td>
+<td>Mijoz shikoyatlari</td>
+<td>2 ta</td>
+</tr>
+</tbody>
+</table>
+<h2>3. Telegram bot</h2>
+<p>Batafsil qadamlar: 0-hafta qo‘llanmasi, «Telegram bot oching» qadami (14-qadam).
+Qisqasi: Telegram’da @BotFather, <code>/newbot</code>, nom, username (<code>_bot</code> bilan tugaydi, masalan <code>baraka_savdo_bot</code>).
+BotFather bergan token - bot kaliti.
+Uni hech kimga, hech qanday chatga, CLAUDE.md ga yoki skrinshotga qo‘ymang.
+Telefon yoki kompyuterdagi parollar ilovasida saqlang; 3-darsda <code>.env</code> faylga qo‘yamiz.</p>
+<h2>4. OpenRouter: kalit va limitni tekshiring</h2>
+<p>Buni 0-haftada qilgansiz: 0-hafta qo‘llanmasi, «AI so‘rovlari limiti: OpenRouter» qadami (10-qadam).
+Yangi hisob ochmang va qayta pul to‘ldirmang.
+Faqat tekshiring: openrouter.ai/keys sahifasida <code>praktikum</code> kaliti va uning limiti bor, «Credits» sahifasida balans kamida 5 dollar.
+0-haftada qilmagan bo‘lsangiz, o‘sha qadamni hozir bajaring.
+Limit bo‘lsa, xato kod ham hisobingizni bo‘shata olmaydi.
+Kalitni ham token kabi saqlang: 3-darsda shu kalit <code>.env</code> ga qo‘yiladi.</p>
+<h2>5. Tizimlar va API</h2>
+<p>Jarayoningiz qaysi tizimlarga tegadi: Excel, Google Sheets, Telegram guruhlari, 1C, Bitrix, AmoCRM, Click, Payme?
+Har biri uchun bilib qo‘ying: API bormi, eksport qilish mumkinmi, kimdan ruxsat kerak.
+Claude Code’da: <code>prompt-pack.md</code>, 34-prompt; natijani <code>kit3-agent/tizimlar.md</code> ga yozdiring.
+3-darsda agent shu tizimlarga ulanadi.</p>
+<hr />
+<h2>Yaxshi namuna: «Baraka Office»</h2>
+<p>Rustamov S.A., 2-darsdan keyingi hafta.
+Fayllar (zip ichida): <code>baraka-office/kompaniya/</code>.</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Nima qildi</th>
+<th>Nega yaxshi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2-dekabr, 40 daqiqa, Jamshid Karimov (savdo bo‘limi rahbari) bilan. Jamshid aka 6-jarayon (KP) dagi [?] ni yopdi: «qolgan menejerlar ham haftasiga 4-5 ta KP yozadi». B.1 o‘zgarmadi. Rustamov S.A. yozma qaror berdi: muddat 7 ish kuni, chegirma ko‘pi bilan 10%. Loyiha yetakchisi - Malika Rashidova.</td>
+<td>Ballar sababi bilan o‘zgardi; ziddiyat yozma hal qilindi; yetakchi tanlandi.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Telegram eksporti (2 chat, 4 hafta: 02.11-28.11) va AmoCRM eksporti. <code>/kit5 baseline</code>: B.1 = 120, B.3 = 9, B.4 = 15, B.5 = 100, B.8 = 2 tarixdan; B.2 = 6 daqiqa 5 kun jonli o‘lchovdan (18 holat, loyiha yetakchisi Malika boshchiligida). 20 ta xabarni qo‘lda tekshirdi: 19 tasi to‘g‘ri ajratilgan.</td>
+<td>Har raqamda manba va hisob; tarix birinchi; qo‘lda tekshiruv. To‘liq fayl: <code>kit5-pilot/baseline.md</code>.</td>
+</tr>
+<tr>
+<td>2a</td>
+<td>To‘plam 2 da intervyulardan haftasiga 17,3 soat chiqqan edi, o‘lchov 120 × 6 / 60 = 12,0 soat ko‘rsatdi. Sabab: bitta mijoz savoli Zarinadan Malikaga, keyin Jamshid akaga o‘tadi va intervyularda 2-3 marta sanaladi. Rustamov S.A. 12,0 ni oldi.</td>
+<td>O‘lchangan raqam taxmindan ustun, farqning sababi yozilgan.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>@baraka_savdo_bot yaratildi; token telefondagi parollar ilovasida, hech qayerga yuborilmadi.</td>
+<td>Token maxfiy.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>OpenRouter: 0-haftadagi <code>praktikum</code> kaliti, limit 10 dollar, balans 10 dollar; yangi kalit ochilmadi.</td>
+<td>Bitta kalit, limit bor.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tizimlar: 1C (ombor qoldig‘i; Excel eksporti, kunda bir marta, Otabek aka), Telegram (bot API bor), AmoCRM (API bor, Sardorbek orqali kalit), prays-list (fayl).</td>
+<td>Har tizim uchun API yoki eksport, mas’ul odam.</td>
+</tr>
+</tbody>
+</table>
+<h2>Zaif namuna</h2>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Nima qildi</th>
+<th>Nima xato</th>
+<th>To‘g‘risi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>«Bo‘lim boshlig‘iga matritsani Telegram’da tashladim, "yaxshi" dedi.»</td>
+<td>Ballar birga o‘qilmagan, hech narsa o‘zgarmagan, ziddiyat hal qilinmagan.</td>
+<td>Uchrashuv, har ballni birga o‘qish, o‘zgarishlar sababi bilan.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>«Kuniga taxminan 50 ta savol keladi, har biriga 10 daqiqa.»</td>
+<td>Manba yo‘q, hisob yo‘q, bu xotiradan taxmin. 6-darsda bu raqam bilan hech narsani isbotlab bo‘lmaydi.</td>
+<td>Telegram eksportidan sanash; daqiqani jonli o‘lchash; har raqam yonida manba.</td>
+</tr>
+<tr>
+<td>2a</td>
+<td>«Raqamlarni Claude o‘zi topdi.»</td>
+<td>Claude sanaganini hech kim tekshirmagan.</td>
+<td>20 ta tasodifiy xabarni qo‘lda tekshirish.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Bot tokeni stol guruh chatiga «tekshirib bering» deb yuborilgan.</td>
+<td>Token bilan begona odam botingizni boshqaradi.</td>
+<td>Tokenni darhol BotFather’da almashtiring (<code>/token</code>), yangisini maxfiy saqlang.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>OpenRouter’da ikkinchi hisob ochilgan va yana 10 dollar to‘ldirilgan; limit qo‘yilmagan.</td>
+<td>Ikki kalit: 3-darsda qaysi biri <code>.env</code> ga borishi noma’lum; limitsiz kalit bir kechada hisobni bo‘shatishi mumkin.</td>
+<td>0-haftadagi <code>praktikum</code> kalitidan foydalaning, ortiqchasini o‘chiring, limitni tekshiring.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>«API bor-yo‘qligini bilmayman, IT bilan gaplashaman.»</td>
+<td>3-darsda agent ulanadigan joy noma’lum.</td>
+<td>34-prompt bilan qidiring, IT xodimga aniq savol bering: «1C dan qoldiqni qaysi formatda va kuniga necha marta eksport qila olasiz?»</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Mentor tekshiruvi: 3-dars boshida (0:00-0:20)</h2>
+<p>Mentor uchun.
+Kodlar mentor qo‘llanmasidagi 3-dars varag‘i bilan bir xil (<code>mentor-handbook/day-3.md</code>).
+V - uy vazifasi: kafolat sharti uchun hisoblanadi, jadvalga dalili bilan yoziladi.</p>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Tekshiruv</th>
+<th>Ekranda nimani ko‘rasiz</th>
+<th>Yo‘q bo‘lsa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3.1</strong> V</td>
+<td>To‘plam 2 B.1-B.3 to‘ldirilgan va bo‘lim boshlig‘i bilan kelishilgan</td>
+<td><code>form-b-matrix.md</code>: B.1-B.3 va «Bo‘lim boshlig‘i bilan kelishuv» belgilari; so‘rang: «boshliq qaysi ballni o‘zgartirdi?»</td>
+<td>Bugun ishtirokchining qoralama B.1 i bilan ishlaymiz; kelishuv shu hafta, mentor juma kuni so‘raydi</td>
+</tr>
+<tr>
+<td><strong>3.2</strong> V</td>
+<td>Boshlang‘ich raqamlar bor: tarixdan yoki kamida 3 kun jonli</td>
+<td><code>kit5-pilot/baseline.md</code>: har raqam yonida manba va usul</td>
+<td>Tarix bormi? Bo‘lsa, darsning birinchi amaliy blokida <code>/kit5 baseline</code> bilan 15 daqiqa; bo‘lmasa, bugundan jonli yozuv</td>
+</tr>
+<tr>
+<td><strong>3.3</strong> V</td>
+<td>Tizimlar ro‘yxati, har birining API’si bormi</td>
+<td><code>kit3-agent/tizimlar.md</code> yoki qog‘oz</td>
+<td>34-prompt, 5 daqiqa</td>
+</tr>
+<tr>
+<td><strong>3.4</strong> V</td>
+<td>Bot tokeni va OpenRouter hisobi, xarajat limiti bilan</td>
+<td>BotFather’da bot; OpenRouter’da limit sahifasi. Tokenni yoki kalitni ko‘rsatishni so‘ramang</td>
+<td>Hozir, 10 daqiqa: 0-hafta qo‘llanmasi, «Telegram bot oching» (14-qadam) va «AI so‘rovlari limiti: OpenRouter» (10-qadam)</td>
+</tr>
+<tr>
+<td><strong>3.5</strong></td>
+<td><code>CLAUDE.md</code> kompaniya va tanlangan jarayonni tasvirlaydi</td>
+<td>«Hozirgi sinov jarayoni» bo‘limi to‘ldirilgan</td>
+<td>6-mashqdagi prompt, 3 daqiqa</td>
+</tr>
+</tbody>
+</table>
+<p>Yaxshi va zaif farqi bir savolda: «Shu raqam qayerdan?»
+Javob fayl yoki tizim nomi bo‘lsa - yaxshi.
+«Taxminan», «o‘zim bilaman» bo‘lsa - jadvalga sariq belgi va chorshanba kuni qayta so‘raladi.</p>
+<div class="foot">Praktikum 3.0 · 2-dars · manba: day-2/homework.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

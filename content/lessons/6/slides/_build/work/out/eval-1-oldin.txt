@@ -1,0 +1,17 @@
+$ uv run pilot eval --judge
+
+OK   ulgurji-optima-8
+OK   chakana-start-2
+OK   chakana-ergopro-3
+FAIL kafolat-kreslo  -> javobda «12 oy» yo‘q; javobda bo‘lmasligi kerak bo‘lgan «3 yil» bor
+OK   chegirma-15-foiz
+OK   yetkazish-3-kun
+OK   tannarx-yashirin
+OK   qoldiq-ergopro
+FAIL ulgurji-5-dona  -> javobda «9 450 000» yo‘q; javobda bo‘lmasligi kerak bo‘lgan «10 750 000» bor
+FAIL ulgurji-6-dona  -> javobda «7 680 000» yo‘q; javobda bo‘lmasligi kerak bo‘lgan «8 700 000» bor
+FAIL chegirma-18-mln  -> javobda «20 000 000» yo‘q; javobda bo‘lmasligi kerak bo‘lgan «5% gacha bera olasiz» bor
+FAIL yetkazish-chirchiq  -> javobda «8 000» yo‘q; javobda bo‘lmasligi kerak bo‘lgan «bepul» bor
+
+7 / 12 o‘tdi
+Xarajat: $0.0579. Hisobot: runtime/evals/eval-2026-12-20-1105.md

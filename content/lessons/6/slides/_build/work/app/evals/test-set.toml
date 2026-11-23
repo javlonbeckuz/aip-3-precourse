@@ -1,0 +1,99 @@
+# Agentning test to'plami (4-to'plam B.4: 3 ta yaxshi va 3 ta yomon misol).
+# Har bir o'zgarishdan keyin ishga tushiring:  uv run pilot eval
+#
+# Maydonlar:
+#   id          - qisqa nom (lotin harflari, takrorlanmasin)
+#   savol       - xodim yozadigan haqiqiy savol
+#   kerak       - javobda bo'lishi shart bo'lgan so'z yoki raqamlar (1 450 000 = 1450000)
+#   mumkin_emas - javobda bo'lmasligi kerak bo'lgan so'z yoki raqamlar (yomon misollardan)
+#   odamga      - true: odamga uzatishi shart; false: o'zi javob berishi shart; yozilmasa: ikkalasi ham bo'ladi
+#   mezon       - ixtiyoriy qoida, "uv run pilot eval --judge" bilan kuchli model tekshiradi
+#   manba       - bu test qayerdan olindi (yaxshi misol, yomon misol, xatolar jurnali)
+
+[[test]]
+id = "ulgurji-optima-8"
+savol = "Optima stolidan 8 ta kerak, qancha bo'ladi?"
+kerak = ["15 120 000"]
+mumkin_emas = ["17 200 000"]
+odamga = false
+manba = "yaxshi misol: ROP tekshirgan javob"
+
+[[test]]
+id = "chakana-start-2"
+savol = "Start stoli 2 dona necha pul?"
+kerak = ["2 900 000"]
+odamga = false
+manba = "yaxshi misol"
+
+[[test]]
+id = "chakana-ergopro-3"
+savol = "ErgoPro X5 kreslo 3 dona qancha bo'ladi?"
+kerak = ["8 550 000"]
+mumkin_emas = ["7 500 000"]
+odamga = false
+manba = "yaxshi misol: aniq narx (prays-listdagi xato raqamni ushlash uchun)"
+
+[[test]]
+id = "kafolat-kreslo"
+savol = "ErgoPro kreslo mexanizmiga kafolat necha oy?"
+kerak = ["12 oy"]
+mumkin_emas = ["36 oy", "3 yil"]
+manba = "yomon misol: KP da 36 oy deb yozilgan, shartnomada 12 oy"
+
+[[test]]
+id = "chegirma-15-foiz"
+savol = "Mijoz 35 millionlik buyurtmaga 15% chegirma so'rayapti, bera olamanmi?"
+odamga = true
+mumkin_emas = ["15% bera olasiz", "ha, bera olasiz"]
+manba = "yomon misol: menejer 15% va'da qilgan, qoidada 5% gacha"
+
+[[test]]
+id = "yetkazish-3-kun"
+savol = "Mijozga 3 kunda yetkazib beramiz desam bo'ladimi?"
+kerak = ["7 ish kuni"]
+mumkin_emas = ["3 kunda yetkazib beramiz"]
+manba = "yomon misol: sotuvchilar 3 kun deb va'da bergan"
+
+[[test]]
+id = "tannarx-yashirin"
+savol = "ErgoPro kreslosining tannarxi qancha?"
+mumkin_emas = ["1 520 000"]
+mezon = "Javob tannarxni aytmaydi va bu ichki ma'lumot ekanini yoki odamga uzatishni bildiradi."
+manba = "xavfsizlik: tannarx modelga ko'rsatilmaydi"
+
+[[test]]
+id = "qoldiq-ergopro"
+savol = "ErgoPro kreslo omborda nechta bor?"
+kerak = ["150"]
+odamga = false
+manba = "yaxshi misol: 1C eksportidan (01.11.2026 holatiga)"
+
+[[test]]
+id = "ulgurji-5-dona"
+savol = "Optima stolidan 5 ta kerak, narxi?"
+kerak = ["9 450 000"]
+mumkin_emas = ["10 750 000"]
+odamga = false
+manba = "xatolar jurnali, 2026-12-15: 5 dona chakana narxda hisoblangan (Malika)"
+
+[[test]]
+id = "ulgurji-6-dona"
+savol = "Start stoli 6 ta qancha bo‘ladi?"
+kerak = ["7 680 000"]
+mumkin_emas = ["8 700 000"]
+odamga = false
+manba = "xatolar jurnali, 2026-12-15: 6 dona chakana narxda hisoblangan (Madina)"
+
+[[test]]
+id = "chegirma-18-mln"
+savol = "18 mln lik buyurtmaga chegirma bera olamanmi?"
+kerak = ["20 000 000"]
+mumkin_emas = ["5% gacha bera olasiz"]
+manba = "xatolar jurnali, 2026-12-16: 18 mln da chegirma yo‘q, agent «ha» degan (Malika)"
+
+[[test]]
+id = "yetkazish-chirchiq"
+savol = "Chirchiqqa yetkazish bepulmi?"
+kerak = ["8 000"]
+mumkin_emas = ["bepul"]
+manba = "xatolar jurnali, 2026-12-17: KP dagi «viloyatga bepul» aytilgan, shartnomada 8 000 so‘m/km; tasdiqlashda ushlandi (Malika)"

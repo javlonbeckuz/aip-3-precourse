@@ -1,0 +1,20 @@
+== i | model sonnet | mode acceptEdits | 2026-11-03 02:27 | claude 2.1.316 (Claude Code)
+== prompt:
+Mijoz so‘rayapti: Optima stolidan 20 dona, 15% chegirma bilan, 3 kunda yetkazsak bo‘ladimi? Qisqa javob ber va qaysi hujjatga tayanganingni ayt.
+== output:
+Yo'q, ikkalasi ham bo'lmaydi.
+
+**Chegirma 15%: mumkin emas.**
+- Narx: "Optima" WS-102, ulgurji (5+ dona) 1 890 000 so'm. Hisob: 20 × 1 890 000 = 37 800 000 so'm.
+- Sotuvchi 5% gacha bera oladi, chunki buyurtma 20 mln dan oshadi. Hisob: 37 800 000 × 0,95 = 35 910 000 so'm.
+- 10% gacha faqat ROP (Jamshid Karimov, @baraka_rop_jamshid) yozma ruxsati bilan beriladi. Bu holda mijoz 100% oldindan to'lashi kerak, chunki summa 50 mln dan kam. Hisob: 37 800 000 × 0,90 = 34 020 000 so'm.
+- 10% dan yuqori chegirma taqiqlangan.
+
+**3 kunda yetkazish: mumkin emas.**
+- Oldindan to'lov tushgandan keyin 7 ish kuni ketadi. "Optima" LDSP dan yasalgan, MDF yoki shpon emas, shuning uchun 12 kun qo'llanmaydi.
+- Aniq sanani va ombor qoldig'ini Otabek aka (@baraka_logistika) dan so'rang.
+
+**Hujjatlar:**
+- Prays-list 2026 (`hujjatlar/01_Prays_list_va_Katalog_2026.md`): narx va 5-bo'lim, chegirma qoidalari.
+- Yetkazish muddati CLAUDE.md dagi "Rasmiy hujjatlar" bo'limidan olindi. Prays-listdan `grep` bilan muddat topilmadi, boshqa hujjatlarni ochmadim.
+== exit 0

@@ -1,0 +1,711 @@
+Avtomatik yaratilgan: day-5/_build/sim/simulate.py (soxta Telegram va soxta model, internetsiz).
+Qo‘lda tahrirlamang: skriptni qayta ishga tushiring.
+
+--- 2026-12-21 09:00 -> Jamshid aka
+🙋 Odamga uzatildi #347a6ea7
+Kimdan: Bekzod
+Savol: Tender: Ilm Ziyo akademiyasi 160 mln, mijoz chegirma so'rayapti
+Sabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-21 09:12 -> Bekzod
+Omborda (1C, tayyor mahsulot):
+- SH-501 Шкаф для документов 80x40x200: 58 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 09:13 -> Bekzod
+Xodim javobi:
+Tender bo‘yicha dushanba 11:00 da men bilan birga taklif tayyorlaymiz, hujjatlarni olib keling.
+
+--- 2026-12-21 09:13 -> Jamshid aka
+✅ Sizning javobingiz #347a6ea7 yuborildi.
+
+--- 2026-12-21 09:33 -> Zarina
+«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 09:40 -> Malika
+«Bench-4» 4 kishilik blok 280x140 (WS-103), 4 dona - chakana narx: 9 800 000 x 4 = 39 200 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 10:01 -> Bekzod
+Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 10:22 -> Jamshid aka
+🙋 Odamga uzatildi #d10ad589
+Kimdan: Bekzod
+Savol: Mijoz shikoyat qilyapti: kreslo g'ildiragi singan, nima qilamiz?
+Sabab: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-21 10:22 -> Bekzod
+Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.
+
+--- 2026-12-21 10:38 -> Bekzod
+Xodim javobi:
+Bu buyurtma bo‘yicha bugun 16:00 gacha javob beraman.
+
+--- 2026-12-21 10:38 -> Jamshid aka
+✅ Sizning javobingiz #d10ad589 yuborildi.
+
+--- 2026-12-21 11:04 -> Madina
+Omborda (1C, tayyor mahsulot):
+- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 12:00 -> Madina
+Omborda (1C, tayyor mahsulot):
+- CH-203 Кресло руководителя Senator Lux черное: 9 dona
+- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 12:14 -> Bekzod
+«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 10 dona - ulgurji narx: 5 300 000 x 10 = 53 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 12:15 -> Jamshid aka
+🙋 Odamga uzatildi #379cf45f
+Kimdan: Bekzod
+Savol: Mijoz 8 ta Optima stolni juma kuniga so‘rayapti, bo‘ladimi?
+Sabab: 7 ish kunidan qisqa muddat ROP qaroriga ko‘ra.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-21 12:15 -> Bekzod
+Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.
+
+--- 2026-12-21 12:21 -> Madina
+Omborda (1C, tayyor mahsulot):
+- CH-204 Стул конференц Conf-Lite (полозья хром): 64 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 12:28 -> Bekzod
+Xodim javobi:
+Juma kuniga bo‘lmaydi: eng tezi to‘lovdan keyin 7 ish kuni. Mijozga 31-dekabrni taklif qiling.
+
+--- 2026-12-21 12:28 -> Jamshid aka
+✅ Sizning javobingiz #379cf45f yuborildi.
+
+--- 2026-12-21 12:42 -> Zarina
+«Sultan» rahbar kabineti (EX-301), 1 dona - chakana narx: 18 500 000 x 1 = 18 500 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 13:45 -> Madina
+«Optima» ergonomik stol 140x70 (WS-102), 4 dona - chakana narx: 2 150 000 x 4 = 8 600 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 13:59 -> Zarina
+«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 7 dona - ulgurji narx: 5 300 000 x 7 = 37 100 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 14:20 -> Madina
+Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 14:55 -> Malika
+«Optima» ergonomik stol 140x70 (WS-102), 7 dona - ulgurji narx: 1 890 000 x 7 = 13 230 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 15:16 -> Malika
+Omborda (1C, tayyor mahsulot):
+- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 15:51 -> Malika
+Omborda (1C, tayyor mahsulot):
+- CH-202 Кресло ErgoPro X5 (синхромеханизм): 150 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 16:05 -> Bekzod
+«Startap 10» paketi (10 kishilik ofis) (PK-10), 1 dona - chakana narx: 34 500 000 x 1 = 34 500 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 16:33 -> Bekzod
+Omborda (1C, tayyor mahsulot):
+- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 17:01 -> Bekzod
+«ErgoPro X5» menejer kreslosi (CH-202), 10 dona - ulgurji narx: 2 500 000 x 10 = 25 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 17:08 -> Jamshid aka
+🙋 Odamga uzatildi #fc3eb39d
+Kimdan: Madina
+Savol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?
+Sabab: 7 ish kunidan tez yetkazish so‘ralmoqda.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-21 17:08 -> Madina
+Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.
+
+--- 2026-12-21 17:22 -> Zarina
+Omborda (1C, tayyor mahsulot):
+- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 112 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-21 17:53 -> Madina
+Xodim javobi:
+Men o‘zim mijoz bilan gaplashaman, raqamini yuboring.
+
+--- 2026-12-21 17:53 -> Jamshid aka
+✅ Sizning javobingiz #fc3eb39d yuborildi.
+
+--- 2026-12-22 09:19 -> Madina
+«Bench-4» 4 kishilik blok 280x140 (WS-103), 10 dona - ulgurji narx: 8 600 000 x 10 = 86 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 09:26 -> Madina
+Muddat: 70% (yoki 100%) oldindan to‘lov tushgan kundan 7 ish kuni.
+Toshkent shahri: 10 000 000 so‘mdan katta buyurtmaga yetkazish va montaj bepul.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 10:15 -> Jamshid aka
+🙋 Odamga uzatildi #610464bf
+Kimdan: Zarina
+Savol: Staff Mesh omborda nechta bor?
+Sabab: ombor fayli bilan muammo (Ombor qoldig‘i (1C eksport): fayl 26 soatdan beri yangilanmagan (chegara 25 soat)), qoldiqni Otabek akadan aniqlash kerak.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-22 10:15 -> Zarina
+Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.
+
+--- 2026-12-22 10:28 -> Zarina
+Xodim javobi:
+Omborda 24 ta (Otabek akadan so‘radim, 1C fayli bugun kech yuklanadi).
+
+--- 2026-12-22 10:28 -> Jamshid aka
+✅ Sizning javobingiz #610464bf yuborildi.
+
+--- 2026-12-22 10:29 -> Madina
+«Dialog-8» muzokara stoli 280x120 (CF-401), 1 dona - chakana narx: 7 400 000 x 1 = 7 400 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 11:18 -> Bekzod
+«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 11:32 -> Madina
+Omborda (1C, tayyor mahsulot):
+- CH-203 Кресло руководителя Senator Lux черное: 9 dona
+- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 12:35 -> Jamshid aka
+🙋 Odamga uzatildi #7c06e2e5
+Kimdan: Madina
+Savol: Mijoz 25 mln buyurtmaga 10% chegirma so'rayapti
+Sabab: 10% chegirma menejer vakolatidan (5%) yuqori.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-22 12:35 -> Madina
+Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.
+
+--- 2026-12-22 12:42 -> Madina
+Xodim javobi:
+5% dan oshmaydi, qolganini men mijoz bilan hal qilaman.
+
+--- 2026-12-22 12:42 -> Jamshid aka
+✅ Sizning javobingiz #7c06e2e5 yuborildi.
+
+--- 2026-12-22 12:49 -> Zarina
+«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 12:56 -> Bekzod
+«Bench-4» 4 kishilik blok 280x140 (WS-103), 20 dona - ulgurji narx: 8 600 000 x 20 = 172 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 13:03 -> Zarina
+«Dialog-8» muzokara stoli 280x120 (CF-401), 7 dona - ulgurji narx: 7 400 000 x 7 = 51 800 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 13:59 -> Madina
+«Senator Lux» rahbar kreslosi (CH-203), 3 dona - chakana narx: 4 900 000 x 3 = 14 700 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 14:00 -> Malika
+1 890 000 x 8 = 15 120 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 14:01 -> Malika
+Rahmat, bu xatolar jurnaliga yozildi.
+Nima noto‘g‘ri edi? Bitta xabar bilan qisqa yozing (yoki /bekor).
+
+--- 2026-12-22 14:01 -> Malika
+Yozib qo‘ydim. Rahmat - shu bilan yordamchi yaxshilanadi.
+
+--- 2026-12-22 14:20 -> Jamshid aka
+🙋 Odamga uzatildi #5fbd9cc9
+Kimdan: Madina
+Savol: Mijoz 60 mln buyurtmaga 10% chegirma so'rayapti
+Sabab: 10% chegirma menejer vakolatidan (5%) yuqori.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-22 14:20 -> Madina
+Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.
+
+--- 2026-12-22 14:28 -> Madina
+Xodim javobi:
+Men o‘zim mijoz bilan gaplashaman, raqamini yuboring.
+
+--- 2026-12-22 14:28 -> Jamshid aka
+✅ Sizning javobingiz #5fbd9cc9 yuborildi.
+
+--- 2026-12-22 14:41 -> Bekzod
+«Conf-Lite» muzokara stuli (CH-204), 2 dona - chakana narx: 980 000 x 2 = 1 960 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 14:55 -> Bekzod
+«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 2 dona - chakana narx: 5 900 000 x 2 = 11 800 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 15:09 -> Malika
+«Dialog-8» muzokara stoli 280x120 (CF-401), 12 dona - ulgurji narx: 7 400 000 x 12 = 88 800 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 15:44 -> Zarina
+Muddat: 70% (yoki 100%) oldindan to‘lov tushgan kundan 7 ish kuni.
+Toshkent shahri: 10 000 000 so‘mdan katta buyurtmaga yetkazish va montaj bepul.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 16:19 -> Malika
+«Senator Lux» rahbar kreslosi (CH-203), 20 dona - ulgurji narx: 4 400 000 x 20 = 88 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 16:40 -> Malika
+Omborda (1C, tayyor mahsulot):
+- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 17:15 -> Madina
+Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 17:29 -> Madina
+Omborda (1C, tayyor mahsulot):
+- SH-501 Шкаф для документов 80x40x200: 58 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 17:36 -> Bekzod
+«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 15 dona - ulgurji narx: 5 300 000 x 15 = 79 500 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-22 17:43 -> Zarina
+Toshkent viloyati: halqa yo‘ldan har 1 km uchun 8 000 so‘m: 44 x 8 000 = 352 000 so‘m.
+Muddat: oldindan to‘lov tushgan kundan 7 ish kuni.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 09:54 -> Malika
+«Dialog-8» muzokara stoli 280x120 (CF-401), 12 dona - ulgurji narx: 7 400 000 x 12 = 88 800 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 10:01 -> Malika
+Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 10:22 -> Madina
+«Startap 10» paketi (10 kishilik ofis) (PK-10), 1 dona - chakana narx: 34 500 000 x 1 = 34 500 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 10:43 -> Malika
+«Senator Lux» rahbar kreslosi (CH-203), 1 dona - chakana narx: 4 900 000 x 1 = 4 900 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 11:11 -> Bekzod
+Omborda (1C, tayyor mahsulot):
+- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 18 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 11:53 -> Madina
+«Start» xodim stoli 120x60 (WS-101), 7 dona - ulgurji narx: 1 280 000 x 7 = 8 960 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 12:07 -> Zarina
+Toshkent viloyati: halqa yo‘ldan har 1 km uchun 8 000 so‘m: 44 x 8 000 = 352 000 so‘m.
+Muddat: oldindan to‘lov tushgan kundan 7 ish kuni.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 12:15 -> Jamshid aka
+🙋 Odamga uzatildi #77153f24
+Kimdan: Bekzod
+Savol: 34 mln lik buyurtmaga mijoz 12% chegirma so‘rayapti, bera olamanmi?
+Sabab: menejer 5% gacha; 10% faqat 100% oldindan to‘lovda ROP yozma ruxsati bilan; 10% dan yuqori taqiqlangan.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-23 12:15 -> Bekzod
+Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.
+
+--- 2026-12-23 12:21 -> Madina
+«Bench-4» 4 kishilik blok 280x140 (WS-103), 1 dona - chakana narx: 9 800 000 x 1 = 9 800 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 12:28 -> Jamshid aka
+🙋 Odamga uzatildi #3527107d
+Kimdan: Bekzod
+Savol: Mijoz shikoyat qilyapti: kreslo g'ildiragi singan, nima qilamiz?
+Sabab: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-23 12:28 -> Bekzod
+Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.
+
+--- 2026-12-23 12:28 -> Bekzod
+Xodim javobi:
+12% bo‘lmaydi. 100% oldindan to‘lov bo‘lsa, yozma ruxsatim bilan 10% beramiz.
+
+--- 2026-12-23 12:28 -> Jamshid aka
+✅ Sizning javobingiz #77153f24 yuborildi.
+
+--- 2026-12-23 12:39 -> Bekzod
+Xodim javobi:
+5% dan oshmaydi, qolganini men mijoz bilan hal qilaman.
+
+--- 2026-12-23 12:39 -> Jamshid aka
+✅ Sizning javobingiz #3527107d yuborildi.
+
+--- 2026-12-23 12:42 -> Malika
+Omborda (1C, tayyor mahsulot):
+- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 14:27 -> Madina
+Muddat: 70% (yoki 100%) oldindan to‘lov tushgan kundan 7 ish kuni.
+Toshkent shahri: 10 000 000 so‘mdan katta buyurtmaga yetkazish va montaj bepul.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 14:34 -> Malika
+«Imperia» VIP kabinet (EX-302), 1 dona - chakana narx: 32 000 000 x 1 = 32 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 14:41 -> Madina
+Toshkent viloyati: halqa yo‘ldan har 1 km uchun 8 000 so‘m: 44 x 8 000 = 352 000 so‘m.
+Muddat: oldindan to‘lov tushgan kundan 7 ish kuni.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 14:48 -> Madina
+«Sultan» rahbar kabineti (EX-301), 1 dona - chakana narx: 18 500 000 x 1 = 18 500 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 15:58 -> Madina
+«ErgoPro X5» menejer kreslosi (CH-202), 8 dona - ulgurji narx: 2 500 000 x 8 = 20 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 16:26 -> Malika
+«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 15 dona - ulgurji narx: 5 300 000 x 15 = 79 500 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 16:30 -> Madina
+«ErgoPro X5»: 2 850 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 16:31 -> Madina
+Rahmat, bu xatolar jurnaliga yozildi.
+Nima noto‘g‘ri edi? Bitta xabar bilan qisqa yozing (yoki /bekor).
+
+--- 2026-12-23 16:31 -> Madina
+Yozib qo‘ydim. Rahmat - shu bilan yordamchi yaxshilanadi.
+
+--- 2026-12-23 16:33 -> Malika
+«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 10 dona - ulgurji narx: 5 300 000 x 10 = 53 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 16:40 -> Madina
+«Optima» ergonomik stol 140x70 (WS-102), 20 dona - ulgurji narx: 1 890 000 x 20 = 37 800 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 16:45 -> Jamshid aka
+🧠 Eslab qoldim. Endi har bir javobda hisobga olaman. Ro‘yxat: /xotira
+
+--- 2026-12-23 16:47 -> Jamshid aka
+🙋 Odamga uzatildi #fe3a9921
+Kimdan: Malika
+Savol: Mijoz shikoyat qilyapti: kreslo g'ildiragi singan, nima qilamiz?
+Sabab: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-23 16:47 -> Malika
+Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.
+
+--- 2026-12-23 16:54 -> Bekzod
+Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 17:01 -> Malika
+«Optima» ergonomik stol 140x70 (WS-102), 12 dona - ulgurji narx: 1 890 000 x 12 = 22 680 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 17:15 -> Malika
+Omborda (1C, tayyor mahsulot):
+- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 18 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-23 17:17 -> Malika
+Xodim javobi:
+5% dan oshmaydi, qolganini men mijoz bilan hal qilaman.
+
+--- 2026-12-23 17:17 -> Jamshid aka
+✅ Sizning javobingiz #fe3a9921 yuborildi.
+
+--- 2026-12-24 09:12 -> Bekzod
+Omborda (1C, tayyor mahsulot):
+- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 112 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 10:05 -> Madina
+«Staff Mesh» xodim kreslosi (CH-201), 4 dona - chakana narx: 1 350 000 x 4 = 5 400 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 10:57 -> Bekzod
+Omborda (1C, tayyor mahsulot):
+- SH-501 Шкаф для документов 80x40x200: 58 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 11:11 -> Zarina
+Foizsiz 3 oyga bo‘lib to‘lash: faqat 50% boshlang‘ich to‘lov va bank kafolati (yoki lizing) bo‘lsa.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 11:32 -> Zarina
+Omborda (1C, tayyor mahsulot):
+- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 112 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 12:35 -> Jamshid aka
+🙋 Odamga uzatildi #3f250fab
+Kimdan: Bekzod
+Savol: Mijoz 30 mln buyurtmaga 12% chegirma so'rayapti
+Sabab: 12% chegirma menejer vakolatidan (5%) yuqori.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-24 12:35 -> Bekzod
+Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.
+
+--- 2026-12-24 12:43 -> Bekzod
+Xodim javobi:
+Bu buyurtma bo‘yicha bugun 16:00 gacha javob beraman.
+
+--- 2026-12-24 12:43 -> Jamshid aka
+✅ Sizning javobingiz #3f250fab yuborildi.
+
+--- 2026-12-24 13:10 -> Zarina
+«Senator Lux» rahbar kreslosi (CH-203), 7 dona - ulgurji narx: 4 400 000 x 7 = 30 800 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 13:31 -> Bekzod
+«Staff Mesh» xodim kreslosi (CH-201), 15 dona - ulgurji narx: 1 180 000 x 15 = 17 700 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 13:45 -> Zarina
+«Staff Mesh» xodim kreslosi (CH-201), 20 dona - ulgurji narx: 1 180 000 x 20 = 23 600 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 14:55 -> Madina
+Omborda (1C, tayyor mahsulot):
+- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 112 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 15:02 -> Malika
+«ErgoPro X5» menejer kreslosi (CH-202), 15 dona - ulgurji narx: 2 500 000 x 15 = 37 500 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 15:10 -> Jamshid aka
+Ha, 3D chizma bepul.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 15:11 -> Jamshid aka
+Rahmat, bu xatolar jurnaliga yozildi.
+Nima noto‘g‘ri edi? Bitta xabar bilan qisqa yozing (yoki /bekor).
+
+--- 2026-12-24 15:11 -> Jamshid aka
+Yozib qo‘ydim. Rahmat - shu bilan yordamchi yaxshilanadi.
+
+--- 2026-12-24 15:23 -> Malika
+«Conf-Lite» muzokara stuli (CH-204), 12 dona - ulgurji narx: 850 000 x 12 = 10 200 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 15:30 -> Zarina
+Omborda (1C, tayyor mahsulot):
+- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 112 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 15:44 -> Jamshid aka
+🙋 Odamga uzatildi #af9ea7bd
+Kimdan: Malika
+Savol: Mijoz shikoyat qilyapti: kreslo g'ildiragi singan, nima qilamiz?
+Sabab: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-24 15:44 -> Malika
+Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.
+
+--- 2026-12-24 15:51 -> Madina
+«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 16:05 -> Malika
+«Bench-4» 4 kishilik blok 280x140 (WS-103), 20 dona - ulgurji narx: 8 600 000 x 20 = 172 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 16:12 -> Bekzod
+Omborda (1C, tayyor mahsulot):
+- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 112 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 16:14 -> Malika
+Xodim javobi:
+Bu buyurtma bo‘yicha bugun 16:00 gacha javob beraman.
+
+--- 2026-12-24 16:14 -> Jamshid aka
+✅ Sizning javobingiz #af9ea7bd yuborildi.
+
+--- 2026-12-24 16:26 -> Bekzod
+«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 4 dona - chakana narx: 5 900 000 x 4 = 23 600 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 16:33 -> Malika
+«Conf-Lite» muzokara stuli (CH-204), 4 dona - chakana narx: 980 000 x 4 = 3 920 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 16:40 -> Madina
+«ErgoPro X5» menejer kreslosi (CH-202), 2 dona - chakana narx: 2 850 000 x 2 = 5 700 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 16:54 -> Zarina
+«Startap 10» paketi (10 kishilik ofis) (PK-10), 1 dona - chakana narx: 34 500 000 x 1 = 34 500 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-24 17:22 -> Bekzod
+«Senator Lux» rahbar kreslosi (CH-203), 20 dona - ulgurji narx: 4 400 000 x 20 = 88 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 09:33 -> Zarina
+«Optima» ergonomik stol 140x70 (WS-102), 15 dona - ulgurji narx: 1 890 000 x 15 = 28 350 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 10:43 -> Madina
+Omborda (1C, tayyor mahsulot):
+- CH-203 Кресло руководителя Senator Lux черное: 7 dona
+- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 10:57 -> Malika
+Omborda (1C, tayyor mahsulot):
+- CH-204 Стул конференц Conf-Lite (полозья хром): 64 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 11:25 -> Jamshid aka
+🙋 Odamga uzatildi #06a06e39
+Kimdan: Madina
+Savol: Mijoz ertaga yetkazib berishni so'rayapti, mumkinmi?
+Sabab: 7 ish kunidan tez yetkazish so‘ralmoqda.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-25 11:25 -> Madina
+Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.
+
+--- 2026-12-25 11:32 -> Malika
+Ha: buyurtma 20 000 000 so‘mdan oshgani uchun 5% gacha chegirmani o‘zingiz bera olasiz.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 11:35 -> Madina
+Xodim javobi:
+Bu buyurtma bo‘yicha bugun 16:00 gacha javob beraman.
+
+--- 2026-12-25 11:35 -> Jamshid aka
+✅ Sizning javobingiz #06a06e39 yuborildi.
+
+--- 2026-12-25 11:39 -> Madina
+«Optima» ergonomik stol 140x70 (WS-102), 8 dona - ulgurji narx: 1 890 000 x 8 = 15 120 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 13:03 -> Zarina
+«ErgoPro X5» menejer kreslosi (CH-202), 12 dona - ulgurji narx: 2 500 000 x 12 = 30 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 13:10 -> Malika
+Toshkent viloyati: halqa yo‘ldan har 1 km uchun 8 000 so‘m: 44 x 8 000 = 352 000 so‘m.
+Muddat: oldindan to‘lov tushgan kundan 7 ish kuni.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 13:31 -> Madina
+«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 13:45 -> Madina
+«Dialog-8» muzokara stoli 280x120 (CF-401), 1 dona - chakana narx: 7 400 000 x 1 = 7 400 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 14:13 -> Madina
+Omborda (1C, tayyor mahsulot):
+- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 14:20 -> Jamshid aka
+🙋 Odamga uzatildi #b1e4bf65
+Kimdan: Malika
+Savol: Tender: 160 mln lik buyurtma, nima qilamiz?
+Sabab: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-25 14:20 -> Malika
+Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.
+
+--- 2026-12-25 14:41 -> Bekzod
+«Conf-Lite» muzokara stuli (CH-204), 4 dona - chakana narx: 980 000 x 4 = 3 920 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 14:48 -> Malika
+«ErgoPro X5» menejer kreslosi (CH-202), 8 dona - ulgurji narx: 2 500 000 x 8 = 20 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 14:50 -> Malika
+Xodim javobi:
+5% dan oshmaydi, qolganini men mijoz bilan hal qilaman.
+
+--- 2026-12-25 14:50 -> Jamshid aka
+✅ Sizning javobingiz #b1e4bf65 yuborildi.
+
+--- 2026-12-25 14:55 -> Zarina
+Omborda (1C, tayyor mahsulot):
+- CH-204 Стул конференц Conf-Lite (полозья хром): 64 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 15:23 -> Malika
+Omborda (1C, tayyor mahsulot):
+- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 15:44 -> Bekzod
+«Conf-Lite» muzokara stuli (CH-204), 3 dona - chakana narx: 980 000 x 3 = 2 940 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 16:19 -> Madina
+«Biznes 20» paketi (20 xodim, rahbar kabineti, muzokara xonasi) (PK-20), 1 dona - chakana narx: 89 000 000 x 1 = 89 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 16:47 -> Zarina
+«Conf-Lite» muzokara stuli (CH-204), 2 dona - chakana narx: 980 000 x 2 = 1 960 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 16:54 -> Bekzod
+«Start» xodim stoli 120x60 (WS-101), 8 dona - ulgurji narx: 1 280 000 x 8 = 10 240 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 17:08 -> Zarina
+«Senator Lux» rahbar kreslosi (CH-203), 8 dona - ulgurji narx: 4 400 000 x 8 = 35 200 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 17:15 -> Bekzod
+Omborda (1C, tayyor mahsulot):
+- CH-202 Кресло ErgoPro X5 (синхромеханизм): 150 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-25 17:36 -> Zarina
+Omborda (1C, tayyor mahsulot):
+- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 24 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 09:12 -> Bekzod
+«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 3 dona - chakana narx: 5 900 000 x 3 = 17 700 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 09:26 -> Zarina
+Omborda (1C, tayyor mahsulot):
+- CH-203 Кресло руководителя Senator Lux черное: 7 dona
+- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 09:33 -> Malika
+«AeroLift» ko‘tariluvchi stol 150x75 (WS-104), 20 dona - ulgurji narx: 5 300 000 x 20 = 106 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 10:01 -> Madina
+«Dialog-8» muzokara stoli 280x120 (CF-401), 8 dona - ulgurji narx: 7 400 000 x 8 = 59 200 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 10:08 -> Zarina
+Muddat: 70% (yoki 100%) oldindan to‘lov tushgan kundan 7 ish kuni.
+Toshkent shahri: 10 000 000 so‘mdan katta buyurtmaga yetkazish va montaj bepul.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 10:36 -> Zarina
+«Start» xodim stoli 120x60 (WS-101), 20 dona - ulgurji narx: 1 280 000 x 20 = 25 600 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 11:04 -> Madina
+Omborda (1C, tayyor mahsulot):
+- WS-101 Стол офисный Start 120x60 (ЛДСП 18мм): 104 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 11:18 -> Bekzod
+«Staff Mesh» xodim kreslosi (CH-201), 3 dona - chakana narx: 1 350 000 x 3 = 4 050 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 12:35 -> Jamshid aka
+🙋 Odamga uzatildi #e7233dab
+Kimdan: Zarina
+Savol: Mijoz shikoyat qilyapti: kreslo g'ildiragi singan, nima qilamiz?
+Sabab: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.
+
+--- 2026-12-26 12:35 -> Zarina
+Bu savolga aniq javobni xodim beradi. Savolingizni unga yubordim.
+
+--- 2026-12-26 12:42 -> Bekzod
+«Conf-Lite» muzokara stuli (CH-204), 20 dona - ulgurji narx: 850 000 x 20 = 17 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 12:49 -> Madina
+«Dialog-8» muzokara stoli 280x120 (CF-401), 20 dona - ulgurji narx: 7 400 000 x 20 = 148 000 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 12:51 -> Zarina
+Xodim javobi:
+5% dan oshmaydi, qolganini men mijoz bilan hal qilaman.
+
+--- 2026-12-26 12:51 -> Jamshid aka
+✅ Sizning javobingiz #e7233dab yuborildi.
+
+--- 2026-12-26 13:03 -> Malika
+Omborda (1C, tayyor mahsulot):
+- CH-204 Стул конференц Conf-Lite (полозья хром): 64 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 13:10 -> Zarina
+«Start» xodim stoli 120x60 (WS-101), 8 dona - ulgurji narx: 1 280 000 x 8 = 10 240 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 13:24 -> Zarina
+«Staff Mesh» xodim kreslosi (CH-201), 2 dona - chakana narx: 1 350 000 x 2 = 2 700 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 14:13 -> Bekzod
+«Staff Mesh» xodim kreslosi (CH-201), 12 dona - ulgurji narx: 1 180 000 x 12 = 14 160 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 14:20 -> Bekzod
+Omborda (1C, tayyor mahsulot):
+- CH-202 Кресло ErgoPro X5 (синхромеханизм): 150 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 14:34 -> Malika
+«Start» xodim stoli 120x60 (WS-101), 3 dona - chakana narx: 1 450 000 x 3 = 4 350 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 15:09 -> Madina
+«Senator Lux» rahbar kreslosi (CH-203), 12 dona - ulgurji narx: 4 400 000 x 12 = 52 800 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 15:23 -> Madina
+Omborda (1C, tayyor mahsulot):
+- CH-203 Кресло руководителя Senator Lux черное: 7 dona
+- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 15:37 -> Malika
+«Startap 10» paketi (10 kishilik ofis) (PK-10), 1 dona - chakana narx: 34 500 000 x 1 = 34 500 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 15:58 -> Malika
+Muddat: 70% (yoki 100%) oldindan to‘lov tushgan kundan 7 ish kuni.
+Toshkent shahri: 10 000 000 so‘mdan katta buyurtmaga yetkazish va montaj bepul.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 16:12 -> Zarina
+«Senator Lux» rahbar kreslosi (CH-203), 3 dona - chakana narx: 4 900 000 x 3 = 14 700 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]
+
+--- 2026-12-26 17:29 -> Madina
+«Start» xodim stoli 120x60 (WS-101), 7 dona - ulgurji narx: 1 280 000 x 7 = 8 960 000 so‘m.  [✅ To‘g‘ri] [❌ Xato]

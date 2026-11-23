@@ -1,0 +1,15 @@
+$ uv run python deploy/deploy.py   # ulgurji narx chakanadan katta yozilgan
+
+==> Running the tests on this computer first
+==> Uploading (74 KB)
+==> Installing libraries (uv sync)
+==> Checking settings with the server .env
+Sozlamalar tekshiruvi
+
+❌ Prays-list 2026: 13 qator, ustunlar: Kod, Mahsulot, Turkum, Chakana narx (1-4 dona), Ulgurji narx (5+ dona), Izoh
+   ❌ Prays-list 2026, WS-102: ulgurji narx (2 890 000) chakanadan (2 150 000) katta (qator ishlatilmaydi)
+
+Tuzatish kerak.
+Check failed: the running version was not touched. Fix what the check lists above (.env: deploy.py env; data/: correct the file), then deploy again.
+
+Server command failed (code 4): bash -c 'bash /tmp/pilot-remote-install.sh /tmp/pilot-release.tar.gz; rc=$?; rm -f /tmp/pilot-remote-install.sh; exit $rc'

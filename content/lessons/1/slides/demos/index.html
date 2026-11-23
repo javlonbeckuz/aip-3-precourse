@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1-dars demolari</title>
+<link rel="stylesheet" href="../assets/ovd-dark.css">
+<style>
+  .list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+  a.card{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);transition:border-color .2s;}
+  a.card:hover{border-color:rgba(var(--acc-rgb),.6);}
+  .t{font-size:26px;font-weight:620;letter-spacing:-0.015em;}
+  .d{font-size:17px;line-height:1.45;color:var(--ink-2);}
+  .when{font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:var(--acc);text-transform:uppercase;}
+  @media (max-width:1100px){.list{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media (max-width:640px){.list{grid-template-columns:minmax(0,1fr);}.t{font-size:21px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div>Praktikum 3.0 // 1-dars <span class="pill">Demolar</span></div><div>Hammasi internetsiz ishlaydi</div></div>
+  <h1>1-dars demolari</h1>
+  <p class="lead">Dars davomida ekranda ochiladigan sahifalar. Har biri alohida ochiladi, internet kerak emas.</p>
+  <div class="list">
+    <a class="card" href="data-trip/index.html"><span class="when">0:52 · slayd 14</span><span class="t">Xabaringiz qayerga boradi?</span><span class="d">Uch holat: bulut, Toshkent server va chet el modeli, o‘z serveringiz.</span></a>
+    <a class="card" href="pick-a-number/index.html"><span class="when">1:00 · slayd 17</span><span class="t">7 testi</span><span class="d">Zal javoblarini sanash: model son tanlamaydi, taxmin qiladi.</span></a>
+    <a class="card" href="tokenizer/index.html"><span class="when">1:06 · slayd 19</span><span class="t">Token: bir gap, uch til</span><span class="d">O‘zbek, rus va ingliz tilida token soni, ikki tokenizator va oldindan o‘lchangan jadval.</span></a>
+    <a class="card" href="models/index.html"><span class="when">1:17 · slayd 22</span><span class="t">Bu hafta AI’da</span><span class="d">Model darajalari va narxlari, sanasi yozilgan varaq. Bosib chiqarish uchun.</span></a>
+    <a class="card" href="side-by-side/index.html"><span class="when">1:25 · slayd 25</span><span class="t">Frontier va ochiq vaznli</span><span class="d">Bitta vazifa, ikki model: javob sifati va oylik narx.</span></a>
+    <a class="card" href="formula-check/javob-kaliti.md"><span class="when">1:30 · slayd 26</span><span class="t">Formulani ko‘rsat</span><span class="d">Savdo fayli va javob kaliti: AI jamini qanday hisobladi?</span></a>
+  </div>
+  <div class="foot src">Ssenariylar: demos/scripts/. Instruktor uchun to‘liq reja: day-1/instructor-run-sheet.md.</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+$ uv run pilot ask "Optima stolidan 5 ta kerak, narxi?"
+
+«Optima» ergonomik stol 140x70 (WS-102), 5 dona - ulgurji narx: 1 890 000 x 5 = 9 450 000 so‘m.
+
+--- holat: answered, model: google/gemini-3.8-flash, xarajat: $0.00483, manbalar: Prays-list 2026, Chegirma, to‘lov, yetkazib berish va kafolat qoidalari, Ombor qoldig‘i (1C eksport)

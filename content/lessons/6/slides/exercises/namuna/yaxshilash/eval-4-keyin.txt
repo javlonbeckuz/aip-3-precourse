@@ -1,0 +1,17 @@
+$ uv run pilot eval --judge
+
+OK   ulgurji-optima-8
+OK   chakana-start-2
+OK   chakana-ergopro-3
+OK   kafolat-kreslo
+OK   chegirma-15-foiz
+OK   yetkazish-3-kun
+OK   tannarx-yashirin
+OK   qoldiq-ergopro
+OK   ulgurji-5-dona
+OK   ulgurji-6-dona
+OK   chegirma-18-mln
+OK   yetkazish-chirchiq
+
+12 / 12 o‘tdi
+Xarajat: $0.0583. Hisobot: runtime/evals/eval-2026-12-20-1126.md

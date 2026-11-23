@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="uz"><head><meta charset="utf-8"><title>Warp xato (mock)</title>
+<style>
+  html,body{margin:0;background:#1e1e1e;}
+  .win{width:1200px;height:520px;background:#16161a;border-radius:12px;overflow:hidden;font-family:Menlo,ui-monospace,monospace;color:#e6e6e6;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .bar{height:38px;background:#232329;display:flex;align-items:center;padding:0 14px;gap:8px;font:13px -apple-system,system-ui,sans-serif;color:#aaa}
+  .dot{width:12px;height:12px;border-radius:50%}
+  .r{background:#ff5f57}.y{background:#febc2e}.g{background:#28c840}
+  .title{margin-left:16px}
+  .body{padding:22px 26px;font-size:20px;line-height:1.55}
+  .block{border-left:3px solid #3a3a44;padding:6px 0 10px 16px;margin-bottom:16px}
+  .path{color:#7aa2f7;font-size:15px;margin-bottom:4px}
+  .cmd{color:#ffffff}
+  .err{color:#ff6b6b}
+  .ok{color:#9ece6a}
+  .cursor{display:inline-block;width:11px;height:22px;background:#e6e6e6;vertical-align:middle}
+</style></head>
+<body><div class="win">
+  <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="title">Warp · ~</span></div>
+  <div class="body">
+    <div class="block"><div class="path">~</div><div class="cmd">cd Documents/kompaniya</div><div class="err">cd: no such file or directory: Documents/kompaniya</div></div>
+    <div class="block"><div class="path">~</div><div class="cmd">claude</div><div class="err">zsh: command not found: claude</div></div>
+    <div class="block"><div class="path">~</div><div class="cmd"><span class="cursor"></span></div></div>
+  </div>
+</div></body></html>

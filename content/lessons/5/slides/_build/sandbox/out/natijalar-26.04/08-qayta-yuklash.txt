@@ -1,0 +1,5 @@
+$ ssh vps reboot   # server qayta yuklandi (konteynerda: docker restart)
+$ ssh vps 'systemctl is-active pilot-bot; systemctl show -p ActiveEnterTimestamp pilot-bot'
+
+active
+ActiveEnterTimestamp=Tue 2026-11-03 03:53:11 +05

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banket narxi kalkulyatori (namuna)</title>
+<style>
+  :root { --ink:#1d1a16; --ink2:#6b6358; --line:#e8e1d6; --bg:#faf6ef; --card:#fff; --acc:#9a3b1b; --acc-soft:#fbeee6; --ok:#2f7a4b; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 48px; }
+  .badge { display: inline-block; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--acc); background: var(--acc-soft); border: 1px solid #efcdbb; padding: 4px 10px; border-radius: 999px; }
+  h1 { font-size: 30px; margin: 12px 0 4px; letter-spacing: -0.02em; }
+  .lead { color: var(--ink2); margin: 0 0 22px; font-size: 15px; }
+  .grid { display: grid; grid-template-columns: 1fr 340px; gap: 20px; align-items: start; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+  .card + .card { margin-top: 16px; }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink2); margin: 0 0 12px; }
+  .guests { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .guests input[type=range] { flex: 1; min-width: 180px; accent-color: var(--acc); }
+  .guests .num { font-size: 28px; font-weight: 700; min-width: 70px; font-variant-numeric: tabular-nums; }
+  .pk { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .opt { border: 2px solid var(--line); border-radius: 12px; padding: 14px; cursor: pointer; display: block; }
+  .opt input { display: none; }
+  .opt.on { border-color: var(--acc); background: var(--acc-soft); }
+  .opt .t { font-weight: 700; font-size: 16px; }
+  .opt .p { font-size: 15px; margin: 4px 0 6px; color: var(--acc); font-weight: 600; }
+  .opt .d { font-size: 13px; color: var(--ink2); line-height: 1.4; }
+  .extra { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 15px; }
+  .extra:first-of-type { border-top: 0; }
+  .extra label { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+  .extra input { width: 18px; height: 18px; accent-color: var(--acc); }
+  .sline { display: flex; justify-content: space-between; gap: 10px; font-size: 15px; padding: 7px 0; font-variant-numeric: tabular-nums; }
+  .sline.total { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 14px; font-size: 22px; font-weight: 700; }
+  .per { text-align: right; font-size: 14px; color: var(--ink2); }
+  textarea { width: 100%; height: 170px; font: 13px/1.45 ui-monospace, Menlo, monospace; border: 1px solid var(--line); border-radius: 10px; padding: 10px; resize: vertical; margin-top: 12px; background: #fdfcfa; color: var(--ink); }
+  .btn { width: 100%; margin-top: 10px; background: var(--acc); color: #fff; border: 0; border-radius: 10px; padding: 12px; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .btn.done { background: var(--ok); }
+  .foot { font-size: 12.5px; color: var(--ink2); margin-top: 18px; }
+  @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } .pk { grid-template-columns: 1fr; } h1 { font-size: 24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="badge">Namuna · shartli restoran</span>
+  <h1>Banket narxi kalkulyatori</h1>
+  <p class="lead">Mehmonlar sonini, menyuni va qo‘shimchalarni tanlang. Jami va bir kishiga to‘g‘ri keladigan narx o‘zi hisoblanadi.</p>
+  <div class="grid">
+    <div>
+      <div class="card">
+        <h2>Mehmonlar soni</h2>
+        <div class="guests"><input type="range" id="g" min="20" max="400" step="10" value="120"><div class="num" id="gn">120</div></div>
+      </div>
+      <div class="card">
+        <h2>Menyu paketi (1 kishi uchun)</h2>
+        <div class="pk" id="pk"></div>
+      </div>
+      <div class="card">
+        <h2>Qo‘shimchalar</h2>
+        <div id="ex"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Hisob</h2>
+      <div class="sline"><span>Menyu</span><span id="m">0</span></div>
+      <div class="sline"><span>Qo‘shimchalar</span><span id="x">0</span></div>
+      <div class="sline"><span>Xizmat haqi 10%</span><span id="s">0</span></div>
+      <div class="sline total"><span>Jami</span><span id="t">0</span></div>
+      <div class="per" id="pp"></div>
+      <textarea id="tg" readonly></textarea>
+      <button class="btn" id="copy">Nusxa olish</button>
+    </div>
+  </div>
+  <p class="foot">Namuna. Narxlar va menyu shartli; o‘zingizning menyu va narxlaringiz bilan quring.</p>
+</div>
+<script>
+  var PACKS = [
+    { id: 'std', t: 'Standart', p: 185000, d: 'Salatlar, 2 xil issiq taom, osh, meva, choy va ichimliklar' },
+    { id: 'prm', t: 'Premium', p: 260000, d: 'Standart menyu + qo‘y go‘shti kabobi, desertlar, sharbatlar' }
+  ];
+  var EXTRAS = [
+    { t: 'To‘y torti (10 kg)', p: 2500000, per: false },
+    { t: 'Jonli musiqa (4 soat)', p: 6000000, per: false },
+    { t: 'Zal bezagi', p: 4500000, per: false },
+    { t: 'Kelish choyi (1 kishi)', p: 25000, per: true }
+  ];
+  var SERVICE = 0.10, pack = 'std', on = [true, false, false, false];
+  function som(n) { return Math.round(n).toLocaleString('ru-RU').replace(/ /g, ' ') + ' so‘m'; }
+  document.getElementById('pk').innerHTML = PACKS.map(function (k) {
+    return '<label class="opt" data-id="' + k.id + '"><input type="radio" name="pk" value="' + k.id + '"><div class="t">' + k.t + '</div><div class="p">' + som(k.p) + '</div><div class="d">' + k.d + '</div></label>';
+  }).join('');
+  document.getElementById('ex').innerHTML = EXTRAS.map(function (e, i) {
+    return '<div class="extra"><label><input type="checkbox" data-i="' + i + '"' + (on[i] ? ' checked' : '') + '>' + e.t + '</label><span>' + som(e.p) + (e.per ? ' / kishi' : '') + '</span></div>';
+  }).join('');
+  document.querySelectorAll('.opt').forEach(function (o) { o.addEventListener('click', function () { pack = o.dataset.id; calc(); }); });
+  document.querySelectorAll('#ex input').forEach(function (c) { c.addEventListener('change', function () { on[+c.dataset.i] = c.checked; calc(); }); });
+  document.getElementById('g').addEventListener('input', calc);
+  function calc() {
+    var g = +document.getElementById('g').value;
+    var k = PACKS.filter(function (x) { return x.id === pack; })[0];
+    document.querySelectorAll('.opt').forEach(function (o) { o.classList.toggle('on', o.dataset.id === pack); });
+    var menu = g * k.p, extra = 0, lines = [];
+    EXTRAS.forEach(function (e, i) { if (on[i]) { var v = e.per ? e.p * g : e.p; extra += v; lines.push('• ' + e.t + ': ' + som(v)); } });
+    var serv = (menu + extra) * SERVICE, tot = menu + extra + serv;
+    document.getElementById('gn').textContent = g;
+    document.getElementById('m').textContent = som(menu);
+    document.getElementById('x').textContent = som(extra);
+    document.getElementById('s').textContent = som(serv);
+    document.getElementById('t').textContent = som(tot);
+    document.getElementById('pp').textContent = 'Bir kishiga: ' + som(tot / g);
+    document.getElementById('tg').value = 'Assalomu alaykum!\nBanket hisobi:\n\nMehmonlar: ' + g + ' kishi\nMenyu: ' + k.t + ' (' + som(k.p) + ' × ' + g + ') = ' + som(menu) +
+      (lines.length ? '\n' + lines.join('\n') : '') + '\nXizmat haqi 10%: ' + som(serv) + '\n\nJami: ' + som(tot) + '\nBir kishiga: ' + som(tot / g) + '\n\nSanani band qilish uchun shu yerga yozing.';
+  }
+  calc();
+  document.getElementById('copy').addEventListener('click', function () {
+    var ta = document.getElementById('tg'), btn = this;
+    var ok = function () { btn.textContent = 'Nusxa olindi'; btn.classList.add('done'); setTimeout(function () { btn.textContent = 'Nusxa olish'; btn.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(ta.value).then(ok, function () { ta.select(); document.execCommand('copy'); ok(); });
+    else { ta.select(); document.execCommand('copy'); ok(); }
+  });
+</script>
+</body>
+</html>

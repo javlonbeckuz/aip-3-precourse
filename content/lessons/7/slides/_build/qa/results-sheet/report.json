@@ -1,0 +1,110 @@
+[
+ {
+  "case": "baraka-1440",
+  "problems": [],
+  "freeMm": 23.3,
+  "hScroll": false,
+  "fonts": true,
+  "warnings": [
+   "info: Topilgan pul 1 ta holatdan: oylik taxmin ishonchsiz, keyingi haftalarda qayta tekshiring."
+  ],
+  "errors": [],
+  "network": []
+ },
+ {
+  "case": "baraka-390",
+  "problems": [],
+  "freeMm": 23.3,
+  "hScroll": false,
+  "fonts": true,
+  "warnings": [
+   "info: Topilgan pul 1 ta holatdan: oylik taxmin ishonchsiz, keyingi haftalarda qayta tekshiring."
+  ],
+  "errors": [],
+  "network": []
+ },
+ {
+  "case": "yomon-1440",
+  "problems": [],
+  "freeMm": 35.9,
+  "hScroll": false,
+  "fonts": true,
+  "warnings": [
+   "stop: Agentgacha (boshlang‘ich) raqami yo‘q: B.1 va B.2 bo‘lmasa, o‘zgarishni hisoblab bo‘lmaydi. Bu natija emas, taassurot.",
+   "warn: Oylik xarajat yozilmagan (server, model, obuna): vositaning narxi ko‘rinmaydi.",
+   "warn: B.14 da 10 000 000 so‘m bor, lekin tafsiloti yo‘q: manbasiz summa hisobga olinmaydi. Har bir holatni sana, summa va hisobi bilan yozing."
+  ],
+  "errors": [],
+  "network": []
+ },
+ {
+  "case": "yomon-390",
+  "problems": [],
+  "freeMm": 35.9,
+  "hScroll": false,
+  "fonts": true,
+  "warnings": [
+   "stop: Agentgacha (boshlang‘ich) raqami yo‘q: B.1 va B.2 bo‘lmasa, o‘zgarishni hisoblab bo‘lmaydi. Bu natija emas, taassurot.",
+   "warn: Oylik xarajat yozilmagan (server, model, obuna): vositaning narxi ko‘rinmaydi.",
+   "warn: B.14 da 10 000 000 so‘m bor, lekin tafsiloti yo‘q: manbasiz summa hisobga olinmaydi. Har bir holatni sana, summa va hisobi bilan yozing."
+  ],
+  "errors": [],
+  "network": []
+ },
+ {
+  "case": "baraka-sahna-1440",
+  "problems": [],
+  "freeMm": 41.7,
+  "hScroll": false,
+  "fonts": true,
+  "warnings": [
+   "info: Topilgan pul 1 ta holatdan: oylik taxmin ishonchsiz, keyingi haftalarda qayta tekshiring."
+  ],
+  "errors": [],
+  "network": []
+ },
+ {
+  "case": "baraka-sahna-390",
+  "problems": [],
+  "freeMm": 41.7,
+  "hScroll": false,
+  "fonts": true,
+  "warnings": [
+   "info: Topilgan pul 1 ta holatdan: oylik taxmin ishonchsiz, keyingi haftalarda qayta tekshiring."
+  ],
+  "errors": [],
+  "network": []
+ },
+ {
+  "case": "bosh-1440",
+  "problems": [],
+  "freeMm": 32.8,
+  "hScroll": false,
+  "fonts": true,
+  "warnings": [
+   "stop: Agentgacha (boshlang‘ich) raqami yo‘q: B.1 va B.2 bo‘lmasa, o‘zgarishni hisoblab bo‘lmaydi. Bu natija emas, taassurot.",
+   "stop: Sinov haftalarining raqami yo‘q: kamida 1-hafta ustunini to‘ldiring.",
+   "warn: Soatbay haq yozilmagan: vaqtni so‘mga aylantirib bo‘lmaydi (oklad / oylik ish soati).",
+   "warn: Oylik xarajat yozilmagan (server, model, obuna): vositaning narxi ko‘rinmaydi.",
+   "warn: Qaror belgilanmagan: davom etish, o‘zgartirish yoki to‘xtatish."
+  ],
+  "errors": [],
+  "network": []
+ },
+ {
+  "case": "bosh-390",
+  "problems": [],
+  "freeMm": 32.8,
+  "hScroll": false,
+  "fonts": true,
+  "warnings": [
+   "stop: Agentgacha (boshlang‘ich) raqami yo‘q: B.1 va B.2 bo‘lmasa, o‘zgarishni hisoblab bo‘lmaydi. Bu natija emas, taassurot.",
+   "stop: Sinov haftalarining raqami yo‘q: kamida 1-hafta ustunini to‘ldiring.",
+   "warn: Soatbay haq yozilmagan: vaqtni so‘mga aylantirib bo‘lmaydi (oklad / oylik ish soati).",
+   "warn: Oylik xarajat yozilmagan (server, model, obuna): vositaning narxi ko‘rinmaydi.",
+   "warn: Qaror belgilanmagan: davom etish, o‘zgartirish yoki to‘xtatish."
+  ],
+  "errors": [],
+  "network": []
+ }
+]

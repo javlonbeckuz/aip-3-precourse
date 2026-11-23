@@ -1,0 +1,461 @@
+[
+ {
+  "slide": 1,
+  "problems": [],
+  "minFont": 36,
+  "minText": "Praktikum 3.0 · 4-dars",
+  "brokenImages": [],
+  "words": 25,
+  "fontsOk": true
+ },
+ {
+  "slide": 2,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Noutbuk yopiq, telefondan javob keladi",
+  "brokenImages": [],
+  "words": 49,
+  "fontsOk": true
+ },
+ {
+  "slide": 3,
+  "problems": [],
+  "minFont": 32,
+  "minText": "namoyish: noutbuk testi, deploy, domen",
+  "brokenImages": [],
+  "words": 68,
+  "fontsOk": true
+ },
+ {
+  "slide": 4,
+  "problems": [],
+  "minFont": 35,
+  "minText": "telefoningizdan, noutbukdagi bot bilan",
+  "brokenImages": [],
+  "words": 70,
+  "fontsOk": true
+ },
+ {
+  "slide": 5,
+  "problems": [],
+  "minFont": 44,
+  "minText": "Stol davrasi: har kim 1 daqiqa. Mentor 4",
+  "brokenImages": [],
+  "words": 11,
+  "fontsOk": true
+ },
+ {
+  "slide": 6,
+  "problems": [],
+  "minFont": 36,
+  "minText": "Keyingi 30 daqiqa: uni doim yoqiq kompyu",
+  "brokenImages": [],
+  "words": 22,
+  "fontsOk": true
+ },
+ {
+  "slide": 7,
+  "problems": [],
+  "minFont": 30,
+  "minText": "0:20-0:50",
+  "brokenImages": [],
+  "words": 20,
+  "fontsOk": true
+ },
+ {
+  "slide": 8,
+  "problems": [],
+  "minFont": 32,
+  "minText": "demos/01-noutbuk-testi/ssenariy.md",
+  "brokenImages": [],
+  "words": 31,
+  "fontsOk": true
+ },
+ {
+  "slide": 9,
+  "problems": [],
+  "minFont": 40,
+  "minText": "3-darsda qurdik, 4-darsda ko‘chiramiz. K",
+  "brokenImages": [],
+  "words": 43,
+  "fontsOk": true
+ },
+ {
+  "slide": 10,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nima",
+  "brokenImages": [],
+  "words": 51,
+  "fontsOk": true
+ },
+ {
+  "slide": 11,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Telefon",
+  "brokenImages": [],
+  "words": 45,
+  "fontsOk": true
+ },
+ {
+  "slide": 12,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nusxa olish",
+  "brokenImages": [],
+  "words": 68,
+  "fontsOk": true
+ },
+ {
+  "slide": 13,
+  "problems": [],
+  "minFont": 31,
+  "minText": "1. Testlar noutbukda",
+  "brokenImages": [],
+  "words": 93,
+  "fontsOk": true
+ },
+ {
+  "slide": 14,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Sinovimizda botni ataylab «o‘ldirdik»: 5",
+  "brokenImages": [],
+  "words": 55,
+  "fontsOk": true
+ },
+ {
+  "slide": 15,
+  "problems": [],
+  "minFont": 41,
+  "minText": "/stop, /davom - to‘xtatish, yoqish",
+  "brokenImages": [],
+  "words": 34,
+  "fontsOk": true
+ },
+ {
+  "slide": 16,
+  "problems": [],
+  "minFont": 30.7,
+  "minText": "svg: brauzerda yozadi:",
+  "brokenImages": [],
+  "words": 131,
+  "fontsOk": true
+ },
+ {
+  "slide": 17,
+  "problems": [],
+  "minFont": 34,
+  "minText": "Serverning raqami",
+  "brokenImages": [],
+  "words": 46,
+  "fontsOk": true
+ },
+ {
+  "slide": 18,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Shu daqiqadagi barcha fayllar surati",
+  "brokenImages": [],
+  "words": 49,
+  "fontsOk": true
+ },
+ {
+  "slide": 19,
+  "problems": [],
+  "minFont": 37,
+  "minText": "# yo‘riqnomada xato: «15% gacha chegirma",
+  "brokenImages": [],
+  "words": 69,
+  "fontsOk": true
+ },
+ {
+  "slide": 20,
+  "problems": [],
+  "minFont": 40,
+  "minText": "exchange - bitta savol",
+  "brokenImages": [],
+  "words": 65,
+  "fontsOk": true
+ },
+ {
+  "slide": 21,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Hech qachon chatga, Claude’ga, mentorga",
+  "brokenImages": [],
+  "words": 43,
+  "fontsOk": true
+ },
+ {
+  "slide": 22,
+  "problems": [],
+  "minFont": 35,
+  "minText": "1-mashq, 0:50-1:05",
+  "brokenImages": [],
+  "words": 54,
+  "fontsOk": true
+ },
+ {
+  "slide": 23,
+  "problems": [],
+  "minFont": 30,
+  "minText": "0:50-1:40",
+  "brokenImages": [],
+  "words": 15,
+  "fontsOk": true
+ },
+ {
+  "slide": 24,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nusxa olish",
+  "brokenImages": [],
+  "words": 140,
+  "fontsOk": true
+ },
+ {
+  "slide": 25,
+  "problems": [],
+  "minFont": 35,
+  "minText": "xodimlar - suhbatdan keyin",
+  "brokenImages": [],
+  "words": 57,
+  "fontsOk": true
+ },
+ {
+  "slide": 26,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nusxa olish",
+  "brokenImages": [],
+  "words": 69,
+  "fontsOk": true
+ },
+ {
+  "slide": 27,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Ekranda",
+  "brokenImages": [],
+  "words": 72,
+  "fontsOk": true
+ },
+ {
+  "slide": 28,
+  "problems": [],
+  "minFont": 44,
+  "minText": "Deploy: .env, deploy.py, telefonga 🟢 xa",
+  "brokenImages": [],
+  "words": 12,
+  "fontsOk": true
+ },
+ {
+  "slide": 29,
+  "problems": [],
+  "minFont": 32,
+  "minText": "pilot run oynasida Ctrl+C",
+  "brokenImages": [],
+  "words": 61,
+  "fontsOk": true
+ },
+ {
+  "slide": 30,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nusxa olish",
+  "brokenImages": [],
+  "words": 59,
+  "fontsOk": true
+ },
+ {
+  "slide": 31,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Stoldoshingiz bilan kuzating",
+  "brokenImages": [],
+  "words": 49,
+  "fontsOk": true
+ },
+ {
+  "slide": 32,
+  "problems": [],
+  "minFont": 44,
+  "minText": "Tanaffus. Noutbukni yopiq qoldiring: ass",
+  "brokenImages": [],
+  "words": 7,
+  "fontsOk": true
+ },
+ {
+  "slide": 33,
+  "problems": [],
+  "minFont": 30,
+  "minText": "1:50-2:20",
+  "brokenImages": [],
+  "words": 19,
+  "fontsOk": true
+ },
+ {
+  "slide": 34,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Bitta jarayon",
+  "brokenImages": [],
+  "words": 37,
+  "fontsOk": true
+ },
+ {
+  "slide": 35,
+  "problems": [],
+  "minFont": 40,
+  "minText": "«Rahbar hisobotida ikkita noto‘g‘ri raqa",
+  "brokenImages": [],
+  "words": 51,
+  "fontsOk": true
+ },
+ {
+  "slide": 36,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Band",
+  "brokenImages": [],
+  "words": 69,
+  "fontsOk": true
+ },
+ {
+  "slide": 37,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Juftlikda: yomon rejaning har bir bandid",
+  "brokenImages": [],
+  "words": 46,
+  "fontsOk": true
+ },
+ {
+  "slide": 38,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nusxa olish",
+  "brokenImages": [],
+  "words": 44,
+  "fontsOk": true
+ },
+ {
+  "slide": 39,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Reja",
+  "brokenImages": [],
+  "words": 48,
+  "fontsOk": true
+ },
+ {
+  "slide": 40,
+  "problems": [],
+  "minFont": 30,
+  "minText": "2:20-2:50",
+  "brokenImages": [],
+  "words": 25,
+  "fontsOk": true
+ },
+ {
+  "slide": 41,
+  "problems": [],
+  "minFont": 32,
+  "minText": "demos/05-madina-suhbati/ssenariy.md",
+  "brokenImages": [],
+  "words": 31,
+  "fontsOk": true
+ },
+ {
+  "slide": 42,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Xodim",
+  "brokenImages": [],
+  "words": 79,
+  "fontsOk": true
+ },
+ {
+  "slide": 43,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Hazil qilmang: xodim hazilni reja deb es",
+  "brokenImages": [],
+  "words": 35,
+  "fontsOk": true
+ },
+ {
+  "slide": 44,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nusxa olish",
+  "brokenImages": [],
+  "words": 39,
+  "fontsOk": true
+ },
+ {
+  "slide": 45,
+  "problems": [],
+  "minFont": 35,
+  "minText": "B bitta xavotirni tanlaydi, oldindan ayt",
+  "brokenImages": [],
+  "words": 68,
+  "fontsOk": true
+ },
+ {
+  "slide": 46,
+  "problems": [],
+  "minFont": 44,
+  "minText": "Ikki davra. 6 daqiqadan keyin rollarni a",
+  "brokenImages": [],
+  "words": 8,
+  "fontsOk": true
+ },
+ {
+  "slide": 47,
+  "problems": [],
+  "minFont": 30,
+  "minText": "2:50-3:00",
+  "brokenImages": [],
+  "words": 20,
+  "fontsOk": true
+ },
+ {
+  "slide": 48,
+  "problems": [],
+  "minFont": 35,
+  "minText": "B.8 xavotirlar, B.9 kelishuv; yangilanga",
+  "brokenImages": [],
+  "words": 63,
+  "fontsOk": true
+ },
+ {
+  "slide": 49,
+  "problems": [],
+  "minFont": 37,
+  "minText": "Madina botga yozadi:",
+  "brokenImages": [],
+  "words": 57,
+  "fontsOk": true
+ },
+ {
+  "slide": 50,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Kod",
+  "brokenImages": [],
+  "words": 56,
+  "fontsOk": true
+ },
+ {
+  "slide": 51,
+  "problems": [],
+  "minFont": 36,
+  "minText": "Mentor hozir tasdiqlaydi: 4.6-4.11.",
+  "brokenImages": [],
+  "words": 20,
+  "fontsOk": true
+ }
+]

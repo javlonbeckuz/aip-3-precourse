@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier va ochiq vaznli: qanday ishlatish</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 1-dars</span><span class="pill">Qo‘llanma</span></div>
+<h1>Frontier va ochiq vaznli: qanday ishlatish</h1>
+<p>Sahifa: <code>index.html</code>, internetsiz ochiladi; javoblarni olish uchun esa Claude va ochiq vaznli chat kerak.</p>
+<h2>Nima uchun</h2>
+<p>Bitta vazifani ikki xil modelga berib, javob sifatini va oylik narxni yonma-yon ko‘rasiz.
+Shundan har bir ish uchun «qaysi model va nega» degan qaror chiqadi.</p>
+<h2>Boshlashdan oldin kerak</h2>
+<ul>
+<li>Maxfiy bo‘lmagan bitta biznes vazifasi: mijozga javob yoki qoida bo‘yicha savol.</li>
+<li>Kompaniya qoidasi matni (prays-list, chegirma tartibi, shartnoma bandi).</li>
+<li>Claude va bitta ochiq vaznli chat: chat.deepseek.com yoki chat.qwen.ai.</li>
+<li>Bu savol oyiga necha marta berilishi: To‘plam 1 dagi B shaklining B.2 ustuni (haftasiga) × 4,3.</li>
+</ul>
+<h2>Qadamlar</h2>
+<ol>
+<li>«Vazifa» qutisiga savolni va qoidani yozing, «Nusxa olish»ni bosing.</li>
+<li>Uni Claude’ga va ochiq vaznli chatga yuboring.</li>
+<li>Ikkala javobni o‘z qutisiga qo‘ying va model nomini tanlang.</li>
+<li>Har javobga uchta belgi qo‘ying: til toza, qoida to‘g‘ri, ohang yaxshi.</li>
+<li>Pastda kirish va chiqish tokenlarini, oyiga necha marta ekanini yozing.</li>
+</ol>
+<h2>Har bir maydon nima</h2>
+<table>
+<thead>
+<tr>
+<th>Maydon</th>
+<th>Nima</th>
+<th>Qayerdan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kirish tokenlari</td>
+<td>Savol va unga qo‘shilgan qoidalar uzunligi</td>
+<td>Tokenizator sahifasida o‘lchang</td>
+</tr>
+<tr>
+<td>Chiqish tokenlari</td>
+<td>Javob uzunligi</td>
+<td>Javobni tokenizatorga qo‘ying</td>
+</tr>
+<tr>
+<td>Oyiga necha marta</td>
+<td>Shu savol oyiga necha marta beriladi</td>
+<td>B shakli, B.2 × 4,3</td>
+</tr>
+<tr>
+<td>Narx</td>
+<td>1 million token uchun dollar</td>
+<td>Sanasi yozilgan varaq (models-data.js)</td>
+</tr>
+</tbody>
+</table>
+<h2>Namuna: Baraka Office</h2>
+<p>«Namuna bilan ochish» tugmasi Baraka Office mijozining 34 mln so‘mlik buyurtmaga 12% chegirma so‘rashini qo‘yadi.
+Ikkala javob <strong>qo‘lda yozilgan namuna</strong>, model javobi emas: usulni ko‘rsatish uchun.</p>
+<p><img alt="Yonma-yon namunasi" src="qollanma-namuna.png" /></p>
+<ul>
+<li>Chap javob qoidani to‘g‘ri aytadi: hozir 5%, 100% oldindan to‘lovda rahbar ruxsati bilan 10%.</li>
+<li>O‘ng javob «10% bera olamiz» deydi, lekin shartni (rahbar ruxsati va 100% to‘lov) tushirib qoldiradi: «Qoida to‘g‘ri» belgisi qo‘yilmagan.</li>
+<li>Narx: oyiga taxminan 1 000 savol (8 menejer × haftasiga 30 savol × 4,3 hafta), 1 500 token kirish, 200 token javob.
+  Claude Sonnet 5.5: oyiga 5,00 dollar; DeepSeek V4.1 Flash: 0,34 dollar; farq 14,5 barobar.</li>
+</ul>
+<p><strong>Qanday o‘qish:</strong> ikkala narx ham kichik, shuning uchun qarorni javob aniqligi hal qiladi.
+Qoidani noto‘g‘ri aytadigan model bitta noto‘g‘ri chegirma bilan oylik farqdan ko‘p zarar keltiradi.</p>
+<h2>Ko‘p uchraydigan xatolar</h2>
+<ul>
+<li>Mijoz ma’lumotini DeepSeek saytiga yozish: u ma’lumotni Xitoyda saqlaydi.</li>
+<li>Faqat narxga qarab tanlash.</li>
+<li>Har xil vazifani solishtirish: ikkala modelga aynan bir xil matn bering.</li>
+</ul>
+<h2>Tayyor</h2>
+<p>Har bir vazifa uchun bir gap yoza olasiz: «Bu ishga [model], chunki [sifat yoki narx sababi]».</p>
+<div class="foot">Praktikum 3.0 · 1-dars · 21-noyabr (shanba) / 22-noyabr (yakshanba) 2026 · manba: day-1/demos/side-by-side/side-by-side.qollanma.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

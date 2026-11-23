@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baholash varag‘i</title>
+<style>
+  @font-face { font-family: 'BVInter'; src: url('assets/InterVariable-latin.woff2') format('woff2'); font-weight: 100 900; }
+  :root { --ink: #15171c; --ink-2: #4a505e; --ink-3: #7a8091; --rule: #c9cdd6; --acc: #2350c9; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #eef0f4; color: var(--ink); font-family: 'BVInter', system-ui, sans-serif; }
+  .bar { max-width: 210mm; margin: 16px auto; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 0 12px; flex-wrap: wrap; }
+  .bar b { font-size: 18px; }
+  .bar button { font: inherit; font-size: 14px; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--acc); background: var(--acc); color: #fff; cursor: pointer; }
+  .page { width: 210mm; min-height: 297mm; margin: 0 auto 16px; background: #fff; padding: 12mm 12mm 10mm; box-shadow: 0 6px 24px rgba(20,30,60,.12); display: flex; flex-direction: column; gap: 4mm; }
+  .k { font-size: 7pt; letter-spacing: .16em; text-transform: uppercase; color: var(--acc); font-weight: 650; }
+  h1 { font-size: 17pt; margin: 0; letter-spacing: -0.01em; }
+  .meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; font-size: 8.5pt; color: var(--ink-2); }
+  .meta div { border-bottom: .6pt solid var(--ink-3); padding-bottom: 1mm; min-height: 7mm; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+  th, td { border: .6pt solid var(--rule); padding: 1.6mm 1.8mm; vertical-align: top; text-align: left; }
+  th { background: #f4f6fa; font-weight: 650; font-size: 7.8pt; }
+  td.c, th.c { text-align: center; }
+  .crit td:first-child { font-weight: 650; white-space: nowrap; }
+  .score td { height: 13mm; }
+  .score.stage td { height: 11mm; }
+  .note { font-size: 8pt; color: var(--ink-2); line-height: 1.4; }
+  .note b { color: var(--ink); }
+  @page { size: A4 portrait; margin: 0; }
+  @media print { body { background: #fff; } .bar { display: none; } .page { margin: 0; box-shadow: none; page-break-after: always; break-after: page; } .page:last-child { page-break-after: auto; break-after: auto; } }
+  @media (max-width: 820px) { .page { width: auto; min-height: 0; margin: 0 12px 16px; padding: 16px; } table { font-size: 12px; } .meta { grid-template-columns: 1fr; } .tw { overflow-x: auto; } .tw table { min-width: 640px; } table.crit td:first-child { white-space: normal; } }
+</style>
+</head>
+<body>
+<div class="bar"><b>Baholash varag‘i · 6-dars</b><button onclick="window.print()">Chop etish (A4, 2 sahifa)</button></div>
+
+<section class="page">
+  <div class="k">Praktikum 3.0 · 6-dars · Stolda namoyish</div>
+  <h1>Stol baholash varag‘i</h1>
+  <div class="meta"><div>Stol: </div><div>Mening ismim: </div><div>Mentor: </div></div>
+  <table class="crit">
+    <tr><th>Mezon</th><th>3 ball</th><th>2 ball</th><th>1 ball</th></tr>
+    <tr><td>1. Agentgacha raqam</td><td>Raqam va manbasi aytildi</td><td>Raqam bor, manbasi yo‘q</td><td>Yo‘q yoki «taxminan»</td></tr>
+    <tr><td>2. Oldin va keyin</td><td>Birligi bilan, tekshirish ayirilgan</td><td>Birligi yoki tekshirish yo‘q</td><td>«2 barobar», «ancha tez»</td></tr>
+    <tr><td>3. Topilgan pul yoki xato</td><td>Hujjatli holat (summa shart emas)</td><td>Holat bor, hujjati aytilmadi</td><td>Manbasiz summa yoki hech narsa</td></tr>
+    <tr><td>4. Nima buzildi</td><td>Aniq xato, sababi, tuzatish</td><td>Xato bor, tuzatish yo‘q</td><td>«Hammasi zo‘r ishladi»</td></tr>
+    <tr><td>5. Qaror va vaqt</td><td>Mezon bilan, 3 daqiqada</td><td>Qaror bor, sababi zaif</td><td>Qaror yo‘q yoki cho‘zildi</td></tr>
+  </table>
+  <div class="tw"><table class="score">
+    <tr><th style="width:30%">Namoyish (ism, jarayon)</th><th class="c">1</th><th class="c">2</th><th class="c">3</th><th class="c">4</th><th class="c">5</th><th class="c">Jami</th><th class="c">Ovozim</th><th style="width:26%">Bitta fikr</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+  <div class="note"><b>Qoidalar.</b> Har namoyishdan keyin 1 daqiqada bitta qator. O‘z qatoringizni to‘ldirmaysiz. «Ovozim» - bitta belgi, o‘zingizga emas. Teng bo‘lsa, mentor ballarni solishtiradi: avval tekshirilgan varaq, keyin halol «o‘zgartirish» yoki «to‘xtatish» qarori. Ekranda xodim ismi va mijoz ma’lumoti bo‘lmaydi; so‘m faqat egasi xohlasa.</div>
+</section>
+
+<section class="page">
+  <div class="k">Praktikum 3.0 · 6-dars · Sahna</div>
+  <h1>Sahna varag‘i (mentor)</h1>
+  <div class="meta"><div>Mentor: </div><div>Guruh: </div><div>Sana: </div></div>
+  <div class="tw"><table class="score stage">
+    <tr><th class="c" style="width:6%">#</th><th style="width:24%">Ism, stol</th><th style="width:22%">Jarayon</th><th style="width:14%">Qaror</th><th class="c" style="width:8%">3:00 dan oshdimi</th><th style="width:26%">Eslatma, «eng halol qaror» nomzodi</th></tr>
+    <tr><td class="c">1</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="c">2</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="c">3</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="c">4</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="c">5</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="c">6</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="c">7</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="c">8</td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+  <div class="note"><b>Sahna ovozi</b> Telegram guruhidagi so‘rovnomada: «Ertaga qaysi sinovni o‘zimda takrorlardim?» (7-namoyishda yuboriladi). Bu varaq ovoz emas: keyingi fikr va «eng halol qaror» uchun eslatma.</div>
+</section>
+</body>
+</html>

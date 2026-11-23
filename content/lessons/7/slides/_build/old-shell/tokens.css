@@ -1,0 +1,39 @@
+/* ============================================================================
+   tokens.css - "own-vercel-design" design system primitives (from Praktikum 2.0 Day 1 web deck)
+   Dark, Vercel-grade. Inter + Geist Mono. Faint graph-grid. One blue accent.
+   3.0 change: fonts are bundled next to this file (fonts/), so the deck works offline.
+   ========================================================================== */
+
+@font-face{font-family:'OVDInter';src:url('fonts/InterVariable-latin.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:block;}
+@font-face{font-family:'OVDMono';src:url('fonts/GeistMono-Regular.woff2') format('woff2');font-weight:400;font-display:block;}
+@font-face{font-family:'OVDMono';src:url('fonts/GeistMono-Bold.woff2') format('woff2');font-weight:700;font-display:block;}
+
+:root{
+  /* surface */
+  --ovd-bg:#000000;
+  --ovd-bg-soft:#08080a;
+
+  /* ink ramp (text) */
+  --ovd-ink:#f4f4f6;     /* headlines, strong */
+  --ovd-ink-2:#b4b4bc;   /* body (3.0: lifted from #9a9aa2 for projector contrast) */
+  --ovd-ink-3:#6e6e78;   /* mono labels, captions */
+
+  /* structure */
+  --ovd-line:rgba(255,255,255,0.10);
+  --ovd-line-strong:rgba(255,255,255,0.18);
+  --ovd-grid:rgba(255,255,255,0.028);
+
+  /* accent - use once per view, never decoratively */
+  --ovd-acc:#5e8bff;
+  --ovd-acc-rgb:94,139,255;
+
+  /* 3.0 semantic accents, used sparingly: warning and ok */
+  --ovd-warn:#ff6b5e;
+  --ovd-warn-rgb:255,107,94;
+  --ovd-ok:#4fd1a1;
+  --ovd-ok-rgb:79,209,161;
+
+  /* type */
+  --ovd-sans:'OVDInter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --ovd-mono:'OVDMono',ui-monospace,Menlo,Consolas,monospace;
+}

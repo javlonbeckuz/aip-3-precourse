@@ -1,0 +1,40 @@
+exit=0
+session: 697c9ce1-1bb4-4667-82e1-c4cd69e68afe turns: 1 models: ['claude-opus-5-5']
+Hali hech qanday fayl yozmadim. Quyida qobiliyatlar xaritasining (A shakli) taklifi. Uni tasdiqlasangiz, `form-a-skills-map.md` ni yozaman, keyin Madina uchun B shakli va suhbat rejasini tuzaman.
+
+## A shakli: taklif
+
+- Bo‘lim: savdo
+- Jarayon: narx, qoldiq, chegirma va muddat savollariga javob (To‘plam 3)
+- Sana: 2026-12-13
+
+| A.1 Xodim | A.2 Eng kuchli qobiliyati (real misol) | A.3 Bugungi asosiy ishi | A.4 Yangi roli | A.5 Yangi nazorat vazifasi | A.6 O‘qish |
+|---|---|---|---|---|---|
+| Madina Sattorova, showroom maslahatchisi | Mijozning chalkash savolidan aniq ehtiyojni ajratadi. 1-dekabrda «Optima’dan 8 ta» degan mijozdan «140 lik stolmi, qachonga kerak?» deb so‘rab, buyurtmani aniqladi | Kuniga taxminan 12 ta narx, qoldiq va muddat savoliga javob beradi. Qoldiqni Otabek akadan so‘rab, 20-30 daqiqa kutadi (Jamshid aka kuzatgan, Madina tasdiqlashi kerak) | Mijoz savolini aniqlab, botga to‘liq yozadi: mahsulot, o‘lcham, dona soni, sana (1-2-qadamlar). Bot javobini tekshirib, mijozga o‘zi aytadi (9-qadam) | Har bir javobni mijozga aytishdan oldin tekshiradi: bot mijoz so‘ragan narsaga javob berganmi (mahsulot, o‘lcham, dona soni), narx turi to‘g‘rimi, 1C fayli bugungimi, muddat 7 ish kunidan kam emasmi. Xato bo‘lsa, ❌ bosib, sababini yozadi | ha |
+| Malika Rashidova, savdo menejeri, loyiha yetakchisi | Prays-list va shartnoma qoidalarini bo‘limda eng yaxshi biladi. Optima stoliga eski narx aytilib, 350 000 so‘m yo‘qotilgan holatni o‘zi topib, Jamshid akaga ko‘rsatgan | Qo‘ng‘iroqlar, amoCRM, narxni topish, qoldiq va chegirmani so‘rash, KP (To‘plam 1: haftasiga 32,4 soat) | Botdan o‘zi ham foydalanadi. Kun oxirida bot bergan narx, muddat va chegirma javoblarini qoidalar bilan solishtiradi. Madinaning mashqini olib boradi | Har kuni 17:30 da kun jurnalini ko‘radi. Natija: prays-list yoki qoidalarga zid javob ❌ siz qolmagan, har bir ❌ ning sababi yozilgan | ha |
+| Zarina Abdullayeva, call-markaz operatori | Jahli chiqqan mijozni ham xotirjam tinglaydi. Oktabrda yetkazish kechikkan mijozni boshqa joyga ketkazmay, Jamshid akaga ulagan | Qo‘ng‘iroqlar, Instagram va Telegram. Narx, qoldiq va muddatni so‘rab, 5-10 daqiqa kutadi (To‘plam 1: haftasiga 32,2 soat) | Bot javobini tekshirib, mijozga telefonda aytadi. Bot o‘zi hal qilmaydigan holatlarni (shikoyat, katta chegirma, tezroq yetkazish) mijoz bilan o‘zi gaplashib, Jamshid akaga uzatadi | Bot javobi uchun Madinaniki bilan bir xil tekshiruv. Bot «odamga» degan har bir holatda mijozga javob qachon berilishini aytadi va savolni summasi bilan Jamshid akaga yuboradi. Natija: birorta mijoz javobsiz qolmagan | ha |
+| Bekzod Aliyev, savdo menejeri | Katta korporativ bitimlarni yopadi: oktabrda 219 mln so‘m tushum | Mijozlar bilan qo‘ng‘iroq va uchrashuvlar, KP. Narx va chegirma vakolatini Malika yoki Jamshid akadan so‘raydi (savdo menejerlari jadvalidan, To‘plam 1 suhbati yo‘q) | Katta buyurtmalardagi bot javoblarini tekshiradi: 20 mln so‘mdan oshgan buyurtmada chegirma vakolati (6-qadam), tender yoki 150 mln so‘mdan katta buyurtmani uzatish (7-qadam) | Har bir katta buyurtma javobida: chegirma 5% dan oshmagan, 150 mln so‘mdan katta yoki tender bo‘lsa, bot o‘zi javob bermay Jamshid akaga uzatgan. Xato bo‘lsa, ❌ va sababi | ha |
+| Otabek aka, logistika | Ombordagi har bir pozitsiyani yoddan biladi. Aniq misol: `[?]` | Qoldiq so‘ralsa, Telegram’da javob beradi | Har kuni 08:00 da 1C eksportini chiqaradi. Bot topa olmagan qoldiqni Jamshid aka orqali oladi | Har kuni 08:00 gacha fayl chiqqan va sanasi bugungi | yo‘q |
+| Jamshid Karimov, ROP | Chegirma bo‘yicha yakuniy so‘z unda. Aniq misol: `[?]` | Telegram’da narx, chegirma va qoldiq savollariga javob beradi (To‘plam 1: haftasiga 6,3 soat) | Bot uzatgan qiyin holatlarni hal qiladi (7-qadam) | Har shanba 16:00 da ❌ jurnalini ko‘radi va yo‘riqnomaga o‘zgartirish kiritish-kiritmaslikni hal qiladi (6, 10-qadamlar) | yo‘q |
+
+## Ochiq aytishim kerak bo‘lgan 2 narsa
+
+- **Bekzodning qobiliyati tekshirish ishiga to‘g‘ridan-to‘g‘ri mos kelmaydi.** Bitim yopish mahorati botni tekshirishda kam ishlatiladi. Taklif qilganim eng yaqin variant: u tekshiradigan narsalar o‘zining katta bitimlarida har kuni uchraydi. Yana bir narsa: To‘plam 3 dagi agent yo‘riqnomasini 10-dekabrda faqat Madina, Malika va Zarina ko‘rgan, Bekzod ko‘rmagan. B.5 va B.6 ni u suhbatda ko‘rishi kerak.
+- **Malikaga qo‘shimcha taklif.** To‘plam 3 ga ko‘ra, narx o‘zgarganda `narxlar.csv` ni Madina yangilaydi. 350 000 so‘mlik xato aynan eski narx tufayli bo‘lgan edi. Shuning uchun har yangilanishdan keyin Malika CSV ni tasdiqlangan prays-list bilan solishtirsa, bu uning qobiliyatidan eng to‘g‘ri foydalanish bo‘ladi.
+
+Madina uchun B.3 cheklistining qoralamasi (bir javob uchun bir daqiqadan kam):
+
+1. Bot mijoz so‘ragan mahsulot va o‘lcham haqida yozganmi?
+2. Narx turi dona soniga mosmi: 1-4 dona chakana, 5 donadan ulgurji?
+3. Hisob qatori bormi va to‘g‘rimi (narx x dona = summa)?
+4. Qoldiq javobida 1C faylining sanasi bugungimi?
+5. Muddat 7 ish kunidan kam emasmi, 5% dan katta chegirma va’da qilinmaganmi?
+6. Mijoz so‘ragan hamma narsaga (narx, qoldiq, muddat) javob bormi?
+
+Sanalar bo‘yicha bitta kichik farq: siz birinchi natijani 19-dekabrda (shanba) ko‘rmoqchisiz, To‘plam 3 dagi B.10 da esa keyingi ko‘rib chiqish 21-dekabr deb yozilgan. Bu To‘plam 3 dagi fayl, men uni o‘zgartirmayman, faqat bilib qo‘ying.
+
+## Savollar
+
+1. A.4 va A.5 ustunlarini shu holicha tasdiqlaysizmi? Malikaga CSV tekshiruvini qo‘shamizmi?
+2. Bekzod uchun shu variantga rozimisiz yoki boshqacha rol o‘ylaganmisiz?
+3. Otabek aka va Jamshid aka uchun sanasi bilan real misol bormi? Bo‘lmasa, `[?]` qoldiraman.

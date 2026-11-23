@@ -1,0 +1,152 @@
+[
+ [
+  "Week 0 alias works: ssh vps echo ok",
+  true,
+  "ok"
+ ],
+ [
+  "failure shown: key not on server -> Permission denied",
+  true,
+  "Warning: Permanently added '[127.0.0.1]:2224' (ED25519) to the list of known hosts.\nroot@127.0.0.1: Permission denied (publickey,password)."
+ ],
+ [
+  "failure shown: wrong address or port -> Connection refused",
+  true,
+  "ssh: connect to host 127.0.0.1 port 2299: Connection refused"
+ ],
+ [
+  "deploy.py setup with DEPLOY_HOST=vps",
+  true,
+  "==> 4/6 fail2ban: blocks IPs that guess SSH passwords\n\n==> 5/6 User 'pilot' (no password, no sudo) and folders in /opt/pilot\n\n==> 6/6 uv 0.13.6 for 'pilot' (it installs Python and the bot's libraries)\nuv 0.13.6 (aarch64-unknown-linux-gnu)\n\n==> Server is ready. Next: deploy.py env, then deploy.py\ndownloading uv 0.13.6 aarch64-unknown-linux-gnu"
+ ],
+ [
+  "git: .env and runtime/ are never committed (template .gitignore)",
+  true,
+  "105 files tracked"
+ ],
+ [
+  "failure shown: deploy before env -> clear message",
+  true,
+  "==> Uploading (74 KB)\nNo /opt/pilot/.env on the server yet: run 'deploy.py env' first"
+ ],
+ [
+  ".env on server, 600, owned by pilot",
+  true,
+  "600 pilot"
+ ],
+ [
+  "deploy.py: tests, upload, uv sync, check, start",
+  true,
+  "Nov 03 03:51:43 1775988ec13a systemd[1]: Started pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter).\nNov 03 03:51:43 1775988ec13a python[2189]: 2026-11-03 03:51:43,263 INFO pilot.bot: bot @baraka_demo_bot started, model google/gemini-3.8-flash, mode direct\n\nDone. Write to your bot from your phone to check.\nReminder: stop the bot on your laptop if it is running (one token, one place)."
+ ],
+ [
+  "owner's phone gets the start message",
+  true,
+  "🟢 «Savdo yordamchisi» ishga tushdi.\nModel: google/gemini-3.8-flash.\nRejim: darhol javob beradi."
+ ],
+ [
+  "owner question answered from the server",
+  true,
+  "«Optima» ergonomik stol 140x70 (WS-102), 8 dona - ulgurji narx: 1 890 000 x 8 = 15 120 000 so‘m."
+ ],
+ [
+  "owner controls the bot from the phone: /holat /hisobot /stop /davom",
+  true,
+  "Omborda (1C, tayyor mahsulot):\n- CH-203 Кресло руководителя Senator Lux черное: 11 dona\n- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona"
+ ],
+ [
+  "assistant from the phone: /eslab_qol, /xotira, /jadval, and an /eslat reminder fires on time",
+  true,
+  "🔔 Eslatma: Jamshid aka bilan tender bo'yicha gaplashish"
+ ],
+ [
+  "deploy.py status shows active (running)",
+  true,
+  "● pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter)\n     Loaded: loaded (/etc/systemd/system/pilot-bot.service; enabled; preset: enabled)\n     Active: active (running) since Tue 2026-11-03 03:51:43 +05; 1min 17s ago\n Invocation: 72cb399372b94f8cb50e9ab2450779b4\n   Main PID: 2189 (pytho"
+ ],
+ [
+  "logs: one line per question, no token, no message text",
+  true,
+  "ed, model google/gemini-3.8-flash, mode direct\nNov 03 03:51:51 1775988ec13a python[2189]: 2026-11-03 03:51:51,279 INFO pilot.bot: exchange 6c571e5a: answered, $0.0030, 33 ms\nNov 03 03:51:51 1775988ec13a python[2189]: 2026-11-03 03:51:51,303 INFO pilot.bot: exchange d24b48af: answered, $0.0031, 1 ms"
+ ],
+ [
+  "kill -9: systemd brings the bot back",
+  true,
+  "2189 -> 2304"
+ ],
+ [
+  "after a reboot the bot is back by itself and answers",
+  true,
+  "active\nActiveEnterTimestamp=Tue 2026-11-03 03:53:11 +05"
+ ],
+ [
+  "phone memory survives the reboot (kept in /opt/pilot/runtime)",
+  true,
+  "🧠 Telefondan qo‘shilgan faktlar (o‘chirish: /unut raqam):\n1. 2026-11-03: Menejerlar «140 lik stol» deganda Optima stolini (WS-102) nazarda tutadi"
+ ],
+ [
+  "impossible price: pilot check refuses the deploy, running release untouched",
+  true,
+  ".csv\n   O‘z pilotingiz bo‘lsa, ularni almashtiring (PARTICIPANT_GUIDE.uz.md, 1.3-qadam).\n• Ma’lumot bloki: 4507 belgi (chegara 12000)\n\nTuzatish kerak.\nCheck failed: the running version was not touched. Fix what the check lists above (.env: deploy.py env; data/: correct the file), then deploy again."
+ ],
+ [
+  "failure shown: a broken code edit fails the tests, nothing deployed",
+  true,
+  "20261102-225136"
+ ],
+ [
+  "rollback: server back to the good file; git restore: laptop back too",
+  true,
+  "4693ed9c6056 -> 7aa3d17896be -> 4693ed9c6056"
+ ],
+ [
+  "sayt.py --test-local: Caddy serves the lead form over HTTPS",
+  true,
+  "DNS va HTTPS\nTest rejimi: DNS tekshirilmaydi, sertifikat Caddy'ning o'zidan (brauzer uni tanimaydi).\n\n==> Tayyor (test rejimi): sayt HTTPS bilan javob beryapti, lekin sertifikat faqat sinov uchun.\nHaqiqiy domen bilan --test-local siz qayta ishga tushiring: shunda Let's Encrypt sertifikati olinadi.\n<title>Baraka Office - ofis mebeli"
+ ],
+ [
+  "firewall opened 80 and 443 for the site",
+  true,
+  "80/tcp                     ALLOW       Anywhere                  \n443/tcp                    ALLOW       Anywhere                  \n80/tcp (v6)                ALLOW       Anywhere (v6)             \n443/tcp (v6)               ALLOW       Anywhere (v6)"
+ ],
+ [
+  "DNS not ready: tool explains the A record and that Caddy retries by itself",
+  true,
+  "aysi IP manzilga qaramayapti (DNS yozuvi yo'q yoki hali tarqalmagan).\nDomen panelida A yozuvi qo'shing: nom = forma, qiymat = serveringiz IP manzili.\n\n==> Caddy sozlandi, lekin https://forma.barakaoffice.uz hali ochilmadi.\nDNS tayyor bo'lishi bilan Caddy sertifikatni o'zi oladi: qayta ishga tushirish shart emas.\nBir necha soatdan keyin brauzerda oching. Holat: journalctl -u caddy -n 30 --no-pager"
+ ],
+ [
+  "after reboot: site and bot both back",
+  true,
+  "active active 200"
+ ],
+ [
+  "homework: /ruxsat from the phone lets the employee in (no redeploy)",
+  true,
+  "«Optima» ergonomik stol 140x70 (WS-102), 8 dona - ulgurji narx: 1 890 000 x 8 = 15 120 000 so‘m."
+ ],
+ [
+  "approve mode: draft goes to the owner, employee gets it only after ✅",
+  true,
+  "«Start» xodim stoli 120x60 (WS-101), 2 dona - chakana narx: 1 450 000 x 2 = 2 900 000 so‘m."
+ ],
+ [
+  "failure shown: incomplete server .env -> Check failed, old release kept",
+  true,
+  ".csv\n   O‘z pilotingiz bo‘lsa, ularni almashtiring (PARTICIPANT_GUIDE.uz.md, 1.3-qadam).\n• Ma’lumot bloki: 4632 belgi (chegara 12000)\n\nTuzatish kerak.\nCheck failed: the running version was not touched. Fix what the check lists above (.env: deploy.py env; data/: correct the file), then deploy again."
+ ],
+ [
+  "failure shown: empty token -> service failed (78), no restart loop",
+  true,
+  "× pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter)\n     Loaded: loaded (/etc/systemd/system/pilot-bot.service; enabled; preset: enabled)\n     Active: failed (Result: exit-code) since Tue 2026-11-03 03:54:24 +05; 10s ago\n   Duration: 91ms\n Invocation: ba7b0ce85bcb4270a5e8f43fd38303fe"
+ ],
+ [
+  "fixed .env: bot restarts by itself",
+  true,
+  "active"
+ ],
+ [
+  "server safety state (as reported)",
+  true,
+  "Restart=always\nUser=pilot\nProtectSystem=strict\nStatus: active\n\nTo                         Action      From\n--                         ------      ----\nOpenSSH                    ALLOW       Anywhere                  \n80/tcp                     ALLOW       Anywhere                  \nactive\nAsia/Tashkent"
+ ]
+]

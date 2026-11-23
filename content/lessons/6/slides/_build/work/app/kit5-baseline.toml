@@ -1,0 +1,12 @@
+# 5-to'plam B shakli, "Agentgacha" ustuni: agent ishga tushgunga qadar BIR HAFTALIK raqamlar.
+# 2-kundan keyin yig'ilgan boshlang'ich holat (Telegram eksporti, Excel, CRM tarixi).
+# Bilmagan qatoringizni o'chirib qo'ying: hisobotda "qo'lda" deb chiqadi.
+# Namuna raqamlar: "Baraka Office" savdo bo'limi (shartli).
+
+B1 = 120   # Bajarilgan so'rovlar (haftasiga)
+B2 = 6     # O'rtacha vaqt, daqiqa (bitta savolga javob topish)
+B3 = 9     # Xato javoblar
+B4 = 15    # Takroriy so'rovlar
+B5 = 100   # To'liq hal qilingan so'rovlar
+B7 = 0     # Xodimning tekshirishga sarflagan vaqti, soat (agentgacha tekshiradigan narsa yo‘q edi)
+B8 = 2     # Mijoz shikoyatlari

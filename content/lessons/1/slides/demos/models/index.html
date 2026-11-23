@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bu hafta AI’da: modellar va narxlar</title>
+<link rel="stylesheet" href="../../assets/page.css">
+<style>
+  .stamp{display:inline-block;font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;color:var(--warn);border:1px solid #efc2bd;background:var(--warn-soft);padding:4px 10px;border-radius:4px;margin-bottom:12px;}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0 6px;}
+  .tiers div{border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:15px;}
+  .tiers b{display:block;font-size:16px;}
+  td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  td.m{font-weight:620;white-space:nowrap;}
+  .kind{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);}
+  .open-tag{color:var(--ok);}
+  tr.grp td{background:var(--soft);font-weight:640;font-size:14px;}
+  .small{font-size:13.5px;color:var(--ink-2);}
+  @media (max-width:640px){.tiers{grid-template-columns:1fr;}td.m{white-space:normal;}}
+  @media print{.tiers div{font-size:10pt;}.small{font-size:9.5pt;}td,th{padding:4px 6px;}h2{margin-top:10pt;}}
+</style>
+</head>
+<body>
+<main class="paper">
+  <div class="bar"><span>Praktikum 3.0 // 1-dars</span><span class="pill">Sanasi yozilgan varaq</span></div>
+  <h1>Bu hafta AI’da: modellar va narxlar</h1>
+  <div class="stamp" id="stamp"></div>
+  <p class="lead">Model nomlari va narxlari har oy o‘zgaradi, shuning uchun ular slaydda emas, shu varaqda turadi. Narx: 1 million token uchun AQSh dollarida, kirish / chiqish.</p>
+
+  <h2>Qaysi daraja qachon</h2>
+  <div class="tiers">
+    <div><b>Arzon va tez</b>Saralash, qisqa javob, ko‘p takrorlanadigan oddiy ish.</div>
+    <div><b>Muvozanatli</b>Kundalik matn, jadval, tahlil. Ko‘p ish uchun yetarli.</div>
+    <div><b>Kuchli</b>Reja tuzish, murakkab tahlil, xato qimmatga tushadigan ish.</div>
+  </div>
+  <p class="small"><b>Effort</b> (o‘ylash darajasi): model javobdan oldin qancha o‘ylashi. Ko‘proq o‘ylasa, sifat oshadi, lekin sekinroq va qimmatroq: fikrlash tokenlari chiqish narxida hisoblanadi.</p>
+
+  <h2>Jadvalni qanday o‘qish</h2>
+  <ul>
+    <li><b>Kirish</b>: siz yuborgan matn (savol, qoidalar, hujjat); <b>chiqish</b>: model yozgan javob. Ikkalasi ham 1 million token uchun dollarda.</li>
+    <li>Bitta vazifa narxi = kirish tokenlari × kirish narxi + chiqish tokenlari × chiqish narxi, keyin 1 000 000 ga bo‘linadi.</li>
+    <li>Token sonini tokenizator sahifasida o‘lchang: o‘zbekcha matn inglizchadan taxminan 2 barobar ko‘p token oladi.</li>
+    <li>Arzon modelni oddiy ish bilan, kuchli modelni murakkab ish bilan sinab ko‘ring; tanlovni sifatga qarab qiling, keyin narxga.</li>
+  </ul>
+
+  <h2>Narxlar</h2>
+  <table id="prices"></table>
+
+  <h2>Namuna: Baraka Office «Savdo yordamchisi» oyiga qancha turadi</h2>
+  <p class="small">Faraz: oyiga taxminan 1 000 ta savol (8 menejer × haftasiga 30 savol × 4,3 hafta), har bir savolga 1 500 token kirish (savol, narxlar va qoidalar) va 200 token javob.</p>
+  <table id="baraka"></table>
+  <p class="small">Xulosa: bunday hajmda har qanday model oyiga bir necha dollar turadi; qarorni javob aniqligi va ma’lumot qayerga ketishi hal qiladi. Server (taxminan 200 000 so‘m oyiga) va Claude obunasi alohida.</p>
+
+  <h2>Claude tariflari</h2>
+  <table id="plans"></table>
+
+  <h2>Bilib qo‘ying</h2>
+  <ul id="notes"></ul>
+  <p class="small">Manbalar: platform.claude.com, developers.openai.com, aistudio.google.com, openrouter.ai, huggingface.co, claude.com/pricing. To‘liq ro‘yxat va havolalar: day-1/sources.md.</p>
+  <div class="foot">Praktikum 3.0 · 1-dars · sanasi yozilgan varaq · demos/models/models-data.js</div>
+</main>
+<script src="models-data.js"></script>
+<script>
+(function () {
+  var D = window.MODELS_DATA;
+  function usd(x) { var s = x % 1 === 0 ? String(x) : x.toFixed(3).replace(/0$/, ''); return '$' + s.replace('.', ','); }
+  document.getElementById('stamp').textContent = 'Tekshirildi: ' + D.checked + ' · ' + D.validFor + ' uchun';
+  var rows = '<tr><th>Model</th><th>Daraja</th><th class="n">Kirish</th><th class="n">Chiqish</th><th>Izoh</th></tr>';
+  D.groups.forEach(function (g) {
+    rows += '<tr class="grp"><td colspan="5">' + g.maker + (g.kind === 'open' ? ' <span class="kind open-tag">· modelni yuklab olib o‘z serveringizda ishlatish mumkin</span>' : ' <span class="kind">· frontier</span>') + '</td></tr>';
+    g.models.forEach(function (m) {
+      rows += '<tr><td class="m">' + m.name + '</td><td>' + m.tier + '</td><td class="n">' + usd(m.in) + '</td><td class="n">' + usd(m.out) + '</td><td class="small">' + (m.note || '') + '</td></tr>';
+    });
+  });
+  document.getElementById('prices').innerHTML = rows;
+  var all = {}; D.groups.forEach(function (g) { g.models.forEach(function (m) { all[m.id] = m; }); });
+  var N = 1000, TIN = 1500, TOUT = 200;
+  var pick = ['claude-haiku-5-5', 'claude-sonnet-5-5', 'claude-opus-5-5', 'gpt-6.1-sol', 'gemini-3.8-flash', 'deepseek-v4.1-flash'];
+  document.getElementById('baraka').innerHTML = '<tr><th>Model</th><th class="n">Bitta savol</th><th class="n">Oyiga (1 000 savol)</th></tr>' + pick.map(function (id) {
+    var m = all[id], one = (TIN * m.in + TOUT * m.out) / 1e6;
+    return '<tr><td class="m">' + m.name + '</td><td class="n">$' + one.toFixed(4).replace('.', ',') + '</td><td class="n">$' + (one * N).toFixed(2).replace('.', ',') + '</td></tr>';
+  }).join('');
+  document.getElementById('plans').innerHTML = '<tr><th>Tarif</th><th>Narx</th><th>Izoh</th></tr>' + D.plans.map(function (p) { return '<tr><td class="m">' + p.name + '</td><td>' + p.price + '</td><td class="small">' + p.note + '</td></tr>'; }).join('');
+  document.getElementById('notes').innerHTML = D.notes.map(function (n) { return '<li>' + n + '</li>'; }).join('') +
+    '<li>Misol: 1 000 ta mijoz xatiga javob (har biri taxminan 500 token kirish, 300 token chiqish) Claude Sonnet 5.5 da taxminan $' + ((1000 * (500 * 2 + 300 * 10)) / 1e6).toFixed(2).replace('.', ',') + ', DeepSeek V4.1 Flash da taxminan $' + ((1000 * (500 * 0.15 + 300 * 0.6)) / 1e6).toFixed(2).replace('.', ',') + '.</li>';
+})();
+</script>
+</body>
+</html>

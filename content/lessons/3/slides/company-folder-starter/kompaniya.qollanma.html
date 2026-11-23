@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kompaniya papkasi: qanday ishlatish</title>
+<link rel="stylesheet" href="../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 2-dars</span><span class="pill">Qo‘llanma</span></div>
+<h1>Kompaniya papkasi: qanday ishlatish</h1>
+<p>Praktikum 3.0 · 2-dars · bu qo‘llanma <code>2-dars-kompaniya-papkasi.zip</code> ichida ham bor.</p>
+<h2>Bu nima</h2>
+<p><code>kompaniya/</code> - kompaniyangiz uchun bitta papka.
+Kurs davomida har bir To‘plam natijasi shu yerga <code>.md</code> fayl bo‘lib tushadi, Claude Code esa hammasini o‘qiydi.
+6-darsga borib unda suhbatlar, baholash, agent yo‘riqnomasi, sinovdagi vositaning o‘zi va natija raqamlari bo‘ladi.</p>
+<h2>Zip ichida nima bor</h2>
+<pre><code>praktikum/                   uy papkangizda (0-haftada yaratilgan)
+  kompaniya/                 sizning papkangiz
+    CLAUDE.md                kompaniya qoidalari (andoza, izohlari bilan)
+    hujjatlar/               rasmiy hujjatlaringiz: prays-list, shartnoma, ichki tartib
+    kit1-interviews/         To‘plam 1: suhbatlar va B shakllari
+    kit2-scoring/            To‘plam 2: baholash va matritsa
+    kit3-agent/              To‘plam 3: jarayon qadamlari va agent yo‘riqnomasi (3-dars)
+    kit4-people/             To‘plam 4: xodimlar va sinov to‘plami (4-dars)
+    kit5-pilot/              To‘plam 5: boshlang‘ich raqamlar, reja, haftalik raqamlar
+  skills/                    kurs skill’lari /kit1 ... /kit5 (8-mashqda o‘rnatiladi)
+  baraka-office/kompaniya/   to‘ldirilgan namuna: «Baraka Office» MChJ, shartli misol
+  yomon-namuna/              yomon CLAUDE.md va undagi 9 ta xato
+  natijalar/                 Claude Code’ning haqiqiy javoblari (namoyishlardan)
+  sahifalar/                 brauzerda ochiladi, internetsiz:
+    promptlar.html           hamma promptlar, «Nusxa olish» tugmasi bilan
+    mashqlar.html            8 ta mashq
+    uy-vazifasi.html         uy vazifasi
+    shpargalka.html          Claude Code shpargalkasi
+    lugat.html               lug‘at
+    kompaniya-qollanma.html  shu qo‘llanma
+  prompt-pack.md             promptlar, Claude o‘qiy oladigan ko‘rinishda
+  kompaniya.qollanma.md      shu qo‘llanma
+</code></pre>
+<p><code>ism-</code> bilan boshlanadigan fayllar - bitta xodim uchun andoza: nusxalab, nomini xodim ismiga o‘zgartirasiz (<code>dilnoza-form-b.md</code>).
+<code>/kit1</code> buni o‘zi qiladi.</p>
+<h2>Boshlashdan oldin</h2>
+<ul>
+<li>Claude Code o‘rnatilgan va Warp’da <code>claude</code> ochiladi (0-hafta).</li>
+<li>To‘plam 1 dagi B shakllaringiz <code>.md</code> fayl ko‘rinishida.</li>
+<li>Kompaniyangizning 2-4 ta rasmiy hujjati (prays-list, shartnoma namunasi, ichki tartib).
+  Maxfiy hujjat (pasport, karta, parollar) qo‘ymang.</li>
+</ul>
+<h2>Qadamlar</h2>
+<ol>
+<li>Zipni oching va ichidagilarni uy papkangizdagi <code>praktikum</code> papkasiga qo‘ying (0-haftada yaratgansiz).
+   macOS: zipni ikki marta bosing, chiqqan <code>praktikum</code> papkasi ichidagi hamma narsani (Cmd+A) uy papkangizdagi <code>praktikum</code> ga torting.
+   Windows: zipni o‘ng tugma bilan bosing, «Extract All» («Hammasini chiqarish»), joy: <code>C:\Users\&lt;ismingiz&gt;</code>.
+   «Hujjatlar» (Documents) ga qo‘ymang: Windows’da u ko‘pincha OneDrive ichida bo‘ladi.
+   Kurs papkasini tez ochish: Warp’da <code>cd ~/praktikum</code>, keyin <code>open .</code> (Windows: <code>explorer .</code>).</li>
+<li>B shakllaringizni <code>kompaniya/kit1-interviews/</code> ga, hujjatlaringizni <code>kompaniya/hujjatlar/</code> ga torting.</li>
+<li>Warp’da: <code>cd ~/praktikum/kompaniya</code> (macOS va Windows’da bir xil), keyin <code>claude</code>.
+   Xato chiqsa: <code>cd</code> deb yozing va <code>kompaniya</code> papkasini Finder yoki Explorer’dan Warp’ga torting.</li>
+<li><code>/init</code> deb yozing: Claude papkani o‘qib, <code>CLAUDE.md</code> andozasini to‘ldirishni taklif qiladi.
+   Taklifni o‘qing va rozi bo‘ling.</li>
+<li>Qolgan bo‘sh joylarni «Meni intervyu qil» prompti bilan to‘ldiring (<code>prompt-pack.md</code>, 6-prompt).</li>
+<li>Tekshiring: «Faqat CLAUDE.md ga tayanib javob ber: biz nima sotamiz, asosiy mijozimiz kim va qaysi tizimlarda ishlaymiz?»
+   To‘g‘ri javob - papka tayyor.</li>
+</ol>
+<h2>CLAUDE.md da har bir bo‘lim nima uchun</h2>
+<table>
+<thead>
+<tr>
+<th>Bo‘lim</th>
+<th>Nima yoziladi</th>
+<th>Qayerdan olasiz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kompaniya haqida</td>
+<td>Nima sotasiz, kimga, nechta xodim, qaysi bo‘limlar, ish haftasi, o‘rtacha soatbay haq, tizimlar</td>
+<td>O‘zingiz bilasiz; soatbay haq - buxgalterdan (oylik fondi / ish soatlari)</td>
+</tr>
+<tr>
+<td>Rasmiy hujjatlar</td>
+<td>Ziddiyat bo‘lsa, qaysi hujjat to‘g‘ri: narx, chegirma, muddat, kafolat</td>
+<td>Tasdiqlangan prays-list, shartnoma namunasi</td>
+</tr>
+<tr>
+<td>Hozirgi sinov jarayoni</td>
+<td>To‘plam 2 dagi B.1, kim ishlatadi, bo‘lim boshlig‘i</td>
+<td>6-mashq, uy vazifasidan keyin aniqlanadi</td>
+</tr>
+<tr>
+<td>Kim nimaga javob beradi</td>
+<td>Masala, odam, Telegram</td>
+<td>Ichki tartib yoki HR</td>
+</tr>
+<tr>
+<td>Qoidalar</td>
+<td>Kursning 6 ta qoidasi (o‘chirmang) va o‘zingiznikilar</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Kitlar</td>
+<td>O‘zgartirmang: skill’lar shu nomlarga tayanadi</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Kulrang izohlarni (izoh bloklari) Claude o‘qimaydi: ular siz uchun.
+Rasmiy hujjat: code.claude.com/docs/en/memory, 2026-11-03 da tekshirildi.</p>
+<h2>Kurs skill’larini o‘rnatish</h2>
+<p>8-mashqda, avval xavfsizlik tekshiruvidan keyin (<code>prompt-pack.md</code>, 20 va 21-promptlar):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>../skills ichidagi kit1, kit2, kit3, kit4, kit5 papkalarini shu papkadagi .claude/skills/ ichiga nusxala.
+Bor faylning ustiga yozma.
+Oxirida .claude/skills ichida nima borligini ko‘rsat.</pre></div>
+<p>Claude <code>.claude</code> papkasiga yozish uchun ruxsat so‘raydi: «Yes».
+Keyin <code>/</code> deb yozing: <code>kit1</code> ... <code>kit5</code> ro‘yxatda bo‘lishi kerak.
+Ko‘rinmasa: <code>/exit</code>, keyin yana <code>claude</code>.</p>
+<p>Qo‘lda (macOS, terminalda, <code>~/praktikum</code> ichida): <code>mkdir -p kompaniya/.claude/skills &amp;&amp; cp -R skills/kit* kompaniya/.claude/skills/</code>.</p>
+<h2>Namunalar</h2>
+<ul>
+<li>To‘ldirilgan papka: <code>baraka-office/kompaniya/</code> («Baraka Office» MChJ, shartli misol; undagi sanalar yakshanba guruhi bo‘yicha, shanba guruhi bir kun oldin): <code>CLAUDE.md</code> (izohlari bilan), uchta B shakli, To‘plam 2 natijasi va matritsa, <code>prd.md</code>, <code>tasks.md</code>, uy vazifasi <code>kit5-pilot/baseline.md</code>, o‘z skill’i <code>.claude/skills/suhbat-tahlili/</code>.</li>
+<li>Yomon <code>CLAUDE.md</code> va undagi 9 ta xato: <code>yomon-namuna/nima-xato.md</code>.</li>
+</ul>
+<h2>Ko‘p uchraydigan xatolar</h2>
+<table>
+<thead>
+<tr>
+<th>Xato</th>
+<th>Nima qilish kerak</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Papka «Yuklanmalar» (Downloads) da qoldi</td>
+<td>Tartiblashda yo‘qolib ketadi: uy papkangizdagi <code>praktikum</code> ga ko‘chiring</td>
+</tr>
+<tr>
+<td>Claude boshqa papkada ochildi</td>
+<td>Warp tepasidagi yo‘lga qarang: <code>kompaniya</code> bilan tugashi kerak</td>
+</tr>
+<tr>
+<td><code>CLAUDE.md</code> ga parol yoki token yozildi</td>
+<td>Darhol o‘chiring va parolni almashtiring; kalitlar faqat <code>.env</code> da</td>
+</tr>
+<tr>
+<td>Prays-list <code>CLAUDE.md</code> ichiga ko‘chirildi</td>
+<td><code>hujjatlar/</code> ga qo‘ying, <code>CLAUDE.md</code> da faqat nomi</td>
+</tr>
+<tr>
+<td>Kitlar bo‘limi o‘chirildi</td>
+<td>Andozadan qayta ko‘chiring: skill’lar fayllarni topa olmaydi</td>
+</tr>
+</tbody>
+</table>
+<h2>Tayyor bo‘lsa</h2>
+<ul>
+<li class="cb"><code>kompaniya/</code> uy papkangizdagi <code>praktikum</code> ichida, B shakllari va hujjatlar joyida.</li>
+<li class="cb"><code>CLAUDE.md</code> to‘ldirilgan, parolsiz, 200 qatordan qisqa.</li>
+<li class="cb">Claude tekshirish savoliga to‘g‘ri javob beradi.</li>
+<li class="cb">8-mashqdan keyin <code>/kit1</code> ... <code>/kit5</code> menyuda.</li>
+</ul>
+<div class="foot">Praktikum 3.0 · 2-dars · manba: day-2/company-folder-starter/kompaniya.qollanma.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

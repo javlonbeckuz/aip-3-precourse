@@ -1,0 +1,425 @@
+[
+ {
+  "slide": 1,
+  "problems": [],
+  "minFont": 38,
+  "minText": "Bugun: kompaniya papkangiz, To‘plam 2 va",
+  "brokenImages": [],
+  "words": 21,
+  "fontsOk": true
+ },
+ {
+  "slide": 2,
+  "problems": [],
+  "minFont": 32,
+  "minText": "kompaniya/",
+  "brokenImages": [],
+  "words": 44,
+  "fontsOk": true
+ },
+ {
+  "slide": 3,
+  "problems": [],
+  "minFont": 24,
+  "minText": "namoyish",
+  "brokenImages": [],
+  "words": 52,
+  "fontsOk": true
+ },
+ {
+  "slide": 4,
+  "problems": [],
+  "minFont": 26,
+  "minText": "kamida 2 ta .md fayl",
+  "brokenImages": [],
+  "words": 63,
+  "fontsOk": true
+ },
+ {
+  "slide": 5,
+  "problems": [],
+  "minFont": 34,
+  "minText": "Bugun shu ro‘yxatlardan bitta tanlov qil",
+  "brokenImages": [],
+  "words": 19,
+  "fontsOk": true
+ },
+ {
+  "slide": 6,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Kod degan so‘zni unuting. Bu dasturlash ",
+  "brokenImages": [],
+  "words": 27,
+  "fontsOk": true
+ },
+ {
+  "slide": 7,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Opus, Sonnet, Haiku",
+  "brokenImages": [],
+  "words": 46,
+  "fontsOk": true
+ },
+ {
+  "slide": 8,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Brauzer yoki telefon",
+  "brokenImages": [],
+  "words": 60,
+  "fontsOk": true
+ },
+ {
+  "slide": 9,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Har bir faylni yuklaysiz",
+  "brokenImages": [],
+  "words": 108,
+  "fontsOk": true
+ },
+ {
+  "slide": 10,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Qaysi papkada turganingiz",
+  "brokenImages": [],
+  "words": 36,
+  "fontsOk": true
+ },
+ {
+  "slide": 11,
+  "problems": [],
+  "minFont": 23,
+  "minText": "suhbat va fayllar joyida qoladi",
+  "brokenImages": [],
+  "words": 62,
+  "fontsOk": true
+ },
+ {
+  "slide": 12,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Qo‘lni ko‘taring: mentor keladi",
+  "brokenImages": [],
+  "words": 38,
+  "fontsOk": true
+ },
+ {
+  "slide": 13,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Jurnal bo‘yicha: «...ni qaytar»",
+  "brokenImages": [],
+  "words": 86,
+  "fontsOk": true
+ },
+ {
+  "slide": 14,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Claude boshqa dasturni boshqaradi",
+  "brokenImages": [],
+  "words": 38,
+  "fontsOk": true
+ },
+ {
+  "slide": 15,
+  "problems": [],
+  "minFont": 32,
+  "minText": "1. Xatoni skrinshot qiling",
+  "brokenImages": [],
+  "words": 39,
+  "fontsOk": true
+ },
+ {
+  "slide": 16,
+  "problems": [],
+  "minFont": 34,
+  "minText": "Atamalar lug‘atining pastida ham shu oda",
+  "brokenImages": [],
+  "words": 29,
+  "fontsOk": true
+ },
+ {
+  "slide": 17,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Claude kompaniyangizni bir marta o‘qiydi",
+  "brokenImages": [],
+  "words": 12,
+  "fontsOk": true
+ },
+ {
+  "slide": 18,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Raqamlar to‘g‘ri: shartnomadan 24 va 12 ",
+  "brokenImages": [],
+  "words": 77,
+  "fontsOk": true
+ },
+ {
+  "slide": 19,
+  "problems": [],
+  "minFont": 32,
+  "minText": "macOS: cd ~/Downloads",
+  "brokenImages": [],
+  "words": 82,
+  "fontsOk": true
+ },
+ {
+  "slide": 20,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Har bir to‘plam natijasi .md fayl bo‘lib",
+  "brokenImages": [],
+  "words": 59,
+  "fontsOk": true
+ },
+ {
+  "slide": 21,
+  "problems": [],
+  "minFont": 26,
+  "minText": "Windows: «Extract All», joy C:\\Users\\ism",
+  "brokenImages": [],
+  "words": 66,
+  "fontsOk": true
+ },
+ {
+  "slide": 22,
+  "problems": [],
+  "minFont": 32,
+  "minText": "«Faqat CLAUDE.md ga tayanib javob ber: b",
+  "brokenImages": [],
+  "words": 85,
+  "fontsOk": true
+ },
+ {
+  "slide": 23,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Sozlamalar → Your Claude → Instructions",
+  "brokenImages": [],
+  "words": 92,
+  "fontsOk": true
+ },
+ {
+  "slide": 24,
+  "problems": [],
+  "minFont": 40,
+  "minText": "B shakllaringizdan jarayonlar, ballar va",
+  "brokenImages": [],
+  "words": 13,
+  "fontsOk": true
+ },
+ {
+  "slide": 25,
+  "problems": [],
+  "minFont": 27,
+  "minText": "Takrorlanishi",
+  "brokenImages": [],
+  "words": 92,
+  "fontsOk": true
+ },
+ {
+  "slide": 26,
+  "problems": [],
+  "minFont": 29,
+  "minText": "A.2Takrorlanishi",
+  "brokenImages": [],
+  "words": 57,
+  "fontsOk": true
+ },
+ {
+  "slide": 27,
+  "problems": [],
+  "minFont": 24,
+  "minText": "Narx, qoldiq, chegirma, muddat savoli",
+  "brokenImages": [],
+  "words": 99,
+  "fontsOk": true
+ },
+ {
+  "slide": 28,
+  "problems": [],
+  "minFont": 32,
+  "minText": "/model sonnet (yoki haiku)",
+  "brokenImages": [],
+  "words": 154,
+  "fontsOk": true
+ },
+ {
+  "slide": 29,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Brauzerda raqamli nuqtalar",
+  "brokenImages": [],
+  "words": 110,
+  "fontsOk": true
+ },
+ {
+  "slide": 30,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Saralash, baholash, jadval",
+  "brokenImages": [],
+  "words": 43,
+  "fontsOk": true
+ },
+ {
+  "slide": 31,
+  "problems": [],
+  "minFont": 40,
+  "minText": "2:00 da tanlov va reja. Noutbukni yopman",
+  "brokenImages": [],
+  "words": 14,
+  "fontsOk": true
+ },
+ {
+  "slide": 32,
+  "problems": [],
+  "minFont": 32,
+  "minText": "/model opus",
+  "brokenImages": [],
+  "words": 110,
+  "fontsOk": true
+ },
+ {
+  "slide": 33,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Reja rejimi, PRD va kichik vazifalar ro‘",
+  "brokenImages": [],
+  "words": 12,
+  "fontsOk": true
+ },
+ {
+  "slide": 34,
+  "problems": [],
+  "minFont": 32,
+  "minText": "«Kim ishlatadi? Nima o‘zgaradi?»",
+  "brokenImages": [],
+  "words": 41,
+  "fontsOk": true
+ },
+ {
+  "slide": 35,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Shift+Tab ni «plan mode on» chiqquncha b",
+  "brokenImages": [],
+  "words": 44,
+  "fontsOk": true
+ },
+ {
+  "slide": 36,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Nima quriladi, kim uchun",
+  "brokenImages": [],
+  "words": 50,
+  "fontsOk": true
+ },
+ {
+  "slide": 37,
+  "problems": [],
+  "minFont": 32,
+  "minText": "/model opus",
+  "brokenImages": [],
+  "words": 116,
+  "fontsOk": true
+ },
+ {
+  "slide": 38,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Bir marta yozilgan yo‘riqnoma. Har safar",
+  "brokenImages": [],
+  "words": 11,
+  "fontsOk": true
+ },
+ {
+  "slide": 39,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Restoranning texnologik kartasi: taom ha",
+  "brokenImages": [],
+  "words": 60,
+  "fontsOk": true
+ },
+ {
+  "slide": 40,
+  "problems": [],
+  "minFont": 32,
+  "minText": "«bir uch yuz ming» = taxminan 300 000, 1",
+  "brokenImages": [],
+  "words": 87,
+  "fontsOk": true
+ },
+ {
+  "slide": 41,
+  "problems": [],
+  "minFont": 32,
+  "minText": "1C administratori internetdan bitta MCP ",
+  "brokenImages": [],
+  "words": 60,
+  "fontsOk": true
+ },
+ {
+  "slide": 42,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Avval Claude’ga o‘qiting: ../skills/kit2",
+  "brokenImages": [],
+  "words": 96,
+  "fontsOk": true
+ },
+ {
+  "slide": 43,
+  "problems": [],
+  "minFont": 26,
+  "minText": "egasi odatda ma’lumot qanchalik tartibsi",
+  "brokenImages": [],
+  "words": 50,
+  "fontsOk": true
+ },
+ {
+  "slide": 44,
+  "problems": [],
+  "minFont": 34,
+  "minText": "/kit5 baseline: oxirgi 2-4 hafta tarixda",
+  "brokenImages": [],
+  "words": 42,
+  "fontsOk": true
+ },
+ {
+  "slide": 45,
+  "problems": [],
+  "minFont": 32,
+  "minText": "@BotFather → /newbot",
+  "brokenImages": [],
+  "words": 45,
+  "fontsOk": true
+ },
+ {
+  "slide": 46,
+  "problems": [],
+  "minFont": 26,
+  "minText": "Excel, Google Sheets, Telegram guruhlari",
+  "brokenImages": [],
+  "words": 52,
+  "fontsOk": true
+ },
+ {
+  "slide": 47,
+  "problems": [],
+  "minFont": 34,
+  "minText": "Har biringiz aytasiz: uy vazifam va keyi",
+  "brokenImages": [],
+  "words": 32,
+  "fontsOk": true
+ }
+]

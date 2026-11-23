@@ -1,0 +1,19 @@
+$ git   # Claude Code 1-mashqda shu buyruqlarni bajaradi; GitHub o'rniga mahalliy nusxa
+
+$ git init -q -b main
+
+$ git add -A
+
+$ git commit -q -m "Savdo yordamchisi: 4-dars, serverga chiqishdan oldin"
+
+$ git remote add origin https://github.com/rustamov/baraka-pilot.git
+
+$ git push -q -u origin main
+
+$ git status --short --branch
+## main...origin/main
+
+$ git ls-files | grep -E '(^|/)\.env$|^runtime/'
+(bo'sh: kalit fayli repoda yo'q)
+$ git ls-files | wc -l
+104

@@ -1,0 +1,208 @@
+{
+ "canon_week1": {
+  "B1": 132,
+  "B3": 7,
+  "B5": 104,
+  "escalated": 21
+ },
+ "xatolar": "❌ Xato deb belgilangan javoblar:\n\n2026-12-15 #2e09e4b8\nSavol: Optima stolidan 5 ta kerak, narxi?\nJavob: «Optima» 5 dona: 2 150 000 x 5 = 10 750 000 so‘m.\nIzoh: 5 donadan ulgurji narx (1 890 000) bo‘lishi kerak edi\n\n2026-12-15 #ab195b47\nSavol: Start stoli 6 ta qancha bo‘ladi?\nJavob: «Start» 6 dona: 1 450 000 x 6 = 8 700 000 so‘m.\nIzoh: 6 dona - ulgurji narx (1 280 000) kerak edi\n\n2026-12-16 #c958a792\nSavol: ErgoPro omborda bormi?\nJavob: Ha, omborda bor (1C).\nIzoh: Ombor fayli 31 soat eski edi, mahsulot sotilgan ekan\n\n2026-12-16 #7c213c12\nSavol: 18 mln lik buyurtmaga chegirma bera olamanmi?\nJavob: Ha, 5% gacha bera olasiz.\nIzoh: Qoida: 20 000 000 so‘mdan oshsa; 18 mln da chegirma yo‘q\n\n2026-12-17 #e928d1d5\nSavol: Chirchiqqa yetkazish bepulmi?\nJavob: Ha, Toshkent viloyatiga yetkazish bepul.\nIzoh: KP dagi gap; shartnomada 8 000 so‘m/km; mijozga ketishidan oldin tasdiqlashda ushlandi\n\n2026-12-17 #ba30a818\nSavol: Kreslo kafolati qancha?\nJavob: Barcha kreslolarga 3 yil kafolat.\nIzoh: KP dagi gap; shartnomada mexanizmga 12 oy\n\n2026-12-18 #3f8803ea\nSavol: Senator kreslo omborda bormi?\nJavob: Ha, bor (1C).\nIzoh: Ombor fayli yana eski edi",
+ "hafta_docs": [
+  {
+   "t": "2026-12-20 10:20:00+05:00",
+   "origin": "reply",
+   "chat_id": 7100001,
+   "filename": "kit5-raqamlar-2026-12-20.md",
+   "bytes": 3739,
+   "caption": "���� Haftalik raqamlar: 2026-12-14 - 2026-12-20. Faylni 5-to���plam B shakliga ko���chiring."
+  },
+  {
+   "t": "2026-12-20 10:20:00+05:00",
+   "origin": "reply",
+   "chat_id": 7100001,
+   "filename": "kit5-raqamlar-2026-12-20.csv",
+   "bytes": 576,
+   "caption": ""
+  }
+ ],
+ "evals": {
+  "1-oldin": {
+   "passed": 7,
+   "total": 12,
+   "failed": [
+    "kafolat-kreslo",
+    "ulgurji-5-dona",
+    "ulgurji-6-dona",
+    "chegirma-18-mln",
+    "yetkazish-chirchiq"
+   ]
+  },
+  "2-kp-olib-tashlandi": {
+   "passed": 9,
+   "total": 12,
+   "failed": [
+    "ulgurji-5-dona",
+    "ulgurji-6-dona",
+    "chegirma-18-mln"
+   ]
+  },
+  "3-regressiya": {
+   "passed": 9,
+   "total": 12,
+   "failed": [
+    "chakana-start-2",
+    "chakana-ergopro-3",
+    "chegirma-18-mln"
+   ]
+  },
+  "4-keyin": {
+   "passed": 12,
+   "total": 12,
+   "failed": []
+  }
+ },
+ "escalation_tests": 5,
+ "canon_week2": {
+  "B1": 138,
+  "B3": 3,
+  "B5": 121,
+  "escalated": 14
+ },
+ "numbers": {
+  "1-hafta": {
+   "B1": 132,
+   "answered": 111,
+   "escalated": 21,
+   "B3": 7,
+   "B5": 104,
+   "errors": 0,
+   "cost": 0.67,
+   "wrong": [
+    {
+     "date": "2026-12-15",
+     "question": "Optima stolidan 5 ta kerak, narxi?",
+     "note": "5 donadan ulgurji narx (1 890 000) bo‘lishi kerak edi",
+     "found_by": "Malika",
+     "id": "2e09e4b8"
+    },
+    {
+     "date": "2026-12-15",
+     "question": "Start stoli 6 ta qancha bo‘ladi?",
+     "note": "6 dona - ulgurji narx (1 280 000) kerak edi",
+     "found_by": "Madina",
+     "id": "ab195b47"
+    },
+    {
+     "date": "2026-12-16",
+     "question": "ErgoPro omborda bormi?",
+     "note": "Ombor fayli 31 soat eski edi, mahsulot sotilgan ekan",
+     "found_by": "Madina",
+     "id": "c958a792"
+    },
+    {
+     "date": "2026-12-16",
+     "question": "18 mln lik buyurtmaga chegirma bera olamanmi?",
+     "note": "Qoida: 20 000 000 so‘mdan oshsa; 18 mln da chegirma yo‘q",
+     "found_by": "Malika",
+     "id": "7c213c12"
+    },
+    {
+     "date": "2026-12-17",
+     "question": "Chirchiqqa yetkazish bepulmi?",
+     "note": "KP dagi gap; shartnomada 8 000 so‘m/km; mijozga ketishidan oldin tasdiqlashda ushlandi",
+     "found_by": "Malika",
+     "id": "e928d1d5"
+    },
+    {
+     "date": "2026-12-17",
+     "question": "Kreslo kafolati qancha?",
+     "note": "KP dagi gap; shartnomada mexanizmga 12 oy",
+     "found_by": "Jamshid aka",
+     "id": "ba30a818"
+    },
+    {
+     "date": "2026-12-18",
+     "question": "Senator kreslo omborda bormi?",
+     "note": "Ombor fayli yana eski edi",
+     "found_by": "Madina",
+     "id": "3f8803ea"
+    }
+   ]
+  },
+  "2-hafta": {
+   "B1": 138,
+   "answered": 124,
+   "escalated": 14,
+   "B3": 3,
+   "B5": 121,
+   "errors": 0,
+   "cost": 0.7,
+   "wrong": [
+    {
+     "date": "2026-12-22",
+     "question": "Optima 8 dona jami qancha?",
+     "note": "Narx QQS bilan ekanini aytmadi; menejer mijozga aytishdan oldin so‘radi",
+     "found_by": "Malika",
+     "id": "774afa8f"
+    },
+    {
+     "date": "2026-12-23",
+     "question": "Staf mesh narxi qancha?",
+     "note": "«Staf mesh» deb yozilgan savolga boshqa kreslo narxini aytdi; Madina mijozga aytishdan oldin sezdi",
+     "found_by": "Madina",
+     "id": "343089c1"
+    },
+    {
+     "date": "2026-12-24",
+     "question": "12 mln lik buyurtmaga 3D chizma bepulmi?",
+     "note": "Qoida: 15 000 000 so‘mdan oshsa; 12 mln da 500 000 so‘m; mijozga aytilmadi",
+     "found_by": "Jamshid aka",
+     "id": "ab145043"
+    }
+   ]
+  }
+ },
+ "marks": {},
+ "docs": [
+  {
+   "t": "2026-12-20T10:20+05:00",
+   "chat": 7100001,
+   "filename": "kit5-raqamlar-2026-12-20.md",
+   "origin": "reply"
+  },
+  {
+   "t": "2026-12-20T10:20+05:00",
+   "chat": 7100001,
+   "filename": "kit5-raqamlar-2026-12-20.csv",
+   "origin": "reply"
+  },
+  {
+   "t": "2026-12-21T09:00+05:00",
+   "chat": 7100001,
+   "filename": "kit5-raqamlar-2026-12-21.md",
+   "origin": "own"
+  },
+  {
+   "t": "2026-12-21T09:00+05:00",
+   "chat": 7100001,
+   "filename": "kit5-raqamlar-2026-12-21.csv",
+   "origin": "own"
+  },
+  {
+   "t": "2026-12-26T20:00+05:00",
+   "chat": 7100001,
+   "filename": "kit5-raqamlar-2026-12-26.md",
+   "origin": "reply"
+  },
+  {
+   "t": "2026-12-26T20:00+05:00",
+   "chat": 7100001,
+   "filename": "kit5-raqamlar-2026-12-26.csv",
+   "origin": "reply"
+  }
+ ],
+ "llm_calls": 357,
+ "night_messages": {
+  "total": 46,
+  "off_hours": 19
+ }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7 testi: zal hisobi</title>
+<link rel="stylesheet" href="../../assets/ovd-dark.css">
+<style>
+  .ask{font-size:30px;line-height:1.3;margin:0 0 22px;}
+  .ask q{color:var(--acc);quotes:'«' '»';}
+  .chart{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:14px;align-items:end;height:460px;padding:20px 20px 0;position:relative;}
+  .col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:8px;}
+  .bar{width:100%;background:rgba(var(--acc-rgb),.35);border-radius:6px 6px 0 0;transition:height .25s;min-height:2px;}
+  .col.top .bar{background:var(--acc);box-shadow:0 0 18px rgba(var(--acc-rgb),.5);}
+  .cnt{font-family:var(--mono);font-size:24px;color:var(--ink-2);}
+  .col.top .cnt{color:var(--ink);}
+  .pct{font-family:var(--mono);font-size:15px;color:var(--ink-3);}
+  .fair{position:absolute;left:20px;right:20px;border-top:2px dashed rgba(255,255,255,.35);}
+  .fair span{position:absolute;right:0;top:-26px;font-family:var(--mono);font-size:14px;color:var(--ink-3);}
+  .keys{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:14px;padding:12px 20px 0;}
+  .keys button{font:600 34px var(--sans);padding:14px 0;background:#0b0b10;color:var(--ink);border:1px solid var(--line-strong);border-radius:10px;cursor:pointer;}
+  .keys button:hover{border-color:var(--acc);}
+  .row{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:22px;}
+  .total{font-size:26px;color:var(--ink-2);}
+  .total b{color:var(--ink);font-size:34px;}
+  .legend{font-family:var(--mono);font-size:14px;color:var(--ink-3);margin-top:6px;letter-spacing:.04em;}
+  .verdict{font-size:30px;font-weight:620;color:var(--acc);min-height:40px;}
+  @media (max-width:700px){.chart{height:280px;gap:6px;padding:12px 8px 0;}.keys{gap:6px;padding:10px 8px 0;}.keys button{font-size:20px;padding:12px 0;}.cnt{font-size:15px;}.pct{font-size:11px;}.ask{font-size:20px;}.verdict{font-size:20px;}.total{font-size:18px;}.total b{font-size:24px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div>Praktikum 3.0 // 1-dars <span class="pill">7 testi</span></div><div>Raqam tugmalari: 1-9, 0 = 10 · Shift = ayirish · R = tozalash</div></div>
+  <h1>7 testi: zal hisobi</h1>
+  <p class="ask">Istalgan AI’dan so‘rang: <q>1 dan 10 gacha bitta son ayt. Faqat son.</q> Javobni stolingiz mentoriga ayting.</p>
+  <div class="helpbar">
+    <button class="btn ex" id="exBtn">Namuna bilan ochish</button>
+    <button class="btn" id="howBtn">Qanday ishlatish</button>
+  </div>
+  <details class="howto" id="howto">
+    <summary>Qanday ishlatish</summary>
+    <div class="hbody">
+      <div><h3>Kerak</h3><ul><li>Har kimning telefonida yoki noutbukida istalgan AI chat.</li><li>Har stolda bitta sanovchi (mentor).</li></ul>
+        <h3 style="margin-top:14px">Qadamlar</h3><ol><li>Hamma bir xil savolni so‘raydi: «1 dan 10 gacha bitta son ayt. Faqat son.»</li><li>Mentor stolidagi javoblarni sanab aytadi.</li><li>Instruktor sonni bosadi: tugma yoki klaviatura (0 = 10, Shift = ayirish, R = tozalash).</li></ol></div>
+      <div><h3>Natijani o‘qish</h3><ul><li><b>Uzuq chiziq</b>: agar AI tasodifiy tanlaganda, har bir son taxminan shu balandlikda bo‘lardi (10%).</li><li><b>Baland ustun</b>: modellar bir xil javobga yig‘iladi. Bu tanlov emas, eng ehtimolli javobni taxmin qilish.</li></ul></div>
+      <div><h3>Ko‘p uchraydigan xato</h3><ul><li>Bir odamning javobini ikki marta sanash.</li><li>«Har doim 7 chiqadi» deb va’da qilish: ba’zan 3 yoki 5 ko‘p chiqadi; muhimi, javoblar bir joyga yig‘iladi.</li></ul>
+        <h3 style="margin-top:14px">Tayyor</h3><p style="margin:0">Zal «model tanlamaydi, taxmin qiladi» degan xulosani o‘z ko‘zi bilan ko‘radi.</p></div>
+    </div>
+  </details>
+  <div class="exnote" id="exnote"><b>Namuna (shartli raqamlar, o‘lchangan emas):</b> 40 kishilik zalda 7 soni 22 marta, 3 soni 7 marta chiqdi, qolganlari 1-3 tadan. Yettining ustuni uzuq chiziqdan 5 barobar baland: javoblar tasodifiy emas, bir joyga yig‘ilgan. Darsda shu xulosani zalning o‘z raqamlari bilan aytasiz.</div>
+  <div class="card">
+    <div class="chart" id="chart"><div class="fair" id="fair"></div></div>
+    <div class="keys" id="keys"></div>
+  </div>
+  <div class="row">
+    <div class="total">Jami javob: <b id="tot">0</b><div class="legend">Uzuq chiziq: tasodifiy bo‘lsa, har biri 10%</div></div>
+    <div class="verdict" id="verdict"></div>
+    <div><button class="btn" id="undo">Oxirgisini bekor qilish</button> <button class="btn" id="reset">Tozalash</button></div>
+  </div>
+  <div class="foot src">Model son tanlamaydi: u eng ko‘p uchraydigan javobni taxmin qiladi. Ssenariy: demos/scripts/01-pick-a-number.md</div>
+</div>
+<script>
+(function () {
+  var KEY = 'd1:pick-a-number';
+  var counts = [0,0,0,0,0,0,0,0,0,0], history = [];
+  try { var saved = JSON.parse(localStorage.getItem(KEY) || 'null'); if (saved && saved.length === 10) counts = saved; } catch (e) {}
+  var chart = document.getElementById('chart'), keys = document.getElementById('keys');
+  for (var i = 1; i <= 10; i++) {
+    chart.insertAdjacentHTML('beforeend', '<div class="col" id="c' + i + '"><div class="cnt">0</div><div class="pct"></div><div class="bar"></div></div>');
+    keys.insertAdjacentHTML('beforeend', '<button data-n="' + i + '">' + i + '</button>');
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(counts)); } catch (e) {} }
+  function add(n, d) { if (counts[n - 1] + d < 0) return; counts[n - 1] += d; if (d > 0) history.push(n); save(); draw(); }
+  function draw() {
+    var total = counts.reduce(function (a, b) { return a + b; }, 0), max = Math.max.apply(null, counts), h = chart.clientHeight - 90;
+    var scaleMax = Math.max(max, total * 0.1, 1);
+    counts.forEach(function (c, i) {
+      var col = document.getElementById('c' + (i + 1));
+      col.querySelector('.bar').style.height = Math.round(h * c / scaleMax) + 'px';
+      col.querySelector('.cnt').textContent = c;
+      col.querySelector('.pct').textContent = total ? Math.round(100 * c / total) + '%' : '';
+      col.classList.toggle('top', c > 0 && c === max);
+    });
+    var fair = document.getElementById('fair');
+    fair.style.bottom = Math.round(h * (total * 0.1) / scaleMax) + 'px';
+    fair.style.display = total ? 'block' : 'none';
+    document.getElementById('tot').textContent = total;
+    var top = counts.indexOf(max) + 1;
+    document.getElementById('verdict').textContent = total >= 5 ? 'Eng ko‘p: ' + top + ' (' + Math.round(100 * max / total) + '%)' : '';
+  }
+  keys.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) add(+b.dataset.n, e.shiftKey ? -1 : 1); });
+  document.getElementById('undo').onclick = function () { var n = history.pop(); if (n) { counts[n - 1]--; save(); draw(); } };
+  document.getElementById('reset').onclick = function () { counts = [0,0,0,0,0,0,0,0,0,0]; history = []; save(); draw(); };
+  window.addEventListener('keydown', function (e) {
+    if (/^[0-9]$/.test(e.key)) { var n = e.key === '0' ? 10 : +e.key; add(n, e.shiftKey ? -1 : 1); }
+    else if (e.code && /^Digit[0-9]$/.test(e.code) && e.shiftKey) { var m = e.code === 'Digit0' ? 10 : +e.code.slice(5); add(m, -1); }
+    else if (e.key === 'r' || e.key === 'R') document.getElementById('reset').click();
+    else if (e.key === 'Backspace') document.getElementById('undo').click();
+  });
+  window.addEventListener('resize', draw);
+  function openExample() {
+    counts = [1, 0, 7, 2, 3, 1, 22, 2, 1, 1]; history = [];
+    draw();
+    document.getElementById('exnote').classList.add('on');
+  }
+  document.getElementById('exBtn').onclick = openExample;
+  document.getElementById('howBtn').onclick = function () { var d = document.getElementById('howto'); d.open = !d.open; };
+  window.openExample = openExample;
+  draw();
+  if (location.hash === '#namuna') openExample();
+})();
+</script>
+</body>
+</html>

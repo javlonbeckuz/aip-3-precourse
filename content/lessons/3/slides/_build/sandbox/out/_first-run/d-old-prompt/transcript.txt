@@ -1,0 +1,92 @@
+== d | model opus | mode plan | 2026-11-03 02:55 | claude 2.1.316 (Claude Code)
+== prompt:
+AI yo‘q deb tasavvur qilaylik.
+CLAUDE.md dagi «Hozirgi sinov jarayoni» uchun yordamchi vosita qurmoqchiman.
+Bunday ishni odatda qaysi mutaxassislar qilardi va ular menga qanday savollar berardi?
+Shu mutaxassislar nomidan menga savollar ber, bir xabarda 3 tadan ko‘p emas.
+Savollar tugagach, prd.md uchun reja tuz: nima quriladi, kim uchun, nima kiradi, nima kirmaydi, qaysi ma’lumot manbalari, muvaffaqiyat qanday o‘lchanadi, xavflar.
+Keyin shu PRDni kichik dasturchi tushunadigan 10-15 ta kichik vazifaga bo‘l: tasks.md.
+Hozircha kod yozma.
+
+(Sinov uchun: men javob bera olmayman. Savollarga o‘zing CLAUDE.md, hujjatlar/ va kit2-scoring/ dan javob top; topolmasang [?] qoldir va savolni PRD oxiridagi «Ochiq savollar» bo‘limiga yoz.)
+== output:
+Reja tayyor. Hozir reja rejimidaman: `prd.md` va `tasks.md` hali yaratilmagan, kod ham yozilmagan. Siz tasdiqlasangiz, loyiha papkasida ikkita yangi fayl yarataman. Ular hozir yo‘q, shuning uchun hech narsaning ustidan yozilmaydi.
+
+## Bu ishni kim qilardi
+
+AI bo‘lmasa, bunday vositani quyidagi mutaxassislar qurardi:
+- biznes-tahlilchi;
+- mahsulot menejeri;
+- savdo eksperti (ROP);
+- ma’lumotlar muhandisi (1C bilan ishlaydi);
+- UX dizayner;
+- sinovchi;
+- xavfsizlik va huquq mutaxassisi.
+
+Ularning savollari quyida, har xabarda 3 tadan. Javoblarni o‘zim hujjatlardan topdim.
+
+**1-xabar (tahlilchi va mahsulot menejeri)**
+1. Kim ishlatadi? Call-markaz operatorlari va sotuv menejerlari. Bu ichki yordamchi, mijozga o‘zi yozmaydi (CLAUDE.md). Sotuvchilar soni taxminan 5 [?].
+2. Qancha savol keladi? Kuniga 15 + 5 + 8 = 28 ta savol, ustiga taxminan 30 ta Instagram va Telegram xabari. Haftasiga 15,2 soat ketadi: 6,0 + 3,0 + 3,0 + 3,2 (form-a-scoring.md).
+3. Hozir qayerda qiynalishadi? Operator javobni menejerdan 5-10 daqiqa kutadi. ROP haftasiga 48 ta savolga javob beradi: 48 × 4 / 60 = 3,2 soat.
+
+**2-xabar (savdo eksperti va ma’lumotlar muhandisi)**
+4. Hujjatlar zid bo‘lsa, qaysi biri to‘g‘ri? Prays-list va shartnoma to‘g‘ri. KP dagi «36 oy kafolat» va «viloyatga bepul yetkazish» xato. «3 kun yoki 7 ish kuni» va «12-15% yoki 10%» bo‘yicha direktorning yozma qarori hali yo‘q [?].
+5. Ombor qoldig‘i qayerdan olinadi? 1C dan, kuniga bir marta eksport qilinadi [?]. Kim eksport qilishi va fayl formati noma’lum [?].
+6. Prays-list qachongacha amal qiladi? 31-dekabrgacha. 2027-yil prays-listi qachon chiqishi noma’lum [?].
+
+**3-xabar (UX dizayner va sinovchi)**
+7. Vosita qayerda ishlaydi: veb-sahifada, Telegramda yoki AmoCRM ichidami? Hujjatlarda yozilmagan [?]. Birinchi sinov uchun oddiy ichki veb-sahifani taklif qilaman.
+8. Javob qanday ko‘rinishda bo‘ladi? Javob qoralamasi, uning manbasi va formulasi beriladi. Mijozga yoziladigan matn CLAUDE.md qoidalariga mos bo‘ladi.
+9. Qaysi savollar bilan sinaymiz? `kit4-people/test-set.md` fayli hali yo‘q. Necha foiz to‘g‘ri javob yetarli ekani ham belgilanmagan [?].
+
+**4-xabar (xavfsizlik va pilot rahbari)**
+10. Qaysi ma’lumot tashqariga chiqmasligi kerak? Narx jadvallari va mijozlar bazasi (hujjat 04 dagi «qizil chiziq»). Kalitlar faqat `.env` faylida turadi.
+11. Vosita javobni bilmasa nima qiladi? «Kim nimaga javob beradi» jadvalidagi mas’ul odamga yo‘naltiradi.
+12. Pilot qancha davom etadi va boshlang‘ich raqamlar qayerda? `kit5-pilot/` papkasi hali yo‘q [?]. Soatbay haq 40 000 so‘m [?].
+
+## prd.md da nima bo‘ladi
+
+- **Nima quriladi:** «Savdo yordamchisi». U javob qoralamasini manba va formula bilan beradi, odam tekshirib o‘zi yuboradi.
+- **Kim uchun:** operatorlar va sotuvchilar. Javobgar - ROP.
+- **Nima kiradi:** narx (1-4 dona yoki 5+ dona), tayyor paketlar, chegirma darajasi, yetkazish muddati, yetkazish narxi (shahar, km, qavat), kafolat, to‘lov tartibi, 3D loyiha, ombor qoldig‘i va mas’ul odamga yo‘naltirish.
+- **Nima kirmaydi:** mijozga avtomatik yozish, chegirmani tasdiqlash, tijoriy taklif (KP), lid qabul qilish, AmoCRM ga yozish.
+- **Ma’lumot manbalari:** `hujjatlar/01` va `03`, CLAUDE.md, 1C eksporti [?]. KP manba emas, faqat ziddiyatlar ro‘yxati sifatida ishlatiladi.
+- **Muvaffaqiyat o‘lchovi** (taxminiy maqsadlar, tasdiqlanishi kerak):
+  - kutish vaqti 1 daqiqagacha [?];
+  - sinov savollarida 95% dan ko‘p to‘g‘ri javob [?];
+  - taqiqlangan va’da 0 ta;
+  - ROP ga savollar haftasiga 48 tadan 10 tagacha [?];
+  - tejalgan pul: 15,2 × 0,5 × 40 000 = 304 000 so‘m/hafta [?]. Bu vositaning 50% savolni yopishi taxmin qilingan holat.
+- **Xavflar:**
+  - ziddiyatlar bo‘yicha qaror yo‘q;
+  - qoldiq kun ichida eskiradi;
+  - vosita raqam to‘qishi mumkin;
+  - xodimlar eski odat bilan ROP ga yozaveradi;
+  - narx jadvali tashqi xizmatga yuborilishi mumkin;
+  - prays-list 31-dekabrdan keyin eskiradi.
+- **Ochiq savollar:** yuqoridagi barcha [?]. Hujjatlar o‘qilganda yana uchta savol chiqdi:
+  - ulgurji narxdan yana chegirma beriladimi;
+  - paketlarga chegirma beriladimi;
+  - «5+ dona» har bir mahsulot bo‘yicha sanaladimi yoki butun buyurtma bo‘yicha.
+
+## tasks.md dagi 14 ta vazifa
+
+Har bir vazifada «tayyor» mezoni yozilgan:
+1. Papka tuzilmasi va `.env.example` (faqat kalit nomi).
+2. Prays-listni `mahsulotlar.json` ga ko‘chirish.
+3. Qoidalarni `qoidalar.json` ga yozish, har biriga manba bilan.
+4. Narx hisobi.
+5. Chegirma darajasi.
+6. Yetkazish narxi (4-6 vazifalar testlari bilan).
+7. 1C qoldiq faylini o‘qish va eskirganini ogohlantirish.
+8. `instructions.md` faylini yuklash.
+9. Til modelini chaqirish, javobda manba majburiy.
+10. Taqiqlangan so‘z va va’dalarni tekshirish.
+11. Javob topilmasa mas’ul odamga yo‘naltirish.
+12. Ichki veb-sahifa.
+13. Jurnal va haftalik raqamlar.
+14. Sinov savollarini avtomatik tekshirish.
+
+To‘liq reja: `/Users/xb21/.claude/plans/ai-yo-q-deb-tasavvur-async-koala.md`. Tasdiqlasangiz, `prd.md` va `tasks.md` ni yarataman.
+== exit 0

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kompaniya bilim bazasi: Gemini Notebook bilan</title>
+<link rel="stylesheet" href="../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 1-dars</span><span class="pill">Tarqatma</span></div>
+<h1>Kompaniya bilim bazasi: Gemini Notebook bilan</h1>
+<p>1-dars tarqatmasi.
+Praktikum 2.0 dagi «Korxona bilimlar bazasi» tarqatmasining yangilangan nusxasi.
+NotebookLM 2026-yil iyulda Gemini Notebook deb qayta nomlandi; manzil: notebook.google.com.</p>
+<p><strong>Qanday foydalanish:</strong> o‘z kompaniyangiz uchun daftar ochayotganda yoningizda tursin: 3-bo‘limdagi to‘rt qadamni ketma-ket bajaring, 4-bo‘limdagi promptlarni nusxalang.
+Baraka Office hujjatlari bilan olingan haqiqiy javoblar va ularni qanday tekshirish: <code>notebooklm-exercise/namuna-natijalar.md</code>.</p>
+<h2>1. Nega oddiy chat yetmaydi</h2>
+<p>Oddiy chat internetdan o‘rgangan umumiy bilimi bilan javob beradi.
+Sizning narxlaringiz, shartnomangiz yoki ichki qoidangizni bilmaydi va bilmasa ham ishonch bilan javob berishi mumkin.</p>
+<p>RAG (manbaga tayanish) boshqacha ishlaydi:</p>
+<ol>
+<li>Siz hujjatlarni yuklaysiz.</li>
+<li>Savol bersangiz, tizim avval hujjatlardan kerakli joyni qidiradi.</li>
+<li>Faqat topilgan matn asosida javob yozadi va manba raqamini ko‘rsatadi.</li>
+</ol>
+<p>Bu ochiq kitob imtihoni: javob kitobda bo‘lsa topadi, bo‘lmasa «hujjatlarda yo‘q» deydi.</p>
+<h2>2. Gemini Notebook bugun (2026-yil noyabr)</h2>
+<table>
+<thead>
+<tr>
+<th>Qism</th>
+<th>Nima qiladi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sources (manbalar)</td>
+<td>PDF, Word, Markdown, CSV, Google Docs, audio, veb-sahifa, YouTube; har biri 200 MB gacha</td>
+</tr>
+<tr>
+<td>Chat</td>
+<td>Faqat manbalardan javob, har gapda bosiladigan manba raqami</td>
+</tr>
+<tr>
+<td>Studio</td>
+<td>Audio Overview, Video Overview, Mind Map, hisobotlar, Flashcards, Quiz, Slide Deck, Infographic</td>
+</tr>
+</tbody>
+</table>
+<p>Bepul tarif: 100 ta daftar, har birida 50 tagacha manba; limit tugasa, bir necha soatdan keyin yoki ertaga davom ettiring.
+O‘zbek tili rasmiy javob tillari ro‘yxatida hali yo‘q: audio uchun rus yoki ingliz tilini tanlang.
+Chat esa o‘zbekcha savolga odatda o‘zbekcha javob beradi (3-noyabr sinovida shunday bo‘ldi).</p>
+<h2>3. To‘rt qadam</h2>
+<ol>
+<li><strong>Yig‘ing.</strong> Bitta mavzu uchun bitta daftar: narxlar, shartnoma shabloni, ichki tartib, yo‘riqnomalar.
+   Maxfiy ma’lumot yuklanmaydi: mijoz yoki bemor ro‘yxati, tashxis va tahlil natijalari, pasport, maosh varag‘i, parollar.</li>
+<li><strong>Ziddiyatni toping.</strong> Birinchi savol har doim shu: hujjatlar bir-biriga zid joyi bormi?
+   Shartnoma 7 kun desa, sotuvchi 3 kun va’da qilsa, mijoz baribir norozi bo‘ladi.</li>
+<li><strong>Savol bering.</strong> Har javobdagi manba raqamini bosing va asl matnni o‘qing.</li>
+<li><strong>Natija yarating.</strong> Yangi xodim uchun Quiz, rahbar uchun qisqa hisobot, mijoz uchun savol-javoblar.</li>
+</ol>
+<h2>4. Tayyor promptlar</h2>
+<p>Ziddiyatlar:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Yuklangan barcha hujjatlarni solishtirib chiq.
+Raqamlar, muddatlar, narxlar, chegirmalar, kafolat va ichki qoidalar bir-biriga zid kelgan joylarni top.
+Har birini jadval qil: mavzu, 1-manba nima deydi, 2-manba nima deydi, ikkala manbadan iqtibos, biznes uchun xavfi.
+Manbada yo‘q narsani to‘qima.</pre></div>
+<p>Yangi xodim uchun:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Yangi xodim birinchi haftada bilishi shart bo‘lgan 10 ta qoidani ro‘yxat qil va har biriga manba ko‘rsat.
+Keyin bilimini tekshirish uchun 5 ta amaliy savol tuz, to‘g‘ri javoblari bilan.</pre></div>
+<p>Mijoz uchun:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Mijozlar eng ko‘p beradigan 5 ta savolga hujjatlarga asoslangan qisqa javob yoz.
+Har javobga manba ko‘rsat. Ichki xodim ismlarini yozma.</pre></div>
+<h2>5. Misollar</h2>
+<p><strong>HR bilim bazasi.</strong>
+HR rahbari bilan bir soatlik suhbatni telefonga yozib, daftarga yuklaysiz: ta’til, ish vaqti, sinov muddati qoidalari.
+Yangi xodim savolini HR’ni bezovta qilmasdan shu yerdan so‘raydi.</p>
+<p><strong>Servis markazi.</strong>
+30 xil uskunaning PDF yo‘riqnomalari bitta daftarda.
+Viloyatdagi usta «M400 da uchta qizil chiroq yonyapti» deb yozadi va yo‘riqnomaning kerakli sahifasini oladi.</p>
+<p><strong>Baraka Office (haqiqiy sinov, 3-noyabr).</strong>
+8 ta hujjat yuklangan daftarda ziddiyat prompti 8 ta ziddiyatni topdi: kafolat 36 oy va 12 oy, yetkazish 3 va 7 kun, chegirma 5-10% va 12-15%, sotuv rejasi 100 va 120 mln so‘m.
+Har biri bitta boshqaruv qarori: qaysi hujjat to‘g‘ri va xodimlarga kim aytadi.</p>
+<p><strong>Mijoz shikoyatlari.</strong>
+Bir oylik shikoyat matnlari yuklanadi va so‘raladi: mijozlar eng ko‘p nimadan norozi?
+Natija: taxmin emas, manbali ro‘yxat.
+Maqsad mahsulot va jarayonni yaxshilash, xodimlarni baholash emas.</p>
+<h2>6. O‘zbekcha raqamlarga ehtiyot bo‘ling</h2>
+<p>Ovozni matnga o‘girish o‘zbekcha taxminiy raqamlarda adashadi.</p>
+<blockquote>
+<p><strong>Audio:</strong> «Aka, bu ishga bir uch-to‘rt yuz ming bersangiz yetadi.» (taxminan 300-400 ming so‘m)
+<strong>Matn:</strong> «1 300 000 so‘m»</p>
+</blockquote>
+<p>Audiodan yaratilgan bilim bazasidagi har bir summa, sana va raqamni manba raqami orqali asl matn bilan, kerak bo‘lsa audio bilan solishtiring.</p>
+<h2>O‘zingizni tekshiring</h2>
+<ul>
+<li class="cb">Oddiy chat va manbaga tayanadigan javob farqini tushuntira olaman.</li>
+<li class="cb">Hujjat yuklagach, birinchi navbatda ziddiyatlarni nega qidirishni bilaman.</li>
+<li class="cb">Har javobdagi manba raqamini bosib tekshiraman.</li>
+<li class="cb">Audiodan olingan raqamlarni ko‘r-ko‘rona qabul qilmayman.</li>
+</ul>
+<div class="foot">Praktikum 3.0 · 1-dars · 21-noyabr (shanba) / 22-noyabr (yakshanba) 2026 · manba: day-1/handouts/src/bilimlar-bazasi.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

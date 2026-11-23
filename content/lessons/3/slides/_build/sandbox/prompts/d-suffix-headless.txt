@@ -1,0 +1,2 @@
+
+(Sinov uchun: men javob bera olmayman. Savollarga o‘zing CLAUDE.md, hujjatlar/ va kit2-scoring/ dan javob top; topolmasang [?] qoldir va savolni PRD oxiridagi «Ochiq savollar» bo‘limiga yoz.)

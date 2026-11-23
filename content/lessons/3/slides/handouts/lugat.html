@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2-dars lug‘ati: Claude Code va birinchi jarayon</title>
+<link rel="stylesheet" href="../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 2-dars</span><span class="pill">Lug‘at</span></div>
+<h1>2-dars lug‘ati: Claude Code va birinchi jarayon</h1>
+<p>Qalin yozilgan 7 ta atama darsda jonli ko‘rsatiladi.
+Qolganlari - ma’lumotnoma: o‘z ishingizda uchraganda shu yerdan qarang.
+Atama tushunarsiz bo‘lsa, Claude’dan so‘rang: «[atama] nima? 5 yoshli bolaga tushuntir».</p>
+<h2>Claude va Claude Code</h2>
+<table>
+<thead>
+<tr>
+<th>Atama</th>
+<th>Oddiy so‘z bilan</th>
+<th>O‘xshatish</th>
+<th>Biznes uchun nima</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Harness</strong></td>
+<td>Model atrofidagi dastur: unga fayl o‘qish, buyruq bajarish, brauzer ochish imkonini beradi</td>
+<td>Bitta dvigatel, har xil mashina</td>
+<td>Vosita tanlovi model tanlovi kabi muhim</td>
+</tr>
+<tr>
+<td><strong>Claude ilovasi, Claude desktop, Claude Code</strong></td>
+<td>Bitta miya, uch eshik. Ilova: chat va uzoq vazifalar (sobiq Cowork endi shu oynada). Desktop: shular va Code bo‘limi. Claude Code: kompyuteringizdagi papka ichida ishlaydi</td>
+<td>Bir oshpaz: ovqatni olib keladi, oshxonaga kiradi yoki sizning uyingizda pishiradi</td>
+<td>Kompaniya ma’lumoti diskda, yuzlab faylda: Claude Code ularni yuklamasdan ochadi</td>
+</tr>
+<tr>
+<td>Agent (agentlik)</td>
+<td>Vazifani qadamlarga bo‘lib, o‘zi bajaradi va natijani tekshiradi</td>
+<td>«Desktop’ni tartibga keltir»</td>
+<td>U faqat javob bermaydi, ish qiladi</td>
+</tr>
+<tr>
+<td>Terminal, CLI, Warp</td>
+<td>Kompyuter bilan matn orqali gaplashadigan oyna. Warp - qulay terminal: papkani ko‘rsatadi, .md fayllarni chiroyli ochadi</td>
+<td>«Bu ham chat oynasi»</td>
+<td>Qora ekrandan qo‘rqmaslik</td>
+</tr>
+<tr>
+<td>Ishchi papka</td>
+<td>Claude Code hozir ishlayotgan papka; yo‘li oyna tepasida ko‘rinadi</td>
+<td>Ish stoli</td>
+<td>Har loyiha o‘z papkasida</td>
+</tr>
+<tr>
+<td>.md fayl</td>
+<td>Oddiy matn, oddiy belgilar bilan bezatilgan (sarlavha, jadval)</td>
+<td>Daftar varag‘i</td>
+<td>Kursdagi hamma narsa .md da saqlanadi, Claude uni oson o‘qiydi</td>
+</tr>
+</tbody>
+</table>
+<h2>Kompaniya papkasi va xotira</h2>
+<table>
+<thead>
+<tr>
+<th>Atama</th>
+<th>Oddiy so‘z bilan</th>
+<th>O‘xshatish</th>
+<th>Biznes uchun nima</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CLAUDE.md</strong></td>
+<td>Kompaniya papkasidagi qoidalar daftari: Claude har sessiya boshida o‘qiydi</td>
+<td>Restoranning oshpazlar uchun ichki qoidalari</td>
+<td>Kompaniyangizni bir marta yozasiz, har safar tushuntirmaysiz</td>
+</tr>
+<tr>
+<td>Global ko‘rsatmalar</td>
+<td>Har suhbatga tegishli qoidalar: uzun tire yo‘q, ortiqcha gap yo‘q, xato bo‘lsam ayt, hozir 2026-yil</td>
+<td>Shaxsiy kotibga bir marta aytilgan odatlaringiz</td>
+<td>Maqtov va eski yil bilan qidirish to‘xtaydi</td>
+</tr>
+<tr>
+<td>Ichki CLAUDE.md</td>
+<td>Pastki papkadagi kichik CLAUDE.md: faqat Claude shu papkada ishlaganda o‘qiladi</td>
+<td>Bo‘lim qoidalari kompaniya qoidalari ichida</td>
+<td>Asosiy fayl qisqa qoladi</td>
+</tr>
+<tr>
+<td><code>/init</code></td>
+<td>Claude papkani o‘qib, CLAUDE.md qoralamasini yozadi</td>
+<td>Yangi xodim birinchi kuni hujjatlarni o‘qib chiqadi</td>
+<td>Tez boshlash; keyin o‘zingiz tuzatasiz</td>
+</tr>
+<tr>
+<td>Avtomatik xotira</td>
+<td>Claude Code tuzatishlaringiz haqida o‘zi qisqa qayd yuritadi; <code>/memory</code> da ko‘rinadi</td>
+<td>Kotibning o‘z daftarchasi</td>
+<td>Foydali, lekin CLAUDE.md o‘rnini bosmaydi: nimani yozishini siz boshqarmaysiz</td>
+</tr>
+</tbody>
+</table>
+<h2>Reja</h2>
+<table>
+<thead>
+<tr>
+<th>Atama</th>
+<th>Oddiy so‘z bilan</th>
+<th>O‘xshatish</th>
+<th>Biznes uchun nima</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Reja rejimi (plan mode)</strong></td>
+<td>Claude faqat o‘ylaydi, savol beradi va reja yozadi; siz tasdiqlamaguncha hech narsani o‘zgartirmaydi. Shift+Tab yoki <code>/plan</code></td>
+<td>Qurilishdan oldin loyiha</td>
+<td>Rejasiz qurish - 9 qavatli binoga keyin quvur o‘tkazish</td>
+</tr>
+<tr>
+<td><strong>PRD</strong></td>
+<td>Mahsulot talablari hujjati: nima quriladi, kim uchun, nima kiradi va kirmaydi, ma’lumot manbalari, o‘lchov, xavflar</td>
+<td>Binoning loyiha chizmasi; texnik topshiriq (TZ)</td>
+<td>Sizga dastur sotayotganlardan ham shuni so‘rang</td>
+</tr>
+<tr>
+<td>Vazifalar ro‘yxati</td>
+<td>PRD ni kichik dasturchi tushunadigan kichik qadamlarga bo‘lish</td>
+<td>Poydevor, devor, tom</td>
+<td>Keyin bir nechta agent parallel ishlashi mumkin</td>
+</tr>
+</tbody>
+</table>
+<h2>Skill va xavfsizlik</h2>
+<table>
+<thead>
+<tr>
+<th>Atama</th>
+<th>Oddiy so‘z bilan</th>
+<th>O‘xshatish</th>
+<th>Biznes uchun nima</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Skill</strong></td>
+<td>Saqlangan, qayta ishlatiladigan yo‘riqnoma fayli (<code>.claude/skills/&lt;nom&gt;/SKILL.md</code>); <code>/nomi</code> bilan chaqiriladi</td>
+<td>Restoranning texnologik kartasi</td>
+<td>Takror ish har safar bir xil bajariladi</td>
+</tr>
+<tr>
+<td>Frontmatter</td>
+<td>SKILL.md tepasidagi ikki <code>---</code> orasidagi qism: nom va qachon ishlatilishi</td>
+<td>Kartaning sarlavhasi</td>
+<td>Claude skill’ni qachon uyg‘otishni shundan biladi</td>
+</tr>
+<tr>
+<td>Plagin (plugin)</td>
+<td>Bir nechta skill, buyruq va ulanishning bitta paketi</td>
+<td>Franshiza paketi</td>
+<td>Butun imkoniyatni birdan o‘rnatish</td>
+</tr>
+<tr>
+<td>Skill orqali zararli buyruq (prompt injection)</td>
+<td>Begona skill ichiga yashirilgan buyruq: kalitlarni o‘g‘irlash, fayl o‘chirish</td>
+<td>Tekshirilmagan odamga ofis kalitini berish</td>
+<td>O‘rnatishdan oldin Claude’ga o‘qiting; mashhur skill ham xavfsiz bo‘lishi shart emas</td>
+</tr>
+</tbody>
+</table>
+<h2>To‘plam 2</h2>
+<table>
+<thead>
+<tr>
+<th>Atama</th>
+<th>Oddiy so‘z bilan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jarayon</td>
+<td>Boshlanishi va natijasi bor vazifalar zanjiri; bir nechta xodimning vazifasi kirishi mumkin</td>
+</tr>
+<tr>
+<td>Qiymat (A.8)</td>
+<td>A.2 takrorlanishi + A.3 ketadigan vaqt + A.7 mijozga ta’siri; 3 dan 15 gacha</td>
+</tr>
+<tr>
+<td>Osonlik (A.9)</td>
+<td>A.4 aniq qoidasi bor + A.5 ma’lumot raqamli + A.6 xatosi arzon; 3 dan 15 gacha</td>
+</tr>
+<tr>
+<td>Qiymat va osonlik matritsasi</td>
+<td>Har jarayon bitta nuqta; ikkalasi ham 9 dan katta bo‘lsa - «Birinchi sinov»</td>
+</tr>
+<tr>
+<td>Boshlang‘ich holat (baseline)</td>
+<td>AI’gacha bo‘lgan raqamlar: haftasiga nechta so‘rov, necha daqiqa, nechta xato; tarixdan yoki 5 kun jonli</td>
+</tr>
+</tbody>
+</table>
+<h2>Odatlar</h2>
+<table>
+<thead>
+<tr>
+<th>Odat</th>
+<th>Nima qilasiz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Skrinshot qilib so‘rang</strong></td>
+<td>Qotib qoldingizmi? Xatoni skrinshot qiling va avval Claude’dan so‘rang (macOS Ctrl+V, Windows Alt+V)</td>
+</tr>
+<tr>
+<td>AI yo‘q deb tasavvur qiling</td>
+<td>So‘rashdan oldin: AI bo‘lmasa, bu ishni kimlar qilardi? Claude’dan shular nomidan savol so‘rang</td>
+</tr>
+<tr>
+<td>5 yoshli bolaga tushuntir</td>
+<td>Har yangi atamani oddiy so‘z bilan so‘rang</td>
+</tr>
+</tbody>
+</table>
+<p>Buyruqlar va tugmalar: «Claude Code shpargalkasi» varag‘ida.
+Manbalar 2026-11-03 da tekshirildi: code.claude.com/docs (memory, skills, permission-modes, plugins/security), support.claude.com (16761823, 8241126).</p>
+<div class="foot">Praktikum 3.0 · 2-dars · manba: day-2/handouts/src/lugat.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

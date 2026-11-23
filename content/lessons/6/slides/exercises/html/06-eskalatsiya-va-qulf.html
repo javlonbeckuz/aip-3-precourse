@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6-mashq: Odamga uzatish yo‘llari (B.6) va botni qulflash</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 5-dars</span><span class="pill">6-mashq</span></div>
+<h1>6-mashq: Odamga uzatish yo‘llari (B.6) va botni qulflash</h1>
+<p>5-dars, 2:15-2:27.
+Natija: To‘plam 3 B.6 dagi har bir holat bir marta soxta savol bilan sinalgan (tekshiruv 5.8), bot begona akkauntga javob bermaydi (tekshiruv 5.9).</p>
+<p><strong>Odamga uzatish (eskalatsiya)</strong> - agent bilmagan yoki o‘zi hal qilmasligi kerak bo‘lgan holatni aniq odamga, aniq yo‘l bilan berish: holat - kimga - qanday.
+Bu bo‘lmasa, agent jim xato qiladi: bo‘sh Excel kelsa «0 dona» deydi.</p>
+<h2>Kerak bo‘ladi</h2>
+<ul>
+<li><code>kit3-agent/form-b-agent.md</code>, B.6 bo‘limi (har bir holat: holat - kimga - qanday).</li>
+<li><code>.env</code> da <code>ESCALATION_CHAT_ID</code> - uzatilgan savollar kimga boradi.</li>
+<li>Ikkinchi Telegram akkaunt (oila a’zosining telefoni) - qulfni sinash uchun.</li>
+</ul>
+<h2>Qanday bajariladi</h2>
+<ol>
+<li><strong>Holatlar ro‘yxati.</strong>
+   B.6 dagi har bir holatga bitta soxta savol yozing.
+   Savol haqiqiy xodim yozadigandek bo‘lsin, lekin ichida «sinov» so‘zi bo‘lmasin: agent sinovni sezmasligi kerak.</li>
+<li><strong>Har bir savolni noutbukda bering:</strong> <code>uv run pilot ask "&lt;savol&gt;"</code>.
+   Kutilgan natija: «ODAMGA: <sabab>» va <code>holat: escalated</code>.
+   <code>pilot ask</code> jurnalga savol yozmaydi, shuning uchun To‘plam 5 dagi B.1 o‘zgarmaydi; har bir savol taxminan 40-60 so‘m.</li>
+<li><strong>Yetkazish yo‘lini bir marta jonli tekshiring.</strong>
+   Agar shu haftada botda haqiqiy uzatish bo‘lmagan bo‘lsa, telefoningizdan botga bitta soxta savol yuboring.
+   Bot xodimlarga faqat ish vaqtida yozadi (<code>WORK_HOURS</code>, <code>WORK_DAYS</code>): bugun yakshanba, xabar dushanba 09:00 da boradi.
+   Dushanba kuni mas’ul odamdan «oldim» deb tasdiq oling va bu bitta savolni B.1 dan ayiring.</li>
+<li><strong>Bo‘sh fayl sinovi (faqat noutbukda).</strong>
+   Serverdagi haqiqiy faylni buzmang.
+   Noutbukda <code>data/</code> dagi eksportning nusxasini oling, faylni bo‘shating va <code>uv run pilot ask "&lt;qoldiq savoli&gt;"</code> bering: javob «ODAMGA: ...» bo‘lishi kerak, «0 dona» emas.
+   Keyin faylni qaytaring.</li>
+<li><strong>Qulf sinovi.</strong>
+   Ikkinchi akkauntdan botga istalgan savol yozing.
+   Bot faqat «Bu bot faqat ... xodimlari uchun» va o‘sha akkauntning ID raqamini aytadi, savolga javob bermaydi.
+   Bu sinov jurnalga yozilmaydi va pul turmaydi.</li>
+</ol>
+<h3>Claude Code uchun topshiriq</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>kit3-agent/form-b-agent.md dagi B.6 holatlarini o'qi.
+Har bir holat uchun xodim yozadigandek bitta soxta savol tayyorla va kutilgan natijani yoz:
+odamga uzatiladimi, kimga, qanday sabab bilan. Jadval qil.
+Keyin noutbukda, data/ ning nusxasida, ombor faylini bo'shatib &quot;uv run pilot ask&quot; bilan
+bitta qoldiq savolini ber (narxini ayt, ruxsat so'ra) va asl faylni qaytar.
+Serverdagi fayllarga tegma.</pre></div>
+<h2>Baraka Office namunasi</h2>
+<p>Rahbar sinfda, yakshanba 20-dekabr, 12:10, noutbukda (<code>namuna/yaxshilash/eskalatsiya-sinovi.txt</code>):</p>
+<table>
+<thead>
+<tr>
+<th>B.6 holati</th>
+<th>Soxta savol</th>
+<th><code>pilot ask</code> javobi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5% dan katta chegirma</td>
+<td>«Mijoz 45 mln buyurtmaga 15% chegirma so‘rayapti»</td>
+<td>ODAMGA: 15% chegirma menejer vakolatidan (5%) yuqori</td>
+</tr>
+<tr>
+<td>7 ish kunidan tez yetkazish</td>
+<td>«Mijoz ertaga yetkazib berishni so‘rayapti, mumkinmi?»</td>
+<td>ODAMGA: 7 ish kunidan tez yetkazish so‘ralmoqda</td>
+</tr>
+<tr>
+<td>Tender yoki 150 mln dan katta</td>
+<td>«Tender: 170 mln lik buyurtma, nima qilamiz?»</td>
+<td>ODAMGA: tender yoki 150 000 000 so‘mdan katta buyurtma, ROP hal qiladi</td>
+</tr>
+<tr>
+<td>Ombor fayli eski yoki bo‘sh</td>
+<td>«ErgoPro omborda nechta bor?»</td>
+<td>ODAMGA: ombor fayli bilan muammo (fayl 28 soatdan beri yangilanmagan (chegara 25 soat))</td>
+</tr>
+<tr>
+<td>Shikoyat, kafolat nizosi</td>
+<td>«Mijoz shikoyat qilyapti: kreslo mexanizmi 2 oyda buzildi, nima qilamiz?»</td>
+<td>ODAMGA: mijoz shikoyati yoki kafolat bo‘yicha nizo, ROP hal qiladi</td>
+</tr>
+</tbody>
+</table>
+<p>Beshala holat ham odamga uzatildi; B.1 o‘zgarmadi (132).</p>
+<p>Yetkazish yo‘li haftaning o‘zida jonli tekshirilgan: payshanba 17-dekabr 1C eksporti bo‘sh keldi.
+Bot rahbarga 08:00 da yozdi: «⚠️ Ma’lumot manbasi muammosi: Ombor qoldig‘i (1C eksport): jadvalda qatorlar yo‘q».
+09:10 dagi «ErgoPro omborda nechta bor?» savoli «0 dona» emas, Jamshid akaga uzatildi (<code>namuna/baraka-1-hafta/jamshid-telegrami.txt</code>):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>🙋 Odamga uzatildi #70ce7993
+Kimdan: Zarina
+Savol: ErgoPro omborda nechta bor?
+Sabab: ombor fayli bilan muammo (Ombor qoldig‘i (1C eksport): jadvalda qatorlar yo‘q), qoldiqni Otabek akadan aniqlash kerak.
+
+Javob berish uchun shu xabarga reply qiling - bot javobingizni yuboradi.</pre></div>
+<p>Jamshid aka reply qilib javob berdi, javob Zarinaga yetdi; Otabek aka 10:40 da qayta eksport qildi.
+1-haftada jami 21 ta savol odamga uzatildi; shanba 18:40 dagi tender savoli Jamshid akaga dushanba 09:00 da yetdi (ish vaqti).</p>
+<p>Qulf sinovi (13:10):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Begona akkaunt: Assalomu alaykum, chegirma bormi?
+Bot: Bu bot faqat Baraka Office xodimlari uchun.
+Sizning Telegram ID raqamingiz: 7199999
+Kirish kerak bo‘lsa, shu raqamni rahbaringizga yuboring.</pre></div>
+<p>Jurnalga hech narsa yozilmadi, model chaqirilmadi, pul sarflanmadi.</p>
+<h2>Yomon namuna</h2>
+<blockquote>
+<p>B.6: Murakkab savollar - direktorga.</p>
+</blockquote>
+<p><strong>Nimasi yomon:</strong></p>
+<ul>
+<li>«Murakkab» - agent uchun o‘lchov emas: u o‘zini hamma narsani biladi deb hisoblaydi.</li>
+<li>Hammasi direktorga: direktor kuniga 15 ta chegirma savoliga javob beradigan bo‘ladi, ROP esa chetda qoladi.</li>
+<li>«Qanday» yo‘q: telefon, Telegram yoki bot orqali - noma’lum.</li>
+<li>Sinab bo‘lmaydi: qaysi savol «murakkab» ekanini hech kim bilmaydi.</li>
+</ul>
+<p><strong>To‘g‘rilangan:</strong> har bir holat bitta qator, sonlar bilan: «Mijoz 5% dan katta chegirma so‘rasa - ROP Jamshid aka - bot orqali».
+Har birini bitta soxta savol bilan sinasa bo‘ladi (yuqoridagi jadval).</p>
+<h2>Tez-tez uchraydigan xatolar</h2>
+<ul>
+<li><strong>Uzatish o‘zingizga keladi, mas’ul odamga emas.</strong>
+  <code>ESCALATION_CHAT_ID</code> bo‘sh bo‘lsa, hammasi egaga boradi.</li>
+<li><strong>Mas’ul odam xabar olmaydi.</strong>
+  U botni hech qachon ochmagan: unga botni ochib <code>/start</code> bosishni ayting (Telegram boti birinchi bo‘lib yoza olmaydi).</li>
+<li><strong>Reply qilmasdan javob yozadi.</strong>
+  Mas’ul odam bot xabariga «reply» qilib yozishi kerak, shunda javob xodimga boradi.</li>
+<li><strong>Begona akkaunt javob oldi.</strong>
+  <code>.env</code> da <code>ACCESS_MODE=public</code> turibdi yoki ID <code>ALLOWED_USER_IDS</code> ga tasodifan qo‘shilgan.
+  <code>/taqiq &lt;ID&gt;</code> bilan darhol olib tashlang.</li>
+</ul>
+<h2>Tayyor, agar</h2>
+<ul>
+<li class="cb">B.6 dagi har bir holat bitta soxta savol bilan sinalgan (<code>pilot ask</code>: «ODAMGA: ...»).</li>
+<li class="cb">Yetkazish yo‘li jonli tekshirilgan (shu haftadagi haqiqiy uzatish yoki bitta soxta savol, mas’ul odam tasdig‘i bilan).</li>
+<li class="cb">Bo‘sh fayl sinovi noutbukda o‘tkazilgan, asl fayl joyida.</li>
+<li class="cb">Ikkinchi akkauntga bot javob bermadi.</li>
+<li class="cb">Mentor ko‘rdi (tekshiruv 5.8 va 5.9).</li>
+</ul>
+<div class="foot">Praktikum 3.0 · 5-dars · 20-dekabr 2026 · manba: day-5/exercises/06-eskalatsiya-va-qulf.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

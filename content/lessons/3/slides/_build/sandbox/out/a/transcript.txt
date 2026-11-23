@@ -1,0 +1,23 @@
+== a | model sonnet | mode acceptEdits | 2026-11-03 02:17 | claude 2.1.316 (Claude Code)
+== prompt:
+/init
+== output:
+I created `CLAUDE.md` at the repo root. I read the three Kit 1 forms only in part and skimmed the `hujjatlar/` files, so some details in it may be incomplete.
+
+This repo is a set of Uzbek-language Markdown files for a workshop on picking which business process to automate, not a software project. It has no build, lint or test commands, so the file says so and doesn't list any.
+
+The file covers:
+- **Layout:** `hujjatlar/` holds the fictional company's reference documents, `kit1-interviews/` holds per-employee task forms, and `kit2-scoring/` holds scoring templates.
+- **Form conventions:**
+  - The B.1–B.9 column codes stay fixed.
+  - B.4 equals B.2 × B.3 / 60, with the arithmetic shown in the cell and a decimal comma.
+  - Totals are cross-checked in both directions.
+  - Each form has a corrections table and an observations section.
+- **Rules repeated across files:**
+  - The discount limits.
+  - The contract's 7 working days against the "3 days" staff say.
+  - The free 3D design threshold.
+  - The internal contacts table.
+
+The Kit 2 templates mention a `/kit2` command, but nothing in the repo defines one. The file says so rather than describing it.
+== exit 0

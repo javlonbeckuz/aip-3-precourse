@@ -1,0 +1,55 @@
+Egasining telefoni, Telegram (noutbuk yopiq). Bot serverda ishlayapti.
+Soxta Telegram va soxta model bilan yozib olindi; haqiqiy model javobi so'z jihatdan boshqacha bo'ladi.
+
+[Bot] 🟢 «Savdo yordamchisi» ishga tushdi.
+      Model: google/gemini-3.8-flash.
+      Rejim: darhol javob beradi.
+[Siz] /start
+[Bot] Assalomu alaykum! Bu - «Savdo yordamchisi», Baraka Office xodimlari uchun yordamchi.
+      Savolingizni oddiy matn bilan yozing, men ma’lumotlarga qarab javob beraman.
+      
+      Har bir javob ostida ✅ yoki ❌ ni bosing: shu bilan yordamchini yaxshilaymiz.
+      
+      Savol va javoblar faqat sifatni tekshirish uchun saqlanadi. Ularni loyiha yetakchisi va rahbar ko‘radi. Ular hech kimning ishini baholash uchun ishlatilmaydi.
+[Siz] Optima stolidan 8 ta kerak, qancha bo'ladi?
+[Bot] «Optima» ergonomik stol 140x70 (WS-102), 8 dona - ulgurji narx: 1 890 000 x 8 = 15 120 000 so‘m.
+[Siz] /holat
+[Bot] ℹ️ Holat
+      Yordamchi: Savdo yordamchisi (ishlayapti)
+      Model: google/gemini-3.8-flash (balanced)
+      Javob rejimi: darhol javob beradi
+      Kirish: 1 xodim
+      Ma’lumotlar:
+      • Prays-list 2026: 14 qator, 03.11 03:49
+      • Chegirma, to‘lov, yetkazib berish va kafolat qoidalari: hujjat, 03.11 02:16
+      • Ombor qoldig‘i (1C eksport): 11 qator, 03.11 03:02
+[Siz] /hisobot
+[Bot] 📊 Kunlik hisobot: 3-noyabr, seshanba
+      «Savdo yordamchisi»
+      
+      • So‘rovlar: 1
+      • Javob berildi: 1
+      • Odamga uzatildi: 0
+      • Xato deb belgilandi: 0
+      • To‘liq hal qilindi: 1
+      • Texnik xatolar: 0
+      • Xarajat: $0.00 (shu oy $0.00 / limit $15.00)
+[Siz] /stop
+[Bot] ⏸ Yordamchi to‘xtatildi. Xodimlarga «vaqtincha to‘xtatilgan» deb javob beradi.
+      Qayta yoqish: /davom
+[Siz] /davom
+[Bot] ▶️ Yordamchi yana ishlayapti.
+[Siz] Senator kreslo omborda nechta bor?
+[Bot] Omborda (1C, tayyor mahsulot):
+      - CH-203 Кресло руководителя Senator Lux черное: 11 dona
+      - CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona
+[Siz] /eslab_qol Menejerlar «140 lik stol» deganda Optima stolini (WS-102) nazarda tutadi
+[Bot] 🧠 Eslab qoldim. Endi har bir javobda hisobga olaman. Ro‘yxat: /xotira
+[Siz] /xotira
+[Bot] 🧠 Telefondan qo‘shilgan faktlar (o‘chirish: /unut raqam):
+      1. 2026-11-03: Menejerlar «140 lik stol» deganda Optima stolini (WS-102) nazarda tutadi
+[Siz] /jadval 07:45 Ombordan 15 donadan kam qolgan mahsulotlar ro'yxatini yubor
+[Bot] ✅ Har ish kuni soat 07:45 da javob yuboraman: «Ombordan 15 donadan kam qolgan mahsulotlar ro'yxatini yubor». Ro‘yxat: /jadval
+[Siz] /eslat 03:53 Jamshid aka bilan tender bo'yicha gaplashish
+[Bot] 🔔 Eslataman: bugun soat 03:53 da.
+[Bot] 🔔 Eslatma: Jamshid aka bilan tender bo'yicha gaplashish

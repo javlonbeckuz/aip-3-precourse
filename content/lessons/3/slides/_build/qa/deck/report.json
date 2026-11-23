@@ -1,0 +1,425 @@
+[
+ {
+  "slide": 1,
+  "problems": [],
+  "minFont": 36,
+  "minText": "Praktikum 3.0 · 2-dars",
+  "brokenImages": [],
+  "words": 24,
+  "fontsOk": true
+ },
+ {
+  "slide": 2,
+  "problems": [],
+  "minFont": 40,
+  "minText": "kompaniya/",
+  "brokenImages": [],
+  "words": 44,
+  "fontsOk": true
+ },
+ {
+  "slide": 3,
+  "problems": [],
+  "minFont": 32,
+  "minText": "namoyish",
+  "brokenImages": [],
+  "words": 54,
+  "fontsOk": true
+ },
+ {
+  "slide": 4,
+  "problems": [],
+  "minFont": 32,
+  "minText": "kamida 2 ta .md fayl",
+  "brokenImages": [],
+  "words": 63,
+  "fontsOk": true
+ },
+ {
+  "slide": 5,
+  "problems": [],
+  "minFont": 36,
+  "minText": "Bugun shu ro‘yxatlardan bitta tanlov qil",
+  "brokenImages": [],
+  "words": 19,
+  "fontsOk": true
+ },
+ {
+  "slide": 6,
+  "problems": [],
+  "minFont": 30,
+  "minText": "0:20-0:50",
+  "brokenImages": [],
+  "words": 28,
+  "fontsOk": true
+ },
+ {
+  "slide": 7,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Bir xil dvigatel, boshqa mashina: asbobn",
+  "brokenImages": [],
+  "words": 46,
+  "fontsOk": true
+ },
+ {
+  "slide": 8,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Brauzer yoki telefon",
+  "brokenImages": [],
+  "words": 60,
+  "fontsOk": true
+ },
+ {
+  "slide": 9,
+  "problems": [],
+  "minFont": 33,
+  "minText": "hujjatlar/ papkasidagi hujjatlar va kit1",
+  "brokenImages": [],
+  "words": 109,
+  "fontsOk": true
+ },
+ {
+  "slide": 10,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Terminal - kompyuter bilan matn orqali g",
+  "brokenImages": [],
+  "words": 36,
+  "fontsOk": true
+ },
+ {
+  "slide": 11,
+  "problems": [],
+  "minFont": 31,
+  "minText": "suhbat va fayllar joyida qoladi",
+  "brokenImages": [],
+  "words": 62,
+  "fontsOk": true
+ },
+ {
+  "slide": 12,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Birinchi gap. Hech narsa o‘rnatmaymiz.",
+  "brokenImages": [],
+  "words": 34,
+  "fontsOk": true
+ },
+ {
+  "slide": 13,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Bu papkadagi fayllarni ko‘rib chiq. Turi",
+  "brokenImages": [],
+  "words": 89,
+  "fontsOk": true
+ },
+ {
+  "slide": 14,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Claude Code faqat kod uchun emas",
+  "brokenImages": [],
+  "words": 34,
+  "fontsOk": true
+ },
+ {
+  "slide": 15,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Asbobning o‘zi birinchi ustozingiz. Ment",
+  "brokenImages": [],
+  "words": 39,
+  "fontsOk": true
+ },
+ {
+  "slide": 16,
+  "problems": [],
+  "minFont": 36,
+  "minText": "Atamalar lug‘atining pastida ham shu oda",
+  "brokenImages": [],
+  "words": 29,
+  "fontsOk": true
+ },
+ {
+  "slide": 17,
+  "problems": [],
+  "minFont": 30,
+  "minText": "0:50-1:20",
+  "brokenImages": [],
+  "words": 13,
+  "fontsOk": true
+ },
+ {
+  "slide": 18,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Hujjatlarni Claude o‘zi ham o‘qiydi. CLA",
+  "brokenImages": [],
+  "words": 77,
+  "fontsOk": true
+ },
+ {
+  "slide": 19,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nusxa olish",
+  "brokenImages": [],
+  "words": 82,
+  "fontsOk": true
+ },
+ {
+  "slide": 20,
+  "problems": [],
+  "minFont": 36,
+  "minText": "kompaniya/",
+  "brokenImages": [],
+  "words": 59,
+  "fontsOk": true
+ },
+ {
+  "slide": 21,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Windows: «Extract All», joy C:\\Users\\ism",
+  "brokenImages": [],
+  "words": 66,
+  "fontsOk": true
+ },
+ {
+  "slide": 22,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nusxa olish",
+  "brokenImages": [],
+  "words": 85,
+  "fontsOk": true
+ },
+ {
+  "slide": 23,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nusxa olish",
+  "brokenImages": [],
+  "words": 92,
+  "fontsOk": true
+ },
+ {
+  "slide": 24,
+  "problems": [],
+  "minFont": 30,
+  "minText": "1:20-1:50",
+  "brokenImages": [],
+  "words": 14,
+  "fontsOk": true
+ },
+ {
+  "slide": 25,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Kod",
+  "brokenImages": [],
+  "words": 92,
+  "fontsOk": true
+ },
+ {
+  "slide": 26,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Takrorlanishi",
+  "brokenImages": [],
+  "words": 61,
+  "fontsOk": true
+ },
+ {
+  "slide": 27,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Jarayon",
+  "brokenImages": [],
+  "words": 101,
+  "fontsOk": true
+ },
+ {
+  "slide": 28,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nusxa olish",
+  "brokenImages": [],
+  "words": 154,
+  "fontsOk": true
+ },
+ {
+  "slide": 29,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nusxa olish",
+  "brokenImages": [],
+  "words": 110,
+  "fontsOk": true
+ },
+ {
+  "slide": 30,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Saralash, baholash, jadval",
+  "brokenImages": [],
+  "words": 43,
+  "fontsOk": true
+ },
+ {
+  "slide": 31,
+  "problems": [],
+  "minFont": 32,
+  "minText": "Tanaffus",
+  "brokenImages": [],
+  "words": 9,
+  "fontsOk": true
+ },
+ {
+  "slide": 32,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nusxa olish",
+  "brokenImages": [],
+  "words": 110,
+  "fontsOk": true
+ },
+ {
+  "slide": 33,
+  "problems": [],
+  "minFont": 30,
+  "minText": "2:04-2:30",
+  "brokenImages": [],
+  "words": 13,
+  "fontsOk": true
+ },
+ {
+  "slide": 34,
+  "problems": [],
+  "minFont": 37,
+  "minText": "«Kim ishlatadi? Nima o‘zgaradi?»",
+  "brokenImages": [],
+  "words": 41,
+  "fontsOk": true
+ },
+ {
+  "slide": 35,
+  "problems": [],
+  "minFont": 46,
+  "minText": "Shift+Tab ni «plan mode on» chiqquncha b",
+  "brokenImages": [],
+  "words": 44,
+  "fontsOk": true
+ },
+ {
+  "slide": 36,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Nima quriladi, kim uchun",
+  "brokenImages": [],
+  "words": 50,
+  "fontsOk": true
+ },
+ {
+  "slide": 37,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nusxa olish",
+  "brokenImages": [],
+  "words": 116,
+  "fontsOk": true
+ },
+ {
+  "slide": 38,
+  "problems": [],
+  "minFont": 30,
+  "minText": "2:30-2:50",
+  "brokenImages": [],
+  "words": 12,
+  "fontsOk": true
+ },
+ {
+  "slide": 39,
+  "problems": [],
+  "minFont": 39,
+  "minText": ".claude/skills/suhbat-tahlili/SKILL.md",
+  "brokenImages": [],
+  "words": 60,
+  "fontsOk": true
+ },
+ {
+  "slide": 40,
+  "problems": [],
+  "minFont": 35,
+  "minText": "/suhbat-tahlili kit1-interviews/otabek-t",
+  "brokenImages": [],
+  "words": 88,
+  "fontsOk": true
+ },
+ {
+  "slide": 41,
+  "problems": [],
+  "minFont": 46,
+  "minText": "1C administratori internetdan bitta MCP ",
+  "brokenImages": [],
+  "words": 60,
+  "fontsOk": true
+ },
+ {
+  "slide": 42,
+  "problems": [],
+  "minFont": 30,
+  "minText": "Nusxa olish",
+  "brokenImages": [],
+  "words": 96,
+  "fontsOk": true
+ },
+ {
+  "slide": 43,
+  "problems": [],
+  "minFont": 32,
+  "minText": "egasi odatda ma’lumot qanchalik tartibsi",
+  "brokenImages": [],
+  "words": 50,
+  "fontsOk": true
+ },
+ {
+  "slide": 44,
+  "problems": [],
+  "minFont": 38,
+  "minText": "so‘rov haftasiga (Telegram eksporti)",
+  "brokenImages": [],
+  "words": 42,
+  "fontsOk": true
+ },
+ {
+  "slide": 45,
+  "problems": [],
+  "minFont": 40,
+  "minText": "Batafsil: 0-hafta qo‘llanmasi, «Telegram",
+  "brokenImages": [],
+  "words": 45,
+  "fontsOk": true
+ },
+ {
+  "slide": 46,
+  "problems": [],
+  "minFont": 35,
+  "minText": "Excel, Google Sheets, Telegram guruhlari",
+  "brokenImages": [],
+  "words": 52,
+  "fontsOk": true
+ },
+ {
+  "slide": 47,
+  "problems": [],
+  "minFont": 36,
+  "minText": "Har biringiz aytasiz: uy vazifam va keyi",
+  "brokenImages": [],
+  "words": 32,
+  "fontsOk": true
+ }
+]

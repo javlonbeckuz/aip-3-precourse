@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code shpargalkasi</title>
+<link rel="stylesheet" href="../assets/page.css">
+<style>
+  .paper{max-width:1080px;}
+  .cols{display:flex;gap:26px;align-items:flex-start;} .col{flex:1;min-width:0;display:flex;flex-direction:column;gap:18px;}
+  .box{border:1px solid var(--line);border-radius:8px;padding:12px 14px 6px;break-inside:avoid;}
+  .box h2{margin:0 0 8px;padding:0;font-size:17px;display:flex;align-items:center;gap:8px;}
+  .box h2 .n{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--acc);border:1px solid #b9c8f5;background:var(--acc-soft);border-radius:3px;padding:1px 6px;}
+  .box table{margin:0 0 8px;font-size:14px;}
+  .box td,.box th{padding:5px 7px;}
+  .box td:first-child{white-space:nowrap;width:1%;}
+  kbd{font-family:var(--mono);font-size:.86em;border:1px solid #c5cad3;border-bottom-width:2px;border-radius:4px;padding:0 5px;background:#fff;white-space:nowrap;}
+  .box p{font-size:14px;margin:0 0 8px;}
+  .warn{border-color:#f0c4bf;background:var(--warn-soft);}
+  .ok{border-color:#bfe3d2;background:var(--ok-soft);}
+  .wide{grid-column:1 / -1;}
+  h1{margin-bottom:6px;}
+  .lead{margin-bottom:14px;font-size:16px;}
+  @media (max-width:760px){ .cols{flex-direction:column;} .box td:first-child{white-space:normal;} }
+  @media print{
+    @page{size:A4;margin:9mm 10mm 9mm;}
+    body{font-size:8.6pt;line-height:1.3;}
+    h1{font-size:15pt;margin:0 0 2pt;}
+    .lead{font-size:8.8pt;margin-bottom:6pt;}
+    .bar{margin-bottom:6pt;padding-bottom:4pt;}
+    .cols{gap:9pt;} .col{gap:6pt;}
+    .box{padding:5pt 7pt 2pt;border-radius:5px;}
+    .box h2{font-size:10pt;margin:0 0 3pt;}
+    .box table{font-size:8.7pt;margin:0 0 3pt;}
+    .box td,.box th{padding:2pt 4pt;}
+    .box p{font-size:8.7pt;margin:0 0 3pt;}
+    kbd{font-size:8.2pt;}
+    .foot{margin-top:6pt;padding-top:4pt;font-size:6.8pt;}
+  }
+</style>
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 2-dars</span><span class="pill">Shpargalka</span></div>
+<h1>Claude Code shpargalkasi</h1>
+<p class="lead">Bitta varaq: ochish, tugmalar, buyruqlar, qaytarish. Qotib qolsangiz - skrinshot qiling va avval Claude’dan so‘rang.</p>
+
+<div class="cols">
+<div class="col">
+<section class="box">
+<h2><span class="n">1</span> Ochish va yopish</h2>
+<p>Kompaniya papkasiga o‘tish (macOS va Windows):<br><code>cd ~/praktikum/kompaniya</code><br>Xato chiqsa: <code>cd </code> deb yozib, papkani Finder yoki Explorer’dan Warp’ga torting.</p>
+<table>
+<tr><td><code>claude</code></td><td>Claude Code’ni shu papkada ochish</td></tr>
+<tr><td><code>claude --continue</code></td><td>Shu papkadagi oxirgi suhbatni davom ettirish</td></tr>
+<tr><td><code>claude --resume</code></td><td>Eski suhbatlar ro‘yxatidan tanlash</td></tr>
+<tr><td><code>/exit</code></td><td>Chiqish</td></tr>
+</table>
+<p>Yangi varaq: macOS <kbd>Cmd</kbd>+<kbd>T</kbd>, Windows <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>.</p>
+</section>
+<section class="box">
+<h2><span class="n">3</span> Buyruqlar</h2>
+<table>
+<tr><td><code>/model</code></td><td>Model: <code>haiku</code> (tez), <code>sonnet</code> (kundalik), <code>opus</code> (reja, tanlov)</td></tr>
+<tr><td><code>/usage</code></td><td>Qancha sarfladingiz, limitdan qancha qoldi</td></tr>
+<tr><td><code>/context</code></td><td>Suhbat «dasturxoni» qanchalik to‘lgan</td></tr>
+<tr><td><code>/compact</code></td><td>Uzun suhbatni qisqa xulosaga aylantirish</td></tr>
+<tr><td><code>/clear</code></td><td>Yangi, bo‘sh suhbat (yangi vazifa - yangi suhbat)</td></tr>
+<tr><td><code>/plan</code></td><td>Reja rejimi: faqat reja, kod yo‘q</td></tr>
+<tr><td><code>/init</code></td><td>Papkani o‘qib, CLAUDE.md qoralamasini yozish</td></tr>
+<tr><td><code>/memory</code></td><td>CLAUDE.md va xotira fayllarini ochish</td></tr>
+<tr><td><code>/rewind</code></td><td>Orqaga qaytish: suhbat va Claude o‘zgartirgan fayllar</td></tr>
+<tr><td><code>/resume</code></td><td>Eski suhbatni davom ettirish</td></tr>
+<tr><td><code>/btw</code></td><td>Yon savol: suhbatga qo‘shilmaydi, Claude ishlayotganda ham</td></tr>
+<tr><td><code>/kit1</code> ... <code>/kit5</code></td><td>Kurs skill’lari (8-mashqdan keyin)</td></tr>
+<tr><td><code>/help</code></td><td>Hamma buyruqlar</td></tr>
+</table>
+</section>
+<section class="box">
+<h2><span class="n">5</span> Ruxsat so‘raganda</h2>
+<table>
+<tr><td>Yes</td><td>Bu safar ruxsat</td></tr>
+<tr><td>2-variant («Yes, ...»)</td><td>Shu turdagi ishga keyin so‘ramaydi; matni vaziyatga qarab har xil, o‘qib bosing</td></tr>
+<tr><td>No</td><td>Rad etish; Claude boshqa yo‘l taklif qiladi</td></tr>
+</table>
+<p><code>.claude</code> papkasiga (skill’lar) va loyihadan tashqariga yozishda doim so‘raydi. Nima qilishini o‘qib, keyin bosing.</p>
+</section>
+</div>
+<div class="col">
+<section class="box">
+<h2><span class="n">2</span> Tugmalar</h2>
+<table>
+<tr><td><kbd>Esc</kbd></td><td>«Labbay?»: Claude to‘xtaydi, sessiya yopilmaydi</td></tr>
+<tr><td><kbd>Esc</kbd> <kbd>Esc</kbd></td><td>Bo‘sh qatorda: orqaga qaytish menyusi (<code>/rewind</code>)</td></tr>
+<tr><td><kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Rejimlar: Manual → Accept edits → Plan → Auto. Windows’da ishlamasa: <kbd>Alt</kbd>+<kbd>M</kbd></td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>V</kbd></td><td>Skrinshotni qo‘yish (macOS; Cmd+V emas). Windows: <kbd>Alt</kbd>+<kbd>V</kbd>. Yoki faylni oynaga torting</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>C</kbd></td><td>Ishni to‘xtatish; ikki marta - chiqish</td></tr>
+<tr><td><kbd>↑</kbd></td><td>Oldingi xabaringiz</td></tr>
+<tr><td><code>@</code></td><td>Fayl nomini tanlash: <code>@kit2-scoring/form-a-scoring.md</code></td></tr>
+<tr><td><code>!</code></td><td>Terminal buyrug‘i: <code>! ls</code></td></tr>
+</table>
+</section>
+<section class="box warn">
+<h2><span class="n">4</span> Qanday qaytariladi</h2>
+<p><b><code>/rewind</code></b> (yoki <kbd>Esc</kbd> <kbd>Esc</kbd>): Claude o‘z vositalari bilan o‘zgartirgan fayllarni va suhbatni oldingi holatga qaytaradi.</p>
+<p><b>Qaytarmaydi:</b> buyruq bilan ko‘chirilgan yoki o‘chirilgan fayllarni (masalan, papkani tartiblash) va o‘zingiz qo‘lda qilgan o‘zgarishni.</p>
+<p>Shuning uchun promptda: «hech narsani o‘chirma», «har ko‘chirishni jurnalga yoz», «avval rejani ko‘rsat». Muhim papkada avval nusxa oling.</p>
+</section>
+<section class="box ok">
+<h2><span class="n">6</span> Yaxshi odatlar</h2>
+<p><b>Skrinshot qilib so‘rang:</b> mentordan oldin Claude’dan.</p>
+<p><b>Yangi vazifa - yangi suhbat:</b> <code>/clear</code>. Uzun bo‘lsa <code>/compact</code>.</p>
+<p><b>Avval reja:</b> kattaroq ishda Shift+Tab yoki <code>/plan</code>.</p>
+<p><b>Hisobni ko‘rsat:</b> «formulani yoz», «qaysi fayldan oldingni ayt».</p>
+<p><b>5 yoshli bolaga tushuntir:</b> har yangi atamada.</p>
+<p><b>Parol va token</b> hech qachon chatga, CLAUDE.md ga yoki kodga: faqat <code>.env</code>.</p>
+</section>
+</div>
+</div>
+<div class="foot">Praktikum 3.0 · 2-dars · Claude Code 2.1, 2026-11-03 da code.claude.com/docs bo‘yicha tekshirildi (commands, interactive-mode, permission-modes, checkpointing) · manba: day-2/handouts/claude-code-shpargalka.html</div>
+</main>
+</body>
+</html>

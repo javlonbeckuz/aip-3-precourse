@@ -1,0 +1,24 @@
+$ git diff --stat   # yo'riqnomada xato o'zgarish
+
+agent/instructions.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ uv run python deploy/deploy.py   # xato versiya serverga chiqdi
+...
+Nov 03 03:53:30 baraka-vps python[534]: 2026-11-03 03:53:30,166 INFO pilot.bot: bot @baraka_demo_bot started, model google/gemini-3.8-flash, mode direct
+
+Done. Write to your bot from your phone to check.
+Reminder: stop the bot on your laptop if it is running (one token, one place).
+
+$ uv run python deploy/deploy.py rollback   # serverdagi bekor qilish
+Now running: 20261102-225136
+Nov 03 03:53:38 baraka-vps systemd[1]: Stopping pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter)...
+Nov 03 03:53:38 baraka-vps systemd[1]: pilot-bot.service: Deactivated successfully.
+Nov 03 03:53:38 baraka-vps systemd[1]: Stopped pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter).
+Nov 03 03:53:38 baraka-vps systemd[1]: Started pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter).
+Nov 03 03:53:38 baraka-vps python[589]: 2026-11-03 03:53:38,510 INFO pilot.bot: bot @baraka_demo_bot started, model google/gemini-3.8-flash, mode direct
+
+$ git restore agent/instructions.md   # noutbukdagi bekor qilish
+
+$ git status --short
+(o'zgarish yo'q: noutbuk ham oxirgi yaxshi versiyada)

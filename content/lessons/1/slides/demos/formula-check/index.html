@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formulani ko‘rsat: AI jamini tekshiring</title>
+<link rel="stylesheet" href="../../assets/ovd-dark.css">
+<style>
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 520px;gap:18px;align-items:start;}
+  .check{display:flex;gap:12px;flex-wrap:wrap;align-items:end;}
+  .check label{display:flex;flex-direction:column;gap:6px;flex:1;min-width:220px;}
+  .check input{background:#050507;color:var(--ink);border:1px solid var(--line-strong);border-radius:8px;padding:12px 14px;font-size:24px;font-variant-numeric:tabular-nums;}
+  .check input:focus{outline:none;border-color:rgba(var(--acc-rgb),.6);}
+  .diag{margin-top:16px;font-size:22px;line-height:1.45;min-height:34px;}
+  .diag.ok{color:var(--ok);} .diag.bad{color:var(--warn);} .diag.unk{color:var(--ink-2);}
+  .keylist{display:none;margin-top:14px;font-size:18px;line-height:1.7;color:var(--ink-2);}
+  .keylist.on{display:block;}
+  .keylist b{color:var(--ink);font-variant-numeric:tabular-nums;}
+  .tablewrap{max-height:640px;overflow:auto;border:1px solid var(--line);border-radius:8px;}
+  table.data{font-size:15px;}
+  table.data td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  table.data tr.hl-text td.sum{background:rgba(240,168,88,.18);color:#ffd9a8;}
+  table.data tr.hl-nov td{background:rgba(var(--warn-rgb),.14);color:#ffd0cb;}
+  .tools{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 10px;}
+  a.btn{text-decoration:none;display:inline-block;}
+  @media (max-width:1100px){.layout{grid-template-columns:minmax(0,1fr);}}
+  @media (max-width:700px){.check input{font-size:20px;}.diag{font-size:18px;}table.data{font-size:13px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div>Praktikum 3.0 // 1-dars <span class="pill">Formulani ko‘rsat</span></div><div>Internetsiz ishlaydi</div></div>
+  <h1>AI jamini tekshiring</h1>
+  <p class="lead">Savdo faylini AI’ga bering va «Oktabr oyidagi jami savdo qancha?» deb so‘rang. AI aytgan sonni shu yerga yozing: sahifa qaysi xatoga mos kelishini ko‘rsatadi.</p>
+  <div class="helpbar">
+    <button class="btn ex" id="exBtn">Namuna bilan ochish</button>
+    <button class="btn" id="howBtn">Qanday ishlatish</button>
+    <a class="btn" href="savdo-oktabr.xlsx" download>Excel faylni yuklab olish</a>
+    <a class="btn" href="savdo-oktabr.csv" download>CSV</a>
+  </div>
+  <details class="howto" id="howto">
+    <summary>Qanday ishlatish</summary>
+    <div class="hbody">
+      <div><h3>Kerak</h3><ul><li>savdo-oktabr.xlsx fayli (yuqoridagi tugma).</li><li>Claude yoki boshqa AI chat.</li></ul>
+        <h3 style="margin-top:14px">Qadamlar</h3><ol><li>Faylni chatga yuklang.</li><li>So‘rang: «Oktabr oyidagi jami savdo qancha?»</li><li>AI aytgan sonni pastdagi qutiga yozing va «Tekshirish»ni bosing.</li><li>Keyin AI’dan so‘rang: «Qanday hisobladingiz? Formulani va qaysi qatorlarni qo‘shganingizni ko‘rsat.»</li></ol></div>
+      <div><h3>Faylda nima bor</h3><ul><li>35 qator savdo: 34 tasi oktabr, oxirgisi 1-noyabr.</li><li>3 ta summa Telegram’dan nusxalangandek matn bo‘lib yozilgan («744 000»): Excel ularni qo‘shmaydi.</li><li>«Tuzoqlarni belgilash» tugmasi ularni jadvalda ko‘rsatadi.</li></ul></div>
+      <div><h3>Natijani o‘qish</h3><ul><li><b>Yashil</b>: son to‘g‘ri.</li><li><b>Qizil</b>: son ma’lum xatoga mos keladi, sababi yozilgan.</li><li><b>Kulrang</b>: boshqa xato; AI’dan formulani so‘rang.</li></ul>
+        <h3 style="margin-top:14px">Tayyor</h3><p style="margin:0">AI’ning soni qaysi qatorlardan chiqqanini tushuntira olasiz.</p></div>
+    </div>
+  </details>
+  <div class="exnote" id="exnote"><b>Namuna:</b> AI «17 203 000 so‘m» deb javob berdi, deylik (shartli javob). Sahifa buni noyabr qatori qo‘shilgan xato deb topadi. AI’dan formulani so‘raganingizda u «barcha qatorlarni qo‘shdim» deydi: oxirgi qator 1-noyabr ekanini o‘zingiz ko‘rasiz.</div>
+
+  <div class="layout">
+    <div class="card">
+      <div class="label" style="margin-bottom:6px">Fayldagi qatorlar</div>
+      <div class="tools"><button class="btn" id="hlBtn">Tuzoqlarni belgilash</button></div>
+      <div class="tablewrap"><table class="data" id="tbl"></table></div>
+    </div>
+    <div class="card acc">
+      <div class="check">
+        <label><span class="label">AI aytgan son, so‘m</span><input id="ans" inputmode="numeric" placeholder="masalan 14 723 000"></label>
+        <button class="btn primary" id="go">Tekshirish</button>
+      </div>
+      <div class="diag" id="diag"></div>
+      <button class="btn" id="keyBtn" style="margin-top:16px">Javob kalitini ko‘rsatish</button>
+      <div class="keylist" id="keylist"></div>
+    </div>
+  </div>
+  <div class="foot src">Fayl shartli do‘kon savdosi (Baraka Office emas), _build/make_formula_check.py yaratadi. Instruktor uchun: demos/formula-check/javob-kaliti.md va demos/scripts/04-formula-check.md.</div>
+</div>
+<script src="data.js"></script>
+<script>
+(function () {
+  var D = window.FC_DATA, T = D.totals;
+  function som(n) { return Math.round(n).toLocaleString('ru-RU').replace(/[\s\u00a0\u202f]/g, '\u00a0'); }
+  var tbl = document.getElementById('tbl');
+  tbl.innerHTML = '<tr><th>Sana</th><th>Mahsulot</th><th class="n">Miqdor</th><th class="n">Narx</th><th class="n">Summa</th></tr>' + D.rows.map(function (r) {
+    var cls = (r.text ? 'text' : '') + (r.nov ? ' nov' : '');
+    return '<tr data-c="' + cls + '"><td>' + r.date + '</td><td>' + r.name + '</td><td class="n">' + r.qty + '</td><td class="n">' + som(r.price) + '</td><td class="n sum">' + (r.text ? '«' + som(r.sum) + '» matn' : som(r.sum)) + '</td></tr>';
+  }).join('');
+  var hl = false;
+  document.getElementById('hlBtn').onclick = function () {
+    hl = !hl;
+    Array.prototype.forEach.call(tbl.querySelectorAll('tr[data-c]'), function (tr) {
+      var c = tr.getAttribute('data-c');
+      tr.classList.toggle('hl-text', hl && c.indexOf('text') >= 0);
+      tr.classList.toggle('hl-nov', hl && c.indexOf('nov') >= 0);
+    });
+    this.textContent = hl ? 'Belgilashni olib tashlash' : 'Tuzoqlarni belgilash';
+  };
+  var CASES = [
+    [T.true_oct, 'ok', 'To‘g‘ri: 34 ta oktabr qatori qo‘shilgan, matn bo‘lib yozilgan 3 ta summa ham hisobda.'],
+    [T.excel_all, 'bad', 'Excel SUM kabi xato: matn bo‘lib yozilgan 3 ta summa (' + som(T.text_sum) + ' so‘m) tushib qolgan va 1-noyabr qatori (' + som(T.nov) + ' so‘m) qo‘shilgan.'],
+    [T.excel_oct, 'bad', 'Matn bo‘lib yozilgan 3 ta summa tushib qolgan: jami ' + som(T.text_sum) + ' so‘m kam.'],
+    [T.all_incl_nov, 'bad', '1-noyabr qatori ham qo‘shilgan: jami ' + som(T.nov) + ' so‘m ortiqcha.']
+  ];
+  function check() {
+    var v = parseInt(String(document.getElementById('ans').value).replace(/[^0-9]/g, ''), 10);
+    var d = document.getElementById('diag');
+    if (!v) { d.className = 'diag unk'; d.textContent = 'Son yozing.'; return; }
+    for (var i = 0; i < CASES.length; i++) {
+      if (v === CASES[i][0]) { d.className = 'diag ' + CASES[i][1]; d.textContent = CASES[i][2]; return; }
+    }
+    var diff = v - T.true_oct;
+    d.className = 'diag unk';
+    d.textContent = 'Bu son ma’lum xatolarga mos emas: to‘g‘ri jamidan ' + (diff > 0 ? som(diff) + ' so‘m ko‘p' : som(-diff) + ' so‘m kam') + '. AI’dan so‘rang: «Qaysi qatorlarni qo‘shding? Formulani ko‘rsat.»';
+  }
+  document.getElementById('go').onclick = check;
+  document.getElementById('ans').addEventListener('keydown', function (e) { if (e.key === 'Enter') check(); });
+  document.getElementById('keyBtn').onclick = function () {
+    var k = document.getElementById('keylist');
+    k.innerHTML = 'To‘g‘ri oktabr jami: <b>' + som(T.true_oct) + '</b><br>Excel SUM, butun ustun: <b>' + som(T.excel_all) + '</b><br>Excel SUM, faqat oktabr: <b>' + som(T.excel_oct) + '</b><br>Hammasi, noyabr bilan: <b>' + som(T.all_incl_nov) + '</b>';
+    k.classList.toggle('on');
+  };
+  function openExample() {
+    document.getElementById('ans').value = som(T.all_incl_nov);
+    check();
+    if (!hl) document.getElementById('hlBtn').click();
+    document.getElementById('exnote').classList.add('on');
+  }
+  document.getElementById('exBtn').onclick = openExample;
+  document.getElementById('howBtn').onclick = function () { var d = document.getElementById('howto'); d.open = !d.open; };
+  window.openExample = openExample;
+  if (location.hash === '#namuna') openExample();
+})();
+</script>
+</body>
+</html>

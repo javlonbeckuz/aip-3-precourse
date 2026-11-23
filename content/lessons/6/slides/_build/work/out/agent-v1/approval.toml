@@ -1,0 +1,16 @@
+# Qaysi javoblar xodimga darhol boradi (faqat .env da REPLY_MODE=topics bo'lsa ishlaydi).
+# Qolgan hamma javob loyiha yetakchisi tasdig'idan o'tadi. Qo'llanma: agent/approval.qollanma.md
+# Telefondan ham o'zgartirsa bo'ladi: /darhol narx qoldiq
+#
+# Baraka 2-haftada (5-darsdan keyin): narx va qoldiq javoblari darhol,
+# chegirma, yetkazish muddati va qolgan hamma javob - Malika tasdig'idan keyin.
+direct_topics = ["narx", "qoldiq"]
+
+# Mavzular va kalit so'zlar. Model har javobga "MAVZU: ..." deb yozadi.
+# Savol yoki javobda darhol bo'lmagan mavzuning kalit so'zi bo'lsa, javob baribir tasdiqqa boradi.
+[topics]
+narx = ["narx", "necha pul", "qancha", "цена", "стоимость"]
+qoldiq = ["ombor", "qoldiq", "bormi", "nechta bor", "остаток", "склад"]
+chegirma = ["chegirma", "skidka", "скидка"]
+muddat = ["yetkaz", "muddat", "qachon", "necha kunda", "dostavka", "доставк", "срок"]
+kafolat = ["kafolat", "гарант"]

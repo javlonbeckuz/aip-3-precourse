@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xotira fayllari: agentning xulqi oddiy matnda yoziladi</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 5-dars</span><span class="pill">Xotira fayllari</span></div>
+<h1>Xotira fayllari: agentning xulqi oddiy matnda yoziladi</h1>
+<p>5-dars, 0:46-0:52.
+Agent nima qilishi, nimani bilishi va nimani eslab qolishi - hammasi oddiy matn fayllarida.
+Siz ularni o‘qiy olasiz, o‘zgartira olasiz va o‘zgarishni test bilan tekshira olasiz.</p>
+<h2>Pilot botingizda va Hermes’da</h2>
+<table>
+<thead>
+<tr>
+<th>Vazifasi</th>
+<th>Pilot boti (<code>kompaniya/app/</code>)</th>
+<th>Hermes (ixtiyoriy)</th>
+<th>Kim yozadi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent kim, qanday gapiradi, nimani hech qachon qilmaydi</td>
+<td><code>agent/instructions.md</code> (To‘plam 3 B: B.1, B.5, B.8)</td>
+<td><code>~/.hermes/SOUL.md</code></td>
+<td>Siz</td>
+</tr>
+<tr>
+<td>Biznes qoidalari va faktlar</td>
+<td><code>agent/instructions.md</code> (B.3, B.4, B.6) va <code>data/</code></td>
+<td><code>AGENTS.md</code> (ish papkasida)</td>
+<td>Siz</td>
+</tr>
+<tr>
+<td>To‘g‘ri javob namunalari</td>
+<td><code>agent/examples.md</code></td>
+<td>- (Hermes o‘zi «skill» yozadi)</td>
+<td>Siz yoki ROP</td>
+</tr>
+<tr>
+<td>Xatolardan saboqlar, taxalluslar</td>
+<td><code>agent/memory.md</code></td>
+<td><code>~/.hermes/memories/MEMORY.md</code></td>
+<td>Siz (pilot), agent o‘zi (Hermes)</td>
+</tr>
+<tr>
+<td>Siz haqingizda</td>
+<td>-</td>
+<td><code>~/.hermes/memories/USER.md</code></td>
+<td>Agent, Siz «eslab qol» deganda</td>
+</tr>
+<tr>
+<td>Telefondan qo‘shilgan faktlar</td>
+<td><code>/eslab_qol</code> → serverda <code>runtime/memory.md</code></td>
+<td>«Buni xotirangga saqla: ...»</td>
+<td>Siz, telefondan</td>
+</tr>
+<tr>
+<td>Nima bo‘ldi (ish jurnali)</td>
+<td><code>runtime/journal/&lt;sana&gt;.jsonl</code></td>
+<td><code>~/.hermes/</code> dagi sessiyalar</td>
+<td>Dastur o‘zi</td>
+</tr>
+</tbody>
+</table>
+<p>Muhim farq: ish jurnali xotira emas.
+Xotira - agent har savolda o‘qiydigan qisqa faktlar.
+Jurnal - nima bo‘lganining to‘liq yozuvi (To‘plam 3 B.7, «audit izi»): uni Siz va Claude Code o‘qiysiz, agent emas.</p>
+<h2>Xotira ataylab kichik</h2>
+<p>Hermes’da MEMORY.md 2 200 belgi, USER.md 1 375 belgi bilan cheklangan (hermes-agent.nousresearch.com, 2026-11-03 da tekshirildi).
+Xotira suhbat boshida bir marta o‘qiladi; yangi faktlar keyingi suhbatdan ishlaydi (<code>/new</code>).
+Pilot botida esa fayllar har bir savolda qayta o‘qiladi: <code>memory.md</code> ni o‘zgartirsangiz, keyingi savoldan ishlaydi.</p>
+<p>Nega kichik: daftari bor odam kabi.
+Hamma narsani yozib qo‘yadigan yordamchi kerakli narsani topa olmaydi.
+Har bir fakt modelga har safar yuboriladi: katta xotira - sekinroq va qimmatroq javob.</p>
+<h2>Baraka Office namunasi</h2>
+<p><code>agent/memory.md</code>, 5-darsdan keyin (<code>../../exercises/namuna/yaxshilash/agent-v2/memory.md</code>):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>- 2026-12-13: Ombor fayli har kuni soat 08:00 da 1C dan yangilanadi (Otabek aka).
+- 2026-12-20: Narx, chegirma, kafolat va yetkazish shartlari faqat prays-list va qoidalar hujjatidan; KP (taqdimot) - reklama, unga tayanma.</pre></div>
+<p>Har bir qatorda sana va bitta fakt.
+Ikkinchi qator va KP ni manbalardan olib tashlash 1-haftadagi ikkita xatoni yo‘qotdi (<code>eval-2-kp-olib-tashlandi.txt</code>: 7 / 12 dan 9 / 12 ga).</p>
+<p>Telefondan (namunaning 2-haftasi, chorshanba 23-dekabr 16:45), ROP yozdi:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/eslab_qol Menejerlar «Staf mesh» yoki «stafmesh» deb yozsa, bu «Staff Mesh» xodim kreslosi (CH-201)</pre></div>
+<p>Ertasi kuni 10:05 dagi «Staf mesh 4 ta qancha?» savoliga agent Staff Mesh narxini aytdi va xodim ✅ bosdi (<code>../../exercises/namuna/baraka-2-hafta/jurnal/2026-12-24.jsonl</code>).</p>
+<p>Hermes uchun Baraka namunasi: <code>hermes-namuna/</code> (SOUL.md, AGENTS.md, USER.md, MEMORY.md).</p>
+<h2>Yomon namuna</h2>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>memory.md:
+Biz eng yaxshi mebel kompaniyasimiz. Mijozlarga doim yaxshi munosabatda bo‘l.
+Narxlar haqida ehtiyot bo‘l. Chegirma masalasida diqqatli bo‘l.
+[va prays-listning to‘liq nusxasi, 14 qator]</pre></div>
+<p><strong>Nimasi yomon:</strong> fakt yo‘q, faqat istaklar («ehtiyot bo‘l» agentning xulqini o‘zgartirmaydi); prays-list ikki joyda turibdi va biri eskiradi.
+<strong>To‘g‘rilangan:</strong> har bir qator - sana va bitta tekshirsa bo‘ladigan fakt; narxlar faqat <code>data/</code> da.</p>
+<div class="foot">Praktikum 3.0 · 5-dars · 20-dekabr 2026 · manba: day-5/demos/04-xotira-fayllari/xotira-fayllari.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

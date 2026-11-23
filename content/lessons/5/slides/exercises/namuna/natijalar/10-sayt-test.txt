@@ -1,0 +1,26 @@
+$ uv run python deploy/sayt.py forma.barakaoffice.uz sayt --test-local
+
+==> 1 ta fayl, 4 KB: sayt -> https://forma.barakaoffice.uz
+
+==> 1/5 Caddy (veb-server, HTTPS sertifikatini o'zi oladi)
+v2.11.7 h1:yj0Y4fYZGPkSvibBJ1sTWE33xC0fxztVyXEW5iIdUT4=
+
+==> 2/5 Firewall: 80 va 443 portlarini ochamiz (sayt uchun); SSH avvalgidek ochiq
+OpenSSH                    ALLOW       Anywhere                  
+80/tcp                     ALLOW       Anywhere                  
+443/tcp                    ALLOW       Anywhere                  
+OpenSSH (v6)               ALLOW       Anywhere (v6)             
+80/tcp (v6)                ALLOW       Anywhere (v6)             
+443/tcp (v6)               ALLOW       Anywhere (v6)             
+
+==> 3/5 Sayt fayllari: /var/www/sayt
+1 ta fayl joylandi.
+
+==> 4/5 Caddy sozlamasi: forma.barakaoffice.uz
+active
+
+==> 5/5 Tekshiruv: DNS va HTTPS
+Test rejimi: DNS tekshirilmaydi, sertifikat Caddy'ning o'zidan (brauzer uni tanimaydi).
+
+==> Tayyor (test rejimi): sayt HTTPS bilan javob beryapti, lekin sertifikat faqat sinov uchun.
+Haqiqiy domen bilan --test-local siz qayta ishga tushiring: shunda Let's Encrypt sertifikati olinadi.

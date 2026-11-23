@@ -1,0 +1,13 @@
+$ ssh vps 'kill -9 2117'   # botni ataylab "o'ldiramiz"
+$ ssh vps 'systemctl status pilot-bot'
+
+● pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter)
+     Loaded: loaded (/etc/systemd/system/pilot-bot.service; enabled; preset: enabled)
+     Active: active (running) since Tue 2026-11-03 03:49:06 +05; 3s ago
+   Main PID: 2220 (python)
+      Tasks: 1 (limit: 9520)
+     Memory: 17.8M (peak: 18.1M)
+        CPU: 192ms
+
+Nov 03 03:49:06 baraka-vps systemd[1]: pilot-bot.service: Scheduled restart job, restart counter is at 1.
+Nov 03 03:49:06 baraka-vps systemd[1]: Started pilot-bot.service - Praktikum pilot bot (Telegram + OpenRouter).

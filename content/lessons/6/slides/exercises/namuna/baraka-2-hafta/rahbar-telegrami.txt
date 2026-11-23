@@ -1,0 +1,287 @@
+Avtomatik yaratilgan: day-5/_build/sim/simulate.py (soxta Telegram va soxta model, internetsiz).
+Qo‘lda tahrirlamang: skriptni qayta ishga tushiring.
+
+--- 2026-12-20 10:20 -> Rustamov
+❌ Xato deb belgilangan javoblar:
+
+2026-12-15 #2e09e4b8
+Savol: Optima stolidan 5 ta kerak, narxi?
+Javob: «Optima» 5 dona: 2 150 000 x 5 = 10 750 000 so‘m.
+Izoh: 5 donadan ulgurji narx (1 890 000) bo‘lishi kerak edi
+
+2026-12-15 #ab195b47
+Savol: Start stoli 6 ta qancha bo‘ladi?
+Javob: «Start» 6 dona: 1 450 000 x 6 = 8 700 000 so‘m.
+Izoh: 6 dona - ulgurji narx (1 280 000) kerak edi
+
+2026-12-16 #c958a792
+Savol: ErgoPro omborda bormi?
+Javob: Ha, omborda bor (1C).
+Izoh: Ombor fayli 31 soat eski edi, mahsulot sotilgan ekan
+
+2026-12-16 #7c213c12
+Savol: 18 mln lik buyurtmaga chegirma bera olamanmi?
+Javob: Ha, 5% gacha bera olasiz.
+Izoh: Qoida: 20 000 000 so‘mdan oshsa; 18 mln da chegirma yo‘q
+
+2026-12-17 #e928d1d5
+Savol: Chirchiqqa yetkazish bepulmi?
+Javob: Ha, Toshkent viloyatiga yetkazish bepul.
+Izoh: KP dagi gap; shartnomada 8 000 so‘m/km; mijozga ketishidan oldin tasdiqlashda ushlandi
+
+2026-12-17 #ba30a818
+Savol: Kreslo kafolati qancha?
+Javob: Barcha kreslolarga 3 yil kafolat.
+Izoh: KP dagi gap; shartnomada mexanizmga 12 oy
+
+2026-12-18 #3f8803ea
+Savol: Senator kreslo omborda bormi?
+Javob: Ha, bor (1C).
+Izoh: Ombor fayli yana eski edi
+
+--- 2026-12-20 10:20 -> Rustamov
+📊 Kunlik hisobot: 20-dekabr, yakshanba
+«Savdo yordamchisi»
+
+• So‘rovlar: 0
+• Javob berildi: 0
+• Odamga uzatildi: 0
+• Xato deb belgilandi: 0
+• To‘liq hal qilindi: 0
+• Texnik xatolar: 0
+• Xarajat: $0.00 (shu oy $0.67 / limit $15.00)
+
+--- 2026-12-20 11:40 -> Rustamov
+🟢 «Savdo yordamchisi» ishga tushdi.
+Model: google/gemini-3.8-flash.
+Rejim: darhol javob beradi.
+
+--- 2026-12-20 11:40 -> None
+[server] deploy: agent v2 (5-dars yaxshilash halqasi), testlar 12/12
+
+--- 2026-12-20 12:40 -> Rustamov
+✅ Har ish kuni soat 09:05 da javob yuboraman: «Eng uzoq harakatsiz turgan 3 ta mahsulot». Ro‘yxat: /jadval
+
+--- 2026-12-20 12:40 -> Rustamov
+⚠️ Ma’lumot manbasi muammosi: Ombor qoldig‘i (1C eksport): fayl 29 soatdan beri yangilanmagan (chegara 25 soat)
+
+--- 2026-12-20 12:40 -> Rustamov
+🔔 Eslataman: bugun soat 17:00 da.
+
+--- 2026-12-20 12:40 -> Rustamov
+⏰ Jadvaldagi ishlar (har ish kuni):
+• 08:30 - Kam qolgan mahsulotlar
+• 10:30 - 1C fayli tekshiruvi
+1. 09:05 - Eng uzoq harakatsiz turgan 3 ta mahsulot
+
+--- 2026-12-20 13:10 -> Begona
+Bu bot faqat Baraka Office xodimlari uchun.
+Sizning Telegram ID raqamingiz: 7199999
+Kirish kerak bo‘lsa, shu raqamni rahbaringizga yuboring.
+
+--- 2026-12-20 17:00 -> Rustamov
+🔔 Eslatma: Otabek aka bilan 1C eksporti haqida gaplashish
+
+--- 2026-12-21 00:40 -> Rustamov
+⚠️ Ma’lumot manbasi muammosi: Ombor qoldig‘i (1C eksport): fayl 41 soatdan beri yangilanmagan (chegara 25 soat)
+
+--- 2026-12-21 08:30 -> Rustamov
+⏰ Kam qolgan mahsulotlar
+
+Tayyor mahsulot 15 donadan kam:
+- CF-401 Стол переговоров Dialog-8 280x120: 0 dona
+- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 4 dona
+- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona
+- CH-203 Кресло руководителя Senator Lux черное: 9 dona
+
+--- 2026-12-21 09:00 -> Rustamov
+📊 Kunlik hisobot: 20-dekabr, yakshanba
+«Savdo yordamchisi»
+
+• So‘rovlar: 0
+• Javob berildi: 0
+• Odamga uzatildi: 0
+• Xato deb belgilandi: 0
+• To‘liq hal qilindi: 0
+• Texnik xatolar: 0
+• Xarajat: $0.00 (shu oy $0.67 / limit $15.00)
+
+--- 2026-12-21 09:05 -> Rustamov
+⏰ Eng uzoq harakatsiz turgan 3 ta mahsulot
+
+Eng uzoq harakatsiz turgan mahsulotlar (1C):
+- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona, oxirgi harakat 18.04.2026
+- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona, oxirgi harakat 20.10.2026
+- SH-501 Шкаф для документов 80x40x200: 58 dona, oxirgi harakat 27.10.2026
+
+--- 2026-12-21 10:30 -> Otabek
+⏰ 1C fayli tekshiruvi
+
+1C ombor fayli joyida: ogohlantirish yo‘q, 11 qator.
+
+--- 2026-12-22 08:30 -> Rustamov
+⏰ Kam qolgan mahsulotlar
+
+Tayyor mahsulot 15 donadan kam:
+- CF-401 Стол переговоров Dialog-8 280x120: 0 dona
+- CH-201 Кресло Staff Mesh (сетка, газлифт кл.3): 4 dona
+- WS-102 Стол Optima 140x70 (ЛДСП 25мм, П-каркас): 6 dona
+- CH-203 Кресло руководителя Senator Lux черное: 9 dona
+
+--- 2026-12-22 09:00 -> Rustamov
+📊 Kunlik hisobot: 21-dekabr, dushanba
+«Savdo yordamchisi»
+
+• So‘rovlar: 22
+• Javob berildi: 19
+• Odamga uzatildi: 3
+• Xato deb belgilandi: 0
+• To‘liq hal qilindi: 19
+• Texnik xatolar: 0
+• Xarajat: $0.11 (shu oy $0.79 / limit $15.00)
+
+--- 2026-12-22 09:05 -> Rustamov
+⏰ Eng uzoq harakatsiz turgan 3 ta mahsulot: bu safar javob tayyorlab bo‘lmadi (Ombor qoldig‘i (1C eksport): fayl 25 soatdan beri yangilanmagan (chegara 25 soat).). Ma’lumot fayllarini tekshiring: /holat
+
+--- 2026-12-22 09:05 -> Rustamov
+⚠️ Ma’lumot manbasi muammosi: Ombor qoldig‘i (1C eksport): fayl 25 soatdan beri yangilanmagan (chegara 25 soat)
+
+--- 2026-12-22 10:30 -> Otabek
+⏰ 1C fayli tekshiruvi: bu safar javob tayyorlab bo‘lmadi (Ombor qoldig‘i (1C eksport): fayl 26 soatdan beri yangilanmagan (chegara 25 soat). Otabek aka 1C dan bugungi qoldiqni eksport qilsin.). Ma’lumot fayllarini tekshiring: /holat
+
+--- 2026-12-23 08:30 -> Rustamov
+⏰ Kam qolgan mahsulotlar
+
+Tayyor mahsulot 15 donadan kam:
+- CF-401 Стол переговоров Dialog-8 280x120: 0 dona
+- CH-203 Кресло руководителя Senator Lux черное: 9 dona
+
+--- 2026-12-23 09:00 -> Rustamov
+📊 Kunlik hisobot: 22-dekabr, seshanba
+«Savdo yordamchisi»
+
+• So‘rovlar: 23
+• Javob berildi: 20
+• Odamga uzatildi: 3
+• Xato deb belgilandi: 1
+• To‘liq hal qilindi: 19
+• Texnik xatolar: 0
+• Xarajat: $0.12 (shu oy $0.90 / limit $15.00)
+
+Diqqat:
+• Xato javoblar ro‘yxati: /xatolar
+
+--- 2026-12-23 09:05 -> Rustamov
+⏰ Eng uzoq harakatsiz turgan 3 ta mahsulot
+
+Eng uzoq harakatsiz turgan mahsulotlar (1C):
+- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona, oxirgi harakat 18.04.2026
+- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona, oxirgi harakat 20.10.2026
+- SH-501 Шкаф для документов 80x40x200: 58 dona, oxirgi harakat 27.10.2026
+
+--- 2026-12-23 10:30 -> Otabek
+⏰ 1C fayli tekshiruvi
+
+1C ombor fayli joyida: ogohlantirish yo‘q, 11 qator.
+
+--- 2026-12-24 08:30 -> Rustamov
+⏰ Kam qolgan mahsulotlar
+
+Tayyor mahsulot 15 donadan kam:
+- CF-401 Стол переговоров Dialog-8 280x120: 2 dona
+- CH-203 Кресло руководителя Senator Lux черное: 7 dona
+
+--- 2026-12-24 09:00 -> Rustamov
+📊 Kunlik hisobot: 23-dekabr, chorshanba
+«Savdo yordamchisi»
+
+• So‘rovlar: 24
+• Javob berildi: 21
+• Odamga uzatildi: 3
+• Xato deb belgilandi: 1
+• To‘liq hal qilindi: 20
+• Texnik xatolar: 0
+• Xarajat: $0.12 (shu oy $1.02 / limit $15.00)
+
+Diqqat:
+• Xato javoblar ro‘yxati: /xatolar
+
+--- 2026-12-24 09:05 -> Rustamov
+⏰ Eng uzoq harakatsiz turgan 3 ta mahsulot
+
+Eng uzoq harakatsiz turgan mahsulotlar (1C):
+- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona, oxirgi harakat 18.04.2026
+- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona, oxirgi harakat 20.10.2026
+- SH-501 Шкаф для документов 80x40x200: 58 dona, oxirgi harakat 27.10.2026
+
+--- 2026-12-24 10:30 -> Otabek
+⏰ 1C fayli tekshiruvi
+
+1C ombor fayli joyida: ogohlantirish yo‘q, 11 qator.
+
+--- 2026-12-25 08:30 -> Rustamov
+⏰ Kam qolgan mahsulotlar
+
+Tayyor mahsulot 15 donadan kam:
+- CF-401 Стол переговоров Dialog-8 280x120: 2 dona
+- CH-203 Кресло руководителя Senator Lux черное: 7 dona
+
+--- 2026-12-25 09:00 -> Rustamov
+📊 Kunlik hisobot: 24-dekabr, payshanba
+«Savdo yordamchisi»
+
+• So‘rovlar: 23
+• Javob berildi: 21
+• Odamga uzatildi: 2
+• Xato deb belgilandi: 1
+• To‘liq hal qilindi: 20
+• Texnik xatolar: 0
+• Xarajat: $0.12 (shu oy $1.14 / limit $15.00)
+
+Diqqat:
+• Xato javoblar ro‘yxati: /xatolar
+
+--- 2026-12-25 09:05 -> Rustamov
+⏰ Eng uzoq harakatsiz turgan 3 ta mahsulot
+
+Eng uzoq harakatsiz turgan mahsulotlar (1C):
+- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona, oxirgi harakat 18.04.2026
+- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona, oxirgi harakat 20.10.2026
+- SH-501 Шкаф для документов 80x40x200: 58 dona, oxirgi harakat 27.10.2026
+
+--- 2026-12-25 10:30 -> Otabek
+⏰ 1C fayli tekshiruvi
+
+1C ombor fayli joyida: ogohlantirish yo‘q, 11 qator.
+
+--- 2026-12-26 08:30 -> Rustamov
+⏰ Kam qolgan mahsulotlar
+
+Tayyor mahsulot 15 donadan kam:
+- CF-401 Стол переговоров Dialog-8 280x120: 2 dona
+- CH-203 Кресло руководителя Senator Lux черное: 7 dona
+
+--- 2026-12-26 09:00 -> Rustamov
+📊 Kunlik hisobot: 25-dekabr, juma
+«Savdo yordamchisi»
+
+• So‘rovlar: 23
+• Javob berildi: 21
+• Odamga uzatildi: 2
+• Xato deb belgilandi: 0
+• To‘liq hal qilindi: 21
+• Texnik xatolar: 0
+• Xarajat: $0.12 (shu oy $1.26 / limit $15.00)
+
+--- 2026-12-26 09:05 -> Rustamov
+⏰ Eng uzoq harakatsiz turgan 3 ta mahsulot
+
+Eng uzoq harakatsiz turgan mahsulotlar (1C):
+- CH-203-BR Кресло руководителя Senator Lux коричневое: 26 dona, oxirgi harakat 18.04.2026
+- WS-104 Стол подъемный AeroLift 150x75 (2 мотора): 21 dona, oxirgi harakat 20.10.2026
+- SH-501 Шкаф для документов 80x40x200: 58 dona, oxirgi harakat 27.10.2026
+
+--- 2026-12-26 10:30 -> Otabek
+⏰ 1C fayli tekshiruvi
+
+1C ombor fayli joyida: ogohlantirish yo‘q, 11 qator.

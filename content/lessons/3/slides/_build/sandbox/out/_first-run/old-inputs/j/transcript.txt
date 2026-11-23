@@ -1,0 +1,55 @@
+== j | model sonnet | mode acceptEdits | 2026-11-03 02:44 | claude 2.1.316 (Claude Code)
+== prompt:
+hujjatlar/ papkasidagi hujjatlar va kit1-interviews/ dagi intervyularni solishtir. Bir-biriga zid raqamlar bormi: yetkazish muddati, chegirma, kafolat? Qaysi fayl, qaysi gap - jadval qilib ko‘rsat.
+== output:
+Yetkazish muddati va chegirmada interyuvlar rasmiy hujjatlarga zid chiqdi. Kafolatda ziddiyat faqat hujjatlar ichida, interyuvlarda kafolat haqida gap yo‘q. Yo‘l-yo‘lakay, KPda yana bir zid joy topdim: Toshkent viloyatiga yetkazish.
+
+## Yetkazish muddati
+
+| Manba | Fayl va qator | Nima deyilgan | Holat |
+|---|---|---|---|
+| Rasmiy | `hujjatlar/03_Namunaviy_Shartnoma_va_Kafolat.md:27` (3.1-band) | Oldindan to‘lov tushgandan 7 ish kuni; MDF/shpon buyurtmalar 12 ish kuni | **To‘g‘ri** |
+| Intervyu | `kit1-interviews/jamshid-form-b.md:42` | Jamshid aka: «3 ish kunida yetkazamiz» | **Zid** |
+| Intervyu | `kit1-interviews/madina-form-b.md:45` | Madina ham «3 kunda yetkazamiz» deb javob bergan, «shunday o‘rgatilgan» | **Zid** |
+| Intervyu | `kit1-interviews/madina-form-b.md:15` | «3 kunda yetkazamiz» va’dasi mijozni yo‘qotadi, deb xavf sifatida yozilgan | Xavfni tan oladi |
+| Intervyu | `kit1-interviews/malika-form-b.md:16` | «3 kun» va’dasi berilsa mijoz aldanadi, deb yozilgan | Xavfni tan oladi |
+| KP | `hujjatlar/02_Kompaniya_Taqdimoti_KP.md:37` | Montaj «1 kun ichida» | Shartnoma bilan to‘qnashishi mumkin: shartnomada yetkazish va montaj birga 7 ish kuni |
+
+## Chegirma
+
+| Manba | Fayl va qator | Nima deyilgan | Holat |
+|---|---|---|---|
+| Rasmiy | `hujjatlar/01_Prays_list_va_Katalog_2026.md:57` | Sotuvchi 5% gacha (buyurtma 20 mln dan oshsa) | **To‘g‘ri** |
+| Rasmiy | `01_Prays_list_va_Katalog_2026.md:58` | ROP yozma ruxsati bilan 10% gacha (100% oldindan to‘lov yoki 50 mln dan oshsa) | **To‘g‘ri** |
+| Rasmiy | `01_Prays_list_va_Katalog_2026.md:59` | 10% dan yuqori taqiqlangan. Faqat Bosh direktor imzosi bilan, 150 mln dan yuqori tenderlarda ko‘riladi | **To‘g‘ri** |
+| Intervyu | `kit1-interviews/jamshid-form-b.md:42` | Jamshid aka: «30-40 mln so‘mlik buyurtmada 12-15% chegirma» | **Zid** |
+| Intervyu | `kit1-interviews/malika-form-b.md:16` | 12-15% chegirma berilsa marja kuyadi, deb yozilgan | Xavfni tan oladi |
+
+Jamshid akaning gapi ikki joyda buziladi:
+- 10% dan yuqori chegirma taqiqlangan.
+- 30-40 mln so‘mlik buyurtma 50 mln dan kam. Shuning uchun ROP faqat 100% oldindan to‘lov bo‘lsa 10% bera oladi.
+
+## Kafolat
+
+| Manba | Fayl va qator | Nima deyilgan | Holat |
+|---|---|---|---|
+| Rasmiy | `hujjatlar/03_Namunaviy_Shartnoma_va_Kafolat.md:38` (4.1-band) | Korpus 24 oy | **To‘g‘ri** |
+| Rasmiy | `03_Namunaviy_Shartnoma_va_Kafolat.md:39` | Kreslo mexanizmi, gazlift, g‘ildirak, furnitura 12 oy | **To‘g‘ri** |
+| KP | `hujjatlar/02_Kompaniya_Taqdimoti_KP.md:25-26` | «3 yillik (36 oy) to‘liq kafolat», barcha mebel va kreslolarga, mexanizm va gazlift ham | **Zid.** CLAUDE.md ham buni xato deydi |
+| Intervyu | `kit1-interviews/*` | Kafolat haqida gap yo‘q | Ziddiyat yo‘q |
+
+## Qo‘shimcha topilmalar (so‘ramagan edingiz)
+
+| Masala | Fayllar | Nima zid |
+|---|---|---|
+| Toshkent viloyatiga yetkazish | `02_Kompaniya_Taqdimoti_KP.md:28` va `03_Namunaviy_Shartnoma_va_Kafolat.md:30` | KPda «butun viloyat bo‘ylab mutlaqo bepul». Shartnomada halqa yo‘lidan har km uchun 8 000 so‘m |
+| Servis muddati | `02_Kompaniya_Taqdimoti_KP.md:26` va `03_Namunaviy_Shartnoma_va_Kafolat.md:40` | KPda servis brigadasi 48 soatda keladi. Shartnomada nuqsonni tuzatish yoki almashtirish 5 ish kuni |
+
+## Xulosa
+
+- Agent faqat shartnoma va prays-listga tayanadi: 7/12 ish kuni, 5% / 10%, 24/12 oy.
+- Jamshid aka va Madina «3 kun» va «12-15%» demasligi uchun ularni o‘qitish kerak. Jamshid aka bu jarayonning oxirgi ma’lumotnomasi, shuning uchun ayniqsa u.
+- Marketing KPdagi «36 oy», «viloyatga bepul» va «48 soat» ni tuzatishi kerak.
+
+Hech narsani o‘zgartirmadim.
+== exit 0

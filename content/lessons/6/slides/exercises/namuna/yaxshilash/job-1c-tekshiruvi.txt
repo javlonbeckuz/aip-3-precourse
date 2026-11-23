@@ -1,0 +1,3 @@
+$ uv run pilot job "1C fayli tekshiruvi"
+
+ODAMGA: Ombor qoldig‘i (1C eksport): fayl 28 soatdan beri yangilanmagan (chegara 25 soat). Otabek aka 1C dan bugungi qoldiqni eksport qilsin.

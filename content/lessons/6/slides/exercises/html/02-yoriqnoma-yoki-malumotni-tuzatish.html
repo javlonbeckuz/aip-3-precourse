@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2-mashq: Yo‘riqnoma yoki ma’lumotni tuzatish</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 5-dars</span><span class="pill">2-mashq</span></div>
+<h1>2-mashq: Yo‘riqnoma yoki ma’lumotni tuzatish</h1>
+<p>5-dars, 1:15-1:35.
+Natija: 1-mashqdagi har bir xato uchun eng kichik tuzatish kiritilgan, To‘plam 5 B.13 dagi «Nimani o‘zgartirdik» katagi to‘ldirilgan.
+Test va serverga joylash 3-mashqda.</p>
+<h2>Kerak bo‘ladi</h2>
+<ul>
+<li>1-mashqdagi jadval: har bir xato, turi va fayli bilan.</li>
+<li>Claude Code <code>kompaniya/</code> papkasida ochiq (<code>app/</code> uning ichida).</li>
+<li>OpenRouter limiti yetarli: har bir <code>pilot ask</code> taxminan $0.003-0.005 (40-60 so‘m).</li>
+</ul>
+<h2>Qanday bajariladi</h2>
+<p>Har bir xato uchun quyidagi tartib (<code>app/CLAUDE.md</code> dagi «yaxshilash halqasi» xuddi shu):</p>
+<ol>
+<li><strong>Xatoni takrorlang.</strong>
+   Xuddi o‘sha savolni noutbukda bering: <code>uv run pilot ask "&lt;savol&gt;"</code>.
+   Xato takrorlanmasa, sababini topa olmaysiz; mentor bilan gaplashing.</li>
+<li><strong>Eng kichik o‘zgarishni toping.</strong>
+   - Fakt yetishmasa: <code>agent/memory.md</code> ga bitta qator, sana bilan.
+   - Qoida noaniq bo‘lsa: <code>agent/instructions.md</code> dagi o‘sha bitta qator, aniq so‘zlar bilan.
+   - Javob shakli yomon bo‘lsa: <code>agent/examples.md</code> ga 2-3 ta haqiqiy to‘g‘ri javob (few-shot).
+   - Ma’lumot eski bo‘lsa: faylni yangilash tartibi va <code>agent/sources.toml</code> dagi <code>max_age_hours</code>.</li>
+<li><strong>Farqni ko‘ring.</strong>
+   Claude Code eski va yangi matnni yonma-yon ko‘rsatsin; Siz tasdiqlaysiz.</li>
+<li><strong>B shaklini sinxron qiling.</strong>
+   O‘zgarish B.4, B.5 yoki B.6 ga tegsa, <code>kit3-agent/form-b-agent.md</code> dagi o‘sha maydonni ham yangilang: xodimlar ko‘radigan shakl eskirmasin.</li>
+<li><strong>B.13 ni to‘ldiring.</strong>
+   <code>kit5-pilot/numbers.md</code> dagi xatolar jurnalida «Nimani o‘zgartirdik» katagiga bir gap yozing.</li>
+</ol>
+<h3>Claude Code uchun topshiriq (har bir xato uchun bittadan)</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>Mana xatolar jurnalidan bitta xato: [xatoni /xatolar dan nusxalab qo'ying].
+1-mashqda uning turini [tur] deb belgiladim.
+app/CLAUDE.md dagi &quot;yaxshilash halqasi&quot; bo'yicha ishla:
+avval &quot;uv run pilot ask&quot; bilan xatoni takrorla (narxini ayt, mendan ruxsat so'ra),
+keyin eng kichik o'zgarishni taklif qil: qaysi fayl, eski matn, yangi matn.
+Kodni o'zgartirma. Men tasdiqlamagunimcha faylga yozma.
+O'zgarish B.4, B.5 yoki B.6 ga tegsa, kit3-agent/form-b-agent.md ni ham yangilashni taklif qil.
+Oxirida kit5-pilot/numbers.md dagi B.13 &quot;Nimani o'zgartirdik&quot; katagiga bitta gap yoz.</pre></div>
+<p>To‘plam 5 skilli bilan ham shu ishni qilsa bo‘ladi: <code>/kit5 xato</code>.
+U xatoni B.13 ga yozadi, <code>kit3-agent/instructions.md</code> ga o‘zgarish taklif qiladi va test qo‘shadi.
+Keyin <code>app/agent/instructions.md</code> ni unga moslashtirishni Claude Code’dan so‘rang (<code>app/CLAUDE.md</code> buni biladi).</p>
+<h3>Telefondan tez yo‘l: <code>/eslab_qol</code></h3>
+<p>Fakt yetishmasa (1-tur), uni telefoningizdan darhol qo‘shishingiz mumkin:</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>/eslab_qol Menejerlar «Staf mesh» yoki «stafmesh» deb yozsa, bu «Staff Mesh» xodim kreslosi (CH-201)</pre></div>
+<p>Baraka namunasida Jamshid aka buni 2-haftada, 23-dekabr kuni yozdi: ertasi kuni «Staf mesh 4 ta qancha?» savoliga to‘g‘ri narx chiqdi.</p>
+<p>Bot uni keyingi savoldan boshlab ishlatadi, serverga joylash shart emas.
+<code>/xotira</code> - ro‘yxat, <code>/unut 2</code> - 2-faktni o‘chirish.
+Ehtiyot bo‘ling: bu faktlar faqat serverda saqlanadi (<code>runtime/memory.md</code>).
+Noutbukdagi testlar ularni ko‘rmaydi.
+Shu hafta ichida ularni <code>agent/memory.md</code> ga ko‘chiring va test qo‘shing (3-mashq).</p>
+<h2>Baraka Office namunasi</h2>
+<p>To‘liq farq: <code>namuna/yaxshilash/farq.diff</code>.
+Oldingi va keyingi fayllar: <code>namuna/yaxshilash/agent-v1/</code> va <code>namuna/yaxshilash/agent-v2/</code>.</p>
+<p><strong>1. Takrorlash</strong> (<code>namuna/yaxshilash/ask-1-5-dona-oldin.txt</code>, <code>ask-2-kafolat-oldin.txt</code>):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>$ uv run pilot ask &quot;Optima stolidan 5 ta kerak, narxi?&quot;
+«Optima» 5 dona: 2 150 000 x 5 = 10 750 000 so‘m.
+
+$ uv run pilot ask &quot;Kreslo kafolati qancha?&quot;
+Barcha kreslolarga 3 yil kafolat.
+--- holat: answered, ... manbalar: ..., Kompaniya taqdimoti (KP)</pre></div>
+<p>Ikkala xato takrorlandi; ikkinchisining manbalari orasida KP turibdi.</p>
+<p><strong>2. Tuzatishlar</strong> (eng kichigidan boshlab):</p>
+<table>
+<thead>
+<tr>
+<th>Xato</th>
+<th>Fayl</th>
+<th>O‘zgarish</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kafolat 3 yil, Chirchiqqa bepul (17.12, KP)</td>
+<td><code>agent/sources.toml</code>, <code>agent/memory.md</code></td>
+<td>KP manbalar ro‘yxatidan olib tashlandi; <code>memory.md</code>: «- 2026-12-20: Narx, chegirma, kafolat va yetkazish shartlari faqat prays-list va qoidalar hujjatidan; KP (taqdimot) - reklama, unga tayanma.»</td>
+</tr>
+<tr>
+<td>5 va 6 dona chakana (15.12)</td>
+<td><code>agent/instructions.md</code>, B.4</td>
+<td>Eski: «1-4 dona uchun chakana, 5 va undan ko‘p dona uchun ulgurji narx». Yangi: «1-4 dona - chakana; 5 va undan ko‘p dona (5, 6, 7 ...) - ulgurji narx; 5 dona ham ulgurji.»</td>
+</tr>
+<tr>
+<td>18 mln chegirma (16.12)</td>
+<td><code>agent/examples.md</code></td>
+<td>Ikki namuna: 5 donali buyurtma hisobi va «18 mln: chegirma yo‘q» javobi</td>
+</tr>
+<tr>
+<td>Eski 1C fayli (16.12, 18.12)</td>
+<td><code>agent/sources.toml</code></td>
+<td><code>max_age_hours = 25</code>, oxirida qo‘yiladi; Otabek aka bilan kelishuv: har ish kuni 08:00 da eksport; 10:30 da tekshiruv ishi (4-mashq)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nega <code>max_age_hours = 25</code>:</strong> eksport har kuni 08:00 da keladi.
+25 soat - kechagi fayl ertasi kuni 09:00 gacha hali «yangi», 09:00 dan keyin «eski» hisoblanadi.
+Bot fayl yoshini har bir savolda tekshiradi.
+Shunda 10:30 dagi tekshiruv ishi eksport kelmaganini ko‘radi.
+Kamchiligi: yakshanba kuni ham «fayl eski» ogohlantirishi keladi; dushanba 08:00 da yangi fayl kelgach o‘tadi.</p>
+<p><strong>Tartib muhim:</strong> <code>max_age_hours</code> ni oxirida qo‘ying, testlar yashil bo‘lgandan keyin.
+Yakshanba kuni noutbukdagi 1C fayli eski: shundan keyin <code>pilot eval</code> dagi qoldiq testlari odamga uzatadi va regressiyaga o‘xshab ko‘rinadi.
+Ma’lumot tuzatishini <code>pilot eval</code> bilan emas, <code>pilot check</code> va <code>pilot ask</code> bilan tekshiring (pastda), keyin bir marta joylang.</p>
+<p><strong>3. Ma’lumot tuzatilganini tekshirish</strong> (<code>namuna/yaxshilash/check-eski-fayl.txt</code>, <code>ask-3-eski-fayl-keyin.txt</code>):</p>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>⚠️ Ombor qoldig‘i (1C eksport): 11 qator, ustunlar: Код, Номенклатура, Количество, Последнее движение
+   Ombor qoldig‘i (1C eksport): fayl 28 soatdan beri yangilanmagan (chegara 25 soat)
+
+$ uv run pilot ask &quot;ErgoPro omborda bormi?&quot;
+ODAMGA: ombor fayli bilan muammo (... fayl 28 soatdan beri yangilanmagan (chegara 25 soat)), qoldiqni Otabek akadan aniqlash kerak.</pre></div>
+<p>Endi eski fayldan «ha, bor» demaydi, Jamshid akaga uzatadi.</p>
+<p><strong>4. B.13 ga yozilgani:</strong></p>
+<table>
+<thead>
+<tr>
+<th>B.13 Sana</th>
+<th>Nima bo‘ldi</th>
+<th>Kim topdi</th>
+<th>Nimani o‘zgartirdik</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15.12</td>
+<td>«Optima 5 ta»: chakana narx (10 750 000), kerak ulgurji (9 450 000)</td>
+<td>Malika</td>
+<td>Yo‘riqnoma B.4: «5 va undan ko‘p dona - ulgurji; 5 dona ham ulgurji»; namuna; T9 (test ulgurji-5-dona)</td>
+</tr>
+<tr>
+<td>15.12</td>
+<td>«Start 6 ta»: chakana narx (8 700 000), kerak ulgurji (7 680 000)</td>
+<td>Madina</td>
+<td>Xuddi shu o‘zgarish; T10 (test ulgurji-6-dona); testlar qayta o‘tdi</td>
+</tr>
+<tr>
+<td>16.12</td>
+<td>ErgoPro «bor» dedi, fayl 31 soat eski</td>
+<td>Madina</td>
+<td>sources.toml: max_age_hours = 25; 08:00 eksport kelishuvi; 10:30 tekshiruv ishi</td>
+</tr>
+<tr>
+<td>16.12</td>
+<td>18 mln buyurtmaga «5% gacha bera olasiz»</td>
+<td>Malika</td>
+<td>examples.md: 18 mln namunasi (chegirma 20 000 000 dan); T11 (test chegirma-18-mln)</td>
+</tr>
+<tr>
+<td>17.12</td>
+<td>«Chirchiqqa yetkazish bepul» (KP); tasdiqlashda ushlandi, mijozga ketmadi</td>
+<td>Malika</td>
+<td>KP manbalardan olindi; memory.md: shartlar faqat qoidalar hujjatidan (shartnoma ustun); T12 (test yetkazish-chirchiq)</td>
+</tr>
+<tr>
+<td>17.12</td>
+<td>«Barcha kreslolarga 3 yil kafolat» (KP)</td>
+<td>Jamshid aka</td>
+<td>Xuddi shu o‘zgarish; T7 (test kafolat-kreslo) 3-darsdan beri bor edi</td>
+</tr>
+<tr>
+<td>18.12</td>
+<td>Senator «bor» dedi, fayl yana eski</td>
+<td>Madina</td>
+<td>16.12 dagi bilan bitta tuzatish</td>
+</tr>
+</tbody>
+</table>
+<h2>Yomon namuna: bitta katta «tuzatish»</h2>
+<blockquote>
+<p>instructions.md B.4 ga yozildi: «Mijozlarimiz korporativ, shuning uchun har doim ulgurji narxni aytasan.»
+5 va 6 dona xatolari yo‘qoldi. Serverga joyladik.</p>
+</blockquote>
+<p><strong>Nimasi yomon:</strong></p>
+<ul>
+<li>Ikki xatoni yo‘qotish uchun butun qoida o‘zgardi: endi 2 ta Start stoliga ham ulgurji narx chiqadi: 2 560 000 so‘m, to‘g‘risi 2 900 000 so‘m.</li>
+<li>Test to‘plami ishga tushirilmagan.
+  Ishga tushirilganda natija o‘zgarmagan ko‘rinadi (12 dan 9 ta), lekin yiqilganlar boshqa: 3-darsdan beri o‘tib kelgan ikkita test (<code>chakana-start-2</code>, <code>chakana-ergopro-3</code>) endi yiqiladi (<code>namuna/yaxshilash/eval-3-regressiya.txt</code>).
+  Bu <strong>regressiya</strong>: bitta tuzatish boshqa ishlayotgan joyni buzdi.
+  Faqat jami raqamga qarasangiz, uni ko‘rmaysiz.</li>
+<li>Menejerlar mijozlarga 1-4 donali buyurtmalarda ham arzon narx aytgan bo‘lardi: har birida kompaniya pul yo‘qotardi.</li>
+</ul>
+<p><strong>To‘g‘rilangan:</strong> eski qoidaning noaniq joyini aniqlash: «1-4 dona - chakana; 5 va undan ko‘p dona - ulgurji; 5 dona ham ulgurji».
+Natija: 12 dan 12 (<code>eval-4-keyin.txt</code>).</p>
+<h2>Tez-tez uchraydigan xatolar</h2>
+<ul>
+<li><strong>Hamma narsani bir vaqtda o‘zgartirish.</strong>
+  Bitta xato, bitta o‘zgarish, keyin test.
+  Aks holda qaysi o‘zgarish yordam berganini bilmaysiz.</li>
+<li><strong>Yo‘riqnomaga «ehtiyot bo‘l», «diqqat qil» qo‘shish.</strong>
+  Bu so‘zlar hech narsani o‘zgartirmaydi; aniq qoida yoki aniq fakt yozing.</li>
+<li><strong>Bir martalik holatni qoidaga aylantirish.</strong>
+  Bitta mijoz bilan bo‘lgan voqea qoida emas; uni B.6 orqali odamga uzating.</li>
+<li><strong>Ma’lumot xatosini yo‘riqnoma bilan yopish.</strong>
+  Eski fayl muammosi faylning o‘zida hal bo‘ladi: kim, qachon eksport qiladi.</li>
+<li><strong>Kodni o‘zgartirish.</strong>
+  Birinchi haftada kod kamdan-kam kerak.
+  Claude Code kod o‘zgartirmoqchi bo‘lsa, «nega matn fayli yetmaydi?» deb so‘rang.</li>
+</ul>
+<h2>Tayyor, agar</h2>
+<ul>
+<li class="cb">Har bir agent xatosi takrorlangan (<code>pilot ask</code>).</li>
+<li class="cb">Har biri uchun eng kichik o‘zgarish kiritilgan, farqni Siz ko‘rgansiz.</li>
+<li class="cb">B.4-B.6 o‘zgargan bo‘lsa, <code>kit3-agent/form-b-agent.md</code> ham yangilangan.</li>
+<li class="cb">B.13 dagi har bir qatorda «Nimani o‘zgartirdik» to‘ldirilgan.</li>
+<li class="cb">Telefondan qo‘shilgan faktlar <code>agent/memory.md</code> ga ko‘chirilgan yoki ko‘chirish rejalashtirilgan.</li>
+</ul>
+<div class="foot">Praktikum 3.0 · 5-dars · 20-dekabr 2026 · manba: day-5/exercises/02-yoriqnoma-yoki-malumotni-tuzatish.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

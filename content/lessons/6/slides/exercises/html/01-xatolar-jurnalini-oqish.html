@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1-mashq: Xatolar jurnalini o‘qish va xatolarni turlarga ajratish</title>
+<link rel="stylesheet" href="../../assets/page.css">
+</head>
+<body>
+<main class="paper">
+<div class="bar"><span>Praktikum 3.0 // 5-dars</span><span class="pill">1-mashq</span></div>
+<h1>1-mashq: Xatolar jurnalini o‘qish va xatolarni turlarga ajratish</h1>
+<p>5-dars, 1:00-1:15 (instruktor namoyishidan keyin).
+Natija: har bir xato uchun bitta qator: nima bo‘ldi, qaysi turga kiradi, qayerda tuzatiladi.
+Bu mashq tuzatishdan oldin bajariladi: sababini bilmasdan tuzatsangiz, boshqa joyni buzasiz.</p>
+<h2>Kerak bo‘ladi</h2>
+<ul>
+<li>Botingiz kamida 4 ish kuni ishlagan bo‘lsin (4-darsdan keyin).</li>
+<li>Telefoningizda bot ochiq, Siz uning egasisiz (<code>OWNER_CHAT_ID</code>).</li>
+<li>Noutbukda Claude Code <code>kompaniya/</code> papkasida ochiq.</li>
+<li>To‘plam 5 B shakli: <code>kompaniya/kit5-pilot/numbers.md</code>.</li>
+</ul>
+<h2>Qanday bajariladi</h2>
+<ol>
+<li>Telefoningizdan botga <code>/xatolar</code> yozing.
+   Bot oxirgi 14 kundagi ❌ bosilgan, rad etilgan yoki tekshiruvchi tuzatgan javoblarni chiqaradi.
+   Har birida: sana, raqam (#...), savol, agent javobi va izoh.</li>
+<li>Botga <code>/hafta</code> yozing va kelgan faylni <code>kompaniya/kit5-pilot/</code> papkasiga saqlang.
+   Faylning oxirida «Xatolar jurnali (B.13)» jadvali bor: bu o‘sha xatolar, jadval ko‘rinishida.</li>
+<li>Har bir xatoni o‘qing va o‘zingizga uchta savol bering:
+   - Agent nimani bilmadi yoki nimani noto‘g‘ri tushundi?
+   - To‘g‘ri javob qayerda yozilgan edi: ma’lumotda, yo‘riqnomada yoki faqat odamning boshida?
+   - Xato agentnikimi yoki savolning o‘zi noto‘g‘ri berilganmi?</li>
+<li>Har bir xatoni quyidagi beshta turdan biriga qo‘ying.</li>
+<li>Claude Code’ga yozing (pastdagi topshiriq matni) va jadvalni birga tekshiring.</li>
+</ol>
+<h3>Beshta tur</h3>
+<table>
+<thead>
+<tr>
+<th>Tur</th>
+<th>Belgisi</th>
+<th>Qayerda tuzatiladi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Fakt yetishmaydi</td>
+<td>Agent biror so‘z, taxallus yoki qoidani bilmaydi («140 lik stol» nima?)</td>
+<td><code>agent/memory.md</code> (shoshilinch bo‘lsa telefondan <code>/eslab_qol</code>)</td>
+</tr>
+<tr>
+<td>2. Yo‘riqnoma noaniq</td>
+<td>Qoida ikki xil tushuniladi, agent «noto‘g‘ri» tomonini tanlaydi</td>
+<td><code>agent/instructions.md</code> (To‘plam 3 B shakli)</td>
+</tr>
+<tr>
+<td>3. Ma’lumot eski yoki xato</td>
+<td>Fayl yangilanmagan, bo‘sh keldi, raqam xato</td>
+<td><code>data/</code>, <code>agent/sources.toml</code> va manba egasi bilan kelishuv</td>
+</tr>
+<tr>
+<td>4. Javob shakli yomon</td>
+<td>Javob to‘g‘ri, lekin uzun, tartibsiz, mijozga yuborib bo‘lmaydi</td>
+<td><code>agent/examples.md</code> (2-3 ta to‘g‘ri namuna)</td>
+</tr>
+<tr>
+<td>5. Agent xatosi emas</td>
+<td>Savol noto‘g‘ri berilgan, xodim adashib ❌ bosgan</td>
+<td>Hech narsa o‘zgarmaydi; xodimga qisqa eslatma</td>
+</tr>
+</tbody>
+</table>
+<p>Oltinchi, kam uchraydigan tur: texnik xato (bot javob bermadi, «texnik xato» yozuvi).
+Uni mentor bilan <code>deploy.py logs</code> orqali ko‘rasiz, yo‘riqnoma bilan emas.</p>
+<p>Qoida: kodni oxirgi navbatda o‘zgartiring.
+Birinchi haftadagi xatolarning ko‘pi 1-3 turlarga tushadi va matn faylida tuzatiladi.</p>
+<h3>Claude Code uchun topshiriq</h3>
+<div class="prompt"><button class="copy" type="button">Nusxa olish</button><pre>kit5-pilot/ papkasidagi oxirgi kit5-raqamlar fayli va men yuborgan /xatolar matni bor.
+Har bir xatoni 5 turdan biriga ajrat: fakt yetishmaydi, yo'riqnoma noaniq,
+ma'lumot eski yoki xato, javob shakli yomon, agent xatosi emas.
+Jadval qil: sana, qisqacha nima bo'ldi, tur, qaysi faylda tuzatiladi, nega shu tur.
+Izohsiz rad etilgan xato bo'lsa, &quot;sababi noma'lum&quot; deb yoz va kimdan so'rashni ayt.
+Hech bir faylni o'zgartirma, faqat jadvalni ko'rsat.</pre></div>
+<p>Claude Code xato qilishi mumkin: har bir qatorni o‘zingiz tekshiring.
+Turni Siz tasdiqlaysiz, chunki biznesni Siz bilasiz.</p>
+<h2>Baraka Office namunasi</h2>
+<p>Shartli misol: «Baraka Office» MChJ, Savdo yordamchisi, sinovning 1-haftasi (14-19 dekabr, dushanba-shanba).
+1-haftada har bir javobni xodim mijozga yuborishdan oldin hujjat bilan solishtirdi va ✅ yoki ❌ bosdi.
+Bu yozuvlar botni soxta Telegram bilan bir hafta ishlatib olingan (<code>namuna/baraka-1-hafta/xatolar.txt</code>, <code>namuna/baraka-1-hafta/jurnal/</code>).
+Raqamlar kursning umumiy Baraka namunasi bilan bir xil: 132 so‘rov, 7 xato.</p>
+<table>
+<thead>
+<tr>
+<th>Sana, #</th>
+<th>Nima bo‘ldi</th>
+<th>Tur</th>
+<th>Qayerda tuzatiladi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15.12, #2e09e4b8</td>
+<td>«Optima stolidan 5 ta»: chakana narx (10 750 000), kerak edi ulgurji (9 450 000)</td>
+<td>2. Yo‘riqnoma noaniq</td>
+<td><code>instructions.md</code>, B.4: «5 dona ham ulgurji»</td>
+</tr>
+<tr>
+<td>15.12, #ab195b47</td>
+<td>«Start stoli 6 ta»: chakana narx (8 700 000), kerak edi ulgurji (7 680 000)</td>
+<td>2. Yo‘riqnoma noaniq (yuqoridagi bilan bitta sabab)</td>
+<td>O‘sha tuzatish</td>
+</tr>
+<tr>
+<td>16.12, #c958a792</td>
+<td>«ErgoPro omborda bormi?» - «Ha, bor» dedi; 1C fayli 31 soat eski edi, mahsulot sotilgan</td>
+<td>3. Ma’lumot eski</td>
+<td><code>sources.toml</code>: <code>max_age_hours</code>; Otabek aka bilan har ish kuni 08:00 eksport; 10:30 da tekshiruv ishi (4-mashq)</td>
+</tr>
+<tr>
+<td>16.12, #7c213c12</td>
+<td>«18 mln lik buyurtmaga chegirma?» - «Ha, 5% gacha» dedi; qoida: faqat 20 000 000 so‘mdan oshsa</td>
+<td>2. Yo‘riqnoma: qoida bor, agent o‘tkazib yubordi</td>
+<td><code>examples.md</code>: 18 mln namunasi (few-shot)</td>
+</tr>
+<tr>
+<td>17.12, #e928d1d5</td>
+<td>«Chirchiqqa yetkazish bepulmi?» - «Ha, bepul» dedi (KP dagi gap); shartnomada 8 000 so‘m/km; Malika mijozga ketishidan oldin tasdiqlashda ushladi</td>
+<td>3. Ma’lumot xato: ikki hujjat bir-biriga zid</td>
+<td><code>sources.toml</code>: KP manbadan olib tashlanadi; <code>memory.md</code>: shartlar faqat qoidalar hujjatidan</td>
+</tr>
+<tr>
+<td>17.12, #ba30a818</td>
+<td>«Kreslo kafolati qancha?» - «3 yil» dedi (KP); shartnomada mexanizmga 12 oy</td>
+<td>3. Ma’lumot xato (yuqoridagi bilan bitta sabab)</td>
+<td>O‘sha tuzatish</td>
+</tr>
+<tr>
+<td>18.12, #3f8803ea</td>
+<td>«Senator kreslo omborda bormi?» - «Ha, bor» dedi; fayl yana eski edi</td>
+<td>3. Ma’lumot eski (16.12 bilan bitta sabab)</td>
+<td>O‘sha tuzatish</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nega shunday yozildi (izohlar):</strong></p>
+<ul>
+<li>15.12 (ikkala yozuv): B.4 da «5 va undan ko‘p dona uchun ulgurji» deb yozilgan.
+  Agent 5 va 6 donani chakana hisobladi, 8 donani esa to‘g‘ri hisoblab keldi: qoida yetarlicha aniq emas.
+  Ikki xato, bitta sabab: bitta tuzatish, ikkita test.</li>
+<li>16.12 (ombor): agent faylda yozilganini to‘g‘ri aytdi.
+  Xato faylda: u bir kun eski edi.
+  Yo‘riqnomani o‘zgartirish yordam bermaydi; ma’lumotning yangiligini tekshirish kerak.
+  18.12 da xato takrorlandi, chunki sabab hali tuzatilmagan edi.</li>
+<li>16.12 (chegirma): qoida qoidalar hujjatida ham, B.4 da ham bor.
+  Agent uni bilmagani uchun emas, chegarani o‘tkazib yuborgani uchun adashdi: aynan shu holatdagi to‘g‘ri javob namunasi eng tez yordam beradi.</li>
+<li>17.12 (KP): 4-darsda mahsulot tavsiflari uchun KP (tijorat taklifi) ham manbaga qo‘shilgan.
+  KP da «3 yil kafolat» va «viloyatga bepul yetkazish» deb yozilgan, shartnomada esa boshqacha.
+  Bu kompaniyaning o‘z hujjatlaridagi ziddiyat: agent qaysi biri to‘g‘riligini bila olmaydi.
+  Kafolat bo‘yicha test 3-darsdan beri bor edi, lekin KP qo‘shilgandan keyin testlar qayta ishga tushirilmagan.</li>
+<li>«Kim topdi»: Malika (loyiha yetakchisi, qoralamalarni tasdiqlagan), Madina va Jamshid aka (ROP).
+  Yettala xato ham mijozga yetmasdan ushlangan: 1-haftada tasdiqlash shuning uchun kerak.
+  Chirchiq xatosi eng xavflisi edi: Malika ushlamaganida mijozga noto‘g‘ri shart ketardi va To‘plam 5 A.7 bo‘yicha sinov to‘xtatilardi.</li>
+</ul>
+<p>Natija: 7 ta yozuv - 4 ta sabab - 4 ta o‘zgarish (B.4 qoidasi, bitta namuna, KP ni manbadan olib tashlash, ombor faylining yangiligi).
+Kod hech qayerda o‘zgarmaydi.</p>
+<h2>Yomon namuna</h2>
+<blockquote>
+<p>Xatolar jurnali: 7 ta xato.
+Sabab: AI hali yaxshi emas, model zaif.
+Tuzatish: kuchliroq modelga o‘tamiz (MODEL_TIER=strong).</p>
+</blockquote>
+<p><strong>Nimasi yomon:</strong></p>
+<ul>
+<li>Birorta xato o‘qilmagan; «model zaif» - taxmin, dalil emas.</li>
+<li>Yettita xatoning birortasi model kuchidan emas: to‘rttasi ma’lumotda (eski fayl, KP), uchtasi qoidaning aniq yozilmaganida.
+  Kuchli model eski 1C faylini yangilamaydi va KP bilan shartnomaning qaysi biri to‘g‘riligini bilmaydi.</li>
+<li>Kuchli model narxi taxminan 2-3 barobar qimmat, tekshiruv vaqti esa o‘zgarmaydi.</li>
+</ul>
+<p><strong>To‘g‘rilangan:</strong> yuqoridagi jadval kabi har bir xato alohida, turi va tuzatiladigan fayli bilan.
+Model almashtirish faqat test to‘plami boshqa modelda yaxshiroq natija ko‘rsatsa (3-mashq, <code>pilot eval --tier</code>).</p>
+<h2>Tez-tez uchraydigan xatolar</h2>
+<ul>
+<li><strong>Jurnal bo‘sh.</strong>
+  Mentor so‘raydi: «Hech kim hech narsa topmadimi yoki hech kim tekshirmadimi?»
+  Bo‘sh jurnal odatda tekshiruv yo‘qligini bildiradi.
+  Shunda o‘tgan haftadagi 10 ta haqiqiy savolni <code>uv run pilot ask</code> bilan bering va javoblarni o‘zingiz tekshiring.</li>
+<li><strong>Izohsiz ❌ va rad etishlar.</strong>
+  Xodimdan yoki tekshiruvchidan bugun so‘rang va javobini jadvalga yozing.
+  Keyingi hafta uchun kelishing: ❌ bosgandan keyin bir gap izoh.</li>
+<li><strong>Bitta xatoni ikki marta sanash.</strong>
+  Bir xil xato uch kun takrorlansa, bu bitta sabab: bitta tuzatish, bitta test.</li>
+<li><strong>Xodimni ayblash.</strong>
+  Jurnal ishni o‘lchaydi, odamni emas.
+  «Kim topdi» ustuniga rolini yozing va topgani uchun rahmat ayting.</li>
+</ul>
+<h2>Tayyor, agar</h2>
+<ul>
+<li class="cb"><code>/xatolar</code> va <code>/hafta</code> ochildi, fayl <code>kit5-pilot/</code> da.</li>
+<li class="cb">Har bir xato bitta qator: nima bo‘ldi, tur, qaysi faylda tuzatiladi.</li>
+<li class="cb">Bir xil sababli xatolar bitta tuzatishga birlashtirilgan; «agent xatosi emas» qatorlari (bo‘lsa) ajratilgan.</li>
+<li class="cb">Izohsiz xatolar uchun kimdan so‘rash belgilangan.</li>
+<li class="cb">Mentor jadvalni ko‘rdi (stoldagi tekshiruv 5.2).</li>
+</ul>
+<div class="foot">Praktikum 3.0 · 5-dars · 20-dekabr 2026 · manba: day-5/exercises/01-xatolar-jurnalini-oqish.md</div>
+</main>
+<script>
+document.querySelectorAll('.prompt .copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentElement.querySelector('pre').innerText;
+    var ok = function () { b.textContent = 'Nusxa olindi'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Nusxa olish'; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, ok); }
+    else { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok(); }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+# Agent ishlatadigan ma'lumot manbalari (3-to'plam B.3).
+# Har bir [[source]] - bitta manba. type: "file" yoki "google_sheet".
+# columns - modelga faqat shu ustunlar ko'rsatiladi (ichki ustunlarni yashirish uchun).
+
+[[source]]
+name = "Prays-list 2026"
+type = "file"
+path = "data/narxlar.csv"
+# Narx tekshiruvi: bo'sh, nol, ishonchsiz narx yoki ulgurji chakanadan katta bo'lsa,
+# "uv run pilot check" xato beradi (deploy to'xtaydi) va bu qator modelga berilmaydi.
+[source.check]
+price_columns = ["Chakana narx (1-4 dona)", "Ulgurji narx (5+ dona)"]
+retail = "Chakana narx (1-4 dona)"
+wholesale = "Ulgurji narx (5+ dona)"
+wholesale_min_share = 0.7
+min = 100000
+max = 200000000
+
+[[source]]
+name = "Chegirma, to‘lov, yetkazib berish va kafolat qoidalari"
+type = "file"
+path = "data/qoidalar.md"
+
+[[source]]
+name = "Ombor qoldig‘i (1C eksport)"
+type = "file"
+path = "data/ombor-1c.csv"
+# Tannarx (Себестоимость ед., Сумма) ichki ma'lumot: modelga ko'rsatilmaydi.
+columns = ["Код", "Номенклатура", "Количество", "Последнее движение"]
+# Fayl shu soatdan eski bo'lsa, bot egaga aytadi va bu ma'lumotga tayangan savollarni odamga
+# uzatadi (har bir savolda tekshiriladi). Baraka buni 5-darsda (20.12) qo'shadi, 2-haftadan
+# ishlaydi: Otabek aka 1C eksportini har ish kuni 08:00 da qiladi, 10:30 da tekshiruv ishi
+# eslatadi. Shuning uchun bu yerda hali izoh qatori.
+# max_age_hours = 25
+
+[[source]]
+name = "Kompaniya taqdimoti (KP)"
+type = "file"
+path = "data/kp-2026.md"
+
+# Google Sheet misoli (jadval "Anyone with the link: Viewer" qilib ulashilgan bo'lishi kerak):
+# [[source]]
+# name = "Lidlar"
+# type = "google_sheet"
+# url = "https://docs.google.com/spreadsheets/d/JADVAL_ID/edit#gid=0"
+# refresh_minutes = 10

@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<title>Praktikum 3.0, 1-dars: yangi dizayn namunasi</title>
+<meta name="viewport" content="width=1920">
+<style>
+/* Praktikum 3.0 deck redesign sample (8 slides of Day 1).
+   Three grounds carry meaning, nothing else decorates:
+     paper  = listen
+     cobalt = a new part starts
+     yellow = laptops open, you work now
+   Type: Archetica only. Nothing on screen below 36px. */
+@font-face {
+  font-family: 'Archetica';
+  src: url('../../../../../30_assets/fonts/archetica/Archetica-VF.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: block;
+}
+:root {
+  --paper: #F2F3F5;
+  --ink: #10131A;
+  --ink-soft: #565C69;
+  --cobalt: #1B3BFF;
+  --yellow: #FFD21F;
+  --bad: #D92B20;
+  --good: #0B8A5F;
+  --rule: #10131A;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #C9CCD2; }
+body { font-family: 'Archetica', sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+.slide {
+  position: relative;
+  width: 1920px; height: 1080px;
+  margin: 0 auto 40px;
+  padding: 88px 104px 96px;
+  background: var(--paper);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.slide.cobalt { background: var(--cobalt); color: #fff; }
+.slide.yellow { background: var(--yellow); }
+
+h1 { font-size: 132px; font-weight: 700; line-height: 0.98; letter-spacing: -0.035em; }
+h2 { font-size: 96px; font-weight: 700; line-height: 1.02; letter-spacing: -0.03em; max-width: 1560px; }
+p.lead { font-size: 52px; line-height: 1.22; font-weight: 450; letter-spacing: -0.012em; }
+.soft { color: var(--ink-soft); }
+.cobalt .soft { color: rgba(255,255,255,0.72); }
+.yellow .soft { color: rgba(16,19,26,0.66); }
+
+/* page number: the only running element */
+.pg { position: absolute; right: 104px; bottom: 56px; font-size: 36px; font-weight: 500; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.cobalt .pg { color: rgba(255,255,255,0.6); }
+.yellow .pg { color: rgba(16,19,26,0.55); }
+.src { position: absolute; left: 104px; bottom: 56px; font-size: 36px; color: var(--ink-soft); }
+
+/* 1 title */
+.s-title { justify-content: flex-end; }
+.s-title .numeral {
+  position: absolute; right: -40px; top: -250px;
+  font-size: 1500px; font-weight: 800; line-height: 1; letter-spacing: -0.06em;
+  color: rgba(255,255,255,0.16);
+}
+.s-title .logo { position: absolute; left: 104px; top: 88px; height: 64px; }
+.s-title h1 { max-width: 1320px; margin-bottom: 44px; position: relative; }
+.s-title p.lead { position: relative; }
+
+/* 2 two shares, drawn to scale */
+.s-share h2 { margin-bottom: 56px; }
+.share { display: flex; flex-direction: column; gap: 28px; }
+.share .bar { height: 250px; display: flex; align-items: center; padding: 0 44px; color: #fff; }
+.share .bar b { font-size: 200px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; }
+.share .bar span { font-size: 56px; line-height: 1.12; font-weight: 500; margin-left: 40px; max-width: 760px; }
+.share .b80 { width: 80%; background: var(--ink); }
+.share .b37 { width: 37%; background: var(--cobalt); }
+.share .out { display: flex; align-items: center; }
+.share .out span { font-size: 56px; line-height: 1.12; font-weight: 500; margin-left: 40px; max-width: 760px; }
+.s-share .closing { margin-top: 56px; font-weight: 600; }
+
+/* 3 six lessons */
+.s-six h2 { margin-bottom: 44px; }
+.six { display: grid; grid-template-columns: 1fr; }
+.six .row { display: grid; grid-template-columns: 150px 1fr; align-items: center; height: 104px; border-top: 3px solid var(--rule); font-size: 50px; letter-spacing: -0.015em; }
+.six .row:last-child { border-bottom: 3px solid var(--rule); }
+.six .row b { font-weight: 700; font-size: 62px; font-variant-numeric: tabular-nums; }
+.six .row.now { background: var(--cobalt); color: #fff; margin: 0 -40px; padding: 0 40px; border-top-color: var(--cobalt); font-weight: 600; }
+.six .row.now + .row { border-top-color: var(--cobalt); }
+
+/* 4 section opener (yellow = you work) */
+.s-open { justify-content: flex-end; }
+.s-open .clock { position: absolute; left: 104px; top: 88px; font-size: 64px; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.s-open h1 { font-size: 230px; letter-spacing: -0.045em; line-height: 0.9; margin-bottom: 52px; }
+
+/* 5 picture + two lines */
+.s-pic { flex-direction: row; gap: 64px; padding-right: 80px; padding-left: 0; padding-top: 0; padding-bottom: 0; }
+.s-pic .shot { width: 1280px; height: 1080px; background: var(--ink); display: flex; align-items: center; justify-content: center; flex: none; }
+.s-pic .shot img { width: 1190px; display: block; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+.s-pic .txt { display: flex; flex-direction: column; justify-content: center; }
+.s-pic h2 { font-size: 78px; margin-bottom: 48px; }
+.s-pic p.lead { font-size: 46px; }
+.s-pic p.lead + p.lead { margin-top: 30px; }
+
+/* 6 five steps */
+.s-steps h2 { margin-bottom: 36px; }
+.steps { list-style: none; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 130px 1fr; align-items: baseline; padding: 30px 0; border-top: 3px solid var(--ink); font-size: 66px; font-weight: 550; letter-spacing: -0.018em; line-height: 1.1; }
+.steps li::before { content: counter(s); font-size: 84px; font-weight: 800; }
+.steps li small { display: block; font-size: 40px; font-weight: 450; margin-top: 6px; color: rgba(16,19,26,0.68); letter-spacing: 0; }
+
+/* 7 three routes */
+.s-route h2 { margin-bottom: 48px; }
+.route { padding: 28px 40px 32px; margin: 0 -40px 20px; border-left: 20px solid; }
+.route.bad { border-color: var(--bad); background: rgba(217,43,32,0.07); }
+.route.good { border-color: var(--good); background: rgba(11,138,95,0.10); }
+.route .top { display: flex; justify-content: space-between; align-items: baseline; font-size: 56px; font-weight: 700; letter-spacing: -0.02em; }
+.route.bad .verdict { color: var(--bad); }
+.route.good .verdict { color: var(--good); }
+.route .hops { display: flex; align-items: center; gap: 22px; margin-top: 14px; font-size: 44px; font-weight: 450; }
+.route .hops svg { width: 64px; height: 24px; flex: none; }
+
+/* 8 statement */
+.s-say { justify-content: center; }
+.s-say h1 { font-size: 168px; line-height: 0.96; }
+.s-say h1 .strike { color: var(--bad); }
+.s-say p.lead { margin-top: 64px; max-width: 1400px; }
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<section class="slide cobalt s-title">
+  <div class="numeral">1</div>
+  <svg class="logo" viewBox="0 0 112.9145 45.7984" fill="#fff" aria-label="Head"><use href="#head-logo"/></svg>
+  <h1>AI qanday ishlaydi va ishingiz qayerga ketadi</h1>
+  <p class="lead">Praktikum 3.0, birinchi dars. 21 va 22-noyabr 2026</p>
+</section>
+
+<!-- 2 -->
+<section class="slide s-share">
+  <h2>Unumdorlik oshdi. Foyda esa kam.</h2>
+  <div class="share">
+    <div class="bar b80"><b>80%</b><span>AI shaxsiy unumdorligimni oshirdi</span></div>
+    <div class="out"><div class="bar b37"><b>37%</b></div><span>foydada qandaydir ta’sir ko‘rdi</span></div>
+  </div>
+  <p class="lead closing">Bu dastur foyda qatori haqida: bitta jarayon, o‘lchangan natija.</p>
+  <div class="src">McKinsey, 2026. 1 719 rahbar, 97 davlat</div>
+  <div class="pg">2</div>
+</section>
+
+<!-- 3 -->
+<section class="slide s-six">
+  <h2>Olti dars. Har biridan keyin ishlaydigan vosita.</h2>
+  <div class="six">
+    <div class="row now"><b>1</b><span>AI qanday ishlaydi va qanchaga tushadi</span></div>
+    <div class="row"><b>2</b><span>AI’ga beriladigan ishlar, birinchi jarayon</span></div>
+    <div class="row"><b>3</b><span>Shaxsiy AI assistent: Telegram, jadval, CRM</span></div>
+    <div class="row"><b>4</b><span>Kompyuter o‘chiq bo‘lsa ham ishlaydi</span></div>
+    <div class="row"><b>5</b><span>Xodimingiz ishlatadi, xatolar tuzatiladi</span></div>
+    <div class="row"><b>6</b><span>Oldin va keyin raqamlari, keyingi jarayon</span></div>
+  </div>
+  <div class="pg">3</div>
+</section>
+
+<!-- 4 -->
+<section class="slide yellow s-open">
+  <div class="clock">0:15 dan 0:45 gacha</div>
+  <h1>Birinchi qurilish</h1>
+  <p class="lead">Noutbuklarni oching. 30 daqiqada o‘z biznesingiz uchun ishlaydigan narsa.</p>
+  <div class="pg">6</div>
+</section>
+
+<!-- 5 -->
+<section class="slide s-pic">
+  <div class="shot"><img src="../../deck/assets/img/namuna-kalkulyator.png" alt="Baraka Office buyurtma kalkulyatori"></div>
+  <div class="txt">
+    <h2>Mana shuni yasaysiz</h2>
+    <p class="lead">Sizning mahsulotlaringiz, sizning narxlaringiz.</p>
+    <p class="lead soft">Miqdorni o‘zgartirsangiz, jami o‘zi hisoblanadi. Telegram uchun matn ham tayyor.</p>
+  </div>
+  <div class="pg">7</div>
+</section>
+
+<!-- 6 -->
+<section class="slide yellow s-steps">
+  <h2>Besh qadam</h2>
+  <ol class="steps">
+    <li><div>claude.ai ni oching</div></li>
+    <li><div>Varaqdan biznes turingizni toping<small>prompt matnini nusxalang</small></div></li>
+    <li><div>3-5 ta mahsulot va narxni yozing</div></li>
+    <li><div>Yuboring va natijani sinab ko‘ring</div></li>
+    <li><div>Chatda bitta narsani o‘zgartiring</div></li>
+  </ol>
+  <div class="pg">8</div>
+</section>
+
+<!-- 7 -->
+<section class="slide s-route">
+  <h2>Xabaringiz qayerga boradi?</h2>
+  <div class="route bad">
+    <div class="top"><span>Claude, ChatGPT, Gemini</span><span class="verdict">Chet elga ketadi</span></div>
+    <div class="hops">Noutbuk <svg><use href="#arrow"/></svg> Internet <svg><use href="#arrow"/></svg> AQSh yoki Yevropa <svg><use href="#arrow"/></svg> GPU</div>
+  </div>
+  <div class="route bad">
+    <div class="top"><span>Toshkentdagi server, chet el modeli</span><span class="verdict">Baribir ketadi</span></div>
+    <div class="hops">Noutbuk <svg><use href="#arrow"/></svg> Toshkent serveri <svg><use href="#arrow"/></svg> Chet el API</div>
+  </div>
+  <div class="route good">
+    <div class="top"><span>O‘z serveringiz, ochiq vaznli model</span><span class="verdict">Ichkarida qoladi</span></div>
+    <div class="hops">Noutbuk <svg><use href="#arrow"/></svg> Sizning server <svg><use href="#arrow"/></svg> Model shu yerda</div>
+  </div>
+  <div class="pg">14</div>
+</section>
+
+<!-- 8 -->
+<section class="slide s-say">
+  <h1>Excel xatoni qizil qiladi.<br><span class="strike">AI hech qachon.</span></h1>
+  <p class="lead">Raqamni tekshirmasdan ishonmang. So‘rang: «Qanday hisoblading? Formulani ko‘rsat.»</p>
+  <div class="pg">26</div>
+</section>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="arrow" viewBox="0 0 64 24"><path d="M0 12h58M48 3l10 9-10 9" fill="none" stroke="currentColor" stroke-width="4"/></symbol>
+    <symbol id="head-logo" viewBox="0 0 112.9145 45.7984"><g><g><path d="M17.52,7.3263v14.24H4.65V7.3263H0v32.86h4.65v-14.35h12.87v14.35h4.66V7.3263h-4.66Z"></path><path d="M51.75,11.5463v-4.22h-22.17v32.86h22.17v-4.27h-17.57l.05-10.02,12.87-.06v-4.21h-12.92l.05-10.08h17.52Z"></path><polygon points="75.8945 8.8764 73.4945 18.4063 76.0045 28.1363 71.0445 28.1363 69.9745 32.3563 76.9845 32.3563 79.0145 40.1864 83.7745 40.1864 75.8945 8.8764"></polygon><polygon points="70.0607 11.2475 72.89 0 68.1721 0 56.7156 45.7984 61.3637 45.7984 64.1094 34.8854 65.4746 29.0037 65.4753 29.0037 70.0607 11.2475"></polygon><path d="M101.6345,7.3263h-11.45v32.86h11.45c6.73,0,11.28-5.42,11.28-13.53v-5.8c0-8.05-4.55-13.53-11.28-13.53ZM108.0445,26.6563c0,5.37-2.58,8.99-6.36,8.99h-6.84V11.8163h6.84c3.78,0,6.36,3.67,6.36,9.04v5.8Z"></path></g></g></symbol>
+  </defs>
+</svg>
+</body>
+</html>

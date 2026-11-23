@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tokenizator: bir gap, uch til</title>
+<link rel="stylesheet" href="../../assets/ovd-dark.css">
+<style>
+  .controls{display:flex;gap:28px;flex-wrap:wrap;align-items:center;margin-bottom:22px;}
+  .controls .grp{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+  .col .head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px;}
+  .count{font-size:64px;font-weight:300;letter-spacing:-0.04em;line-height:1;font-variant-numeric:tabular-nums;}
+  .count small{font-size:20px;color:var(--ink-3);letter-spacing:0;margin-left:6px;font-weight:400;}
+  .ratio{font-family:var(--mono);font-size:15px;color:var(--ink-2);text-align:right;}
+  .ratio b{color:var(--acc);font-weight:400;font-size:20px;}
+  .col.uz .count{color:var(--acc);}
+  textarea.txt{width:100%;min-height:96px;resize:vertical;background:#050507;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:19px;line-height:1.45;}
+  textarea.txt:focus{outline:none;border-color:rgba(var(--acc-rgb),.6);}
+  .chips{display:flex;flex-wrap:wrap;gap:4px 3px;margin-top:12px;font-family:var(--mono);font-size:17px;line-height:1.25;}
+  .chip{padding:3px 4px;border-radius:4px;white-space:pre;color:#0b0b0e;}
+  .c0{background:#9db6ff}.c1{background:#ffd08a}.c2{background:#9fe6c9}.c3{background:#f5a8c4}.c4{background:#c9b8ff}
+  .grid2{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px;margin-top:22px;}
+  .stack{min-width:0;}
+  .tbl td.uz{color:var(--acc);}
+  .tbl tr.sel td{background:rgba(var(--acc-rgb),.06);}
+  .tbl .tool small{display:block;color:var(--ink-3);font-size:13px;}
+  .meas input{width:84px;background:#050507;border:1px solid var(--line-strong);color:var(--ink);border-radius:6px;padding:6px 8px;font-size:16px;text-align:right;}
+  .kpi{font-size:20px;line-height:1.5;color:var(--ink-2);}
+  .kpi b{color:var(--ink);}
+  .stack{display:flex;flex-direction:column;gap:18px;}
+  @media (max-width:1100px){.cols{grid-template-columns:minmax(0,1fr);}.grid2{grid-template-columns:minmax(0,1fr);}}
+  @media (max-width:700px){.count{font-size:46px;}textarea.txt{font-size:16px;}.chips{font-size:14px;}.controls{gap:14px;}.tbl{display:block;overflow-x:auto;}.meas input{width:56px;padding:5px;font-size:14px;}.card{padding:16px 14px;}.meas td,.meas th{padding:6px 4px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div>Praktikum 3.0 // 1-dars <span class="pill">Tokenizator</span></div><div>Internetsiz ishlaydi</div></div>
+  <h1>Token: bir gap, uch til</h1>
+  <p class="lead">Model matnni token deb ataladigan bo‘laklarga bo‘lib o‘qiydi, siz esa tokenga to‘laysiz. Gapni o‘zgartiring yoki o‘zingiznikini yozing: son darhol yangilanadi.</p>
+
+  <div class="helpbar">
+    <button class="btn ex" id="exBtn">Namuna bilan ochish</button>
+    <button class="btn" id="howBtn">Qanday ishlatish</button>
+  </div>
+  <details class="howto" id="howto">
+    <summary>Qanday ishlatish</summary>
+    <div class="hbody">
+      <div><h3>Kerak</h3><ul><li>Shu sahifa (internetsiz ochiladi).</li><li>Biznesingizdan bitta gap, masalan mijozga yozadigan javobingiz.</li></ul>
+        <h3 style="margin-top:14px">Qadamlar</h3><ol><li>Tokenizatorni tanlang.</li><li>Tayyor gapni tanlang yoki «O‘z gapingiz»ni bosing.</li><li>Uchta qutiga bir xil ma’noli gapni o‘zbek, rus va ingliz tilida yozing.</li></ol></div>
+      <div><h3>Natijani o‘qish</h3><ul><li><b>Katta son</b>: shu gap necha tokenga bo‘lindi.</li><li><b>1,8×</b>: inglizchadan necha barobar ko‘p. Shuncha barobar qimmat va suhbat oynasini shuncha tez to‘ldiradi.</li><li><b>Rangli bo‘laklar</b>: model gapni shunday bo‘lib o‘qiydi. Apostrof ham alohida bo‘lak bo‘lishi mumkin.</li><li><b>Pastdagi jadval</b>: shu gap boshqa modellarda; farq modelga bog‘liq.</li></ul></div>
+      <div><h3>Ko‘p uchraydigan xato</h3><ul><li>Uch tilga har xil ma’noli gap yozish: solishtirib bo‘lmaydi.</li><li>Bitta so‘zdan xulosa qilish: so‘zda farq katta ko‘rinadi, butun gapda kichikroq.</li></ul>
+        <h3 style="margin-top:14px">Tayyor</h3><p style="margin:0">«Mening gapim o‘zbekchada X token, inglizchada Y token, ya’ni Z barobar» deb ayta olasiz.</p></div>
+    </div>
+  </details>
+  <div class="exnote" id="exnote"><b>Namuna:</b> Baraka Office menejerining mijozga javobi uch tilda. Bu gapda raqam ko‘p, raqamlar esa har tilda deyarli bir xil bo‘linadi, shuning uchun farq kichik (taxminan 1,1 barobar). «Biznes gapi»ni bosing: raqami kam oddiy gapda o‘zbekcha taxminan 2 barobar ko‘p. Keyin tokenizatorni almashtiring: farq yana o‘zgaradi. Xulosa: o‘z matningizni o‘lchang, bitta raqamga ishonmang.</div>
+
+  <div class="controls">
+    <div class="grp"><span class="label">Tokenizator</span><div class="seg" id="tokSeg"></div></div>
+    <div class="grp"><span class="label">Gap</span><div class="seg" id="setSeg"></div></div>
+  </div>
+
+  <div class="cols" id="cols"></div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="label" style="margin-bottom:10px">Oldindan o‘lchangan: shu gap boshqa modellarda</div>
+      <table class="tbl" id="premeasured"></table>
+      <div class="src" id="premeta" style="margin-top:12px"></div>
+    </div>
+    <div class="stack">
+      <div class="card acc">
+        <div class="label" style="margin-bottom:10px">Repetitsiyada o‘lchanadi</div>
+        <table class="meas" id="manual"></table>
+        <div class="src" style="margin-top:10px">Claude va Gemini tokenizatori ochiq emas. Instruktor repetitsiyada API orqali o‘lchab, shu yerga yozadi (shu kompyuterda saqlanadi). Qo‘llanma: demos/tokenizer/README.md</div>
+      </div>
+      <div class="card">
+        <div class="label" style="margin-bottom:10px">Apostrof ham hisobga kiradi</div>
+        <div class="kpi" id="apos"></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot src">Brauzerdagi hisob: OpenAI o200k_base (js-tiktoken) va DeepSeek V4 Pro tokenizer.json; Python kutubxonalari bilan 22 ta matnda bir xil chiqishi tekshirilgan. Manbalar: day-1/sources.md, F19-F23.</div>
+</div>
+
+<script src="vendor/o200k.js"></script>
+<script src="vendor/hfbpe.js"></script>
+<script src="vendor/deepseek-v4.js"></script>
+<script src="measurements.js"></script>
+<script>
+(function () {
+  var M = window.MEASUREMENTS;
+  var DS = window.HFBPE.create(window.TOK_DATA_DEEPSEEK);
+  var TOKENIZERS = {
+    o200k: { label: 'OpenAI GPT-5.x', note: 'o200k_base', encode: function (t) {
+      var ids = window.TOK_O200K.encode(t); return ids.map(function (id) { return window.TOK_O200K.decode([id]); }); } },
+    'deepseek-v4': { label: 'DeepSeek V4 Pro', note: 'ochiq vaznli', encode: function (t) {
+      return DS.encode(t).map(window.HFBPE.toText); } }
+  };
+  var LANGS = [['uz', 'O‘zbekcha'], ['ru', 'Ruscha'], ['en', 'Inglizcha']];
+  var state = { tok: 'o200k', set: 'biznes', texts: {} };
+  var SETS = M.sets.slice();
+  SETS.push({ id: 'own', label: 'O‘z gapingiz', texts: { uz: '', ru: '', en: '' } });
+
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  function fmtRatio(x) { return isFinite(x) && x > 0 ? x.toFixed(1).replace('.', ',') + '×' : '-'; }
+
+  function segButtons(el, items, current, onPick) {
+    el.innerHTML = items.map(function (it) { return '<button data-id="' + it[0] + '" class="' + (it[0] === current ? 'on' : '') + '">' + it[1] + '</button>'; }).join('');
+    Array.prototype.forEach.call(el.querySelectorAll('button'), function (b) { b.onclick = function () { onPick(b.dataset.id); }; });
+  }
+
+  function renderControls() {
+    segButtons(document.getElementById('tokSeg'), Object.keys(TOKENIZERS).map(function (k) { return [k, TOKENIZERS[k].label]; }), state.tok, function (id) { state.tok = id; renderControls(); update(); renderTable(); });
+    segButtons(document.getElementById('setSeg'), SETS.map(function (s) { return [s.id, s.label]; }), state.set, function (id) { state.set = id; loadSet(); renderControls(); renderCols(); update(); renderTable(); });
+  }
+
+  function loadSet() {
+    var s = SETS.filter(function (x) { return x.id === state.set; })[0];
+    LANGS.forEach(function (l) { state.texts[l[0]] = s.texts[l[0]] || ''; });
+  }
+
+  function renderCols() {
+    document.getElementById('cols').innerHTML = LANGS.map(function (l) {
+      return '<div class="card col ' + l[0] + '"><div class="head"><div><div class="label">' + l[1] + '</div><div class="count" id="n-' + l[0] + '">0<small>token</small></div></div><div class="ratio" id="r-' + l[0] + '"></div></div>' +
+        '<textarea class="txt" id="t-' + l[0] + '" spellcheck="false" placeholder="' + (state.set === 'own' ? 'Biznesingizdan bitta gap yozing' : '') + '"></textarea><div class="chips" id="c-' + l[0] + '"></div></div>';
+    }).join('');
+    LANGS.forEach(function (l) {
+      var ta = document.getElementById('t-' + l[0]);
+      ta.value = state.texts[l[0]];
+      ta.addEventListener('input', function () { state.texts[l[0]] = ta.value; update(); });
+    });
+  }
+
+  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+  function update() {
+    var tk = TOKENIZERS[state.tok], counts = {};
+    LANGS.forEach(function (l) {
+      var toks = state.texts[l[0]] ? tk.encode(state.texts[l[0]]) : [];
+      counts[l[0]] = toks.length;
+      document.getElementById('n-' + l[0]).innerHTML = toks.length + '<small>token</small>';
+      document.getElementById('c-' + l[0]).innerHTML = toks.slice(0, 400).map(function (t, i) {
+        var shown = t.replace(/ /g, ' ').replace(/\n/g, '↵').replace(/\t/g, '→') || ' ';
+        return '<span class="chip c' + (i % 5) + '">' + esc(shown) + '</span>';
+      }).join('');
+    });
+    LANGS.forEach(function (l) {
+      var el = document.getElementById('r-' + l[0]);
+      if (l[0] === 'en' || !counts.en || !counts[l[0]]) { el.innerHTML = l[0] === 'en' ? 'asos' : ''; return; }
+      el.innerHTML = '<b>' + fmtRatio(counts[l[0]] / counts.en) + '</b><br>inglizchaga nisbatan';
+    });
+  }
+
+  function renderTable() {
+    var setId = state.set === 'own' ? 'biznes' : state.set;
+    var s = M.sets.filter(function (x) { return x.id === setId; })[0];
+    var rows = M.tools.map(function (t) {
+      var c = s.counts[t.id];
+      return '<tr class="' + (t.id === state.tok ? 'sel' : '') + '"><td class="tool">' + t.label + '<small>' + t.note + '</small></td><td class="num uz">' + c.uz + '</td><td class="num">' + c.ru + '</td><td class="num">' + c.en + '</td><td class="num">' + fmtRatio(c.uz / c.en) + '</td></tr>';
+    }).join('');
+    document.getElementById('premeasured').innerHTML = '<tr><th>Model (tokenizator)</th><th class="num">O‘zb</th><th class="num">Rus</th><th class="num">Ingl</th><th class="num">O‘zb / Ingl</th></tr>' + rows;
+    document.getElementById('premeta').innerHTML = 'Gap: «' + s.label + '»' + (state.set === 'own' ? ' (o‘z gapingiz uchun jadval yo‘q, biznes gapi ko‘rsatildi)' : '') + '. O‘lchandi: ' + M.date + ', tiktoken ' + M.libraries.tiktoken + ', tokenizers ' + M.libraries.tokenizers + '. ' + M.method + ' Tokenizator fayllari va sha256: measurements.json.';
+
+    var man = '<tr><th>Model</th><th>O‘zb</th><th>Rus</th><th>Ingl</th></tr>';
+    [['claude', 'Claude'], ['gemini', 'Gemini']].forEach(function (m) {
+      man += '<tr><td>' + m[1] + '</td>' + LANGS.map(function (l) {
+        var key = 'd1tok:' + setId + ':' + m[0] + ':' + l[0];
+        return '<td><input type="number" min="0" data-k="' + key + '" value="' + (store(key) || '') + '" placeholder="?"></td>';
+      }).join('') + '</tr>';
+    });
+    document.getElementById('manual').innerHTML = man;
+    Array.prototype.forEach.call(document.querySelectorAll('#manual input'), function (inp) { inp.oninput = function () { store(inp.dataset.k, inp.value); }; });
+
+    var a = M.apostrophes.counts[state.tok];
+    document.getElementById('apos').innerHTML = 'Bir xil gap, uch xil apostrof (' + TOKENIZERS[state.tok].label + '):<br>' +
+      '<b>o‘</b> (tipografik) - ' + a.uz_typographic + ' token<br><b>o\'</b> (oddiy) - ' + a.uz_ascii + ' token<br><b>oʻ</b> (okina) - ' + a.uz_okina + ' token';
+  }
+
+  var EXAMPLE = {
+    uz: 'Assalomu alaykum! «Optima» stolidan 20 dona olsangiz, ulgurji narx 1 890 000 so‘m, jami 37 800 000 so‘m. Buyurtma 20 mln so‘mdan oshgani uchun 5% gacha chegirma bera olaman.',
+    ru: 'Здравствуйте! Если возьмёте 20 столов «Optima», оптовая цена 1 890 000 сум, итого 37 800 000 сум. Так как заказ больше 20 млн сум, я могу дать скидку до 5%.',
+    en: 'Hello! If you take 20 «Optima» desks, the wholesale price is 1,890,000 so‘m, 37,800,000 so‘m in total. Since the order is over 20 million so‘m, I can give a discount of up to 5%.'
+  };
+  function openExample() {
+    state.set = 'own'; state.tok = 'o200k';
+    renderControls(); renderCols();
+    LANGS.forEach(function (l) { state.texts[l[0]] = EXAMPLE[l[0]]; document.getElementById('t-' + l[0]).value = EXAMPLE[l[0]]; });
+    update(); renderTable();
+    document.getElementById('exnote').classList.add('on');
+  }
+  document.getElementById('exBtn').onclick = openExample;
+  document.getElementById('howBtn').onclick = function () { var d = document.getElementById('howto'); d.open = !d.open; if (d.open) d.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+  window.openExample = openExample;
+  loadSet(); renderControls(); renderCols(); update(); renderTable();
+  if (location.hash === '#namuna') openExample();
+})();
+</script>
+</body>
+</html>

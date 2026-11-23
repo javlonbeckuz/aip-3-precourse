@@ -1,0 +1,7 @@
+slides_data.js: repaired line 17 in memory (unescaped apostrophe inside a string): do: 'Slide on screen while people sit. Mentors are already at the tables with checklist co
+slides old/new: 51 51
+slides whose text, notes or other fields differ: none
+do flag changed on slides: [24, 25, 26, 29, 30, 38, 44]
+layout changed on slides: []
+tone changed on slides: []
+size or width fields changed on slides: [50]
