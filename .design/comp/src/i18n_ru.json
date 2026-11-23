@@ -19,6 +19,8 @@
  "unit.am": "Практика",
  "unit.vz": "Задание",
  "unit.kt": "Kit",
+ "unit.dk": "Слайды",
+ "pane.dk.open": "Открыть слайды",
  "unit.am_n": "Практика {num}",
  "unit.hermes": "Hermes {id}",
  "lesson.n": "Урок {n}",

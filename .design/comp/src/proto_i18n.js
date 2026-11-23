@@ -1,4 +1,4 @@
-// ===================== i18n: UZ (default) · RU =====================
+﻿// ===================== i18n: UZ (default) · RU =====================
 // I18N.uz is the source text, exactly as the prototype used to ship it. I18N.ru starts EMPTY: a missing key falls back to uz
 // (with a dotted underline in ?review mode, so gaps are visible). Values are plain text; "\n" is a line break; {name} are parameters.
 // Plurals (ru only; uz has none): add "key#one", "key#few", "key#many", "key#other" next to "key"; the form is picked from params.pl (the count the noun follows).
