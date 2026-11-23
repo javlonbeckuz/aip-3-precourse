@@ -371,6 +371,7 @@ export function createApp(cfg) {
     if (!fs.existsSync(file)) throw fail(404, 'not_found', 'Not found');
     const st = fs.statSync(file), etag = `W/"${st.size}-${Math.floor(st.mtimeMs)}"`, type = MIME[path.extname(file).toLowerCase()] ?? 'application/octet-stream';
     if (req.headers['if-none-match'] === etag) { res.writeHead(304, { ETag: etag }); return res.end(), true; }
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN');  // allow embedding in portal iframe
     res.writeHead(200, { 'Content-Type': type, 'Content-Length': st.size, ETag: etag, 'Cache-Control': 'no-cache' });
     if (req.method === 'HEAD') return res.end(), true;
     pipeline(fs.createReadStream(file), res, () => {}); return true;
