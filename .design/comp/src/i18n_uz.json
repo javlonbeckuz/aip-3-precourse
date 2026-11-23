@@ -144,6 +144,11 @@
   "translate": true,
   "note": "text inside a lesson-folder pane (lilac), small caps label or sentence · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
+ "pane.dk.soon": {
+  "uz": "Slaydlar tez orada qoʻshiladi",
+  "translate": true,
+  "note": "text inside a lesson-folder pane (lilac), small caps label or sentence"
+ },
  "lesson.n": {
   "uz": "{n}-dars",
   "translate": true,

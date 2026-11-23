@@ -13,6 +13,7 @@ const I18N = {uz: {
   'unit.sl': 'Slaydlar', 'unit.am': 'Amaliyot', 'unit.vz': 'Vazifa', 'unit.kt': 'Kit', 'unit.dk': 'Slaydlar', 'unit.am_n': 'Amaliyot {num}', 'unit.hermes': 'Hermes {id}',
   'pane.dk.open': 'Slaydlarni ochish',
   'pane.dk.count': '{n} ta slayd',
+  'pane.dk.soon': 'Slaydlar tez orada qoʻshiladi',
   'lesson.n': '{n}-dars', 'lesson.label': '{n}-dars · {date}', 'lesson.meta': '{date} · {d}/{t} bajarildi',
   'steps': '{d}/{t} bajarildi', 'kind.video': 'video', 'kind.image': 'rasm',
   // --- dates (month table is in code; these are the patterns)
@@ -410,6 +411,7 @@ const I18N = {uz: {
   "unit.dk": "Слайды",
   "pane.dk.open": "Открыть слайды",
   "pane.dk.count": "{n} слайдов",
+  "pane.dk.soon": "Слайды скоро появятся",
   "unit.am_n": "Практика {num}",
   "unit.hermes": "Hermes {id}",
   "lesson.n": "Урок {n}",

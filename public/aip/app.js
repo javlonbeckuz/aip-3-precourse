@@ -240,6 +240,7 @@ const I18N = {uz: {
   'unit.sl': 'Slaydlar', 'unit.am': 'Amaliyot', 'unit.vz': 'Vazifa', 'unit.kt': 'Kit', 'unit.dk': 'Slaydlar', 'unit.am_n': 'Amaliyot {num}', 'unit.hermes': 'Hermes {id}',
   'pane.dk.open': 'Slaydlarni ochish',
   'pane.dk.count': '{n} ta slayd',
+  'pane.dk.soon': 'Slaydlar tez orada qoʻshiladi',
   'lesson.n': '{n}-dars', 'lesson.label': '{n}-dars · {date}', 'lesson.meta': '{date} · {d}/{t} bajarildi',
   'steps': '{d}/{t} bajarildi', 'kind.video': 'video', 'kind.image': 'rasm',
   // --- dates (month table is in code; these are the patterns)
@@ -637,6 +638,7 @@ const I18N = {uz: {
   "unit.dk": "Слайды",
   "pane.dk.open": "Открыть слайды",
   "pane.dk.count": "{n} слайдов",
+  "pane.dk.soon": "Слайды скоро появятся",
   "unit.am_n": "Практика {num}",
   "unit.hermes": "Hermes {id}",
   "lesson.n": "Урок {n}",
@@ -1213,8 +1215,10 @@ function applyLessons(ls, lsUz, lang){
   for (const l of lessons) {
     const n = l.n, lock = {}, parts = [], has = l.has || {};
     const add = (on, key, part) => { if (!on) return; parts.push(key); const pp = l.parts && l.parts[part]; if (pp && !pp.open) lock[key] = pp.opensAt || 'unknown'; };
-    add(has.slides, 'sl', 'slides'); add(has.amaliyot, 'am', 'amaliyot'); add(has.kit, 'kt', 'kit'); add(has.vazifa, 'vz', 'vazifa'); add(has.deck, 'dk', 'deck');
-    L[n] = {n, num: l.num !== undefined ? l.num : l.n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), start: l.start || null, lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length, outs: (l.outcomes || []).length};
+    add(has.slides, 'sl', 'slides'); add(has.amaliyot, 'am', 'amaliyot'); add(has.kit, 'kt', 'kit'); add(has.vazifa, 'vz', 'vazifa');
+    const num = l.num !== undefined ? l.num : l.n;
+    add(has.deck || num != null, 'dk', 'deck');   // every numbered lesson shows Slaydlar; without a deck yet the pane says "coming soon"
+    L[n] = {n, num, deck: !!has.deck, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), start: l.start || null, lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length, outs: (l.outcomes || []).length};
   }
   LESSONS = L;
   FILE_LANG = LANGS.includes(lang) ? lang : LANG;
@@ -1691,7 +1695,7 @@ function lessonPage(n, tab){
     sl: () => `<p class="p-label sr-only">${T('unit.sl')}</p><p class="p-num">${S.sl(n) > 0 ? `${S.sl(n)}/${L.slides}` : L.slides}</p>
       <div class="gt-foot"><span class="gt-meta">${T('pane.sl.meta', {n: L.slides, pl: L.slides, kind: kindT(n)})}</span>${play(slHref(n), S.sl(n) === 0 ? T('pane.sl.start') : slDone(n) ? T('pane.sl.again') : T('pane.sl.go', {i: S.sl(n), n: L.slides}), 'play', 18)}</div>`,
     am: () => blockPane(n, 'am'), kt: () => blockPane(n, 'kt'), vz: () => blockPane(n, 'vz'),
-    dk: () => `<p class="p-label sr-only">${T('unit.dk')}</p><button class="dk-stack" type="button" data-deck="${n}"><span class="dk-s"></span><span class="dk-s"></span><span class="dk-s dk-top"><iframe class="dk-preview" src="${deckUrl}?slide=1&preview=1" tabindex="-1"></iframe><span class="dk-play">${I('play', 32)}</span></span></button><p class="dk-count" data-tpl="${esc(T('pane.dk.count', {n: '{n}'}))}"></p>`,
+    dk: () => L.deck === false ? `<p class="p-label sr-only">${T('unit.dk')}</p><div class="dk-stack dk-soon" aria-hidden="true"><span class="dk-s"></span><span class="dk-s"></span><span class="dk-s dk-top"></span></div><p class="dk-count">${T('pane.dk.soon')}</p>` : `<p class="p-label sr-only">${T('unit.dk')}</p><button class="dk-stack" type="button" data-deck="${n}"><span class="dk-s"></span><span class="dk-s"></span><span class="dk-s dk-top"><iframe class="dk-preview" src="${deckUrl}?slide=1&preview=1" tabindex="-1"></iframe><span class="dk-play">${I('play', 32)}</span></span></button><p class="dk-count" data-tpl="${esc(T('pane.dk.count', {n: '{n}'}))}"></p>`,
   };
   const tabs = tabsDef.map((x, i) => `<button class="gt-tab" role="tab" type="button" id="dg-t${i}" aria-controls="dg-p${i}" aria-selected="${i === 0}" data-l="${esc(x.label)}"${i ? ' tabindex="-1"' : ''}>${x.lock ? `<span class="lkd">${I('lock', 12)}${esc(x.label)}</span>` : x.done ? `<span class="ok">${I('check', 12)}${esc(x.label)}<span class="sr-only">${T('common.sr_done')}</span></span>` : esc(x.label)}</button>`).join('');
   const panes = tabsDef.map((x, i) => `<div class="gt-pane" role="tabpanel" id="dg-p${i}" aria-labelledby="dg-t${i}"${i ? ' inert' : ''}>${x.lock ? lockedPane(x.lock) : pane[x.p]()}</div>`).join('');

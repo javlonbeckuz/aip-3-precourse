@@ -97,8 +97,10 @@ function applyLessons(ls, lsUz, lang){
   for (const l of lessons) {
     const n = l.n, lock = {}, parts = [], has = l.has || {};
     const add = (on, key, part) => { if (!on) return; parts.push(key); const pp = l.parts && l.parts[part]; if (pp && !pp.open) lock[key] = pp.opensAt || 'unknown'; };
-    add(has.slides, 'sl', 'slides'); add(has.amaliyot, 'am', 'amaliyot'); add(has.kit, 'kt', 'kit'); add(has.vazifa, 'vz', 'vazifa'); add(has.deck, 'dk', 'deck');
-    L[n] = {n, num: l.num !== undefined ? l.num : l.n, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), start: l.start || null, lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length, outs: (l.outcomes || []).length};
+    add(has.slides, 'sl', 'slides'); add(has.amaliyot, 'am', 'amaliyot'); add(has.kit, 'kt', 'kit'); add(has.vazifa, 'vz', 'vazifa');
+    const num = l.num !== undefined ? l.num : l.n;
+    add(has.deck || num != null, 'dk', 'deck');   // every numbered lesson shows Slaydlar; without a deck yet the pane says "coming soon"
+    L[n] = {n, num, deck: !!has.deck, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), start: l.start || null, lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length, outs: (l.outcomes || []).length};
   }
   LESSONS = L;
   FILE_LANG = LANGS.includes(lang) ? lang : LANG;
