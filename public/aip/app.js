@@ -1689,7 +1689,7 @@ function lessonPage(n, tab){
     sl: () => `<p class="p-label sr-only">${T('unit.sl')}</p><p class="p-num">${S.sl(n) > 0 ? `${S.sl(n)}/${L.slides}` : L.slides}</p>
       <div class="gt-foot"><span class="gt-meta">${T('pane.sl.meta', {n: L.slides, pl: L.slides, kind: kindT(n)})}</span>${play(slHref(n), S.sl(n) === 0 ? T('pane.sl.start') : slDone(n) ? T('pane.sl.again') : T('pane.sl.go', {i: S.sl(n), n: L.slides}), 'play', 18)}</div>`,
     am: () => blockPane(n, 'am'), kt: () => blockPane(n, 'kt'), vz: () => blockPane(n, 'vz'),
-    dk: () => `<p class="p-label sr-only">${T('unit.dk')}</p><iframe class="deck-frame" src="${deckUrl}" title="${T('unit.dk')}" allow="fullscreen"></iframe>`,
+    dk: () => `<p class="p-label sr-only">${T('unit.dk')}</p><div class="gt-foot"><button class="play" type="button" data-deck="${n}"><span>${T('pane.dk.open')}</span><span class="play-circ">${I('play', 18)}</span></button></div>`,
   };
   const tabs = tabsDef.map((x, i) => `<button class="gt-tab" role="tab" type="button" id="dg-t${i}" aria-controls="dg-p${i}" aria-selected="${i === 0}" data-l="${esc(x.label)}"${i ? ' tabindex="-1"' : ''}>${x.lock ? `<span class="lkd">${I('lock', 12)}${esc(x.label)}</span>` : x.done ? `<span class="ok">${I('check', 12)}${esc(x.label)}<span class="sr-only">${T('common.sr_done')}</span></span>` : esc(x.label)}</button>`).join('');
   const panes = tabsDef.map((x, i) => `<div class="gt-pane" role="tabpanel" id="dg-p${i}" aria-labelledby="dg-t${i}"${i ? ' inert' : ''}>${x.lock ? lockedPane(x.lock) : pane[x.p]()}</div>`).join('');
@@ -1861,6 +1861,52 @@ function langRestore(st){
 document.addEventListener('click', e => { const b = e.target.closest('[data-lang]'); if (b) setLang(b.dataset.lang); });
 
 // Login wordmark: the weight wave is CSS only (.wm-l / .wm-g, markup built in assemble.py); nothing to run here.
+
+// Deck viewer modal
+(function(){
+  const deckBtns = () => document.querySelectorAll('[data-deck]');
+  let modal = null;
+  function openDeck(n) {
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'deck-modal';
+      modal.className = 'deck-modal';
+      modal.innerHTML = `<div class="deck-backdrop"></div><div class="deck-wrap"><div class="deck-bar"><button type="button" class="deck-btn" data-act="prev" title="Oldingi">${I('back', 20)}</button><button type="button" class="deck-btn" data-act="next" title="Keyingi">${I('next', 20)}</button><button type="button" class="deck-btn" data-act="zout" title="Kichiklashtirish">${I('minus', 24)}</button><button type="button" class="deck-btn" data-act="zin" title="Kattalashtirish">${I('plus', 24)}</button><button type="button" class="deck-btn" data-act="download" title="Yuklab olish">${I('down', 20)}</button><button type="button" class="deck-btn deck-close" data-act="close" title="Yopish">${I('x', 24)}</button></div><iframe class="deck-frame" allow="fullscreen"></iframe></div>`;
+      document.body.appendChild(modal);
+      modal.addEventListener('click', e => {
+        const act = e.target.closest('[data-act]')?.dataset.act;
+        if (act === 'close' || e.target.classList.contains('deck-backdrop')) closeDeck();
+        else if (act === 'prev') postDeck('prev');
+        else if (act === 'next') postDeck('next');
+        else if (act === 'zin') postDeck('zoomIn');
+        else if (act === 'zout') postDeck('zoomOut');
+        else if (act === 'download') postDeck('download');
+      });
+      document.addEventListener('keydown', e => { if (modal.classList.contains('is-open') && e.key === 'Escape') closeDeck(); });
+    }
+    const iframe = modal.querySelector('iframe');
+    iframe.src = `/aip3/deck/${n}/`;
+    modal.classList.add('is-open');
+    document.body.classList.add('deck-open');
+  }
+  function closeDeck() {
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    document.body.classList.remove('deck-open');
+    modal.querySelector('iframe').src = '';
+  }
+  function postDeck(cmd) {
+    const iframe = modal?.querySelector('iframe');
+    if (iframe?.contentWindow) iframe.contentWindow.postMessage({type: 'deck-cmd', cmd}, '*');
+  }
+  function I(name, size) {
+    return `<svg width="${size}" height="${size}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+  }
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('[data-deck]');
+    if (btn) openDeck(btn.dataset.deck);
+  });
+})();
 
 // ===================== APP: routes (History API under /aip), login and logout, language, slides, boot =====================
 // Appended to the shared templates by build_app.py. Route strings inside the code keep the prototype's "#/dars/1" form; only these helpers know the real URLs.
