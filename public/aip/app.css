@@ -417,7 +417,7 @@ button.folder{width:100%;text-align:left;font:inherit;cursor:pointer}
 .deck-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:0;border-radius:8px;background:var(--slate-2);color:var(--slate-11);cursor:pointer;transition:background .15s,color .15s}
 .deck-btn:focus-visible{background:var(--slate-3);color:var(--white)}
 @media (hover:hover) and (pointer:fine){.deck-btn:hover{background:var(--slate-3);color:var(--white)}}
-.deck-close{position:absolute;top:16px;left:16px;z-index:1;width:44px;height:44px;border-radius:50%}
+.deck-close{position:absolute;top:16px;right:16px;z-index:1;width:44px;height:44px;border-radius:50%}
 body.deck-open{overflow:hidden}
 .dk-stack{position:relative;width:200px;height:130px;background:none;border:none;cursor:pointer;margin:auto}
 .dk-s{position:absolute;inset:0;background:var(--white);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12)}
