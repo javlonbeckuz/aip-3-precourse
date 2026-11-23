@@ -239,6 +239,7 @@ const I18N = {uz: {
   'common.extra': 'qoʻshimcha',
   'unit.sl': 'Slaydlar', 'unit.am': 'Amaliyot', 'unit.vz': 'Vazifa', 'unit.kt': 'Kit', 'unit.dk': 'Slaydlar', 'unit.am_n': 'Amaliyot {num}', 'unit.hermes': 'Hermes {id}',
   'pane.dk.open': 'Slaydlarni ochish',
+  'pane.dk.count': '{n} ta slayd',
   'lesson.n': '{n}-dars', 'lesson.label': '{n}-dars · {date}', 'lesson.meta': '{date} · {d}/{t} bajarildi',
   'steps': '{d}/{t} bajarildi', 'kind.video': 'video', 'kind.image': 'rasm',
   // --- dates (month table is in code; these are the patterns)
@@ -635,6 +636,7 @@ const I18N = {uz: {
   "unit.kt": "Kit",
   "unit.dk": "Слайды",
   "pane.dk.open": "Открыть слайды",
+  "pane.dk.count": "{n} слайдов",
   "unit.am_n": "Практика {num}",
   "unit.hermes": "Hermes {id}",
   "lesson.n": "Урок {n}",
@@ -1689,7 +1691,7 @@ function lessonPage(n, tab){
     sl: () => `<p class="p-label sr-only">${T('unit.sl')}</p><p class="p-num">${S.sl(n) > 0 ? `${S.sl(n)}/${L.slides}` : L.slides}</p>
       <div class="gt-foot"><span class="gt-meta">${T('pane.sl.meta', {n: L.slides, pl: L.slides, kind: kindT(n)})}</span>${play(slHref(n), S.sl(n) === 0 ? T('pane.sl.start') : slDone(n) ? T('pane.sl.again') : T('pane.sl.go', {i: S.sl(n), n: L.slides}), 'play', 18)}</div>`,
     am: () => blockPane(n, 'am'), kt: () => blockPane(n, 'kt'), vz: () => blockPane(n, 'vz'),
-    dk: () => `<p class="p-label sr-only">${T('unit.dk')}</p><div class="gt-foot"><button class="play" type="button" data-deck="${n}"><span>${T('pane.dk.open')}</span><span class="play-circ">${I('play', 18)}</span></button></div>`,
+    dk: () => `<p class="p-label sr-only">${T('unit.dk')}</p><button class="dk-stack" type="button" data-deck="${n}"><span class="dk-s"></span><span class="dk-s"></span><span class="dk-s dk-top"><iframe class="dk-preview" src="${deckUrl}?slide=1&preview=1" tabindex="-1"></iframe><span class="dk-play">${I('play', 32)}</span></span></button><p class="dk-count" data-tpl="${esc(T('pane.dk.count', {n: '{n}'}))}"></p>`,
   };
   const tabs = tabsDef.map((x, i) => `<button class="gt-tab" role="tab" type="button" id="dg-t${i}" aria-controls="dg-p${i}" aria-selected="${i === 0}" data-l="${esc(x.label)}"${i ? ' tabindex="-1"' : ''}>${x.lock ? `<span class="lkd">${I('lock', 12)}${esc(x.label)}</span>` : x.done ? `<span class="ok">${I('check', 12)}${esc(x.label)}<span class="sr-only">${T('common.sr_done')}</span></span>` : esc(x.label)}</button>`).join('');
   const panes = tabsDef.map((x, i) => `<div class="gt-pane" role="tabpanel" id="dg-p${i}" aria-labelledby="dg-t${i}"${i ? ' inert' : ''}>${x.lock ? lockedPane(x.lock) : pane[x.p]()}</div>`).join('');
@@ -1864,41 +1866,62 @@ document.addEventListener('click', e => { const b = e.target.closest('[data-lang
 
 // Deck viewer modal
 (function(){
-  const deckBtns = () => document.querySelectorAll('[data-deck]');
-  let modal = null;
+  // The deck is same-origin (/aip3/deck/:n/), so the controls call its own window.nextSlide/prevSlide directly.
+  // Zoom renders the deck in a larger iframe inside a scrolling view (the deck fits itself to its viewport).
+  let modal = null, zoom = 1;
+  const ZOOMS = [0.75, 1, 1.25, 1.5, 2];
   function openDeck(n) {
     if (!modal) {
       modal = document.createElement('div');
       modal.id = 'deck-modal';
       modal.className = 'deck-modal';
-      modal.innerHTML = `<div class="deck-backdrop"></div><div class="deck-wrap"><div class="deck-bar"><button type="button" class="deck-btn" data-act="prev" title="Oldingi">${I('back', 20)}</button><button type="button" class="deck-btn" data-act="next" title="Keyingi">${I('next', 20)}</button><button type="button" class="deck-btn" data-act="zout" title="Kichiklashtirish">${I('minus', 24)}</button><button type="button" class="deck-btn" data-act="zin" title="Kattalashtirish">${I('plus', 24)}</button><button type="button" class="deck-btn" data-act="download" title="Yuklab olish">${I('down', 20)}</button><button type="button" class="deck-btn deck-close" data-act="close" title="Yopish">${I('x', 24)}</button></div><iframe class="deck-frame" allow="fullscreen"></iframe></div>`;
+      modal.setAttribute('role', 'dialog'); modal.setAttribute('aria-modal', 'true'); modal.setAttribute('aria-label', 'Slaydlar');
+      modal.innerHTML = `<div class="deck-backdrop"></div><button type="button" class="deck-btn deck-close" data-act="close" title="Yopish" aria-label="Yopish">${I('x', 24)}</button><div class="deck-wrap"><div class="deck-view"><iframe class="deck-frame" allow="fullscreen" title="Slaydlar"></iframe></div><div class="deck-bar"><button type="button" class="deck-btn" data-act="prev" title="Oldingi" aria-label="Oldingi">${I('back', 20)}</button><button type="button" class="deck-btn" data-act="next" title="Keyingi" aria-label="Keyingi">${I('next', 20)}</button><button type="button" class="deck-btn" data-act="zout" title="Kichiklashtirish" aria-label="Kichiklashtirish">${I('minus', 24)}</button><button type="button" class="deck-btn" data-act="zin" title="Kattalashtirish" aria-label="Kattalashtirish">${I('plus', 24)}</button><a class="deck-btn" data-act="download" title="Yuklab olish (PDF)" aria-label="Yuklab olish (PDF)" download>${I('down', 20)}</a></div></div>`;
       document.body.appendChild(modal);
       modal.addEventListener('click', e => {
         const act = e.target.closest('[data-act]')?.dataset.act;
         if (act === 'close' || e.target.classList.contains('deck-backdrop')) closeDeck();
-        else if (act === 'prev') postDeck('prev');
-        else if (act === 'next') postDeck('next');
-        else if (act === 'zin') postDeck('zoomIn');
-        else if (act === 'zout') postDeck('zoomOut');
-        else if (act === 'download') postDeck('download');
+        else if (act === 'prev') deck('prevSlide');
+        else if (act === 'next') deck('nextSlide');
+        else if (act === 'zin' || act === 'zout') setZoom(ZOOMS[Math.max(0, Math.min(ZOOMS.length - 1, ZOOMS.indexOf(zoom) + (act === 'zin' ? 1 : -1)))]);
       });
-      document.addEventListener('keydown', e => { if (modal.classList.contains('is-open') && e.key === 'Escape') closeDeck(); });
+      document.addEventListener('keydown', e => {
+        if (!modal.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeDeck();
+        else if (e.key === 'ArrowRight') { e.preventDefault(); deck('nextSlide'); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); deck('prevSlide'); }
+      });
     }
-    const iframe = modal.querySelector('iframe');
-    iframe.src = `/aip3/deck/${n}/`;
+    modal.querySelector('iframe').src = `/aip3/deck/${n}/`;
+    modal.querySelector('[data-act="download"]').href = `/aip3/deck/${n}/deck.pdf`;
+    setZoom(1);
     modal.classList.add('is-open');
     document.body.classList.add('deck-open');
+    modal.querySelector('.deck-close').focus();
   }
   function closeDeck() {
     if (!modal) return;
     modal.classList.remove('is-open');
     document.body.classList.remove('deck-open');
-    modal.querySelector('iframe').src = '';
+    modal.querySelector('iframe').src = 'about:blank';
   }
-  function postDeck(cmd) {
-    const iframe = modal?.querySelector('iframe');
-    if (iframe?.contentWindow) iframe.contentWindow.postMessage({type: 'deck-cmd', cmd}, '*');
+  function deck(fn) {
+    try { modal.querySelector('iframe').contentWindow[fn]?.(); } catch (_) { /* deck not loaded yet */ }
   }
+  function setZoom(z) {
+    zoom = z;
+    const f = modal.querySelector('iframe');
+    f.style.width = f.style.height = `${z * 100}%`;
+  }
+  // Slide count under the stacked preview: read from the preview deck itself once it loads (load does not bubble: capture).
+  document.addEventListener('load', e => {
+    const f = e.target;
+    if (!(f instanceof HTMLIFrameElement) || !f.classList.contains('dk-preview')) return;
+    try {
+      const c = f.contentDocument.querySelectorAll('#grid-cards-container .grid-thumb').length, el = f.closest('.gt-pane')?.querySelector('.dk-count');
+      if (c && el) el.textContent = el.dataset.tpl.replace('{n}', c);
+    } catch (_) {}
+  }, true);
   function I(name, size) {
     return `<svg width="${size}" height="${size}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
   }

@@ -139,6 +139,11 @@
   "translate": true,
   "note": "text inside a lesson-folder pane (lilac), small caps label or sentence"
  },
+ "pane.dk.count": {
+  "uz": "{n} ta slayd",
+  "translate": true,
+  "note": "text inside a lesson-folder pane (lilac), small caps label or sentence · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
  "lesson.n": {
   "uz": "{n}-dars",
   "translate": true,
