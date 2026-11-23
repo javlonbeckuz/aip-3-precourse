@@ -28,7 +28,7 @@
     "groups": [
       {
         "title": "01 Birinchi topshiriq",
-        "note": "ASOSIY. 1) Warpʼni oching va Claude Codeʼni ishga tushiring (oʻrnatilmagan boʻlsa: 01-dars, Amaliyot 06). 2) Downloads yoki Desktop papkasini tartibga keltirishni oddiy oʻzbek tilida soʻrang. 3) Natijani papkada tekshiring. Tayyor, agar: fayllar papkalarga ajratilgan, hech narsa oʻchirilmagan.",
+        "note": "ASOSIY. 1) Warpʼni oching va Claude Codeʼni ishga tushiring (oʻrnatilmagan boʻlsa: 1-dars, Amaliyot 06). 2) Downloads yoki Desktop papkasini tartibga keltirishni oddiy oʻzbek tilida soʻrang. 3) Natijani papkada tekshiring. Tayyor, agar: fayllar papkalarga ajratilgan, hech narsa oʻchirilmagan.",
         "files": [],
         "prompts": [
           {
@@ -157,7 +157,7 @@
             "id": "08P1",
             "title": "/kit1 skill",
             "target": "Claude Code",
-            "text": "Kit 1 promptidan kit1 nomli skill yarating.\nSkill intervyu matnini olib, Kit 1, B shakli jadvalini tuzsin va natijani kit1-interviews papkasiga xodim ismi bilan .md fayl qilib saqlasin.\nSkill qachon ishlatilishini tepadagi tavsifda aniq yozing.\n\nKit 1 prompti:\n[01-dars Kit boʻlimidagi \"Kit 1 prompti: B shakli\" matni]"
+            "text": "Kit 1 promptidan kit1 nomli skill yarating.\nSkill intervyu matnini olib, Kit 1, B shakli jadvalini tuzsin va natijani kit1-interviews papkasiga xodim ismi bilan .md fayl qilib saqlasin.\nSkill qachon ishlatilishini tepadagi tavsifda aniq yozing.\n\nKit 1 prompti:\n[1-dars Kit boʻlimidagi \"Kit 1 prompti: B shakli\" matni]"
           },
           {
             "id": "08P2",

@@ -152,12 +152,12 @@
  "lesson.n": {
   "uz": "{n}-dars",
   "translate": true,
-  "note": "lesson number label used in headlines, e.g. \"03-dars\" (zero-padded, UPPERCASE, wide font, ≤ 10 chars) · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+  "note": "lesson number label used in headlines, e.g. \"3-dars\" (no zero padding, UPPERCASE, wide font, ≤ 10 chars) · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "lesson.label": {
   "uz": "{n}-dars · {date}",
   "translate": true,
-  "note": "small UPPERCASE card label, e.g. \"03-dars · 28-noyabr\"; {date} is built from the month table · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+  "note": "small UPPERCASE card label, e.g. \"3-dars · 28-noyabr\"; {date} is built from the month table · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
  },
  "lesson.meta": {
   "uz": "{date} · {d}/{t} bajarildi",
@@ -2415,7 +2415,7 @@
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },
  "prep.3.foot": {
-  "uz": "02-darsdan Claude Code koʻp ishlatiladi va Pro limiti tez tugashi mumkin. Shunda Max tarifiga oʻting (oyiga $100 dan).",
+  "uz": "2-darsdan Claude Code koʻp ishlatiladi va Pro limiti tez tugashi mumkin. Shunda Max tarifiga oʻting (oyiga $100 dan).",
   "translate": true,
   "note": "prep checklist (lesson 0); the real 2.0 text exists in UZ/RU/EN, follow its wording"
  },

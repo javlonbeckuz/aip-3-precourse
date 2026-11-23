@@ -123,7 +123,7 @@
       },
       {
         "title": "06 Warp va Claude Code",
-        "note": "ASOSIY. Darsning oxirida mentor bilan oʻrnatasiz: Claude Code Warp terminalida ishlaydi va 02-darsdan har darsda kerak. 1) warp.dev saytidan Warpʼni yuklab oling va oʻrnating. 2) Warpʼni oching va pastdagi buyruqni kiriting: Mac va Windows uchun alohida. 3) claude deb yozing va Enter bosing. Brauzer ochiladi: Claude akkauntingiz bilan kiring. 4) Claude Codeʼga salom yozing. Tayyor, agar: Claude Code salomingizga javob berdi.",
+        "note": "ASOSIY. Darsning oxirida mentor bilan oʻrnatasiz: Claude Code Warp terminalida ishlaydi va 2-darsdan har darsda kerak. 1) warp.dev saytidan Warpʼni yuklab oling va oʻrnating. 2) Warpʼni oching va pastdagi buyruqni kiriting: Mac va Windows uchun alohida. 3) claude deb yozing va Enter bosing. Brauzer ochiladi: Claude akkauntingiz bilan kiring. 4) Claude Codeʼga salom yozing. Tayyor, agar: Claude Code salomingizga javob berdi.",
         "files": [],
         "prompts": [
           {
@@ -202,7 +202,7 @@
     ]
   },
   "vazifa": {
-    "text": "Bu vazifada Kit 1ʼni oʻz xodimlaringiz bilan oʻtkazasiz. 02-darsda Claude Code shu fayllar bilan ishlaydi.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: kamida 2 ta B shakli .md faylda saqlangan; daqiqa va chastotani xodimning oʻzi tuzatgan, [?] belgilari qolmagan; har vazifada B.9 toʻldirilgan; Claude Code Warpʼda ochiladi.",
+    "text": "Bu vazifada Kit 1ʼni oʻz xodimlaringiz bilan oʻtkazasiz. 2-darsda Claude Code shu fayllar bilan ishlaydi.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: kamida 2 ta B shakli .md faylda saqlangan; daqiqa va chastotani xodimning oʻzi tuzatgan, [?] belgilari qolmagan; har vazifada B.9 toʻldirilgan; Claude Code Warpʼda ochiladi.",
     "groups": [
       {
         "title": "1. Jamoaga sababini ayting",
@@ -248,12 +248,12 @@
       },
       {
         "title": "5. .md fayl qilib saqlang",
-        "note": "Har B shaklini alohida .md faylga saqlang, masalan kit1-dilnoza.md. Fayllarni 02-darsga olib keling.",
+        "note": "Har B shaklini alohida .md faylga saqlang, masalan kit1-dilnoza.md. Fayllarni 2-darsga olib keling.",
         "files": []
       },
       {
         "title": "6. Warp va Claude Code ishlashini tekshiring",
-        "note": "Darsda mentor bilan oʻrnatgan Warp va Claude Codeʼni uyda yana bir bor oching: Warpʼda claude deb yozing va salom bering. Ochilmasa, Amaliyotdagi 06 qadamlarini takrorlang. Yana chiqmasa, xatoning skrinshotini oling va guruh chatiga yozing: 02-dars Claude Code bilan boshlanadi.",
+        "note": "Darsda mentor bilan oʻrnatgan Warp va Claude Codeʼni uyda yana bir bor oching: Warpʼda claude deb yozing va salom bering. Ochilmasa, Amaliyotdagi 06 qadamlarini takrorlang. Yana chiqmasa, xatoning skrinshotini oling va guruh chatiga yozing: 2-dars Claude Code bilan boshlanadi.",
         "files": []
       }
     ]

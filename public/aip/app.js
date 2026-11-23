@@ -1259,10 +1259,10 @@ const LCOL = ['claude', 'slate', 'grey', 'blue', 'dark', 'orange', 'emerald', 'c
 const LN = () => Object.keys(LESSONS).map(Number).filter(n => n > 0).sort((a, b) => a - b);   // the lesson numbers 1..N come from the data (the API in the app)
 const lnum = n => LESSONS[n].num;   // the curriculum number 1..N, or null: Tayyorgarlik and Kirish have none (their label is their short name)
 const RN = () => LN().filter(n => lnum(n) != null);   // the numbered lessons: only these count in the ring, the course size and the all-done check
-const lnT = n => lnum(n) == null ? ltitle(n) : t('lesson.n', {n: num2(lnum(n))});   // "01-dars" / "Урок 01" / "Lesson 01", or "Kirish"
+const lnT = n => lnum(n) == null ? ltitle(n) : t('lesson.n', {n: lnum(n)});   // "1-dars" / "Урок 1" / "Lesson 1" (no zero padding, user 2026-11-23), or "Kirish"
 const lnH = n => esc(lnT(n));
 const lessonLabel = n => lnum(n) == null ? esc(lessonDate(n))   // Kirish: its date only ("Qoʻshimcha" is the tag of the optional tracks, nothing else)
-   : T('lesson.label', {n: num2(lnum(n)), date: lessonDate(n)});
+   : T('lesson.label', {n: lnum(n), date: lessonDate(n)});
 const colCls = n => LCOL[n] === 'dark' ? 'c-night' : 'c-' + LCOL[n];   // an unlocked dark lesson keeps its dark identity, with normal (white) ink
 
 
@@ -1705,7 +1705,7 @@ function lessonPage(n, tab){
     ? `<div class="folder flatc c-slate soon-card"><span class="f-label">${esc(lessonDate(n))}</span><p class="soon-t">${T('lesson.soon')}</p></div>`
     : `<div class="gt gt-slate g-slate${tall ? ' gt-tall' : ''}" id="dg" style="--n:${tabsDef.length}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
       <div class="gt-tabs" role="tablist" aria-label="${esc(t('tab.list'))}">${tabs}</div><div class="gt-body">${panes}</div></div>`;   // every lesson folder inside a lesson page is Poʻlat (user, 2026-10-30); the home cards keep each lesson's own colour
-  return {screen: 'dars', tab: Math.max(0, L.parts.indexOf(tab)), tag: `#/dars/${n} · ` + t('tag.lesson', {n: lnT(n), parts: L.parts.length}), title: lnum(n) == null ? title : t('title.lesson', {n: num2(lnum(n)), title}), html: nav('d') + `
+  return {screen: 'dars', tab: Math.max(0, L.parts.indexOf(tab)), tag: `#/dars/${n} · ` + t('tag.lesson', {n: lnT(n), parts: L.parts.length}), title: lnum(n) == null ? title : t('title.lesson', {n: lnum(n), title}), html: nav('d') + `
     <div class="lhd">
       ${dlh('#/dastur', T('nav.home'))}
       <h1 class="lh1">${lnum(n) == null ? '' : `<span class="ln">${lnH(n)}</span> `}<span class="ln">${esc(title)}</span></h1>

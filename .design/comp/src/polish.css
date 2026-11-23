@@ -533,6 +533,14 @@ html.hid .bgp path{animation-play-state:paused}
 .gt .s1.d3r .cp-c,.gt .s1.d3r .cp:hover .cp-c,.gt .s1.d3r .cp.flash .cp-c{display:grid;width:auto;height:auto;border:0;background:none;color:inherit}
 .gt .s1.d3r .cpl{font:600 15px/1 var(--font-body);text-transform:none;letter-spacing:0}
 .d3r li:not(.done) .d3-dn{display:none}/* screen readers hear "Nusxalandi" on a copied row */
+/* 320 px phones (the frame is the container): long words no longer spill over their neighbours (mobile audit 2026-11-23) */
+@container (max-width:340px){
+  .d3r .pchip>summary{grid-template-columns:auto minmax(0,1fr) auto 20px;grid-template-areas:"no . oc ch" "tt tt tt tt";gap:6px 10px;padding-top:10px;padding-bottom:10px}
+  .d3r .pchip>summary .no{grid-area:no}.d3r .pchip>summary .tt{grid-area:tt}.d3r .pchip>summary .d3-oc{grid-area:oc}.d3r .pchip>summary::after{grid-area:ch}
+  .d3-fr{grid-template-columns:22px minmax(0,1fr);row-gap:2px}.d3-fr .m{grid-column:2}
+  .d3-pri{flex-wrap:wrap;row-gap:2px;padding-top:10px;padding-bottom:10px}.d3-pri .d3-nm{flex:1 0 auto}.d3-pri .m{flex-basis:100%;padding-left:32px}
+  .d3 .k{padding:12px}.d3 .k .ar{font-size:13px;font-stretch:100%}.d3.trk .k .ar{font-size:15px}
+}
 @container (min-width:600px){
   .d3-cards{gap:12px}
   .d3 .k{min-height:112px;padding:16px 18px}

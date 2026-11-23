@@ -189,7 +189,7 @@
     ]
   },
   "vazifa": {
-    "text": "Bu vazifada agent koʻrsatmalarini xodimlar bilan tekshirasiz, v0ʼni tugatasiz va serverga tayyorlanasiz. 04-darsda agent serverga koʻchiriladi.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: Kit 3, A shaklida boʻsh katak yoʻq; B xodimlar aytgan istisnolar bilan imzolangan; v0 noutbukda haqiqiy holatlarda ishlaydi; 3 ta yaxshi va 3 ta yomon namuna saqlangan; VPS va domen sotib olingan, Claude Code VPSʼga kamida bir marta kirgan; baseline toʻliq.",
+    "text": "Bu vazifada agent koʻrsatmalarini xodimlar bilan tekshirasiz, v0ʼni tugatasiz va serverga tayyorlanasiz. 4-darsda agent serverga koʻchiriladi.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: Kit 3, A shaklida boʻsh katak yoʻq; B xodimlar aytgan istisnolar bilan imzolangan; v0 noutbukda haqiqiy holatlarda ishlaydi; 3 ta yaxshi va 3 ta yomon namuna saqlangan; VPS va domen sotib olingan, Claude Code VPSʼga kamida bir marta kirgan; baseline toʻliq.",
     "groups": [
       {
         "title": "1. Koʻrsatmalarni xodimlarga koʻrsating",
