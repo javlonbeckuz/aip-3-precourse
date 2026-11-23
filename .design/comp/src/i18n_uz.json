@@ -119,6 +119,11 @@
   "translate": true,
   "note": "tab label / unit name in the lesson folder; ≤ 11 chars at 320 px (tabs are ~100 px wide)"
  },
+ "unit.dk": {
+  "uz": "Slaydlar",
+  "translate": true,
+  "note": "tab label / unit name in the lesson folder; ≤ 11 chars at 320 px (tabs are ~100 px wide)"
+ },
  "unit.am_n": {
   "uz": "Amaliyot {num}",
   "translate": true,
@@ -128,6 +133,11 @@
   "uz": "Hermes {id}",
   "translate": true,
   "note": "tab label / unit name in the lesson folder; ≤ 11 chars at 320 px (tabs are ~100 px wide) · keep {params} as they are"
+ },
+ "pane.dk.open": {
+  "uz": "Slaydlarni ochish",
+  "translate": true,
+  "note": "text inside a lesson-folder pane (lilac), small caps label or sentence"
  },
  "lesson.n": {
   "uz": "{n}-dars",
