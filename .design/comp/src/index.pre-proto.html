@@ -1000,7 +1000,7 @@ if (q.has('newlesson') && document.body.dataset.view !== 'gate') showNewLesson(t
 
 // Deck viewer modal
 (function(){
-  // The deck is same-origin (/aip3/deck/:n/), so the controls call its own window.nextSlide/prevSlide directly.
+  // The deck is same-origin (/aip/deck/:n/; /aip3/deck/ on the live fork), so the controls call its own window.nextSlide/prevSlide directly.
   // Zoom renders the deck in a larger iframe inside a scrolling view (the deck fits itself to its viewport).
   let modal = null, zoom = 1;
   const ZOOMS = [0.75, 1, 1.25, 1.5, 2];
@@ -1026,8 +1026,8 @@ if (q.has('newlesson') && document.body.dataset.view !== 'gate') showNewLesson(t
         else if (e.key === 'ArrowLeft') { e.preventDefault(); deck('prevSlide'); }
       });
     }
-    modal.querySelector('iframe').src = `/aip3/deck/${n}/`;
-    modal.querySelector('[data-act="download"]').href = `/aip3/deck/${n}/deck.pdf`;
+    modal.querySelector('iframe').src = `/aip/deck/${n}/`;
+    modal.querySelector('[data-act="download"]').href = `/aip/deck/${n}/deck.pdf`;
     setZoom(1);
     modal.classList.add('is-open');
     document.body.classList.add('deck-open');

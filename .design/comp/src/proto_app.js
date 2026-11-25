@@ -483,7 +483,7 @@ function lessonPage(n, tab){
   const L = LESSONS[n], [d, tt] = lProg(n), empty = !L.parts.length;
   const tabsDef = L.parts.map(p => ({p, label: t('unit.' + p), lock: partLock(n, p), done: partLock(n, p) ? false : {
     sl: () => slDone(n), am: () => S.has('f:am' + n), vz: () => S.has('f:v' + n), kt: () => false, dk: () => false}[p]()}));
-  const deckUrl = `/aip3/deck/${n}/`;   // instructor deck viewer served at /aip3/deck/:lesson/
+  const deckUrl = `/aip/deck/${n}/`;   // instructor deck viewer served at /aip/deck/:lesson/ (make-aip3.mjs turns it into /aip3/deck/ for the live fork)
   const pane = {
     sl: () => `<p class="p-label sr-only">${T('unit.sl')}</p><p class="p-num">${S.sl(n) > 0 ? `${S.sl(n)}/${L.slides}` : L.slides}</p>
       <div class="gt-foot"><span class="gt-meta">${T('pane.sl.meta', {n: L.slides, pl: L.slides, kind: kindT(n)})}</span>${play(slHref(n), S.sl(n) === 0 ? T('pane.sl.start') : slDone(n) ? T('pane.sl.again') : T('pane.sl.go', {i: S.sl(n), n: L.slides}), 'play', 18)}</div>`,

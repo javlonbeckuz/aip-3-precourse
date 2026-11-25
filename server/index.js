@@ -62,6 +62,9 @@ export function loadConfig(env = process.env) {
 }
 
 const CSP = "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; font-src 'self'; connect-src 'self'; frame-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'";
+// the slide decks (static, staff-made, behind login) are framed by the portal and are generated with an inline window.DECK and onclick handlers:
+// only their pages get frame-ancestors 'self' and inline scripts; everything else keeps the strict CSP
+const DECK_CSP = CSP.replace("frame-ancestors 'none'", "frame-ancestors 'self'").replace("script-src 'self'", "script-src 'self' 'unsafe-inline'");
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json; charset=utf-8',
   '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.gif': 'image/gif', '.webp': 'image/webp', '.avif': 'image/avif', '.ico': 'image/x-icon',
   '.woff2': 'font/woff2', '.woff': 'font/woff', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml', '.pdf': 'application/pdf', '.csv': 'text/csv; charset=utf-8',
@@ -355,12 +358,12 @@ export function createApp(cfg) {
     }],
   ];
 
-  // ---- deck viewer: /deck/:lesson/ serves content/lessons/:lesson/slides/deck/ (requires auth)
+  // ---- deck viewer: /aip/deck/:lesson/ serves content/lessons/:lesson/slides/deck/ (requires auth); the live fork serves the same at /aip3/deck/
   async function serveDeck(req, res, url) {
-    const p = url.pathname, m = /^\/deck\/(\d)(?:\/(.*))?$/.exec(p);
+    const p = url.pathname, m = /^\/aip\/deck\/(\d)(?:\/(.*))?$/.exec(p);
     if (!m) return false;
     if (req.method !== 'GET' && req.method !== 'HEAD') throw fail(405, 'method_not_allowed', 'Method not allowed');
-    const student = await auth.session(req, db); if (!student) throw fail(401, 'unauthorized', 'Not logged in');
+    needStudent(req);
     const lesson = +m[1], rel = m[2] || 'index.html';
     if (!content.has(lesson).deck) throw fail(404, 'not_found', 'No deck');
     if (rel.split('/').some((s) => s.startsWith('.') || s.includes('\0'))) throw fail(400, 'bad_request', 'Bad path');
@@ -371,7 +374,8 @@ export function createApp(cfg) {
     if (!fs.existsSync(file)) throw fail(404, 'not_found', 'Not found');
     const st = fs.statSync(file), etag = `W/"${st.size}-${Math.floor(st.mtimeMs)}"`, type = MIME[path.extname(file).toLowerCase()] ?? 'application/octet-stream';
     if (req.headers['if-none-match'] === etag) { res.writeHead(304, { ETag: etag }); return res.end(), true; }
-    res.setHeader('X-Frame-Options', 'SAMEORIGIN');  // allow embedding in portal iframe
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN');  // the portal shows the deck in an iframe: only our own pages may frame it
+    res.setHeader('Content-Security-Policy', DECK_CSP);
     res.writeHead(200, { 'Content-Type': type, 'Content-Length': st.size, ETag: etag, 'Cache-Control': 'no-cache' });
     if (req.method === 'HEAD') return res.end(), true;
     pipeline(fs.createReadStream(file), res, () => {}); return true;

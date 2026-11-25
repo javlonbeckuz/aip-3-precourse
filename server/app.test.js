@@ -45,6 +45,22 @@ test('ids: tolerant AIP- prefix', () => {
   assert.deepEqual(idCandidates(''), []);
 });
 
+// ---------- deck viewer
+test('deck: /aip/deck/:n/ needs a session and may be framed by the portal only', async (t) => {
+  const { client, login } = await startApp(t, { now: AFTER });
+  assert.equal((await client().get('/aip/deck/1/')).status, 401);
+  const c = await login();
+  const r = await c.get('/aip/deck/1/');
+  assert.equal(r.status, 200);
+  assert.match(r.headers.get('content-security-policy'), /frame-ancestors 'self'/);
+  assert.match(r.headers.get('content-security-policy'), /script-src 'self' 'unsafe-inline'/);   // the generated decks set window.DECK inline
+  assert.equal(r.headers.get('x-frame-options'), 'SAMEORIGIN');
+  const other = (await c.get('/api/aip/me')).headers.get('content-security-policy');   // everything else stays strict
+  assert.match(other, /frame-ancestors 'none'/);
+  assert.match(other, /script-src 'self';/);
+  assert.equal((await c.get('/aip/deck/2/')).status, 404);   // Kirish has no deck
+});
+
 // ---------- login
 test('login: success payload, cookie flags in production and dev', async (t) => {
   const prod = await startApp(t, { production: true, now: BEFORE });
