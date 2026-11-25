@@ -139,7 +139,7 @@ const I18N = {uz: {
   'toast.copy_failed': 'Nusxalanmadi. Matn belgilandi: uni qoʻlda nusxalang.',
   'files.md_hint': 'MD fayllarni kompyuterda oching.',
   'd3.all': 'Hammaga', 'd3.area.hr': 'HR', 'd3.area.savdo': 'Savdo', 'd3.area.servis': 'Servis', 'd3.area.ombor': 'Ombor', 'd3.area.marketing': 'Marketing', 'd3.area.xarid': 'Xarid', 'd3.area.rahbar': 'Rahbar', 'd3.tag.main': 'Asosiy', 'd3.tag.or': 'yoki {area}', 'd3.tag.extra': 'Qoʻshimcha', 'd3.tag.demo': 'Namoyish', 'd3.n_prompts': '{n} prompt', 'd3.n_files': '{n} fayl', 'd3.group_aria': 'Yoʻnalishlar', 'd3.back': 'Barcha yoʻnalishlar', 'd3.next': 'Keyingi yoʻnalish', 'd3.s1': 'Avval oʻqing', 'd3.s1h': 'Mashq nimadan iboratligi', 'd3.s2': 'NotebookLMʼga yuklang', 'd3.s2h': 'Faqat shu {n} ta fayl', 'd3.s3': 'Promptlarni navbat bilan yuboring', 'd3.s3h': 'Bosib oching: qayerga qoʻyish va toʻliq matn', 'd3.pdf': 'Barcha promptlar bitta PDFʼda', 'd3.prompts': 'Promptlar', 'd3.open': 'Ochish', 'd3.close': 'Yopish', 'd3.back_s': 'Barcha boʻlimlar', 'd3.next_s': 'Keyingi', 'd3.steps': 'qadamlar', 'd3.group_aria_s': 'Boʻlimlar', 'pane.more': 'Qoidalar va yordam', 'lesson.outs': 'Darsdan keyin siz', 'next.to_vz': 'Keyingi: Vazifa',
-  'kit.intro': 'Kit: darsdan keyin oʻz biznesingizda qoʻllaydigan tayyor shakllar va yoʻriqnoma.', 'pane.uz_note': 'Dars materiallari va promptlar oʻzbek tilida, darsdagidek.',
+  'howto.h': 'Qanday ishlatiladi', 'kit.intro': 'Kit: oʻz biznesingizda ishlatadigan shakllar va yoʻriqnoma.\nDarsda|Kartalarni tartib bilan bajaring.\n«Tayyor, agar»|Karta shu shart bajarilganda tugaydi.\nSaqlang|Fayllarni kompaniya papkangizda saqlang: keyingi darslar ularga tayanadi.\nUyda|Davomi Vazifa tabida.', 'vz.intro': 'Vazifa: darsdan keyin uyda bajariladi.\nTartib bilan|Qadamlarni birma-bir bajaring.\nPromptlar|Nusxalab qoʻying; [qavslar] boʻlsa, oʻrniga oʻz maʼlumotingizni yozing.\nMuddat|Muddat va mentor tekshiruvi «Qoidalar va yordam»da.\nBelgilang|Tugatgach, pastdagi «Vazifa bajarildi»ni bosing.', 'pane.uz_note': 'Dars materiallari va promptlar oʻzbek tilida, darsdagidek.',
   
   
   
@@ -708,7 +708,9 @@ const I18N = {uz: {
   "pane.more": "Правила и помощь",
   "lesson.outs": "После урока вы",
   "next.to_vz": "Дальше: Задание",
-  "kit.intro": "Kit: готовые формы и инструкция, которые вы применяете в своём бизнесе после урока.",
+  "howto.h": "Как пользоваться",
+  "kit.intro": "Kit: формы и инструкция для вашего бизнеса.\nНа уроке|Выполняйте карточки по порядку.\n«Tayyor, agar»|Карточка готова, когда выполнено это условие.\nСохраните|Храните файлы в папке компании: следующие уроки опираются на них.\nДома|Продолжение во вкладке Задание.",
+  "vz.intro": "Задание: выполняется дома после урока.\nПо порядку|Выполняйте шаги один за другим.\nПромпты|Копируйте и вставляйте; если есть [скобки], замените их своими данными.\nСрок|Срок и что проверит ментор: в «Правила и помощь».\nОтметьте|Закончив, нажмите «Задание выполнено» внизу.",
   "pane.uz_note": "Материалы урока и промпты на узбекском, как на уроке.",
   "end.aria_ex": "Отметить упражнение выполненным",
   "end.aria_card": "Отметить карточку выполненной",

@@ -463,13 +463,15 @@ document.addEventListener('click', e => {
     d3Move(d3Url(n, tab), false, tab); d3Show(root, root.dataset.sel, 'grid');
   }
 });
+// Kit / Vazifa: a boxed 'how to use' note, first line says what the tab is, each other line is 'Title|Description' shown as a vertical stepper
+const howto = s => { const [head, ...steps] = s.split('\n'); return `<div class="howto"><p class="howto-h">${T('howto.h')}</p><p class="howto-t">${esc(head)}</p><ol class="howto-s">${steps.map((x, i) => { const [tt, dd = ''] = x.split('|'); return `<li><span class="hs-n" aria-hidden="true">${i + 1}</span><span class="hs-x"><span class="hs-t">${esc(tt)}</span><span class="hs-d">${esc(dd)}</span></span></li>`; }).join('')}</ol></div>`; };
 // Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups as section cards + a docked panel (d3Pane); Amaliyot and Vazifa end with a tick
 function blockPane(n, p){
   const b = (PARTS[n] || {})[p] || {text: '', groups: []}, key = `c.p.${n}.${p}`;
   const paras = b.text ? cu(`${key}.text`).split(/\n\s*\n/).map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`) : [];
   // UX audit S6-6: on Amaliyot only the first paragraph stays open; the rules and help (laptop, privacy, "Qiynalsangiz…") fold into "Qoidalar va yordam"
   const text = (p === 'am' || p === 'vz') && paras.length > 1 ? `${paras[0]}<details class="pane-more"><summary>${T('pane.more')}</summary>${paras.slice(1).join('')}</details>` : paras.join('');
-  const intro = (LANG !== 'uz' ? `<p class="p-sub uz-note">${T('pane.uz_note')}</p>` : '') + (p === 'kt' ? `<p class="p-sub kit-intro">${T('kit.intro')}</p>` : '');   // S10-1 (RU: the lesson body is Uzbek), S6-7 (what a Kit is)
+  const intro = (LANG !== 'uz' ? `<p class="p-sub uz-note">${T('pane.uz_note')}</p>` : '') + (p === 'kt' || p === 'vz' ? howto(t(p === 'kt' ? 'kit.intro' : 'vz.intro')) : '');   // S10-1 (RU: the lesson body is Uzbek), S6-7 (what a Kit is)
   const end = p === 'am' ? endb('f:am' + n, S.has('f:am' + n), 'amf.on', 'amf.off', '', 'amf.aria') : p === 'vz' ? endb('f:v' + n, S.has('f:v' + n), 'vzf.on', 'vzf.off', '', 'vzf.aria') : '';
   // UX audit S6-5: the pane does not end in a dead end. After the tick: Amaliyot -> Vazifa, Vazifa -> home
   const vzOpen = LESSONS[n].parts.includes('vz') && !partLock(n, 'vz'), next = p === 'am' && vzOpen ? nextBlock(`#/dars/${n}?tab=vz`, 'next.to_vz') : p === 'vz' ? nextBlock('#/dastur', 'prep.end_back') : '';

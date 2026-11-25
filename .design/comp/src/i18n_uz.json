@@ -1074,10 +1074,20 @@
   "translate": true,
   "note": "home screen"
  },
- "kit.intro": {
-  "uz": "Kit: darsdan keyin oʻz biznesingizda qoʻllaydigan tayyor shakllar va yoʻriqnoma.",
+ "howto.h": {
+  "uz": "Qanday ishlatiladi",
   "translate": true,
   "note": "UI text"
+ },
+ "kit.intro": {
+  "uz": "Kit: oʻz biznesingizda ishlatadigan shakllar va yoʻriqnoma.\nDarsda|Kartalarni tartib bilan bajaring.\n«Tayyor, agar»|Karta shu shart bajarilganda tugaydi.\nSaqlang|Fayllarni kompaniya papkangizda saqlang: keyingi darslar ularga tayanadi.\nUyda|Davomi Vazifa tabida.",
+  "translate": true,
+  "note": "UI text · \\n = line break"
+ },
+ "vz.intro": {
+  "uz": "Vazifa: darsdan keyin uyda bajariladi.\nTartib bilan|Qadamlarni birma-bir bajaring.\nPromptlar|Nusxalab qoʻying; [qavslar] boʻlsa, oʻrniga oʻz maʼlumotingizni yozing.\nMuddat|Muddat va mentor tekshiruvi «Qoidalar va yordam»da.\nBelgilang|Tugatgach, pastdagi «Vazifa bajarildi»ni bosing.",
+  "translate": true,
+  "note": "UI text · \\n = line break"
  },
  "pane.uz_note": {
   "uz": "Dars materiallari va promptlar oʻzbek tilida, darsdagidek.",

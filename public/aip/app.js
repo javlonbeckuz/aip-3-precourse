@@ -366,7 +366,7 @@ const I18N = {uz: {
   'toast.copy_failed': 'Nusxalanmadi. Matn belgilandi: uni qoʻlda nusxalang.',
   'files.md_hint': 'MD fayllarni kompyuterda oching.',
   'd3.all': 'Hammaga', 'd3.area.hr': 'HR', 'd3.area.savdo': 'Savdo', 'd3.area.servis': 'Servis', 'd3.area.ombor': 'Ombor', 'd3.area.marketing': 'Marketing', 'd3.area.xarid': 'Xarid', 'd3.area.rahbar': 'Rahbar', 'd3.tag.main': 'Asosiy', 'd3.tag.or': 'yoki {area}', 'd3.tag.extra': 'Qoʻshimcha', 'd3.tag.demo': 'Namoyish', 'd3.n_prompts': '{n} prompt', 'd3.n_files': '{n} fayl', 'd3.group_aria': 'Yoʻnalishlar', 'd3.back': 'Barcha yoʻnalishlar', 'd3.next': 'Keyingi yoʻnalish', 'd3.s1': 'Avval oʻqing', 'd3.s1h': 'Mashq nimadan iboratligi', 'd3.s2': 'NotebookLMʼga yuklang', 'd3.s2h': 'Faqat shu {n} ta fayl', 'd3.s3': 'Promptlarni navbat bilan yuboring', 'd3.s3h': 'Bosib oching: qayerga qoʻyish va toʻliq matn', 'd3.pdf': 'Barcha promptlar bitta PDFʼda', 'd3.prompts': 'Promptlar', 'd3.open': 'Ochish', 'd3.close': 'Yopish', 'd3.back_s': 'Barcha boʻlimlar', 'd3.next_s': 'Keyingi', 'd3.steps': 'qadamlar', 'd3.group_aria_s': 'Boʻlimlar', 'pane.more': 'Qoidalar va yordam', 'lesson.outs': 'Darsdan keyin siz', 'next.to_vz': 'Keyingi: Vazifa',
-  'kit.intro': 'Kit: darsdan keyin oʻz biznesingizda qoʻllaydigan tayyor shakllar va yoʻriqnoma.', 'pane.uz_note': 'Dars materiallari va promptlar oʻzbek tilida, darsdagidek.',
+  'howto.h': 'Qanday ishlatiladi', 'kit.intro': 'Kit: oʻz biznesingizda ishlatadigan shakllar va yoʻriqnoma.\nDarsda|Kartalarni tartib bilan bajaring.\n«Tayyor, agar»|Karta shu shart bajarilganda tugaydi.\nSaqlang|Fayllarni kompaniya papkangizda saqlang: keyingi darslar ularga tayanadi.\nUyda|Davomi Vazifa tabida.', 'vz.intro': 'Vazifa: darsdan keyin uyda bajariladi.\nTartib bilan|Qadamlarni birma-bir bajaring.\nPromptlar|Nusxalab qoʻying; [qavslar] boʻlsa, oʻrniga oʻz maʼlumotingizni yozing.\nMuddat|Muddat va mentor tekshiruvi «Qoidalar va yordam»da.\nBelgilang|Tugatgach, pastdagi «Vazifa bajarildi»ni bosing.', 'pane.uz_note': 'Dars materiallari va promptlar oʻzbek tilida, darsdagidek.',
   
   
   
@@ -902,7 +902,9 @@ const I18N = {uz: {
   "pane.more": "Правила и помощь",
   "lesson.outs": "После урока вы",
   "next.to_vz": "Дальше: Задание",
-  "kit.intro": "Kit: готовые формы и инструкция, которые вы применяете в своём бизнесе после урока.",
+  "howto.h": "Как пользоваться",
+  "kit.intro": "Kit: формы и инструкция для вашего бизнеса.\nНа уроке|Выполняйте карточки по порядку.\n«Tayyor, agar»|Карточка готова, когда выполнено это условие.\nСохраните|Храните файлы в папке компании: следующие уроки опираются на них.\nДома|Продолжение во вкладке Задание.",
+  "vz.intro": "Задание: выполняется дома после урока.\nПо порядку|Выполняйте шаги один за другим.\nПромпты|Копируйте и вставляйте; если есть [скобки], замените их своими данными.\nСрок|Срок и что проверит ментор: в «Правила и помощь».\nОтметьте|Закончив, нажмите «Задание выполнено» внизу.",
   "pane.uz_note": "Материалы урока и промпты на узбекском, как на уроке.",
   "end.aria_ex": "Отметить упражнение выполненным",
   "end.aria_card": "Отметить карточку выполненной",
@@ -1672,13 +1674,15 @@ document.addEventListener('click', e => {
     d3Move(d3Url(n, tab), false, tab); d3Show(root, root.dataset.sel, 'grid');
   }
 });
+// Kit / Vazifa: a boxed 'how to use' note, first line says what the tab is, each other line is 'Title|Description' shown as a vertical stepper
+const howto = s => { const [head, ...steps] = s.split('\n'); return `<div class="howto"><p class="howto-h">${T('howto.h')}</p><p class="howto-t">${esc(head)}</p><ol class="howto-s">${steps.map((x, i) => { const [tt, dd = ''] = x.split('|'); return `<li><span class="hs-n" aria-hidden="true">${i + 1}</span><span class="hs-x"><span class="hs-t">${esc(tt)}</span><span class="hs-d">${esc(dd)}</span></span></li>`; }).join('')}</ol></div>`; };
 // Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups as section cards + a docked panel (d3Pane); Amaliyot and Vazifa end with a tick
 function blockPane(n, p){
   const b = (PARTS[n] || {})[p] || {text: '', groups: []}, key = `c.p.${n}.${p}`;
   const paras = b.text ? cu(`${key}.text`).split(/\n\s*\n/).map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`) : [];
   // UX audit S6-6: on Amaliyot only the first paragraph stays open; the rules and help (laptop, privacy, "Qiynalsangiz…") fold into "Qoidalar va yordam"
   const text = (p === 'am' || p === 'vz') && paras.length > 1 ? `${paras[0]}<details class="pane-more"><summary>${T('pane.more')}</summary>${paras.slice(1).join('')}</details>` : paras.join('');
-  const intro = (LANG !== 'uz' ? `<p class="p-sub uz-note">${T('pane.uz_note')}</p>` : '') + (p === 'kt' ? `<p class="p-sub kit-intro">${T('kit.intro')}</p>` : '');   // S10-1 (RU: the lesson body is Uzbek), S6-7 (what a Kit is)
+  const intro = (LANG !== 'uz' ? `<p class="p-sub uz-note">${T('pane.uz_note')}</p>` : '') + (p === 'kt' || p === 'vz' ? howto(t(p === 'kt' ? 'kit.intro' : 'vz.intro')) : '');   // S10-1 (RU: the lesson body is Uzbek), S6-7 (what a Kit is)
   const end = p === 'am' ? endb('f:am' + n, S.has('f:am' + n), 'amf.on', 'amf.off', '', 'amf.aria') : p === 'vz' ? endb('f:v' + n, S.has('f:v' + n), 'vzf.on', 'vzf.off', '', 'vzf.aria') : '';
   // UX audit S6-5: the pane does not end in a dead end. After the tick: Amaliyot -> Vazifa, Vazifa -> home
   const vzOpen = LESSONS[n].parts.includes('vz') && !partLock(n, 'vz'), next = p === 'am' && vzOpen ? nextBlock(`#/dars/${n}?tab=vz`, 'next.to_vz') : p === 'vz' ? nextBlock('#/dastur', 'prep.end_back') : '';

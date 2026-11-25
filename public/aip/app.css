@@ -1274,6 +1274,16 @@ html.hid .bgp path{animation-play-state:paused}
 .lout li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--yellow)}
 .kt-link{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .kit-intro,.uz-note{color:var(--gt-ink)}
+.howto{margin:0 0 14px;padding:16px 16px 14px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(0,0,0,.16)}
+.howto-h{margin:0 0 6px;font:500 11px/1.2 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.howto-t{margin:0 0 14px;font:600 15px/1.4 var(--font-body);color:var(--white)}
+.howto-s{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
+.howto-s li{position:relative;display:flex;align-items:flex-start;gap:12px}
+.howto-s li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:-12px;width:2px;border-radius:1px;background:rgba(255,255,255,.18)}
+.hs-n{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#2563eb;color:#fff;font:600 14px/1 var(--font-body)}
+.hs-x{display:flex;flex-direction:column;gap:2px;padding-top:5px}
+.hs-t{font:600 14px/1.3 var(--font-body);color:var(--white)}
+.hs-d{font:400 13px/1.4 var(--font-body);color:rgba(255,255,255,.7)}
 .f-hint{margin:8px 0 0;font:400 15px/1.4 var(--font-body);color:var(--gt-ink2)}
 .kt-link{position:relative}
 .kt-link::after{content:"";position:absolute;inset:-12px -4px}
