@@ -180,11 +180,6 @@
             "text": "kit3-agent papkasidagi Kit 3, A shakli (kit3-a-qadamlar.md) va Bʼni (kit3-b-korsatmalar.md) oʻqing.\n1) Tekshiring: egasiz qadamlar (A.7 boʻsh), agent oʻzini oʻzi tekshiradigan qadamlar, boʻsh kataklar, xavfli ruxsatlar (pul oʻtkazish, mijozga yozish, maʼlumot oʻchirish) va odamga oʻtishi kerak, lekin B.6ʼda yoʻq holatlar. Har topilmani qadam yoki band raqami bilan roʻyxat qiling.\n2) B.3ʼdagi har manba uchun ulanish yoʻli belgilanganmi: API, MCP, eksport yoki qoʻlda. Belgilanmaganini [?] bilan koʻrsating.\n3) Bʼni agent uchun aniq system prompt qilib qayta yozing. Bʼda yoʻq qoida qoʻshmang. Takliflaringizni alohida roʻyxatda bering, men tasdiqlayman.\nNatijani kit3-agent/instructions.mdʼga saqlang."
           }
         ]
-      },
-      {
-        "title": "03 Uyda: xodimlar tekshiruvi",
-        "note": "Istisno holatlarni agent bilan ishlaydigan xodimlar biladi. 1) instructions.mdʼni shu xodimlarga koʻrsating. 2) Ular aytgan har istisnoni B.6ʼga qoʻshing. 3) 3 ta yaxshi va 3 ta yomon haqiqiy namuna yigʻing. Tayyor, agar: B imzolangan va sanasi qoʻyilgan.",
-        "files": []
       }
     ]
   },

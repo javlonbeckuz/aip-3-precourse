@@ -193,11 +193,6 @@
             "text": "Quyida [xodim ismi], [lavozimi] bilan intervyu matni va Kit 1, B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [kit1-b-vazifalar.md faylining toʻliq matni]\nIntervyu: [intervyu matni]"
           }
         ]
-      },
-      {
-        "title": "03 Uyda: 2-3 intervyu",
-        "note": "Bitta boʻlimdan 2-3 xodim bilan 20-30 daqiqa gaplashing, jamoa boʻlmasa oʻzingizni intervyu qiling. 1) Jamoaga ayting: ishni xaritaga tushiramiz, odamlarni almashtirmaymiz. 2) Har B shaklini xodimga koʻrsating, u raqamlarni tuzatsin. 3) Har xodimni alohida .md faylga saqlang, masalan kit1-dilnoza.md. Tayyor, agar: kamida 2 ta B shakli .md faylda.",
-        "files": []
       }
     ]
   },
@@ -224,22 +219,9 @@
       },
       {
         "title": "3. Matnga aylantiring va Kit 1 promptini ishlating",
-        "note": "Har intervyuni Geminiʼda matnga aylantiring, keyin Kit 1 promptini qoʻllang. Jadvaldagi har raqamni audio bilan tekshiring.",
+        "note": "Har intervyuni Geminiʼda matnga aylantiring, keyin Kit 1 promptini qoʻllang. Ikkala prompt Kit boʻlimida, «Matn va B shakli» kartasida. Jadvaldagi har raqamni audio bilan tekshiring.",
         "files": [],
-        "prompts": [
-          {
-            "id": "V3P1",
-            "title": "Transkripsiya",
-            "target": "Gemini",
-            "text": "Ilova qilingan audio yozuvni oʻzbek tilida soʻzma-soʻz matnga aylantiring.\nSuhbatdoshlarni \"Soʻrovchi\" va \"[xodim ismi]\" deb ajrating.\nHar raqam, summa va vaqtni eshitilganidek soʻz bilan ham yozing, masalan: 300 000 (\"uch yuz ming\").\nTushunarsiz joyni [?] bilan belgilang, oʻzingizdan toʻldirmang."
-          },
-          {
-            "id": "V3P2",
-            "title": "Kit 1 prompti: B shakli",
-            "target": "Claude",
-            "text": "Quyida [xodim ismi], [lavozimi] bilan intervyu matni va Kit 1, B shakli. Matndan B.1-B.9 boʻyicha vazifalar roʻyxatini tuzing.\nHar vazifada kamida shular boʻlsin: vazifa nomi; bir martasiga necha daqiqa; qanchalik tez-tez (kuniga, haftasiga, oyiga); haftasiga necha soat; B.9 belgisi (A agent, R robot, I inson, B birgalikda).\nRaqamni faqat matndan oling. Matnda aniq boʻlmasa, taxminingiz yoniga [?] qoʻying.\nOxirida haftalik soatlarni jamlang va tekshirilishi kerak boʻlgan raqamlarni alohida roʻyxat qiling. Jadvalni .md formatida bering.\n\nB shakli: [kit1-b-vazifalar.md faylining toʻliq matni]\nIntervyu: [intervyu matni]"
-          }
-        ]
+        "prompts": []
       },
       {
         "title": "4. Xodim bilan tekshiring",

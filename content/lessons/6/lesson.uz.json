@@ -150,11 +150,6 @@
         "title": "02 Xatolar va ruxsatlar",
         "note": "B.13ʼdagi har xato instructions.mdʼdagi oʻzgarishga va yangi testga aylanadi. 1) Har yozuvga qaysi qoida oʻzgarganini yozing. 2) B.7 tekshirish soati kamayganini koʻring. 3) Mentor bilan ruxsat qarorini oling va A.5ʼga yozing. Tayyor, agar: B.13 toʻldirilgan, ruxsat qarori yozilgan.",
         "files": []
-      },
-      {
-        "title": "03 Uyda: 2-hafta va topilgan pul",
-        "note": "Topilgan pul: pilot olib kelgan yoki saqlab qolgan pul. 1) 2-hafta ustunini B.7 bilan birga toʻldiring. 2) Xarajatlarni yozing: B.9, B.10 va B.11. 3) Topilgan pulni sana, dalil va summa bilan yozing. Tayyor, agar: 2-hafta, B.9-B.11 va topilgan pul toʻldirilgan.",
-        "files": []
       }
     ]
   },
@@ -194,7 +189,7 @@
       },
       {
         "title": "4. Topilgan pul",
-        "note": "Pilot olib kelgan yoki saqlab qolgan pulni yozing: zarar qilishidan oldin ushlangan xatolar, endi yoʻqolmayotgan murojaatlar, tezroq yigʻilgan pul.",
+        "note": "Pilot olib kelgan yoki saqlab qolgan pulni yozing: zarar qilishidan oldin ushlangan xatolar, endi yoʻqolmayotgan murojaatlar, tezroq yigʻilgan pul. Har birini sana, dalil va summa bilan yozing.",
         "files": [],
         "prompts": [
           {

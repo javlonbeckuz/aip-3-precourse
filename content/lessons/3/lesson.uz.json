@@ -212,12 +212,12 @@
       },
       {
         "title": "02 Matritsa va tanlov",
-        "note": "Value/Ease matritsasining yuqori oʻng kvadratidan birinchi pilot uchun bitta jarayon tanlanadi. 1) Claude Codeʼdan kit2-scoring/matrix.htmlʼni yasashni soʻrang. 2) Yuqori oʻng kvadratdan bitta jarayon tanlang. 3) B.1-B.3ʼni toʻldiring, tanlovni CLAUDE.mdʼga yozing. Tayyor, agar: tanlov boʻlim boshligʻi bilan kelishilgan.",
+        "note": "Value/Ease matritsasining yuqori oʻng kvadratidan birinchi pilot uchun bitta jarayon tanlanadi. 1) Claude Codeʼdan kit2-scoring/matrix.htmlʼni yasashni soʻrang. 2) Yuqori oʻng kvadratdan bitta jarayon tanlang. 3) Tanlovni B.1ʼga yozing. Tayyor, agar: bitta jarayon tanlangan va B.1ʼda yozilgan.",
         "files": []
       },
       {
         "title": "03 Kit 5: Pilot va hisob-kitob",
-        "note": "Baseline: agentgacha boʻlgan toʻrt raqam, ularsiz demo kunida faqat taassurot qoladi. 1) kit5-SKILL.mdʼni .claude/skills/kit5/SKILL.md qilib saqlang. 2) Tarix bor joyda oxirgi 2-4 haftani /kit5 baseline bilan oling. 3) Tarixi yoʻq raqamlarni 5 ish kuni jonli yozing. Tayyor, agar: kit5-pilot/baseline.mdʼda toʻrt raqam va manbasi bor.",
+        "note": "Baseline: agentgacha boʻlgan toʻrt raqam, ularsiz demo kunida faqat taassurot qoladi. 1) kit5-SKILL.mdʼni .claude/skills/kit5/SKILL.md qilib saqlang. 2) Tarix bor joyda oxirgi 2-4 haftani /kit5 baseline bilan oling. Tayyor, agar: tarixdan olingan raqamlar kit5-pilot/baseline.mdʼda manbasi bilan yozilgan.",
         "files": [
           {
             "slug": "kit5-pdf",
