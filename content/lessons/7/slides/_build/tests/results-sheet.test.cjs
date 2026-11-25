@@ -1,5 +1,5 @@
 // Tests for the Day 6 results sheet: parser (real Kit 5 files) and Kit 5 formulas.
-// Run: node --test day-6/_build/tests/results-sheet.test.js   (paths resolve relative to this file)
+// Run: node --test content/lessons/7/slides/_build/tests/results-sheet.test.cjs   (paths resolve relative to this file)
 'use strict';
 const test = require('node:test');
 const assert = require('node:assert/strict');
@@ -7,8 +7,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const DAY6 = path.resolve(__dirname, '..', '..');
-const calc = require(path.join(DAY6, 'results-sheet', 'assets', 'calc.js'));
-const parse = require(path.join(DAY6, 'results-sheet', 'assets', 'parse.js'));
+// calc.js / parse.js are browser UMD scripts; the repo is "type": "module", so require() would load them as ESM. Run them with a CommonJS `module` instead.
+const umd = (f) => { const m = { exports: {} }; new Function('module', 'exports', fs.readFileSync(path.join(DAY6, 'results-sheet', 'assets', f), 'utf8'))(m, m.exports); return m.exports; };
+const calc = umd('calc.js');
+const parse = umd('parse.js');
 const fx = (name) => fs.readFileSync(path.join(__dirname, 'fixtures', name), 'utf8');
 const namuna = (name) => fs.readFileSync(path.join(DAY6, 'exercises', 'namuna', 'kompaniya', 'kit5-pilot', name), 'utf8');
 const near = (a, b, tol = 0.5) => assert.ok(Math.abs(a - b) <= tol, `${a} != ${b} (tol ${tol})`);

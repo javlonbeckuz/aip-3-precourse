@@ -281,11 +281,11 @@ test('shipped lesson 0: four setup cards with Visa before Claude, no Warp card (
   }
 });
 
-test('shipped lesson 0 names lessons in the padded form (01-dars, Lesson 01), never 1-dars', () => {
+test('shipped lesson 0 names lessons unpadded (2-dars, 2-го урока), never 02-dars (user, 2026-11-24)', () => {
   for (const lg of ['uz', 'ru']) {
     const txt = fs.readFileSync(path.join(REAL_CONTENT, 'lessons/0', `lesson.${lg}.json`), 'utf8');
-    assert.doesNotMatch(txt, /\b[1-7]-dars/, lg);
-    assert.doesNotMatch(txt, /\b[1-7]-го занятия|\b[Ll]esson [1-7]\b|занятия/, lg);
+    assert.doesNotMatch(txt, /\b0[1-7]-dars|\b0[1-7]-го|\b[Ll]esson 0[1-7]\b/, lg);
+    assert.doesNotMatch(txt, /занятия/, lg);   // RU says урок, not занятие
   }
 });
 
