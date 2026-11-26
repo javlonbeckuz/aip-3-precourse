@@ -34,12 +34,12 @@ test('content: every Kit and Vazifa step has a short title, known tags, and refs
   assert.deepEqual(bad, []);
 });
 
-test('content: each Vazifa with steps has a deadline; checks, forms and Kit numbers are well formed; one guide per Kit', () => {
+test('content: each Vazifa with steps has a deadline; forms and Kit numbers are well formed; one guide per Kit', () => {
   const bad = [];
   for (const n of lessonDirs) {
     const L = lesson(n), v = L.vazifa, k = L.kit;
     if (steps(v).length && n !== '2' && !v.due) bad.push(`lesson ${n}: vazifa has no due ("next" = the next lesson's start)`);
-    for (const x of v?.check ?? []) if (typeof x !== 'string' || !x.trim()) bad.push(`lesson ${n}: empty check item`);
+    if (v && 'check' in v) bad.push(`lesson ${n}: vazifa.check was removed (the mentor checklist is not shown)`);
     if (!k) continue;
     if (!k.kits?.length || k.kits.some((x) => !Number.isInteger(x) || x < 1 || x > 5)) bad.push(`lesson ${n}: kit.kits must list Kit numbers 1-5`);
     for (const x of k.forms ?? []) if (!/^(Kit \d, )?[AB] shakli: /.test(x)) bad.push(`lesson ${n}: a form line starts "A shakli: ", "B shakli: " or "Kit 5, A shakli: " (${x})`);
@@ -56,7 +56,7 @@ test('content: Kit and Vazifa speak plain words: no form codes (B.9, A.1) outsid
     const L = lesson(n);
     for (const part of ['kit', 'vazifa']) {
       const b = L[part]; if (!b) continue;
-      const texts = [b.text, b.flow, b.due, ...(b.forms ?? []), ...(b.check ?? []), ...b.groups.flatMap((g) => [g.title, g.note])].filter(Boolean);
+      const texts = [b.text, b.flow, b.due, ...(b.forms ?? []), ...b.groups.flatMap((g) => [g.title, g.note])].filter(Boolean);
       for (const s of texts) {
         if (/\b[AB]\.\d/.test(s)) bad.push(`lesson ${n} ${part}: form code in "${s.slice(0, 60)}"`);
         if (/qavs/i.test(s) && !/\[\?\]/.test(s)) bad.push(`lesson ${n} ${part}: a bracket instruction must say [?] stays ("${s.slice(0, 60)}")`);
@@ -92,18 +92,17 @@ test('app: the Vazifa deadline is the next lesson\'s start from the schedule, th
   assert.equal(tba.vzDue(2, 'c.p.2.vz', { due: '' }), null);
 });
 
-test('app: «Vazifa nima?» shows the deadline, the goal, the mentor\'s checklist as items and "nothing to send"', () => {
+test('app: «Vazifa nima?» shows the deadline, the goal and "nothing to send", and no mentor checklist', () => {
   const ctx = dueCtx({ 1: { d: [22, 11], start: '2026-11-22T10:00:00+05:00' }, 3: { d: [29, 11], start: '2026-11-29T10:00:00+05:00' } });
   run(cut('function vzHead('), Object.assign(ctx, { cxFb: () => false }));   // RN and lnT come from dueCtx
-  const html = ctx.vzHead(1, 'c.p.1.vz', { due: 'next', check: ['a', 'b', 'c'] }, ['Goal sentence.', 'More.']);
+  const html = ctx.vzHead(1, 'c.p.1.vz', { due: 'next' }, ['Goal sentence.', 'More.']);
   assert.match(html, /<h3 class="vzh-h"[^>]*>vzh\.h<\/h3>/);
   assert.match(html, /class="vzh-due">.*vzh\.due_dt/);
   assert.ok(html.indexOf('vzh-due') < html.indexOf('vzh-goal'), 'the deadline comes first');
   assert.match(html, /<p class="vzh-goal">Goal sentence\.<\/p>/);
-  assert.equal((html.match(/<li>/g) || []).length, 3);
   assert.match(html, /vzf\.hint2 vzh\.when/);
-  assert.match(html, /vzh\.check_when\{"n":"3-dars"\}/);   // the checklist names the lesson the mentor checks it in
-  assert.doesNotMatch(ctx.vzHead(1, 'c.p.1.vz', { due: '', check: [] }, ['x']), /vzh-due|vzh-ck/);
+  assert.doesNotMatch(html, /vzh\.check|vzh-ck/);
+  assert.doesNotMatch(ctx.vzHead(1, 'c.p.1.vz', { due: '' }, ['x']), /vzh-due/);
 });
 
 test('app: steps are numbered 1..n and a files row has no number', () => {

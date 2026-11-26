@@ -294,12 +294,6 @@
   "vazifa": {
     "text": "Pilot jarayonni boʻlim boshligʻi bilan kelishasiz va uning hozirgi raqamlarini yozasiz: ularsiz 6-darsdagi demo kunida natijani koʻrsatib boʻlmaydi.",
     "due": "next",
-    "check": [
-      "Kit 2, B shakli toʻldirilgan: tanlangan jarayon, nega aynan u, hozir nima qilinmaydi. Boʻlim boshligʻi bilan kelishilgan",
-      "Agentgacha raqamlar bor: tarixdan yoki kamida 3 kun jonli yozilgan",
-      "OpenRouter akkaunti tayyor, xarajat limiti qoʻyilgan; bot tokeni bor",
-      "CLAUDE.md kompaniyani va tanlangan jarayonni tasvirlaydi"
-    ],
     "groups": [
       {
         "title": "Tanlovni kelishing",

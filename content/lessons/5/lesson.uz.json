@@ -268,14 +268,6 @@
   "vazifa": {
     "text": "Bu hafta pilot ishga tushadi. Tartib: avval har xodim bilan 15 daqiqalik suhbat (Kit 4), keyin agent yoqiladi. Hech qachon aksincha emas.",
     "due": "next",
-    "check": [
-      "Agent noutbukda emas, VPSʼda ishlaydi",
-      "Agent kodi GitHubʼda yopiq (private) joyda, kalitlarsiz",
-      "Pilot rejasi (Kit 5, A shakli) kelishilgan",
-      "Kit 4 suhbatlari ishga tushirishdan oldin oʻtkazilgan",
-      "Pilot kamida 4 ish kuni ishlagan, xatolar jurnalida yozuvlar bor",
-      "Kit 5, B shaklining 1-hafta ustuni toʻldirilgan"
-    ],
     "groups": [
       {
         "title": "Serverni tugating",

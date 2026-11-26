@@ -36,7 +36,7 @@ file     { slug, name, size, label? }                 // no server path, ever; s
                      more?: { title, note, links[{ title, note, url }] } }   // more = extra links under the checklist; absent = hide the section; not counted as prep items
 }
 block    { text, groups[{ title, note?, files[file], prompts?[{ id, title, target?, text }] }] }   // prompts: copy rows, Uzbek text in every language (lang="uz-Latn"); ids are 1-8 letters/digits, unique per lesson; they travel only inside an open block   // text = paragraphs separated by a blank line; a part exists when it has text or at least one group
-         // optional, passed through as written (README, "Content format"): block kits?[1-5], forms?[string], flow?, due? ("next" | text), check?[string]; group tags?[string], kind? ("files"), ref? ({ tab, step? } or a list); file guide? (true)
+         // optional, passed through as written (README, "Content format"): block kits?[1-5], forms?[string], flow?, due? ("next" | text); group tags?[string], kind? ("files"), ref? ({ tab, step? } or a list); file guide? (true)
 // A lesson with no parts yet ("empty": has all false) has parts: {} and open = true from its start time on (review: at once). Show "materials soon".
 // Title, subtitle, summary and topics follow ?lang= / the lang cookie; blocks and slides never do. prep follows the language (lesson 0).
 ```

@@ -1471,10 +1471,6 @@ html.hid .bgp path{animation-play-state:paused}
 .vzh-goal{margin:0;font:400 15px/1.45 var(--font-body);max-width:62ch;text-wrap:pretty}
 .vzh .pane-more{margin:0}
 .vzh .pane-more>summary{min-height:44px}
-.vzh-cw{margin:0 0 8px;font:400 14px/1.4 var(--font-body);color:var(--gt-ink2)}
-.vzh-ck ul{display:grid;gap:8px;margin:0;padding:0;list-style:none}
-.vzh-ck li{position:relative;padding-left:28px;font:400 15px/1.45 var(--font-body);max-width:62ch}
-.vzh-ck li::before{content:"";position:absolute;left:2px;top:.2em;width:15px;height:15px;border:1.5px solid var(--gt-ink2);border-radius:4px}
 .vzh-ns{margin:0;font:400 13px/1.45 var(--font-body);color:var(--gt-ink2);max-width:62ch}
 @container (max-width:599px){.gt-foot.vz-end{position:sticky;bottom:0;z-index:3;margin:0 -20px;padding:10px 20px calc(10px + env(safe-area-inset-bottom));background:var(--gt-fill);box-shadow:0 -1px 0 var(--gt-line)}
 .gt-foot.vz-end .endb{flex:1;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;background:#fff;color:#000;font-weight:600}

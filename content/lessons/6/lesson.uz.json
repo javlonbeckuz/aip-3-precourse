@@ -197,13 +197,6 @@
   "vazifa": {
     "text": "Pilotning ikkinchi haftasini oʻtkazasiz va demo kuniga raqamlarni tayyorlaysiz.",
     "due": "next",
-    "check": [
-      "2-hafta raqamlari va xarajatlar toʻldirilgan",
-      "Xatolar jurnalida tuzatishlar bor va agent 3 yaxshi va 3 yomon namunada toʻgʻri ishlaydi",
-      "Rejali hisobot va eskalatsiya yoʻllari ishlaydi",
-      "Xavfsizlik cheklisti toʻliq",
-      "6-dars uchun 3 daqiqalik demo tayyor"
-    ],
     "groups": [
       {
         "title": "Pilotning 2-haftasi",

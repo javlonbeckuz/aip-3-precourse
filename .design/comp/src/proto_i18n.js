@@ -139,7 +139,7 @@ const I18N = {uz: {
   'toast.copy_failed': 'Nusxalanmadi. Matn belgilandi: uni qoʻlda nusxalang.',
   'files.md_hint': 'Oddiy matn fayli, noutbukda kerak boʻladi.',
   'd3.all': 'Hammaga', 'd3.area.hr': 'HR', 'd3.area.savdo': 'Savdo', 'd3.area.servis': 'Servis', 'd3.area.ombor': 'Ombor', 'd3.area.marketing': 'Marketing', 'd3.area.xarid': 'Xarid', 'd3.area.rahbar': 'Rahbar', 'd3.tag.main': 'Asosiy', 'd3.tag.or': 'yoki {area}', 'd3.tag.extra': 'Qoʻshimcha', 'd3.tag.demo': 'Namoyish', 'd3.n_prompts': '{n} prompt', 'd3.n_files': '{n} fayl', 'd3.group_aria': 'Yoʻnalishlar', 'd3.back': 'Barcha yoʻnalishlar', 'd3.next': 'Keyingi yoʻnalish', 'd3.s1': 'Avval oʻqing', 'd3.s1h': 'Mashq nimadan iboratligi', 'd3.s2': 'NotebookLMʼga yuklang', 'd3.s2h': 'Faqat shu {n} ta fayl', 'd3.s3': 'Promptlarni navbat bilan yuboring', 'd3.s3h': 'Bosib oching: qayerga qoʻyish va toʻliq matn', 'd3.pdf': 'Barcha promptlar bitta PDFʼda', 'd3.prompts': 'Promptlar', 'd3.open': 'Ochish', 'd3.close': 'Yopish', 'd3.back_s': 'Barcha boʻlimlar', 'd3.next_s': 'Keyingi', 'd3.steps': 'qadamlar', 'd3.group_aria_s': 'Boʻlimlar', 'pane.more': 'Qoidalar va yordam', 'lesson.outs': 'Darsdan keyin siz', 'next.to_vz': 'Keyingi: Vazifa',
-  'kx.h': 'Kit nima?', 'kx.t': 'Kit: oʻz biznesingizdagi amaliy ish. 5 ta Kit bor, har biri oldingisining natijasidan foydalanadi.', 'kx.sr': 'Bu darsda: {list} (jami 5 ta)', 'kx.k1': 'Ish qayerga ketadi', 'kx.k2': 'Qaysi jarayondan boshlaymiz', 'kx.k3': 'Ishni qayta taqsimlash', 'kx.k4': 'Yangi rollar', 'kx.k5': 'Pilot va hisob-kitob', 'stp.h': 'Qayerdan boshlash', 'stp.guide': 'Avval yoʻriqnomani oching (PDF)', 'stp.ref': '{tab}, {n}-qadam: {title}', 'stp.ref_tab': '{tab} tabini oching', 'stp.ph': 'Qavsdagi joylarga oʻz maʼlumotingizni yozing.', 'stp.t.darsda': 'Darsda', 'stp.t.uyda': 'Uyda', 'stp.t.telefon': 'telefon', 'stp.t.noutbuk': 'noutbuk', 'stp.t.mentor': 'mentor bilan', 'vzh.h': 'Vazifa nima?', 'vzh.due_l': 'Muddat', 'vzh.due_dt': '{date}, {time} gacha', 'vzh.due_d': '{date} gacha', 'vzh.due_sub': '{n} boshlanishidan oldin', 'vzh.due_next': 'Keyingi dars boshlanishidan oldin', 'vzh.check': 'Mentor nimani tekshiradi · {n} band', 'vzh.check_when': 'Mentor {n} boshida, birinchi 20 daqiqada tekshiradi.', 'vzh.when': 'Barcha qadamlar bajarilgach, «Vazifa bajarildi»ni bosing.', 'vzh.steps': 'Qadamlar', 'lesson.about': 'Dars haqida',
+  'kx.h': 'Kit nima?', 'kx.t': 'Kit: oʻz biznesingizdagi amaliy ish. 5 ta Kit bor, har biri oldingisining natijasidan foydalanadi.', 'kx.sr': 'Bu darsda: {list} (jami 5 ta)', 'kx.k1': 'Ish qayerga ketadi', 'kx.k2': 'Qaysi jarayondan boshlaymiz', 'kx.k3': 'Ishni qayta taqsimlash', 'kx.k4': 'Yangi rollar', 'kx.k5': 'Pilot va hisob-kitob', 'stp.h': 'Qayerdan boshlash', 'stp.guide': 'Avval yoʻriqnomani oching (PDF)', 'stp.ref': '{tab}, {n}-qadam: {title}', 'stp.ref_tab': '{tab} tabini oching', 'stp.ph': 'Qavsdagi joylarga oʻz maʼlumotingizni yozing.', 'stp.t.darsda': 'Darsda', 'stp.t.uyda': 'Uyda', 'stp.t.telefon': 'telefon', 'stp.t.noutbuk': 'noutbuk', 'stp.t.mentor': 'mentor bilan', 'vzh.h': 'Vazifa nima?', 'vzh.due_l': 'Muddat', 'vzh.due_dt': '{date}, {time} gacha', 'vzh.due_d': '{date} gacha', 'vzh.due_sub': '{n} boshlanishidan oldin', 'vzh.due_next': 'Keyingi dars boshlanishidan oldin', 'vzh.when': 'Barcha qadamlar bajarilgach, «Vazifa bajarildi»ni bosing.', 'vzh.steps': 'Qadamlar', 'lesson.about': 'Dars haqida',
   'pane.uz_note': 'Dars materiallari va promptlar oʻzbek tilida, darsdagidek.',
   
   
@@ -927,12 +927,6 @@ const I18N = {uz: {
   "vzh.due_d": "до {date}",
   "vzh.due_sub": "перед началом: {n}",
   "vzh.due_next": "До начала следующего урока",
-  "vzh.check": "Что проверит ментор · {n} пункта",
-  "vzh.check#one": "Что проверит ментор · {n} пункт",
-  "vzh.check#few": "Что проверит ментор · {n} пункта",
-  "vzh.check#many": "Что проверит ментор · {n} пунктов",
-  "vzh.check#other": "Что проверит ментор · {n} пункта",
-  "vzh.check_when": "Ментор проверяет в первые 20 минут: {n}.",
   "vzh.when": "Когда все шаги выполнены, отметьте задание.",
   "vzh.steps": "Шаги",
   "lesson.about": "Об уроке"

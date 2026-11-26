@@ -1194,16 +1194,6 @@
   "translate": true,
   "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
  },
- "vzh.check": {
-  "uz": "Mentor nimani tekshiradi · {n} band",
-  "translate": true,
-  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
- },
- "vzh.check_when": {
-  "uz": "Mentor {n} boshida, birinchi 20 daqiqada tekshiradi.",
-  "translate": true,
-  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
- },
  "vzh.when": {
   "uz": "Barcha qadamlar bajarilgach, «Vazifa bajarildi»ni bosing.",
   "translate": true,

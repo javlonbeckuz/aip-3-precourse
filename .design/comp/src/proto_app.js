@@ -479,7 +479,7 @@ function gtPop(){   // Back / Forward between two tabs of the lesson on screen: 
 document.addEventListener('click', e => { const b = e.target.closest('.lhr-t'); if (!b) return; const on = b.getAttribute('aria-expanded') !== 'true'; b.setAttribute('aria-expanded', on); b.closest('.lhd').classList.toggle('lhr-on', on); });
 // ---- Kit and Vazifa (user, 2026-11-26): each group is one numbered step, a row that opens in place (one-line title, then "Darsda · telefon · 2 prompt").
 // Kit starts with «Kit nima?» (what a Kit is, the 5-Kit chain; open on the first visit only) and «Qayerdan boshlash» (A and B shakli in a line each, the guide PDF, the steps).
-// Vazifa starts with «Vazifa nima?» (deadline, goal, the mentor's checklist, nothing to send). The optional content fields (kits, forms, flow, due, check, tags, kind, ref, guide) are in API.md.
+// Vazifa starts with «Vazifa nima?» (deadline, goal, nothing to send). The optional content fields (kits, forms, flow, due, tags, kind, ref, guide) are in API.md.
 const KX_KEY = D3_PREFIX + '.kx';   // "«Kit nima?» was seen": under the d3 prefix, so logout and a 401 forget it with the rest
 const kxSeen = (() => { try { return !!localStorage.getItem(KX_KEY); } catch { return false; } })();   // read once per page load: the block stays open for the whole first visit
 let kxOpen = null;   // the student's own toggle, kept until the page reloads (a re-render never closes what they opened)
@@ -504,7 +504,6 @@ function vzHead(n, key, b, paras){
     + (due ? `<p class="vzh-due"><span class="vzh-l">${T('vzh.due_l')}</span> <b>${due.main}</b>${due.sub ? ` <span class="vzh-s">${due.sub}</span>` : ''}</p>` : '')
     + (paras[0] ? `<p class="vzh-goal"${lg(`${key}.text`)}>${esc(paras[0])}</p>` : '')
     + (paras.length > 1 ? `<details class="pane-more"${lg(`${key}.text`)}><summary>${T('pane.more')}</summary>${paras.slice(1).map(x => `<p class="p-sub">${esc(x)}</p>`).join('')}</details>` : '')
-    + (b.check.length ? `<details class="vzh-ck pane-more"><summary>${T('vzh.check', {n: b.check.length, pl: b.check.length})}</summary>${RN().some(k => k > n) ? `<p class="vzh-cw">${T('vzh.check_when', {n: lnT(RN().find(k => k > n))})}</p>` : ''}<ul${lg(`${key}.c0`)}>${b.check.map((_, j) => `<li>${esc(cu(`${key}.c${j}`))}</li>`).join('')}</ul></details>` : '')
     + `<p class="vzh-ns">${T('vzf.hint2')} ${T('vzh.when')}</p></section>`;
 }
 const STP_TAG = ['darsda', 'uyda', 'telefon', 'noutbuk', 'mentor'];

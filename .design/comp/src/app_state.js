@@ -82,7 +82,7 @@ function makeC20(by){   // the open blocks of each lesson (Amaliyot, Kit, Vazifa
     if (l.n < 1) continue;
     for (const [k, key] of [['am', 'amaliyot'], ['kt', 'kit'], ['vz', 'vazifa']]) {
       const b = l[key]; if (!b || typeof b !== 'object') continue;
-      (parts[l.n] ??= {})[k] = {text: b.text || '', kits: b.kits, forms: b.forms, flow: b.flow, due: b.due, check: b.check, groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', tags: g.tags, kind: g.kind, ref: g.ref, files: (g.files || []).map(f => fo(l.n, f)),
+      (parts[l.n] ??= {})[k] = {text: b.text || '', kits: b.kits, forms: b.forms, flow: b.flow, due: b.due, groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', tags: g.tags, kind: g.kind, ref: g.ref, files: (g.files || []).map(f => fo(l.n, f)),
         prompts: (Array.isArray(g.prompts) ? g.prompts : []).map(q => ({id: sid(q.id), title: q.title || '', target: q.target || '', text: q.text || ''}))}))};
     }
   }

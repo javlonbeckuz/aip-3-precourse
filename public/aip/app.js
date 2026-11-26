@@ -368,7 +368,7 @@ const I18N = {uz: {
   'toast.copy_failed': 'Nusxalanmadi. Matn belgilandi: uni qoʻlda nusxalang.',
   'files.md_hint': 'Oddiy matn fayli, noutbukda kerak boʻladi.',
   'd3.all': 'Hammaga', 'd3.area.hr': 'HR', 'd3.area.savdo': 'Savdo', 'd3.area.servis': 'Servis', 'd3.area.ombor': 'Ombor', 'd3.area.marketing': 'Marketing', 'd3.area.xarid': 'Xarid', 'd3.area.rahbar': 'Rahbar', 'd3.tag.main': 'Asosiy', 'd3.tag.or': 'yoki {area}', 'd3.tag.extra': 'Qoʻshimcha', 'd3.tag.demo': 'Namoyish', 'd3.n_prompts': '{n} prompt', 'd3.n_files': '{n} fayl', 'd3.group_aria': 'Yoʻnalishlar', 'd3.back': 'Barcha yoʻnalishlar', 'd3.next': 'Keyingi yoʻnalish', 'd3.s1': 'Avval oʻqing', 'd3.s1h': 'Mashq nimadan iboratligi', 'd3.s2': 'NotebookLMʼga yuklang', 'd3.s2h': 'Faqat shu {n} ta fayl', 'd3.s3': 'Promptlarni navbat bilan yuboring', 'd3.s3h': 'Bosib oching: qayerga qoʻyish va toʻliq matn', 'd3.pdf': 'Barcha promptlar bitta PDFʼda', 'd3.prompts': 'Promptlar', 'd3.open': 'Ochish', 'd3.close': 'Yopish', 'd3.back_s': 'Barcha boʻlimlar', 'd3.next_s': 'Keyingi', 'd3.steps': 'qadamlar', 'd3.group_aria_s': 'Boʻlimlar', 'pane.more': 'Qoidalar va yordam', 'lesson.outs': 'Darsdan keyin siz', 'next.to_vz': 'Keyingi: Vazifa',
-  'kx.h': 'Kit nima?', 'kx.t': 'Kit: oʻz biznesingizdagi amaliy ish. 5 ta Kit bor, har biri oldingisining natijasidan foydalanadi.', 'kx.sr': 'Bu darsda: {list} (jami 5 ta)', 'kx.k1': 'Ish qayerga ketadi', 'kx.k2': 'Qaysi jarayondan boshlaymiz', 'kx.k3': 'Ishni qayta taqsimlash', 'kx.k4': 'Yangi rollar', 'kx.k5': 'Pilot va hisob-kitob', 'stp.h': 'Qayerdan boshlash', 'stp.guide': 'Avval yoʻriqnomani oching (PDF)', 'stp.ref': '{tab}, {n}-qadam: {title}', 'stp.ref_tab': '{tab} tabini oching', 'stp.ph': 'Qavsdagi joylarga oʻz maʼlumotingizni yozing.', 'stp.t.darsda': 'Darsda', 'stp.t.uyda': 'Uyda', 'stp.t.telefon': 'telefon', 'stp.t.noutbuk': 'noutbuk', 'stp.t.mentor': 'mentor bilan', 'vzh.h': 'Vazifa nima?', 'vzh.due_l': 'Muddat', 'vzh.due_dt': '{date}, {time} gacha', 'vzh.due_d': '{date} gacha', 'vzh.due_sub': '{n} boshlanishidan oldin', 'vzh.due_next': 'Keyingi dars boshlanishidan oldin', 'vzh.check': 'Mentor nimani tekshiradi · {n} band', 'vzh.check_when': 'Mentor {n} boshida, birinchi 20 daqiqada tekshiradi.', 'vzh.when': 'Barcha qadamlar bajarilgach, «Vazifa bajarildi»ni bosing.', 'vzh.steps': 'Qadamlar', 'lesson.about': 'Dars haqida',
+  'kx.h': 'Kit nima?', 'kx.t': 'Kit: oʻz biznesingizdagi amaliy ish. 5 ta Kit bor, har biri oldingisining natijasidan foydalanadi.', 'kx.sr': 'Bu darsda: {list} (jami 5 ta)', 'kx.k1': 'Ish qayerga ketadi', 'kx.k2': 'Qaysi jarayondan boshlaymiz', 'kx.k3': 'Ishni qayta taqsimlash', 'kx.k4': 'Yangi rollar', 'kx.k5': 'Pilot va hisob-kitob', 'stp.h': 'Qayerdan boshlash', 'stp.guide': 'Avval yoʻriqnomani oching (PDF)', 'stp.ref': '{tab}, {n}-qadam: {title}', 'stp.ref_tab': '{tab} tabini oching', 'stp.ph': 'Qavsdagi joylarga oʻz maʼlumotingizni yozing.', 'stp.t.darsda': 'Darsda', 'stp.t.uyda': 'Uyda', 'stp.t.telefon': 'telefon', 'stp.t.noutbuk': 'noutbuk', 'stp.t.mentor': 'mentor bilan', 'vzh.h': 'Vazifa nima?', 'vzh.due_l': 'Muddat', 'vzh.due_dt': '{date}, {time} gacha', 'vzh.due_d': '{date} gacha', 'vzh.due_sub': '{n} boshlanishidan oldin', 'vzh.due_next': 'Keyingi dars boshlanishidan oldin', 'vzh.when': 'Barcha qadamlar bajarilgach, «Vazifa bajarildi»ni bosing.', 'vzh.steps': 'Qadamlar', 'lesson.about': 'Dars haqida',
   'pane.uz_note': 'Dars materiallari va promptlar oʻzbek tilida, darsdagidek.',
   
   
@@ -1044,12 +1044,6 @@ const I18N = {uz: {
   "vzh.due_d": "до {date}",
   "vzh.due_sub": "перед началом: {n}",
   "vzh.due_next": "До начала следующего урока",
-  "vzh.check": "Что проверит ментор · {n} пункта",
-  "vzh.check#one": "Что проверит ментор · {n} пункт",
-  "vzh.check#few": "Что проверит ментор · {n} пункта",
-  "vzh.check#many": "Что проверит ментор · {n} пунктов",
-  "vzh.check#other": "Что проверит ментор · {n} пункта",
-  "vzh.check_when": "Ментор проверяет в первые 20 минут: {n}.",
   "vzh.when": "Когда все шаги выполнены, отметьте задание.",
   "vzh.steps": "Шаги",
   "lesson.about": "Об уроке"
@@ -1136,8 +1130,8 @@ function buildData(){
   FILES = {}; PARTS = {};
   Object.entries((C20 && C20.parts) || {}).forEach(([n, o]) => { PARTS[n] = {}; const used = new Set();   // progress ids of the prompt rows: unique inside a lesson, 1-8 letters or digits ("P{index}" when the id is empty)
     Object.entries(o).forEach(([k, b]) => {
-      // Kit / Vazifa extras (all optional): kits = the Kit numbers of this tab, forms = "A shakli: ..." lines, flow = "A shakli → yozuv → ...", due = "next" or the content's own words, check = the mentor's checklist
-      PARTS[n][k] = {text: b.text || '', kits: (Array.isArray(b.kits) ? b.kits : []).filter(x => Number.isInteger(x) && x >= 1 && x <= 5), forms: strs(b.forms), flow: typeof b.flow === 'string' ? b.flow : '', due: typeof b.due === 'string' ? b.due : '', check: strs(b.check),
+      // Kit / Vazifa extras (all optional): kits = the Kit numbers of this tab, forms = "A shakli: ..." lines, flow = "A shakli → yozuv → ...", due = "next" or the content's own words
+      PARTS[n][k] = {text: b.text || '', kits: (Array.isArray(b.kits) ? b.kits : []).filter(x => Number.isInteger(x) && x >= 1 && x <= 5), forms: strs(b.forms), flow: typeof b.flow === 'string' ? b.flow : '', due: typeof b.due === 'string' ? b.due : '',
         groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', tags: strs(g.tags), kind: g.kind === 'files' ? 'files' : '', ref: refs(g.ref), files: (g.files || []).map(f => FC(f, f.ph)),
         prompts: (g.prompts || []).map((q, j) => { const id = (String(q.id || '').replace(/[^A-Za-z0-9]/g, '') || 'P' + (j + 1)).slice(0, 8); let kid = id, c = 2; while (used.has(kid)) kid = id.slice(0, 6) + c++; used.add(kid);
           return {id: q.id || '', kid, title: q.title || '', target: q.target || '', text: q.text || ''}; })}))}; }); });
@@ -1152,7 +1146,7 @@ function registerContent(){
   const set = (k, v) => { if (typeof v === 'string') I18N.uz[k] = v; };
   Object.entries(PARTS).forEach(([n, o]) => Object.entries(o).forEach(([k, b]) => {
     set(`c.p.${n}.${k}.text`, b.text); set(`c.p.${n}.${k}.flow`, b.flow || null); if (b.due !== 'next') set(`c.p.${n}.${k}.due`, b.due || null);
-    b.forms.forEach((x, j) => set(`c.p.${n}.${k}.f${j}`, x)); b.check.forEach((x, j) => set(`c.p.${n}.${k}.c${j}`, x));
+    b.forms.forEach((x, j) => set(`c.p.${n}.${k}.f${j}`, x));
     b.groups.forEach((g, i) => { set(`c.p.${n}.${k}.g${i}`, g.title); set(`c.p.${n}.${k}.g${i}.n`, g.note);
       g.prompts.forEach((q, j) => { const pk = `c.p.${n}.${k}.g${i}.p${j}`; set(pk + '.t', q.title); set(pk + '.w', q.target); set(pk + '.x', q.text); }); }); }));
 }
@@ -1242,7 +1236,7 @@ function makeC20(by){   // the open blocks of each lesson (Amaliyot, Kit, Vazifa
     if (l.n < 1) continue;
     for (const [k, key] of [['am', 'amaliyot'], ['kt', 'kit'], ['vz', 'vazifa']]) {
       const b = l[key]; if (!b || typeof b !== 'object') continue;
-      (parts[l.n] ??= {})[k] = {text: b.text || '', kits: b.kits, forms: b.forms, flow: b.flow, due: b.due, check: b.check, groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', tags: g.tags, kind: g.kind, ref: g.ref, files: (g.files || []).map(f => fo(l.n, f)),
+      (parts[l.n] ??= {})[k] = {text: b.text || '', kits: b.kits, forms: b.forms, flow: b.flow, due: b.due, groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', tags: g.tags, kind: g.kind, ref: g.ref, files: (g.files || []).map(f => fo(l.n, f)),
         prompts: (Array.isArray(g.prompts) ? g.prompts : []).map(q => ({id: sid(q.id), title: q.title || '', target: q.target || '', text: q.text || ''}))}))};
     }
   }
@@ -1730,7 +1724,7 @@ function gtPop(){   // Back / Forward between two tabs of the lesson on screen: 
 document.addEventListener('click', e => { const b = e.target.closest('.lhr-t'); if (!b) return; const on = b.getAttribute('aria-expanded') !== 'true'; b.setAttribute('aria-expanded', on); b.closest('.lhd').classList.toggle('lhr-on', on); });
 // ---- Kit and Vazifa (user, 2026-11-26): each group is one numbered step, a row that opens in place (one-line title, then "Darsda · telefon · 2 prompt").
 // Kit starts with «Kit nima?» (what a Kit is, the 5-Kit chain; open on the first visit only) and «Qayerdan boshlash» (A and B shakli in a line each, the guide PDF, the steps).
-// Vazifa starts with «Vazifa nima?» (deadline, goal, the mentor's checklist, nothing to send). The optional content fields (kits, forms, flow, due, check, tags, kind, ref, guide) are in API.md.
+// Vazifa starts with «Vazifa nima?» (deadline, goal, nothing to send). The optional content fields (kits, forms, flow, due, tags, kind, ref, guide) are in API.md.
 const KX_KEY = D3_PREFIX + '.kx';   // "«Kit nima?» was seen": under the d3 prefix, so logout and a 401 forget it with the rest
 const kxSeen = (() => { try { return !!localStorage.getItem(KX_KEY); } catch { return false; } })();   // read once per page load: the block stays open for the whole first visit
 let kxOpen = null;   // the student's own toggle, kept until the page reloads (a re-render never closes what they opened)
@@ -1755,7 +1749,6 @@ function vzHead(n, key, b, paras){
     + (due ? `<p class="vzh-due"><span class="vzh-l">${T('vzh.due_l')}</span> <b>${due.main}</b>${due.sub ? ` <span class="vzh-s">${due.sub}</span>` : ''}</p>` : '')
     + (paras[0] ? `<p class="vzh-goal"${lg(`${key}.text`)}>${esc(paras[0])}</p>` : '')
     + (paras.length > 1 ? `<details class="pane-more"${lg(`${key}.text`)}><summary>${T('pane.more')}</summary>${paras.slice(1).map(x => `<p class="p-sub">${esc(x)}</p>`).join('')}</details>` : '')
-    + (b.check.length ? `<details class="vzh-ck pane-more"><summary>${T('vzh.check', {n: b.check.length, pl: b.check.length})}</summary>${RN().some(k => k > n) ? `<p class="vzh-cw">${T('vzh.check_when', {n: lnT(RN().find(k => k > n))})}</p>` : ''}<ul${lg(`${key}.c0`)}>${b.check.map((_, j) => `<li>${esc(cu(`${key}.c${j}`))}</li>`).join('')}</ul></details>` : '')
     + `<p class="vzh-ns">${T('vzf.hint2')} ${T('vzh.when')}</p></section>`;
 }
 const STP_TAG = ['darsda', 'uyda', 'telefon', 'noutbuk', 'mentor'];

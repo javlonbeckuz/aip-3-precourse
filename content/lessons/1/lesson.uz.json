@@ -236,12 +236,6 @@
   "vazifa": {
     "text": "Kit 1ʼni oʻz kompaniyangizda oʻtkazasiz: kamida 2 xodimning vazifalar jadvali tayyor boʻlsin. 2-darsda Claude Code shu fayllar bilan ishlaydi.",
     "due": "next",
-    "check": [
-      "Kamida 2 xodimning jadvali (B shakli) .md faylda saqlangan",
-      "Daqiqa va chastotani xodimning oʻzi tuzatgan, taxminiy raqam belgisi [?] qolmagan",
-      "Har vazifaga «AI kelgach kim qiladi» belgisi qoʻyilgan",
-      "Claude Code Warpʼda ochiladi"
-    ],
     "groups": [
       {
         "title": "Jamoaga sababini ayting",

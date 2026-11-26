@@ -230,14 +230,6 @@
   "vazifa": {
     "text": "Koʻrsatmalarni xodimlar bilan tekshirasiz, agentning birinchi versiyasini (v0) tugatasiz va 4-darsga server tayyorlaysiz.",
     "due": "next",
-    "check": [
-      "Kit 3, A shaklida boʻsh katak yoʻq",
-      "Koʻrsatmalarga (B shakli) xodimlar aytgan istisnolar qoʻshilgan, oxirida ism va sana bor",
-      "Agent v0 noutbukda haqiqiy holatlarda ishlaydi",
-      "3 ta yaxshi va 3 ta yomon namuna saqlangan",
-      "VPS va domen sotib olingan, Claude Code VPSʼga kamida bir marta kirgan",
-      "Agentgacha raqamlar toʻliq"
-    ],
     "groups": [
       {
         "title": "Xodimlarga koʻrsating",
