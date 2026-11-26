@@ -85,8 +85,8 @@ const cnt = (type, id = '') => `<span data-cnt="${type}${id ? ':' + id : ''}">${
 const I = (id, w = 16) => `<svg width="${w}" height="${w}" aria-hidden="true"><use href="#i-${id}"/></svg>`;
 const NSTAG = () => ` <span class="ns">${T('common.namuna')}</span>`;
 const SRCHK = () => I('check', 12) + `<span class="sr-only">${T('common.sr_done')}</span>`;
-const mark = s => s.split(/(`[^`]*`)/).map((part, i) => i % 2 ? `<code>${part.slice(1, -1)}</code>` : part.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>')).join('');   // [fill-in] marks, but never inside a `code span` (a literal value there is not a placeholder)
-const hasBracket = s => /\[[^\]]+\]/.test(String(s).replace(/`[^`]*`/g, ''));
+const mark = s => s.split(/(`[^`]*`)/).map((part, i) => i % 2 ? `<code>${part.slice(1, -1)}</code>` : part.replace(/\[(?!\?\])([^\]]+)\]/g, '<span class="ph">[$1]</span>')).join('');   // [fill-in] marks, but never inside a `code span` (a literal value there is not a placeholder) and never [?] (Claude's "check this number" mark, the student keeps it)
+const hasBracket = s => /\[(?!\?\])[^\]]+\]/.test(String(s).replace(/`[^`]*`/g, ''));
 const back = (href, label) => `<a class="eyebrow" href="${href}">${I('back')}${label}</a>`;
 // "Birinchi darsgacha" (materials before the course) lives in the header once the course has started (before it, it is the hero card on the home page): a yellow pill on desktop, a round icon button on phones
 const prepBtn = active => courseStarted() ? `<a class="prep-btn" href="#/kursgacha" aria-label="${esc(t('prep.btn_aria'))}"${active === 'pre' ? ' aria-current="page"' : ''}><span class="pb-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l2 2.5h8.5A1.5 1.5 0 0 1 21 9v8.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/></svg></span><span class="pb-t">${T('prep.btn')}</span></a>` : '';
@@ -421,7 +421,7 @@ function d3Pane(n, p, key, b, intro, text, end){
     const body = tr ? `<div class="d3-two">${yo ? `<div>${d3Step(++s, T('d3.s1'), T('d3.s1h'))}<a class="d3-pri" ${fa(yo)}>${d3Dl(yo)}</a></div>` : ''}${src.length ? `<div>${d3Step(++s, T('d3.s2'), T('d3.s2h', {n: src.length, pl: src.length}))}${d3Files(src)}</div>` : ''}</div>`
         + (x.g.prompts.length ? `<div class="d3-pr">${d3Step(++s, T('d3.s3'), T('d3.s3h'))}${d3Rows(n, gk, x.g)}</div>` : '') + (pdf ? `<a class="d3-pdf" ${fa(pdf)}><span class="sr-only">${T('common.sr_download')}</span>${T('d3.pdf')}</a>` : '')
       : trk ? d3Files(x.g.files)
-      : `${np.steps.length ? `<ol class="d3-steps">${np.steps.map(y => `<li>${lk(esc(y))}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="d3-ready"><b>Tayyor, agar</b> ${esc(np.ready)}</p>` : ''}${x.g.files.length ? `<div class="d3-fs">${d3Files(x.g.files)}</div>` : ''}${x.g.prompts.length ? `<div class="d3-pr"><p class="d3-lh">${T('d3.prompts')}${x.g.prompts.length > 1 ? ` · ${x.g.prompts.length}` : ''}</p>${d3Rows(n, gk, x.g)}</div>` : ''}`;
+      : `${np.steps.length ? `<ol class="d3-steps">${np.steps.map(y => `<li>${lk(esc(y))}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="d3-ready"><b>Tayyor, agar</b> ${esc(np.ready)}</p>` : ''}${(x.g.ref || []).map(r => refLink(n, r)).join('')}${x.g.files.length ? `<div class="d3-fs">${d3Files(x.g.files)}</div>` : ''}${x.g.prompts.length ? `<div class="d3-pr"><p class="d3-lh">${T('d3.prompts')}${x.g.prompts.length > 1 ? ` · ${x.g.prompts.length}` : ''}</p>${d3Rows(n, gk, x.g)}</div>` : ''}`;
     return `<section class="d3-p" id="${pid(x, 'd3p')}" data-t="${x.id}" aria-labelledby="${pid(x, 'd3h')}"${x.id === sel ? '' : ' hidden'}${lg(x)}>${solo ? '' : `<button class="d3-back" type="button">${I('back', 18)}${T(trk ? 'd3.back' : 'd3.back_s')}</button>`}<h3 class="d3-t" id="${pid(x, 'd3h')}" tabindex="-1">${esc(ttl(x))}</h3>${lead}${body}${nx ? `<button class="play on-light d3-next" type="button" data-go="${nx.id}"><span>${T(trk ? 'd3.next' : 'd3.next_s')}: ${esc(nextTitle(nx))}</span><span class="play-circ">${I('next', 20)}</span></button>` : ''}</section>`; };
   return `<div class="d3${trk ? ' trk' : ''}${solo ? ' solo' : ''}" data-n="${n}" data-tab="${p}" data-sel="${sel}" data-view="${view}"><div class="d3-l">${intro}${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${cards ? `<div class="d3-cards" role="group" aria-label="${esc(t(trk ? 'd3.group_aria' : 'd3.group_aria_s'))}">${cards}</div>` : ''}</div><div class="d3-dock">${list.map(panel).join('')}</div></div>${end ? `<div class="gt-foot end">${end}</div>` : ''}`;
 }
@@ -454,7 +454,7 @@ document.addEventListener('click', e => {
   const go = e.target.closest('[data-go]'), bk = e.target.closest('.d3-back'), n = root.dataset.n, tab = root.dataset.tab;
   if (go) {
     const push = d3Narrow(root) && root.dataset.view === 'grid';
-    if (push) d3Move(d3Url(n, tab), false, tab);   // folder tabs do not change the URL: the entry Back lands on must carry ?tab=
+    if (push) d3Move(d3Url(n, tab), false, tab);   // the entry Back lands on must carry ?tab= (a tab opened by a script, not a tap, is not in the URL yet)
     d3Move(d3Url(n, tab, go.dataset.go), push, tab);
     d3Save(n, tab, go.dataset.go);
     d3Show(root, go.dataset.go, 'track');
@@ -463,23 +463,105 @@ document.addEventListener('click', e => {
     d3Move(d3Url(n, tab), false, tab); d3Show(root, root.dataset.sel, 'grid');
   }
 });
-// Kit / Vazifa: a boxed 'how to use' note, first line says what the tab is, each other line is 'Title|Description' shown as a vertical stepper
-const howto = s => { const [head, ...steps] = s.split('\n'); return `<div class="howto"><p class="howto-h">${T('howto.h')}</p><p class="howto-t">${esc(head)}</p><ol class="howto-s">${steps.map((x, i) => { const [tt, dd = ''] = x.split('|'); return `<li><span class="hs-n" aria-hidden="true">${i + 1}</span><span class="hs-x"><span class="hs-t">${esc(tt)}</span><span class="hs-d">${esc(dd)}</span></span></li>`; }).join('')}</ol></div>`; };
-// Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups as section cards + a docked panel (d3Pane); Amaliyot and Vazifa end with a tick
+// the folder tab is in the URL (UX audit M5): a tap PUSHES ?tab= (Back returns to the tab before), the arrow keys only REPLACE it; the page's own clicks (opening ?tab=, a language switch) change nothing
+document.addEventListener('gt-show', e => {
+  const dg = e.target, n = dg.dataset.n, p = dg.querySelectorAll('.gt-tab')[e.detail.i]?.dataset.p; if (!e.detail.user || !n || !p || !dg.closest('#s-app')) return;
+  const r = `#/dars/${n}?tab=${p}`; if (parseHash().q.get('tab') === p && !parseHash().q.get('s') && !parseHash().q.get('p')) return;
+  d3Move(r, !e.detail.key);
+});
+function gtPop(){   // Back / Forward between two tabs of the lesson on screen: switch the tab in place (no rebuild, no jump to the top). A section or prompt in the URL still rebuilds
+  const dg = document.querySelector('#s-app #dg'), r = parseHash(); if (!dg || r.parts.join('/') !== `dars/${dg.dataset.n}` || r.q.get('s') || r.q.get('p')) return false;
+  const i = [...dg.querySelectorAll('.gt-tab')].findIndex(b => b.dataset.p === (r.q.get('tab') || dg.dataset.def));
+  if (i < 0 || !dg._show) return false;
+  dg._show(i); return true;
+}
+// phones: the lesson's summary and "Darsdan keyin siz" fold under "Dars haqida", so the first task is on the first screen (UX audit C1)
+document.addEventListener('click', e => { const b = e.target.closest('.lhr-t'); if (!b) return; const on = b.getAttribute('aria-expanded') !== 'true'; b.setAttribute('aria-expanded', on); b.closest('.lhd').classList.toggle('lhr-on', on); });
+// ---- Kit and Vazifa (user, 2026-11-26): each group is one numbered step, a row that opens in place (one-line title, then "Darsda · telefon · 2 prompt").
+// Kit starts with «Kit nima?» (what a Kit is, the 5-Kit chain; open on the first visit only) and «Qayerdan boshlash» (A and B shakli in a line each, the guide PDF, the steps).
+// Vazifa starts with «Vazifa nima?» (deadline, goal, the mentor's checklist, nothing to send). The optional content fields (kits, forms, flow, due, check, tags, kind, ref, guide) are in API.md.
+const KX_KEY = D3_PREFIX + '.kx';   // "«Kit nima?» was seen": under the d3 prefix, so logout and a 401 forget it with the rest
+const kxSeen = (() => { try { return !!localStorage.getItem(KX_KEY); } catch { return false; } })();   // read once per page load: the block stays open for the whole first visit
+let kxOpen = null;   // the student's own toggle, kept until the page reloads (a re-render never closes what they opened)
+document.addEventListener('toggle', e => { if (e.target.matches && e.target.matches('details.kx')) kxOpen = e.target.open; }, true);
+function kitIntro(key, b){
+  const open = kxOpen ?? !kxSeen; try { localStorage.setItem(KX_KEY, '1'); } catch {}
+  const chain = [1, 2, 3, 4, 5].map(k => `<span class="kx-k${b.kits.includes(k) ? ' on' : ''}" title="${esc(`Kit ${k}: ${t('kx.k' + k)}`)}">${k}</span>`).join('<i></i>');
+  return `<details class="kx"${open ? ' open' : ''}><summary><span class="kx-h">${T('kx.h')}</span><span class="kx-c" aria-hidden="true">${chain}</span>${b.kits.length ? `<span class="sr-only">${T('kx.sr', {list: b.kits.map(k => 'Kit ' + k).join(', ')})}</span>` : ''}</summary>`
+    + `<p class="kx-t">${T('kx.t')}</p>${b.text ? `<p class="kx-l"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${esc(cu(`${key}.text`))}</p>` : ''}</details>`;
+}
+// the Vazifa deadline. due "next": the start of the next numbered lesson in the student's group (the schedule), or the safe words while that date is not set; any other due is the content's own text
+function vzDue(n, key, b){
+  if (!b.due) return null;
+  if (b.due !== 'next') return {main: esc(cu(`${key}.due`))};
+  const m = RN().find(k => k > n), d = m && LESSONS[m].d, at = m && /T(\d\d:\d\d)/.exec(LESSONS[m].start || '');
+  if (!d) return {main: T('vzh.due_next')};
+  return {main: T(at ? 'vzh.due_dt' : 'vzh.due_d', {date: fmtDate(...d), time: at && at[1]}), sub: T('vzh.due_sub', {n: lnT(m)})};
+}
+function vzHead(n, key, b, paras){
+  const due = vzDue(n, key, b), lg = k => cxFb(k) ? ' lang="uz-Latn"' : '';
+  return `<section class="vzh" aria-labelledby="vzh-${n}"><h3 class="vzh-h" id="vzh-${n}">${T('vzh.h')}</h3>`
+    + (due ? `<p class="vzh-due"><span class="vzh-l">${T('vzh.due_l')}</span> <b>${due.main}</b>${due.sub ? ` <span class="vzh-s">${due.sub}</span>` : ''}</p>` : '')
+    + (paras[0] ? `<p class="vzh-goal"${lg(`${key}.text`)}>${esc(paras[0])}</p>` : '')
+    + (paras.length > 1 ? `<details class="pane-more"${lg(`${key}.text`)}><summary>${T('pane.more')}</summary>${paras.slice(1).map(x => `<p class="p-sub">${esc(x)}</p>`).join('')}</details>` : '')
+    + (b.check.length ? `<details class="vzh-ck pane-more"><summary>${T('vzh.check', {n: b.check.length, pl: b.check.length})}</summary>${RN().some(k => k > n) ? `<p class="vzh-cw">${T('vzh.check_when', {n: lnT(RN().find(k => k > n))})}</p>` : ''}<ul${lg(`${key}.c0`)}>${b.check.map((_, j) => `<li>${esc(cu(`${key}.c${j}`))}</li>`).join('')}</ul></details>` : '')
+    + `<p class="vzh-ns">${T('vzf.hint2')} ${T('vzh.when')}</p></section>`;
+}
+const STP_TAG = ['darsda', 'uyda', 'telefon', 'noutbuk', 'mentor'];
+const stepIds = b => { let k = 0; return b.groups.map(g => g.kind === 'files' ? '' : 's' + ++k); };   // the numbered steps are s1, s2, … (?tab=kt&s=s2); a files row has no number
+// a link to another step (or tab) of the same lesson: "Kit, 2-qadam: <the step's title>". Amaliyot steps are its section cards (d3 ids: s + group number)
+function refLink(n, r){
+  const b = (PARTS[n] || {})[r.tab]; if (!b || !LESSONS[n].parts.includes(r.tab) || partLock(n, r.tab)) return '';
+  const gi = !r.step ? -1 : r.tab === 'am' ? r.step - 1 : stepIds(b).indexOf('s' + r.step), g = b.groups[gi];
+  if (r.step && !g) return '';
+  const title = g && (r.tab === 'am' ? groupTitle(cu(`c.p.${n}.am.g${gi}`)) : cu(`c.p.${n}.${r.tab}.g${gi}`));   // only Amaliyot card titles carry a number to drop; a step title may start with one (a count)
+  const label = g ? t('stp.ref', {tab: t('unit.' + r.tab), n: r.step, title}) : t('stp.ref_tab', {tab: t('unit.' + r.tab)});
+  return `<a class="st-ref" href="#/dars/${n}?tab=${r.tab}${r.step ? '&s=s' + r.step : ''}"><span>${esc(label)}</span>${I('next', 16)}</a>`;
+}
+function stepPane(n, p, key, b, intro, paras, end){
+  const q = parseHash().q, sel = q.get('tab') === p ? q.get('s') : null, ids = stepIds(b), lg = k => cxFb(k) ? ' lang="uz-Latn"' : '';
+  const row = (g, i) => { const id = ids[i], np = noteParts(g.note ? cu(`${key}.g${i}.n`) : ''), files = g.files.filter(f => !f.guide), pc = g.prompts.length;
+    const title = cu(`${key}.g${i}`), np2 = pc && !new RegExp(`\\b${pc} prompt`).test(title);   // a title that already says "<n> prompt" gets no count in the meta line
+    const meta = id ? [...g.tags.map(x => STP_TAG.includes(x) ? t('stp.t.' + x) : x), np2 ? t('d3.n_prompts', {n: pc, pl: pc}) : ''].filter(Boolean).join(' · ') : t('d3.n_files', {n: files.length, pl: files.length});
+    const ph = g.prompts.some((_, j) => hasBracket(cu(`${key}.g${i}.p${j}.x`)));   // the prompts have [fill-in] places: say once what to do with them
+    const body = (np.lead ? `<p class="st-d">${esc(np.lead)}</p>` : '') + (np.steps.length ? `<ol class="d3-steps">${np.steps.map(y => `<li>${esc(y)}</li>`).join('')}</ol>` : '')
+      + (np.ready ? `<p class="d3-ready"><b>Tayyor, agar</b> ${esc(np.ready)}</p>` : '') + g.ref.map(r => refLink(n, r)).join('')
+      + (files.length ? `<div class="d3-fs">${d3Files(files)}</div>` : '') + (pc ? `<div class="d3-pr">${ph ? `<p class="st-ph">${T('stp.ph')}</p>` : ''}${d3Rows(n, `${key}.g${i}`, g)}</div>` : '');
+    return `<li><details class="st${id ? '' : ' st-files'}" id="st-${p}-${id || 'f' + i}"${id ? ` data-s="${id}"` : ''}${id && id === sel ? ' open' : ''}${lg(`${key}.g${i}`)}><summary>`
+      + `<span class="st-n" aria-hidden="true">${id ? id.slice(1) : I('down', 16)}</span><span class="st-x"><span class="st-t">${esc(title)}</span>${meta ? `<span class="st-m">${esc(meta)}</span>` : ''}</span></summary><div class="st-b">${body}</div></details></li>`; };
+  const steps = b.groups.map((g, i) => ids[i] ? row(g, i) : '').join(''), extra = b.groups.map((g, i) => ids[i] ? '' : row(g, i)).join('');
+  const kt = p === 'kt', guide = kt ? b.groups.flatMap(g => g.files.filter(f => f.guide)) : [];
+  const legend = kt && (b.forms.length || b.flow) ? `<div class="stp-ab"${lg(`${key}.f0`)}>${b.forms.map((_, j) => { const s = cu(`${key}.f${j}`), c = s.indexOf(': '); return `<p>${c > 0 ? `<b>${esc(s.slice(0, c))}:</b> ${esc(s.slice(c + 2))}` : esc(s)}</p>`; }).join('')}`
+    + `${b.flow ? `<p class="stp-flow">${cu(`${key}.flow`).split(/\s*→\s*/).map(x => `<span>${esc(x)}</span>`).join('<i>→</i>')}</p>` : ''}</div>` : '';
+  const gd = guide.map(f => `<a class="st-guide" ${fa(f)}><span class="sr-only">${T('common.sr_download')}</span>${I('down', 20)}<span class="st-gx"><b>${T('stp.guide')}</b><small>${esc((f.label || f.name).replace(/\s*\(PDF\)$/i, ''))}${f.size ? ' · ' + esc(f.size) : ''}</small></span></a>`).join('');
+  return `<div class="stp" data-tab="${p}">${intro}${kt ? kitIntro(key, b) : vzHead(n, key, b, paras)}<section class="stp-s" aria-labelledby="stp-${p}-${n}"><h3 class="stp-h${kt ? '' : ' sr-only'}" id="stp-${p}-${n}">${T(kt ? 'stp.h' : 'vzh.steps')}</h3>`
+    + `${legend}${gd}<ol class="st-l">${steps}</ol>${extra ? `<ul class="st-l">${extra}</ul>` : ''}</section></div>${end}`;
+}
+// a step that opens writes itself into the URL (replace: refresh and a shared link open it again); closing the one in the URL takes it out
+document.addEventListener('toggle', e => {
+  const d = e.target; if (!d.matches || !d.matches('details.st[data-s]') || !d.closest('#s-app')) return;
+  const pane = d.closest('.stp'), n = d.closest('#dg') && d.closest('#dg').dataset.n, r = parseHash(); if (!pane || !n || r.parts.join('/') !== `dars/${n}`) return;
+  const s = r.q.get('tab') === pane.dataset.tab ? r.q.get('s') : null;
+  if (d.open && s !== d.dataset.s) d3Move(d3Url(n, pane.dataset.tab, d.dataset.s), false); else if (!d.open && s === d.dataset.s) d3Move(d3Url(n, pane.dataset.tab), false);
+}, true);
+// Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups (Amaliyot: section cards + a docked panel, d3Pane; Kit and Vazifa: numbered steps, stepPane); Amaliyot and Vazifa end with a tick
 function blockPane(n, p){
   const b = (PARTS[n] || {})[p] || {text: '', groups: []}, key = `c.p.${n}.${p}`;
-  const paras = b.text ? cu(`${key}.text`).split(/\n\s*\n/).map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`) : [];
+  const raw = b.text ? cu(`${key}.text`).split(/\n\s*\n/) : [], paras = raw.map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`);
   // UX audit S6-6: on Amaliyot only the first paragraph stays open; the rules and help (laptop, privacy, "Qiynalsangiz…") fold into "Qoidalar va yordam"
   const text = (p === 'am' || p === 'vz') && paras.length > 1 ? `${paras[0]}<details class="pane-more"><summary>${T('pane.more')}</summary>${paras.slice(1).join('')}</details>` : paras.join('');
-  const intro = (LANG !== 'uz' ? `<p class="p-sub uz-note">${T('pane.uz_note')}</p>` : '') + (p === 'kt' || p === 'vz' ? howto(t(p === 'kt' ? 'kit.intro' : 'vz.intro')) : '');   // S10-1 (RU: the lesson body is Uzbek), S6-7 (what a Kit is)
+  const intro = LANG !== 'uz' ? `<p class="p-sub uz-note">${T('pane.uz_note')}</p>` : '';   // S10-1 (RU: the lesson body is Uzbek)
   const end = p === 'am' ? endb('f:am' + n, S.has('f:am' + n), 'amf.on', 'amf.off', '', 'amf.aria') : p === 'vz' ? endb('f:v' + n, S.has('f:v' + n), 'vzf.on', 'vzf.off', '', 'vzf.aria') : '';
   // UX audit S6-5: the pane does not end in a dead end. After the tick: Amaliyot -> Vazifa, Vazifa -> home
   const vzOpen = LESSONS[n].parts.includes('vz') && !partLock(n, 'vz'), next = p === 'am' && vzOpen ? nextBlock(`#/dars/${n}?tab=vz`, 'next.to_vz') : p === 'vz' ? nextBlock('#/dastur', 'prep.end_back') : '';
+  // Vazifa on phones: the tick is a bar stuck to the bottom of the screen (UX audit M3), so the way home sits under it, outside the bar
+  if ((p === 'kt' || p === 'vz') && b.groups.length) return `<p class="p-label sr-only">${T('unit.' + p)}</p>${stepPane(n, p, key, b, intro, raw, end ? `<div class="gt-foot end vz-end">${end}</div><div class="gt-foot end">${next}</div>` : '')}`;
   if (b.groups.length) return `<p class="p-label sr-only">${T('unit.' + p)}</p>${d3Pane(n, p, key, b, intro, text, end ? end + next : '')}`;
   return `<p class="p-label sr-only">${T('unit.' + p)}</p>${intro}${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${end ? `<div class="gt-foot end">${end}${next}</div>` : ''}`;
 }
 function lessonPage(n, tab){
-  tab = tab || tabOfHref((nextOf(n) || {}).href);   // no ?tab: the tab with today's work
+  const def = tabOfHref((nextOf(n) || {}).href);
+  tab = tab || def;   // no ?tab: the tab with today's work
   const L = LESSONS[n], [d, tt] = lProg(n), empty = !L.parts.length;
   const tabsDef = L.parts.map(p => ({p, label: t('unit.' + p), lock: partLock(n, p), done: partLock(n, p) ? false : {
     sl: () => slDone(n), am: () => S.has('f:am' + n), vz: () => S.has('f:v' + n), kt: () => false, dk: () => false}[p]()}));
@@ -490,20 +572,21 @@ function lessonPage(n, tab){
     am: () => blockPane(n, 'am'), kt: () => blockPane(n, 'kt'), vz: () => blockPane(n, 'vz'),
     dk: () => L.deck === false ? `<p class="p-label sr-only">${T('unit.dk')}</p><div class="dk-stack dk-soon" aria-hidden="true"><span class="dk-s"></span><span class="dk-s"></span><span class="dk-s dk-top"></span></div><p class="dk-count">${T('pane.dk.soon')}</p>` : `<p class="p-label sr-only">${T('unit.dk')}</p><button class="dk-stack" type="button" data-deck="${n}"><span class="dk-s"></span><span class="dk-s"></span><span class="dk-s dk-top"><iframe class="dk-preview" src="${deckUrl}?slide=1&preview=1" tabindex="-1"></iframe><span class="dk-play">${I('play', 32)}</span></span></button><p class="dk-count" data-tpl="${esc(T('pane.dk.count', {n: '{n}'}))}"></p>`,
   };
-  const tabs = tabsDef.map((x, i) => `<button class="gt-tab" role="tab" type="button" id="dg-t${i}" aria-controls="dg-p${i}" aria-selected="${i === 0}" data-l="${esc(x.label)}"${i ? ' tabindex="-1"' : ''}>${x.lock ? `<span class="lkd">${I('lock', 12)}${esc(x.label)}</span>` : x.done ? `<span class="ok">${I('check', 12)}${esc(x.label)}<span class="sr-only">${T('common.sr_done')}</span></span>` : esc(x.label)}</button>`).join('');
+  const tabs = tabsDef.map((x, i) => `<button class="gt-tab" role="tab" type="button" id="dg-t${i}" aria-controls="dg-p${i}" aria-selected="${i === 0}" data-l="${esc(x.label)}" data-p="${x.p}"${i ? ' tabindex="-1"' : ''}>${x.lock ? `<span class="lkd">${I('lock', 12)}${esc(x.label)}</span>` : x.done ? `<span class="ok">${I('check', 12)}${esc(x.label)}<span class="sr-only">${T('common.sr_done')}</span></span>` : esc(x.label)}</button>`).join('');
   const panes = tabsDef.map((x, i) => `<div class="gt-pane" role="tabpanel" id="dg-p${i}" aria-labelledby="dg-t${i}"${i ? ' inert' : ''}>${x.lock ? lockedPane(x.lock) : pane[x.p]()}</div>`).join('');
   const title = ltitle(n);   // no hero CTA pill: each folder tab already carries its part's own action (user, 2026-10-17)
   const tall = Object.values(PARTS[n] || {}).some(b => b.groups.some(g => g.prompts.length));   // prompt lists make a pane very long: the other panes must not keep that height
   const side = empty   // no materials yet: a card says so, instead of an empty folder
     ? `<div class="folder flatc c-slate soon-card"><span class="f-label">${esc(lessonDate(n))}</span><p class="soon-t">${T('lesson.soon')}</p></div>`
-    : `<div class="gt gt-slate g-slate${tall ? ' gt-tall' : ''}" id="dg" style="--n:${tabsDef.length}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
+    : `<div class="gt gt-slate g-slate${tall ? ' gt-tall' : ''}" id="dg" data-n="${n}" data-def="${(L.parts.includes(def) ? def : L.parts[0]) || ''}" style="--n:${tabsDef.length}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
       <div class="gt-tabs" role="tablist" aria-label="${esc(t('tab.list'))}">${tabs}</div><div class="gt-body">${panes}</div></div>`;   // every lesson folder inside a lesson page is Poʻlat (user, 2026-10-30); the home cards keep each lesson's own colour
   return {screen: 'dars', tab: Math.max(0, L.parts.indexOf(tab)), tag: `#/dars/${n} · ` + t('tag.lesson', {n: lnT(n), parts: L.parts.length}), title: lnum(n) == null ? title : t('title.lesson', {n: lnum(n), title}), html: nav('d') + `
     <div class="lhd">
       ${dlh('#/dastur', T('nav.home'))}
       <h1 class="lh1">${lnum(n) == null ? '' : `<span class="ln">${lnH(n)}</span> `}<span class="ln">${esc(title)}</span></h1>
       <p class="lmeta">${tt ? T('lesson.meta', {n, date: lessonDate(n), d, t: tt, pl: tt}) : esc(lessonDate(n))}</p>
-      <div class="lhr"><p class="lsub">${T(`lesson.${n}.sub`)}</p><div><p class="lede">${T(`lesson.${n}.lede`)}</p>${L.outs ? `<details class="pane-more lout"><summary>${T('lesson.outs')}</summary><ul>${Array.from({length: L.outs}, (_, i) => `<li>${T(`lesson.${n}.o${i}`)}</li>`).join('')}</ul></details>` : ''}</div></div>
+      <button class="lhr-t" type="button" aria-expanded="false" aria-controls="lhr-${n}">${T('lesson.about')}</button>
+      <div class="lhr" id="lhr-${n}"><p class="lsub">${T(`lesson.${n}.sub`)}</p><div><p class="lede">${T(`lesson.${n}.lede`)}</p>${L.outs ? `<details class="pane-more lout"><summary>${T('lesson.outs')}</summary><ul>${Array.from({length: L.outs}, (_, i) => `<li>${T(`lesson.${n}.o${i}`)}</li>`).join('')}</ul></details>` : ''}</div></div>
     </div>
     <div class="lwrap">${side}</div>`};   // W1 (user, 2026-10-30): a compact one-line header, then the folder across the whole page
 }
@@ -615,8 +698,10 @@ function render(keep){
   if (view === 'all') ['#/dastur', '#/dars/1', '#/dars/2'].forEach(h => { const el = document.createElement('section'); el.className = 'screen is-on'; el.dataset.clone = '1'; last.after(el); last = el; mount(el, resolve({parts: h.slice(2).split('/'), q: new URLSearchParams()}).page); });
   if (res.locked) openLockSheet(res.locked);
   const p = r.q.get('p'), target = p && app.querySelector(`[data-pid="${CSS.escape(p)}"]`), m = mem[location.hash];
+  const sq = r.q.get('s'), step = sq && app.querySelector(`.gt-pane:not([inert]) details.st[data-s="${CSS.escape(sq)}"]`);   // ?tab=kt&s=s2: the step is open (stepPane), bring it into view
   if (keep) {}
-  else if (target) { const dt = target.closest('details') || target.querySelector('details'); if (dt) dt.open = true; scrollTo(0, 0); target.scrollIntoView({block: 'start'}); const sm = target.querySelector('summary'); sm && sm.focus({preventScroll: true}); }
+  else if (target) { const st = target.closest('details.st'), dt = target.querySelector('details') || target.closest('details'); if (st) st.open = true; if (dt) dt.open = true; scrollTo(0, 0); target.scrollIntoView({block: 'start'}); const sm = target.querySelector('summary'); sm && sm.focus({preventScroll: true}); }   // a prompt inside a Kit / Vazifa step: the step and the prompt both open
+  else if (step) { scrollTo(0, 0); step.scrollIntoView({block: 'start'}); step.querySelector('summary').focus({preventScroll: true}); }
   else if (!byClick && m && !firstRender) { scrollTo(0, m.y); const a = m.from && document.querySelector(`#s-app a[href="${CSS.escape(m.from)}"]`); if (a) a.focus({preventScroll: true}); }
   else if (slFocus && app.querySelector(`[data-slnav="${slFocus}"]`)) { scrollTo(0, 0); app.querySelector(`[data-slnav="${slFocus}"]`).focus({preventScroll: true}); }
   else { scrollTo(0, 0); if (!firstRender) { const h = document.querySelector('.screen.is-on h1'); if (h) { h.tabIndex = -1; h.focus({preventScroll: true}); } } }
@@ -624,7 +709,7 @@ function render(keep){
   firstRender = false; byClick = false; slFocus = '';
   if (!keep && typeof beacon === 'function') beacon();   // the app build counts page views (a language switch is not a new page)
 }
-window.addEventListener('hashchange', () => d3Pop() || render());   // Back / Forward on a D3 pane that only changed ?t= is local; every other render (401, language, review bar) rebuilds the page
+window.addEventListener('hashchange', () => d3Pop() || gtPop() || render());   // Back / Forward on a D3 pane that only changed ?t= is local; every other render (401, language, review bar) rebuilds the page
 // remember where a link was clicked (scroll + the link itself) so Back can return there
 document.addEventListener('click', e => { const a = e.target.closest('a[href^="#/"]'); if (!a || a.dataset.slnav) return; mem[location.hash] = {y: scrollY, from: a.getAttribute('href')}; byClick = true; }, true);
 // slide viewer: the ‹ › buttons, tap zones (left third = back, right two thirds = forward) and the keys all REPLACE the history entry

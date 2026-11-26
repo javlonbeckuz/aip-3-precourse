@@ -74,15 +74,15 @@ const sid = s => String(s == null ? '' : s).replace(/[^A-Za-z0-9_-]/g, '');   //
 let FILE_LANG = 'uz';   // the language of the payload being applied (units: KB / КБ)
 const unitT = k => (I18N[FILE_LANG] && I18N[FILE_LANG][k]) || I18N.uz[k];
 const fileLabel = f => { const ext = (f.name.split('.').pop() || '').toUpperCase(); return f.size < 1024 ? `${ext} · ${f.size} ${unitT('unit.b')}` : f.size < 1048576 ? `${ext} · ${Math.round(f.size / 1024)} ${unitT('unit.kb')}` : `${ext} · ${(f.size / 1048576).toFixed(1).replace('.', ',')} ${unitT('unit.mb')}`; };   // one style everywhere: "PDF · 358 KB" (whole KB, MB with one decimal)
-const fo = (n, f) => f ? {slug: sid(f.slug), name: f.name, label: typeof f.label === 'string' ? f.label : '', size: fileLabel(f), url: `${API}/lesson/${n}/doc/${encodeURIComponent(f.slug)}`} : null;   // name + size + the download URL; the server path never reaches the client
+const fo = (n, f) => f ? {slug: sid(f.slug), name: f.name, label: typeof f.label === 'string' ? f.label : '', guide: f.guide === true, size: fileLabel(f), url: `${API}/lesson/${n}/doc/${encodeURIComponent(f.slug)}`} : null;   // name + size + the download URL; the server path never reaches the client
 
-function makeC20(by){   // the open blocks of each lesson (Amaliyot, Kit, Vazifa) in the shape buildData() reads
+function makeC20(by){   // the open blocks of each lesson (Amaliyot, Kit, Vazifa) in the shape buildData() reads (it checks the optional Kit / Vazifa fields)
   const parts = {};
   for (const l of Object.values(by)) {
     if (l.n < 1) continue;
     for (const [k, key] of [['am', 'amaliyot'], ['kt', 'kit'], ['vz', 'vazifa']]) {
       const b = l[key]; if (!b || typeof b !== 'object') continue;
-      (parts[l.n] ??= {})[k] = {text: b.text || '', groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', files: (g.files || []).map(f => fo(l.n, f)),
+      (parts[l.n] ??= {})[k] = {text: b.text || '', kits: b.kits, forms: b.forms, flow: b.flow, due: b.due, check: b.check, groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', tags: g.tags, kind: g.kind, ref: g.ref, files: (g.files || []).map(f => fo(l.n, f)),
         prompts: (Array.isArray(g.prompts) ? g.prompts : []).map(q => ({id: sid(q.id), title: q.title || '', target: q.target || '', text: q.text || ''}))}))};
     }
   }

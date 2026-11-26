@@ -28,21 +28,21 @@
     "groups": [
       {
         "title": "01 Kit 3, A shakli: jarayon qadamlari",
-        "note": "ASOSIY. Kit 3 «Ishni qayta taqsimlash»: jarayonning har qadamini kim bajarishini qayta belgilaydi. Kit 3 shakli (Kit boʻlimida). 1) Tanlangan jarayonning har qadamini alohida qatorga yozing, bir qatorda bitta harakat. 2) Har qadamga bugun va ertaga kim bajarishini (agent, robot yoki inson), kim tekshirishini, kim qaror qilishini va kim javobgarligini yozing. 3) Oʻtgan haftadagi bitta haqiqiy holatni jadval boʻyicha boshidan oxirigacha yuritib chiqing. Qoida: agent oʻz qadamini oʻzi tekshirmaydi. Tayyor, agar: boʻsh katak yoʻq va bitta haqiqiy holat yuritilgan.",
+        "note": "ASOSIY. Kit 3 «Ishni qayta taqsimlash»: jarayonning har qadamini kim bajarishini qayta belgilaydi. Mashq Kit tabida, 1-2-qadamlar. Tayyor, agar: boʻsh katak yoʻq va bitta haqiqiy holat yuritilgan.",
+        "ref": {
+          "tab": "kit",
+          "step": 1
+        },
         "files": []
       },
       {
         "title": "02 Kit 3, B shakli: agent koʻrsatmalari",
-        "note": "ASOSIY. System prompt: agent har doim amal qiladigan doimiy koʻrsatmalar, uning ish tavsifi. 1) B.1-B.10ʼni toʻldiring; B.3ʼda agent foydalanadigan manbalar, B.6ʼda odamga oʻtkaziladigan holatlar boʻladi. 2) /kit3 yoki Kit 3 promptini ishga tushiring. 3) Natijani kit3-agent/instructions.mdʼga saqlang. Tayyor, agar: instructions.mdʼda manbalar, cheklovlar va eskalatsiya bor.",
-        "files": [],
-        "prompts": [
-          {
-            "id": "02P1",
-            "title": "Kit 3ʼdan system prompt",
-            "target": "Claude Code",
-            "text": "kit3-agent papkasidagi Kit 3, A va B shakllarini oʻqing.\nBʼni agent uchun system prompt qilib qayta yozing. Boʻlimlar: agentning roli; foydalanadigan manbalar (B.3); nima qila oladi va nima qila olmaydi; odamga oʻtkaziladigan holatlar (B.6); har harakatni qayerga yozib boradi.\nAʼdagi har qadamni tekshiring. B.6ʼda yoʻq, lekin Aʼdan chiqadigan istisno holatlarni alohida roʻyxat qiling.\nBʼda yoʻq qoida qoʻshmang. Natijani kit3-agent/instructions.mdʼga saqlang."
-          }
-        ]
+        "note": "ASOSIY. System prompt: agent har doim amal qiladigan doimiy koʻrsatmalar, uning ish tavsifi. Mashq va prompt Kit tabida, 3-qadam. Tayyor, agar: instructions.mdʼda manbalar, cheklovlar va odamga oʻtkaziladigan holatlar bor.",
+        "ref": {
+          "tab": "kit",
+          "step": 3
+        },
+        "files": []
       },
       {
         "title": "03 API tekshiruvi",
@@ -136,42 +136,62 @@
     ]
   },
   "kit": {
-    "text": "Kit 3 tanlangan jarayonni qadamlarga ajratadi va agent koʻrsatmalarini, yaʼni system promptni tuzadi.",
+    "text": "Kit 3 natijasi: kim nima qiladi jadvali (A shakli) va agent koʻrsatmalari (B shakli). 4-darsda agent shu koʻrsatmalar bilan serverda ishlay boshlaydi.",
+    "kits": [
+      3
+    ],
+    "forms": [
+      "A shakli: qadamlar, hozir va AI kelgach kim.",
+      "B shakli: agent koʻrsatmalari."
+    ],
+    "flow": "jarayon → qadamlar (A) → koʻrsatmalar (B) → instructions.md → agent v0",
     "groups": [
       {
-        "title": "01 Kit 3: Ishni qayta taqsimlash",
-        "note": "Agent oʻz qadamini oʻzi tekshirmaydi, bitta katak boʻsh boʻlsa, jarayon tayyor emas. 1) A shaklida jarayonni yozing, bir qatorda bitta harakat. 2) A.4ʼga ertaga kim qilishini belgilang: A, R yoki I. 3) Oʻtgan haftadagi bitta haqiqiy holatni jadval boʻyicha yuriting. Tayyor, agar: boʻsh katak yoʻq, bitta haqiqiy holat yuritilgan.",
+        "title": "Qadamlarni yozing",
+        "tags": [
+          "darsda",
+          "noutbuk"
+        ],
+        "note": "Kit 2ʼda tanlangan jarayonni A shakliga yozing, bir qatorda bitta harakat. 1) Har qadamni hozir kim qilishini yozing. 2) AI kelgach kim qilishini belgilang: A agent, R robot (AIʼsiz avtomatika: formula, skript yoki oddiy bot), I inson. 3) Kim tekshirishi, kim qaror qilishi va kim javobgarligini yozing. Agent oʻz qadamini oʻzi tekshirmaydi. Bitta katak boʻsh boʻlsa, jarayon tayyor emas. Tayyor, agar: boʻsh katak yoʻq.",
         "files": [
           {
             "slug": "kit3-pdf",
             "name": "Kit3_Ishni_qayta_taqsimlash.pdf",
             "size": 93549,
-            "label": "Kit 3: Ishni qayta taqsimlash (PDF)"
+            "label": "Kit 3: Ishni qayta taqsimlash (PDF)",
+            "guide": true
           },
           {
             "slug": "kit3-a-qadamlar",
             "name": "kit3-a-qadamlar.md",
             "size": 1426,
             "label": "Kit 3, A shakli: qadamlar"
-          },
+          }
+        ]
+      },
+      {
+        "title": "Bitta haqiqiy holatda sinang",
+        "tags": [
+          "darsda"
+        ],
+        "note": "Oʻtgan haftadagi bitta haqiqiy holatni jadval boʻyicha boshidan oxirigacha oʻtib chiqing va hech qaysi qadam tushib qolmaganini tekshiring. Tayyor, agar: bitta haqiqiy holat jadval boʻyicha oʻtilgan.",
+        "files": []
+      },
+      {
+        "title": "Agent koʻrsatmalari",
+        "tags": [
+          "darsda",
+          "noutbuk"
+        ],
+        "note": "Claude Code B shaklidan agentning doimiy koʻrsatmasini (system prompt) yozadi. 1) B shaklini toʻldiring: agent foydalanadigan manbalar va har biriga ulanish yoʻli (API, MCP ulagichi, eksport fayli yoki qoʻlda), odamga oʻtkaziladigan holatlar. 2) A va Bʼni kit3-agent papkasiga saqlang va «Kit 3 prompti»ni yoki /kit3 skillini (pastda, «Skill fayli») ishga tushiring. 3) Topilgan javobgarsiz qadam va istisnolarni B shakliga qoʻshing. [?]: AI uni ulanish yoʻli yozilmagan manbaga qoʻyadi, yoʻlni B shakliga yozasiz. Tayyor, agar: kit3-agent/instructions.mdʼda manbalar, cheklovlar va odamga oʻtkaziladigan holatlar bor.",
+        "files": [
           {
             "slug": "kit3-b-korsatmalar",
             "name": "kit3-b-korsatmalar.md",
             "size": 1408,
             "label": "Kit 3, B shakli: agent koʻrsatmalari"
-          },
-          {
-            "slug": "kit3-skill",
-            "name": "kit3-SKILL.md",
-            "size": 2693,
-            "label": "/kit3 skill"
           }
-        ]
-      },
-      {
-        "title": "02 Agent koʻrsatmalari",
-        "note": "Claude Code B shaklidan agentning system promptini yozadi, /kit3ʼni oʻrnatish PDFʼda. 1) B.1-B.10ʼni toʻldiring, A va Bʼni kit3-agent papkasiga saqlang. 2) /kit3ʼni yoki Kit 3 promptini ishga tushiring. 3) Topilgan egasiz qadam va istisnolarni Bʼga qoʻshing. Tayyor, agar: kit3-agent/instructions.mdʼda manbalar, cheklovlar va eskalatsiya bor.",
-        "files": [],
+        ],
         "prompts": [
           {
             "id": "K3P1",
@@ -180,15 +200,52 @@
             "text": "kit3-agent papkasidagi Kit 3, A shakli (kit3-a-qadamlar.md) va Bʼni (kit3-b-korsatmalar.md) oʻqing.\n1) Tekshiring: egasiz qadamlar (A.7 boʻsh), agent oʻzini oʻzi tekshiradigan qadamlar, boʻsh kataklar, xavfli ruxsatlar (pul oʻtkazish, mijozga yozish, maʼlumot oʻchirish) va odamga oʻtishi kerak, lekin B.6ʼda yoʻq holatlar. Har topilmani qadam yoki band raqami bilan roʻyxat qiling.\n2) B.3ʼdagi har manba uchun ulanish yoʻli belgilanganmi: API, MCP, eksport yoki qoʻlda. Belgilanmaganini [?] bilan koʻrsating.\n3) Bʼni agent uchun aniq system prompt qilib qayta yozing. Bʼda yoʻq qoida qoʻshmang. Takliflaringizni alohida roʻyxatda bering, men tasdiqlayman.\nNatijani kit3-agent/instructions.mdʼga saqlang."
           }
         ]
+      },
+      {
+        "title": "Uyda: xodimlar va server",
+        "tags": [
+          "uyda"
+        ],
+        "note": "Koʻrsatmalarni xodimlarga koʻrsatasiz, agentning birinchi versiyasini (v0) tugatasiz va serverga tayyorlanasiz.",
+        "ref": {
+          "tab": "vazifa"
+        },
+        "files": []
+      },
+      {
+        "title": "Skill fayli",
+        "kind": "files",
+        "note": "Skill: Claude Codeʼga saqlab qoʻyiladigan tayyor koʻrsatma, /kit3 deb chaqirasiz. Faylni kompaniya papkasida .claude/skills/kit3/SKILL.md qilib saqlang.",
+        "files": [
+          {
+            "slug": "kit3-skill",
+            "name": "kit3-SKILL.md",
+            "size": 2693,
+            "label": "/kit3 skill"
+          }
+        ]
       }
     ]
   },
   "vazifa": {
-    "text": "Bu vazifada agent koʻrsatmalarini xodimlar bilan tekshirasiz, v0ʼni tugatasiz va serverga tayyorlanasiz. 4-darsda agent serverga koʻchiriladi.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: Kit 3, A shaklida boʻsh katak yoʻq; B xodimlar aytgan istisnolar bilan imzolangan; v0 noutbukda haqiqiy holatlarda ishlaydi; 3 ta yaxshi va 3 ta yomon namuna saqlangan; VPS va domen sotib olingan, Claude Code VPSʼga kamida bir marta kirgan; baseline toʻliq.",
+    "text": "Koʻrsatmalarni xodimlar bilan tekshirasiz, agentning birinchi versiyasini (v0) tugatasiz va 4-darsga server tayyorlaysiz.",
+    "due": "next",
+    "check": [
+      "Kit 3, A shaklida boʻsh katak yoʻq",
+      "Koʻrsatmalarga (B shakli) xodimlar aytgan istisnolar qoʻshilgan, oxirida ism va sana bor",
+      "Agent v0 noutbukda haqiqiy holatlarda ishlaydi",
+      "3 ta yaxshi va 3 ta yomon namuna saqlangan",
+      "VPS va domen sotib olingan, Claude Code VPSʼga kamida bir marta kirgan",
+      "Agentgacha raqamlar toʻliq"
+    ],
     "groups": [
       {
-        "title": "1. Koʻrsatmalarni xodimlarga koʻrsating",
-        "note": "instructions.mdʼni (Kit 3, B shakli) agent bilan ishlaydigan xodimlarga koʻrsating. Ular aytgan har istisnoni B.6ʼga qoʻshing. Bʼni imzolang va sanasini qoʻying.",
+        "title": "Xodimlarga koʻrsating",
+        "tags": [
+          "uyda",
+          "noutbuk"
+        ],
+        "note": "instructions.mdʼni (Kit 3, B shakli) agent bilan ishlaydigan xodimlarga koʻrsating. Ular aytgan har istisnoni «Qachon odamga oʻtkazadi» boʻlimiga qoʻshing. B shakli oxiriga ismingiz va sanani yozing.",
         "files": [],
         "prompts": [
           {
@@ -200,7 +257,11 @@
         ]
       },
       {
-        "title": "2. Agent v0ʼni tugating",
+        "title": "Agent v0ʼni tugating",
+        "tags": [
+          "uyda",
+          "noutbuk"
+        ],
         "note": "Mentor yordami bilan v0ʼni tugating, savollarni guruh chatiga yozing. Kamida 5 ta oʻtgan haqiqiy holatda sinang.",
         "files": [],
         "prompts": [
@@ -213,13 +274,20 @@
         ]
       },
       {
-        "title": "3. 3 ta yaxshi, 3 ta yomon namuna",
-        "note": "Jarayon natijasining 3 ta yaxshi va 3 ta yomon haqiqiy namunasini yigʻing va papkaga saqlang. Ular Kit 4 B.4ʼdagi oʻquv namunalari va agentning test toʻplami boʻladi.",
+        "title": "3 yaxshi, 3 yomon namuna",
+        "tags": [
+          "uyda"
+        ],
+        "note": "Jarayon natijasining 3 ta yaxshi va 3 ta yomon haqiqiy namunasini yigʻing va papkaga saqlang. Ular Kit 4ʼdagi oʻquv namunalari va agentning test toʻplami boʻladi.",
         "files": []
       },
       {
-        "title": "4. VPS va domen",
-        "note": "VPS: data markazdagi ijaraga olingan, faqat sizga tegishli kompyuter. Sozlash videosi boʻyicha VPS va domen sotib oling. Kirish maʼlumotlarini hech kimga yubormang, ularni .envʼga yozing. Claude Code bilan VPSʼga bir marta kiring.",
+        "title": "VPS va domen",
+        "tags": [
+          "uyda",
+          "noutbuk"
+        ],
+        "note": "VPS: data markazdagi ijaraga olingan, faqat sizga tegishli kompyuter. Sozlash videosi boʻyicha VPS va domen (serverning odamlar eslaydigan nomi) sotib oling. Kirish maʼlumotlarini hech kimga yubormang, ularni .envʼga (kalitlar turadigan maxfiy fayl) yozing. Claude Code bilan VPSʼga bir marta kiring.",
         "files": [],
         "prompts": [
           {
@@ -231,8 +299,11 @@
         ]
       },
       {
-        "title": "5. Baselineʼni yakunlang",
-        "note": "Jarayoningiz tarixidan raqam olib boʻlmagan boʻlsa, jonli yozishni 5 ish kuniga yetkazing va baseline.mdʼni yakunlang.",
+        "title": "Raqamlarni yakunlang",
+        "tags": [
+          "uyda"
+        ],
+        "note": "Jarayoningiz tarixidan raqam olib boʻlmagan boʻlsa, jonli yozishni 5 ish kuniga yetkazing va agentgacha raqamlarni (baseline.md) yakunlang.",
         "files": []
       }
     ]

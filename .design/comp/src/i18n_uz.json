@@ -900,7 +900,7 @@
   "note": "undo toast at the bottom; ≤ 28 chars"
  },
  "files.md_hint": {
-  "uz": "MD fayllarni kompyuterda oching.",
+  "uz": "Oddiy matn fayli, noutbukda kerak boʻladi.",
   "translate": true,
   "note": "UI text"
  },
@@ -1074,20 +1074,150 @@
   "translate": true,
   "note": "home screen"
  },
- "howto.h": {
-  "uz": "Qanday ishlatiladi",
+ "kx.h": {
+  "uz": "Kit nima?",
   "translate": true,
-  "note": "UI text"
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
  },
- "kit.intro": {
-  "uz": "Kit: oʻz biznesingizda ishlatadigan shakllar va yoʻriqnoma.\nDarsda|Kartalarni tartib bilan bajaring.\n«Tayyor, agar»|Karta shu shart bajarilganda tugaydi.\nSaqlang|Fayllarni kompaniya papkangizda saqlang: keyingi darslar ularga tayanadi.\nUyda|Davomi Vazifa tabida.",
+ "kx.t": {
+  "uz": "Kit: oʻz biznesingizdagi amaliy ish. 5 ta Kit bor, har biri oldingisining natijasidan foydalanadi.",
   "translate": true,
-  "note": "UI text · \\n = line break"
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
  },
- "vz.intro": {
-  "uz": "Vazifa: darsdan keyin uyda bajariladi.\nTartib bilan|Qadamlarni birma-bir bajaring.\nPromptlar|Nusxalab qoʻying; [qavslar] boʻlsa, oʻrniga oʻz maʼlumotingizni yozing.\nMuddat|Muddat va mentor tekshiruvi «Qoidalar va yordam»da.\nBelgilang|Tugatgach, pastdagi «Vazifa bajarildi»ni bosing.",
+ "kx.sr": {
+  "uz": "Bu darsda: {list} (jami 5 ta)",
   "translate": true,
-  "note": "UI text · \\n = line break"
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone · keep {params} as they are"
+ },
+ "kx.k1": {
+  "uz": "Ish qayerga ketadi",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "kx.k2": {
+  "uz": "Qaysi jarayondan boshlaymiz",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "kx.k3": {
+  "uz": "Ishni qayta taqsimlash",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "kx.k4": {
+  "uz": "Yangi rollar",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "kx.k5": {
+  "uz": "Pilot va hisob-kitob",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "stp.h": {
+  "uz": "Qayerdan boshlash",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "stp.guide": {
+  "uz": "Avval yoʻriqnomani oching (PDF)",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "stp.ref": {
+  "uz": "{tab}, {n}-qadam: {title}",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "stp.ref_tab": {
+  "uz": "{tab} tabini oching",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone · keep {params} as they are"
+ },
+ "stp.ph": {
+  "uz": "Qavsdagi joylarga oʻz maʼlumotingizni yozing.",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "stp.t.darsda": {
+  "uz": "Darsda",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "stp.t.uyda": {
+  "uz": "Uyda",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "stp.t.telefon": {
+  "uz": "telefon",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "stp.t.noutbuk": {
+  "uz": "noutbuk",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "stp.t.mentor": {
+  "uz": "mentor bilan",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "vzh.h": {
+  "uz": "Vazifa nima?",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "vzh.due_l": {
+  "uz": "Muddat",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "vzh.due_dt": {
+  "uz": "{date}, {time} gacha",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone · keep {params} as they are"
+ },
+ "vzh.due_d": {
+  "uz": "{date} gacha",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone · keep {params} as they are"
+ },
+ "vzh.due_sub": {
+  "uz": "{n} boshlanishidan oldin",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "vzh.due_next": {
+  "uz": "Keyingi dars boshlanishidan oldin",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "vzh.check": {
+  "uz": "Mentor nimani tekshiradi · {n} band",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "vzh.check_when": {
+  "uz": "Mentor {n} boshida, birinchi 20 daqiqada tekshiradi.",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone · has a number: add \"#one/#few/#many/#other\" forms (ru) or \"#one/#other\" (en) if the noun changes · keep {params} as they are"
+ },
+ "vzh.when": {
+  "uz": "Barcha qadamlar bajarilgach, «Vazifa bajarildi»ni bosing.",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "vzh.steps": {
+  "uz": "Qadamlar",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "lesson.about": {
+  "uz": "Dars haqida",
+  "translate": true,
+  "note": "lesson metadata (2.0 had it in UZ/RU/EN) or lesson-page text"
  },
  "pane.uz_note": {
   "uz": "Dars materiallari va promptlar oʻzbek tilida, darsdagidek.",
@@ -1440,7 +1570,7 @@
   "note": "bold label before the source name, e.g. \"Source:\""
  },
  "vzf.hint2": {
-  "uz": "Yuborish shart emas.",
+  "uz": "Ilovada hech narsa yuborish shart emas.",
   "translate": true,
   "note": "homework (Vazifa) screens"
  },

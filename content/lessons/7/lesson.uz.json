@@ -26,16 +26,12 @@
     "groups": [
       {
         "title": "01 Yakuniy raqamlar",
-        "note": "ASOSIY. Baseline va delta: oldin va keyin, raqamlarda. Kit 5 shakli (Kit boʻlimida). 1) Kit 5, B shaklining oʻzgarish ustunini toʻldiring. 2) B.9-B.12 xarajatlarni jamlang. 3) Topilgan pul qatorini qoʻshing. Tayyor, agar: har qatorda Agentgacha, 1-hafta, 2-hafta va oʻzgarish bor.",
-        "files": [],
-        "prompts": [
-          {
-            "id": "01P1",
-            "title": "Kit 5, B shaklini yakunlash",
-            "target": "Claude Code",
-            "text": "kit5-pilot papkasidagi barcha fayllarni oʻqing.\nKit 5, B shakli jadvalini yakunlang: har qatorda Agentgacha, 1-hafta, 2-hafta va oʻzgarish boʻlsin.\nB.9-B.12 xarajatlarni jamlang. Topilgan pul qatorini qoʻshing.\nHar oʻzgarish qanday hisoblanganini koʻrsating. Raqam yetishmasa, katakni boʻsh qoldiring va roʻyxat qiling.\nkit5-pilot/results.mdʼga saqlang."
-          }
-        ]
+        "note": "ASOSIY. Baseline va delta: oldin va keyin, raqamlarda. Mashq va prompt Kit tabida, 1-qadam. Tayyor, agar: har qatorda Agentgacha, 1-hafta, 2-hafta va oʻzgarish bor.",
+        "ref": {
+          "tab": "kit",
+          "step": 1
+        },
+        "files": []
       },
       {
         "title": "02 Bitta vazifa narxi",
@@ -52,22 +48,12 @@
       },
       {
         "title": "03 Qaror",
-        "note": "ASOSIY. Pilotning uchta halol natijasi bor: davom ettirish, oʻzgartirish yoki toʻxtatish. 1) Kit 5 promptini ishga tushiring. 2) Natijani Kit 5, A shaklidagi muvaffaqiyat mezoni va toʻxtash sharti bilan solishtiring. 3) Qarorni belgilang va sababini bir gapda yozing. Tayyor, agar: davom ettirish, oʻzgartirish yoki toʻxtatish belgilangan va sababi bir gapda yozilgan.",
-        "files": [],
-        "prompts": [
-          {
-            "id": "03P1",
-            "title": "Kit 5 prompti: qaror",
-            "target": "Claude Code",
-            "text": "kit5-pilot/plan.md (Kit 5, A shakli) va kit5-pilot/results.mdʼni (Kit 5, B shakli) oʻqing.\nNatijani muvaffaqiyat mezoni va toʻxtash sharti bilan band-band solishtiring. Jadval: mezon, rejadagi qiymat, haqiqiy qiymat, bajarildimi.\nKeyin bitta variantni tavsiya qiling: davom ettirish, oʻzgartirish yoki toʻxtatish. Sababini bir gapda yozing. Oʻzgartirish boʻlsa, aynan nimani oʻzgartirish kerakligini yozing.\nkit5-pilot/decision.mdʼga saqlang."
-          },
-          {
-            "id": "03P2",
-            "title": "Uch tanqidchi",
-            "target": "Claude Code",
-            "text": "kit5-pilot/decision.mdʼdagi qarorimni uch tomondan tanqid qiling: shubhali investor, ishonmaydigan mijoz, kuchli raqobatchi.\nHar biri eng jiddiy 3 ta eʼtiroz bersin.\nFaqat kit5-pilot fayllaridagi raqamlarga tayaning.\nOxirida qaysi eʼtirozga fayllarda javob yoʻqligini yozing."
-          }
-        ]
+        "note": "ASOSIY. Pilotning uchta halol natijasi bor: davom ettirish, oʻzgartirish yoki toʻxtatish. Mashq va promptlar Kit tabida, 2-qadam. Tayyor, agar: davom ettirish, oʻzgartirish yoki toʻxtatish belgilangan va sababi bir gapda yozilgan.",
+        "ref": {
+          "tab": "kit",
+          "step": 2
+        },
+        "files": []
       },
       {
         "title": "04 Keyingi jarayon",
@@ -98,17 +84,31 @@
     ]
   },
   "kit": {
-    "text": "Kit 5 yakuni: pilot natijasini hisoblab, davom ettirish, oʻzgartirish yoki toʻxtatish qarorini qabul qilasiz.",
+    "text": "Kit 5 yakuni: pilot natijasi va qaror: davom ettirish, oʻzgartirish yoki toʻxtatish. Kit 4: xodimlar oʻsishining 2 haftalik tekshiruvi.",
+    "kits": [
+      4,
+      5
+    ],
+    "forms": [
+      "Kit 5, B shakli: «Oʻzgarish» va qaror.",
+      "Kit 5, A shakli: mezon va toʻxtash sharti."
+    ],
+    "flow": "agentgacha → haftalar → oʻzgarish → qaror → 2-jarayon",
     "groups": [
       {
-        "title": "01 Kit 5: Yakuniy raqamlar",
-        "note": "Oʻzgarish: oxirgi toʻldirilgan hafta va Agentgacha ustuni orasidagi farq. 1) Har qatorga Oʻzgarish ustunini yozing. 2) B.12 = B.9 + B.10 + B.11ʼni hisoblang. 3) Topilgan pul qatorini jamlang. Tayyor, agar: har qatorda Agentgacha, haftalar va oʻzgarish bor.",
+        "title": "Yakuniy raqamlar",
+        "tags": [
+          "darsda",
+          "noutbuk"
+        ],
+        "note": "Oʻzgarish: oxirgi toʻldirilgan hafta va Agentgacha ustuni orasidagi farq. 1) «Kit 5, B shaklini yakunlash» promptini ishga tushiring: har qatorga Oʻzgarish ustuni yoziladi. 2) Xarajatlarni jamlang: obunalar, sozlash va tekshirish soatlari. 3) Topilgan pul qatorini jamlang. Tayyor, agar: har qatorda Agentgacha, haftalar va oʻzgarish bor.",
         "files": [
           {
             "slug": "kit5-pdf",
             "name": "Kit5_Pilot_va_hisob-kitob.pdf",
             "size": 101893,
-            "label": "Kit 5: Pilot va hisob-kitob (PDF)"
+            "label": "Kit 5: Pilot va hisob-kitob (PDF)",
+            "guide": true
           },
           {
             "slug": "kit5-b-raqamlar",
@@ -116,29 +116,59 @@
             "size": 2717,
             "label": "Kit 5, B shakli: raqamlar"
           }
+        ],
+        "prompts": [
+          {
+            "id": "01P1",
+            "title": "Kit 5, B shaklini yakunlash",
+            "target": "Claude Code",
+            "text": "kit5-pilot papkasidagi barcha fayllarni oʻqing.\nKit 5, B shakli jadvalini yakunlang: har qatorda Agentgacha, 1-hafta, 2-hafta va oʻzgarish boʻlsin.\nB.9-B.12 xarajatlarni jamlang. Topilgan pul qatorini qoʻshing.\nHar oʻzgarish qanday hisoblanganini koʻrsating. Raqam yetishmasa, katakni boʻsh qoldiring va roʻyxat qiling.\nkit5-pilot/results.mdʼga saqlang."
+          }
         ]
       },
       {
-        "title": "02 Qaror",
-        "note": "Pilotning uchta halol natijasi bor: davom ettirish, oʻzgartirish yoki toʻxtatish. 1) Kit 5 promptini yoki «/kit5 qaror»ni ishga tushiring. 2) Natijani A.6 mezonlari va A.7 toʻxtash sharti bilan solishtiring. 3) Bitta qarorni belgilang, sababini bir gapda yozing. Tayyor, agar: qaror va sababi Kit 5, B shaklida yozilgan.",
+        "title": "Qaror",
+        "tags": [
+          "darsda",
+          "noutbuk"
+        ],
+        "note": "Pilotning uchta halol natijasi bor: davom ettirish, oʻzgartirish yoki toʻxtatish. 1) «Kit 5 prompti: qaror»ni yoki «/kit5 qaror»ni ishga tushiring (Claude Code ochilmasa, chat varianti pastda). 2) Natijani pilot rejasidagi muvaffaqiyat mezoni va toʻxtash sharti bilan solishtiring. 3) Bitta qarorni belgilang, sababini bir gapda yozing. 4) Vaqt qolsa, qarorni «Uch tanqidchi» bilan sinang. Tayyor, agar: qaror va sababi Kit 5, B shaklida yozilgan.",
         "files": [],
         "prompts": [
           {
-            "id": "K5P1",
+            "id": "03P1",
             "title": "Kit 5 prompti: qaror",
+            "target": "Claude Code",
+            "text": "kit5-pilot/plan.md (Kit 5, A shakli) va kit5-pilot/results.mdʼni (Kit 5, B shakli) oʻqing.\nNatijani muvaffaqiyat mezoni va toʻxtash sharti bilan band-band solishtiring. Jadval: mezon, rejadagi qiymat, haqiqiy qiymat, bajarildimi.\nKeyin bitta variantni tavsiya qiling: davom ettirish, oʻzgartirish yoki toʻxtatish. Sababini bir gapda yozing. Oʻzgartirish boʻlsa, aynan nimani oʻzgartirish kerakligini yozing.\nkit5-pilot/decision.mdʼga saqlang."
+          },
+          {
+            "id": "03P2",
+            "title": "Uch tanqidchi",
+            "target": "Claude Code",
+            "text": "kit5-pilot/decision.mdʼdagi qarorimni uch tomondan tanqid qiling: shubhali investor, ishonmaydigan mijoz, kuchli raqobatchi.\nHar biri eng jiddiy 3 ta eʼtiroz bersin.\nFaqat kit5-pilot fayllaridagi raqamlarga tayaning.\nOxirida qaysi eʼtirozga fayllarda javob yoʻqligini yozing."
+          },
+          {
+            "id": "K5P1",
+            "title": "Qaror (Claude chat uchun)",
             "target": "Claude",
             "text": "Quyida mening pilot rejam (Kit 5, A shakli) va haftalik raqamlarim (Kit 5, B shakli).\nBarcha xarajatlarni (B.9-B.12) hisobga olgan holda Agentgacha ustuniga nisbatan oʻzgarishni hisoblang. Topilgan pulni alohida qator qilib koʻrsating.\nA.6 muvaffaqiyat mezonlari va A.7 toʻxtash shartini band-band tekshiring. Jadval: mezon, rejadagi qiymat, haqiqiy qiymat, bajarildimi.\nKeyin dangal ayting: davom ettiramizmi, oʻzgartiramizmi yoki toʻxtatamizmi. Sababini bir gapda yozing.\nRaqamni faqat shu matndan oling. Yetishmagan raqamni roʻyxat qiling, oʻzingizdan qoʻshmang.\n\nKit 5, A shakli: [kit5-pilot/plan.md matni]\nKit 5, B shakli: [kit5-pilot/results.md matni]"
           }
         ]
       },
       {
-        "title": "03 Kit 4: Xodimlar oʻsishi",
-        "note": "Oʻquv vazifasining birinchi 2 haftalik tekshiruvi. 1) Har xodim bilan B.6 natijasini koʻring. 2) Kerak boʻlsa, B.3 mezonlarini oʻzgartiring. Tayyor, agar: har xodimga B.6 natijasi yozilgan.",
+        "title": "Xodimlar oʻsishi",
+        "tags": [
+          "darsda"
+        ],
+        "note": "Kit 4 oʻquv vazifasining birinchi 2 haftalik tekshiruvi. 1) Har xodim bilan oʻsish natijasini koʻring (Kit 4, B shaklidagi «Oʻsishni qanday oʻlchaymiz»). 2) Kerak boʻlsa, mezonlarni oʻzgartiring. Tayyor, agar: har xodimga natija yozilgan.",
         "files": []
       },
       {
-        "title": "04 Sotuvchi cheklisti",
-        "note": "Kimdir sizga AI agent sotmoqchi boʻlganda ishlating, bozor narxi 2 000-5 000 dollar. 1) Sakkizta savolni sotuvchiga yozma bering. 2) Javoblarni promptda cheklist bilan solishtiring. 3) Maʼlumot qaysi mamlakatda saqlanishini yozma oling. Tayyor, agar: har savolga yozma javob bor.",
+        "title": "Sotuvchi cheklisti",
+        "tags": [
+          "darsda"
+        ],
+        "note": "Kimdir sizga AI agent sotmoqchi boʻlsa ishlating: Oʻzbekistonda bunday agentlar 2 000-5 000 dollar turadi. Sotuvchi kelganda: 1) Sakkizta savolni sotuvchiga yozma bering. 2) Javoblarni promptda cheklist bilan solishtiring. 3) Maʼlumot qaysi mamlakatda saqlanishini yozma oling. Tayyor, agar: cheklist saqlangan va sotuvchi kelganda nima soʻrashni bilasiz.",
         "files": [
           {
             "slug": "cheklist-pdf",
@@ -161,14 +191,30 @@
             "text": "Quyida sotuvchining AI agent taklifi va sotuvchi cheklisti.\nHar savol uchun yozing: taklifda javob bormi; javob \"yaxshi javob\"ga yaqinmi yoki \"xavfli belgi\"ga; taklifdan iqtibos.\nTaklifda javob boʻlmasa, \"javob yoʻq\" deb yozing va sotuvchiga beriladigan aniq savolni tuzing.\nTaklifda yoʻq narx, model yoki shart qoʻshmang.\n\nCheklist: [sotuvchi-cheklist.md matni]\nTaklif: [sotuvchi taklifi matni]"
           }
         ]
+      },
+      {
+        "title": "Uyda: 1 oy ichida",
+        "tags": [
+          "uyda"
+        ],
+        "note": "Qarorni boʻlim boshligʻi bilan koʻrasiz va 2-jarayonni boshlaysiz.",
+        "ref": {
+          "tab": "vazifa"
+        },
+        "files": []
       }
     ]
   },
   "vazifa": {
-    "text": "Kurs tugagach, 1 oy davomida mentorlar guruh chatida yordam beradi. Bu vazifalarni shu oy ichida bajaring.\n\nKompaniya papkasi va skillaringiz tayyor, 2-jarayon ularga tayanadi.",
+    "text": "1 oy ichida qaror kelishilgan va 2-jarayon boshlangan boʻlsin. Kurs tugagach, 1 oy davomida mentorlar guruh chatida yordam beradi. Kompaniya papkasi va skillaringiz tayyor, 2-jarayon ularga tayanadi.",
+    "due": "Kurs tugagach 1 oy ichida",
     "groups": [
       {
-        "title": "1. Qarorni boʻlim boshligʻi bilan koʻrib chiqing",
+        "title": "Qarorni kelishing",
+        "tags": [
+          "uyda",
+          "noutbuk"
+        ],
         "note": "Kit 5, B shaklidagi qarorni boʻlim boshligʻi bilan koʻrib chiqing. Pilot davom etsa, 3 va 4-hafta ustunlarini ham toʻldiring.",
         "files": [],
         "prompts": [
@@ -181,12 +227,19 @@
         ]
       },
       {
-        "title": "2. Xodimlar oʻsishi",
-        "note": "Darsda Kit 4 B.6 boʻyicha oʻquv vazifasining birinchi 2 haftalik tekshiruvi qilindi. Endi har xodim bilan mezonlarni moslang va keyingi koʻnikmalarni rejalashtiring.",
+        "title": "Xodimlar oʻsishi",
+        "tags": [
+          "uyda"
+        ],
+        "note": "Darsda Kit 4 oʻquv vazifasining birinchi 2 haftalik tekshiruvi qilindi. Endi har xodim bilan mezonlarni moslang va keyingi koʻnikmalarni rejalashtiring.",
         "files": []
       },
       {
-        "title": "3. 2-jarayonni boshlang",
+        "title": "2-jarayonni boshlang",
+        "tags": [
+          "uyda",
+          "noutbuk"
+        ],
         "note": "2-jarayonni xuddi shu beshta Kit bilan oʻtkazing. Kit 1 intervyularidan boshlang va /kit1, /kit2 skillaridan foydalaning.",
         "files": [],
         "prompts": [

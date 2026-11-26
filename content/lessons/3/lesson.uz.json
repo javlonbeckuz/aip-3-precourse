@@ -86,35 +86,21 @@
       },
       {
         "title": "04 Kit 2 baholash",
-        "note": "ASOSIY. Kit 2 «Qaysi jarayondan boshlaymiz»: jarayonlarni baholab, pilot uchun bittasini tanlaydi. Kit 2 shakli (Kit boʻlimida). 1) /model bilan Haiku yoki Sonnetʼni tanlang. 2) Claude Codeʼdan Kit 1 fayllaridan 8 tagacha jarayon ajratishni va ularni A.2-A.7 boʻyicha baholashni soʻrang. 3) Rozi boʻlmagan har bahoni tuzating. 4) Value (qiymat) va Easeʼni (osonlik) hisoblatib oling. Tayyor, agar: baholash jadvali kit2-scoring papkasida saqlangan.",
-        "files": [],
-        "prompts": [
-          {
-            "id": "04P1",
-            "title": "Jarayonlarni baholash",
-            "target": "Claude Code",
-            "text": "kit1-interviews papkasidagi barcha B shakllarini oʻqing. Ulardan 8 tagacha jarayonni ajrating.\nHar jarayonni Kit 2, A shaklidagi A.2-A.7 mezonlari boʻyicha baholang: kit2-scoring/kit2-a-baholash.md (Kit boʻlimidan yuklab olingan shakl).\nHar baho yonida qaysi fayl va qatorga tayanganingizni yozing. Maʼlumot yetmasa, bahoni [?] bilan belgilang.\nValue va Easeʼni shakldagi qoida boʻyicha hisoblang.\nJadvalni kit2-scoring/scoring.mdʼga saqlang."
-          },
-          {
-            "id": "04P2",
-            "title": "Bahoni tuzatish",
-            "target": "Claude Code",
-            "text": "[Jarayon raqami] jarayonida [mezon] bahosini [yangi baho] ga oʻzgartiring.\nSabab: [sababingiz].\nValue va Easeʼni qayta hisoblang va kit2-scoring/scoring.mdʼni saqlang."
-          }
-        ]
+        "note": "ASOSIY. Kit 2 «Qaysi jarayondan boshlaymiz»: jarayonlarni baholab, pilot uchun bittasini tanlaydi. Mashq va promptlar Kit tabida, 1-qadam. Tayyor, agar: baholash jadvali kit2-scoring papkasida saqlangan.",
+        "ref": {
+          "tab": "kit",
+          "step": 1
+        },
+        "files": []
       },
       {
         "title": "05 Kit 2 matritsasi",
-        "note": "ASOSIY. 1) Claude Codeʼdan Value/Ease matritsasini HTML sahifa qilib yasashni soʻrang. 2) Sahifani brauzerda oching. Tayyor, agar: matritsada har jarayon raqamli nuqta boʻlib turibdi.",
-        "files": [],
-        "prompts": [
-          {
-            "id": "05P1",
-            "title": "Value/Ease matritsasi",
-            "target": "Claude Code",
-            "text": "kit2-scoring/scoring.md asosida Value/Ease matritsasini bitta HTML sahifa qilib yasang.\nGorizontal oʻq: Ease. Vertikal oʻq: Value.\nHar jarayon raqamli nuqta boʻlsin, matritsa ostida raqam va jarayon nomi roʻyxati.\nSahifani kit2-scoring/matrix.htmlʼga saqlang va brauzerda oching."
-          }
-        ]
+        "note": "ASOSIY. Matritsa va uning prompti Kit tabida, 2-qadam. Tayyor, agar: matritsada har jarayon raqamli nuqta boʻlib turibdi.",
+        "ref": {
+          "tab": "kit",
+          "step": 2
+        },
+        "files": []
       },
       {
         "title": "06 Model almashtirish",
@@ -170,35 +156,38 @@
     ]
   },
   "kit": {
-    "text": "Kit 2 pilot uchun bitta jarayon tanlaydi, Kit 5 esa agentgacha boʻlgan raqamlarni yozishni boshlaydi.",
+    "text": "Kit 2 pilot (2-4 haftalik haqiqiy sinov) uchun bitta jarayon tanlaydi, 3-darsda Kit 3 shu jarayon bilan ishlaydi. Kit 5 bugun shu jarayonning hozirgi raqamlarini yozadi: 6-darsda natija ular bilan solishtiriladi.",
+    "kits": [
+      2,
+      5
+    ],
+    "forms": [
+      "Kit 2, A shakli: jarayonlarni baholash.",
+      "Kit 2, B shakli: foyda–osonlik matritsasi.",
+      "Kit 5, B shakli: pilot raqamlari."
+    ],
+    "flow": "Kit 1 jadvallari → baholash (A) → matritsa (B) → bitta jarayon → Kit 3",
     "groups": [
       {
-        "title": "01 Kit 2: Qaysi jarayondan boshlaymiz",
-        "note": "Claude Code Kit 1 fayllaridan 8 tagacha jarayonni baholaydi, mezonlar va shkala PDFʼda. 1) kit2-SKILL.mdʼni .claude/skills/kit2/SKILL.md qilib saqlang. 2) A shaklini kit2-scoring papkasiga qoʻying, /kit2 yoki promptni ishga tushiring. 3) Har bahoni manbasi bilan tekshiring, keragini tuzating. Tayyor, agar: kit2-scoring/scoring.mdʼda har bahoning manbasi bor.",
+        "title": "Jarayonlarni baholang",
+        "tags": [
+          "darsda",
+          "noutbuk"
+        ],
+        "note": "Claude Code Kit 1 jadvallaridan 8 tagacha jarayon ajratadi va har birini 1 dan 5 gacha baholaydi, mezonlar va shkala yoʻriqnomada. 1) /model deb yozib, arzonroq model (Haiku yoki Sonnet) tanlang. 2) A shaklini kit2-scoring papkasiga qoʻying va «Kit 2 prompti»ni yoki /kit2 skillini (pastda, «Skill fayllari») ishga tushiring. 3) Har bahoni manbasi bilan tekshiring, rozi boʻlmaganini «Bahoni tuzatish» bilan oʻzgartiring. [?]: AI uni maʼlumot yetmagan bahoga qoʻyadi, «Bahoni tuzatish» bilan toʻgʻrilaysiz. Tayyor, agar: kit2-scoring/scoring.mdʼda har bahoning manbasi bor.",
         "files": [
           {
             "slug": "kit2-pdf",
             "name": "Kit2_Qaysi_jarayondan_boshlaymiz.pdf",
             "size": 172504,
-            "label": "Kit 2: Qaysi jarayondan boshlaymiz (PDF)"
+            "label": "Kit 2: Qaysi jarayondan boshlaymiz (PDF)",
+            "guide": true
           },
           {
             "slug": "kit2-a-baholash",
             "name": "kit2-a-baholash.md",
             "size": 2026,
             "label": "Kit 2, A shakli: baholash"
-          },
-          {
-            "slug": "kit2-b-matritsa",
-            "name": "kit2-b-matritsa.md",
-            "size": 1171,
-            "label": "Kit 2, B shakli: matritsa"
-          },
-          {
-            "slug": "kit2-skill",
-            "name": "kit2-SKILL.md",
-            "size": 3384,
-            "label": "/kit2 skill"
           }
         ],
         "prompts": [
@@ -207,17 +196,54 @@
             "title": "Kit 2 prompti: baholash",
             "target": "Claude Code",
             "text": "kit1-interviews papkasidagi barcha B shakllarini oʻqing. Ulardan 8 tagacha jarayonni ajrating. Jarayon: boshlanishi va natijasi bor vazifalar zanjiri.\nHar jarayonni kit2-scoring/kit2-a-baholash.mdʼdagi A.2-A.7 mezonlari boʻyicha 1ʼdan 5ʼgacha baholang. Shkala shakl ostida.\nHar baho yonida qaysi fayl va qatorga tayanganingizni yozing. Maʼlumot yetmasa, bahoni [?] bilan belgilang. Fayllarda yoʻq raqam qoʻshmang.\nValue = A.2 + A.3 + A.7. Ease = A.4 + A.5 + A.6.\nKeyin baholardagi qarama-qarshiliklarni roʻyxat qiling, jarayonlarni Value va Ease boʻyicha tartiblang, birinchi pilot uchun bitta nomzodni va nimalar xato ketishi mumkinligini yozing.\nJadvalni kit2-scoring/scoring.mdʼga saqlang."
+          },
+          {
+            "id": "04P2",
+            "title": "Bahoni tuzatish",
+            "target": "Claude Code",
+            "text": "[Jarayon raqami] jarayonida [mezon] bahosini [yangi baho] ga oʻzgartiring.\nSabab: [sababingiz].\nValue va Easeʼni qayta hisoblang va kit2-scoring/scoring.mdʼni saqlang."
           }
         ]
       },
       {
-        "title": "02 Matritsa va tanlov",
-        "note": "Value/Ease matritsasining yuqori oʻng kvadratidan birinchi pilot uchun bitta jarayon tanlanadi. 1) Claude Codeʼdan kit2-scoring/matrix.htmlʼni yasashni soʻrang. 2) Yuqori oʻng kvadratdan bitta jarayon tanlang. 3) Tanlovni B.1ʼga yozing. Tayyor, agar: bitta jarayon tanlangan va B.1ʼda yozilgan.",
+        "title": "Matritsani chizing",
+        "tags": [
+          "darsda",
+          "noutbuk"
+        ],
+        "note": "Value (foyda) va Ease (osonlik) boʻyicha har jarayon panjarada bitta raqamli nuqta boʻladi. 1) «Value/Ease matritsasi» promptini ishga tushiring. 2) kit2-scoring/matrix.html sahifasini brauzerda oching. Tayyor, agar: matritsada har jarayon raqamli nuqta boʻlib turibdi.",
+        "files": [
+          {
+            "slug": "kit2-b-matritsa",
+            "name": "kit2-b-matritsa.md",
+            "size": 1171,
+            "label": "Kit 2, B shakli: matritsa"
+          }
+        ],
+        "prompts": [
+          {
+            "id": "05P1",
+            "title": "Value/Ease matritsasi",
+            "target": "Claude Code",
+            "text": "kit2-scoring/scoring.md asosida Value/Ease matritsasini bitta HTML sahifa qilib yasang.\nGorizontal oʻq: Ease. Vertikal oʻq: Value.\nHar jarayon raqamli nuqta boʻlsin, matritsa ostida raqam va jarayon nomi roʻyxati.\nSahifani kit2-scoring/matrix.htmlʼga saqlang va brauzerda oching."
+          }
+        ]
+      },
+      {
+        "title": "Bitta jarayon tanlang",
+        "tags": [
+          "darsda"
+        ],
+        "note": "Yuqori oʻng kvadratdan, yaʼni foydasi katta va boshlash oson boʻlgan joydan bitta jarayon tanlang. Uni B shaklidagi «Tanlangan jarayon» qatoriga yozing. Tayyor, agar: bitta jarayon tanlangan va yozilgan.",
         "files": []
       },
       {
-        "title": "03 Kit 5: Pilot va hisob-kitob",
-        "note": "Baseline: agentgacha boʻlgan toʻrt raqam, ularsiz demo kunida faqat taassurot qoladi. 1) kit5-SKILL.mdʼni .claude/skills/kit5/SKILL.md qilib saqlang. 2) Tarix bor joyda oxirgi 2-4 haftani /kit5 baseline bilan oling. Tayyor, agar: tarixdan olingan raqamlar kit5-pilot/baseline.mdʼda manbasi bilan yozilgan.",
+        "title": "Kit 5: agentgacha raqamlar",
+        "tags": [
+          "darsda",
+          "noutbuk"
+        ],
+        "note": "Agentgacha raqamlar (baseline): pilotdan oldingi holat, 6-darsdagi demo kunida natija shu bilan solishtiriladi. Ularsiz faqat taassurot qoladi. 1) /kit5 skillini pastdagi «Skill fayllari» tartibida saqlang. 2) Eski yozuvlar (Telegram chat, Excel, CRM) boʻlsa, oxirgi 2-4 haftani «/kit5 baseline» bilan oling. Tayyor, agar: tarixdan olingan raqamlar kit5-pilot/baseline.mdʼda manbasi bilan yozilgan.",
         "files": [
           {
             "slug": "kit5-pdf",
@@ -230,6 +256,30 @@
             "name": "kit5-b-raqamlar.md",
             "size": 2717,
             "label": "Kit 5, B shakli: raqamlar"
+          }
+        ]
+      },
+      {
+        "title": "Uyda: boʻlim boshligʻi bilan",
+        "tags": [
+          "uyda"
+        ],
+        "note": "Tanlovni boʻlim boshligʻi bilan kelishasiz va hozirgi raqamlarni yozishni davom ettirasiz.",
+        "ref": {
+          "tab": "vazifa"
+        },
+        "files": []
+      },
+      {
+        "title": "Skill fayllari",
+        "kind": "files",
+        "note": "Skill: Claude Codeʼga saqlab qoʻyiladigan tayyor koʻrsatma. Faylni kompaniya papkasida .claude/skills/<nomi>/SKILL.md qilib saqlang, keyin /kit2 yoki /kit5 deb chaqirasiz.",
+        "files": [
+          {
+            "slug": "kit2-skill",
+            "name": "kit2-SKILL.md",
+            "size": 3384,
+            "label": "/kit2 skill"
           },
           {
             "slug": "kit5-skill",
@@ -242,11 +292,22 @@
     ]
   },
   "vazifa": {
-    "text": "Bu vazifada pilot jarayonni boʻlim boshligʻi bilan kelishasiz va uning hozirgi raqamlarini yozib olasiz. Baseline, yaʼni agentgacha boʻlgan raqamlar boʻlmasa, demo kunida natijani koʻrsatib boʻlmaydi.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: Kit 2 B.1-B.3 toʻldirilgan va boʻlim boshligʻi bilan kelishilgan; baseline raqamlari bor, tarixdan yoki kamida 3 kun jonli yozilgan; bot tokeni va xarajat limiti qoʻyilgan OpenRouter akkaunti tayyor; CLAUDE.md kompaniyani va tanlangan jarayonni tasvirlaydi.",
+    "text": "Pilot jarayonni boʻlim boshligʻi bilan kelishasiz va uning hozirgi raqamlarini yozasiz: ularsiz 6-darsdagi demo kunida natijani koʻrsatib boʻlmaydi.",
+    "due": "next",
+    "check": [
+      "Kit 2, B shakli toʻldirilgan: tanlangan jarayon, nega aynan u, hozir nima qilinmaydi. Boʻlim boshligʻi bilan kelishilgan",
+      "Agentgacha raqamlar bor: tarixdan yoki kamida 3 kun jonli yozilgan",
+      "OpenRouter akkaunti tayyor, xarajat limiti qoʻyilgan; bot tokeni bor",
+      "CLAUDE.md kompaniyani va tanlangan jarayonni tasvirlaydi"
+    ],
     "groups": [
       {
-        "title": "1. Kit 2ʼni boʻlim boshligʻi bilan koʻrib chiqing",
-        "note": "Baholarni boʻlim boshligʻi bilan koʻrib chiqing: egalar odatda maʼlumot qanchalik tartibsizligini kam baholaydi. B.1 tanlangan jarayon, B.2 nega aynan shu, B.3 hozir nimani qilmaymiz bandlarini toʻldiring va saqlang. Tanlangan jarayonni CLAUDE.mdʼga ham yozing.",
+        "title": "Tanlovni kelishing",
+        "tags": [
+          "uyda",
+          "noutbuk"
+        ],
+        "note": "Baholarni boʻlim boshligʻi bilan koʻrib chiqing: egalar odatda maʼlumot qanchalik tartibsizligini kam baholaydi. Kit 2, B shaklidagi uch qatorni toʻldiring va saqlang: tanlangan jarayon, nega aynan shu, hozir nimani qilmaymiz. Tanlangan jarayonni CLAUDE.mdʼga (Claude Code har safar oʻqiydigan kompaniya fayli) ham yozing.",
         "files": [],
         "prompts": [
           {
@@ -258,13 +319,17 @@
         ]
       },
       {
-        "title": "2. Baselineʼni boshlang",
-        "note": "Tanlangan jarayon boʻyicha toʻrt raqamni yozing: murojaatlar soni, oʻrtacha daqiqa, xatolar, takroriy murojaatlar. Bular Kit 5, B shaklining «Agentgacha» ustuni boʻladi. Tarix bor joyda (Telegram chat eksporti, Excel, CRM) oxirgi 2-4 haftani Claude Code bilan oling. Tarixi yoʻq raqamlarni 5 ish kuni jonli yozing.",
+        "title": "Agentgacha raqamlar",
+        "tags": [
+          "uyda",
+          "noutbuk"
+        ],
+        "note": "Tanlangan jarayon boʻyicha toʻrt raqamni yozing: murojaatlar soni, oʻrtacha daqiqa, xatolar, takroriy murojaatlar. Bular Kit 5, B shaklining «Agentgacha» ustuni boʻladi. Tarix bor joyda (Telegram chat eksporti, Excel, CRM) oxirgi 2-4 haftani Claude Code bilan oling. Tarixi yoʻq raqamlarni 5 ish kuni jonli yozing: 3-darsgacha kamida 3 kuni yozilgan boʻlsin.",
         "files": [],
         "prompts": [
           {
             "id": "V2P1",
-            "title": "Tarixdan baseline",
+            "title": "Tarixdan agentgacha raqamlar",
             "target": "Claude Code",
             "text": "[Fayl nomi] faylida [jarayon nomi] boʻyicha oxirgi 2-4 haftaning maʼlumoti bor. Bu [Telegram chat eksporti, Excel yoki CRM eksporti].\nUndan shu raqamlarni hisoblang: nechta murojaat bajarilgan; bittasiga oʻrtacha necha daqiqa ketgan; nechta xato boʻlgan; nechta takroriy murojaat boʻlgan.\nHar raqam qanday hisoblanganini va qaysi maʼlumotga tayanganini koʻrsating. Hisoblab boʻlmaydiganini \"tarixda yoʻq\" deb belgilang.\nNatijani kit5-pilot/baseline.mdʼga \"Agentgacha\" ustuni sifatida saqlang."
           },
@@ -277,18 +342,29 @@
         ]
       },
       {
-        "title": "3. Telegram bot yarating",
-        "note": "BotFather orqali Telegram bot yarating. Token: botning paroli. Uni hech kimga bermang va chatga yozmang.",
+        "title": "Telegram bot yarating",
+        "tags": [
+          "uyda",
+          "telefon"
+        ],
+        "note": "BotFather orqali Telegram bot yarating. Token: botning paroli. Uni hech kimga bermang va chatga yozmang. 3-darsda agentni ishga tushirishda shu token kerak boʻladi.",
         "files": []
       },
       {
-        "title": "4. OpenRouter akkaunti",
-        "note": "OpenRouter: bitta kalit va bitta hisob orqali yuzlab modelga kirish. Akkaunt oching va 10-20 dollarlik xarajat limitini qoʻying.",
+        "title": "OpenRouter akkaunti",
+        "tags": [
+          "uyda",
+          "noutbuk"
+        ],
+        "note": "OpenRouter: bitta kalit va bitta hisob orqali yuzlab modelga kirish. Akkaunt oching va 10-20 dollarlik xarajat limitini qoʻying. 3-darsda agent modellarga shu kalit orqali ulanadi.",
         "files": []
       },
       {
-        "title": "5. Pilot tegadigan tizimlar",
-        "note": "Pilotingiz tegadigan tizimlarni roʻyxat qiling: Excel, Google Sheets, Telegram guruhlar, 1C, Bitrix, amoCRM, Click, Payme va boshqalar. API: ilovaning boshqa ilovalar undan soʻrashi mumkin boʻlgan rasmiy menyusi. Har tizimda API bor-yoʻqligini aniqlang.",
+        "title": "Pilot tegadigan tizimlar",
+        "tags": [
+          "uyda"
+        ],
+        "note": "Pilotingiz tegadigan tizimlarni roʻyxat qiling: Excel, Google Sheets, Telegram guruhlar, 1C, Bitrix, amoCRM, Click, Payme va boshqalar. API: boshqa dasturlar shu tizimdan maʼlumot oladigan rasmiy yoʻl. Har tizimda API bor-yoʻqligini aniqlang. 3-darsda agent shu tizimlarga ulanadi.",
         "files": [],
         "prompts": [
           {

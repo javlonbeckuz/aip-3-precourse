@@ -19,7 +19,7 @@ document.addEventListener('click', e => {
 });
 // one view event per page shown: the path only (no query), fire and forget; the server ignores it without a session and never stores more than the route
 function beacon(){ if (AUTH && navigator.sendBeacon) try { navigator.sendBeacon(API + '/ev', new Blob([JSON.stringify({p: location.pathname})], {type: 'application/json'})); } catch {} }
-window.addEventListener('popstate', () => d3Pop() || render());
+window.addEventListener('popstate', () => d3Pop() || gtPop() || render());
 
 // ---- the name menu: the student's own data, and Chiqish (all as text nodes, never HTML)
 function fillMenu(){

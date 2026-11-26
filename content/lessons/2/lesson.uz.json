@@ -363,11 +363,11 @@
   },
   "kit": null,
   "vazifa": {
-    "text": "Har bir promptni nusxalab, NotebookLMʼga qoʻying. Tartib bilan yuring: har biri oldingisining javobiga tayanadi. NotebookLMʼga manba sifatida faqat Manbalar boʻlimidagi 7 faylni yuklang, promptlarni emas: ular savol, manba emas.\n\nHar promptdan oldin faqat kerakli manbalarni belgilang, qolganlarining belgisini olib tashlang (oʻchirmang).\n\nBarcha kompaniya maʼlumotlari toʻqima, mashq uchun yozilgan. Oʻquv sanasi: 12.09.2026.",
+    "text": "«Ravon Uy» degan oʻylab topilgan kompaniyaning 7 hujjati bilan NotebookLMʼda 8 ta promptni tartib bilan bajarasiz.\n\nHar bir promptni nusxalab, NotebookLMʼga qoʻying. Tartib bilan yuring: har biri oldingisining javobiga tayanadi. NotebookLMʼga manba sifatida faqat Manbalar boʻlimidagi 7 faylni yuklang, promptlarni emas: ular savol, manba emas.\n\nHar promptdan oldin NotebookLMʼda faqat shu promptga kerakli manbalarga belgi qoʻying, qolganlarining belgisini olib tashlang (oʻchirmang).\n\nKompaniya va uning maʼlumotlari oʻylab topilgan, mashq uchun yozilgan. Mashqda «bugun» 12.09.2026 deb olinadi.",
     "groups": [
       {
-        "title": "Manbalar",
-        "note": "Yetti fayl, toʻqima kompaniyaning hujjatlari. Shularni NotebookLMʼga manba sifatida yuklang, boshqa hech narsani emas. Fayl nomlarini oʻzgartirmang, promptlar ularga nom bilan murojaat qiladi.",
+        "title": "Manbalarni yuklang",
+        "note": "NotebookLM faqat siz yuklagan hujjatlardan javob beradi va manbani koʻrsatadi. Yetti fayl: kompaniyaning hujjatlari (arxivda ham shu 7 fayl). Shularni NotebookLMʼga manba sifatida yuklang, boshqa hech narsani emas. Fayl nomlarini oʻzgartirmang, promptlar ularga nom bilan murojaat qiladi.",
         "files": [
           {
             "slug": "hw-kompaniya",
@@ -420,7 +420,7 @@
         ]
       },
       {
-        "title": "Talaba qoʻllanmasi",
+        "title": "Qoʻllanmani oʻqing",
         "note": "Vazifaning yozma qoʻllanmasi: mashq tartibi va nimaga eʼtibor berish kerakligi.",
         "files": [
           {
@@ -432,8 +432,8 @@
         ]
       },
       {
-        "title": "Asosiy mashq",
-        "note": "Sakkizta prompt, birma-bir.",
+        "title": "Asosiy mashq: 8 prompt",
+        "note": "Sakkizta prompt, birma-bir. Har biriga javob olgach, vazifa bajarilgan.",
         "files": [],
         "prompts": [
           {
@@ -487,8 +487,8 @@
         ]
       },
       {
-        "title": "Chuqurroq tahlil",
-        "note": "Vaqt qolsa yoki uyda ishlash uchun.",
+        "title": "Ixtiyoriy: chuqurroq tahlil",
+        "note": "8 prompt tugagach, vaqtingiz boʻlsa.",
         "files": [],
         "prompts": [
           {

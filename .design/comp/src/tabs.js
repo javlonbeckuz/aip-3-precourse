@@ -7,7 +7,7 @@ function initGT(root){
   let cur = 0, seq = 0, rest = 0;
   const settle = () => { clearTimeout(rest); if (ind) ind.style.willChange = ''; };
   if (ind) ind.addEventListener('transitionend', e => { if (e.propertyName === 'transform') settle(); });
-  function show(i, focus, key){
+  function show(i, focus, key, user){
     if (i === cur) { if (focus) tabs[i].focus(); return; }
     if (typeof hideToast === 'function') hideToast();   // UX audit S6-11: the copy toast belongs to the pane it was made in
     const dir = i > cur ? 1 : -1, t = ++seq, instant = key || rm.matches || !!root.dataset.instant, old = panes[cur], nw = panes[i]; cur = i;
@@ -16,16 +16,18 @@ function initGT(root){
     root.style.setProperty('--i', i);
     tabs.forEach((x, k) => { x.setAttribute('aria-selected', k === i); x.tabIndex = k === i ? 0 : -1; });
     if (focus) tabs[i].focus();
+    root.dispatchEvent(new CustomEvent('gt-show', {bubbles: true, detail: {i, key: !!key, user: !!user}}));   // the page writes a tab the student chose into the URL (user: a real tap or key, not a script's click)
     panes.forEach(p => { p.getAnimations().forEach(a => a.cancel()); if (p !== old && p !== nw) p.setAttribute('inert', ''); });
     nw.removeAttribute('inert');
     if (instant) { old.setAttribute('inert', ''); return; }
     nw.animate([{opacity: 0, transform: `translateY(${safari ? 0 : 8 * dir}px)`}, {opacity: 1, transform: 'none'}], {duration: 200, easing: EASE});
     old.animate([{opacity: 1}, {opacity: 0}], {duration: 120, easing: EASE, fill: 'forwards'}).finished.then(() => { if (t === seq || old !== panes[cur]) { old.setAttribute('inert', ''); old.getAnimations().forEach(a => a.cancel()); } }).catch(() => {});
   }
-  tabs.forEach((x, i) => x.addEventListener('click', () => show(i)));
+  tabs.forEach((x, i) => x.addEventListener('click', e => show(i, false, false, e.isTrusted)));
+  root._show = i => show(i);   // Back / Forward (gtPop): the URL is already right
   root.querySelector('[role="tablist"]').addEventListener('keydown', e => {
     const n = tabs.length, to = {ArrowRight: (cur + 1) % n, ArrowLeft: (cur - 1 + n) % n, Home: 0, End: n - 1}[e.key]; if (to == null) return;
-    e.preventDefault(); show(to, true, true);
+    e.preventDefault(); show(to, true, true, e.isTrusted);
   });
   if (q.has('tabtest')) tabs[+q.get('tabtest')]?.click();
 }

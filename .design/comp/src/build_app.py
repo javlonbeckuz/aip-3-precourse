@@ -102,7 +102,7 @@ n3 = js.count("location.replace(b.getAttribute('href'))"); js = js.replace("loca
 n4 = js.count('location.replace('); js = js.replace('location.replace(', 'goReplace(')
 assert n1 >= 3 and n2 >= 8 and n3 == 1 and n4 == 2, ('routing replaces', n1, n2, n3, n4)   # the counts of today's templates; the asserts below prove none is left
 assert 'location.hash' not in js and 'location.replace(' not in js and "replaceState(null" not in js
-js = rep(js, "window.addEventListener('hashchange', () => d3Pop() || render());   // Back / Forward on a D3 pane that only changed ?t= is local; every other render (401, language, review bar) rebuilds the page\n", '')
+js = rep(js, "window.addEventListener('hashchange', () => d3Pop() || gtPop() || render());   // Back / Forward on a D3 pane that only changed ?t= is local; every other render (401, language, review bar) rebuilds the page\n", '')
 js = rep(js, """closest('a[href^="#/"]'); if (!a || a.dataset.slnav) return; mem[ROUTE()] = {y: scrollY, from: a.getAttribute('href')}""", """closest('a[data-r]'); if (!a || a.dataset.slnav) return; mem[ROUTE()] = {y: scrollY, from: a.dataset.r}""")
 js = rep(js, """`#s-app a[href="${CSS.escape(m.from)}"]`""", """`#s-app a[data-r="${CSS.escape(m.from)}"]`""")
 js = rep(js, "function resolve(r){\n", "function resolve(r){\n  if (!AUTH) return {view: 'gate'};   // signed out: every route is the gate (the address stays, so a login lands on it)\n  return resolve0(r);\n}\nfunction resolve0(r){\n")
@@ -120,9 +120,9 @@ js = sub1(js, r'<div class="slv-ph">.*?<span class="slv-note">\$\{T\(\'sl\.note\
 # boot and the app's own routes/login/language
 assert js.count('// ===================== boot =====================') == 1
 i = js.index('// ===================== boot ====================='); js = js[:i] + rd('app_core.js')
-D3_STORE = ('localStorage.getItem(d3Key(n, tab))', 'localStorage.setItem(d3Key(n, tab), id)', 'Object.keys(localStorage)', 'localStorage.removeItem(k)')   # the only storage the app uses: the last opened section of a pane (a section id, never a student id); logout and a 401 remove them (d3Forget)
+D3_STORE = ('localStorage.getItem(d3Key(n, tab))', 'localStorage.setItem(d3Key(n, tab), id)', 'Object.keys(localStorage)', 'localStorage.removeItem(k)', 'localStorage.getItem(KX_KEY)', "localStorage.setItem(KX_KEY, '1')")   # the only storage the app uses: the last opened section of a pane (a section id, never a student id) and a "«Kit nima?» was seen" flag; logout and a 401 remove them (d3Forget)
 assert js.count("const D3_PREFIX = 'aip3.d3';") == 1 and js.count('d3Save(n, tab, go.dataset.go);') == 1 and js.count('d3Save(') == 1 and js.count('const d3Save = (n, tab, id)') == 1 and js.count('const d3Key = (n, tab) => `${D3_PREFIX}.${n}.${tab}`;') == 1, 'D3_PREFIX / what is stored'   # a fixed prefix, and only the section id goes in
-assert all(js.count(x) == 1 for x in D3_STORE) and js.count('localStorage') == len(D3_STORE) == 4, ('localStorage uses', js.count('localStorage'))
+assert all(js.count(x) == 1 for x in D3_STORE) and js.count('localStorage') == len(D3_STORE) == 6 and js.count("const KX_KEY = D3_PREFIX + '.kx';") == 1, ('localStorage uses', js.count('localStorage'))
 jchk = js
 for x in D3_STORE: jchk = jchk.replace(x, '')
 left = [(bad, jchk[max(0, m.start() - 70):m.start() + 70].replace(chr(10), ' ')) for bad in ('TODAY', 'localStorage', 'SEED', 'aip3.demo', 'tabtest', 'runSelftest', "q.has('solo')", 'u4(', 'setU4', 'comp-bar', 'selftest') for m in re.finditer(re.escape(bad), jchk)]

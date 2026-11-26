@@ -47,12 +47,17 @@ let PREP = {
 }}; /*C20:end*/
 const PREP_CMDS = {};   // prep item -> {step index: an install command shown (and copyable) under that step}; empty since the Warp card was removed (2026-10-30)
 let PARTS = {};   // lesson number -> {am|kt|vz: {text, groups: [{title, note, files}]}}: the shape the lesson page reads
-const FC = (f, ph, slug) => f ? Object.assign(F(f.name, f.size, ph, slug || f.slug, f.url), f.label ? {label: f.label} : {}) : null;   // label: the chip text (UX audit S6-8); name stays the download name   // file from the demo / API: name + size (+ url in the app), never a server path
+const FC = (f, ph, slug) => f ? Object.assign(F(f.name, f.size, ph, slug || f.slug, f.url), f.label ? {label: f.label} : {}, f.guide ? {guide: true} : {}) : null;   // label: the chip text (UX audit S6-8); name stays the download name; guide: the Kit's PDF that «Qayerdan boshlash» starts with   // file from the demo / API: name + size (+ url in the app), never a server path
+const strs = a => Array.isArray(a) ? a.filter(x => typeof x === 'string' && x) : [];
+// a step's link to another step or tab: {tab: 'kit' | 'amaliyot' | 'vazifa', step?: 1-based}, one or a list
+const refs = r => (Array.isArray(r) ? r : r ? [r] : []).map(x => ({tab: {amaliyot: 'am', kit: 'kt', vazifa: 'vz'}[x && x.tab], step: Number.isInteger(x && x.step) && x.step > 0 ? x.step : 0})).filter(x => x.tab);
 function buildData(){
   FILES = {}; PARTS = {};
   Object.entries((C20 && C20.parts) || {}).forEach(([n, o]) => { PARTS[n] = {}; const used = new Set();   // progress ids of the prompt rows: unique inside a lesson, 1-8 letters or digits ("P{index}" when the id is empty)
     Object.entries(o).forEach(([k, b]) => {
-      PARTS[n][k] = {text: b.text || '', groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', files: (g.files || []).map(f => FC(f, f.ph)),
+      // Kit / Vazifa extras (all optional): kits = the Kit numbers of this tab, forms = "A shakli: ..." lines, flow = "A shakli → yozuv → ...", due = "next" or the content's own words, check = the mentor's checklist
+      PARTS[n][k] = {text: b.text || '', kits: (Array.isArray(b.kits) ? b.kits : []).filter(x => Number.isInteger(x) && x >= 1 && x <= 5), forms: strs(b.forms), flow: typeof b.flow === 'string' ? b.flow : '', due: typeof b.due === 'string' ? b.due : '', check: strs(b.check),
+        groups: (b.groups || []).map(g => ({title: g.title || '', note: g.note || '', tags: strs(g.tags), kind: g.kind === 'files' ? 'files' : '', ref: refs(g.ref), files: (g.files || []).map(f => FC(f, f.ph)),
         prompts: (g.prompts || []).map((q, j) => { const id = (String(q.id || '').replace(/[^A-Za-z0-9]/g, '') || 'P' + (j + 1)).slice(0, 8); let kid = id, c = 2; while (used.has(kid)) kid = id.slice(0, 6) + c++; used.add(kid);
           return {id: q.id || '', kid, title: q.title || '', target: q.target || '', text: q.text || ''}; })}))}; }); });
 }
@@ -69,6 +74,8 @@ const SEED = {t: {}, sl: {1: 12}};
 function registerContent(){
   const set = (k, v) => { if (typeof v === 'string') I18N.uz[k] = v; };
   Object.entries(PARTS).forEach(([n, o]) => Object.entries(o).forEach(([k, b]) => {
-    set(`c.p.${n}.${k}.text`, b.text); b.groups.forEach((g, i) => { set(`c.p.${n}.${k}.g${i}`, g.title); set(`c.p.${n}.${k}.g${i}.n`, g.note);
+    set(`c.p.${n}.${k}.text`, b.text); set(`c.p.${n}.${k}.flow`, b.flow || null); if (b.due !== 'next') set(`c.p.${n}.${k}.due`, b.due || null);
+    b.forms.forEach((x, j) => set(`c.p.${n}.${k}.f${j}`, x)); b.check.forEach((x, j) => set(`c.p.${n}.${k}.c${j}`, x));
+    b.groups.forEach((g, i) => { set(`c.p.${n}.${k}.g${i}`, g.title); set(`c.p.${n}.${k}.g${i}.n`, g.note);
       g.prompts.forEach((q, j) => { const pk = `c.p.${n}.${k}.g${i}.p${j}`; set(pk + '.t', q.title); set(pk + '.w', q.target); set(pk + '.x', q.text); }); }); }));
 }

@@ -118,17 +118,30 @@
     ]
   },
   "kit": {
-    "text": "Kit 5, B shakli pilot raqamlarini har hafta baseline bilan solishtiradi, bugun 1-hafta ustunini koʻrasiz.",
+    "text": "Kit 5 natijasi: haftalik raqamlar agentgacha holat bilan yonma-yon. 6-darsda shundan qaror chiqadi.",
+    "kits": [
+      5
+    ],
+    "forms": [
+      "Kit 5, B shakli: pilot raqamlari, jurnal.",
+      "Kit 5, A shakli: pilot rejasi (4-dars)."
+    ],
+    "flow": "agentgacha → 1-hafta → 2-hafta → oʻzgarish → qaror",
     "groups": [
       {
-        "title": "01 Kit 5: 1-hafta raqamlari",
-        "note": "Har hafta ustuni baseline bilan bir xil usulda hisoblanadi. 1) «/kit5 hafta 1»ni yoki promptni ishga tushiring. 2) 1-hafta ustunini Agentgacha ustuni bilan solishtiring. 3) Farqi katta raqamning sababini yozing. Tayyor, agar: har raqamning manbasi yozilgan.",
+        "title": "1-hafta raqamlari",
+        "tags": [
+          "darsda",
+          "noutbuk"
+        ],
+        "note": "Har hafta ustuni agentgacha raqamlar bilan bir xil usulda hisoblanadi. 1) «1-hafta tahlili» promptini yoki «/kit5 hafta 1»ni ishga tushiring. 2) 1-hafta ustunini Agentgacha ustuni bilan solishtiring. 3) Farqi katta raqamning sababini yozing. Tayyor, agar: har raqamning manbasi yozilgan.",
         "files": [
           {
             "slug": "kit5-pdf",
             "name": "Kit5_Pilot_va_hisob-kitob.pdf",
             "size": 101893,
-            "label": "Kit 5: Pilot va hisob-kitob (PDF)"
+            "label": "Kit 5: Pilot va hisob-kitob (PDF)",
+            "guide": true
           },
           {
             "slug": "kit5-b-raqamlar",
@@ -147,23 +160,66 @@
         ]
       },
       {
-        "title": "02 Xatolar va ruxsatlar",
-        "note": "B.13ʼdagi har xato instructions.mdʼdagi oʻzgarishga va yangi testga aylanadi. 1) Har yozuvga qaysi qoida oʻzgarganini yozing. 2) B.7 tekshirish soati kamayganini koʻring. 3) Mentor bilan ruxsat qarorini oling va A.5ʼga yozing. Tayyor, agar: B.13 toʻldirilgan, ruxsat qarori yozilgan.",
+        "title": "Xatolardan qoida va test",
+        "tags": [
+          "darsda",
+          "noutbuk"
+        ],
+        "note": "Xatolar jurnalidagi har yozuv instructions.mdʼdagi oʻzgarishga va yangi testga aylanadi. Buni Amaliyotdagi «Yaxshilash sikli»da qilasiz. Har yozuvga qaysi qoida oʻzgarganini yozing.",
+        "ref": {
+          "tab": "amaliyot",
+          "step": 1
+        },
+        "files": []
+      },
+      {
+        "title": "Ruxsat qarori",
+        "tags": [
+          "darsda",
+          "mentor"
+        ],
+        "note": "Xodimlarning tekshirishga ketgan soati kamayganmi, koʻring. Mentor bilan qaror qiling: agent hali faqat qoralama tayyorlaydi yoki bitta qadamda inson tasdigʻisiz ishlashga ruxsat oladi. Qarorni pilot rejasidagi «Chegaralar» bandiga yozing. Tayyor, agar: xatolar jurnali toʻldirilgan, ruxsat qarori yozilgan.",
+        "files": []
+      },
+      {
+        "title": "Uyda: 2-hafta va demo",
+        "tags": [
+          "uyda"
+        ],
+        "note": "Pilotning ikkinchi haftasini oʻtkazasiz va demo kuniga raqamlarni tayyorlaysiz.",
+        "ref": {
+          "tab": "vazifa"
+        },
         "files": []
       }
     ]
   },
   "vazifa": {
-    "text": "Bu vazifada pilotning ikkinchi haftasini oʻtkazasiz va demo kuniga raqamlarni tayyorlaysiz.\n\nKeyingi dars boshlanishidan oldin bajaring. Mentor darsning birinchi 20 daqiqasida tekshiradi: 2-hafta raqamlari va xarajatlar toʻldirilgan; xatolar jurnalida tuzatishlar bor va test toʻplami oʻtadi; rejali hisobot va eskalatsiya yoʻllari ishlaydi; xavfsizlik cheklisti toʻliq; demo tayyor.",
+    "text": "Pilotning ikkinchi haftasini oʻtkazasiz va demo kuniga raqamlarni tayyorlaysiz.",
+    "due": "next",
+    "check": [
+      "2-hafta raqamlari va xarajatlar toʻldirilgan",
+      "Xatolar jurnalida tuzatishlar bor va agent 3 yaxshi va 3 yomon namunada toʻgʻri ishlaydi",
+      "Rejali hisobot va eskalatsiya yoʻllari ishlaydi",
+      "Xavfsizlik cheklisti toʻliq",
+      "6-dars uchun 3 daqiqalik demo tayyor"
+    ],
     "groups": [
       {
-        "title": "1. Pilotning 2-haftasi",
-        "note": "Pilotni yaxshilangan agent bilan davom ettiring. Har xatoni B.13ʼga yozishda davom eting. Ruxsatlarni faqat darsda kelishilgan darajada oʻzgartiring.",
+        "title": "Pilotning 2-haftasi",
+        "tags": [
+          "uyda"
+        ],
+        "note": "Pilotni yaxshilangan agent bilan davom ettiring. Har xatoni xatolar jurnaliga yozishda davom eting. Ruxsatlarni faqat darsda kelishilgan darajada oʻzgartiring.",
         "files": []
       },
       {
-        "title": "2. 2-hafta ustuni",
-        "note": "Kit 5, B shaklining 2-hafta ustunini toʻldiring. Xodimlarning tekshirishga ketgan soatlarini (B.7) ham yozing.",
+        "title": "2-hafta ustuni",
+        "tags": [
+          "uyda",
+          "noutbuk"
+        ],
+        "note": "Kit 5, B shaklining 2-hafta ustunini toʻldiring. Xodimlarning tekshirishga ketgan soatlarini ham yozing.",
         "files": [],
         "prompts": [
           {
@@ -175,8 +231,12 @@
         ]
       },
       {
-        "title": "3. Xarajatlar",
-        "note": "Obunalar (B.9), sozlash (B.10) va tekshirish soatlari × soatlik stavkani (B.11) yozing.",
+        "title": "Xarajatlar",
+        "tags": [
+          "uyda",
+          "noutbuk"
+        ],
+        "note": "Xarajatlarni yozing: obunalar, sozlash va tekshirish soatlari × bir soatlik ish haqi.",
         "files": [],
         "prompts": [
           {
@@ -188,7 +248,11 @@
         ]
       },
       {
-        "title": "4. Topilgan pul",
+        "title": "Topilgan pul",
+        "tags": [
+          "uyda",
+          "noutbuk"
+        ],
         "note": "Pilot olib kelgan yoki saqlab qolgan pulni yozing: zarar qilishidan oldin ushlangan xatolar, endi yoʻqolmayotgan murojaatlar, tezroq yigʻilgan pul. Har birini sana, dalil va summa bilan yozing.",
         "files": [],
         "prompts": [
@@ -201,7 +265,10 @@
         ]
       },
       {
-        "title": "5. 3 daqiqalik demo",
+        "title": "3 daqiqalik demo",
+        "tags": [
+          "uyda"
+        ],
         "note": "3 daqiqalik demo tayyorlang: jarayon, oldin va keyin, nima buzildi, siz kutayotgan qaror.",
         "files": [],
         "prompts": [
@@ -212,6 +279,30 @@
             "text": "kit5-pilot fayllari asosida 3 daqiqalik demo rejasini tuzing.\nToʻrt qism: jarayon nima; oldin va keyin raqamlari; nima buzildi va qanday tuzatdik; men kutayotgan qaror (davom ettirish, oʻzgartirish yoki toʻxtatish).\nHar qismga 2-3 gap, oddiy oʻzbek tilida. Faqat fayllardagi raqamlarni ishlating."
           }
         ]
+      },
+      {
+        "title": "Darsdagi ishni tugating",
+        "note": "Darsda tugamagan boʻlsa, Amaliyotdagi «Rejali hisobot», «Eskalatsiya yoʻllari» va «Xavfsizlik cheklisti»ni tugating: mentor ularni ham tekshiradi.",
+        "tags": [
+          "uyda",
+          "noutbuk"
+        ],
+        "ref": [
+          {
+            "tab": "amaliyot",
+            "step": 3
+          },
+          {
+            "tab": "amaliyot",
+            "step": 4
+          },
+          {
+            "tab": "amaliyot",
+            "step": 6
+          }
+        ],
+        "files": [],
+        "prompts": []
       }
     ]
   }

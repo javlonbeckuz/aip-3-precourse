@@ -441,17 +441,6 @@ html.hid .bgp path{animation-play-state:paused}
 /* S6-7: a link to the Kit tab, and one plain line saying what a Kit is */
 .kt-link{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .kit-intro,.uz-note{color:var(--gt-ink)}
-/* Kit / Vazifa: the 'how to use' box sits apart from the lesson text */
-.howto{margin:0 0 14px;padding:16px 16px 14px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(0,0,0,.16)}
-.howto-h{margin:0 0 6px;font:500 11px/1.2 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)}
-.howto-t{margin:0 0 14px;font:600 15px/1.4 var(--font-body);color:var(--white)}
-.howto-s{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
-.howto-s li{position:relative;display:flex;align-items:flex-start;gap:12px}
-.howto-s li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:-12px;width:2px;border-radius:1px;background:rgba(255,255,255,.18)}
-.hs-n{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#2563eb;color:#fff;font:600 14px/1 var(--font-body)}
-.hs-x{display:flex;flex-direction:column;gap:2px;padding-top:5px}
-.hs-t{font:600 14px/1.3 var(--font-body);color:var(--white)}
-.hs-d{font:400 13px/1.4 var(--font-body);color:rgba(255,255,255,.7)}
 /* S6-8: the size never breaks inside a chip; a hint under groups with .md files */
 .f-hint{margin:8px 0 0;font:400 15px/1.4 var(--font-body);color:var(--gt-ink2)}
 
@@ -475,7 +464,7 @@ html.hid .bgp path{animation-play-state:paused}
 .d3 .k:hover{background:rgb(8 16 26 / .4)}
 .d3 .k.ghost{background:transparent;border:1px dashed rgb(255 255 255 / .5)}
 .d3 .k.ghost:hover{background:rgb(255 255 255 / .08)}
-.d3 .k .ar{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;font:500 15px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase;overflow-wrap:anywhere}
+.d3 .k .ar{display:block;font:500 15px/1.2 var(--font-display);font-stretch:125%;text-transform:uppercase;overflow-wrap:anywhere}
 .d3.trk .k .ar{font-size:17px;line-height:1.1}
 .d3 .k .tt{margin-top:8px;font:400 13px/1.35 var(--font-body);color:var(--gt-ink2)}
 .d3 .k .pr{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:12px;font:400 13px/1 var(--font-mono);color:var(--gt-ink2);min-height:24px}
@@ -591,3 +580,88 @@ html.hid .bgp path{animation-play-state:paused}
 .cmd-cp{display:inline-flex;align-items:center;gap:8px;padding:0 10px}.cmd-cp .cpl{font:500 15px/1 var(--font-body);text-transform:none;letter-spacing:0}
 
 .gt .play.d3-next{display:inline-flex;justify-content:flex-start;margin-top:24px;padding:0;border:0;background:none;color:inherit;font-family:inherit;text-align:left;cursor:pointer}/* the section-to-section next is the pane-end action: words, then the white circle arrow */
+
+/* ===== Kit and Vazifa as steps (user 2026-11-26): «Kit nima?», «Qayerdan boshlash», «Vazifa nima?», numbered rows that open in place. One column; no title is clamped ===== */
+.stp{display:flex;flex-direction:column;gap:16px;max-width:760px}
+.stp .uz-note{margin:0}
+.kx,.vzh,.st{border-radius:16px;background:rgb(8 16 26 / .24);color:var(--gt-ink)}
+.kx-h,.vzh-h,.stp-h{margin:0;font:500 13px/1.2 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--gt-ink2)}
+.kx>summary,.st>summary{cursor:pointer;list-style:none}
+.kx>summary::-webkit-details-marker,.st>summary::-webkit-details-marker{display:none}
+.kx>summary::after,.st>summary::after{content:"";flex:none;justify-self:center;width:7px;height:7px;margin-top:-3px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .2s var(--ease)}
+.kx[open]>summary::after,.st[open]>summary::after{margin-top:3px;transform:rotate(-135deg)}
+.kx>summary:focus-visible,.st>summary:focus-visible{outline:2px solid var(--gt-ink);outline-offset:-2px;border-radius:16px}
+/* «Kit nima?»: the chain of the 5 Kits sits in the row, this lesson's Kits in yellow */
+.kx>summary{display:flex;align-items:center;gap:12px;min-height:48px;padding:4px 16px 4px 14px}
+.kx-c{display:flex;align-items:center;margin-left:auto}
+.kx-c i{width:8px;height:1.5px;background:var(--gt-line)}
+.kx-k{display:grid;place-items:center;width:24px;height:24px;border:1px solid var(--gt-line);border-radius:50%;font:500 12px/1 var(--font-mono);color:var(--gt-ink2)}
+.kx-k.on{border-color:var(--yellow);background:var(--yellow);color:#000;font-weight:700}
+.kx-t,.kx-l{margin:0;padding:0 14px;font:400 15px/1.45 var(--font-body);max-width:62ch;text-wrap:pretty}
+.kx-t{color:var(--gt-ink2)}
+.kx-l{padding-top:2px;padding-bottom:14px}
+.kx-t:last-child{padding-bottom:14px}
+/* «Qayerdan boshlash»: A and B shakli in a line each, the flow as one quiet line, the guide PDF (white: the first thing to open), the steps */
+.stp-s{display:flex;flex-direction:column;gap:8px}
+.stp-ab{display:grid;gap:2px;margin-bottom:2px;font:400 14px/1.45 var(--font-body);color:var(--gt-ink2)}
+.stp-ab p{margin:0;max-width:62ch}.stp-ab b{font-weight:600;color:var(--gt-ink)}
+.stp-ab .stp-flow{margin-top:4px;font:400 13px/1.45 var(--font-body);color:var(--gt-ink2)}
+.stp-flow span{white-space:nowrap}
+.stp-flow i{margin:0 6px;font-style:normal}
+.st-guide{display:grid;grid-template-columns:22px minmax(0,1fr);align-items:center;gap:12px;min-height:56px;padding:8px 16px;border-radius:16px;background:#fff;color:#000;text-decoration:none}
+.st-guide:hover{filter:brightness(.94)}
+.st-guide b{display:block;font:600 15px/1.3 var(--font-body)}
+.st-guide small{display:block;margin-top:2px;font:400 13px/1.3 var(--font-body);color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st-guide:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.st-l{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.st>summary{display:grid;grid-template-columns:28px minmax(0,1fr) 16px;align-items:center;gap:12px;min-height:56px;padding:10px 14px;border-radius:16px}
+.st>summary:hover{background:rgb(255 255 255 / .06)}
+.st-n{display:grid;place-items:center;width:28px;height:28px;border:1.5px solid var(--gt-ink);border-radius:50%;font:600 14px/1 var(--font-body)}
+.st-files .st-n{border-style:dashed}
+.st-x{display:grid;gap:2px;min-width:0}
+.st-t{font:600 16px/1.3 var(--font-body);color:var(--gt-ink);overflow-wrap:anywhere}
+.st-m{font:400 13px/1.3 var(--font-body);color:var(--gt-ink2)}
+.st-b{padding:0 14px 16px 54px}
+.st-d{margin:0;font:400 15px/1.5 var(--font-body);max-width:62ch;text-wrap:pretty}
+.st-b .d3-steps{margin-top:10px;font-size:15px}
+.st-b>.d3-steps:first-child,.st-b>.d3-ready:first-child{margin-top:0}
+.st-b .d3-fs,.st-b .d3-pr{margin-top:14px}
+.st-ph{margin:0 0 8px;font:400 13px/1.4 var(--font-body);color:var(--gt-ink2)}
+.st-ref{display:flex;align-items:center;gap:8px;width:fit-content;min-height:44px;margin-top:6px;color:var(--gt-ink);font:600 15px/1.3 var(--font-body);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.st-ref svg{flex:none}
+.st{scroll-margin-top:12px}
+@container (max-width:599px){.st-b{padding-left:14px}}
+/* «Vazifa nima?»: the deadline in yellow, the goal, the mentor's checklist (folded), nothing to send */
+.vzh{display:grid;gap:10px;padding:14px}
+.vzh-due{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;margin:0;font:400 14px/1.35 var(--font-body);color:var(--gt-ink2)}
+.vzh-due .vzh-l{font:500 14px/1.35 var(--font-body);color:var(--gt-ink2)}
+.vzh-due b{font:600 17px/1.3 var(--font-body);color:var(--yellow)}
+.vzh-goal{margin:0;font:400 15px/1.45 var(--font-body);max-width:62ch;text-wrap:pretty}
+.vzh .pane-more{margin:0}
+.vzh .pane-more>summary{min-height:44px}
+.vzh-cw{margin:0 0 8px;font:400 14px/1.4 var(--font-body);color:var(--gt-ink2)}
+.vzh-ck ul{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.vzh-ck li{position:relative;padding-left:28px;font:400 15px/1.45 var(--font-body);max-width:62ch}
+.vzh-ck li::before{content:"";position:absolute;left:2px;top:.2em;width:15px;height:15px;border:1.5px solid var(--gt-ink2);border-radius:4px}
+.vzh-ns{margin:0;font:400 13px/1.45 var(--font-body);color:var(--gt-ink2);max-width:62ch}
+/* phones: «Vazifa bajarildi» is a white bar stuck to the bottom of the screen while the steps scroll (UX audit M3) */
+@container (max-width:599px){
+  .gt-foot.vz-end{position:sticky;bottom:0;z-index:3;margin:0 -20px;padding:10px 20px calc(10px + env(safe-area-inset-bottom));background:var(--gt-fill);box-shadow:0 -1px 0 var(--gt-line)}
+  .gt-foot.vz-end .endb{flex:1;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;background:#fff;color:#000;font-weight:600}
+  .gt-foot.vz-end .endb::before{border-color:#000}
+  .gt-foot.vz-end .endb[aria-pressed="true"]::before{background-color:#000;background-image:var(--ck-w)}
+}
+@container (max-width:360px){.gt-foot.vz-end{margin:0 -16px;padding-left:16px;padding-right:16px}}
+/* the lesson header: a bigger way back to Dastur (UX audit m4); on phones the summary and "Darsdan keyin siz" fold under "Dars haqida" (UX audit C1) */
+.lhd .dl-h .eyebrow{min-height:44px;gap:10px;font-size:15px}
+.lhd .dl-h .eyebrow svg{width:20px;height:20px}
+.lhr-t{display:none}
+@container (max-width:599px){
+  .lhr-t{display:inline-flex;align-items:center;gap:10px;min-height:44px;margin-top:2px;padding:0;color:var(--white);font:500 15px/1.3 var(--font-body);cursor:pointer}
+  .lhr-t::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s var(--ease)}
+  .lhr-t[aria-expanded="true"]::after{transform:translateY(2px) rotate(-135deg)}
+  .lhd:not(.lhr-on) .lhr{display:none}
+  .lhd .lmeta{margin-top:8px}
+  .lhd~.lwrap{padding-top:16px}
+}
+@media (prefers-reduced-motion:reduce){.kx>summary::after,.st>summary::after,.lhr-t::after{transition:none}}
