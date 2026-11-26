@@ -100,7 +100,7 @@ function applyLessons(ls, lsUz, lang){
     add(has.slides, 'sl', 'slides'); add(has.amaliyot, 'am', 'amaliyot'); add(has.kit, 'kt', 'kit'); add(has.vazifa, 'vz', 'vazifa');
     const num = l.num !== undefined ? l.num : l.n;
     add(has.deck || num != null, 'dk', 'deck');   // every numbered lesson shows Slaydlar; without a deck yet the pane says "coming soon"
-    L[n] = {n, num, deck: !!has.deck, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), start: l.start || null, lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length, outs: (l.outcomes || []).length};
+    L[n] = {n, num, deck: !!has.deck, deckN: l.deckSlides || 0, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), start: l.start || null, lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length, outs: (l.outcomes || []).length};
   }
   LESSONS = L;
   FILE_LANG = LANGS.includes(lang) ? lang : LANG;

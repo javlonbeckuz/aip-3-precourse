@@ -1254,7 +1254,7 @@ function applyLessons(ls, lsUz, lang){
     add(has.slides, 'sl', 'slides'); add(has.amaliyot, 'am', 'amaliyot'); add(has.kit, 'kt', 'kit'); add(has.vazifa, 'vz', 'vazifa');
     const num = l.num !== undefined ? l.num : l.n;
     add(has.deck || num != null, 'dk', 'deck');   // every numbered lesson shows Slaydlar; without a deck yet the pane says "coming soon"
-    L[n] = {n, num, deck: !!has.deck, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), start: l.start || null, lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length, outs: (l.outcomes || []).length};
+    L[n] = {n, num, deck: !!has.deck, deckN: l.deckSlides || 0, d: dOf(l), open: !!l.open, at: l.open ? null : (l.start || null), start: l.start || null, lock, parts, slides: l.slideCount || 0, kind: l.slideKind || 'image', topics: (l.topics || []).length, outs: (l.outcomes || []).length};
   }
   LESSONS = L;
   FILE_LANG = LANGS.includes(lang) ? lang : LANG;
@@ -1870,12 +1870,14 @@ function lessonPage(n, tab){
   const L = LESSONS[n], [d, tt] = lProg(n), empty = !L.parts.length;
   const tabsDef = L.parts.map(p => ({p, label: t('unit.' + p), lock: partLock(n, p), done: partLock(n, p) ? false : {
     sl: () => slDone(n), am: () => S.has('f:am' + n), vz: () => S.has('f:v' + n), kt: () => false, dk: () => false}[p]()}));
-  const deckUrl = `/aip/deck/${n}/`;   // instructor deck viewer served at /aip/deck/:lesson/ (make-aip3.mjs turns it into /aip3/deck/ for the live fork)
   const pane = {
     sl: () => `<p class="p-label sr-only">${T('unit.sl')}</p><p class="p-num">${S.sl(n) > 0 ? `${S.sl(n)}/${L.slides}` : L.slides}</p>
       <div class="gt-foot"><span class="gt-meta">${T('pane.sl.meta', {n: L.slides, pl: L.slides, kind: kindT(n)})}</span>${play(slHref(n), S.sl(n) === 0 ? T('pane.sl.start') : slDone(n) ? T('pane.sl.again') : T('pane.sl.go', {i: S.sl(n), n: L.slides}), 'play', 18)}</div>`,
     am: () => blockPane(n, 'am'), kt: () => blockPane(n, 'kt'), vz: () => blockPane(n, 'vz'),
-    dk: () => L.deck === false ? `<p class="p-label sr-only">${T('unit.dk')}</p><div class="dk-stack dk-soon" aria-hidden="true"><span class="dk-s"></span><span class="dk-s"></span><span class="dk-s dk-top"></span></div><p class="dk-count">${T('pane.dk.soon')}</p>` : `<p class="p-label sr-only">${T('unit.dk')}</p><button class="dk-stack" type="button" data-deck="${n}"><span class="dk-s"></span><span class="dk-s"></span><span class="dk-s dk-top"><iframe class="dk-preview" src="${deckUrl}?slide=1&preview=1" tabindex="-1"></iframe><span class="dk-play">${I('play', 32)}</span></span></button><p class="dk-count" data-tpl="${esc(T('pane.dk.count', {n: '{n}'}))}"></p>`,
+    dk: () => L.deck === false ? `<p class="p-label sr-only">${T('unit.dk')}</p><div class="dk-stack dk-soon" aria-hidden="true"><span class="dk-s"></span><span class="dk-s"></span><span class="dk-s dk-top"></span></div><p class="dk-count">${T('pane.dk.soon')}</p>`
+      : `<p class="p-label sr-only">${T('unit.dk')}</p><div class="dkp-w"><span class="dkp-s ${colCls(n)}" aria-hidden="true"></span><span class="dkp-s ${colCls(n)}" aria-hidden="true"></span><div class="dkp ${colCls(n)}">`   // the deck poster (user, 2026-11-26): the lesson's own home colour, its label, title and slide count, one button that opens the viewer
+        + `${lnum(n) == null ? '' : `<p class="dkp-l">${lnH(n)}</p>`}<div><p class="dkp-t">${esc(ltitle(n))}</p>${L.deckN ? `<p class="dkp-m">${T('pane.dk.count', {n: L.deckN})}</p>` : ''}</div>`
+        + `<button class="dkp-go" type="button" data-deck="${n}">${T('pane.dk.open')}<span class="dkp-c">${I('next', 18)}</span></button></div></div>`,
   };
   const tabs = tabsDef.map((x, i) => `<button class="gt-tab" role="tab" type="button" id="dg-t${i}" aria-controls="dg-p${i}" aria-selected="${i === 0}" data-l="${esc(x.label)}" data-p="${x.p}"${i ? ' tabindex="-1"' : ''}>${x.lock ? `<span class="lkd">${I('lock', 12)}${esc(x.label)}</span>` : x.done ? `<span class="ok">${I('check', 12)}${esc(x.label)}<span class="sr-only">${T('common.sr_done')}</span></span>` : esc(x.label)}</button>`).join('');
   const panes = tabsDef.map((x, i) => `<div class="gt-pane" role="tabpanel" id="dg-p${i}" aria-labelledby="dg-t${i}"${i ? ' inert' : ''}>${x.lock ? lockedPane(x.lock) : pane[x.p]()}</div>`).join('');
@@ -2100,15 +2102,6 @@ document.addEventListener('click', e => { const b = e.target.closest('[data-lang
     const f = modal.querySelector('iframe');
     f.style.width = f.style.height = `${z * 100}%`;
   }
-  // Slide count under the stacked preview: read from the preview deck itself once it loads (load does not bubble: capture).
-  document.addEventListener('load', e => {
-    const f = e.target;
-    if (!(f instanceof HTMLIFrameElement) || !f.classList.contains('dk-preview')) return;
-    try {
-      const c = f.contentDocument.querySelectorAll('#grid-cards-container .grid-thumb').length, el = f.closest('.gt-pane')?.querySelector('.dk-count');
-      if (c && el) el.textContent = el.dataset.tpl.replace('{n}', c);
-    } catch (_) {}
-  }, true);
   function I(name, size) {
     return `<svg width="${size}" height="${size}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
   }

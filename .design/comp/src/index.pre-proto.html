@@ -1047,15 +1047,6 @@ if (q.has('newlesson') && document.body.dataset.view !== 'gate') showNewLesson(t
     const f = modal.querySelector('iframe');
     f.style.width = f.style.height = `${z * 100}%`;
   }
-  // Slide count under the stacked preview: read from the preview deck itself once it loads (load does not bubble: capture).
-  document.addEventListener('load', e => {
-    const f = e.target;
-    if (!(f instanceof HTMLIFrameElement) || !f.classList.contains('dk-preview')) return;
-    try {
-      const c = f.contentDocument.querySelectorAll('#grid-cards-container .grid-thumb').length, el = f.closest('.gt-pane')?.querySelector('.dk-count');
-      if (c && el) el.textContent = el.dataset.tpl.replace('{n}', c);
-    } catch (_) {}
-  }, true);
   function I(name, size) {
     return `<svg width="${size}" height="${size}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
   }

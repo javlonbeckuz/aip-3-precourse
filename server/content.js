@@ -1,6 +1,7 @@
 // Content on disk (JSON + files), timed releases, and what a student may see. Files are re-read when their mtime changes.
 import fs from 'node:fs';
 import path from 'node:path';
+import vm from 'node:vm';
 import { GROUPS } from './db.js';
 
 export const LANGS = ['uz', 'ru'];
@@ -182,6 +183,18 @@ export function createContent({ dir, now = () => Date.now(), production = false 
   // fail closed (UX audit S8-1): in production a lesson whose slide stills are not uploaded has no slides part, so students see "soon", never placeholder slides
   const hasStills = (n) => ['.webp', '.jpg', '.png'].some((e) => fs.existsSync(path.join(dir, 'lessons', String(n), 'slides', `1${e}`)));
   const hasDeck = (n) => fs.existsSync(path.join(dir, 'lessons', String(n), 'slides', 'deck', 'index.html'));
+  // the deck's slide count (the Slaydlar poster): its staff-made slides_data.js sets window.SLIDES_DATA = [...]; read in an empty sandbox, cached by file time, 0 when unreadable
+  const deckN = new Map();
+  function deckSlides(n) {
+    const f = path.join(dir, 'lessons', String(n), 'slides', 'deck', 'assets', 'slides_data.js');
+    let t;
+    try { t = fs.statSync(f).mtimeMs; } catch { return 0; }
+    const c = deckN.get(f);
+    if (c && c.t === t) return c.n;
+    let k = 0;
+    try { const w = {}; vm.runInNewContext(fs.readFileSync(f, 'utf8'), { window: w }, { timeout: 200 }); k = Array.isArray(w.SLIDES_DATA) ? w.SLIDES_DATA.length : 0; } catch {}
+    deckN.set(f, { t, n: k }); return k;   // a broken file is cached as 0 too: it is not re-run on every request
+  }
   const hasPart = (L) => ({ slides: L.slideCount > 0 && (!production || hasStills(L.n)), amaliyot: blockHas(L.amaliyot), kit: blockHas(L.kit), vazifa: blockHas(L.vazifa), prep: !!L.prep, deck: hasDeck(L.n) });
   const FIELDS = { slides: ['slideCount', 'slideKind'], amaliyot: ['amaliyot'], kit: ['kit'], vazifa: ['vazifa'], prep: ['prep'] };
 
@@ -196,6 +209,7 @@ export function createContent({ dir, now = () => Date.now(), production = false 
     group = eff(group);
     const v = { n, num: numOf(n), title: T.title, subtitle: T.subtitle, summary: T.summary, topics: T.topics, outcomes: T.outcomes || [],
       start: n ? isoTashkent(start(group, n)) : null, date: n ? dateTashkent(start(group, n)) : null, has, parts: {}, open: false };
+    if (has.deck) v.deckSlides = deckSlides(n);
     for (const part of PARTS.filter((p) => has[p])) {
       const at = opensAt(n, part, group, review), src = part === 'prep' ? T : L;
       if (isOpen(at)) { v.parts[part] = { open: true }; v.open = true; for (const k of FIELDS[part]) v[k] = k === 'prep' ? prepShown(src.prep) : src[k]; }

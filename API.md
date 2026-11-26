@@ -24,7 +24,8 @@ file     { slug, name, size, label? }                 // no server path, ever; s
 ```
 { n, num, title, subtitle, summary, topics[],   // n = folder/URL number (0..7); num = the number to DISPLAY: 1..6 in order over the numbered lessons, null for lesson 0 and for unnumbered ones (Kirish, n=2: "numbered": false in its uz file). Use num, never n, in labels ("03-dars" for num 3); a null num shows the short name
   start: iso|null, date: "YYYY-MM-DD"|null,           // this group's lesson start; null for lesson 0, and null while the dates are to follow (a student with no group gets the first dated group's dates)
-  has:   { slides, amaliyot, kit, vazifa, prep },   // booleans: the part exists at all (render or hide the row)
+  has:   { slides, amaliyot, kit, vazifa, prep, deck },   // booleans: the part exists at all (render or hide the row)
+  deckSlides: n,                                    // only when has.deck (sent whether or not the part is open): the number of slides in the deck (0 when it cannot be read)
   parts: { <part>: { open: true } | { open: false, opensAt: iso|null } },   // only parts that exist; opensAt null = date to follow
   open:  true if any part is open,
   // then, ONLY for open parts:

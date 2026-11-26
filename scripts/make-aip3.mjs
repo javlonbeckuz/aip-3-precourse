@@ -28,7 +28,7 @@ edit('app.js', [
   ["location.replace('/aip/');", "location.replace(BASE + '/');", 1],
   ['/(?:^|; )aip_lang=(uz|ru)/', '/(?:^|; )aip3_lang=(uz|ru)/', 1],
   ['document.cookie = `aip_lang=${x};', 'document.cookie = `aip3_lang=${x};', 1],
-  ['`/aip/deck/${n}/', '`/aip3/deck/${n}/', 3],   // the Slaydlar preview, the viewer iframe and its PDF download
+  ['`/aip/deck/${n}/', '`/aip3/deck/${n}/', 2],   // the viewer iframe and its PDF download (the Slaydlar poster opens the viewer, it has no preview)
   ["if (/^\\/aip\\/index\\.html$/.test(location.pathname)) history.replaceState(null, '', '/aip/' + location.search);   // /aip/index.html is /aip/",
    "if (/^\\/aip3\\/index\\.html$/.test(location.pathname)) history.replaceState(null, '', BASE + '/' + location.search);   // /aip3/index.html is /aip3/", 1],
 ]);

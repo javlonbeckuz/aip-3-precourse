@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import { createContent } from '../server/content.js';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const lessonDirs = fs.readdirSync(path.join(root, 'content', 'lessons')).filter((n) => /^\d+$/.test(n)).sort((a, b) => a - b);
@@ -210,4 +211,26 @@ test('app: Back / Forward between tabs switches the tab in place; a step or prom
   c.url = '#/dars/1?tab=kt&s=s2'; assert.equal(c.gtPop(), false);
   c.url = '#/dars/3?tab=kt'; assert.equal(c.gtPop(), false);
   c.url = '#/dars/1?tab=am'; assert.equal(c.gtPop(), false);   // not a tab of this lesson
+});
+
+// ---- Slaydlar: the deck poster (2026-11-26): the lesson's home colour, its label, the deck's real slide count, one button that opens the viewer
+test('server: a lesson with a deck carries its slide count (read from the deck itself); a lesson without one has none', () => {
+  const c = createContent({ dir: path.join(root, 'content') }), v = (n) => c.lessonView(n, 'uz', 'shanba', true);
+  for (const n of [1, 3, 5, 6, 7]) {   // the same count as the deck's own slide list
+    const w = {}; vm.runInNewContext(fs.readFileSync(path.join(root, 'content', 'lessons', String(n), 'slides', 'deck', 'assets', 'slides_data.js'), 'utf8'), { window: w });
+    assert.ok(v(n).deckSlides > 0 && v(n).deckSlides === w.SLIDES_DATA.length, `lesson ${n}`);
+  }
+  for (const n of [2, 4]) assert.equal(v(n).deckSlides, undefined, `lesson ${n} has no deck`);
+});
+
+test('app: the Slaydlar poster shows the label, title and count in the home colour and opens the existing viewer; no live mini deck', () => {
+  const i = app.indexOf('<div class="dkp-w">'), src = app.slice(i, app.indexOf('</div></div>`,', i));
+  assert.ok(i > 0, 'the poster is in app.js');
+  assert.match(src, /<div class="dkp \$\{colCls\(n\)\}">/);   // the same colour class as the lesson's folder on the home page
+  assert.match(src, /<p class="dkp-l">\$\{lnH\(n\)\}<\/p>/);   // "1-dars": the number students see, not the folder number
+  assert.match(src, /T\('pane\.dk\.count', \{n: L\.deckN\}\)/);
+  assert.match(src, /<button class="dkp-go" type="button" data-deck="\$\{n\}">\$\{T\('pane\.dk\.open'\)\}/);   // data-deck: the click handler that opens the viewer modal
+  assert.match(app, /const btn = e\.target\.closest\('\[data-deck\]'\);\s*if \(btn\) openDeck\(btn\.dataset\.deck\);/);
+  assert.doesNotMatch(app, /dk-preview|dk-play/);
+  assert.match(fs.readFileSync(path.join(root, '.design', 'comp', 'src', 'app_state.js'), 'utf8'), /deckN: l\.deckSlides \|\| 0/);
 });
