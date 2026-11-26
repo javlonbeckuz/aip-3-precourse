@@ -421,7 +421,7 @@ function d3Pane(n, p, key, b, intro, text, end){
     const body = tr ? `<div class="d3-two">${yo ? `<div>${d3Step(++s, T('d3.s1'), T('d3.s1h'))}<a class="d3-pri" ${fa(yo)}>${d3Dl(yo)}</a></div>` : ''}${src.length ? `<div>${d3Step(++s, T('d3.s2'), T('d3.s2h', {n: src.length, pl: src.length}))}${d3Files(src)}</div>` : ''}</div>`
         + (x.g.prompts.length ? `<div class="d3-pr">${d3Step(++s, T('d3.s3'), T('d3.s3h'))}${d3Rows(n, gk, x.g)}</div>` : '') + (pdf ? `<a class="d3-pdf" ${fa(pdf)}><span class="sr-only">${T('common.sr_download')}</span>${T('d3.pdf')}</a>` : '')
       : trk ? d3Files(x.g.files)
-      : `${np.steps.length ? `<ol class="d3-steps">${np.steps.map(y => `<li>${lk(esc(y))}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="d3-ready"><b>Tayyor, agar</b> ${esc(np.ready)}</p>` : ''}${(x.g.ref || []).map(r => refLink(n, r)).join('')}${x.g.files.length ? `<div class="d3-fs">${d3Files(x.g.files)}</div>` : ''}${x.g.prompts.length ? `<div class="d3-pr"><p class="d3-lh">${T('d3.prompts')}${x.g.prompts.length > 1 ? ` · ${x.g.prompts.length}` : ''}</p>${d3Rows(n, gk, x.g)}</div>` : ''}`;
+      : `${np.steps.length ? `<ol class="d3-steps">${np.steps.map(y => `<li>${lk(esc(y))}</li>`).join('')}</ol>` : ''}${np.ready ? `<p class="d3-ready"><b>Tayyor, agar</b> ${esc(np.ready)}</p>` : ''}${(x.g.ref || []).map(r => refLink(n, r)).join('')}${x.g.files.length ? `<div class="d3-fs">${d3Files(x.g.files)}</div>` : ''}${x.g.prompts.length ? `<div class="d3-pr"><p class="d3-lh">${T('d3.prompts')}${x.g.prompts.length > 1 ? ` (${x.g.prompts.length})` : ''}</p>${d3Rows(n, gk, x.g)}</div>` : ''}`;
     return `<section class="d3-p" id="${pid(x, 'd3p')}" data-t="${x.id}" aria-labelledby="${pid(x, 'd3h')}"${x.id === sel ? '' : ' hidden'}${lg(x)}>${solo ? '' : `<button class="d3-back" type="button">${I('back', 18)}${T(trk ? 'd3.back' : 'd3.back_s')}</button>`}<h3 class="d3-t" id="${pid(x, 'd3h')}" tabindex="-1">${esc(ttl(x))}</h3>${lead}${body}${nx ? `<button class="play on-light d3-next" type="button" data-go="${nx.id}"><span>${T(trk ? 'd3.next' : 'd3.next_s')}: ${esc(nextTitle(nx))}</span><span class="play-circ">${I('next', 20)}</span></button>` : ''}</section>`; };
   return `<div class="d3${trk ? ' trk' : ''}${solo ? ' solo' : ''}" data-n="${n}" data-tab="${p}" data-sel="${sel}" data-view="${view}"><div class="d3-l">${intro}${text ? `<div class="pane-text"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${text}</div>` : ''}${cards ? `<div class="d3-cards" role="group" aria-label="${esc(t(trk ? 'd3.group_aria' : 'd3.group_aria_s'))}">${cards}</div>` : ''}</div><div class="d3-dock">${list.map(panel).join('')}</div></div>${end ? `<div class="gt-foot end">${end}</div>` : ''}`;
 }
@@ -477,18 +477,59 @@ function gtPop(){   // Back / Forward between two tabs of the lesson on screen: 
 }
 // phones: the lesson's summary and "Darsdan keyin siz" fold under "Dars haqida", so the first task is on the first screen (UX audit C1)
 document.addEventListener('click', e => { const b = e.target.closest('.lhr-t'); if (!b) return; const on = b.getAttribute('aria-expanded') !== 'true'; b.setAttribute('aria-expanded', on); b.closest('.lhd').classList.toggle('lhr-on', on); });
-// ---- Kit and Vazifa (user, 2026-11-26): each group is one numbered step, a row that opens in place (one-line title, then "Darsda · telefon · 2 prompt").
-// Kit starts with «Kit nima?» (what a Kit is, the 5-Kit chain; open on the first visit only) and «Qayerdan boshlash» (A and B shakli in a line each, the guide PDF, the steps).
-// Vazifa starts with «Vazifa nima?» (deadline, goal, nothing to send). The optional content fields (kits, forms, flow, due, tags, kind, ref, guide) are in API.md.
-const KX_KEY = D3_PREFIX + '.kx';   // "«Kit nima?» was seen": under the d3 prefix, so logout and a 401 forget it with the rest
-const kxSeen = (() => { try { return !!localStorage.getItem(KX_KEY); } catch { return false; } })();   // read once per page load: the block stays open for the whole first visit
-let kxOpen = null;   // the student's own toggle, kept until the page reloads (a re-render never closes what they opened)
+// ---- Kit and Vazifa (user, 2026-11-26, glass): a header (a picture, the Kit chain or the deadline, one plain sentence, the guide PDF), then the steps:
+// a list beside one big panel with «Keyingi qadam» (phones: the panel opens under its step). Every step has a drawn picture (content field icon), its title and "Darsda, telefonda".
+// The optional content fields (kits, head, due, tags, icon, kind, ref, guide) are in API.md.
+const PG = {   // the step pictures: 48 grid, one 2px stroke (CSS); a step names one with its content field icon
+  people: '<circle cx="17" cy="16" r="6"/><path d="M6 39c0-6.6 4.9-11 11-11s11 4.4 11 11"/><circle cx="34" cy="19" r="4.5"/><path d="M30 29.5c1.2-.6 2.6-1 4-1 4.6 0 8 3.6 8 9"/><path d="M38 6.5h6v5h-3l-2 2v-2h-1z"/>',
+  wave: '<path d="M6 20v8M10.5 14v20M15 18v12M19.5 22v4"/><path d="M23 24h6m-3-3 3 3-3 3"/><path d="M33 15h9M33 21h9M33 27h9M33 33h6"/>',
+  table: '<rect x="6" y="9" width="36" height="30" rx="3"/><path d="M6 18h36M6 28.5h36M18 9v30"/>',
+  house: '<path d="M8 22 24 9l16 13v17a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2z"/><path d="M20 41V30h8v11"/>',
+  mega: '<path d="M8 20v8h6l14 8V12l-14 8z"/><path d="M14 28l2 10h5l-2-9"/><path d="M34 19c2 2 2 8 0 10M38 15c4 4 4 14 0 18"/>',
+  check: '<circle cx="18" cy="16" r="7"/><path d="M6 40c0-7 5.3-12 12-12 2.8 0 5.3.8 7.3 2.3"/><path d="m29 37 4.5 4.5L43 31"/>',
+  files: '<path d="M16 6h15l9 9v23a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M31 6v9h9M19 24h14M19 30h10"/><path d="M9 13v27a2 2 0 0 0 2 2h22"/>',
+  term: '<rect x="5" y="9" width="38" height="30" rx="3"/><path d="m12 19 6 5-6 5M22 30h11"/>',
+  cal: '<rect x="7" y="10" width="34" height="30" rx="3"/><path d="M7 19h34M16 6v8M32 6v8M14 27h5M22 27h5M30 27h5M14 33h5M22 33h5"/>',
+  doc: '<path d="M13 6h16l9 9v25a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M29 6v9h9M16 25h16M16 31h11"/>',
+  kit: '<rect x="6" y="16" width="36" height="24" rx="3"/><path d="M17 16v-4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M6 26h36M21 26v4h6v-4"/>',
+  board: '<rect x="6" y="7" width="36" height="24" rx="2"/><path d="M24 31v6M16 43l8-6 8 6M13 15h14M13 21h9"/>',
+  upload: '<path d="M24 31V9m-8 8 8-8 8 8"/><path d="M8 28v10a3 3 0 0 0 3 3h26a3 3 0 0 0 3-3V28"/>',
+  book: '<path d="M24 12c-4-3-10-4-17-3v28c7-1 13 0 17 3 4-3 10-4 17-3V9c-7-1-13 0-17 3z"/><path d="M24 12v28"/>',
+  chat: '<path d="M8 9h32a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H22l-9 7v-7H8a2 2 0 0 1-2-2V11a2 2 0 0 1 2-2z"/><path d="M14 18h20M14 24h13"/>',
+  search: '<circle cx="21" cy="21" r="12"/><path d="m30 30 11 11"/>',
+  list: '<path d="M21 12h19M21 24h19M21 36h19"/><path d="m7 12 3 3 5-6M7 24l3 3 5-6M7 36l3 3 5-6"/>',
+  star: '<path d="m24 6 5.5 11.5 12.5 1.7-9 8.8 2.2 12.5L24 34.6 12.8 40.5 15 28l-9-8.8 12.5-1.7z"/>',
+  matrix: '<path d="M8 6v34h34"/><path d="M8 23h34M25 6v34" stroke-dasharray="3 4"/><circle cx="34" cy="14" r="3"/><circle cx="17" cy="31" r="2.5"/><circle cx="35" cy="32" r="2.5"/>',
+  target: '<circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="10"/><circle cx="24" cy="24" r="3"/>',
+  chart: '<path d="M6 41h36"/><rect x="10" y="24" width="6" height="17" rx="1"/><rect x="21" y="14" width="6" height="27" rx="1"/><rect x="32" y="7" width="6" height="34" rx="1"/>',
+  agree: '<path d="M6 8h22a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H15l-6 5v-5H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z"/><path d="M34 18h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3v5l-6-5H22a2 2 0 0 1-2-2v-3"/><path d="m11 16 3 3 7-6"/>',
+  send: '<path d="M42 6 6 21l13 5 5 15z"/><path d="M19 26 42 6"/>',
+  key: '<circle cx="15" cy="31" r="9"/><path d="m21.5 24.5 17-17M32 14l5 5M27 19l4 4"/>',
+  plug: '<path d="M17 6v9M31 6v9"/><path d="M11 15h26v7a13 13 0 0 1-26 0z"/><path d="M24 35v8"/>',
+  route: '<circle cx="11" cy="37" r="4"/><circle cx="37" cy="11" r="4"/><path d="M15 37h14a6 6 0 0 0 0-12H19a6 6 0 0 1 0-12h14"/>',
+  bot: '<rect x="9" y="15" width="30" height="24" rx="6"/><path d="M24 15V9"/><circle cx="24" cy="7" r="2"/><circle cx="18" cy="27" r="2.5"/><circle cx="30" cy="27" r="2.5"/><path d="M5 25v6M43 25v6"/>',
+  server: '<rect x="8" y="7" width="32" height="14" rx="3"/><rect x="8" y="27" width="32" height="14" rx="3"/><path d="M14 14h2M14 34h2M24 14h10M24 34h10"/>',
+  compare: '<rect x="5" y="9" width="17" height="30" rx="3"/><rect x="26" y="9" width="17" height="30" rx="3"/><path d="m9 24 3 3 6-6M31 21l7 7m0-7-7 7"/>',
+  flag: '<path d="M10 43V6"/><path d="M10 8h26l-5 8 5 8H10"/>',
+  shield: '<path d="M24 5 8 11v11c0 10 7 17 16 21 9-4 16-11 16-21V11z"/><path d="m17 24 5 5 9-9"/>',
+  warn: '<path d="M24 6 4 41h40z"/><path d="M24 19v10M24 35v.5"/>',
+  scale: '<path d="M24 6v36M14 42h20M9 12h30"/><path d="M9 12 3 26a6 6 0 0 0 12 0zM39 12l-6 14a6 6 0 0 0 12 0z"/>',
+  coins: '<ellipse cx="24" cy="14" rx="15" ry="6"/><path d="M9 14v10c0 3.3 6.7 6 15 6s15-2.7 15-6V14M9 24v10c0 3.3 6.7 6 15 6s15-2.7 15-6V24"/>',
+  receipt: '<path d="M10 5h28v38l-5-3-5 3-4-3-4 3-5-3-5 3z"/><path d="M16 15h16M16 22h16M16 29h9"/>',
+  growth: '<path d="M6 41h36"/><path d="m8 33 10-10 7 6 15-16"/><path d="M31 13h9v9"/>',
+  loop: '<path d="M38 18A15 15 0 0 0 10 16"/><path d="M10 7v9h9"/><path d="M10 30a15 15 0 0 0 28 2"/><path d="M38 41v-9h-9"/>',
+  grad: '<path d="M4 18 24 9l20 9-20 9z"/><path d="M12 22v10c0 3 5 6 12 6s12-3 12-6V22"/><path d="M44 18v12"/>',
+};
+const pg = (k, cls) => `<span class="${cls}" aria-hidden="true"><svg viewBox="0 0 48 48">${PG[k] || PG.doc}</svg></span>`;
+let kxOpen = false;   // «Kit nima?» starts closed; the student's own toggle is kept until the page reloads (a re-render never closes what they opened)
 document.addEventListener('toggle', e => { if (e.target.matches && e.target.matches('details.kx')) kxOpen = e.target.open; }, true);
-function kitIntro(key, b){
-  const open = kxOpen ?? !kxSeen; try { localStorage.setItem(KX_KEY, '1'); } catch {}
-  const chain = [1, 2, 3, 4, 5].map(k => `<span class="kx-k${b.kits.includes(k) ? ' on' : ''}" title="${esc(`Kit ${k}: ${t('kx.k' + k)}`)}">${k}</span>`).join('<i></i>');
-  return `<details class="kx"${open ? ' open' : ''}><summary><span class="kx-h">${T('kx.h')}</span><span class="kx-c" aria-hidden="true">${chain}</span>${b.kits.length ? `<span class="sr-only">${T('kx.sr', {list: b.kits.map(k => 'Kit ' + k).join(', ')})}</span>` : ''}</summary>`
-    + `<p class="kx-t">${T('kx.t')}</p>${b.text ? `<p class="kx-l"${cxFb(`${key}.text`) ? ' lang="uz-Latn"' : ''}>${esc(cu(`${key}.text`))}</p>` : ''}</details>`;
+// the Kit header: the 5-Kit chain with «Kit nima?», the name of this lesson's Kit (the one its guide PDF is for), the content's one sentence, the guide
+function kitHead(key, b, guide){
+  const num = (/Kit (\d)/.exec(guide.map(f => f.label || f.name).join(' ')) || [])[1] || b.kits[0], lg = k => cxFb(k) ? ' lang="uz-Latn"' : '';
+  const chain = [1, 2, 3, 4, 5].map(k => `<span class="kx-k${b.kits.includes(k) ? ' on' : ''}" title="${esc(`Kit ${k}: ${t('kx.k' + k)}`)}">${k}</span>`).join('');
+  return `<header class="sx-h">${pg('kit', 'sx-hero')}<div class="sx-hx"><details class="kx"${kxOpen ? ' open' : ''}><summary><span class="kx-c" aria-hidden="true">${chain}</span><span class="kx-h">${T('kx.h')}</span>${b.kits.length ? `<span class="sr-only">. ${T('kx.sr', {list: b.kits.map(k => 'Kit ' + k).join(', ')})}</span>` : ''}</summary><p class="kx-t">${T('kx.t')}</p></details>`
+    + `<h3 class="sx-t">${num ? T('kx.k' + num) : T('unit.kt')}</h3>${b.head || b.text ? `<p class="sx-lead"${lg(`${key}.${b.head ? 'head' : 'text'}`)}>${esc(cu(`${key}.${b.head ? 'head' : 'text'}`))}</p>` : ''}`
+    + guide.map(f => `<a class="sx-guide" ${fa(f)}><span class="sr-only">${T('common.sr_download')}</span>${pg('doc', 'sx-gi')}<span><b>${T('stp.guide')}</b>${f.size ? `<small>${esc(f.size)}</small>` : ''}</span></a>`).join('') + '</div></header>';
 }
 // the Vazifa deadline. due "next": the start of the next numbered lesson in the student's group (the schedule), or the safe words while that date is not set; any other due is the content's own text
 function vzDue(n, key, b){
@@ -498,13 +539,14 @@ function vzDue(n, key, b){
   if (!d) return {main: T('vzh.due_next')};
   return {main: T(at ? 'vzh.due_dt' : 'vzh.due_d', {date: fmtDate(...d), time: at && at[1]}), sub: T('vzh.due_sub', {n: lnT(m)})};
 }
+// the Vazifa header: the deadline as its title, the goal (the first paragraph; the rest folds), nothing to send
 function vzHead(n, key, b, paras){
   const due = vzDue(n, key, b), lg = k => cxFb(k) ? ' lang="uz-Latn"' : '';
-  return `<section class="vzh" aria-labelledby="vzh-${n}"><h3 class="vzh-h" id="vzh-${n}">${T('vzh.h')}</h3>`
-    + (due ? `<p class="vzh-due"><span class="vzh-l">${T('vzh.due_l')}</span> <b>${due.main}</b>${due.sub ? ` <span class="vzh-s">${due.sub}</span>` : ''}</p>` : '')
-    + (paras[0] ? `<p class="vzh-goal"${lg(`${key}.text`)}>${esc(paras[0])}</p>` : '')
+  return `<header class="sx-h">${pg(due ? 'cal' : 'doc', 'sx-hero')}<div class="sx-hx">`
+    + (due ? `<h3 class="sx-t sx-due"><span class="sr-only">${T('vzh.due_l')}: </span>${due.main}</h3>${due.sub ? `<p class="sx-dsub">${due.sub}</p>` : ''}` : `<h3 class="sr-only">${T('vzh.h')}</h3>`)
+    + (paras[0] ? `<p class="sx-lead"${lg(`${key}.text`)}>${esc(paras[0])}</p>` : '')
     + (paras.length > 1 ? `<details class="pane-more"${lg(`${key}.text`)}><summary>${T('pane.more')}</summary>${paras.slice(1).map(x => `<p class="p-sub">${esc(x)}</p>`).join('')}</details>` : '')
-    + `<p class="vzh-ns">${T('vzf.hint2')} ${T('vzh.when')}</p></section>`;
+    + `<p class="sx-ns">${T('vzf.hint2')} ${T('vzh.when')}</p></div></header>`;
 }
 const STP_TAG = ['darsda', 'uyda', 'telefon', 'noutbuk', 'mentor'];
 const stepIds = b => { let k = 0; return b.groups.map(g => g.kind === 'files' ? '' : 's' + ++k); };   // the numbered steps are s1, s2, … (?tab=kt&s=s2); a files row has no number
@@ -517,33 +559,52 @@ function refLink(n, r){
   const label = g ? t('stp.ref', {tab: t('unit.' + r.tab), n: r.step, title}) : t('stp.ref_tab', {tab: t('unit.' + r.tab)});
   return `<a class="st-ref" href="#/dars/${n}?tab=${r.tab}${r.step ? '&s=s' + r.step : ''}"><span>${esc(label)}</span>${I('next', 16)}</a>`;
 }
+// where and on what, one plain phrase: "Darsda, telefonda, mentor bilan"
+const stepWhere = g => { const s = g.tags.filter(x => STP_TAG.includes(x)).map(x => t('stp.t.' + x)).join(', '); return s && s[0].toUpperCase() + s.slice(1); };
 function stepPane(n, p, key, b, intro, paras, end){
-  const q = parseHash().q, sel = q.get('tab') === p ? q.get('s') : null, ids = stepIds(b), lg = k => cxFb(k) ? ' lang="uz-Latn"' : '';
-  const row = (g, i) => { const id = ids[i], np = noteParts(g.note ? cu(`${key}.g${i}.n`) : ''), files = g.files.filter(f => !f.guide), pc = g.prompts.length;
-    const title = cu(`${key}.g${i}`), np2 = pc && !new RegExp(`\\b${pc} prompt`).test(title);   // a title that already says "<n> prompt" gets no count in the meta line
-    const meta = id ? [...g.tags.map(x => STP_TAG.includes(x) ? t('stp.t.' + x) : x), np2 ? t('d3.n_prompts', {n: pc, pl: pc}) : ''].filter(Boolean).join(' · ') : t('d3.n_files', {n: files.length, pl: files.length});
+  const q = parseHash().q, tq = q.get('tab') === p ? q.get('s') : null, pq = q.get('p'), ids = stepIds(b), lg = k => cxFb(k) ? ' lang="uz-Latn"' : '';
+  const rows = b.groups.map((g, i) => ({g, i, id: ids[i]})).filter(x => x.id), extra = b.groups.map((g, i) => ({g, i})).filter(x => !ids[x.i]);
+  const sel = (rows.find(x => x.id === tq) || rows.find(x => x.g.prompts.some(y => y.kid === pq)) || rows[0] || {}).id;   // ?s= or the step of a ?p= prompt, else step 1
+  const ttl = x => cu(`${key}.g${x.i}`);
+  const body = (g, i) => { const np = noteParts(g.note ? cu(`${key}.g${i}.n`) : ''), files = g.files.filter(f => !f.guide), pc = g.prompts.length;
     const ph = g.prompts.some((_, j) => hasBracket(cu(`${key}.g${i}.p${j}.x`)));   // the prompts have [fill-in] places: say once what to do with them
-    const body = (np.lead ? `<p class="st-d">${esc(np.lead)}</p>` : '') + (np.steps.length ? `<ol class="d3-steps">${np.steps.map(y => `<li>${esc(y)}</li>`).join('')}</ol>` : '')
+    return (np.lead ? `<p class="st-d">${esc(np.lead)}</p>` : '') + (np.steps.length ? `<ol class="d3-steps">${np.steps.map(y => `<li>${esc(y)}</li>`).join('')}</ol>` : '')
       + (np.ready ? `<p class="d3-ready"><b>Tayyor, agar</b> ${esc(np.ready)}</p>` : '') + g.ref.map(r => refLink(n, r)).join('')
-      + (files.length ? `<div class="d3-fs">${d3Files(files)}</div>` : '') + (pc ? `<div class="d3-pr">${ph ? `<p class="st-ph">${T('stp.ph')}</p>` : ''}${d3Rows(n, `${key}.g${i}`, g)}</div>` : '');
-    return `<li><details class="st${id ? '' : ' st-files'}" id="st-${p}-${id || 'f' + i}"${id ? ` data-s="${id}"` : ''}${id && id === sel ? ' open' : ''}${lg(`${key}.g${i}`)}><summary>`
-      + `<span class="st-n" aria-hidden="true">${id ? id.slice(1) : I('down', 16)}</span><span class="st-x"><span class="st-t">${esc(title)}</span>${meta ? `<span class="st-m">${esc(meta)}</span>` : ''}</span></summary><div class="st-b">${body}</div></details></li>`; };
-  const steps = b.groups.map((g, i) => ids[i] ? row(g, i) : '').join(''), extra = b.groups.map((g, i) => ids[i] ? '' : row(g, i)).join('');
-  const kt = p === 'kt', guide = kt ? b.groups.flatMap(g => g.files.filter(f => f.guide)) : [];
-  const legend = kt && (b.forms.length || b.flow) ? `<div class="stp-ab"${lg(`${key}.f0`)}>${b.forms.map((_, j) => { const s = cu(`${key}.f${j}`), c = s.indexOf(': '); return `<p>${c > 0 ? `<b>${esc(s.slice(0, c))}:</b> ${esc(s.slice(c + 2))}` : esc(s)}</p>`; }).join('')}`
-    + `${b.flow ? `<p class="stp-flow">${cu(`${key}.flow`).split(/\s*→\s*/).map(x => `<span>${esc(x)}</span>`).join('<i>→</i>')}</p>` : ''}</div>` : '';
-  const gd = guide.map(f => `<a class="st-guide" ${fa(f)}><span class="sr-only">${T('common.sr_download')}</span>${I('down', 20)}<span class="st-gx"><b>${T('stp.guide')}</b><small>${esc((f.label || f.name).replace(/\s*\(PDF\)$/i, ''))}${f.size ? ' · ' + esc(f.size) : ''}</small></span></a>`).join('');
-  return `<div class="stp" data-tab="${p}">${intro}${kt ? kitIntro(key, b) : vzHead(n, key, b, paras)}<section class="stp-s" aria-labelledby="stp-${p}-${n}"><h3 class="stp-h${kt ? '' : ' sr-only'}" id="stp-${p}-${n}">${T(kt ? 'stp.h' : 'vzh.steps')}</h3>`
-    + `${legend}${gd}<ol class="st-l">${steps}</ol>${extra ? `<ul class="st-l">${extra}</ul>` : ''}</section></div>${end}`;
+      + (files.length ? `<div class="d3-fs">${d3Files(files)}</div>` : '') + (pc ? `<div class="d3-pr">${ph ? `<p class="st-ph">${T('stp.ph')}</p>` : ''}${d3Rows(n, `${key}.g${i}`, g)}</div>` : ''); };
+  const item = (x, k) => { const on = x.id === sel, where = stepWhere(x.g), pv = rows[k - 1], nx = rows[k + 1], pid = `sx-${p}-${x.id}`;
+    const nav = pv || nx ? `<div class="sx-nav">${pv ? `<button class="sx-pv" type="button" data-sx="${pv.id}">${I('back', 18)}<span>${T('stp.prev')}</span></button>` : ''}`
+      + `${nx ? `<button class="sx-nx" type="button" data-sx="${nx.id}"><span class="sx-nl"><small>${T('stp.next')}</small><b${lg(`${key}.g${nx.i}`)}>${esc(ttl(nx))}</b></span>${pg(nx.g.icon, 'sx-pn')}</button>` : ''}</div>` : '';
+    return `<li class="sx-li"><button class="sx-it" type="button" id="sxb-${p}-${x.id}" data-s="${x.id}" aria-expanded="${on}" aria-controls="${pid}"${lg(`${key}.g${x.i}`)}><span class="sx-ib">${pg(x.g.icon, 'pg')}<i>${x.id.slice(1)}</i></span>`
+      + `<span class="sx-tt"><b>${esc(ttl(x))}</b>${where ? `<span>${esc(where)}</span>` : ''}</span><span class="sx-cv" aria-hidden="true"></span></button>`
+      + `<section class="sx-p" id="${pid}" data-s="${x.id}" aria-labelledby="sxh-${p}-${x.id}"${on ? '' : ' hidden'}${lg(`${key}.g${x.i}`)}><div class="sx-ph">${pg(x.g.icon, 'sx-hero')}<h4 class="sx-pt" id="sxh-${p}-${x.id}" tabindex="-1">${esc(ttl(x))}</h4></div>`
+      + `<div class="sx-b">${body(x.g, x.i)}</div>${nav}</section></li>`; };
+  const files = extra.map(x => `<details class="sx-x" id="st-${p}-f${x.i}"${lg(`${key}.g${x.i}`)}><summary>${pg('files', 'sx-xi')}<span>${esc(ttl(x))}</span><span class="m">${T('d3.n_files', {n: x.g.files.length, pl: x.g.files.length})}</span></summary><div class="sx-b">${body(x.g, x.i)}</div></details>`).join('');
+  const guide = p === 'kt' ? b.groups.flatMap(g => g.files.filter(f => f.guide)) : [];
+  return `<div class="sx" data-tab="${p}" data-n="${n}">${intro}${p === 'kt' ? kitHead(key, b, guide) : vzHead(n, key, b, paras)}`
+    + `<ol class="sx-l" style="--sx-n:${rows.length}" aria-label="${esc(t('vzh.steps'))}">${rows.map(item).join('')}</ol>${files}</div>${end}`;
 }
-// a step that opens writes itself into the URL (replace: refresh and a shared link open it again); closing the one in the URL takes it out
-document.addEventListener('toggle', e => {
-  const d = e.target; if (!d.matches || !d.matches('details.st[data-s]') || !d.closest('#s-app')) return;
-  const pane = d.closest('.stp'), n = d.closest('#dg') && d.closest('#dg').dataset.n, r = parseHash(); if (!pane || !n || r.parts.join('/') !== `dars/${n}`) return;
-  const s = r.q.get('tab') === pane.dataset.tab ? r.q.get('s') : null;
-  if (d.open && s !== d.dataset.s) d3Move(d3Url(n, pane.dataset.tab, d.dataset.s), false); else if (!d.open && s === d.dataset.s) d3Move(d3Url(n, pane.dataset.tab), false);
-}, true);
-// Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups (Amaliyot: section cards + a docked panel, d3Pane; Kit and Vazifa: numbered steps, stepPane); Amaliyot and Vazifa end with a tick
+// a step opens from its row or from «Keyingi qadam» / «Oldingi» and writes itself into the URL (replace: refresh and a shared link open it again).
+// Wide screens always show one step in the panel; phones open it under its row, and a tap on the open row closes it (and takes it out of the URL)
+const sxNarrow = root => root.closest('.frame').clientWidth < 900;
+function sxShow(root, id){
+  if (typeof hideToast === 'function') hideToast();   // the undo toast sits inside a row of a panel that is being hidden
+  root.querySelectorAll('.sx-it').forEach(b => b.setAttribute('aria-expanded', b.dataset.s === id));
+  root.querySelectorAll('.sx-p').forEach(x => { x.hidden = x.dataset.s !== id; });
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('.sx-it, .sx [data-sx]'), root = b && b.closest('.sx'); if (!root || !b.closest('#dg')) return;
+  const row = b.classList.contains('sx-it'), narrow = sxNarrow(root), open = row && b.getAttribute('aria-expanded') === 'true';
+  if (open && !narrow) return;
+  const id = open ? '' : b.dataset.s || b.dataset.sx, to = id && root.querySelector(`.sx-it[data-s="${id}"]`), y0 = row && b.getBoundingClientRect().top;
+  sxShow(root, id);
+  d3Move(d3Url(root.dataset.n, root.dataset.tab, id), false);
+  if (row) { if (narrow) scrollBy(0, b.getBoundingClientRect().top - y0); return; }   // phones: the tapped row stays under the finger while the step above it closes
+  if (narrow) { to.scrollIntoView({block: 'start'}); to.focus({preventScroll: true}); return; }
+  const pn = root.querySelector(`#sx-${root.dataset.tab}-${id}`), top = pn.getBoundingClientRect().top;
+  if (top < 0) scrollBy(0, top - 20);
+  pn.querySelector('.sx-pt').focus({preventScroll: true});
+});
+// Amaliyot / Kit / Vazifa share one pane: paragraphs, then the groups (Amaliyot: section cards + a docked panel, d3Pane; Kit and Vazifa: a header, then the steps beside one panel, stepPane); Amaliyot and Vazifa end with a tick
 function blockPane(n, p){
   const b = (PARTS[n] || {})[p] || {text: '', groups: []}, key = `c.p.${n}.${p}`;
   const raw = b.text ? cu(`${key}.text`).split(/\n\s*\n/) : [], paras = raw.map(x => `<p class="p-sub">${esc(x).replace(/\n/g, '<br>')}</p>`);
@@ -578,7 +639,7 @@ function lessonPage(n, tab){
   const side = empty   // no materials yet: a card says so, instead of an empty folder
     ? `<div class="folder flatc c-slate soon-card"><span class="f-label">${esc(lessonDate(n))}</span><p class="soon-t">${T('lesson.soon')}</p></div>`
     : `<div class="gt gt-slate g-slate${tall ? ' gt-tall' : ''}" id="dg" data-n="${n}" data-def="${(L.parts.includes(def) ? def : L.parts[0]) || ''}" style="--n:${tabsDef.length}"><div class="gt-goo" aria-hidden="true"><span class="gt-ind"></span><span class="gt-pan"></span></div>
-      <div class="gt-tabs" role="tablist" aria-label="${esc(t('tab.list'))}">${tabs}</div><div class="gt-body">${panes}</div></div>`;   // every lesson folder inside a lesson page is Poʻlat (user, 2026-10-30); the home cards keep each lesson's own colour
+      <div class="gt-tabs" role="tablist" aria-label="${esc(t('tab.list'))}">${tabs}</div><div class="gt-body"><div class="gt-orbs" aria-hidden="true"><i></i><i></i><i></i></div>${panes}</div></div>`;   // every lesson folder inside a lesson page is Poʻlat (user, 2026-10-30); the home cards keep each lesson's own colour
   return {screen: 'dars', tab: Math.max(0, L.parts.indexOf(tab)), tag: `#/dars/${n} · ` + t('tag.lesson', {n: lnT(n), parts: L.parts.length}), title: lnum(n) == null ? title : t('title.lesson', {n: lnum(n), title}), html: nav('d') + `
     <div class="lhd">
       ${dlh('#/dastur', T('nav.home'))}
@@ -697,10 +758,10 @@ function render(keep){
   if (view === 'all') ['#/dastur', '#/dars/1', '#/dars/2'].forEach(h => { const el = document.createElement('section'); el.className = 'screen is-on'; el.dataset.clone = '1'; last.after(el); last = el; mount(el, resolve({parts: h.slice(2).split('/'), q: new URLSearchParams()}).page); });
   if (res.locked) openLockSheet(res.locked);
   const p = r.q.get('p'), target = p && app.querySelector(`[data-pid="${CSS.escape(p)}"]`), m = mem[location.hash];
-  const sq = r.q.get('s'), step = sq && app.querySelector(`.gt-pane:not([inert]) details.st[data-s="${CSS.escape(sq)}"]`);   // ?tab=kt&s=s2: the step is open (stepPane), bring it into view
+  const sq = r.q.get('s'), step = sq && app.querySelector(`.gt-pane:not([inert]) .sx-it[data-s="${CSS.escape(sq)}"]`);   // ?tab=kt&s=s2: the step is open (stepPane), bring it into view
   if (keep) {}
-  else if (target) { const st = target.closest('details.st'), dt = target.querySelector('details') || target.closest('details'); if (st) st.open = true; if (dt) dt.open = true; scrollTo(0, 0); target.scrollIntoView({block: 'start'}); const sm = target.querySelector('summary'); sm && sm.focus({preventScroll: true}); }   // a prompt inside a Kit / Vazifa step: the step and the prompt both open
-  else if (step) { scrollTo(0, 0); step.scrollIntoView({block: 'start'}); step.querySelector('summary').focus({preventScroll: true}); }
+  else if (target) { const dt = target.querySelector('details') || target.closest('details'); if (dt) dt.open = true; scrollTo(0, 0); target.scrollIntoView({block: 'start'}); const sm = target.querySelector('summary'); sm && sm.focus({preventScroll: true}); }   // a prompt inside a Kit / Vazifa step: stepPane already opened its step, the prompt opens too
+  else if (step) { scrollTo(0, 0); step.scrollIntoView({block: 'start'}); step.focus({preventScroll: true}); }
   else if (!byClick && m && !firstRender) { scrollTo(0, m.y); const a = m.from && document.querySelector(`#s-app a[href="${CSS.escape(m.from)}"]`); if (a) a.focus({preventScroll: true}); }
   else if (slFocus && app.querySelector(`[data-slnav="${slFocus}"]`)) { scrollTo(0, 0); app.querySelector(`[data-slnav="${slFocus}"]`).focus({preventScroll: true}); }
   else { scrollTo(0, 0); if (!firstRender) { const h = document.querySelector('.screen.is-on h1'); if (h) { h.tabIndex = -1; h.focus({preventScroll: true}); } } }

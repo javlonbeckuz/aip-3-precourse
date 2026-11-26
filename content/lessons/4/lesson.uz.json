@@ -28,7 +28,7 @@
     "groups": [
       {
         "title": "01 Kit 3, A shakli: jarayon qadamlari",
-        "note": "ASOSIY. Kit 3 «Ishni qayta taqsimlash»: jarayonning har qadamini kim bajarishini qayta belgilaydi. Mashq Kit tabida, 1-2-qadamlar. Tayyor, agar: boʻsh katak yoʻq va bitta haqiqiy holat yuritilgan.",
+        "note": "ASOSIY. Kit 3 «Ishni qayta taqsimlash»: jarayonning har qadamini kim bajarishini qayta belgilaydi. Mashq Kit tabida, 1–2-qadamlar.",
         "ref": {
           "tab": "kit",
           "step": 1
@@ -37,7 +37,7 @@
       },
       {
         "title": "02 Kit 3, B shakli: agent koʻrsatmalari",
-        "note": "ASOSIY. System prompt: agent har doim amal qiladigan doimiy koʻrsatmalar, uning ish tavsifi. Mashq va prompt Kit tabida, 3-qadam. Tayyor, agar: instructions.mdʼda manbalar, cheklovlar va odamga oʻtkaziladigan holatlar bor.",
+        "note": "ASOSIY. System prompt: agent har doim amal qiladigan doimiy koʻrsatmalar, uning ish tavsifi. Mashq va prompt Kit tabida, 3-qadam.",
         "ref": {
           "tab": "kit",
           "step": 3
@@ -46,7 +46,7 @@
       },
       {
         "title": "03 API tekshiruvi",
-        "note": "ASOSIY. API: ilovaning boshqalar undan soʻrashi mumkin boʻlgan rasmiy menyusi. MCP: AIʼga boshqa ilovalardan foydalanish imkonini beradigan standart ulagich, AI uchun Type-C kabeli kabi. 1) B.3ʼdagi har tizim uchun Claudeʼdan API yoki MCP bor-yoʻqligini soʻrang. 2) Natijani bitta roʻyxatga yigʻing. Tayyor, agar: roʻyxat bor: tizim, API, MCP, faqat eksport yoki hech narsa.",
+        "note": "ASOSIY. API: ilovaning boshqalar undan soʻrashi mumkin boʻlgan rasmiy menyusi. MCP: AIʼga boshqa ilovalardan foydalanish imkonini beradigan standart ulagich, AI uchun Type-C kabeli kabi. 1) Kit 3, B shaklidagi har manba (tizim) uchun Claudeʼdan API yoki MCP bor-yoʻqligini soʻrang. 2) Natijani bitta roʻyxatga yigʻing. Tayyor, agar: roʻyxat bor: tizim, API, MCP, faqat eksport yoki hech narsa.",
         "files": [],
         "prompts": [
           {
@@ -140,11 +140,7 @@
     "kits": [
       3
     ],
-    "forms": [
-      "A shakli: qadamlar, hozir va AI kelgach kim.",
-      "B shakli: agent koʻrsatmalari."
-    ],
-    "flow": "jarayon → qadamlar (A) → koʻrsatmalar (B) → instructions.md → agent v0",
+    "head": "Tanlangan jarayonning har qadamini yozasiz: hozir kim qiladi va AI kelgach kim (A shakli), keyin agent koʻrsatmalarini (B shakli). 4-darsda agent shu koʻrsatmalar bilan serverda ishlay boshlaydi.",
     "groups": [
       {
         "title": "Qadamlarni yozing",
@@ -152,6 +148,7 @@
           "darsda",
           "noutbuk"
         ],
+        "icon": "list",
         "note": "Kit 2ʼda tanlangan jarayonni A shakliga yozing, bir qatorda bitta harakat. 1) Har qadamni hozir kim qilishini yozing. 2) AI kelgach kim qilishini belgilang: A agent, R robot (AIʼsiz avtomatika: formula, skript yoki oddiy bot), I inson. 3) Kim tekshirishi, kim qaror qilishi va kim javobgarligini yozing. Agent oʻz qadamini oʻzi tekshirmaydi. Bitta katak boʻsh boʻlsa, jarayon tayyor emas. Tayyor, agar: boʻsh katak yoʻq.",
         "files": [
           {
@@ -174,6 +171,7 @@
         "tags": [
           "darsda"
         ],
+        "icon": "route",
         "note": "Oʻtgan haftadagi bitta haqiqiy holatni jadval boʻyicha boshidan oxirigacha oʻtib chiqing va hech qaysi qadam tushib qolmaganini tekshiring. Tayyor, agar: bitta haqiqiy holat jadval boʻyicha oʻtilgan.",
         "files": []
       },
@@ -183,6 +181,7 @@
           "darsda",
           "noutbuk"
         ],
+        "icon": "doc",
         "note": "Claude Code B shaklidan agentning doimiy koʻrsatmasini (system prompt) yozadi. 1) B shaklini toʻldiring: agent foydalanadigan manbalar va har biriga ulanish yoʻli (API, MCP ulagichi, eksport fayli yoki qoʻlda), odamga oʻtkaziladigan holatlar. 2) A va Bʼni kit3-agent papkasiga saqlang va «Kit 3 prompti»ni yoki /kit3 skillini (pastda, «Skill fayli») ishga tushiring. 3) Topilgan javobgarsiz qadam va istisnolarni B shakliga qoʻshing. [?]: AI uni ulanish yoʻli yozilmagan manbaga qoʻyadi, yoʻlni B shakliga yozasiz. Tayyor, agar: kit3-agent/instructions.mdʼda manbalar, cheklovlar va odamga oʻtkaziladigan holatlar bor.",
         "files": [
           {
@@ -206,7 +205,8 @@
         "tags": [
           "uyda"
         ],
-        "note": "Koʻrsatmalarni xodimlarga koʻrsatasiz, agentning birinchi versiyasini (v0) tugatasiz va serverga tayyorlanasiz.",
+        "icon": "house",
+        "note": "Qadamlar va muddat Vazifa tabida.",
         "ref": {
           "tab": "vazifa"
         },
@@ -237,6 +237,7 @@
           "uyda",
           "noutbuk"
         ],
+        "icon": "people",
         "note": "instructions.mdʼni (Kit 3, B shakli) agent bilan ishlaydigan xodimlarga koʻrsating. Ular aytgan har istisnoni «Qachon odamga oʻtkazadi» boʻlimiga qoʻshing. B shakli oxiriga ismingiz va sanani yozing.",
         "files": [],
         "prompts": [
@@ -254,6 +255,7 @@
           "uyda",
           "noutbuk"
         ],
+        "icon": "bot",
         "note": "Mentor yordami bilan v0ʼni tugating, savollarni guruh chatiga yozing. Kamida 5 ta oʻtgan haqiqiy holatda sinang.",
         "files": [],
         "prompts": [
@@ -270,6 +272,7 @@
         "tags": [
           "uyda"
         ],
+        "icon": "compare",
         "note": "Jarayon natijasining 3 ta yaxshi va 3 ta yomon haqiqiy namunasini yigʻing va papkaga saqlang. Ular Kit 4ʼdagi oʻquv namunalari va agentning test toʻplami boʻladi.",
         "files": []
       },
@@ -279,6 +282,7 @@
           "uyda",
           "noutbuk"
         ],
+        "icon": "server",
         "note": "VPS: data markazdagi ijaraga olingan, faqat sizga tegishli kompyuter. Sozlash videosi boʻyicha VPS va domen (serverning odamlar eslaydigan nomi) sotib oling. Kirish maʼlumotlarini hech kimga yubormang, ularni .envʼga (kalitlar turadigan maxfiy fayl) yozing. Claude Code bilan VPSʼga bir marta kiring.",
         "files": [],
         "prompts": [
@@ -295,6 +299,7 @@
         "tags": [
           "uyda"
         ],
+        "icon": "chart",
         "note": "Jarayoningiz tarixidan raqam olib boʻlmagan boʻlsa, jonli yozishni 5 ish kuniga yetkazing va agentgacha raqamlarni (baseline.md) yakunlang.",
         "files": []
       }

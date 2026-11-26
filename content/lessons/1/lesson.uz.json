@@ -79,7 +79,7 @@
       },
       {
         "title": "04 Kompaniya bilim bazasi",
-        "note": "ASOSIY. NotebookLM faqat siz yuklagan hujjatlardan javob beradi va manbani koʻrsatadi. 1) Yangi notebook oching va 3-5 ta hujjat yuklang: narxlar roʻyxati, ichki qoidalar, shartnoma namunasi. 2) 3 ta savol bering. 3) Hujjatlar orasidagi ziddiyatlarni topishni soʻrang. 4) Audio overview yoki quiz yarating. Tayyor, agar: manba iqtiboslari bilan 3 ta javob bor.",
+        "note": "ASOSIY. NotebookLM faqat siz yuklagan hujjatlardan javob beradi va manbani koʻrsatadi. 1) Yangi notebook oching va 3–5 ta hujjat yuklang: narxlar roʻyxati, ichki qoidalar, shartnoma namunasi. 2) 3 ta savol bering. 3) Hujjatlar orasidagi ziddiyatlarni topishni soʻrang. 4) Audio overview yoki quiz yarating. Tayyor, agar: manba iqtiboslari bilan 3 ta javob bor.",
         "files": [],
         "prompts": [
           {
@@ -104,7 +104,7 @@
       },
       {
         "title": "05 Kit 1 mashqi",
-        "note": "ASOSIY. Kit 1 «Ish qayerga ketadi»: xodim vaqti qaysi vazifalarga ketishini xaritaga tushiradi. Mashq va uning ikkala prompti Kit tabida, 1-3-qadamlar: hamkasb bilan intervyu, yozuvni matnga aylantirish va B shakli jadvali. Tayyor, agar: B shakli jadvali bor va kamida bitta raqam qoʻlda tuzatilgan.",
+        "note": "ASOSIY. Kit 1 «Ish qayerga ketadi»: xodim vaqti qaysi vazifalarga ketishini xaritaga tushiradi. Mashq va uning ikkala prompti Kit tabida, 1–3-qadamlar.",
         "ref": {
           "tab": "kit",
           "step": 1
@@ -137,11 +137,7 @@
     "kits": [
       1
     ],
-    "forms": [
-      "A shakli: suhbat varaqasi, 7 savol.",
-      "B shakli: vazifalar va haftalik soatlar."
-    ],
-    "flow": "A shakli → ovozli yozuv → matn → B shakli → 2-dars",
+    "head": "Xodimga A shaklidagi 7 savolni berasiz, javoblaridan B shakli chiqadi: uning vazifalari va haftalik soatlari jadvali. 2-darsda Kit 2 shu jadvallardan bitta jarayon tanlaydi.",
     "groups": [
       {
         "title": "Hamkasb bilan mashq",
@@ -149,6 +145,7 @@
           "darsda",
           "telefon"
         ],
+        "icon": "people",
         "note": "7 savol yoʻriqnomada (PDF). 1) Yoningizdagi hamkasb bilan juft boʻling. 2) Yozib olishdan oldin ruxsat soʻrang, shu matnni ovoz chiqarib oʻqing: «Suhbatimizni yozib olyapman, shunda ishingizdagi muhim detallarni oʻtkazib yubormayman. Bu yozuv va uning matnini faqat men hamda men foydalanadigan AI vositasi koʻradi. Bu sizning ishingizga baho berish emas. Rozimisiz?» 3) Rozi boʻlsa, telefonda yozishni boshlang va 7 savol bilan 5 daqiqa suhbatlashing. Tayyor, agar: telefoningizda mashq yozuvi bor.",
         "files": [
           {
@@ -166,6 +163,7 @@
           "darsda",
           "noutbuk"
         ],
+        "icon": "wave",
         "note": "Telefondagi yozuvni Geminiʼga (Googleʼning AI chati) yuklang va «Transkripsiya» promptini qoʻying: u ovozli yozuvni soʻzma-soʻz matnga aylantiradi. Matndagi har raqamni audio bilan solishtiring: Gemini oʻzbekcha raqamlarda adashadi, «bir uch-toʻrt yuz ming» 1 300 000 boʻlib qoladi. [?] belgisiga tegmang: Gemini uni eshitilmagan joyga qoʻyadi, audio bilan tekshirib oʻzingiz toʻgʻrilaysiz. Tayyor, agar: matndagi har raqam audio bilan tekshirilgan.",
         "files": [],
         "prompts": [
@@ -183,6 +181,7 @@
           "darsda",
           "noutbuk"
         ],
+        "icon": "table",
         "note": "1) Matnni «Kit 1 prompti» bilan Claudeʼga bering. Promptning oxiriga B shakli faylining matnini va intervyu matnini qoʻying. 2) Jadvaldagi har raqamni yozuv bilan solishtiring, kamida bittasini qoʻlda tuzating. [?]: AI uni taxminiy raqam yoniga qoʻyadi. Uyda xodim raqamni tuzatgach, [?]ni oʻchirasiz. Tayyor, agar: B shakli jadvali bor va kamida bitta raqam qoʻlda tuzatilgan.",
         "files": [
           {
@@ -202,11 +201,12 @@
         ]
       },
       {
-        "title": "Uyda: 2-3 xodim bilan",
+        "title": "Uyda: 2–3 xodim bilan",
         "tags": [
           "uyda"
         ],
-        "note": "Jamoaga sababini aytasiz, 2-3 xodim bilan 20-30 daqiqalik intervyu oʻtkazasiz va har birini jadvalga aylantirasiz.",
+        "icon": "house",
+        "note": "Qadamlar va muddat Vazifa tabida.",
         "ref": {
           "tab": "vazifa"
         },
@@ -243,6 +243,7 @@
           "uyda",
           "telefon"
         ],
+        "icon": "mega",
         "note": "Birinchi intervyudan oldin jamoaga bitta xabar yozing yoki qisqa yigʻilish qiling. Maqsad: ishni xaritaga tushirish, odamlarni almashtirish emas. Har intervyu boshida buni yana ayting.",
         "files": [],
         "prompts": [
@@ -255,12 +256,13 @@
         ]
       },
       {
-        "title": "2-3 xodim bilan intervyu",
+        "title": "2–3 xodim bilan intervyu",
         "tags": [
           "uyda",
           "telefon"
         ],
-        "note": "Bitta boʻlimdan 2-3 xodim bilan 20-30 daqiqa suhbatlashing, darsdagi mashqdagidek: avval yozib olishga ruxsat soʻrang, keyin A shaklidagi 7 savol. Yakka ishlaydigan egalar va jamoasi yoʻq rahbarlar oʻzini yoki boʻlim boshligʻini intervyu qiladi.",
+        "icon": "people",
+        "note": "Bitta boʻlimdan 2–3 xodim bilan 20–30 daqiqa suhbatlashing, darsdagi mashqdagidek: avval yozib olishga ruxsat soʻrang, keyin A shaklidagi 7 savol. Yakka ishlaydigan egalar va jamoasi yoʻq rahbarlar oʻzini yoki boʻlim boshligʻini intervyu qiladi.",
         "ref": {
           "tab": "kit",
           "step": 1
@@ -273,7 +275,8 @@
           "uyda",
           "noutbuk"
         ],
-        "note": "Har intervyuni Geminiʼda matnga aylantiring, keyin «Kit 1 prompti» bilan jadvalga. Ikkala prompt Kit tabida. Jadvaldagi har raqamni audio bilan tekshiring.",
+        "icon": "table",
+        "note": "Har intervyuni Geminiʼda matnga aylantiring, keyin «Kit 1 prompti» bilan jadvalga. Jadvaldagi har raqamni audio bilan tekshiring.",
         "ref": [
           {
             "tab": "kit",
@@ -291,6 +294,7 @@
         "tags": [
           "uyda"
         ],
+        "icon": "check",
         "note": "Har jadvalni xodimning oʻziga koʻrsating: daqiqa va chastotani u tuzatsin, taxminiy raqam belgisi [?] qolmasin. Haftalik soatlarni jamlang va har vazifaga «AI kelgach kim qiladi» belgisini qoʻying: A agent (AI), R robot (AIʼsiz avtomatika: formula, skript, oddiy bot), I inson, B birgalikda.",
         "files": []
       },
@@ -300,7 +304,8 @@
           "uyda",
           "noutbuk"
         ],
-        "note": "Har jadvalni alohida .md faylga saqlang, masalan kit1-dilnoza.md. .md: oddiy matn fayli, Claude Code shu formatni oʻqiydi. Hammasini noutbukdagi bitta papkaga yigʻing va 2-darsga olib keling: u yerda ular «kompaniya» papkasiga tushadi.",
+        "icon": "files",
+        "note": "Har jadvalni alohida .md faylga saqlang, masalan kit1-dilnoza.md. .md: oddiy matn fayli, Claude Code shu formatni oʻqiydi. Hammasini noutbukdagi bitta papkaga yigʻing va 2-darsga olib keling.",
         "files": []
       },
       {
@@ -309,7 +314,8 @@
           "uyda",
           "noutbuk"
         ],
-        "note": "Darsda mentor bilan oʻrnatgan Warp va Claude Codeʼni uyda yana bir bor oching: Warpʼda claude deb yozing va salom bering. Ochilmasa, Amaliyotdagi qadamlarni takrorlang. Yana chiqmasa, xatoning skrinshotini oling va guruh chatiga yozing: 2-dars Claude Code bilan boshlanadi.",
+        "icon": "term",
+        "note": "Darsda mentor bilan oʻrnatgan Warp va Claude Codeʼni uyda yana bir bor oching: Warpʼda claude deb yozing va salom bering. Ochilmasa, Amaliyotdagi qadamlarni takrorlang. Yana chiqmasa, xatoning skrinshotini oling va guruh chatiga yozing.",
         "ref": {
           "tab": "amaliyot",
           "step": 6

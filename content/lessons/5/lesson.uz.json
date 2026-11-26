@@ -85,7 +85,7 @@
       },
       {
         "title": "05 Kit 5, A shakli: pilot rejasi",
-        "note": "ASOSIY. Pilot: cheklangan, muddati belgilangan haqiqiy sinov. Toʻxtash sharti: sinovni darhol toʻxtatadigan holat. Reja va uning promptlari Kit tabida, 1-2-qadamlar. Tayyor, agar: reja kit5-pilot/plan.mdʼda saqlangan.",
+        "note": "ASOSIY. Toʻxtash sharti: sinovni darhol toʻxtatadigan holat. Reja va uning promptlari Kit tabida, 1–2-qadamlar.",
         "ref": {
           "tab": "kit",
           "step": 1
@@ -94,7 +94,7 @@
       },
       {
         "title": "06 Kit 4, A shakli: koʻnikmalar xaritasi",
-        "note": "ASOSIY. Kit 4: agent ishga tushgach xodimlar nima bilan band boʻlishini belgilaydi. Xarita va prompt Kit tabida, 3-qadam. Tayyor, agar: koʻnikmalar xaritasi saqlangan.",
+        "note": "ASOSIY. Koʻnikmalar xaritasi va uning prompti Kit tabida, 3-qadam.",
         "ref": {
           "tab": "kit",
           "step": 3
@@ -103,7 +103,7 @@
       },
       {
         "title": "07 Kit 4, B shakli: oʻquv vazifasi",
-        "note": "ASOSIY. Oʻquv vazifasi va promptlar Kit tabida, 4-qadam. Tayyor, agar: mezonlari va 2 haftalik oʻlchovi bor oʻquv vazifasi tayyor.",
+        "note": "ASOSIY. Oʻquv vazifasi va promptlar Kit tabida, 4-qadam.",
         "ref": {
           "tab": "kit",
           "step": 4
@@ -123,12 +123,7 @@
       4,
       5
     ],
-    "forms": [
-      "Kit 5, A shakli: pilot rejasi.",
-      "Kit 4, A shakli: koʻnikmalar xaritasi.",
-      "Kit 4, B shakli: xodimning oʻquv vazifasi."
-    ],
-    "flow": "reja (Kit 5) → Kit 4 suhbati → agent yoqiladi → 1-hafta",
+    "head": "Kit 5 bilan pilot rejasini yozasiz, Kit 4 bilan agent yoqilgach har xodim nima bilan band boʻlishini belgilaysiz. Shu hafta pilot ishga tushadi.",
     "groups": [
       {
         "title": "Pilot rejasini yozing",
@@ -137,7 +132,8 @@
           "noutbuk",
           "mentor"
         ],
-        "note": "Pilot: 2-4 haftalik haqiqiy sinov, bitta raqamli maqsad va aniq toʻxtash sharti bilan. 1) Mentor bilan A shaklini toʻldiring: «Pilot rejasi qoralamasi» prompti yoki «/kit5 reja» yordam beradi. 2) Maqsad agentgacha raqamlardan chiqqan bitta raqam boʻlsin, masalan «kuniga 60 daqiqadan 10 daqiqaga». Tayyor, agar: reja kit5-pilot/plan.mdʼda saqlangan.",
+        "icon": "flag",
+        "note": "Pilot: 2–4 haftalik haqiqiy sinov, bitta raqamli maqsad va aniq toʻxtash sharti bilan. 1) Mentor bilan A shaklini toʻldiring: «Pilot rejasi qoralamasi» prompti yoki «/kit5 reja» yordam beradi. 2) Maqsad agentgacha raqamlardan chiqqan bitta raqam boʻlsin, masalan «kuniga 60 daqiqadan 10 daqiqaga». Tayyor, agar: reja kit5-pilot/plan.mdʼda saqlangan.",
         "files": [
           {
             "slug": "kit5-pdf",
@@ -168,6 +164,7 @@
           "darsda",
           "noutbuk"
         ],
+        "icon": "search",
         "note": "Rejani «Rejani tekshirish» prompti bilan tekshiring va topilganini tuzating. Prompt rejani oʻzgartirmaydi, faqat muammolarni roʻyxat qiladi.",
         "files": [],
         "prompts": [
@@ -185,6 +182,7 @@
           "darsda",
           "noutbuk"
         ],
+        "icon": "table",
         "note": "Kit 4 «Yangi rollar»: agent ishga tushgach xodimlar nima bilan band boʻlishini belgilaydi. 1) Pilot taʼsir qiladigan har xodimni A shakliga yozing. 2) Har biriga: eng kuchli koʻnikmasi va uning haqiqiy misoli, bugungi ishi, yangi roli, yangi tekshirish vazifasi, kerakli oʻqish. Tayyor, agar: koʻnikmalar xaritasi saqlangan.",
         "files": [
           {
@@ -215,6 +213,7 @@
           "darsda",
           "noutbuk"
         ],
+        "icon": "grad",
         "note": "1) Har xodimga 3 ta yaxshi va 3 ta yomon haqiqiy namuna (3-dars vazifasida yigʻilgan) asosida bitta oʻquv vazifasini B shakliga yozing. 2) «Kit 4 prompti» yoki /kit4 mezonlarni aniq qiladi va mashq tuzadi. Tayyor, agar: har xodimga mezonli oʻquv vazifasi bor.",
         "files": [
           {
@@ -244,7 +243,8 @@
         "tags": [
           "uyda"
         ],
-        "note": "Avval har xodim bilan 15 daqiqalik suhbat (Kit 4), keyin agent yoqiladi. Hech qachon aksincha emas.",
+        "icon": "house",
+        "note": "Qadamlar va muddat Vazifa tabida.",
         "ref": {
           "tab": "vazifa"
         },
@@ -276,6 +276,7 @@
           "uyda",
           "noutbuk"
         ],
+        "icon": "server",
         "ref": [
           {
             "tab": "amaliyot",
@@ -294,6 +295,7 @@
         "tags": [
           "uyda"
         ],
+        "icon": "people",
         "note": "Pilot taʼsir qiladigan har xodim bilan 15 daqiqalik suhbat oʻtkazing. Uning savol va xavotirlarini hamda nima deb kelishganingizni Kit 4, B shaklining oxirgi ikki bandiga yozing. Koʻnikmalar xaritasini boʻlim boshligʻi bilan tekshiring.",
         "files": []
       },
@@ -303,6 +305,7 @@
           "uyda",
           "noutbuk"
         ],
+        "icon": "shield",
         "note": "Ishga tushirishdan oldin Kit 5, A shaklini boʻlim boshligʻi bilan kelishing. Agent faqat qoralama tayyorlaydi, har natijani inson tasdiqlaydi. Agent pul oʻtkazmaydi, mijozga yozmaydi, maʼlumot oʻchirmaydi.",
         "files": [],
         "prompts": [
@@ -320,6 +323,7 @@
           "uyda",
           "noutbuk"
         ],
+        "icon": "warn",
         "note": "Agentning har xatosini Kit 5, B shaklidagi xatolar jurnaliga yozing: sana, nima boʻldi, kim topdi, nimani oʻzgartirdik.",
         "files": [],
         "prompts": [
@@ -337,6 +341,7 @@
           "uyda",
           "noutbuk"
         ],
+        "icon": "chart",
         "note": "Kit 5, B shaklining 1-hafta ustunini agentgacha raqamlar bilan bir xil usulda toʻldiring.",
         "files": [],
         "prompts": [

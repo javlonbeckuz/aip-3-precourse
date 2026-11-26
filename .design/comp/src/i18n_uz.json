@@ -1045,7 +1045,7 @@
   "note": "UI text"
  },
  "d3.next_s": {
-  "uz": "Keyingi",
+  "uz": "Keyingi qadam",
   "translate": true,
   "note": "UI text"
  },
@@ -1114,13 +1114,18 @@
   "translate": true,
   "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
  },
- "stp.h": {
-  "uz": "Qayerdan boshlash",
+ "stp.guide": {
+  "uz": "Avval yoʻriqnomani oching",
   "translate": true,
   "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
  },
- "stp.guide": {
-  "uz": "Avval yoʻriqnomani oching (PDF)",
+ "stp.next": {
+  "uz": "Keyingi qadam",
+  "translate": true,
+  "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
+ },
+ "stp.prev": {
+  "uz": "Oldingi",
   "translate": true,
   "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
  },
@@ -1150,12 +1155,12 @@
   "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
  },
  "stp.t.telefon": {
-  "uz": "telefon",
+  "uz": "telefonda",
   "translate": true,
   "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
  },
  "stp.t.noutbuk": {
-  "uz": "noutbuk",
+  "uz": "noutbukda",
   "translate": true,
   "note": "Kit / Vazifa tab: «Kit nima?», «Qayerdan boshlash», «Vazifa nima?»; short lines read on a 390 px phone"
  },

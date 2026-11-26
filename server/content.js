@@ -6,7 +6,7 @@ import { GROUPS } from './db.js';
 export const LANGS = ['uz', 'ru'];
 export const LESSON_COUNT = 7;
 export const PARTS = ['slides', 'amaliyot', 'kit', 'vazifa', 'prep'];
-const BLOCKS = ['amaliyot', 'kit', 'vazifa']; // {text, groups[{title, note?, files[{slug, name, size}], prompts?[{id, title, target?, text}]}]} in the UZ lesson file; Kit/Vazifa display fields (kits, forms, flow, due, tags, kind, ref, guide) pass through as written (API.md)
+const BLOCKS = ['amaliyot', 'kit', 'vazifa']; // {text, groups[{title, note?, files[{slug, name, size}], prompts?[{id, title, target?, text}]}]} in the UZ lesson file; Kit/Vazifa display fields (kits, head, due, tags, icon, kind, ref, guide) pass through as written (API.md)
 const NUMS = Array.from({ length: LESSON_COUNT }, (_, i) => i + 1);
 const isLessonNo = (d) => /^(0|[1-9]\d*)$/.test(d) && Number(d) <= LESSON_COUNT; // lesson 0 (prep) + 1..LESSON_COUNT; "07" and "10" are no lessons
 const SLUG_RE = /^[a-z0-9-]{1,80}$/; // what the doc route accepts

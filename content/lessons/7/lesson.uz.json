@@ -26,7 +26,7 @@
     "groups": [
       {
         "title": "01 Yakuniy raqamlar",
-        "note": "ASOSIY. Baseline va delta: oldin va keyin, raqamlarda. Mashq va prompt Kit tabida, 1-qadam. Tayyor, agar: har qatorda Agentgacha, 1-hafta, 2-hafta va oʻzgarish bor.",
+        "note": "ASOSIY. Agentgacha raqamlar (baseline) va oʻzgarish (delta): oldin va keyin, raqamlarda. Mashq va prompt Kit tabida, 1-qadam.",
         "ref": {
           "tab": "kit",
           "step": 1
@@ -48,7 +48,7 @@
       },
       {
         "title": "03 Qaror",
-        "note": "ASOSIY. Pilotning uchta halol natijasi bor: davom ettirish, oʻzgartirish yoki toʻxtatish. Mashq va promptlar Kit tabida, 2-qadam. Tayyor, agar: davom ettirish, oʻzgartirish yoki toʻxtatish belgilangan va sababi bir gapda yozilgan.",
+        "note": "ASOSIY. Mashq va promptlar Kit tabida, 2-qadam.",
         "ref": {
           "tab": "kit",
           "step": 2
@@ -89,11 +89,7 @@
       4,
       5
     ],
-    "forms": [
-      "Kit 5, B shakli: «Oʻzgarish» va qaror.",
-      "Kit 5, A shakli: mezon va toʻxtash sharti."
-    ],
-    "flow": "agentgacha → haftalar → oʻzgarish → qaror → 2-jarayon",
+    "head": "Pilot natijasini hisoblab, qaror qilasiz: davom ettirish, oʻzgartirish yoki toʻxtatish (Kit 5, B shakli). Kit 4 bilan xodimlar oʻsishining birinchi 2 haftalik tekshiruvini qilasiz.",
     "groups": [
       {
         "title": "Yakuniy raqamlar",
@@ -101,6 +97,7 @@
           "darsda",
           "noutbuk"
         ],
+        "icon": "chart",
         "note": "Oʻzgarish: oxirgi toʻldirilgan hafta va Agentgacha ustuni orasidagi farq. 1) «Kit 5, B shaklini yakunlash» promptini ishga tushiring: har qatorga Oʻzgarish ustuni yoziladi. 2) Xarajatlarni jamlang: obunalar, sozlash va tekshirish soatlari. 3) Topilgan pul qatorini jamlang. Tayyor, agar: har qatorda Agentgacha, haftalar va oʻzgarish bor.",
         "files": [
           {
@@ -132,6 +129,7 @@
           "darsda",
           "noutbuk"
         ],
+        "icon": "scale",
         "note": "Pilotning uchta halol natijasi bor: davom ettirish, oʻzgartirish yoki toʻxtatish. 1) «Kit 5 prompti: qaror»ni yoki «/kit5 qaror»ni ishga tushiring (Claude Code ochilmasa, chat varianti pastda). 2) Natijani pilot rejasidagi muvaffaqiyat mezoni va toʻxtash sharti bilan solishtiring. 3) Bitta qarorni belgilang, sababini bir gapda yozing. 4) Vaqt qolsa, qarorni «Uch tanqidchi» bilan sinang. Tayyor, agar: qaror va sababi Kit 5, B shaklida yozilgan.",
         "files": [],
         "prompts": [
@@ -160,6 +158,7 @@
         "tags": [
           "darsda"
         ],
+        "icon": "growth",
         "note": "Kit 4 oʻquv vazifasining birinchi 2 haftalik tekshiruvi. 1) Har xodim bilan oʻsish natijasini koʻring (Kit 4, B shaklidagi «Oʻsishni qanday oʻlchaymiz»). 2) Kerak boʻlsa, mezonlarni oʻzgartiring. Tayyor, agar: har xodimga natija yozilgan.",
         "files": []
       },
@@ -168,7 +167,8 @@
         "tags": [
           "darsda"
         ],
-        "note": "Kimdir sizga AI agent sotmoqchi boʻlsa ishlating: Oʻzbekistonda bunday agentlar 2 000-5 000 dollar turadi. Sotuvchi kelganda: 1) Sakkizta savolni sotuvchiga yozma bering. 2) Javoblarni promptda cheklist bilan solishtiring. 3) Maʼlumot qaysi mamlakatda saqlanishini yozma oling. Tayyor, agar: cheklist saqlangan va sotuvchi kelganda nima soʻrashni bilasiz.",
+        "icon": "list",
+        "note": "Kimdir sizga AI agent sotmoqchi boʻlsa ishlating: Oʻzbekistonda bunday agentlar 2 000–5 000 dollar turadi. Sotuvchi kelganda: 1) Sakkizta savolni sotuvchiga yozma bering. 2) Javoblarni promptda cheklist bilan solishtiring. 3) Maʼlumot qaysi mamlakatda saqlanishini yozma oling. Tayyor, agar: cheklist saqlangan va sotuvchi kelganda nima soʻrashni bilasiz.",
         "files": [
           {
             "slug": "cheklist-pdf",
@@ -197,7 +197,8 @@
         "tags": [
           "uyda"
         ],
-        "note": "Qarorni boʻlim boshligʻi bilan koʻrasiz va 2-jarayonni boshlaysiz.",
+        "icon": "house",
+        "note": "Qadamlar va muddat Vazifa tabida.",
         "ref": {
           "tab": "vazifa"
         },
@@ -206,7 +207,7 @@
     ]
   },
   "vazifa": {
-    "text": "1 oy ichida qaror kelishilgan va 2-jarayon boshlangan boʻlsin. Kurs tugagach, 1 oy davomida mentorlar guruh chatida yordam beradi. Kompaniya papkasi va skillaringiz tayyor, 2-jarayon ularga tayanadi.",
+    "text": "Qaror kelishilgan va 2-jarayon boshlangan boʻlsin. Shu oy davomida mentorlar guruh chatida yordam beradi. Kompaniya papkasi va skillaringiz tayyor, 2-jarayon ularga tayanadi.",
     "due": "Kurs tugagach 1 oy ichida",
     "groups": [
       {
@@ -215,6 +216,7 @@
           "uyda",
           "noutbuk"
         ],
+        "icon": "agree",
         "note": "Kit 5, B shaklidagi qarorni boʻlim boshligʻi bilan koʻrib chiqing. Pilot davom etsa, 3 va 4-hafta ustunlarini ham toʻldiring.",
         "files": [],
         "prompts": [
@@ -227,11 +229,18 @@
         ]
       },
       {
-        "title": "Xodimlar oʻsishi",
+        "title": "Xodimlarning keyingi koʻnikmalari",
         "tags": [
           "uyda"
         ],
-        "note": "Darsda Kit 4 oʻquv vazifasining birinchi 2 haftalik tekshiruvi qilindi. Endi har xodim bilan mezonlarni moslang va keyingi koʻnikmalarni rejalashtiring.",
+        "icon": "growth",
+        "note": "Har xodim bilan mezonlarni moslang va keyingi koʻnikmalarni rejalashtiring.",
+        "ref": [
+          {
+            "tab": "kit",
+            "step": 3
+          }
+        ],
         "files": []
       },
       {
@@ -240,6 +249,7 @@
           "uyda",
           "noutbuk"
         ],
+        "icon": "loop",
         "note": "2-jarayonni xuddi shu beshta Kit bilan oʻtkazing. Kit 1 intervyularidan boshlang va /kit1, /kit2 skillaridan foydalaning.",
         "files": [],
         "prompts": [

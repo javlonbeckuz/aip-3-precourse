@@ -120,9 +120,9 @@ js = sub1(js, r'<div class="slv-ph">.*?<span class="slv-note">\$\{T\(\'sl\.note\
 # boot and the app's own routes/login/language
 assert js.count('// ===================== boot =====================') == 1
 i = js.index('// ===================== boot ====================='); js = js[:i] + rd('app_core.js')
-D3_STORE = ('localStorage.getItem(d3Key(n, tab))', 'localStorage.setItem(d3Key(n, tab), id)', 'Object.keys(localStorage)', 'localStorage.removeItem(k)', 'localStorage.getItem(KX_KEY)', "localStorage.setItem(KX_KEY, '1')")   # the only storage the app uses: the last opened section of a pane (a section id, never a student id) and a "«Kit nima?» was seen" flag; logout and a 401 remove them (d3Forget)
+D3_STORE = ('localStorage.getItem(d3Key(n, tab))', 'localStorage.setItem(d3Key(n, tab), id)', 'Object.keys(localStorage)', 'localStorage.removeItem(k)')   # the only storage the app uses: the last opened section of a pane (a section id, never a student id); logout and a 401 remove them (d3Forget)
 assert js.count("const D3_PREFIX = 'aip3.d3';") == 1 and js.count('d3Save(n, tab, go.dataset.go);') == 1 and js.count('d3Save(') == 1 and js.count('const d3Save = (n, tab, id)') == 1 and js.count('const d3Key = (n, tab) => `${D3_PREFIX}.${n}.${tab}`;') == 1, 'D3_PREFIX / what is stored'   # a fixed prefix, and only the section id goes in
-assert all(js.count(x) == 1 for x in D3_STORE) and js.count('localStorage') == len(D3_STORE) == 6 and js.count("const KX_KEY = D3_PREFIX + '.kx';") == 1, ('localStorage uses', js.count('localStorage'))
+assert all(js.count(x) == 1 for x in D3_STORE) and js.count('localStorage') == len(D3_STORE) == 4, ('localStorage uses', js.count('localStorage'))
 jchk = js
 for x in D3_STORE: jchk = jchk.replace(x, '')
 left = [(bad, jchk[max(0, m.start() - 70):m.start() + 70].replace(chr(10), ' ')) for bad in ('TODAY', 'localStorage', 'SEED', 'aip3.demo', 'tabtest', 'runSelftest', "q.has('solo')", 'u4(', 'setU4', 'comp-bar', 'selftest') for m in re.finditer(re.escape(bad), jchk)]

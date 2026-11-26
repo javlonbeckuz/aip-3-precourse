@@ -367,6 +367,7 @@
     "groups": [
       {
         "title": "Manbalarni yuklang",
+        "icon": "upload",
         "note": "NotebookLM faqat siz yuklagan hujjatlardan javob beradi va manbani koʻrsatadi. Yetti fayl: kompaniyaning hujjatlari (arxivda ham shu 7 fayl). Shularni NotebookLMʼga manba sifatida yuklang, boshqa hech narsani emas. Fayl nomlarini oʻzgartirmang, promptlar ularga nom bilan murojaat qiladi.",
         "files": [
           {
@@ -421,6 +422,7 @@
       },
       {
         "title": "Qoʻllanmani oʻqing",
+        "icon": "book",
         "note": "Vazifaning yozma qoʻllanmasi: mashq tartibi va nimaga eʼtibor berish kerakligi.",
         "files": [
           {
@@ -433,6 +435,7 @@
       },
       {
         "title": "Asosiy mashq: 8 prompt",
+        "icon": "chat",
         "note": "Sakkizta prompt, birma-bir. Har biriga javob olgach, vazifa bajarilgan.",
         "files": [],
         "prompts": [
@@ -488,6 +491,7 @@
       },
       {
         "title": "Ixtiyoriy: chuqurroq tahlil",
+        "icon": "search",
         "note": "8 prompt tugagach, vaqtingiz boʻlsa.",
         "files": [],
         "prompts": [
